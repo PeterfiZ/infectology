@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>EKG Ikon Generátor</title>
+    <style>
+        body { font-family: sans-serif; background: #333; color: white; text-align: center; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        canvas { border: 2px solid #666; margin: 20px; max-width: 300px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        button { padding: 12px 24px; font-size: 16px; cursor: pointer; background: #ef4444; color: white; border: none; border-radius: 8px; margin: 10px; transition: background 0.2s; }
+        button:hover { background: #dc2626; }
+    </style>
+</head>
+<body>
+    <h1>EKG Ikon Generátor</h1>
+    <p>Kattints a gombokra a PWA ikonok letöltéséhez!</p>
+    
+    <canvas id="canvas"></canvas>
+    
+    <div>
+        <button onclick="downloadIcon(192)">icon-192.png Letöltése</button>
+        <button onclick="downloadIcon(512)">icon-512.png Letöltése</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Ikon rajzolása
+        function drawIcon(size) {
+            canvas.width = size;
+            canvas.height = size;
+
+            // Háttér (az app sötétkék színe)
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(0, 0, size, size);
+
+            // EKG görbe beállítások
+            ctx.strokeStyle = '#ef4444'; // Piros szín
+            ctx.lineWidth = size * 0.06; // Vonalvastagság
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            // Görbe rajzolása
+            ctx.beginPath();
+            const w = size;
+            const h = size;
+            const mid = h / 2;
+
+            ctx.moveTo(0, mid);
+            ctx.lineTo(w * 0.15, mid);           
+            ctx.quadraticCurveTo(w * 0.2, mid - h * 0.15, w * 0.25, mid); // P hullám
+            ctx.lineTo(w * 0.35, mid);           
+            ctx.lineTo(w * 0.40, mid + h * 0.05); // Q
+            ctx.lineTo(w * 0.50, mid - h * 0.35); // R (csúcs)
+            ctx.lineTo(w * 0.60, mid + h * 0.15); // S
+            ctx.lineTo(w * 0.65, mid);            
+            ctx.quadraticCurveTo(w * 0.75, mid - h * 0.20, w * 0.85, mid); // T hullám
+            ctx.lineTo(w, mid);                   
+
+            ctx.stroke();
+        }
+
+        // Letöltés funkció
+        function downloadIcon(size) {
+            drawIcon(size);
+            const link = document.createElement('a');
+            link.download = `icon-${size}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            // Visszaállítjuk a nézetet nagyra
+            if (size !== 512) drawIcon(512);
+        }
+
+        // Kezdő állapot
+        drawIcon(512);
+    </script>
+</body>
+</html>

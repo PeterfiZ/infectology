@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="hu" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infektológia Tankönyv</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    .font-serif-book { font-family: 'Crimson Pro', Georgia, serif; }
+    .font-sans-book { font-family: 'Source Sans 3', system-ui, sans-serif; }
+    
+    .disease-card {
+      transition: all 0.3s ease;
+    }
+    .disease-card:hover {
+      transform: translateY(-2px);
+    }
+    
+    .tab-btn.active {
+      border-bottom: 3px solid currentColor;
+      font-weight: 600;
+    }
+    
+    .section-header {
+      position: relative;
+      padding-left: 16px;
+    }
+    .section-header::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      border-radius: 2px;
+    }
+    
+    .info-card {
+      border-left: 4px solid;
+    }
+    
+    .pathogen-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .scroll-area {
+      scrollbar-width: thin;
+    }
+    .scroll-area::-webkit-scrollbar {
+      width: 6px;
+    }
+    .scroll-area::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.05);
+      border-radius: 3px;
+    }
+    .scroll-area::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.2);
+      border-radius: 3px;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.4s ease forwards;
+    }
+    
+    .category-pill {
+      transition: all 0.2s ease;
+    }
+    .category-pill:hover {
+      transform: scale(1.02);
+    }
+    .category-pill.active {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-sans-book bg-slate-50 text-slate-800">
+  <div id="app" class="h-full w-full flex flex-col overflow-hidden"><!-- Header -->
+   <header class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-700 text-white px-6 py-5 shadow-lg flex-shrink-0">
+    <div class="max-w-7xl mx-auto">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center gap-4">
+       <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur">
+        <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" /> <path d="M12 6v6l4 2" /> <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3" /> <path d="M8 8l1.5 1.5M16 8l-1.5 1.5M8 16l1.5-1.5M16 16l-1.5-1.5" />
+        </svg>
+       </div>
+       <div>
+        <h1 id="main-title" class="font-serif-book text-2xl font-bold tracking-tight">Infektológia Tankönyv</h1>
+        <p id="main-subtitle" class="text-emerald-100 text-sm mt-0.5">Orvostanhallgatók számára</p>
+       </div>
+      </div>
+      <div class="flex items-center gap-3">
+       <div class="relative"><input type="text" id="search-input" placeholder="Keresés betegségek között..." class="w-64 px-4 py-2 pl-10 rounded-lg bg-white/15 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/25 focus:border-white/40 transition-all text-sm">
+        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-white/60" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+       </div>
+      </div>
+     </div>
+    </div>
+   </header><!-- Main Content -->
+   <div class="flex-1 flex overflow-hidden"><!-- Sidebar - Disease Categories -->
+    <aside id="sidebar" class="w-72 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out">
+     <div class="h-14 flex items-center justify-between px-4 border-b border-slate-100 overflow-hidden">
+      <h2 id="sidebar-title" class="font-semibold text-slate-700 text-sm uppercase tracking-wider whitespace-nowrap transition-all duration-300">Betegségcsoportok</h2>
+      <button onclick="toggleSidebar()" class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0" title="Oldalsáv váltása">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+     </div>
+     <nav id="category-nav" class="flex-1 overflow-y-auto scroll-area p-3 space-y-2"><!-- Categories rendered by JS -->
+     </nav>
+    </aside><!-- Disease List -->
+    <div id="disease-list-panel" class="w-56 bg-slate-50 border-r border-slate-200 flex flex-col flex-shrink-0">
+     <div class="p-4 border-b border-slate-100 bg-white">
+      <h2 id="category-title" class="font-semibold text-slate-800">Válasszon kategóriát</h2>
+      <p id="disease-count" class="text-sm text-slate-500 mt-1"></p>
+     </div>
+     <div id="disease-list" class="flex-1 overflow-y-auto scroll-area p-3 space-y-2"><!-- Diseases rendered by JS -->
+     </div>
+    </div><!-- Disease Detail -->
+    <main id="disease-detail" class="flex-1 overflow-y-auto scroll-area bg-white">
+     <div id="welcome-screen" class="h-full flex items-center justify-center">
+      <div class="text-center max-w-md px-6">
+       <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center">
+        <svg class="w-12 h-12 text-emerald-600" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+       </div>
+       <h2 class="font-serif-book text-2xl font-bold text-slate-800 mb-3">Üdvözöljük az Infektológia Tankönyvben</h2>
+       <p class="text-slate-600 leading-relaxed">Válasszon egy betegségcsoportot a bal oldali menüből, majd egy konkrét betegséget a részletes klinikai információk megtekintéséhez.</p>
+      </div>
+     </div>
+     <div id="disease-content" class="hidden"><!-- Disease details rendered by JS -->
+     </div>
+    </main>
+   </div>
+  </div>
+  <script src="Diseases.js"></script>
+  <script>
+    const defaultConfig = {
+      app_title: 'Infektológia Tankönyv',
+      subtitle: 'Orvostanhallgatók számára',
+      primary_color: '#065f46',
+      secondary_color: '#f0fdf4',
+      text_color: '#1e293b',
+      accent_color: '#0d9488',
+      surface_color: '#ffffff'
+    };
+
+    let config = { ...defaultConfig };
+
+    // Disease Database
+ 
+
+    // State
+    let selectedCategory = null;
+    let selectedDisease = null;
+    let activeTab = 'epidemiology';
+    let isSidebarCollapsed = false;
+
+    // DOM Elements
+    const categoryNav = document.getElementById('category-nav');
+    const diseaseList = document.getElementById('disease-list');
+    const diseaseDetail = document.getElementById('disease-detail');
+    const categoryTitle = document.getElementById('category-title');
+    const diseaseCount = document.getElementById('disease-count');
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const diseaseContent = document.getElementById('disease-content');
+    const searchInput = document.getElementById('search-input');
+
+    // Render categories
+    function renderCategories() {
+      categoryNav.innerHTML = Object.entries(diseases).map(([key, category]) => `
+        <button onclick="selectCategory('${key}')" 
+          class="category-pill w-full flex items-center ${isSidebarCollapsed ? 'justify-center px-2' : 'gap-3 px-4 text-left'} py-3 rounded-xl transition-all ${selectedCategory === key ? 'active text-white' : 'bg-slate-50 hover:bg-slate-100 text-slate-700'}"
+          style="${selectedCategory === key ? `background: ${category.color}` : ''}"
+          title="${category.name}">
+          <span class="text-2xl">${category.icon}</span>
+          ${!isSidebarCollapsed ? `<span class="font-medium text-sm leading-tight">${category.name}</span>` : ''}
+        </button>
+      `).join('');
+    }
+
+    // Select category
+    window.selectCategory = function(categoryKey) {
+      selectedCategory = categoryKey;
+      selectedDisease = null;
+      
+      isSidebarCollapsed = true;
+      const sidebar = document.getElementById('sidebar');
+      const sidebarTitle = document.getElementById('sidebar-title');
+      
+      sidebar.classList.remove('w-72');
+      sidebar.classList.add('w-20');
+      sidebarTitle.classList.add('opacity-0', 'w-0', 'px-0');
+
+      renderCategories();
+      renderDiseaseList();
+      welcomeScreen.classList.remove('hidden');
+      diseaseContent.classList.add('hidden');
+    };
+
+    // Toggle sidebar
+    window.toggleSidebar = function() {
+      isSidebarCollapsed = !isSidebarCollapsed;
+      const sidebar = document.getElementById('sidebar');
+      const sidebarTitle = document.getElementById('sidebar-title');
+      
+      if (isSidebarCollapsed) {
+        sidebar.classList.remove('w-72');
+        sidebar.classList.add('w-20');
+        sidebarTitle.classList.add('opacity-0', 'w-0', 'px-0');
+      } else {
+        sidebar.classList.remove('w-20');
+        sidebar.classList.add('w-72');
+        sidebarTitle.classList.remove('opacity-0', 'w-0', 'px-0');
+      }
+      renderCategories();
+    };
+
+    // Render disease list
+    function renderDiseaseList() {
+      if (!selectedCategory) {
+        diseaseList.innerHTML = '<p class="text-slate-500 text-sm text-center py-8">Válasszon kategóriát</p>';
+        categoryTitle.textContent = 'Válasszon kategóriát';
+        diseaseCount.textContent = '';
+        return;
+      }
+
+      const category = diseases[selectedCategory];
+      categoryTitle.textContent = category.name;
+      diseaseCount.textContent = `${category.diseases.length} betegség`;
+
+      diseaseList.innerHTML = category.diseases.map(disease => `
+        <button onclick="selectDisease('${disease.id}')" 
+          class="disease-card w-full text-left p-4 rounded-xl border-2 transition-all ${selectedDisease === disease.id ? 'border-emerald-500 bg-emerald-50' : 'border-slate-200 bg-white hover:border-slate-300'}">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white flex-shrink-0" style="background: ${category.color}">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-slate-800 text-sm leading-tight">${disease.name}</h3>
+              <p class="text-xs text-slate-500 mt-1 truncate">${disease.pathogen.name}</p>
+            </div>
+          </div>
+        </button>
+      `).join('');
+    }
+
+    // Select disease
+    window.selectDisease = function(diseaseId) {
+      selectedDisease = diseaseId;
+      activeTab = 'epidemiology';
+      renderDiseaseList();
+      renderDiseaseDetail();
+    };
+
+    // Change tab
+    window.changeTab = function(tab) {
+      activeTab = tab;
+      renderDiseaseDetail();
+    };
+
+    // Get severity color
+    function getSeverityColor(severity) {
+      switch(severity) {
+        case 'severe': return 'bg-red-100 text-red-700 border-red-200';
+        case 'moderate': return 'bg-amber-100 text-amber-700 border-amber-200';
+        case 'mild': return 'bg-green-100 text-green-700 border-green-200';
+        default: return 'bg-slate-100 text-slate-700 border-slate-200';
+      }
+    }
+
+    // Render disease detail
+    function renderDiseaseDetail() {
+      if (!selectedDisease || !selectedCategory) return;
+
+      const category = diseases[selectedCategory];
+      const disease = category.diseases.find(d => d.id === selectedDisease);
+      if (!disease) return;
+
+      welcomeScreen.classList.add('hidden');
+      diseaseContent.classList.remove('hidden');
+
+      const tabs = [
+        { id: 'epidemiology', label: 'Epidemiológia', icon: '📊' },
+        { id: 'pathomechanism', label: 'Pathomechanizmus', icon: '🔬' },
+        { id: 'clinical', label: 'Klinikum', icon: '🩺' },
+        { id: 'diagnostics', label: 'Diagnosztika', icon: '🧪' },
+        { id: 'differential', label: 'Diff. diagnózis', icon: '⚖️' },
+        { id: 'therapy', label: 'Terápia', icon: '💊' },
+        { id: 'prognosis', label: 'Prognózis', icon: '📈' }
+      ];
+
+      if (disease.gallery && disease.gallery.length > 0) {
+        tabs.push({ id: 'gallery', label: 'Galéria', icon: '🖼️' });
+      }
+
+      diseaseContent.innerHTML = `
+        <div class="animate-fade-in">
+          <!-- Header -->
+          <div class="p-6 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
+            <div class="flex items-start gap-4">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg" style="background: ${category.color}">
+                <span class="text-3xl">${category.icon}</span>
+              </div>
+              <div class="flex-1">
+                <h1 class="font-serif-book text-2xl font-bold text-slate-800">${disease.name}</h1>
+                <div class="flex flex-wrap items-center gap-2 mt-2">
+                  <span class="pathogen-badge bg-slate-100 text-slate-700">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    ${disease.pathogen.name}
+                  </span>
+                  <span class="pathogen-badge bg-emerald-100 text-emerald-700">${disease.pathogen.type}</span>
+                  <span class="pathogen-badge bg-violet-100 text-violet-700">${disease.pathogen.gram}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="border-b border-slate-200 bg-white sticky top-0 z-10">
+            <div class="flex overflow-x-auto px-4 gap-1">
+              ${tabs.map(tab => `
+                <button onclick="changeTab('${tab.id}')" 
+                  class="tab-btn flex items-center gap-2 px-4 py-3 text-sm whitespace-nowrap transition-all ${activeTab === tab.id ? 'active text-emerald-600 border-emerald-600' : 'text-slate-500 hover:text-slate-700 border-transparent'}" style="border-bottom-width: 3px;">
+                  <span>${tab.icon}</span>
+                  <span>${tab.label}</span>
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            ${renderTabContent(disease)}
+          </div>
+        </div>
+      `;
+    }
+
+    // Render tab content
+    function renderTabContent(disease) {
+      switch(activeTab) {
+        case 'epidemiology':
+          return `
+            <div class="space-y-6">
+              <div class="section-header" style="--before-bg: #10b981;">
+                <h2 class="text-lg font-bold text-slate-800" style="::before { background: #10b981; }">Epidemiológiai jellemzők</h2>
+              </div>
+              
+              <div class="grid gap-4 md:grid-cols-2">
+                <div class="info-card p-4 rounded-xl bg-blue-50 border-blue-400">
+                  <h3 class="font-semibold text-blue-800 mb-2">📊 Incidencia</h3>
+                  <p class="text-blue-700 text-sm leading-relaxed">${disease.epidemiology.incidence}</p>
+                </div>
+                
+                <div class="info-card p-4 rounded-xl bg-amber-50 border-amber-400">
+                  <h3 class="font-semibold text-amber-800 mb-2">📅 Szezonalitás</h3>
+                  <p class="text-amber-700 text-sm">${disease.epidemiology.seasonality}</p>
+                </div>
+              </div>
+
+              <div class="info-card p-4 rounded-xl bg-red-50 border-red-400">
+                <h3 class="font-semibold text-red-800 mb-3">⚠️ Rizikócsoportok</h3>
+                <div class="flex flex-wrap gap-2">
+                  ${disease.epidemiology.risk_groups.map(group => `
+                    <span class="px-3 py-1.5 bg-white rounded-lg text-sm text-red-700 border border-red-200">${group}</span>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="info-card p-4 rounded-xl bg-violet-50 border-violet-400">
+                <h3 class="font-semibold text-violet-800 mb-2">🔄 Transzmisszió</h3>
+                <p class="text-violet-700 text-sm leading-relaxed">${disease.epidemiology.transmission}</p>
+              </div>
+            </div>
+          `;
+
+        case 'pathomechanism':
+          return `
+            <div class="space-y-6">
+              <div class="section-header">
+                <h2 class="text-lg font-bold text-slate-800">Pathomechanizmus</h2>
+              </div>
+
+              <div class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-5 border border-violet-200">
+                <h3 class="font-semibold text-violet-800 mb-4">🔬 Patogenezis lépései</h3>
+                <ol class="space-y-3">
+                  ${disease.pathomechanism.steps.map((step, index) => `
+                    <li class="flex gap-3">
+                      <span class="w-7 h-7 rounded-full bg-violet-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">${index + 1}</span>
+                      <span class="text-slate-700 text-sm leading-relaxed pt-0.5">${step}</span>
+                    </li>
+                  `).join('')}
+                </ol>
+              </div>
+
+              <div class="bg-gradient-to-br from-rose-50 to-pink-50 rounded-xl p-5 border border-rose-200">
+                <h3 class="font-semibold text-rose-800 mb-3">🦠 Virulencia faktorok</h3>
+                <div class="flex flex-wrap gap-2">
+                  ${disease.pathomechanism.virulence_factors.map(factor => `
+                    <span class="px-3 py-2 bg-white rounded-lg text-sm text-rose-700 border border-rose-200 shadow-sm">${factor}</span>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+
+        case 'clinical':
+          return `
+            <div class="space-y-6">
+              <div class="grid gap-4 md:grid-cols-3 mb-6">
+                <div class="bg-slate-100 rounded-xl p-4 text-center">
+                  <p class="text-xs text-slate-500 uppercase tracking-wider mb-1">Inkubáció</p>
+                  <p class="font-semibold text-slate-800">${disease.clinical.incubation}</p>
+                </div>
+                <div class="bg-slate-100 rounded-xl p-4 text-center">
+                  <p class="text-xs text-slate-500 uppercase tracking-wider mb-1">Kezdet</p>
+                  <p class="font-semibold text-slate-800">${disease.clinical.onset}</p>
+                </div>
+                <div class="bg-red-100 rounded-xl p-4 text-center">
+                  <p class="text-xs text-red-500 uppercase tracking-wider mb-1">Komplikációk</p>
+                  <p class="font-semibold text-red-800">${disease.clinical.complications.length} típus</p>
+                </div>
+              </div>
+
+              <div class="section-header">
+                <h2 class="text-lg font-bold text-slate-800">Tünetek</h2>
+              </div>
+              <div class="space-y-3">
+                ${disease.clinical.symptoms.map(symptom => `
+                  <div class="p-4 rounded-xl border-2 ${getSeverityColor(symptom.severity)}">
+                    <div class="flex items-start justify-between gap-4">
+                      <div>
+                        <h4 class="font-semibold">${symptom.name}</h4>
+                        <p class="text-sm mt-1 opacity-90">${symptom.description}</p>
+                      </div>
+                      <span class="px-2 py-1 rounded text-xs font-medium uppercase ${symptom.severity === 'severe' ? 'bg-red-200 text-red-800' : symptom.severity === 'moderate' ? 'bg-amber-200 text-amber-800' : 'bg-green-200 text-green-800'}">
+                        ${symptom.severity === 'severe' ? 'Súlyos' : symptom.severity === 'moderate' ? 'Közepes' : 'Enyhe'}
+                      </span>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="section-header mt-8">
+                <h2 class="text-lg font-bold text-slate-800">Fizikális vizsgálat</h2>
+              </div>
+              <div class="bg-emerald-50 rounded-xl p-5 border border-emerald-200">
+                <ul class="space-y-2">
+                  ${disease.clinical.physical_exam.map(finding => `
+                    <li class="flex items-start gap-2 text-sm text-emerald-800">
+                      <span class="text-emerald-600 mt-0.5">✓</span>
+                      <span>${finding}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <div class="section-header mt-8">
+                <h2 class="text-lg font-bold text-slate-800">Komplikációk</h2>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                ${disease.clinical.complications.map(comp => `
+                  <span class="px-3 py-2 bg-red-100 text-red-700 rounded-lg text-sm border border-red-200">${comp}</span>
+                `).join('')}
+              </div>
+            </div>
+          `;
+
+        case 'diagnostics':
+          return `
+            <div class="space-y-6">
+              ${disease.diagnostics.criteria ? `
+                <div class="section-header">
+                  <h2 class="text-lg font-bold text-slate-800">Diagnosztikus kritériumok</h2>
+                </div>
+                <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                  ${disease.diagnostics.criteria.map(c => `
+                    <div class="mb-4 last:mb-0">
+                      <h4 class="font-semibold text-slate-800 mb-2">${c.name}</h4>
+                      <ul class="list-disc list-inside space-y-1 text-sm text-slate-700">
+                        ${c.items.map(item => `<li>${item}</li>`).join('')}
+                      </ul>
+                    </div>
+                  `).join('')}
+                </div>
+              ` : ''}
+
+              <div class="section-header">
+                <h2 class="text-lg font-bold text-slate-800">Laboratóriumi vizsgálatok</h2>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="bg-slate-100">
+                      <th class="text-left p-3 font-semibold text-slate-700 rounded-tl-lg">Vizsgálat</th>
+                      <th class="text-left p-3 font-semibold text-slate-700">Eredmény</th>
+                      <th class="text-left p-3 font-semibold text-slate-700 rounded-tr-lg">Értelmezés</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${disease.diagnostics.laboratory.map((lab, index) => `
+                      <tr class="${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}">
+                        <td class="p-3 font-medium text-slate-800">${lab.test}</td>
+                        <td class="p-3 text-blue-700">${lab.finding}</td>
+                        <td class="p-3 text-slate-600">${lab.interpretation}</td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="section-header mt-8">
+                <h2 class="text-lg font-bold text-slate-800">Képalkotó vizsgálatok</h2>
+              </div>
+              <div class="grid gap-4 md:grid-cols-2">
+                ${disease.diagnostics.imaging.map(img => `
+                  <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-4 border border-cyan-200">
+                    <h4 class="font-semibold text-cyan-800">${img.modality}</h4>
+                    <p class="text-cyan-700 text-sm mt-2">${img.finding}</p>
+                    <p class="text-cyan-600 text-xs mt-2 italic">${img.significance}</p>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="section-header mt-8">
+                <h2 class="text-lg font-bold text-slate-800">Mikrobiológiai diagnosztika</h2>
+              </div>
+              <div class="space-y-3">
+                ${disease.diagnostics.microbiology.map(micro => `
+                  <div class="bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-4 border border-violet-200">
+                    <div class="flex items-start gap-3">
+                      <div class="w-10 h-10 bg-violet-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-lg">🔬</span>
+                      </div>
+                      <div>
+                        <h4 class="font-semibold text-violet-800">${micro.test}</h4>
+                        <p class="text-violet-700 text-sm mt-1">${micro.finding}</p>
+                        <p class="text-violet-600 text-xs mt-1 italic">${micro.significance}</p>
+                      </div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+
+        case 'differential':
+          return `
+            <div class="space-y-6">
+              <div class="section-header">
+                <h2 class="text-lg font-bold text-slate-800">Differenciáldiagnózis</h2>
+              </div>
+              <div class="space-y-4">
+                ${disease.differential.map((diff, index) => `
+                  <div class="bg-white rounded-xl border-2 border-slate-200 overflow-hidden hover:border-slate-300 transition-all">
+                    <div class="flex items-center gap-4 p-4 bg-slate-50 border-b border-slate-200">
+                      <span class="w-8 h-8 rounded-full bg-slate-700 text-white flex items-center justify-center font-bold text-sm">${index + 1}</span>
+                      <h4 class="font-semibold text-slate-800">${diff.disease}</h4>
+                    </div>
+                    <div class="p-4">
+                      <p class="text-sm text-slate-600">
+                        <span class="font-medium text-slate-700">Megkülönböztető jelek: </span>
+                        ${diff.distinguishing}
+                      </p>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+
+        case 'therapy':
+          return `
+            <div class="space-y-6">
+              <div class="section-header">
+                <h2 class="text-lg font-bold text-slate-800">Empirikus terápia</h2>
+              </div>
+              
+              ${(() => {
+                const therapyGroupDetails = {
+                  cap_outpatient: { title: 'Ambuláns kezelés', icon: '🏠', color: 'green' },
+                  cap_inpatient: { title: 'Kórházi kezelés', icon: '🏥', color: 'blue' },
+                  cap_icu: { title: 'Intenzív osztályos kezelés', icon: '🚨', color: 'red' },
+                  hap_early: { title: 'Nozokomiális pneumonia - Korai', icon: '🏢', color: 'amber' },
+                  hap_late_vap: { title: 'Nozokomiális (késői) / VAP', icon: '🌬️', color: 'purple' },
+                  outpatient: { title: 'Ambuláns kezelés', icon: '🏠', color: 'green' },
+                  inpatient: { title: 'Kórházi kezelés', icon: '🏥', color: 'blue' },
+                  icu: { title: 'Intenzív osztályos kezelés', icon: '🚨', color: 'red' }
+                };
+
+                let groupsToRender = [];
+                if (disease.therapy.empirical) {
+                    Object.entries(disease.therapy.empirical).forEach(([key, value]) => {
+                        if (Array.isArray(value)) {
+                             if (value.length > 0) {
+                                 const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate', title: 'Terápia' };
+                                 groupsToRender.push({
+                                     key: key,
+                                     title: details.title,
+                                     drugs: value,
+                                     icon: details.icon,
+                                     color: details.color
+                                 });
+                             }
+                        } else if (value && value.drugs && value.drugs.length > 0) {
+                             const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate' };
+                             groupsToRender.push({
+                                 key: key,
+                                 title: value.title || details.title || 'Terápia',
+                                 drugs: value.drugs,
+                                 icon: details.icon,
+                                 color: details.color
+                             });
+                        }
+                    });
+                }
+
+                return groupsToRender.map(group => `
+                    <div class="bg-gradient-to-br from-${group.color}-50 to-${group.color}-100/50 rounded-xl p-5 border border-${group.color}-200 mb-4">
+                      <h3 class="font-semibold text-${group.color}-800 mb-4 flex items-center gap-2">
+                        <span class="text-xl">${group.icon}</span> ${group.title}
+                      </h3>
+                      <div class="space-y-3">
+                        ${group.drugs.map(drug => `
+                          <div class="bg-white rounded-lg p-3 border border-${group.color}-200">
+                            <div class="flex items-start justify-between gap-4">
+                              <div>
+                                <span class="font-semibold text-${group.color}-800">${drug.drug}</span>
+                                <span class="text-${group.color}-700 ml-2">${drug.dose}</span>
+                              </div>
+                              ${drug.duration ? `<span class="text-xs bg-${group.color}-100 text-${group.color}-700 px-2 py-1 rounded">${drug.duration}</span>` : ''}
+                            </div>
+                            ${drug.note ? `<p class="text-${group.color}-600 text-sm mt-2 italic">${drug.note}</p>` : ''}
+                          </div>
+                        `).join('')}
+                      </div>
+                    </div>
+                `).join('');
+              })()}
+
+              <div class="grid gap-4 md:grid-cols-2">
+                <div class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-5 border border-violet-200">
+                  <h3 class="font-semibold text-violet-800 mb-3 flex items-center gap-2">
+                    <span class="text-xl">💪</span> Szupportív terápia
+                  </h3>
+                  <ul class="space-y-2">
+                    ${disease.therapy.supportive.map(item => `
+                      <li class="flex items-start gap-2 text-sm text-violet-700">
+                        <span class="text-violet-500 mt-0.5">•</span>
+                        <span>${item}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-xl p-5 border border-teal-200">
+                  <h3 class="font-semibold text-teal-800 mb-3 flex items-center gap-2">
+                    <span class="text-xl">🛡️</span> Prevenció
+                  </h3>
+                  <ul class="space-y-2">
+                    ${disease.therapy.prevention.map(item => `
+                      <li class="flex items-start gap-2 text-sm text-teal-700">
+                        <span class="text-teal-500 mt-0.5">•</span>
+                        <span>${item}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              </div>
+
+              ${disease.therapy.guidelines ? `
+                <div class="bg-gradient-to-br from-slate-50 to-gray-50 rounded-xl p-5 border border-slate-200 mt-4">
+                  <h3 class="font-semibold text-slate-800 mb-3 flex items-center gap-2">
+                    <span class="text-xl">📚</span> Kezelési irányelvek
+                  </h3>
+                  <ul class="space-y-2">
+                    ${disease.therapy.guidelines.map(item => `
+                      <li class="flex items-start gap-2 text-sm text-slate-700">
+                        <span class="text-slate-500 mt-0.5">•</span>
+                        <span>${item}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+            </div>
+          `;
+
+        case 'prognosis':
+          return `
+            <div class="space-y-6">
+              <div class="section-header">
+                <h2 class="text-lg font-bold text-slate-800">Prognózis</h2>
+              </div>
+
+              <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 text-white">
+                <h3 class="font-semibold text-slate-200 mb-2">📊 Mortalitás</h3>
+                <p class="text-2xl font-bold">${disease.prognosis.mortality}</p>
+              </div>
+
+              <div class="grid gap-4 md:grid-cols-2">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 border border-blue-200">
+                  <h3 class="font-semibold text-blue-800 mb-3">📋 Prognosztikai score-ok</h3>
+                  <div class="flex flex-wrap gap-2">
+                    ${disease.prognosis.prognostic_scores.map(score => `
+                      <span class="px-3 py-1.5 bg-white rounded-lg text-sm text-blue-700 border border-blue-200">${score}</span>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-5 border border-amber-200">
+                  <h3 class="font-semibold text-amber-800 mb-3">⚠️ Prognosztikai faktorok</h3>
+                  <p class="text-amber-700 text-sm leading-relaxed">${disease.prognosis.factors}</p>
+                </div>
+              </div>
+            </div>
+          `;
+
+        case 'gallery':
+          return `
+            <div class="space-y-6">
+              <div class="section-header">
+                <h2 class="text-lg font-bold text-slate-800">Kép Galéria</h2>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                ${disease.gallery.map(image => `
+                  <a href="${image.url}" target="_blank" rel="noopener noreferrer" class="block group rounded-xl overflow-hidden border-2 border-slate-200 hover:border-emerald-400 hover:shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-slate-200 flex items-center justify-center overflow-hidden">
+                      <img src="${image.url}" alt="${image.caption}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-4 bg-white">
+                      <p class="text-sm text-slate-700 font-medium">${image.caption}</p>
+                      ${image.type ? `<span class="text-xs mt-2 inline-block px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">${image.type}</span>` : ''}
+                    </div>
+                  </a>
+                `).join('')}
+              </div>
+            </div>
+          `;
+
+        default:
+          return '';
+      }
+    }
+
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      if (!query) {
+        renderCategories();
+        renderDiseaseList();
+        return;
+      }
+
+      // Search across all diseases
+      const results = [];
+      Object.entries(diseases).forEach(([catKey, category]) => {
+        category.diseases.forEach(disease => {
+          if (disease.name.toLowerCase().includes(query) || 
+              disease.pathogen.name.toLowerCase().includes(query)) {
+            results.push({ ...disease, categoryKey: catKey, categoryName: category.name });
+          }
+        });
+      });
+
+      // Display results
+      diseaseList.innerHTML = results.length ? results.map(disease => `
+        <button onclick="selectCategory('${disease.categoryKey}'); selectDisease('${disease.id}')" 
+          class="disease-card w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 transition-all">
+          <h3 class="font-semibold text-slate-800 text-sm">${disease.name}</h3>
+          <p class="text-xs text-slate-500 mt-1">${disease.pathogen.name}</p>
+          <p class="text-xs text-emerald-600 mt-1">${disease.categoryName}</p>
+        </button>
+      `).join('') : '<p class="text-slate-500 text-sm text-center py-8">Nincs találat</p>';
+      
+      categoryTitle.textContent = 'Keresési eredmények';
+      diseaseCount.textContent = `${results.length} találat`;
+    });
+
+    // Initialize
+    function init() {
+      renderCategories();
+      renderDiseaseList();
+    }
+
+    // Config change handler
+    async function onConfigChange(newConfig) {
+      config = { ...defaultConfig, ...newConfig };
+      
+      const titleEl = document.getElementById('main-title');
+      const subtitleEl = document.getElementById('main-subtitle');
+      
+      if (titleEl) titleEl.textContent = config.app_title || defaultConfig.app_title;
+      if (subtitleEl) subtitleEl.textContent = config.subtitle || defaultConfig.subtitle;
+    }
+
+    // Element SDK integration
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (cfg) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['app_title', cfg.app_title || defaultConfig.app_title],
+          ['subtitle', cfg.subtitle || defaultConfig.subtitle]
+        ])
+      });
+    }
+
+    init();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c2e0e54d1adc1b2',t:'MTc2OTI0MjI0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
