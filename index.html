@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Infektológia Tankönyv</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/_sdk/element_sdk.js"></script>
+  <!-- <script src="_sdk/element_sdk.js"></script> -->
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     body {
@@ -88,7 +88,7 @@
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <!-- <script src="_sdk/data_sdk.js" type="text/javascript"></script> -->
  </head>
  <body class="h-full font-sans-book bg-slate-50 text-slate-800">
   <div id="app" class="h-full w-full flex flex-col overflow-hidden"><!-- Header -->
@@ -149,7 +149,23 @@
     </main>
    </div>
   </div>
-  <script src="Diseases.js"></script>
+  <script>
+    // Globális tároló inicializálása
+    window.diseases = {};
+  </script>
+  <!-- Adatfájlok betöltése hagyományos scriptként -->
+  <script src="Thorax.js"></script>
+  <script src="abdomen.js"></script>
+  <script src="BoneandSST.js"></script>
+  <script src="CNS.js"></script>
+  <script src="STD.js"></script>
+  <script src="parazita.js"></script>
+  <script src="zoonozis.js"></script>
+  <script src="systemic.js"></script>
+  <script src="tropical.js"></script>
+  <script src="emerging.js"></script>
+  <script src="childhood.js"></script>
+
   <script>
     const defaultConfig = {
       app_title: 'Infektológia Tankönyv',
@@ -162,9 +178,6 @@
     };
 
     let config = { ...defaultConfig };
-
-    // Disease Database
- 
 
     // State
     let selectedCategory = null;
@@ -181,6 +194,12 @@
     const welcomeScreen = document.getElementById('welcome-screen');
     const diseaseContent = document.getElementById('disease-content');
     const searchInput = document.getElementById('search-input');
+
+    // Score calculator function
+    window.openScoreCalculator = function(scoreName) {
+      // Simple alert for now, can be expanded to a modal with inputs
+      alert(`Score kalkulátor megnyitása: ${scoreName}\n\nEz a funkció fejlesztés alatt áll.`);
+    };
 
     // Render categories
     function renderCategories() {
@@ -199,19 +218,12 @@
     window.selectCategory = function(categoryKey) {
       selectedCategory = categoryKey;
       selectedDisease = null;
-      
-      isSidebarCollapsed = true;
-      const sidebar = document.getElementById('sidebar');
-      const sidebarTitle = document.getElementById('sidebar-title');
-      
-      sidebar.classList.remove('w-72');
-      sidebar.classList.add('w-20');
-      sidebarTitle.classList.add('opacity-0', 'w-0', 'px-0');
 
       renderCategories();
       renderDiseaseList();
-      welcomeScreen.classList.remove('hidden');
+      // A részletes nézetet csak akkor frissítjük, ha betegséget választanak
       diseaseContent.classList.add('hidden');
+      welcomeScreen.classList.remove('hidden');
     };
 
     // Toggle sidebar
@@ -278,14 +290,51 @@
       renderDiseaseDetail();
     };
 
-    // Get severity color
-    function getSeverityColor(severity) {
+    // Get severity dot color
+    function getSeverityDotColor(severity) {
       switch(severity) {
-        case 'severe': return 'bg-red-100 text-red-700 border-red-200';
-        case 'moderate': return 'bg-amber-100 text-amber-700 border-amber-200';
-        case 'mild': return 'bg-green-100 text-green-700 border-green-200';
-        default: return 'bg-slate-100 text-slate-700 border-slate-200';
+        case 'severe': return 'bg-red-500';
+        case 'moderate': return 'bg-amber-500';
+        case 'mild': return 'bg-green-500';
+        default: return 'bg-slate-400';
       }
+    }
+
+    // Helper for therapy card styling to work with Tailwind JIT
+    function getTherapyColorClasses(color) {
+      const classMap = {
+        green: {
+          bg: 'bg-gradient-to-br from-green-50 to-green-100/50', border: 'border-green-200', text: 'text-green-800',
+          drugBorder: 'border-green-200', drugText: 'text-green-800', drugDose: 'text-green-700',
+          durationBg: 'bg-green-100', durationText: 'text-green-700', noteText: 'text-green-600'
+        },
+        blue: {
+          bg: 'bg-gradient-to-br from-blue-50 to-blue-100/50', border: 'border-blue-200', text: 'text-blue-800',
+          drugBorder: 'border-blue-200', drugText: 'text-blue-800', drugDose: 'text-blue-700',
+          durationBg: 'bg-blue-100', durationText: 'text-blue-700', noteText: 'text-blue-600'
+        },
+        red: {
+          bg: 'bg-gradient-to-br from-red-50 to-red-100/50', border: 'border-red-200', text: 'text-red-800',
+          drugBorder: 'border-red-200', drugText: 'text-red-800', drugDose: 'text-red-700',
+          durationBg: 'bg-red-100', durationText: 'text-red-700', noteText: 'text-red-600'
+        },
+        amber: {
+          bg: 'bg-gradient-to-br from-amber-50 to-amber-100/50', border: 'border-amber-200', text: 'text-amber-800',
+          drugBorder: 'border-amber-200', drugText: 'text-amber-800', drugDose: 'text-amber-700',
+          durationBg: 'bg-amber-100', durationText: 'text-amber-700', noteText: 'text-amber-600'
+        },
+        purple: {
+          bg: 'bg-gradient-to-br from-purple-50 to-purple-100/50', border: 'border-purple-200', text: 'text-purple-800',
+          drugBorder: 'border-purple-200', drugText: 'text-purple-800', drugDose: 'text-purple-700',
+          durationBg: 'bg-purple-100', durationText: 'text-purple-700', noteText: 'text-purple-600'
+        },
+        slate: {
+          bg: 'bg-gradient-to-br from-slate-50 to-slate-100/50', border: 'border-slate-200', text: 'text-slate-800',
+          drugBorder: 'border-slate-200', drugText: 'text-slate-800', drugDose: 'text-slate-700',
+          durationBg: 'bg-slate-100', durationText: 'text-slate-700', noteText: 'text-slate-600'
+        }
+      };
+      return classMap[color] || classMap['slate'];
     }
 
     // Render disease detail
@@ -450,15 +499,11 @@
               </div>
               <div class="space-y-3">
                 ${disease.clinical.symptoms.map(symptom => `
-                  <div class="p-4 rounded-xl border-2 ${getSeverityColor(symptom.severity)}">
-                    <div class="flex items-start justify-between gap-4">
-                      <div>
-                        <h4 class="font-semibold">${symptom.name}</h4>
-                        <p class="text-sm mt-1 opacity-90">${symptom.description}</p>
-                      </div>
-                      <span class="px-2 py-1 rounded text-xs font-medium uppercase ${symptom.severity === 'severe' ? 'bg-red-200 text-red-800' : symptom.severity === 'moderate' ? 'bg-amber-200 text-amber-800' : 'bg-green-200 text-green-800'}">
-                        ${symptom.severity === 'severe' ? 'Súlyos' : symptom.severity === 'moderate' ? 'Közepes' : 'Enyhe'}
-                      </span>
+                  <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-start gap-4 hover:border-slate-300 transition-colors">
+                    <div class="w-2.5 h-2.5 rounded-full ${getSeverityDotColor(symptom.severity)} flex-shrink-0 mt-1.5"></div>
+                    <div class="flex-1">
+                      <h4 class="font-semibold text-slate-800">${symptom.name}</h4>
+                      <p class="text-sm text-slate-600">${symptom.description}</p>
                     </div>
                   </div>
                 `).join('')}
@@ -521,13 +566,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    ${disease.diagnostics.laboratory.map((lab, index) => `
+                    ${disease.diagnostics.laboratory && disease.diagnostics.laboratory.length > 0 ? disease.diagnostics.laboratory.map((lab, index) => `
                       <tr class="${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}">
                         <td class="p-3 font-medium text-slate-800">${lab.test}</td>
                         <td class="p-3 text-blue-700">${lab.finding}</td>
                         <td class="p-3 text-slate-600">${lab.interpretation}</td>
                       </tr>
-                    `).join('')}
+                    `).join('') : '<tr><td colspan="3" class="p-3 text-slate-500 text-center">Nincs specifikus laboratóriumi vizsgálat.</td></tr>'}
                   </tbody>
                 </table>
               </div>
@@ -536,20 +581,20 @@
                 <h2 class="text-lg font-bold text-slate-800">Képalkotó vizsgálatok</h2>
               </div>
               <div class="grid gap-4 md:grid-cols-2">
-                ${disease.diagnostics.imaging.map(img => `
+                ${disease.diagnostics.imaging ? disease.diagnostics.imaging.map(img => `
                   <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-4 border border-cyan-200">
                     <h4 class="font-semibold text-cyan-800">${img.modality}</h4>
                     <p class="text-cyan-700 text-sm mt-2">${img.finding}</p>
                     <p class="text-cyan-600 text-xs mt-2 italic">${img.significance}</p>
                   </div>
-                `).join('')}
+                `).join('') : '<p class="text-slate-500 text-sm">Nincs specifikus képalkotó vizsgálat.</p>'}
               </div>
 
               <div class="section-header mt-8">
                 <h2 class="text-lg font-bold text-slate-800">Mikrobiológiai diagnosztika</h2>
               </div>
               <div class="space-y-3">
-                ${disease.diagnostics.microbiology.map(micro => `
+                ${disease.diagnostics.microbiology && disease.diagnostics.microbiology.length > 0 ? disease.diagnostics.microbiology.map(micro => `
                   <div class="bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-4 border border-violet-200">
                     <div class="flex items-start gap-3">
                       <div class="w-10 h-10 bg-violet-600 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -562,19 +607,20 @@
                       </div>
                     </div>
                   </div>
-                `).join('')}
+                `).join('') : '<p class="text-slate-500 text-sm">Nincs specifikus mikrobiológiai vizsgálat.</p>'}
               </div>
             </div>
           `;
 
         case 'differential':
+          const diffList = disease.differential || disease.diagnostics?.differential || [];
           return `
             <div class="space-y-6">
               <div class="section-header">
                 <h2 class="text-lg font-bold text-slate-800">Differenciáldiagnózis</h2>
               </div>
               <div class="space-y-4">
-                ${disease.differential.map((diff, index) => `
+                ${diffList.length > 0 ? diffList.map((diff, index) => `
                   <div class="bg-white rounded-xl border-2 border-slate-200 overflow-hidden hover:border-slate-300 transition-all">
                     <div class="flex items-center gap-4 p-4 bg-slate-50 border-b border-slate-200">
                       <span class="w-8 h-8 rounded-full bg-slate-700 text-white flex items-center justify-center font-bold text-sm">${index + 1}</span>
@@ -587,7 +633,7 @@
                       </p>
                     </div>
                   </div>
-                `).join('')}
+                `).join('') : '<p class="text-slate-500 text-sm">Nincs specifikus differenciáldiagnózis.</p>'}
               </div>
             </div>
           `;
@@ -611,54 +657,54 @@
                   icu: { title: 'Intenzív osztályos kezelés', icon: '🚨', color: 'red' }
                 };
 
-                let groupsToRender = [];
-                if (disease.therapy.empirical) {
-                    Object.entries(disease.therapy.empirical).forEach(([key, value]) => {
-                        if (Array.isArray(value)) {
-                             if (value.length > 0) {
-                                 const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate', title: 'Terápia' };
-                                 groupsToRender.push({
-                                     key: key,
-                                     title: details.title,
-                                     drugs: value,
-                                     icon: details.icon,
-                                     color: details.color
-                                 });
-                             }
-                        } else if (value && value.drugs && value.drugs.length > 0) {
-                             const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate' };
-                             groupsToRender.push({
-                                 key: key,
-                                 title: value.title || details.title || 'Terápia',
-                                 drugs: value.drugs,
-                                 icon: details.icon,
-                                 color: details.color
-                             });
-                        }
-                    });
-                }
+                const groupsToRender = [];
+                if (!disease.therapy.empirical) return '';
 
-                return groupsToRender.map(group => `
-                    <div class="bg-gradient-to-br from-${group.color}-50 to-${group.color}-100/50 rounded-xl p-5 border border-${group.color}-200 mb-4">
-                      <h3 class="font-semibold text-${group.color}-800 mb-4 flex items-center gap-2">
+                Object.entries(disease.therapy.empirical).forEach(([key, value]) => {
+                    if (Array.isArray(value) && value.length > 0) {
+                        const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate', title: 'Terápia' };
+                        groupsToRender.push({
+                            key: key,
+                            title: details.title,
+                            drugs: value,
+                            icon: details.icon,
+                            color: details.color
+                        });
+                    } else if (value && value.drugs && value.drugs.length > 0) {
+                        const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate' };
+                        groupsToRender.push({
+                            key: key,
+                            title: value.title || details.title || 'Terápia',
+                            drugs: value.drugs,
+                            icon: details.icon,
+                            color: details.color
+                        });
+                    }
+                });
+
+                return groupsToRender.map(group => {
+                  const colors = getTherapyColorClasses(group.color);
+                  return `
+                    <div class="${colors.bg} rounded-xl p-5 ${colors.border} mb-4">
+                      <h3 class="font-semibold ${colors.text} mb-4 flex items-center gap-2">
                         <span class="text-xl">${group.icon}</span> ${group.title}
                       </h3>
                       <div class="space-y-3">
-                        ${group.drugs.map(drug => `
-                          <div class="bg-white rounded-lg p-3 border border-${group.color}-200">
+                        ${(group.drugs || []).map(drug => `
+                          <div class="bg-white rounded-lg p-3 border ${colors.drugBorder}">
                             <div class="flex items-start justify-between gap-4">
                               <div>
-                                <span class="font-semibold text-${group.color}-800">${drug.drug}</span>
-                                <span class="text-${group.color}-700 ml-2">${drug.dose}</span>
+                                <span class="font-semibold ${colors.drugText}">${drug.drug}</span>
+                                <span class="${colors.drugDose} ml-2">${drug.dose}</span>
                               </div>
-                              ${drug.duration ? `<span class="text-xs bg-${group.color}-100 text-${group.color}-700 px-2 py-1 rounded">${drug.duration}</span>` : ''}
+                              ${drug.duration ? `<span class="text-xs ${colors.durationBg} ${colors.durationText} px-2 py-1 rounded">${drug.duration}</span>` : ''}
                             </div>
-                            ${drug.note ? `<p class="text-${group.color}-600 text-sm mt-2 italic">${drug.note}</p>` : ''}
+                            ${drug.note ? `<p class="${colors.noteText} text-sm mt-2 italic">${drug.note}</p>` : ''}
                           </div>
                         `).join('')}
                       </div>
                     </div>
-                `).join('');
+                `}).join('');
               })()}
 
               <div class="grid gap-4 md:grid-cols-2">
@@ -726,7 +772,7 @@
                   <h3 class="font-semibold text-blue-800 mb-3">📋 Prognosztikai score-ok</h3>
                   <div class="flex flex-wrap gap-2">
                     ${disease.prognosis.prognostic_scores.map(score => `
-                      <span class="px-3 py-1.5 bg-white rounded-lg text-sm text-blue-700 border border-blue-200">${score}</span>
+                      <button onclick="openScoreCalculator('${score}')" class="px-3 py-1.5 bg-white rounded-lg text-sm text-blue-700 border border-blue-200 hover:bg-blue-50 transition-colors">${score}</button>
                     `).join('')}
                   </div>
                 </div>
@@ -837,5 +883,4 @@
 
     init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c2e0e54d1adc1b2',t:'MTc2OTI0MjI0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
