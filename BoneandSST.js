@@ -29,11 +29,12 @@ Object.assign(window.diseases, {
               incubation: 'Órák-napok (trauma után)',
               onset: 'Hiperakut, gyorsan progrediáló',
               symptoms: [
-                { name: 'Intenzív fájdalom', description: 'ARÁNYTALAN a fizikális lelethez képest! ("Pain out of proportion")', severity: 'severe' },
-                { name: 'Toxikus megjelenés', description: 'Elesett, septikus', severity: 'severe' },
-                { name: 'Magas láz', description: 'Hidegrázás', severity: 'severe' },
-                { name: 'Bőrelváltozások', description: 'Kezdetben erythema, majd livid, bullák, gangraena', severity: 'severe' },
-                { name: 'Crepitatio', description: 'Gázképző kórokozók esetén', severity: 'severe' }
+                { name: 'Intenzív fájdalom', description: 'ARÁNYTALAN a fizikális lelethez képest (75-100%), korai jel', severity: 'severe' },
+                { name: 'Duzzanat/Ödéma', description: 'Feszes, terjedő ödéma (75-100%)', severity: 'severe' },
+                { name: 'Bőrelváltozások', description: 'Erythema (70-100%), később livid elszíneződés, bullák, nekrózis (késői jelek!)', severity: 'severe' },
+                { name: 'Láz', description: 'Gyakori, de hiányozhat is', severity: 'moderate' },
+                { name: 'Crepitatio', description: 'Gázképződés (13-30% - nem mindig van!)', severity: 'severe' },
+                { name: 'Toxikus állapot', description: 'Hypotonia, tachycardia, tudatzavar', severity: 'severe' }
               ],
               physical_exam: [
                 'Fájdalom aránytalanul SÚLYOS a látottakhoz képest (korai jel!)',
@@ -119,10 +120,11 @@ Object.assign(window.diseases, {
               incubation: '2-5 nap',
               onset: 'Akut',
               symptoms: [
-                { name: 'Láz', description: 'Magas láz, hidegrázás', severity: 'severe' },
-                { name: 'Bőrtünetek', description: 'Vörös, emelkedett, fájdalmas plakk, éles határok', severity: 'severe' },
-                { name: 'Fájdalom', description: 'Lokális égő, feszítő fájdalom', severity: 'moderate' },
-                { name: 'Duzzanat', description: 'Lymphoedema-szerű', severity: 'moderate' }
+                { name: 'Prodroma', description: 'Láz, hidegrázás gyakran megelőzi a bőrtüneteket (4-48 órával)', severity: 'moderate' },
+                { name: 'Bőrtünetek', description: 'Éles szélű, emelkedett, élénkvörös plakk ("lángnyelv")', severity: 'severe' },
+                { name: 'Lokalizáció', description: 'Alsó végtag (70-80%), Arc (5-20%)', severity: 'mild' },
+                { name: 'Fájdalom', description: 'Égő, feszítő jellegű', severity: 'moderate' },
+                { name: 'Nyirokcsomó', description: 'Regionális lymphadenitis gyakori', severity: 'moderate' }
               ],
               physical_exam: [
                 'Vörös, meleg, duzzadt terület',
@@ -201,10 +203,11 @@ Object.assign(window.diseases, {
               incubation: '1-3 nap',
               onset: 'Akut',
               symptoms: [
-                { name: 'Bőrtünetek', description: 'Vörös, meleg, duzzadt terület, diffúz határok', severity: 'moderate' },
-                { name: 'Fájdalom', description: 'Lokális, terhelésre fokozódik', severity: 'moderate' },
-                { name: 'Láz', description: 'Gyakori, de nem mindig magas', severity: 'moderate' },
-                { name: 'Hidegrázás', description: 'Súlyos esetben', severity: 'severe' }
+                { name: 'Bőrtünetek', description: 'Diffúz, nem éles szélű erythema, melegség, duzzanat', severity: 'moderate' },
+                { name: 'Fájdalom', description: 'Nyomásérzékenység, feszülés', severity: 'moderate' },
+                { name: 'Szisztémás tünetek', description: 'Láz, hidegrázás, rossz közérzet (gyakori)', severity: 'moderate' },
+                { name: 'Lymphangitis', description: 'Vörös csíkok a nyirokerek mentén', severity: 'mild' },
+                { name: 'Lokalizáció', description: 'Leggyakrabban alsó végtag (egyoldali)', severity: 'mild' }
               ],
               physical_exam: [
                 'Vörös, meleg, duzzadt bőr',
@@ -291,16 +294,16 @@ Object.assign(window.diseases, {
               incubation: 'Napok (akut) vagy hetek-hónapok (krónikus)',
               onset: 'Változó',
               symptoms: [
-                { name: 'Lokális fájdalom', description: 'Mély, feszítő, terhelésre fokozódik', severity: 'severe' },
-                { name: 'Láz', description: 'Akut formában gyakori, krónikusban hiányozhat', severity: 'moderate' },
-                { name: 'Duzzanat/erythema', description: 'Érintett terület felett', severity: 'moderate' },
-                { name: 'Sipoly (sinus tract)', description: 'Krónikus osteomyelitis jele', severity: 'moderate' }
+                { name: 'Lokális fájdalom', description: 'Mély, feszítő fájdalom (>90%), terhelésre fokozódik', severity: 'severe' },
+                { name: 'Láz', description: 'Akut hematogén formában gyakori (50-70%), krónikusban ritka', severity: 'moderate' },
+                { name: 'Duzzanat/Erythema', description: 'Érintett terület feletti lágyrészduzzanat és bőrpír', severity: 'moderate' },
+                { name: 'Sipoly (Sinus tract)', description: 'Gennyes váladékozás a bőrfelszínre (krónikus osteomyelitis jele)', severity: 'moderate' }
               ],
               physical_exam: [
-                'Lokális nyomásérzékenység',
-                'Melegség, duzzanat',
-                'Mozgáskorlátozottság',
-                'Szondázható csont (diabeteses láb fekélynél)'
+                'Lokális nyomásérzékenység a csont felett',
+                'Melegség, duzzanat, erythema',
+                'Mozgáskorlátozottság az érintett végtagon',
+                'Probe-to-bone teszt: Fekély alapjában szondával csont tapintható (magas specificitás)'
               ],
               complications: ['Krónikus osteomyelitis', 'Patológiás törés', 'Szeptikus arthritis', 'Szisztémás szepszis', 'Amputáció szükségessége']
             },
@@ -372,16 +375,17 @@ Object.assign(window.diseases, {
               incubation: 'Gyors (órák-napok)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Ízületi fájdalom', description: 'Intenzív, nyugalomban is, mozgatásra fokozódik', severity: 'severe' },
-                { name: 'Duzzanat', description: 'Ízületi folyadékgyülem', severity: 'moderate' },
-                { name: 'Melegség/pirosság', description: 'Gyulladás jelei', severity: 'moderate' },
-                { name: 'Láz', description: 'Gyakori, de nem mindig magas', severity: 'moderate' }
+                { name: 'Akut monarthritis', description: 'Egyetlen ízület fájdalma, duzzanata (80-90%)', severity: 'severe' },
+                { name: 'Fájdalom', description: 'Intenzív, nyugalomban is, mozgatásra extrém', severity: 'severe' },
+                { name: 'Láz', description: 'Gyakori (60-80%), de hiányozhat (idősek, immunszupprimáltak)', severity: 'moderate' },
+                { name: 'Mozgáskorlátozottság', description: 'Az érintett ízület használatának képtelensége', severity: 'severe' }
               ],
               physical_exam: [
-                'Monarthritis (térd 50%, csípő, váll)',
-                'Korlátozott mozgástartomány (antalgias tartás)',
-                'Ballotálható patella (folyadék)',
-                'Gonococcus: migrációs polyarthritis, bőrtünetek'
+                'Duzzadt, meleg, vörös ízület',
+                'Extrém nyomásérzékenység',
+                'Fájdalmas passzív és aktív mozgás',
+                'Ízületi folyadékgyülem (effusio)',
+                'Gonococcus: migrációs polyarthritis, tenosynovitis, dermatitis (pustulák)'
               ],
               complications: ['Ízületi destrukció (arthrosis)', 'Ankylosis', 'Sepszis', 'Osteomyelitis']
             },
@@ -454,16 +458,16 @@ Object.assign(window.diseases, {
               incubation: 'Napok-hét',
               onset: 'Lassú, alattomos',
               symptoms: [
-                { name: 'Hátfájás', description: 'Intenzív, éjszakai, nem szteroidra reagál', severity: 'severe' },
-                { name: 'Láz', description: 'Alacsony fokú vagy hiányzó', severity: 'moderate' },
-                { name: 'Neurológiai tünetek', description: 'Gyengeség, paresis, szenzoros zavarok (epidurális abscessus)', severity: 'severe' },
-                { name: 'Általános tünetek', description: 'Fáradtság, fogyás', severity: 'moderate' }
+                { name: 'Hátfájás', description: 'Vezető tünet (>90%), fokozatosan erősödő, nyugalomban is fennáll', severity: 'severe' },
+                { name: 'Láz', description: 'Csak az esetek ~50%-ában van jelen, gyakran alacsony', severity: 'moderate' },
+                { name: 'Neurológiai tünetek', description: 'Radicularis fájdalom, gyengeség, paresis (30-50%)', severity: 'severe' },
+                { name: 'Általános tünetek', description: 'Fáradtság, fogyás, éjszakai izzadás', severity: 'mild' }
               ],
               physical_exam: [
-                'Lokális nyomásérzékenység a gerincen',
-                'Mozgáskorlátozottság',
-                'Neurológiai deficit (paresis, reflexzavar)',
-                'Szisztémás jelek: tachycardia, hypotonia'
+                'Lokális nyomás- vagy ütögetési érzékenység az érintett csigolya felett',
+                'Paravertebralis izomspazmus',
+                'Mozgáskorlátozottság a gerincben',
+                'Neurológiai deficit (paresis, reflexkiesés, érzészavar)'
               ],
               complications: ['Epidurális abscessus', 'Paravertebrális abscessus', 'Szeptikus shock', 'Gerincdeformitás', 'Krónikus fájdalom']
             },

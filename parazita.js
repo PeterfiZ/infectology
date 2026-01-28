@@ -65,24 +65,43 @@ Object.assign(window.diseases, {
               { disease: 'Meningitis', distinguishing: 'Tarkókötöttség, liquor lelet' }
             ],
             therapy: {
+              guidelines: ['WHO Guidelines for malaria (2023)'],
               empirical: {
                 outpatient: [
-                  { drug: 'Artemether-Lumefantrine', dose: 'PO', duration: '3 nap', note: 'Standard ACT. Rezisztencia gyanú esetén (pl. Délkelet-Ázsia) alternatív ACT.' },
-                  { drug: 'Dihydroartemisinin-Piperaquine', dose: 'PO', duration: '3 nap', note: 'Alternatív ACT artemisinin rezisztencia esetén' },
-                  { drug: 'Artesunate-Pyronaridine', dose: 'PO', duration: '3 nap', note: 'Újabb ACT opció' },
-                  { drug: 'Chloroquin', dose: 'PO', duration: '3 nap', note: 'Csak bizonyítottan érzékeny P. vivax/ovale esetén' }
+                  { drug: 'Artemether-Lumefantrine', dose: 'PO (súlyfüggő)', duration: '3 nap', note: 'Első vonalbeli ACT nem komplikált P. falciparum esetén.' },
+                  { drug: 'Dihydroartemisinin-Piperaquine', dose: 'PO', duration: '3 nap', note: 'Alternatív ACT.' },
+                  { drug: 'Artesunate-Pyronaridine', dose: 'PO', duration: '3 nap', note: 'Alternatív ACT.' },
+                  { drug: 'Chloroquin', dose: 'PO', duration: '3 nap', note: 'Csak P. vivax/ovale/malariae esetén, ha klorokvin-érzékeny terület.' }
                 ],
                 inpatient: [
-                  { drug: 'Artesunate', dose: '2.4 mg/kg IV', duration: 'Legalább 24 óra (0, 12, 24 óra)', note: 'Súlyos malária GOLD STANDARD. Utána teljes ACT kúra PO!' },
-                  { drug: 'Kinin', dose: 'IV', duration: '', note: 'Alternatíva (mellékhatások!)' }
-                ],
-                icu: [
-                  { drug: 'Artesunate IV', dose: 'Mint fent', duration: '', note: 'Súlyos szövődmények kezelése. Parazitaemia követése!' }
+                  { drug: 'Artesunate', dose: '2.4 mg/kg IV/IM', duration: 'Legalább 24 óra (0, 12, 24 óra)', note: 'Súlyos malária első választás (felnőtt/gyermek/terhes). Utána teljes ACT kúra!' },
+                  { drug: 'Artemether', dose: '3.2 mg/kg IM', duration: '', note: 'Alternatíva, ha artesunate nem elérhető.' },
+                  { drug: 'Kinin', dose: '20 mg/kg telítő, majd 10 mg/kg 8ó', duration: '', note: 'Harmadik vonal, EKG monitorozás szükséges!' }
                 ]
               },
-              targeted: 'P. vivax/ovale: +Primaquin/Tafenoquin (hipnozoiták ellen, G6PD hiányt kizárni!). Artemisinin rezisztencia (Mekong-régió): ACT rotáció vagy kiterjesztett (6 napos) kezelés.',
-              supportive: ['Lázcsillapítás', 'Folyadékpótlás (óvatosan tüdőödéma miatt)', 'Vércukor kontroll', 'Transzfúzió', 'Dialízis'],
-              prevention: ['Szúnyogháló, repellens', 'Kemoprofilaxis (Mefloquin, Doxycyclin, Atovaquon-Proguanil)', 'Vakcina (RTS,S / R21 - gyermekeknek)']
+              targeted: 'P. vivax/ovale radikális kúra: Primaquin (0.25-0.5 mg/kg 14 napig) vagy Tafenoquin (egyszeri dózis) a hipnozoiták ellen. G6PD hiány szűrése kötelező!',
+              supportive: ['Folyadékpótlás (óvatosan, tüdőödéma veszély!)', 'Vércukor monitorozás (hipoglikémia gyakori)', 'Lázcsillapítás (paracetamol)', 'Transzfúzió (súlyos anémia)', 'Dialízis (veseelégtelenség)'],
+              prevention: ['Kemoprofilaxis (Atovaquon-Proguanil, Doxycyclin, Mefloquin)', 'Szúnyogháló (LLIN)', 'Vakcina (RTS,S/AS01 és R21/Matrix-M gyermekeknek endémiás területen)']
+            },
+            guidelines: {
+              diagnosis: [
+                'Gyanú: láz endémiás területről érkezőknél',
+                'Gold standard: mikroszkópia (vastagcsepp/vékonykenet); RDT (gyorsteszt) hasznos, de P. falciparum HRP2 deléciók előfordulhatnak'
+              ],
+              treatment_indications: [
+                'Nem komplikált malária: ACT (Artemisinin-based Combination Therapy)',
+                'Súlyos malária: IV Artesunate (bármely faj, bármely trimeszter)',
+                'P. vivax/ovale: Schizontocid (Chloroquin/ACT) + Hypnozoitocid (Primaquin/Tafenoquin)'
+              ],
+              first_line: [
+                'Nem komplikált P. falciparum: Artemether-Lumefantrine vagy Artesunate-Amodiaquine vagy Dihydroartemisinin-Piperaquine',
+                'Súlyos malária: IV Artesunate legalább 24 óráig, amíg a beteg nem tud nyelni, majd teljes 3 napos ACT kúra'
+              ],
+              special_populations: [
+                'Terhesség 1. trimeszter: Artemether-Lumefantrine (WHO 2023 ajánlás) vagy Kinin+Clindamycin',
+                'Terhesség 2-3. trimeszter: ACT',
+                'Súlyos malária terhességben: IV Artesunate (előnyösebb mint a Kinin)'
+              ]
             },
             prognosis: {
               mortality: 'Nem komplikált: <0.1%; Súlyos: 10-20% (kezelt)',

@@ -28,11 +28,11 @@ Object.assign(window.diseases, {
               incubation: '1-3 nap',
               onset: 'Hirtelen, drámai kezdet',
               symptoms: [
-                { name: 'Magas láz', description: '39-41°C, hidegrázással', severity: 'severe' },
-                { name: 'Produktív köhögés', description: 'Rozsdabarna ("kávéaljszerű") köpet', severity: 'severe' },
-                { name: 'Pleuralis mellkasi fájdalom', description: 'Éles, belégzésre fokozódó', severity: 'moderate' },
-                { name: 'Dyspnoe', description: 'Légzésszám > 20/perc', severity: 'moderate' },
-                { name: 'Herpes labialis', description: 'Jellegzetes k��sérő tünet', severity: 'mild' }
+                { name: 'Köhögés', description: '90%-ban jelen van; produktív (66%), rozsdabarna köpet klasszikus, de ritkább', severity: 'severe' },
+                { name: 'Láz és hidegrázás', description: 'Láz (80%), hidegrázás (40-50%)', severity: 'severe' },
+                { name: 'Dyspnoe', description: 'Nehézlégzés (66%)', severity: 'moderate' },
+                { name: 'Pleurális fájdalom', description: 'Éles, belégzésre fokozódó (50%)', severity: 'moderate' },
+                { name: 'Egyéb', description: 'GI tünetek (10-20%), mentális státusz változás (idősek)', severity: 'mild' }
               ],
               physical_exam: [
                 'Tachypnoe, tachycardia',
@@ -70,40 +70,41 @@ Object.assign(window.diseases, {
               { disease: 'Szívelégtelenség', distinguishing: 'Kardiális anamnézis, BNP, kétoldali infiltrátum' }
             ],
             therapy: {
-              guidelines: ['ATS/IDSA 2019 CAP Guidelines', 'ERS/ESICM/ESCMID/ALAT 2017 HAP/VAP Guidelines', 'Magyar Infektológiai és Klinikai Mikrobiológiai Társaság Irányelvei'],
+              guidelines: ['NICE NG138 (Pneumonia in adults) 2024/2025', 'ATS/IDSA 2019 CAP Guidelines', 'Magyar Infektológiai Társaság'],
               empirical: {
                 cap_outpatient: {
-                    title: 'CAP - Otthon kezelhető',
+                    title: 'CAP - Otthon kezelhető (Enyhe - CURB-65 0-1)',
                     drugs: [
-                        { drug: 'Amoxicillin', dose: '3x1g PO', duration: '5-7 nap', note: 'Első választás, ha nincs komorbiditás.' },
-                        { drug: 'Doxycyclin', dose: '2x100mg PO', duration: '5-7 nap', note: 'Alternatíva, vagy Amoxicillin-allergia esetén.' },
-                        { drug: 'Amoxicillin/klavulánsav', dose: '2x1g PO', duration: '5-7 nap', note: 'Komorbiditás (krónikus szív-, tüdő-, máj-, vesebetegség, diabetes, alkoholizmus, malignitás, asplenia) esetén.' }
+                        { drug: 'Amoxicillin', dose: '3x500mg-1g PO', duration: '5 nap', note: 'Első választás (NICE). 5 napos kúra általában elegendő.' },
+                        { drug: 'Doxycyclin', dose: '200mg stat, majd 1x100mg PO', duration: '5 nap', note: 'Penicillin allergia esetén.' },
+                        { drug: 'Clarithromycin', dose: '2x500mg PO', duration: '5 nap', note: 'Alternatíva.' }
                     ]
                 },
                 cap_inpatient: {
-                    title: 'CAP - Hospitalizációt igénylő (nem ITO)',
+                    title: 'CAP - Kórházi kezelés (Középsúlyos - CURB-65 2)',
                     drugs: [
-                        { drug: 'Ceftriaxon IV + Azithromycin IV/PO', dose: '1x2g + 1x500mg', duration: '7-10 nap', note: 'Standard kombináció.' },
-                        { drug: 'Levofloxacin vagy Moxifloxacin IV', dose: '1x750mg / 1x400mg', duration: '7-10 nap', note: 'Monoterápia, ha béta-laktám allergia van.' }
+                        { drug: 'Amoxicillin + Clarithromycin', dose: '3x500mg-1g PO/IV + 2x500mg PO/IV', duration: '5 nap', note: 'Atípusos fedezet szükséges lehet. (NICE)' },
+                        { drug: 'Doxycyclin', dose: '200mg stat, majd 1x100mg PO', duration: '5 nap', note: 'Monoterápia penicillin allergia esetén.' },
+                        { drug: 'Levofloxacin', dose: '1x500mg PO/IV', duration: '5 nap', note: 'Alternatíva (NICE: légúti fluorokinolon).' }
                     ]
                 },
                 cap_icu: {
-                    title: 'CAP - Intenzív osztályos kezelést igénylő',
+                    title: 'CAP - Súlyos (CURB-65 3-5) / ITO',
                     drugs: [
-                        { drug: 'Ceftriaxon IV + Azithromycin IV', dose: '1x2g + 1x500mg', duration: '10-14 nap', note: 'Standard.' },
-                        { drug: 'MRSA gyanú esetén', dose: '+ Vancomycin vagy Linezolid', duration: '', note: 'Pl. influenza utáni pneumonia, kavitáció, nozokomiális anamnézis.' },
-                        { drug: 'Pseudomonas gyanú esetén', dose: 'Piperacillin/tazobactam vagy Cefepim vagy Meropenem', duration: '', note: 'Pl. bronchiectasia, korábbi Pseudomonas izolátum.' }
+                        { drug: 'Co-amoxiclav + Clarithromycin', dose: '1.2g IV 8ó + 500mg IV 12ó', duration: '7-10 nap', note: 'NICE ajánlás súlyos CAP-ra.' },
+                        { drug: 'Ceftriaxon + Clarithromycin', dose: '1x2g IV + 2x500mg IV', duration: '7-10 nap', note: 'Gyakori alternatíva (nem NICE első vonal, de elterjedt).' },
+                        { drug: 'Levofloxacin', dose: '1x500mg IV', duration: '7-10 nap', note: 'Béta-laktám allergia esetén.' }
                     ]
                 },
                 hap_early: {
-                    title: 'Nozokomiális pneumonia - Korai (<5 nap)',
+                    title: 'HAP - Nem súlyos / Korai',
                     drugs: [
-                        { drug: 'Ceftriaxon', dose: '1x2g IV', duration: '7 nap', note: 'Ha nincs MDR rizikó.' },
-                        { drug: 'Levofloxacin vagy Moxifloxacin', dose: 'IV', duration: '7 nap', note: 'Alternatíva.' }
+                        { drug: 'Co-amoxiclav', dose: '625mg PO 3x1 vagy 1.2g IV 3x1', duration: '5 nap', note: 'Első választás (NICE NG191).' },
+                        { drug: 'Doxycyclin', dose: '100mg PO', duration: '5 nap', note: 'Alternatíva.' }
                     ]
                 },
                 hap_late_vap: {
-                    title: 'Nozokomiális (késői, >5 nap) / Lélegeztetési (VAP) pneumonia',
+                    title: 'HAP - Súlyos / VAP / Magas rizikó',
                     drugs: [
                         { drug: 'Antipseudomonas béta-laktám', dose: 'pl. Piperacillin/tazobactam, Cefepim, Meropenem', duration: '7 nap', note: '1. komponens (Gram-negatív fedezet).' },
                         { drug: '+ Antipseudomonas fluorokinolon vagy aminoglikozid', dose: 'pl. Ciprofloxacin, Amikacin', duration: '7 nap', note: '2. komponens (dupla G- fedezet, ha szükséges).' },
@@ -158,12 +159,12 @@ Object.assign(window.diseases, {
               incubation: 'Primer: 2-12 hét; Reaktiváció: évek-évtizedek',
               onset: 'Lassú, alattomos',
               symptoms: [
-                { name: 'Krónikus köhögés', description: '>3 hét, kezdetben száraz, később produktív', severity: 'severe' },
-                { name: 'Haemoptysis', description: 'Véres köpet cavernából', severity: 'severe' },
-                { name: 'Éjszakai izzadás', description: 'Profúz, ágynemű átnedvesedik', severity: 'moderate' },
-                { name: 'Fogyás', description: '>10% testsúly 6 hónap alatt', severity: 'moderate' },
-                { name: 'Subfebrilitás', description: 'Délutáni-esti láz', severity: 'mild' },
-                { name: 'Fáradékonyság, étvágytalanság', description: 'Általános tünetek', severity: 'mild' }
+                { name: 'Krónikus köhögés', description: '>90% aktív tüdő TBC-ben; >3 hétig tartó', severity: 'severe' },
+                { name: 'Láz', description: '60-80%-ban, gyakran délutáni/esti subfebrilitás', severity: 'moderate' },
+                { name: 'Éjszakai izzadás', description: 'Profúz (50%)', severity: 'moderate' },
+                { name: 'Fogyás', description: 'Jelentős súlyvesztés (gyakori)', severity: 'moderate' },
+                { name: 'Haemoptysis', description: 'Véres köpet (20-30%), általában késői jel', severity: 'severe' },
+                { name: 'Mellkasi fájdalom', description: 'Pleurális vagy tompa', severity: 'mild' }
               ],
               physical_exam: [
                 'Cachexia',
@@ -209,7 +210,7 @@ Object.assign(window.diseases, {
                   { drug: 'Ethambutol (EMB)', dose: '15 mg/kg PO', duration: '2 hónap', note: 'Opticus neuritis' }
                 ],
                 inpatient: [
-                  { drug: 'Ugyanaz + izolálás', dose: 'Légúti izoláció', duration: '2 h����t vagy 3 negatív köpet', note: 'Negatív nyomású szoba' }
+                  { drug: 'Ugyanaz + izolálás', dose: 'Légúti izoláció', duration: '2 hét vagy 3 negatív köpet', note: 'Negatív nyomású szoba' }
                 ],
                 icu: [
                   { drug: 'IV formulációk', dose: 'Ha per os nem tolerálja', duration: 'Egyéni', note: 'MDR-TB: individualizált' }
@@ -262,11 +263,11 @@ Object.assign(window.diseases, {
               incubation: '2-10 nap (átlag 5-6 nap)',
               onset: 'Prodroma 1-2 nap, majd rapid progresszió',
               symptoms: [
-                { name: 'Magas láz', description: '39-41°C, relatív bradycardia!', severity: 'severe' },
-                { name: 'Száraz köhögés', description: 'Kezdetben nem produktív', severity: 'moderate' },
-                { name: 'GI tünetek', description: 'Hasmenés, hányinger, hasi fájdalom (30-50%)', severity: 'moderate' },
-                { name: 'Neurológiai tünetek', description: 'Fejfájás, konfúzió, ataxia', severity: 'moderate' },
-                { name: 'Myalgia', description: 'Súlyos izomfájdalom', severity: 'mild' }
+                { name: 'Magas láz', description: '>90%-ban, gyakran >39°C', severity: 'severe' },
+                { name: 'Köhögés', description: '90%-ban; kezdetben száraz, később produktív (50%)', severity: 'moderate' },
+                { name: 'GI tünetek', description: 'Hasmenés (20-50%), hányinger/hányás (10-30%)', severity: 'moderate' },
+                { name: 'Neurológiai tünetek', description: 'Konfúzió (25-50%), fejfájás (40-50%)', severity: 'moderate' },
+                { name: 'Dyspnoe', description: 'Nehézlégzés (25-60%)', severity: 'severe' }
               ],
               physical_exam: [
                 'Magas láz relatív bradycardiával (Faget-jel)',
@@ -350,11 +351,11 @@ Object.assign(window.diseases, {
               incubation: '2-3 hét',
               onset: 'Lassú, fokozatos',
               symptoms: [
-                { name: 'Száraz köhögés', description: 'Kínzó, rohamszerű, hetekig tart', severity: 'moderate' },
-                { name: 'Hőemelkedés/Láz', description: 'Általában nem magas', severity: 'mild' },
-                { name: 'Fejfájás', description: 'Gyakori kísérő tünet', severity: 'mild' },
-                { name: 'Torokfájás', description: 'Nem exsudativ pharyngitis', severity: 'mild' },
-                { name: 'Extrapulmonalis', description: 'Kiütés (erythema multiforme), hemolysis', severity: 'moderate' }
+                { name: 'Köhögés', description: '>95%-ban; száraz, kínzó, rohamszerű, hetekig tart', severity: 'moderate' },
+                { name: 'Általános tünetek', description: 'Fejfájás, rossz közérzet (gyakori)', severity: 'mild' },
+                { name: 'Torokfájás', description: 'Gyakori (nem exsudativ)', severity: 'mild' },
+                { name: 'Láz', description: 'Változó, lehet magas vagy hiányozhat', severity: 'mild' },
+                { name: 'Extrapulmonalis', description: 'Hemolízis (szubklinikai gyakori), kiütés (Stevens-Johnson <10%)', severity: 'moderate' }
               ],
               physical_exam: [
                 'Gyakran szegényes hallgatózási lelet',
@@ -432,9 +433,9 @@ Object.assign(window.diseases, {
               incubation: '3-4 hét',
               onset: 'Fokozatos',
               symptoms: [
-                { name: 'Torokfájás', description: 'Kezdeti tünet, rekedtség', severity: 'mild' },
-                { name: 'Köhögés', description: 'Tartós, improduktív', severity: 'moderate' },
-                { name: 'Láz', description: 'Enyhe vagy hiányzik', severity: 'mild' }
+                { name: 'Bifázisos lefolyás', description: 'Felsőlégúti tünetek után pneumonia', severity: 'moderate' },
+                { name: 'Rekedtség/Laryngitis', description: 'Jellegzetes kísérő tünet', severity: 'mild' },
+                { name: 'Köhögés', description: 'Tartós, hetekig-hónapokig fennálló', severity: 'moderate' }
               ],
               physical_exam: [
                 'Pharyngitis',
@@ -505,10 +506,10 @@ Object.assign(window.diseases, {
               incubation: '5-14 nap',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Magas láz', description: '39-40°C', severity: 'severe' },
-                { name: 'Fejfájás', description: 'Kínzó, abroncsszerű', severity: 'severe' },
-                { name: 'Száraz köhögés', description: 'Később jelentkezik', severity: 'moderate' },
-                { name: 'Myalgia', description: 'Nyak, hát', severity: 'moderate' }
+                { name: 'Láz', description: 'Majdnem 100%-ban, hirtelen kezdet', severity: 'severe' },
+                { name: 'Fejfájás', description: 'Súlyos, gyakran fotofóbiával', severity: 'severe' },
+                { name: 'Köhögés', description: 'Száraz (50-90%)', severity: 'moderate' },
+                { name: 'Splenomegalia', description: '10-70%-ban észlelhető', severity: 'moderate' }
               ],
               physical_exam: [
                 'Relatív bradycardia (Faget-jel)',
@@ -582,10 +583,10 @@ Object.assign(window.diseases, {
               incubation: '2-3 hét',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: 'Magas, elhúzódó', severity: 'severe' },
-                { name: 'Fejfájás', description: 'Retrobulbaris', severity: 'severe' },
-                { name: 'Hepatitis', description: 'Jobb bordaív alatti fájdalom', severity: 'moderate' },
-                { name: 'Pneumonia', description: 'Atípusos, enyhe köhögés', severity: 'moderate' }
+                { name: 'Akut Q-láz', description: 'Influenza-szerű: Láz, fáradtság, súlyos fejfájás', severity: 'severe' },
+                { name: 'Pneumonia', description: 'Változó, gyakran enyhe köhögés, de radiológiai eltérés', severity: 'moderate' },
+                { name: 'Hepatitis', description: 'Hepatomegalia, jobb bordaív alatti fájdalom', severity: 'moderate' },
+                { name: 'Krónikus', description: 'Endocarditis (fő manifesztáció)', severity: 'severe' }
               ],
               physical_exam: [
                 'Hepatomegalia',
@@ -667,15 +668,15 @@ Object.assign(window.diseases, {
               incubation: '1-4 nap (átlag 2 nap)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Magas láz', description: '38-41°C, 3-4 napig', severity: 'severe' },
-                { name: 'Myalgia', description: 'Súlyos, diffúz izomfájdalom', severity: 'severe' },
-                { name: 'Fejfájás', description: 'Frontális, intenzív', severity: 'moderate' },
-                { name: 'Száraz köhögés', description: 'Fáj, nem produktív', severity: 'moderate' },
-                { name: 'Torokfájás, orrfolyás', description: 'Catarralis tünetek', severity: 'mild' },
-                { name: 'Prostráció', description: 'Ágyhoz kötő gyengeség', severity: 'moderate' }
+                { name: 'Láz', description: 'Hirtelen kezdet, 38-41°C (95% tünetes esetekben)', severity: 'severe' },
+                { name: 'Köhögés', description: 'Száraz, nem produktív (>90%), gyakran mellkasi fájdalommal', severity: 'moderate' },
+                { name: 'Myalgia', description: 'Súlyos izomfájdalom (90%), főleg hát/végtagok', severity: 'severe' },
+                { name: 'Fejfájás', description: 'Súlyos, gyakran retroorbitális (85%)', severity: 'moderate' },
+                { name: 'Torokfájás', description: 'Gyakori kísérő tünet (60-70%)', severity: 'mild' },
+                { name: 'Prostráció', description: 'Kifejezett gyengeség, ágyhoz kötöttség', severity: 'moderate' }
               ],
               physical_exam: [
-                'Lázas, elesett ��llapot',
+                'Lázas, elesett állapot',
                 'Conjunctivitis',
                 'Pharynx hyperaemia',
                 'Tiszta hallgatózási lelet (komplikálatlan)',
@@ -755,12 +756,12 @@ Object.assign(window.diseases, {
               incubation: '2-14 nap (medián 5 nap, Omikron 3 nap)',
               onset: 'Változó',
               symptoms: [
-                { name: 'Láz', description: '>38°C', severity: 'moderate' },
-                { name: 'Száraz köhögés', description: 'Tartós, irritatív', severity: 'moderate' },
-                { name: 'Fáradékonyság', description: 'Kifejezett, elhúzódó', severity: 'moderate' },
-                { name: 'Anosmia/dysgeusia', description: 'Szaglás/ízlelés elvesztése (korai variánsok)', severity: 'mild' },
-                { name: 'Dyspnoe', description: 'Terhelésre vagy nyugalomban', severity: 'severe' },
-                { name: 'Myalgia, fejfájás', description: 'Gyakori társuló tünet', severity: 'mild' }
+                { name: 'Láz', description: 'Gyakori (70-90%), de hiányozhat is (idősek)', severity: 'moderate' },
+                { name: 'Köhögés', description: 'Száraz (60-80%), tartós', severity: 'moderate' },
+                { name: 'Fáradékonyság', description: 'Kifejezett (40-70%)', severity: 'moderate' },
+                { name: 'Dyspnoe', description: 'Nehézlégzés (30-50% hospitalizáltaknál), hypoxia', severity: 'severe' },
+                { name: 'Anosmia/Dysgeusia', description: 'Szaglás/ízlelés zavar (variánsfüggő, 20-60%)', severity: 'mild' },
+                { name: 'Myalgia', description: 'Izomfájdalom (30-60%)', severity: 'mild' }
               ],
               physical_exam: [
                 'Láz, tachypnoe',
@@ -852,25 +853,25 @@ Object.assign(window.diseases, {
               incubation: 'Napok (akut) vagy hetek (szubakut)',
               onset: 'Változó',
               symptoms: [
-                { name: 'Láz', description: 'Leggyakoribb tünet (90%)', severity: 'moderate' },
-                { name: 'Szívzörej', description: 'Új vagy megváltozott (85%)', severity: 'severe' },
-                { name: 'Petechiae', description: 'Bőrön, nyálkahártyán', severity: 'mild' },
-                { name: 'Splenomegalia', description: 'Szubakut esetben', severity: 'moderate' },
-                { name: 'Embóliás tünetek', description: 'Stroke, tüdőembólia, végtagi ischaemia', severity: 'severe' }
+                { name: 'Láz', description: 'Leggyakoribb tünet (>90%), gyakran hidegrázással', severity: 'moderate' },
+                { name: 'Szívzörej', description: 'Új vagy megváltozott regurgitációs zörej (85%)', severity: 'severe' },
+                { name: 'Embóliás tünetek', description: 'Stroke, tüdőembólia, lép/vese infarctus (20-50%)', severity: 'severe' },
+                { name: 'Szívelégtelenség', description: 'Dyspnoe, ödéma (40-60% - leggyakoribb szövődmény)', severity: 'severe' },
+                { name: 'Bőrtünetek', description: 'Petechiae (20-40%), Osler/Janeway (5-10% - ritkább manapság)', severity: 'mild' }
               ],
               physical_exam: [
-                'Új szívzörej',
-                'Splinter haemorrhagia (köröm alatt)',
-                'Janeway léziók (fájdalmatlan tenyér/talp)',
-                'Osler csomók (fájdalmas ujjbegy)',
-                'Roth foltok (retina vérzés)'
+                'Láz',
+                'Új szívzörej (főleg regurgitációs)',
+                'Szívelégtelenség jelei (S3, pangás)',
+                'Splenomegalia (15-30%)',
+                'Perifériás jelek (Splinter, Osler, Janeway, Roth - ritkák)'
               ],
               complications: ['Szívelégtelenség (billentyű elégtelenség)', 'Szeptikus embólia (agy, lép, vese)', 'Tályog (gyűrű)', 'Glomerulonephritis']
             },
             diagnostics: {
               criteria: [
-                { name: 'Major kritériumok', items: ['Pozitív hemokultúra (típusos kórokozó: S. aureus, Viridans strep, HACEK, Enterococcus)', 'Endocardium érintettség jelei (echo: vegetáció, tályog, új billentyű regurgitáció)'] },
-                { name: 'Minor kritériumok', items: ['Prediszpozíció (szívhiba, IV drog)', 'Láz >38°C', 'Vaszkuláris jelenségek (embólia, szeptikus infarctus, mycoticus aneurysma, Janeway)', 'Immunológiai jelenségek (Osler csomó, Roth folt, RF+, Glomerulonephritis)', 'Mikrobiológiai jel (nem major)'] },
+                { name: 'Major kritériumok (ESC 2023)', items: ['Pozitív hemokultúra (típusos kórokozó: S. aureus, Enterococcus, Viridans strep, S. gallolyticus, HACEK) 2 külön mintából', 'Képalkotó pozitív lelet (Echo/CT/PET-CT): Vegetáció, tályog, pseudoaneurysma, fistula, perforáció, új dehiszcencia', 'Paravalvularis lézió CT-vel', 'Abnormális aktivitás műbillentyű körül (PET/CT vagy SPECT/CT)'] },
+                { name: 'Minor kritériumok', items: ['Prediszpozíció (szívhiba, műbillentyű, korábbi IE)', 'Láz >38°C', 'Vaszkuláris jelenségek (embólia, szeptikus infarctus, mycoticus aneurysma, Janeway, képalkotóval igazolt léziók)', 'Immunológiai jelenségek (Osler csomó, Roth folt, RF+, Glomerulonephritis)', 'Mikrobiológiai jel (pozitív tenyésztés ami nem major)'] },
                 { name: 'Diagnózis (Definitív)', items: ['2 Major', '1 Major + 3 Minor', '5 Minor'] }
               ],
               laboratory: [
@@ -879,8 +880,8 @@ Object.assign(window.diseases, {
                 { test: 'CRP/We', finding: 'Emelkedett', interpretation: 'Gyulladás' }
               ],
               imaging: [
-                { modality: 'Echocardiographia (TTE/TEE)', finding: 'Vegetáció, tályog, dehiszcencia', significance: 'DUKE major kritérium' },
-                { modality: 'CT', finding: 'Embóliás szórás', significance: 'Szövődmények' }
+                { modality: 'Echocardiographia (TTE/TEE)', finding: 'Vegetáció, tályog, dehiszcencia', significance: 'Elsődleges képalkotó' },
+                { modality: 'Szív CT / PET-CT', finding: 'Paravalvularis terjedés, embólia', significance: 'Kiegészítő (ESC 2023)' }
               ],
               microbiology: [
                 { test: 'Hemokultúra', finding: 'Kórokozó azonosítás', significance: 'Terápia alapja' },
@@ -893,21 +894,58 @@ Object.assign(window.diseases, {
               { disease: 'Antifoszfolipid szindróma', distinguishing: 'Trombózisok, labor' }
             ],
             therapy: {
+              guidelines: ['ESC 2023 Guidelines for the management of endocarditis'],
               empirical: {
-                outpatient: [
-                  { drug: 'Nincs', dose: '-', duration: '-', note: 'Kórházi kezelés szükséges!' }
-                ],
-                inpatient: [
-                  { drug: 'Ampicillin + Flucloxacillin + Gentamicin', dose: 'IV kombináció', duration: '4-6 hét', note: 'Saját billentyű (akut)' },
-                  { drug: 'Vancomycin + Gentamicin + Rifampicin', dose: 'IV kombináció', duration: '6 hét', note: 'Műbillentyű' }
-                ],
-                icu: [
-                  { drug: 'Sürgős műtét', dose: 'Billentyűcsere', duration: '', note: 'Szívelégtelenség, kontrollálhatatlan fertőzés' }
-                ]
+                native_community: {
+                  title: 'Empirikus: Natív billentyű vagy Késői műbillentyű (>12 hó)',
+                  drugs: [
+                    { drug: 'Ampicillin + (Flu)cloxacillin + Gentamicin', dose: '12g + 12g + 3mg/kg IV', duration: '4-6 hét', note: 'IB ajánlás. Gentamicin csak az első napokban/amíg a kórokozó nem ismert.' },
+                    { drug: 'Vancomycin + Gentamicin', dose: '30-60mg/kg + 3mg/kg IV', duration: '4-6 hét', note: 'IB ajánlás. Penicillin allergia esetén.' },
+                    { drug: 'Daptomycin + Gentamicin', dose: '10mg/kg + 3mg/kg IV', duration: '4-6 hét', note: 'IB ajánlás. Alternatíva.' }
+                  ]
+                },
+                prosthetic_early: {
+                  title: 'Empirikus: Korai műbillentyű (<12 hó) vagy Nozokomiális',
+                  drugs: [
+                    { drug: 'Vancomycin + Gentamicin + Rifampicin', dose: '30-60mg/kg + 3mg/kg + 900-1200mg IV/PO', duration: '6 hét', note: 'IB ajánlás. Rifampicin csak ha a bakterémia megszűnt (rezisztencia megelőzés).' }
+                  ]
+                },
+                targeted_staph: {
+                  title: 'Célzott: Staphylococcus spp.',
+                  drugs: [
+                    { drug: 'MSSA: (Flu)cloxacillin', dose: '12g/nap IV', duration: '4-6 hét', note: 'IB ajánlás. Penicillin allergia (nem anafilaxiás): Cefazolin 6g/nap (IB).' },
+                    { drug: 'MRSA: Vancomycin', dose: '30-60mg/kg/nap IV', duration: '4-6 hét', note: 'IB ajánlás. Alternatíva: Daptomycin 10mg/kg (IB).' },
+                    { drug: 'Műbillentyű (PVE): + Rifampicin + Gentamicin', dose: 'Kiegészítés', duration: 'Rif: 6 hét, Gent: 2 hét', note: 'IB ajánlás. Rifampicin 900-1200mg, Gentamicin 3mg/kg.' }
+                  ]
+                },
+                targeted_strep: {
+                  title: 'Célzott: Streptococcus spp. (Oral/Bowel)',
+                  drugs: [
+                    { drug: 'Penicillin G vagy Amoxicillin vagy Ceftriaxon', dose: 'Standard nagy dózis', duration: '4 hét', note: 'IB ajánlás. Penicillin érzékeny törzsek.' },
+                    { drug: 'Kombináció Gentamicinnel', dose: 'Béta-laktám + 3mg/kg Gentamicin', duration: '2 hét', note: 'IB ajánlás. Csak natív billentyű, nem komplikált esetben rövidíthető.' },
+                    { drug: 'Penicillin allergia: Vancomycin', dose: '30mg/kg/nap IV', duration: '4 hét', note: 'IB ajánlás.' }
+                  ]
+                },
+                targeted_entero: {
+                  title: 'Célzott: Enterococcus spp.',
+                  drugs: [
+                    { drug: 'Amoxicillin + Ceftriaxon', dose: '200mg/kg + 4g/nap IV', duration: '6 hét', note: 'IB ajánlás. E. faecalis ellen preferált (kisebb nephrotoxicitás mint gentamicinnel).' },
+                    { drug: 'Ampicillin + Gentamicin', dose: '12g + 3mg/kg IV', duration: '4-6 hét', note: 'IB ajánlás. Hagyományos terápia.' },
+                    { drug: 'Vancomycin + Gentamicin', dose: '30mg/kg + 3mg/kg IV', duration: '6 hét', note: 'IB ajánlás. Béta-laktám rezisztencia/allergia esetén.' }
+                  ]
+                },
+                culture_neg: {
+                  title: 'Haemocultura negatív IE',
+                  drugs: [
+                    { drug: 'Coxiella burnetii', dose: 'Doxycyclin + Hydroxychloroquin', duration: '>18 hónap', note: 'IB ajánlás. Q-láz endocarditis.' },
+                    { drug: 'Bartonella spp.', dose: 'Doxycyclin + Gentamicin (2 hét)', duration: '6 hét', note: 'IB ajánlás.' },
+                    { drug: 'Brucella spp.', dose: 'Doxycyclin + Streptomycin + Rifampicin', duration: '3-6 hónap', note: 'IB ajánlás.' }
+                  ]
+                }
               },
-              targeted: 'S. aureus: Flucloxacillin/Cefazolin; Strep: Penicillin G/Ceftriaxon; Enterococcus: Ampicillin+Gentamicin. Időtartam: 4-6 hét IV.',
-              supportive: ['Szívelégtelenség kezelése', 'Embólia profilaxis (antikoagulálás kontraindikált lehet vérzésveszély miatt!)'],
-              prevention: ['Antibiotikum profilaxis (Amoxicillin 2g) magas rizikójú betegeknél fogászati beavatkozás előtt', 'Szájhigiéné']
+              targeted: 'Lásd a fenti részletes protokollokat. Stabil állapotú betegeknél (bal szívfél IE) 10-14 nap IV kezelés után orális váltás lehetséges (POET trial, IB ajánlás), ha a TEE kizárta a tályogot és a beteg kooperábilis.',
+              supportive: ['Szívelégtelenség kezelése (IB)', 'Embólia profilaxis (antikoagulálás kontraindikált lehet vérzésveszély miatt!)', 'Fókusz kutatás (teljes test CT/PET-CT)'],
+              prevention: ['Antibiotikum profilaxis (Amoxicillin 2g vagy Clindamycin 600mg) CSAK magas rizikójú betegeknél (műbillentyű, korábbi IE, cyanoticus congenitalis vitium) fogászati beavatkozás előtt (IIa)', 'Szájhigiéné (IB)']
             },
             prognosis: {
               mortality: 'Kórházi: 15-20%, 1 éves: 30-40%',
@@ -939,35 +977,34 @@ Object.assign(window.diseases, {
               incubation: 'Vírusfertőzés után 1-2 hét',
               onset: 'Változó (tünetmentestől a fulminánsig)',
               symptoms: [
-                { name: 'Mellkasi fájdalom', description: 'Szúró, perikardiális jellegű', severity: 'moderate' },
-                { name: 'Dyspnoe', description: 'Szívelégtelenség jele', severity: 'severe' },
-                { name: 'Palpitáció', description: 'Ritmuszavarok', severity: 'moderate' },
-                { name: 'Fáradékonyság', description: 'Nem specifikus', severity: 'mild' },
-                { name: 'Prodromális tünetek', description: 'Láz, myalgia, GI tünetek (megelőzően)', severity: 'mild' }
+                { name: 'Mellkasi fájdalom', description: 'Szúró, perikardiális jellegű (85-95% uncomplicated esetekben)', severity: 'moderate' },
+                { name: 'Dyspnoe', description: 'Terhelésre vagy nyugalomban (19-49%)', severity: 'severe' },
+                { name: 'Palpitáció', description: 'Ritmuszavarok érzése (6-18%)', severity: 'moderate' },
+                { name: 'Prodromális tünetek', description: 'Láz, légúti/GI tünetek napokkal korábban (60%)', severity: 'mild' },
+                { name: 'Syncope', description: 'Ritmuszavar miatt (ritka, de veszélyes)', severity: 'severe' }
               ],
               physical_exam: [
                 'Tachycardia (lázhoz képest aránytalan)',
-                'Szívelégtelenség jelei (S3, pangás)',
-                'Pericardialis dörzszörej (myopericarditis)',
-                'Arrhythmia'
+                'Szívelégtelenség jelei (S3, tágult nyaki vénák, ödéma)',
+                'Pericardialis dörzszörej (myopericarditis esetén)',
+                'Arrhythmia (extrasystolék)'
               ],
               complications: ['Dilatatív cardiomyopathia (DCM)', 'Szívelégtelenség', 'Halálos ritmuszavar', 'Hirtelen szívhalál']
             },
             diagnostics: {
               laboratory: [
-                { test: 'Troponin', finding: 'Emelkedett', interpretation: 'Szívizom nekrózis (szenzitív)' },
-                { test: 'CK-MB', finding: 'Emelkedett', interpretation: 'Izomkárosodás' },
+                { test: 'Troponin (hs-cTn)', finding: 'Emelkedett', interpretation: 'Szívizom nekrózis (nagy szenzitivitás)' },
+                { test: 'NT-proBNP', finding: 'Emelkedett', interpretation: 'Szívelégtelenség / prognosztikus marker' },
                 { test: 'CRP/We', finding: 'Emelkedett', interpretation: 'Gyulladás' },
-                { test: 'BNP', finding: 'Emelkedett', interpretation: 'Szívelégtelenség' }
               ],
               imaging: [
-                { modality: 'EKG', finding: 'ST-eleváció (diffúz), T-inverzió, AV-blokk, kamrai arrhythmia', significance: 'Nem specifikus' },
-                { modality: 'Echocardiographia', finding: 'Falmozgászavar, csökkent EF, folyadék', significance: 'Funkció megítélés' },
-                { modality: 'Szív MRI', finding: 'Lake Louise kritériumok (ödéma, hyperaemia, nekrózis/heg)', significance: 'Gold standard non-invazív' }
+                { modality: 'EKG', finding: 'ST-T eltérések, AV-blokk, QRS szélesedés', significance: 'Prognosztikus érték' },
+                { modality: 'Echocardiographia', finding: 'Globális/regionális falmozgászavar, EF csökkenés, pericardialis folyadék', significance: 'Alapvizsgálat' },
+                { modality: 'Szív MRI (CMR)', finding: 'Lake Louise kritériumok (T1/T2 jelek, LGE)', significance: 'Gold standard non-invazív diagnózis (ESC 2023)' }
               ],
               microbiology: [
-                { test: 'Endomyocardialis biopszia (EMB)', finding: 'Gyulladásos infiltrátum + nekrózis (Dallas kritériumok)', significance: 'Gold standard (de invazív, ritkán végzik)' },
-                { test: 'PCR (biopszia/vér)', finding: 'Vírus genom', significance: 'Etiológia' }
+                { test: 'Endomyocardialis biopszia (EMB)', finding: 'Gyulladás + Vírus PCR', significance: 'Gold standard. Indikált: fulmináns lefolyás, kezelésre nem reagáló HF, speciális gyanú (óriássejtes) (ESC 2023)' },
+                { test: 'Vírus szerológia', finding: 'Nem javasolt rutinszerűen', significance: 'Alacsony diagnosztikus érték (kivéve hepatitis, HIV, Borrelia)' }
               ]
             },
             differential: [
@@ -978,26 +1015,109 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Pihenés', dose: 'Fizikai kímélet', duration: '3-6 hónap', note: 'Versgénysport tilos!' },
-                  { drug: 'NSAID', dose: 'Tüneti', duration: 'Rövid ideig', note: 'Mellkasi fájdalomra (óvatosan)' }
+                  { drug: 'Fizikai kímélet', dose: 'Sporttilalom', duration: '3-6 hónap', note: 'Kulcsfontosságú! (ESC 2023)' },
+                  { drug: 'NSAID (pl. Ibuprofen)', dose: 'Tüneti', duration: 'Rövid ideig', note: 'Csak mellkasi fájdalomra, ha EF megtartott!' }
                 ],
                 inpatient: [
-                  { drug: 'Szívelégtelenség kezelés', dose: 'ACE-gátló, Béta-blokkoló, Diuretikum', duration: 'Krónikus', note: 'Ha EF csökkent' },
-                  { drug: 'Antiarrhythmiás szerek', dose: 'Amiodaron', duration: '', note: 'Ritmuszavar esetén' }
+                  { drug: 'Szívelégtelenség terápia (GDMT)', dose: 'ACEi/ARB/ARNI + BB + MRA + SGLT2i', duration: 'Krónikus', note: 'Ha LVEF csökkent (ESC 2023)' },
+                  { drug: 'Antiarrhythmiás szerek', dose: 'Amiodaron', duration: '', note: 'Súlyos ritmuszavar esetén' }
                 ],
                 icu: [
-                  { drug: 'Keringéstámogatás', dose: 'Inotrop, IABP, ECMO', duration: '', note: 'Fulmináns esetben' },
-                  { drug: 'Immunszuppresszió', dose: 'Steroid, Azathioprin', duration: '', note: 'Csak bizonyos típusoknál (pl. óriássejtes, sarcoidosis)' }
+                  { drug: 'Mechanikus keringéstámogatás (MCS)', dose: 'VA-ECMO, Impella', duration: '', note: 'Fulmináns myocarditis / kardiogén shock esetén' },
+                  { drug: 'Nagy dózisú szteroid', dose: 'Methylprednisolon', duration: '', note: 'Csak bizonyított autoimmun/óriássejtes formában (vírus negatív!)' }
                 ]
               },
-              targeted: 'Specifikus antivirális terápia általában nincs. Bakteriális eredetnél antibiotikum.',
-              supportive: ['Szigorú fizikai kímélet (3-6 hónap)!', 'Szívelégtelenség kezelése'],
+              targeted: 'Immunszuppresszió (Prednisolon + Azathioprin) CSAK biopsziával igazolt vírus-negatív (PCR-) limfocitás, óriássejtes vagy szarkoidózis eredetű myocarditisben (ESC 2023). Aktív vírusfertőzésnél kontraindikált!',
+              supportive: ['Szigorú fizikai kímélet (3-6 hónap) a gyulladás megszűnéséig', 'Szívelégtelenség kezelése', 'ICD implantáció (ha a gyulladás lezajlott és EF tartósan alacsony)'],
               prevention: ['Védőoltások (Influenza, COVID, Kanyaró)', 'Higiénia']
             },
             prognosis: {
               mortality: 'Változó: sokszor spontán gyógyul, fulmináns esetben magas. 50% DCM-be megy át.',
               prognostic_scores: ['Nincs'],
               factors: 'Kezdeti EF, QRS szélesség, troponin szint'
+            }
+          },
+          {
+            id: 'pericarditis',
+            name: 'Akut pericarditis',
+            pathogen: { type: 'Vírus/Idiopathiás', name: 'Coxsackie, Echovírus, Adenovírus, CMV, EBV', gram: 'Változó', shape: '-' },
+            epidemiology: {
+              incidence: 'Gyakori (0.1% hospitalizáltak)',
+              risk_groups: ['Férfiak (20-50 év)', 'Post-cardiotomia', 'Autoimmun betegek'],
+              seasonality: 'Vírusfüggő',
+              transmission: 'Cseppfertőzés (vírusos)'
+            },
+            pathomechanism: {
+              steps: [
+                'Pericardium gyulladása (vírusos, autoimmun, neoplasiás)',
+                'Fibrines lerakódás (száraz pericarditis)',
+                'Exsudatum képződés (pericardialis folyadék)',
+                'Tamponád veszély (ha gyors a folyadékképződés)'
+              ],
+              virulence_factors: ['-']
+            },
+            clinical: {
+              incubation: 'Változó',
+              onset: 'Hirtelen',
+              symptoms: [
+                { name: 'Mellkasi fájdalom', description: 'Éles, pleurális, fekvésre rosszabb, előre dőlve javul', severity: 'severe' },
+                { name: 'Láz', description: 'Általában alacsony', severity: 'mild' },
+                { name: 'Dyspnoe', description: 'Fájdalom vagy tamponád miatt', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Pericardialis dörzszörej (systolés és diastolés komponens)',
+                'Halk szívhangok (effusion)',
+                'Beck-triász (tamponádnál): hypotonia, halk szívhangok, tágult nyaki vénák'
+              ],
+              complications: ['Pericardialis tamponád', 'Konstriktív pericarditis', 'Recidív pericarditis (15-30%)']
+            },
+            diagnostics: {
+              criteria: [
+                { name: 'Diagnózis (2 a 4-ből)', items: ['Mellkasi fájdalom (típusos)', 'Pericardialis dörzszörej', 'EKG eltérések (ST-eleváció, PR-depresszió)', 'Pericardialis folyadék (Echo)'] }
+              ],
+              laboratory: [
+                { test: 'CRP/We', finding: 'Emelkedett', interpretation: 'Gyulladás aktivitása (követésre is!)' },
+                { test: 'Troponin', finding: 'Normál vagy enyhén emelkedett', interpretation: 'Myocarditis kizárása (ha magas: myopericarditis)' },
+                { test: 'Vérkép', finding: 'Leukocytosis', interpretation: 'Gyulladás' }
+              ],
+              imaging: [
+                { modality: 'EKG', finding: 'Diffúz konkáv ST-eleváció, PR-depresszió (aVR-ben eleváció)', significance: 'Diagnosztikus' },
+                { modality: 'Echocardiographia', finding: 'Pericardialis folyadék', significance: 'Tamponád kizárása, diagnózis' },
+                { modality: 'Mellkas rtg', finding: 'Normál vagy "kulacs szív" (nagy folyadék)', significance: 'Egyéb okok kizárása' }
+              ],
+              microbiology: [
+                { test: 'Vírus szerológia', finding: 'Nem rutinszerű', significance: 'Csak speciális esetben' },
+                { test: 'Pericardiocentesis', finding: 'Tenyésztés/PCR', significance: 'Csak tamponád vagy purulens/neoplasiás gyanú esetén' }
+              ]
+            },
+            differential: [
+              { disease: 'Akut myocarditis', distinguishing: 'Troponin emelkedés dominál, falmozgászavar' },
+              { disease: 'STEMI', distinguishing: 'Konvex ST-eleváció, reciprok depresszió, regionális' },
+              { disease: 'Tüdőembólia', distinguishing: 'Dyspnoe dominál, D-dimer, CT' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Aspirin', dose: '750-1000mg 8 óránként', duration: '1-2 hét, majd leépítés', note: 'Első választás (ESC 2015)' },
+                  { drug: 'Ibuprofen', dose: '600mg 8 óránként', duration: '1-2 hét, majd leépítés', note: 'Alternatíva' },
+                  { drug: '+ Colchicin', dose: '0.5mg naponta 1x (<70kg) vagy 2x (>70kg)', duration: '3 hónap', note: 'Recidíva megelőzésére (ESC 2015)!' },
+                  { drug: 'PPI', dose: 'Standard', duration: 'NSAID mellé', note: 'Gyomorvédelem' }
+                ],
+                inpatient: [
+                  { drug: 'Nincs', dose: '-', duration: '-', note: 'Csak magas rizikó esetén (láz >38, szubakut, nagy folyadék, tamponád, antikoagulált beteg)' }
+                ],
+                icu: [
+                  { drug: 'Pericardiocentesis', dose: 'Drenázs', duration: '', note: 'Tamponád esetén életmentő' }
+                ]
+              },
+              targeted: 'Szteroid (Prednisolon 0.2-0.5 mg/kg) CSAK ha NSAID/Colchicin kontraindikált, sikertelen, vagy specifikus indikáció (autoimmun).',
+              supportive: ['Fizikai kímélet (sporttilalom) a CRP normalizálódásáig (min. 3 hónap sportolóknál)'],
+              prevention: ['Colchicin adása az első epizódnál']
+            },
+            prognosis: {
+              mortality: 'Alacsony, tamponád esetén életveszélyes',
+              prognostic_scores: ['Nincs'],
+              factors: 'Recidíva gyakori, konstriktív pericarditis ritka (<1% idiopathiásnál)'
             }
           }
         ]
@@ -1370,4 +1490,4 @@ Object.assign(window.diseases, {
           }
         ]
       }
-});
+});          

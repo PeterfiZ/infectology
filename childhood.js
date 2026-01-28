@@ -22,9 +22,9 @@ Object.assign(window.diseases, {
           incubation: '10-14 nap',
           onset: 'Prodroma (láz, 3C)',
           symptoms: [
-            { name: 'Prodroma', description: 'Magas láz, Köhögés (Cough), Nátha (Coryza), Kötőhártya-gyulladás (Conjunctivitis)', severity: 'moderate' },
-            { name: 'Koplik-foltok', description: 'Sószemcseszerű foltok a buccán (pathognomikus)', severity: 'mild' },
-            { name: 'Kiütés', description: 'Maculopapularis, fül mögül indul → arc → törzs → végtagok (confluál)', severity: 'moderate' }
+            { name: 'Prodroma (3C)', description: 'Láz (>40°C), Köhögés (Cough), Nátha (Coryza), Conjunctivitis - szinte 100%-ban', severity: 'moderate' },
+            { name: 'Koplik-foltok', description: 'Pathognomikus sószemcseszerű foltok a buccán (60-70% a kiütés előtt)', severity: 'mild' },
+            { name: 'Kiütés', description: 'Maculopapularis, fül mögül indul → arc → törzs (3. nap) → végtagok (confluál)', severity: 'moderate' }
           ],
           physical_exam: ['Koplik-foltok', 'Exanthema', 'Láz', 'Conjunctivitis'],
           complications: ['Otitis media', 'Pneumonia (óriássejtes)', 'Encephalitis', 'SSPE (évekkel később)']
@@ -61,9 +61,9 @@ Object.assign(window.diseases, {
           incubation: '16-18 nap',
           onset: 'Akut',
           symptoms: [
-            { name: 'Parotitis', description: 'Fültőmirigy duzzanat (uni/bilaterális), fájdalmas', severity: 'moderate' },
-            { name: 'Láz', description: 'Mérsékelt', severity: 'mild' },
-            { name: 'Orchitis', description: 'Heregyulladás (pubertás utáni fiúk 20-30%-a)', severity: 'severe' }
+            { name: 'Parotitis', description: 'Fültőmirigy duzzanat (95% tüneteseknél), kezdetben egyoldali, majd kétoldali (90%)', severity: 'moderate' },
+            { name: 'Láz', description: 'Mérsékelt, prodromális', severity: 'mild' },
+            { name: 'Orchitis', description: 'Heregyulladás (pubertás utáni fiúk 20-30%-a), fájdalmas', severity: 'severe' }
           ],
           physical_exam: ['Parotis duzzanat (fülcimpa elemelkedik)', 'Here duzzanat/fájdalom'],
           complications: ['Meningitis (aszepszis)', 'Orchitis (sterilitás ritka)', 'Pancreatitis', 'Süketség']
@@ -97,9 +97,9 @@ Object.assign(window.diseases, {
           incubation: '14-21 nap',
           onset: 'Enyhe',
           symptoms: [
-            { name: 'Kiütés', description: 'Apróelemű, halvány rózsaszín maculopapularis (arcról terjed lefelé)', severity: 'mild' },
-            { name: 'Lymphadenopathia', description: 'Occipitalis, retroauricularis (jellegzetes!)', severity: 'moderate' },
-            { name: 'Arthralgia', description: 'Főleg nőkben', severity: 'mild' }
+            { name: 'Kiütés', description: 'Apróelemű, halvány rózsaszín (50-80%-ban), arcról terjed lefelé, 3 nap alatt eltűnik', severity: 'mild' },
+            { name: 'Lymphadenopathia', description: 'Occipitalis, retroauricularis, cervicalis posterior (közel 100%)', severity: 'moderate' },
+            { name: 'Arthralgia/Arthritis', description: 'Felnőtt nőkben gyakori (akár 70%)', severity: 'mild' }
           ],
           physical_exam: ['Nyirokcsomó duzzanat (tarkó)', 'Kiütés'],
           complications: ['Congenitalis Rubella Szindróma (CRS): szívhiba, katarakta, süketség', 'Arthritis', 'Encephalitis (ritka)']
@@ -132,10 +132,10 @@ Object.assign(window.diseases, {
           incubation: '2-5 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Torokfájás', description: 'Súlyos', severity: 'moderate' },
-            { name: 'Láz', description: 'Magas', severity: 'moderate' },
-            { name: 'Kiütés', description: 'Diffúz vörös, "libabőr-szerű" (smirgli tapintás), nyomásra elhalványul', severity: 'moderate' },
-            { name: 'Nyelv', description: 'Fehér epernyelv → Vörös málna nyelv', severity: 'moderate' }
+            { name: 'Torokfájás', description: 'Súlyos pharyngitis (>90%)', severity: 'moderate' },
+            { name: 'Láz', description: 'Magas, hirtelen kezdet', severity: 'moderate' },
+            { name: 'Kiütés', description: 'Diffúz vörös, "smirgli" tapintású, nyomásra elhalványul (hajlatokban Pastia-vonalak)', severity: 'moderate' },
+            { name: 'Nyelv', description: 'Fehér epernyelv (1-2. nap) → Vörös málna nyelv (4-5. nap)', severity: 'moderate' }
           ],
           physical_exam: ['Pharynx hyperaemia', 'Málnanyelv', 'Filatov-jel (száj körüli sápadtság)', 'Pastia-vonalak (hajlatokban)', 'Hámlás (később)'],
           complications: ['Rheumás láz', 'Glomerulonephritis', 'Peritonsillaris tályog']
@@ -177,9 +177,10 @@ Object.assign(window.diseases, {
           incubation: '4-6 hét',
           onset: 'Fokozatos',
           symptoms: [
-            { name: 'Torokfájás', description: 'Súlyos, pseudomembranosus tonsillitis', severity: 'severe' },
-            { name: 'Láz', description: 'Elhúzódó', severity: 'moderate' },
-            { name: 'Fáradtság', description: 'Kifejezett, hetekig tarthat', severity: 'moderate' }
+            { name: 'Torokfájás', description: 'Súlyos, gyakran pseudomembranosus (>80%)', severity: 'severe' },
+            { name: 'Láz', description: 'Elhúzódó (10-14 napig is tarthat), >90%-ban', severity: 'moderate' },
+            { name: 'Lymphadenopathia', description: 'Generalizált, szimmetrikus, főleg hátsó nyaki (>90%)', severity: 'moderate' },
+            { name: 'Fáradtság', description: 'Kifejezett, hetekig-hónapokig tarthat', severity: 'moderate' }
           ],
           physical_exam: ['Generalizált lymphadenopathia (nyaki dominancia)', 'Hepatosplenomegalia', 'Tonsilla lepedék', 'Ampicillin-rash (ha AB-t kapott)'],
           complications: ['Lépruptúra (ritka, de veszélyes)', 'Légúti obstrukció (tonsilla)', 'Hepatitis', 'Burkitt lymphoma (késői, endémiás)']
@@ -220,9 +221,9 @@ Object.assign(window.diseases, {
           incubation: '5-15 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Magas láz', description: '39-40°C, 3-5 napig, jó általános állapot mellett', severity: 'moderate' },
-            { name: 'Láztalanodás', description: 'Hirtelen', severity: 'mild' },
-            { name: 'Kiütés', description: 'Láztalanodás UTÁN jelenik meg: rózsaszín maculopapularis a törzsön, majd végtagokon', severity: 'mild' }
+            { name: 'Magas láz', description: '39-40°C, 3-5 napig (100%), jó általános állapot mellett', severity: 'moderate' },
+            { name: 'Kiütés', description: 'Láztalanodás UTÁN jelenik meg (fontos különbség!), rózsaszín maculopapularis', severity: 'mild' },
+            { name: 'Nagayama-foltok', description: 'Uvula tövénél lévő fekélyek/papulák', severity: 'mild' }
           ],
           physical_exam: ['Láz', 'Nagokayama-foltok (uvula tövénél)', 'Cervicalis/occipitalis lymphadenopathia', 'Kiütés (később)'],
           complications: ['Lázgörcs (gyakori ok!)', 'Encephalitis (ritka)']
@@ -256,9 +257,9 @@ Object.assign(window.diseases, {
           incubation: '10-21 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Kiütés', description: 'Polimorf (macula-papula-vezikula-pörk egyszerre), viszkető, "csillagos égbolt"', severity: 'moderate' },
-            { name: 'Láz', description: 'Mérsékelt', severity: 'mild' },
-            { name: 'Enanthema', description: 'Szájnyálkahártya hólyagok', severity: 'moderate' }
+            { name: 'Kiütés', description: 'Polimorf (macula-papula-vezikula-pörk egyszerre), viszkető (100%)', severity: 'moderate' },
+            { name: 'Láz', description: 'Mérsékelt (gyermekeknél), felnőtteknél magasabb', severity: 'mild' },
+            { name: 'Enanthema', description: 'Szájnyálkahártya hólyagok, fájdalmas', severity: 'moderate' }
           ],
           physical_exam: ['Polimorf kiütések (hajas fejbőrön is!)', 'Láz', 'Lymphadenopathia'],
           complications: ['Bakteriális felülfertőződés (impetiginizálódás)', 'Cerebellitis (ataxia)', 'Pneumonia (felnőttek)', 'Encephalitis', 'Reye-szindróma (aspirin!)']
@@ -291,7 +292,7 @@ Object.assign(window.diseases, {
           incubation: '-',
           onset: 'Fájdalommal kezdődik',
           symptoms: [
-            { name: 'Fájdalom', description: 'Égető, nyilalló a dermatómában', severity: 'severe' },
+            { name: 'Fájdalom', description: 'Prodromális (70-80%), égető, nyilalló a dermatómában', severity: 'severe' },
             { name: 'Kiütés', description: 'Csoportos vezikulák vörös alapon, egyoldali, dermatómális', severity: 'moderate' }
           ],
           physical_exam: ['Dermatómális eloszlású vezikulák (nem lépi át a középvonalat)'],
@@ -325,8 +326,8 @@ Object.assign(window.diseases, {
           incubation: '2-12 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Gingivostomatitis herpetica', description: 'Láz, fájdalmas ínygyulladás, szájüregi fekélyek, nyálfolyás, evési nehézség', severity: 'severe' },
-            { name: 'Herpes labialis', description: 'Recidíva (ajakherpesz)', severity: 'mild' },
+            { name: 'Gingivostomatitis', description: 'Láz, fájdalmas ínygyulladás, fekélyek (leggyakoribb primer forma gyermekeknél)', severity: 'severe' },
+            { name: 'Herpes labialis', description: 'Recidíva (ajakherpesz), prodromális bizsergés', severity: 'mild' },
             { name: 'Eczema herpeticum', description: 'Atópiás dermatitis felülfertőződése (súlyos!)', severity: 'severe' }
           ],
           physical_exam: ['Duzzadt, vérző íny', 'Fekélyek a nyelven/szájpadon', 'Cervicalis lymphadenopathia', 'Láz'],
@@ -365,9 +366,9 @@ Object.assign(window.diseases, {
           incubation: '7-10 nap',
           onset: 'Katarális fázis (1-2 hét)',
           symptoms: [
-            { name: 'Katarális fázis', description: 'Enyhe láz, nátha, köhögés (fertőző!)', severity: 'mild' },
-            { name: 'Paroxysmalis fázis', description: 'Erős köhögési rohamok (10-20/nap), whoop (kirobbanó belégzés), cyanosis, hányás', severity: 'severe' },
-            { name: 'Konvaleszcens fázis', description: 'Köhögés csökken, hetekig tarthat', severity: 'moderate' }
+            { name: 'Katarális fázis', description: 'Enyhe láz, nátha, köhögés (1-2 hét) - legfertőzőbb szakasz', severity: 'mild' },
+            { name: 'Paroxysmalis fázis', description: 'Erős köhögési rohamok (100%), whoop (húzós belégzés 60-70%), hányás (50%)', severity: 'severe' },
+            { name: 'Konvaleszcens fázis', description: 'Köhögés csökken, de hetekig tarthat ("100 napos köhögés")', severity: 'moderate' }
           ],
           physical_exam: [
             'Köhögési rohamok (whoop jellemző gyermekeken)',

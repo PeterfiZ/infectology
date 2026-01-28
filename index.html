@@ -433,7 +433,7 @@
               <div class="info-card p-4 rounded-xl bg-red-50 border-red-400">
                 <h3 class="font-semibold text-red-800 mb-3">⚠️ Rizikócsoportok</h3>
                 <div class="flex flex-wrap gap-2">
-                  ${disease.epidemiology.risk_groups.map(group => `
+                  ${(disease.epidemiology && disease.epidemiology.risk_groups ? disease.epidemiology.risk_groups : []).map(group => `
                     <span class="px-3 py-1.5 bg-white rounded-lg text-sm text-red-700 border border-red-200">${group}</span>
                   `).join('')}
                 </div>
@@ -456,7 +456,7 @@
               <div class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-5 border border-violet-200">
                 <h3 class="font-semibold text-violet-800 mb-4">🔬 Patogenezis lépései</h3>
                 <ol class="space-y-3">
-                  ${disease.pathomechanism.steps.map((step, index) => `
+                  ${(disease.pathomechanism && disease.pathomechanism.steps ? disease.pathomechanism.steps : []).map((step, index) => `
                     <li class="flex gap-3">
                       <span class="w-7 h-7 rounded-full bg-violet-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">${index + 1}</span>
                       <span class="text-slate-700 text-sm leading-relaxed pt-0.5">${step}</span>
@@ -468,7 +468,7 @@
               <div class="bg-gradient-to-br from-rose-50 to-pink-50 rounded-xl p-5 border border-rose-200">
                 <h3 class="font-semibold text-rose-800 mb-3">🦠 Virulencia faktorok</h3>
                 <div class="flex flex-wrap gap-2">
-                  ${disease.pathomechanism.virulence_factors.map(factor => `
+                  ${(disease.pathomechanism && disease.pathomechanism.virulence_factors ? disease.pathomechanism.virulence_factors : []).map(factor => `
                     <span class="px-3 py-2 bg-white rounded-lg text-sm text-rose-700 border border-rose-200 shadow-sm">${factor}</span>
                   `).join('')}
                 </div>
@@ -498,7 +498,7 @@
                 <h2 class="text-lg font-bold text-slate-800">Tünetek</h2>
               </div>
               <div class="space-y-3">
-                ${disease.clinical.symptoms.map(symptom => `
+                ${(disease.clinical && disease.clinical.symptoms ? disease.clinical.symptoms : []).map(symptom => `
                   <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-start gap-4 hover:border-slate-300 transition-colors">
                     <div class="w-2.5 h-2.5 rounded-full ${getSeverityDotColor(symptom.severity)} flex-shrink-0 mt-1.5"></div>
                     <div class="flex-1">
@@ -514,7 +514,7 @@
               </div>
               <div class="bg-emerald-50 rounded-xl p-5 border border-emerald-200">
                 <ul class="space-y-2">
-                  ${disease.clinical.physical_exam.map(finding => `
+                    ${(disease.clinical && disease.clinical.physical_exam ? disease.clinical.physical_exam : []).map(finding => `
                     <li class="flex items-start gap-2 text-sm text-emerald-800">
                       <span class="text-emerald-600 mt-0.5">✓</span>
                       <span>${finding}</span>
@@ -527,7 +527,7 @@
                 <h2 class="text-lg font-bold text-slate-800">Komplikációk</h2>
               </div>
               <div class="flex flex-wrap gap-2">
-                ${disease.clinical.complications.map(comp => `
+                ${(disease.clinical && disease.clinical.complications ? disease.clinical.complications : []).map(comp => `
                   <span class="px-3 py-2 bg-red-100 text-red-700 rounded-lg text-sm border border-red-200">${comp}</span>
                 `).join('')}
               </div>
@@ -546,7 +546,7 @@
                     <div class="mb-4 last:mb-0">
                       <h4 class="font-semibold text-slate-800 mb-2">${c.name}</h4>
                       <ul class="list-disc list-inside space-y-1 text-sm text-slate-700">
-                        ${c.items.map(item => `<li>${item}</li>`).join('')}
+                        ${(c.items || []).map(item => `<li>${item}</li>`).join('')}
                       </ul>
                     </div>
                   `).join('')}
@@ -581,7 +581,7 @@
                 <h2 class="text-lg font-bold text-slate-800">Képalkotó vizsgálatok</h2>
               </div>
               <div class="grid gap-4 md:grid-cols-2">
-                ${disease.diagnostics.imaging ? disease.diagnostics.imaging.map(img => `
+                ${disease.diagnostics.imaging ? (disease.diagnostics.imaging || []).map(img => `
                   <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-4 border border-cyan-200">
                     <h4 class="font-semibold text-cyan-800">${img.modality}</h4>
                     <p class="text-cyan-700 text-sm mt-2">${img.finding}</p>
@@ -620,7 +620,7 @@
                 <h2 class="text-lg font-bold text-slate-800">Differenciáldiagnózis</h2>
               </div>
               <div class="space-y-4">
-                ${diffList.length > 0 ? diffList.map((diff, index) => `
+                ${diffList.length > 0 ? (diffList || []).map((diff, index) => `
                   <div class="bg-white rounded-xl border-2 border-slate-200 overflow-hidden hover:border-slate-300 transition-all">
                     <div class="flex items-center gap-4 p-4 bg-slate-50 border-b border-slate-200">
                       <span class="w-8 h-8 rounded-full bg-slate-700 text-white flex items-center justify-center font-bold text-sm">${index + 1}</span>
@@ -713,7 +713,7 @@
                     <span class="text-xl">💪</span> Szupportív terápia
                   </h3>
                   <ul class="space-y-2">
-                    ${disease.therapy.supportive.map(item => `
+                    ${(disease.therapy && disease.therapy.supportive ? disease.therapy.supportive : []).map(item => `
                       <li class="flex items-start gap-2 text-sm text-violet-700">
                         <span class="text-violet-500 mt-0.5">•</span>
                         <span>${item}</span>
@@ -727,7 +727,7 @@
                     <span class="text-xl">🛡️</span> Prevenció
                   </h3>
                   <ul class="space-y-2">
-                    ${disease.therapy.prevention.map(item => `
+                    ${(disease.therapy && disease.therapy.prevention ? disease.therapy.prevention : []).map(item => `
                       <li class="flex items-start gap-2 text-sm text-teal-700">
                         <span class="text-teal-500 mt-0.5">•</span>
                         <span>${item}</span>
@@ -771,7 +771,7 @@
                 <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 border border-blue-200">
                   <h3 class="font-semibold text-blue-800 mb-3">📋 Prognosztikai score-ok</h3>
                   <div class="flex flex-wrap gap-2">
-                    ${disease.prognosis.prognostic_scores.map(score => `
+                    ${(disease.prognosis && disease.prognosis.prognostic_scores ? disease.prognosis.prognostic_scores : []).map(score => `
                       <button onclick="openScoreCalculator('${score}')" class="px-3 py-1.5 bg-white rounded-lg text-sm text-blue-700 border border-blue-200 hover:bg-blue-50 transition-colors">${score}</button>
                     `).join('')}
                   </div>
@@ -792,7 +792,7 @@
                 <h2 class="text-lg font-bold text-slate-800">Kép Galéria</h2>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                ${disease.gallery.map(image => `
+                ${(disease.gallery || []).map(image => `
                   <a href="${image.url}" target="_blank" rel="noopener noreferrer" class="block group rounded-xl overflow-hidden border-2 border-slate-200 hover:border-emerald-400 hover:shadow-lg transition-all duration-300">
                     <div class="h-48 bg-slate-200 flex items-center justify-center overflow-hidden">
                       <img src="${image.url}" alt="${image.caption}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -848,8 +848,44 @@
 
     // Initialize
     function init() {
+      // Ensure data objects have the expected arrays/fields before rendering
+      normalizeDiseases();
+
       renderCategories();
       renderDiseaseList();
+    }
+
+    // Normalize disease objects at runtime so missing keys don't break templates
+    function normalizeDiseases() {
+      if (!window.diseases) return;
+      Object.values(window.diseases).forEach(category => {
+        (category.diseases || []).forEach(d => {
+          d.clinical = d.clinical || {};
+          d.clinical.symptoms = Array.isArray(d.clinical.symptoms) ? d.clinical.symptoms : [];
+          d.clinical.physical_exam = Array.isArray(d.clinical.physical_exam) ? d.clinical.physical_exam : [];
+          d.clinical.complications = Array.isArray(d.clinical.complications) ? d.clinical.complications : [];
+
+          d.diagnostics = d.diagnostics || {};
+          d.diagnostics.criteria = Array.isArray(d.diagnostics.criteria) ? d.diagnostics.criteria : [];
+          d.diagnostics.laboratory = Array.isArray(d.diagnostics.laboratory) ? d.diagnostics.laboratory : [];
+          d.diagnostics.imaging = Array.isArray(d.diagnostics.imaging) ? d.diagnostics.imaging : [];
+          d.diagnostics.microbiology = Array.isArray(d.diagnostics.microbiology) ? d.diagnostics.microbiology : [];
+
+          d.differential = Array.isArray(d.differential) ? d.differential : [];
+
+          d.therapy = d.therapy || {};
+          d.therapy.supportive = Array.isArray(d.therapy.supportive) ? d.therapy.supportive : [];
+          d.therapy.prevention = Array.isArray(d.therapy.prevention) ? d.therapy.prevention : [];
+          d.therapy.guidelines = Array.isArray(d.therapy.guidelines) ? d.therapy.guidelines : [];
+          d.therapy.empirical = d.therapy.empirical || {};
+
+          d.prognosis = d.prognosis || {};
+          d.prognosis.prognostic_scores = Array.isArray(d.prognosis.prognostic_scores) ? d.prognosis.prognostic_scores : [];
+          d.prognosis.factors = d.prognosis.factors || '';
+
+          d.gallery = Array.isArray(d.gallery) ? d.gallery : [];
+        });
+      });
     }
 
     // Config change handler

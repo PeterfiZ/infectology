@@ -1196,46 +1196,47 @@ Object.assign(window.diseases, {
               { disease: 'Autoimmun hepatitis', distinguishing: 'Autoantitestek (ASMA, ANA), IgG emelkedés' }
             ],
             therapy: {
+              guidelines: ['EASL 2017 Clinical Practice Guidelines on the management of hepatitis B virus infection'],
               empirical: {
                 outpatient: [
-                  { drug: 'Tenofovir / Entecavir', dose: 'PO', duration: 'Hosszú távú', note: 'Krónikus hepatitis B kezelése (Nukleozid analógok)' }
+                  { drug: 'Entecavir', dose: '0.5 mg PO 1x/nap', duration: 'Hosszú távú', note: 'Nukleozid analóg. Lamivudin rezisztencia esetén 1 mg.' },
+                  { drug: 'Tenofovir disoproxil (TDF)', dose: '300 mg PO 1x/nap', duration: 'Hosszú távú', note: 'Nukleotid analóg. Vesefunkció és csontsűrűség monitorozása szükséges.' },
+                  { drug: 'Tenofovir alafenamide (TAF)', dose: '25 mg PO 1x/nap', duration: 'Hosszú távú', note: 'Preferált, ha csont/vese betegség kockázata áll fenn.' }
                 ],
                 inpatient: [
-                  { drug: 'Szupportív', dose: '-', duration: '-', note: 'Akut esetben általában nem kell antivirális, kivéve ha súlyos' }
+                  { drug: 'Tenofovir (TDF/TAF) vagy Entecavir', dose: 'Standard', duration: '', note: 'Súlyos akut hepatitis vagy akut májelégtelenség esetén azonnal indítandó.' }
                 ]
               },
-              targeted: 'Krónikus: PEG-Interferon (véges ideig) vagy Nukleozid/Nukleotid analógok (Tenofovir, Entecavir - élethosszig). Cél: HBV DNS szuppresszió.',
-              supportive: ['HCC szűrés (UH + AFP félévente)', 'Vakcináció HAV ellen'],
+              targeted: 'Krónikus HBV: Élethosszig tartó NA (Entecavir, TDF, TAF) a vírusreplikáció gátlására. Véges idejű kezelés: Peg-IFN alfa (48 hét) válogatott betegeknél.',
+              supportive: ['HCC szűrés (UH félévente)', 'Vakcináció HAV ellen', 'Családtagok szűrése'],
               prevention: ['Vakcináció (rekombináns HBsAg, 0-1-6 hó)', 'Szűrés terhességben', 'HBIG + vakcina újszülötteknek (≤12 óra; oltási sorozat folytatása)']
             },
             guidelines: {
               definitions: [
                 'Akut HBV: HBsAg pozitív és Anti-HBc IgM pozitív, tünetekkel vagy tünetmentes',
-                'Krónikus HBV: HBsAg pozitív >6 hónap'
+                'Krónikus HBV: HBsAg pozitív >6 hónap',
+                'Kezelési indikáció: Krónikus hepatitis (ALT emelkedett + HBV DNS >2000 IU/ml + fibrosis) VAGY Cirrhosis (bármilyen HBV DNS szintnél)'
               ],
               diagnosis: [
                 'Kezdeti vizsgálat: HBsAg, Anti-HBs, Anti-HBc (IgM/IgG), HBeAg/Anti-HBe, HBV DNS (quantitativ)',
-                'Májműködés: ALT/AST, bilirubin, ALP/GGT, INR, teljes vérkép',
-                'Fibrosis értékelés: FibroScan vagy szérum markerek (APRI, FIB-4)'
+                'Fibrosis értékelés: FibroScan vagy szérum markerek (FIB-4)'
               ],
               treatment_indications: [
-                'Akut súlyos/fulmináns hepatitis: antivirális (Tenofovir) megfontolandó és transzplantációs konzílium',
-                'Krónikus HBV: kezelni kell, ha jelentős májgyulladás (emelkedett ALT) és magas HBV DNS (>2000 IU/ml) vagy bármely betegnél cirrhosis esetén',
-                'Minden cirrhosisos beteg kezelése indokolt, HBV-s betegek HCC szűrése félévente'
+                'Minden cirrhosisos beteg kezelendő',
+                'HBeAg pozitív vagy negatív krónikus hepatitis (ALT > ULN, DNS > 2000 IU/ml, F2+ fibrosis)',
+                'Immunszuppresszió előtt HBsAg+ betegek (profilaxis)'
               ],
               first_line: [
-                'Tenofovir disoproxil fumarate 300 mg naponta vagy Tenofovir alafenamide 25 mg naponta (preferált hosszú távú NA)',
-                'Entecavir 0.5 mg naponta (vagy 1 mg ha lamivudin-rezisztens a háttér)',
-                'Peg-IFN alfa 48 hétig bizonyos kiválasztott pácienseknél (finite terápia)'
+                'Entecavir, TDF, TAF (magas rezisztencia barrierű NA-k)',
+                'Peg-IFN alfa (48 hét) - alternatíva enyhe/közepes fibrosisnál'
               ],
               special_populations: [
-                'Terhesség: ha anyai HBV-DNS >200 000 IU/ml, Tenofovir kezelést javasolnak a 28. gesztációs hét körül a perinatális átvitel csökkentésére',
-                'Perinatális profilaxis: HBIG + vakcina újszülöttnek ≤12 óra',
-                'Immunoszuppresszió/biológiai terápia előtt HBV státusz felmérése; szükség esetén profilaktikus NA terápia'
+                'Terhesség: TDF adása a 24-28. héttől, ha HBV DNS >200,000 IU/ml',
+                'Veseelégtelenség: TAF vagy Entecavir (dóziscsökkentés)',
+                'HDV koinfekció: Peg-IFN vagy Bulevirtide'
               ],
               monitoring: [
-                'Kezelés alatt: HBV DNS és ALT 3–6 havonta, havi kezdeti ellenőrzés súlyos esetben',
-                'Terápia megszüntetése csak szigorú kritériumok mellett (HBsAg veszteség ritka)',
+                'NA kezelés alatt: ALT és HBV DNS 3-6 havonta',
                 'HCC szűrés ultrahanggal ± AFP minden 6 hónapban cirrhosisos pácienseknél'
               ]
             },
@@ -1297,37 +1298,36 @@ Object.assign(window.diseases, {
               { disease: 'NASH/NAFLD', distinguishing: 'Metabolikus szindróma, UH, biopszia' }
             ],
             therapy: {
+              guidelines: ['EASL Recommendations on Treatment of Hepatitis C 2020'],
               empirical: {
                 outpatient: [
-                  { drug: 'Pangenotípusos DAA', dose: 'Epclusa (Sof/Vel) vagy Maviret (Gle/Pib)', duration: '8-12 hét', note: 'Gyakorlatilag minden beteg kezelendő!' }
+                  { drug: 'Glecaprevir / Pibrentasvir (Maviret)', dose: '3 tab (300/120mg) PO 1x', duration: '8 hét', note: 'Pangenotípusos. Cirrhosis nélkül és kompenzált cirrhosisban is 8 hét.' },
+                  { drug: 'Sofosbuvir / Velpatasvir (Epclusa)', dose: '1 tab (400/100mg) PO 1x', duration: '12 hét', note: 'Pangenotípusos. Decompensált cirrhosisban is adható (RBV-vel).' }
                 ]
               },
-              targeted: 'DAA (Direct Acting Antivirals): Sofosbuvir/Velpatasvir, Glecaprevir/Pibrentasvir. SVR (gyógyulás) >95%.',
-              supportive: ['Alkohol tilalom', 'Vakcináció HAV/HBV ellen'],
+              targeted: 'Pangenotípusos DAA kezelés minden betegnek (Simplified treatment). Genotipizálás nem feltétlenül szükséges a kezelés indításához (kivéve cirrhosis/korábbi sikertelen kezelés).',
+              supportive: ['Gyógyszerinterakciók ellenőrzése (www.hep-druginteractions.org)', 'Alkohol tilalom'],
               prevention: ['Nincs vakcina', 'Vérkészítmények szűrése', 'Ártalomcsökkentés (tűcsere)', 'Biztonságos szex']
             },
             guidelines: {
               diagnosis: [
                 'Szűrés: Anti-HCV szerológia (ELISA) minden kockázati csoportban és véradásnál',
-                'Aktív fertőzés igazolása: HCV RNS (PCR) pozitív = kezelés indikáció',
-                'Fibrosis/focalás értékelés: FibroScan vagy APRI/FIB-4; HCC kockázat felmérése'
+                'HCV RNS pozitív = Aktív fertőzés -> Kezelés'
               ],
               treatment_indications: [
                 'Minden krónikus HCV fertőzött kezelendő, kivéve rövid élettartamú páciensek vagy terhesség',
                 'Különös prioritás: cirrhosis, extrahepatikus manifesztációk, transzplantációs jelöltek'
               ],
               first_line: [
-                'Sofosbuvir/Velpatasvir (Epclusa) 1x naponta 12 hét (pangenotípusos)',
-                'Glecaprevir/Pibrentasvir (Maviret) 8 hét nem-cirrhoticus betegeknek (pangenotípusos); 12 hét komp. cirrhosissal',
-                'Decompensált cirrhosis esetén proteáz-inhibitor tartalmú kombinációk kerülendők; Sof/Vel preferált'
+                'Glecaprevir/Pibrentasvir (8 hét)',
+                'Sofosbuvir/Velpatasvir (12 hét)'
               ],
               monitoring: [
-                'HCV RNS kezelés előtt, kezelési héten 4 nincs szükség rutinszerűen, terápia vége és 12 hét után (SVR12) ellenőrizni',
-                'Májműködés és gyógyszerinterakciók monitorozása (inkl. gyógyszerek, antigén ellenőrzés gyógyszerinterakciók miatt)'
+                'SVR12 (Sustained Virologic Response): HCV RNS negatív 12 héttel a kezelés után = Gyógyulás',
+                'Cirrhosis esetén HCC szűrés folytatása SVR után is!'
               ],
               special_populations: [
-                'Terhesség: DAA terápia nem javasolt a terhesség alatt; terhesség után kezelni',
-                'Krónikus veseelégtelenség: Glecaprevir/Pibrentasvir jól tolerált; Sofosbuvir óvatosan súlyos vesebetegségben'
+                'Decompensált cirrhosis: Proteáz inhibitorok (Glecaprevir, Grazoprevir) KONTRAINDIKÁLTAK! Sof/Vel + Ribavirin adható.'
               ]
             },
             prognosis: {
@@ -1365,27 +1365,23 @@ Object.assign(window.diseases, {
               ]
             },
             therapy: {
-              targeted: 'PEG-Interferon alfa (hosszú távú, alacsony válaszarány), Bulevirtide (belépés gátló - új).',
+              guidelines: ['EASL Clinical Practice Guidelines on hepatitis delta virus 2023'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Bulevirtide', dose: '2 mg SC naponta', duration: 'Hosszú távú', note: 'Belépés gátló. Monoterápia vagy Peg-IFN kombináció. (Feltételes engedély)' },
+                  { drug: 'Peg-IFN alfa', dose: '180 mcg SC hetente', duration: '48 hét', note: 'Alternatíva, de alacsony tartós válaszarány.' }
+                ]
+              },
+              targeted: 'Bulevirtide (hosszú távú fenntartó kezelés) vagy Peg-IFN (48 hét). Nukleozid analógok (HBV ellen) folytatandók, de HDV-re nem hatnak közvetlenül.',
               prevention: ['HBV vakcináció véd HDV ellen is (mivel HBsAg kell neki)']
             },
             guidelines: {
-              screening: [
-                'Minden HBsAg pozitív beteget szűrni kell anti-HDV és/vagy HDV RNS irányában (egy alkalommal)'
-              ],
-              diagnosis: [
-                'Anti-HDV pozitív esetén HDV RNS kimutatása a replikáció igazolására',
-                'Májműködés és fibrosis értékelés kötelező (ALT, INR, FibroScan)'
-              ],
+              screening: ['Minden HBsAg pozitív beteget egyszer szűrni kell anti-HDV-re'],
               treatment: [
-                'Koinfekció (HBV+HDV) vagy szuperinfekció esetén PEG-IFN alfa adható (hosszú kezelés, alacsony válaszarány)',
-                'Bulevirtide (ha elérhető) ajánlott krónikus HDV kezelésére kompenzált májbetegségben (regionális engedélyezés szerint)',
-                'Nukleozidok (Tenofovir/Entecavir) csökkentik HBV replikációt, de önmagukban általában nem gyógyítják HDV-t'
+                'Bulevirtide 2mg SC naponta: Kompenzált májbetegség és HDV RNS pozitivitás esetén. Kezelés addig, amíg klinikai haszon van (évekig).',
+                'Peg-IFN alfa: 48 hetes kúra megkísérelhető (kb. 25% tartós válasz).'
               ],
-              monitoring: [
-                'HDV RNS és ALT rendszeres ellenőrzése (3–6 havonta), fibrosis monitorozása',
-                'HCC szűrés cirrhosis esetén 6 havonta'
-              ],
-              prevention: ['HBV vakcináció megakadályozza a HDV fertőzést (mivel HDV HBsAg-hez kötött)']
+              monitoring: ['HDV RNS, ALT, HBsAg']
             },
             prognosis: {
               mortality: 'Magas, gyors cirrhosis progresszió',
@@ -1440,33 +1436,24 @@ Object.assign(window.diseases, {
                { disease: 'Gyógyszer toxicitás', distinguishing: 'Anamnézis' }
             ],
             therapy: {
+              guidelines: ['EASL Clinical Practice Guidelines on hepatitis E virus infection'],
               empirical: {
-                 outpatient: [{ drug: 'Szupportív', dose: '-', duration: '-', note: 'Pihenés, folyadék' }]
+                outpatient: [
+                  { drug: 'Szupportív', dose: '-', duration: '-', note: 'Immundompetens akut fertőzés esetén (önkorlátozó).' }
+                ],
+                inpatient: [
+                  { drug: 'Ribavirin', dose: '600-800 mg PO', duration: '12 hét', note: 'Krónikus HEV (immunszupprimáltak) vagy súlyos akut esetek.' }
+                ]
               },
-              targeted: 'Általában szupportív. Krónikus esetben: Ribavirin, immunszuppresszió csökkentése.',
-              supportive: ['Folyadékpótlás', 'Tüneti kezelés'],
-              prevention: ['Tiszta víz', 'Hús alapos sütése', 'Higiénia']
+              targeted: 'Krónikus HEV (immunszupprimáltak): 1. Immunszuppresszió csökkentése (ha lehet). 2. Ribavirin 12 hétig. Ha sikertelen: Ribavirin 24 hétig vagy Peg-IFN.',
+              supportive: ['Folyadékpótlás', 'Terheseknél szoros monitorozás (fulmináns veszély!)'],
+              prevention: ['Élelmiszerbiztonság (sertéshús, vadhús átsütése)']
             },
             guidelines: {
-              diagnosis: [
-                'Akut HEV gyanú: Anti-HEV IgM és HEV RNS (PCR) – IgM pozitív akut fertőzést jelez; RNS segít konfirmálni és krónikus esetet kimutatni',
-                'Krónikus infekcióra gondolni immunszupprimált betegeknél (pl. szervátültetettek): HEV RNS tartós pozitivitás >3 hónap'
-              ],
+              diagnosis: ['Anti-HEV IgM és IgG', 'HEV RNS (vér és széklet) - krónikus fertőzés gyanújakor kötelező'],
               treatment_indications: [
-                'Általában szupportív kezelés elegendő (G1/2 akut, önlimitáló)',
-                'Krónikus HEV (genotípus 3) immunszupprimáltakban: ribavirin terápia javasolt; immunszuppresszió csökkentése, ha lehetséges',
-                'Terhesség (genotípus 1–2): magas mortalitás, intenzív ellátás szükséges; ribavirin terápia terhességben kontraindikált'
-              ],
-              first_line: [
-                'Krónikus HEV: Ribavirin (dózis: egyénre szabott, általában 600–1000 mg/nap, 3 hónap körüli kezelés) – szigorú hematológiai monitorozás szükséges'
-              ],
-              prevention: [
-                'Endémiás területeken tiszta ivóvíz és higiénia',
-                'Fejlett országokban kerüljük a nyers/kevésbé hőkezelt sertés- és vadhúst immunszupprimált és terhes betegeknél',
-                'HEV vakcina (HEV239) bizonyos országokban elérhető, de globálisan nem rutinszerű'
-              ],
-              monitoring: [
-                'Krónikus esetekben HEV RNS terápia alatt és után rendszeresen, valamint májfunkciók és hemoglobin követése ribavirin mellett'
+                'Akut: általában nem igényel kezelést (kivéve májelégtelenség)',
+                'Krónikus (>3 hónap HEV RNS+): Immunszupprimált betegek (transzplantált, HIV). Kezelés: Ribavirin.'
               ]
             },
             prognosis: {
@@ -1606,14 +1593,14 @@ Object.assign(window.diseases, {
           }
         ]
       },
-           urinary_tract: {
+      urinary_tract: {
         name: 'Húgyúti fertőzések',
         icon: '🚽',
         color: '#3b82f6',
         diseases: [
           {
             id: 'cystitis',
-            name: 'Akut cystitis (Hólyaghurut)',
+            name: 'Nem komplikált cystitis (Hólyaghurut)',
             pathogen: { type: 'Baktérium', name: 'Escherichia coli (75-95%)', gram: 'Gram-negatív', shape: 'pálca' },
             epidemiology: {
               incidence: 'Nők 50%-a élete során legalább egyszer',
@@ -1639,25 +1626,33 @@ Object.assign(window.diseases, {
                 { name: 'Pollakisuria', description: 'Gyakori vizelési inger', severity: 'moderate' },
                 { name: 'Urgencia', description: 'Sürgető vizelési inger', severity: 'moderate' },
                 { name: 'Suprapubicus fájdalom', description: 'Alhasi diszkomfort', severity: 'mild' },
-                { name: 'Haematuria', description: 'Véres vizelet (esetek 30%-a)', severity: 'mild' }
+                { name: 'Haematuria', description: 'Véres vizelet (esetek 30%-a)', severity: 'mild' },
+                { name: 'Dysuria', description: 'Csípő, égető vizeletürítés (>90%-ban jelen van)', severity: 'moderate' },
+                { name: 'Pollakisuria', description: 'Gyakori, kis volumenű vizeletürítés (>90%)', severity: 'moderate' },
+                { name: 'Urgencia', description: 'Hirtelen jelentkező, parancsoló vizelési inger', severity: 'moderate' },
+                { name: 'Suprapubicus fájdalom', description: 'Alhasi diszkomfort vagy nyomásérzékenység (70-80%)', severity: 'mild' },
+                { name: 'Haematuria', description: 'Makroszkóposan véres vizelet (kb. 30%), gyakran a vizelés végén', severity: 'mild' }
               ],
               physical_exam: [
                 'Suprapubicus nyomásérzékenység',
                 'Láz általában NINCS (ha van, pyelonephritis gyanú!)',
-                'Vesetájék nem érzékeny'
+                'Vesetájék nem érzékeny',
+                'Láz hiánya (fontos differenciáldiagnosztikai jel)',
+                'Vesetájék nem érzékeny (kizárja a pyelonephritist)',
+                'Hüvelyi folyás hiánya (növeli a cystitis valószínűségét)'
               ],
               complications: ['Ascendáló pyelonephritis', 'Recidív cystitis']
             },
             diagnostics: {
               laboratory: [
-                { test: 'Vizelet tesztcsík', finding: 'Leukocyta esterase+, Nitrit+', interpretation: 'Bakteriális fertőzés' },
-                { test: 'Vizelet üledék', finding: 'Pyuria (>10 fvs/látótér), bakteriuria', interpretation: 'Gyulladás' }
+                { test: 'Vizelet tesztcsík', finding: 'Leukocyta esterase+, Nitrit+', interpretation: 'Pozitív prediktív érték magas' },
+                { test: 'Vizelet üledék', finding: 'Pyuria (>10 fvs/látótér)', interpretation: 'Gyakori, de nem specifikus' }
               ],
               imaging: [
-                { modality: 'Nincs', finding: 'Nem szükséges komplikálatlan esetben', significance: '-' }
+                { modality: 'Nincs', finding: 'Nem szükséges', significance: 'Kivéve atípusos tünetek vagy perzisztencia' }
               ],
               microbiology: [
-                { test: 'Vizelet tenyésztés', finding: '>10^3 CFU/ml', significance: 'Csak komplikált vagy recidív esetben rutinszerű' }
+                { test: 'Vizelet tenyésztés', finding: '≥10^3 CFU/ml', significance: 'Csak komplikált, recidív vagy atípusos esetben javasolt (EAU 2025)' }
               ]
             },
             differential: [
@@ -1668,9 +1663,9 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Fosfomycin', dose: '3g PO', duration: 'Egyszeri dózis', note: 'Első választás' },
-                  { drug: 'Nitrofurantoin', dose: '2x100mg PO', duration: '5 nap', note: 'Első választás (ha GFR>30)' },
-                  { drug: 'Pivmecillinam', dose: '3x400mg PO', duration: '3-5 nap', note: 'Alternatíva' }
+                  { drug: 'Fosfomycin trometamol', dose: '3g PO', duration: 'Egyszeri dózis', note: 'Első választás (EAU 2025)' },
+                  { drug: 'Nitrofurantoin', dose: '2x100mg PO', duration: '5 nap', note: 'Első választás (EAU 2025)' },
+                  { drug: 'Pivmecillinam', dose: '3x400mg PO', duration: '3-5 nap', note: 'Első választás (EAU 2025)' }
                 ],
                 inpatient: [
                   { drug: 'Nem igényel kórházi kezelést', dose: '-', duration: '-', note: 'Kivéve komplikáció' }
@@ -1679,9 +1674,9 @@ Object.assign(window.diseases, {
                   { drug: '-', dose: '-', duration: '-', note: '-' }
                 ]
               },
-              targeted: 'Tenyésztés alapján (pl. Ciprofloxacin, Cotrimoxazol - de rezisztencia gyakori!)',
+              targeted: 'Tenyésztés alapján. Fluorokinolonok (Ciprofloxacin, Levofloxacin) NEM ajánlottak empirikusan nem komplikált cystitisben!',
               supportive: ['Bőséges folyadékfogyasztás', 'Gyakori vizeletürítés', 'NSAID fájdalomcsillapítás'],
-              prevention: ['Postcoitalis vizeletürítés', 'Bőséges folyadék', 'Tőzegáfonya (kérdéses hatékonyság)', 'Ösztrogén krém (postmenopauza)']
+              prevention: ['Viselkedési: Bőséges folyadékbevitel, postcoitalis vizeletürítés', 'Nem-antibiotikus (EAU 2025): Lokális ösztrogén (postmenopauza), OM-89 immunstimuláció, D-mannóz, Hólyag instilláció', 'Antibiotikum profilaxis (utolsó lépés): Nitrofurantoin 50-100mg este vagy Fosfomycin 3g 10 naponta']
             },
             prognosis: {
               mortality: 'Nulla',
@@ -1691,7 +1686,7 @@ Object.assign(window.diseases, {
           },
           {
             id: 'pyelonephritis',
-            name: 'Akut pyelonephritis',
+            name: 'Nem komplikált pyelonephritis',
             pathogen: { type: 'Baktérium', name: 'Escherichia coli (80%)', gram: 'Gram-negatív', shape: 'pálca' },
             epidemiology: {
               incidence: 'Gyakori szövődménye a kezeletlen cystitisnek',
@@ -1715,12 +1710,17 @@ Object.assign(window.diseases, {
                 { name: 'Láz', description: '>38°C, hidegrázás', severity: 'severe' },
                 { name: 'Deréktáji fájdalom', description: 'Egy vagy kétoldali, tompa, folyamatos', severity: 'severe' },
                 { name: 'Hányinger, hányás', description: 'Gyakori szisztémás tünet', severity: 'moderate' },
-                { name: 'Cystitis tünetek', description: 'Dysuria, pollakisuria (megelőzheti)', severity: 'mild' }
+                { name: 'Cystitis tünetek', description: 'Dysuria, pollakisuria (megelőzheti)', severity: 'mild' },
+                { name: 'Láz és hidegrázás', description: 'Láz >38°C (90-95%), gyakran hidegrázással', severity: 'severe' },
+                { name: 'Deréktáji fájdalom', description: 'Tompa, folyamatos flank pain (90-95%), egy- vagy kétoldali', severity: 'severe' },
+                { name: 'Gastrointestinális tünetek', description: 'Hányinger, hányás, étvágytalanság (gyakori)', severity: 'moderate' },
+                { name: 'Alsó húgyúti tünetek', description: 'Dysuria, pollakisuria (az esetek 30-50%-ában hiányozhat!)', severity: 'mild' }
               ],
               physical_exam: [
                 'Vesetájék ütögetési érzékenysége (costovertebralis szöglet)',
+                'Costovertebralis szöglet (vesetáj) ütögetési érzékenysége (Giordano-jel)',
                 'Láz, tachycardia',
-                'Hasi érzékenység'
+                'Hasi érzékenység (ritkábban)'
               ],
               complications: ['Vese tályog', 'Perinephricus tályog', 'Urosepsis', 'Papilla necrosis', 'Krónikus veseelégtelenség (recidív)']
             },
@@ -1728,16 +1728,16 @@ Object.assign(window.diseases, {
               laboratory: [
                 { test: 'Vérkép', finding: 'Leukocytosis, balra tolt', interpretation: 'Szisztémás gyulladás' },
                 { test: 'CRP/PCT', finding: 'Jelentősen emelkedett', interpretation: 'Bakteriális infekció' },
-                { test: 'Vizelet', finding: 'Leukocyturia, bakteriuria, fehérvérsejt cilinderek!', interpretation: 'Felső húgyúti eredet' },
+                { test: 'Vizelet', finding: 'Leukocyturia, bakteriuria, fehérvérsejt cilinderek', interpretation: 'Felső húgyúti eredet' },
                 { test: 'Vesefunkció', finding: 'Kreatinin emelkedhet', interpretation: 'Akut vesekárosodás' }
               ],
               imaging: [
-                { modality: 'Vese UH', finding: 'Megnagyobbodott vese, echodús parenchyma', significance: 'Obstrukció/tályog kizárása (kötelező!)' },
-                { modality: 'CT has', finding: 'Ék alakú hypodenzitás', significance: 'Komplikált esetben' }
+                { modality: 'CT has/kismedence', finding: 'Vese megnagyobbodás, perinephricus folyadék, ék alakú hypodenzitás', significance: 'Gold standard a komplikációk kizárására (EAU 2025)' },
+                { modality: 'Vese UH', finding: 'Obstrukció, tályog', significance: 'Sugárterhelés mentes alternatíva' }
               ],
               microbiology: [
-                { test: 'Vizelet tenyésztés', finding: 'Pozitív', significance: 'Mindig levenni!' },
-                { test: 'Hemokultúra', finding: 'Pozitív (20-30%)', significance: 'Súlyos esetben' }
+                { test: 'Vizelet tenyésztés', finding: '≥10^4 CFU/ml', significance: 'Mindig levenni! (EAU 2025)' },
+                { test: 'Hemokultúra', finding: 'Pozitív', significance: 'Kórházi felvételkor javasolt' }
               ]
             },
             differential: [
@@ -1748,9 +1748,9 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Ciprofloxacin', dose: '2x500-750mg PO', duration: '7 nap', note: 'Ha rezisztencia <10%' },
-                  { drug: 'Levofloxacin', dose: '1x750mg PO', duration: '5 nap', note: 'Alternatíva' },
-                  { drug: 'Ceftibuten/Cefixim', dose: 'PO', duration: '10 nap', note: 'Ha kinolon nem adható' }
+                  { drug: 'Ciprofloxacin', dose: '2x500-750mg PO', duration: '7 nap', note: 'Ha E. coli rezisztencia <10% (EAU 2025)' },
+                  { drug: 'Levofloxacin', dose: '1x750mg PO', duration: '5 nap', note: 'Ha E. coli rezisztencia <10% (EAU 2025)' },
+                  { drug: 'Ceftibuten/Cefixim', dose: 'PO', duration: '10 nap', note: 'Ha kinolon nem adható (kevésbé hatékony)' }
                 ],
                 inpatient: [
                   { drug: 'Ceftriaxon', dose: '1x1-2g IV', duration: '10-14 nap', note: 'Első választás' },
@@ -1770,6 +1770,243 @@ Object.assign(window.diseases, {
               mortality: 'Alacsony (<1%), de urosepsis esetén 10-20%',
               prognostic_scores: ['qSOFA'],
               factors: 'Idős kor, obstrukció, rezisztens kórokozó'
+            }
+          },
+          {
+            id: 'complicated_uti',
+            name: 'Komplikált húgyúti fertőzés',
+            pathogen: { type: 'Baktérium', name: 'E. coli, Enterococcus, Pseudomonas, Klebsiella, Proteus', gram: 'Vegyes', shape: 'Vegyes' },
+            epidemiology: {
+              incidence: 'Gyakori kórházi környezetben és urológiai betegeknél',
+              risk_groups: ['Katéter viselők', 'Férfiak', 'Terhesek', 'Anatómiai/funkcionális rendellenesség', 'Veseelégtelenség', 'Immunszuppresszió'],
+              seasonality: 'Nincs',
+              transmission: 'Felszálló, katéter-asszociált, hematogén'
+            },
+            pathomechanism: {
+              steps: [
+                'Hajlamosító tényező (pl. obstrukció, katéter) jelenléte',
+                'Biofilm képzés (katéteren, kövön)',
+                'Rezisztens kórokozók szelekciója',
+                'Szöveti invázió és perzisztencia'
+              ],
+              virulence_factors: ['Biofilm', 'Multidrog rezisztencia', 'Ureáz (Proteus)']
+            },
+            clinical: {
+              incubation: 'Változó',
+              onset: 'Változó (lehet tünetszegény is)',
+              symptoms: [
+                { name: 'Dysuria, pollakisuria', description: 'Alsó húgyúti tünetek', severity: 'moderate' },
+                { name: 'Láz', description: 'Gyakori szisztémás jel', severity: 'moderate' },
+                { name: 'Deréktáji/alhasi fájdalom', description: 'Érintettségtől függően', severity: 'moderate' },
+                { name: 'Zavaros/bűzös vizelet', description: 'Pyuria', severity: 'mild' },
+                { name: 'Vegyes tünetek', description: 'Dysuria, pollakisuria, láz, derékfájás kombinációja', severity: 'moderate' },
+                { name: 'Szisztémás jelek', description: 'Láz, hidegrázás, tudatzavar (főleg időseknél)', severity: 'severe' },
+                { name: 'Tünetszegény', description: 'Katéteres betegeknél vagy gerincvelő sérülteknél a tünetek hiányozhatnak vagy atípusosak', severity: 'mild' },
+                { name: 'Vizelet elváltozás', description: 'Zavaros, bűzös vizelet (önmagában nem diagnosztikus!)', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Lehet szegényes',
+                'Suprapubicus vagy vesetáji érzékenység',
+                'Katéter jelenléte',
+                'Láz vagy hypothermia (urosepsis)',
+                'Zavartság (idősek)'
+              ],
+              complications: ['Urosepsis', 'Vese tályog', 'Veseelégtelenség', 'Recidíva', 'Katéter elzáródás']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Vizelet tenyésztés', finding: 'Nők: ≥10^5 CFU/ml, Férfiak: ≥10^4 CFU/ml', interpretation: 'Diagnosztikus küszöbértékek (EAU 2025)' },
+                { test: 'Katéteres vizelet', finding: '≥10^4 CFU/ml', interpretation: 'Szignifikáns bakteriuria' },
+                { test: 'Vesefunkció', finding: 'Kreatinin ellenőrzés', interpretation: 'Obstrukció/károsodás' }
+              ],
+              imaging: [
+                { modality: 'CT urográfia', finding: 'Anatómiai/funkcionális rendellenesség', significance: 'KÖTELEZŐ a hajlamosító tényező tisztázására' }
+              ],
+              microbiology: [
+                { test: 'Tenyésztés + Rezisztencia', finding: 'Esszenciális', significance: 'Célzott kezelés alapja' }
+              ]
+            },
+            differential: [
+              { disease: 'Nem komplikált UTI', distinguishing: 'Nincs rizikófaktor/anatómiai hiba' },
+              { disease: 'Prostatitis', distinguishing: 'Rectalis vizsgálat' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Ciprofloxacin', dose: '2x500-750mg PO', duration: '7-14 nap', note: 'Csak ha nincs fluorokinolon kezelés az elmúlt 6 hónapban' },
+                  { drug: 'Levofloxacin', dose: '1x750mg PO', duration: '7-14 nap', note: 'Alternatíva' },
+                  { drug: 'Ceftibuten/Cefixim', dose: 'PO', duration: '10-14 nap', note: 'Ha kinolon nem adható' }
+                ],
+                inpatient: [
+                  { drug: 'Ceftriaxon', dose: '1x1-2g IV', duration: '10-14 nap', note: 'Súlyos esetben' },
+                  { drug: 'Piperacillin/tazobactam', dose: '3x4.5g IV', duration: '10-14 nap', note: 'Pseudomonas gyanú/korábbi AB kezelés' },
+                  { drug: 'Carbapenem (Meropenem)', dose: '3x1g IV', duration: '10-14 nap', note: 'ESBL rizikó vagy szeptikus shock' },
+                  { drug: 'Amikacin/Gentamicin', dose: 'IV', duration: 'Kiegészítésként', note: 'Szinergizmus' }
+                ],
+                icu: [
+                  { drug: 'Széles spektrum (Carbapenem + Amikacin)', dose: 'IV', duration: '', note: 'Urosepsis' }
+                ]
+              },
+              targeted: 'Tenyésztés alapján korrekció. Obstrukció megoldása (katéter csere, stent, nefrosztóma) elengedhetetlen!',
+              supportive: ['Folyadékpótlás', 'Lázcsillapítás'],
+              prevention: ['Katéter care (zárt rendszer, mielőbbi eltávolítás)', 'Obstrukció megszüntetése', 'Aszimptomatikus bakteriuria kezelésének kerülése']
+            },
+            prognosis: {
+              mortality: 'Urosepsis esetén 10-30%',
+              prognostic_scores: ['qSOFA', 'SOFA'],
+              factors: 'Alapbetegség, rezisztencia, forrás kontroll'
+            }
+          },
+          {
+            id: 'prostatitis',
+            name: 'Bakteriális prostatitis',
+            pathogen: { type: 'Baktérium', name: 'E. coli, Klebsiella, Proteus, Enterococcus, Pseudomonas', gram: 'Vegyes', shape: 'Vegyes' },
+            epidemiology: {
+              incidence: 'Férfiak 50%-a tapasztal tüneteket élete során',
+              risk_groups: ['Fiatal/középkorú férfiak', 'Katéterezés', 'Húgyúti beavatkozás (biopszia)', 'HIV', 'Diabetes'],
+              seasonality: 'Nincs',
+              transmission: 'Felszálló (reflux), hematogén, lymphogen, direkt (biopszia)'
+            },
+            pathomechanism: {
+              steps: [
+                'Intraprostaticus vizelet reflux',
+                'Felszálló fertőzés az urethrából',
+                'Direkt inokuláció (pl. transrectalis biopszia)',
+                'Biofilm képzés (krónikus fertőzés fenntartása)'
+              ],
+              virulence_factors: ['Biofilm', 'Anatómiai elhelyezkedés (rossz AB penetráció)']
+            },
+            clinical: {
+              incubation: 'Változó',
+              onset: 'Akut (ABP) vagy Krónikus (CBP)',
+              symptoms: [
+                { name: 'Akut: Láz, hidegrázás', description: 'Szisztémás tünetek, toxikus állapot', severity: 'severe' },
+                { name: 'Gáttájéki/alhasi fájdalom', description: 'Perinealis, herébe, péniszbe sugárzó', severity: 'moderate' },
+                { name: 'Dysuria, pollakisuria', description: 'Irritatív és obstruktív tünetek', severity: 'moderate' },
+                { name: 'Vizeletretenció', description: 'Prosztata ödéma miatt', severity: 'severe' },
+                { name: 'Akut: Szisztémás tünetek', description: 'Hirtelen láz, hidegrázás, izomfájdalom, rossz közérzet', severity: 'severe' },
+                { name: 'Fájdalom', description: 'Perinealis, rectalis, prostata táji, herébe/péniszbe sugárzó', severity: 'moderate' },
+                { name: 'LUTS (Alsó húgyúti tünetek)', description: 'Dysuria, pollakisuria, urgencia', severity: 'moderate' },
+                { name: 'Obstrukció', description: 'Vizeletretenció (duzzadt prosztata miatt)', severity: 'severe' },
+                { name: 'Krónikus tünetek', description: '>3 hónapja fennálló kismedencei fájdalom, visszatérő UTI', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Rectalis digitális vizsgálat (RDV):',
+                'Akut: Duzzadt, meleg, EXTRÉM érzékeny prosztata (Masszázs TILOS - bacteremia veszély!)',
+                'Krónikus: Lehet normál vagy enyhén érzékeny, nem duzzadt'
+              ],
+              complications: ['Prosztata tályog', 'Urosepsis', 'Krónikussá válás', 'Epididymitis', 'Vizeletretenció', 'Szexuális diszfunkció']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Vizelet', finding: 'Pyuria, bakteriuria', interpretation: 'Pozitív' },
+                { test: 'Vérkép/CRP', finding: 'Emelkedett (Akut)', interpretation: 'Szisztémás gyulladás' },
+                { test: 'PSA', finding: 'Emelkedett', interpretation: 'Gyulladás miatt (akut fázisban nem rák diagnosztika!)' }
+              ],
+              imaging: [
+                { modality: 'Transrectalis UH (TRUS)', finding: 'Tályog (hipoechogén terület)', significance: 'Csak ha nem javul a kezelésre vagy tályog gyanú' }
+              ],
+              microbiology: [
+                { test: 'Akut: Vizelet tenyésztés', finding: 'Középsugár vizelet', significance: 'Prosztata masszázs TILOS!' },
+                { test: 'Krónikus: Meares-Stamey teszt', finding: '4 pohár próba vagy 2 pohár próba (masszázs előtt/után)', significance: 'Gold standard (EAU 2025)' }
+              ]
+            },
+            differential: [
+              { disease: 'Cystitis', distinguishing: 'Nincs láz, nincs prosztata érzékenység' },
+              { disease: 'BPH', distinguishing: 'Nincs infekciós jel, lassú progresszió' },
+              { disease: 'Krónikus kismedencei fájdalom szindróma (CPPS)', distinguishing: 'Negatív tenyésztés, krónikus fájdalom' },
+              { disease: 'Prosztatarák', distinguishing: 'PSA, RDV (göbös), biopszia' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Levofloxacin', dose: '1x500-750mg PO', duration: '2-4 hét (Akut), 4-6 hét (Krónikus)', note: 'EAU 2025: Első választás (jó penetráció)' },
+                  { drug: 'Ciprofloxacin', dose: '2x500mg PO', duration: '2-4 hét (Akut), 4-6 hét (Krónikus)', note: 'EAU 2025: Első választás' },
+                  { drug: 'Cotrimoxazol', dose: '2x960mg PO', duration: '4-6 hét', note: 'Alternatíva' }
+                ],
+                inpatient: [
+                  { drug: 'Ceftriaxon', dose: '1-2g IV', duration: '14 nap', note: 'Súlyos akut esetben (majd PO váltás)' },
+                  { drug: 'Piperacillin/tazobactam', dose: '3x4.5g IV', duration: '', note: 'Urosepsis/Pseudomonas gyanú' },
+                  { drug: 'Gentamicin', dose: '5-7mg/kg IV', duration: '', note: 'Kiegészítésként (szinergizmus)' }
+                ],
+                icu: [
+                  { drug: 'Meropenem', dose: '3x1g IV', duration: '', note: 'Szeptikus shock/ESBL' }
+                ]
+              },
+              targeted: 'Fluorokinolonok (első választás krónikusban). Makrolidok (Chlamydia gyanú). Fosfomycin (MDR - vitatott penetráció).',
+              supportive: ['NSAID fájdalomcsillapítás', 'Alfa-blokkoló (Tamsulosin) a tünetek enyhítésére', 'Suprapubicus katéter (retenció esetén, urethralis kerülendő akut gyulladásban!)'],
+              prevention: ['Húgyúti fertőzések korai kezelése', 'Prosztata biopszia profilaxis: Célzottan (rectalis törlet alapján) vagy Fosfomycin/Ceftriaxon (Fluorokinolon kerülendő!)']
+            },
+            prognosis: {
+              mortality: 'Akut: alacsony (de sepsis veszély); Krónikus: életminőséget rontja, nehezen gyógyul (recidíva gyakori)',
+              prognostic_scores: ['Nincs'],
+              factors: 'Biofilm, rezisztencia, anatómia, CPPS átmenet'
+            }
+          },
+          {
+            id: 'asymptomatic_bacteriuria',
+            name: 'Aszimptomatikus bakteriuria',
+            pathogen: { type: 'Baktérium', name: 'E. coli, Enterococcus, GBS, stb.', gram: 'Változó', shape: 'Változó' },
+            epidemiology: {
+              incidence: 'Gyakori (nők 3-5%, idősek 10-50%, katéteresek 100%)',
+              risk_groups: ['Idősek', 'Diabetes', 'Katéter viselés', 'Terhesség'],
+              seasonality: 'Nincs',
+              transmission: 'Endogén kolonizáció'
+            },
+            pathomechanism: {
+              steps: [
+                'Húgyúti kolonizáció virulencia faktorok nélkül',
+                'Kommenszális jellegű viszony a gazdaszervezettel',
+                'Nincs szöveti invázió vagy gyulladásos válasz'
+              ],
+              virulence_factors: ['Csökkent virulencia']
+            },
+            clinical: {
+              incubation: '-',
+              onset: 'Tünetmentes',
+              symptoms: [
+                { name: 'Tünetmentes', description: 'Nincs dysuria, láz, vagy alhasi fájdalom', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Negatív',
+                'Zavaros/bűzös vizelet önmagában nem diagnosztikus és nem igényel kezelést!'
+              ],
+              complications: ['Felesleges antibiotikum kezelés -> rezisztencia', 'Pyelonephritis (csak terhességben/beavatkozásnál rizikó)']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Vizelet tenyésztés', finding: '≥10^5 CFU/ml (ugyanaz a törzs)', interpretation: 'Nők: 2 konzekutív minta, Férfiak: 1 minta (EAU 2025)' },
+                { test: 'Katéteres minta', finding: '≥10^5 CFU/ml', interpretation: 'Egy minta elegendő' },
+                { test: 'Vizelet üledék', finding: 'Pyuria gyakran jelen van', interpretation: 'NEM indikál kezelést tünetek nélkül!' }
+              ],
+              imaging: [
+                { modality: 'Nincs', finding: '-', significance: '-' }
+              ],
+              microbiology: [
+                { test: 'Tenyésztés', finding: 'Pozitív', significance: 'Csak szűrési indikáció esetén (pl. terhesség, urológiai beavatkozás)' }
+              ]
+            },
+            differential: [
+              { disease: 'Cystitis', distinguishing: 'Tünetek jelenléte (dysuria, urgencia)' },
+              { disease: 'Kontamináció', distinguishing: 'Alacsony csíraszám, vegyes flóra' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'NINCS kezelés', dose: '-', duration: '-', note: 'Főszabály (idősek, cukorbetegek, katéteresek esetén sem!)' }
+                ],
+                inpatient: [
+                  { drug: 'NINCS kezelés', dose: '-', duration: '-', note: 'Kivéve indikációk' }
+                ]
+              },
+              targeted: 'Csak indikáció esetén (Terhesség, Urológiai beavatkozás nyálkahártya sérüléssel). Terhességben: Fosfomycin, Nitrofurantoin, Cephalosporin.',
+              supportive: ['Felvilágosítás (vizelet szaga/színe nem indokol AB-t)'],
+              prevention: ['Felesleges szűrés és kezelés kerülése', 'Katéter care']
+            },
+            prognosis: {
+              mortality: 'Nem növeli a mortalitást kezeletlenül sem',
+              prognostic_scores: ['Nincs'],
+              factors: '-'
             }
           }
         ]

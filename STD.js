@@ -29,12 +29,12 @@ Object.assign(window.diseases, {
               incubation: 'Primer: 9-90 nap (átlag 21 nap)',
               onset: 'Fázis-függő',
               symptoms: [
-                { name: 'Primer: fájdalmatlan fekély (chancre)', description: 'Kemény szélű, tiszta alapú, egyetlen', severity: 'moderate' },
-                { name: 'Szekunder: kiütés', description: 'Makulopapuláris, tenyéren/talpon is!, nem viszket', severity: 'moderate' },
-                { name: 'Szekunder: condyloma latum', description: 'Lapos, nedvedző papulák anogenitálisan', severity: 'moderate' },
-                { name: 'Szekunder: szisztémás', description: 'Láz, lymphadenopathia, hepatitis, uveitis', severity: 'moderate' },
-                { name: 'Tercier: gumma', description: 'Granulomás nodulusok (bőr, csont, belső szervek)', severity: 'severe' },
-                { name: 'Neuroszifilisz', description: 'Meningitis, tabes dorsalis, általános paresis', severity: 'severe' }
+                { name: 'Primer: Chancre', description: 'Fájdalmatlan, kemény szélű fekély (60-80%-ban egyetlen)', severity: 'moderate' },
+                { name: 'Szekunder: Kiütés', description: 'Generalizált, nem viszkető (75-100%), tenyér/talp érintettség (60-80%)', severity: 'moderate' },
+                { name: 'Szekunder: Lymphadenopathia', description: 'Generalizált, fájdalmatlan (50-85%)', severity: 'mild' },
+                { name: 'Szekunder: Condyloma lata', description: 'Lapos, nedvedző papulák (10-20%)', severity: 'moderate' },
+                { name: 'Tercier: Gumma', description: 'Granulomás léziók (15% kezeletleneknél)', severity: 'severe' },
+                { name: 'Neuroszifilisz', description: 'Bármely stádiumban! (Tünetes: 5-10%)', severity: 'severe' }
               ],
               physical_exam: [
                 'Primer: fájdalmatlan genitalis/extragenitalis fekély + inguinalis lymphadenopathia',
@@ -42,7 +42,7 @@ Object.assign(window.diseases, {
                 'Latens: tünetmentes',
                 'Tercier: gumma (bőr, csont), szív- vagy idegrendszeri érintettség'
               ],
-              complications: ['Neuroszifilisz', 'Kardiovaszkuláris szifilisz (aortitis)', 'Gumma', 'Congenitalis szifilisz', 'HIV koinfekció fokozott rizik��']
+              complications: ['Neuroszifilisz', 'Kardiovaszkuláris szifilisz (aortitis)', 'Gumma', 'Congenitalis szifilisz', 'HIV koinfekció fokozott rizikó']
             },
             diagnostics: {
               laboratory: [
@@ -114,9 +114,12 @@ Object.assign(window.diseases, {
               incubation: '2-4 hét (akut retrovirális szindróma)',
               onset: 'Akut (ARS) vagy lappangó',
               symptoms: [
-                { name: 'Akut retrovirális szindróma (ARS)', description: 'Láz, pharyngitis, lymphadenopathia, kiütés (mononukleózis-szerű)', severity: 'moderate' },
-                { name: 'Latens fázis', description: 'Tünetmentes (évekig)', severity: 'mild' },
-                { name: 'AIDS', description: 'Súlyos fogyás, láz, opportunista fertőzések, tumorok', severity: 'severe' }
+                { name: 'Akut (ARS): Láz', description: 'Leggyakoribb tünet (>80-90%)', severity: 'moderate' },
+                { name: 'Akut (ARS): Fáradtság', description: 'Kifejezett (>70-90%)', severity: 'mild' },
+                { name: 'Akut (ARS): Kiütés', description: 'Maculopapularis (40-80%)', severity: 'moderate' },
+                { name: 'Akut (ARS): Pharyngitis', description: 'Torokfájás (50-70%)', severity: 'mild' },
+                { name: 'Latens fázis', description: 'Tünetmentes vagy PGL (évekig)', severity: 'mild' },
+                { name: 'AIDS', description: 'Opportunista fertőzések (CD4 <200)', severity: 'severe' }
               ],
               physical_exam: [
                 'Generalizált lymphadenopathia (PGL)',
@@ -143,14 +146,41 @@ Object.assign(window.diseases, {
               { disease: 'Másodlagos szifilisz', distinguishing: 'Szerológia, tenyér/talp kiütés' }
             ],
             therapy: {
+              guidelines: ['EACS Guidelines Version 12.0 (2023)'],
               empirical: {
                 outpatient: [
-                  { drug: 'ART (Antiretrovirális terápia)', dose: 'Kombinált (ált. 1 tabletta/nap)', duration: 'Élethosszig', note: 'Azonnal indítandó (Treat All)' }
+                  { drug: 'Bictegravir / TAF / Emtricitabine', dose: '1 tab (50/25/200mg) PO 1x', duration: 'Élethosszig', note: 'Preferált első vonal (STR). Nem igényel HLA tesztet.' },
+                  { drug: 'Dolutegravir + TDF/TAF + FTC/3TC', dose: 'Kombináció', duration: 'Élethosszig', note: 'Preferált első vonal.' },
+                  { drug: 'Dolutegravir / Lamivudine', dose: '1 tab (50/300mg) PO 1x', duration: 'Élethosszig', note: 'Kettős terápia (ha VL <500.000, nincs HBV, CD4 >200).' }
                 ]
               },
-              targeted: 'Kombinált ART (cART): 2 NRTI + 1 Integráz inhibitor (pl. Tenofovir/Emtricitabine + Dolutegravir).',
-              supportive: ['Opportunista profilaxis (pl. TMP/SMX ha CD4<200)', 'Védőoltások (nem élő!)'],
-              prevention: ['PrEP (Pre-expozíciós profilaxis)', 'PEP (Post-expozíciós profilaxis)', 'Óvszer', 'Tűcsere', 'U=U (Undetectable = Untransmittable)']
+              targeted: 'Azonnali ART indítás (Rapid initiation) javasolt. Cél: undetectable viral load (<50 cp/mL).',
+              supportive: ['Opportunista profilaxis (PCP: TMP/SMX ha CD4<200; Toxoplasma: TMP/SMX ha CD4<100 és IgG+)', 'Védőoltások (Pneumococcus, Influenza, HBV, HAV, HPV, Meningococcus, VZV - élő oltás kontraindikált ha CD4<200)'],
+              prevention: ['PrEP (TDF/FTC vagy TAF/FTC)', 'PEP (ART 28 napig, <48 órán belül kezdve)', 'U=U (Undetectable = Untransmittable)']
+            },
+            guidelines: {
+              diagnosis: [
+                'Szűrés: 4. generációs Ag/Ab kombinált teszt',
+                'Megerősítés: Western Blot vagy Immunoblot',
+                'Baseline: CD4, Viral Load, HLA-B*5701 (ABC adása előtt), rezisztencia vizsgálat (ha elérhető)'
+              ],
+              treatment_indications: [
+                'Treat All: Minden HIV pozitív személynek javasolt az ART, függetlenül a CD4 számtól.',
+                'Sürgősségi ART: Terhesség, akut opportunista fertőzés (kivéve TB meningitis/Cryptococcus meningitis - ott halasztás), akut HIV szindróma.'
+              ],
+              first_line: [
+                '1. Bictegravir/TAF/FTC (STR)',
+                '2. Dolutegravir + TAF/FTC vagy TDF/FTC vagy ABC/3TC (HLA-B*5701 neg)',
+                '3. Dolutegravir/3TC (2-drug regimen) - feltételekkel'
+              ],
+              monitoring: [
+                'Viral Load: 1, 3, 6 hónapnál, majd 6 havonta (ha stabil)',
+                'CD4: Kezdetben 3-6 havonta, stabil esetben ritkábban'
+              ],
+              special_populations: [
+                'Terhesség: DTG alapú rezsimek preferáltak',
+                'TB koinfekció: ART indítása 2-8 héten belül (CD4 függő), Rifampicin interakciók (DTG dózis emelés!)'
+              ]
             },
             prognosis: {
               mortality: 'Kezeléssel közel normál élettartam; Kezeletlen AIDS: halálos',

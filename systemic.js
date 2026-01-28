@@ -29,18 +29,20 @@ Object.assign(window.diseases, {
               incubation: 'Az alapbetegségtől függ',
               onset: 'Órák alatt progrediálhat',
               symptoms: [
-                { name: 'Láz vagy Hypothermia', description: '>38°C vagy <36°C', severity: 'severe' },
-                { name: 'Tachypnoe', description: '>22/perc (qSOFA)', severity: 'moderate' },
-                { name: 'Tudatzavar', description: 'GCS <15 (qSOFA)', severity: 'severe' },
-                { name: 'Hypotonia', description: 'Systolés RR <100 Hgmm (qSOFA)', severity: 'severe' },
-                { name: 'Oliguria', description: '<0.5 ml/kg/óra', severity: 'severe' }
+                { name: 'Láz vagy Hypothermia', description: '>38°C vagy <36°C (betegek 10-20%-a hypothermiás)', severity: 'severe' },
+                { name: 'Tudatzavar', description: 'GCS <15, agitáció, letargia (gyakori korai jel időseknél)', severity: 'severe' },
+                { name: 'Hypotonia', description: 'Systolés RR <100 Hgmm vagy MAP <65 Hgmm', severity: 'severe' },
+                { name: 'Tachypnoe', description: '>22/perc (gyakran az első jel)', severity: 'moderate' },
+                { name: 'Oliguria', description: '<0.5 ml/kg/óra (veseperfúzió csökkenés)', severity: 'severe' },
+                { name: 'Bőrtünetek', description: 'Márványozottság, hideg végtagok (shock jelei)', severity: 'severe' }
               ],
               physical_exam: [
-                'Meleg, kipirult bőr (korai) vagy hűvös, márványozott (késői/shock)',
-                'Tachycardia',
-                'Tachypnoe',
-                'Zavartság',
-                'Kapilláris újratelődési idő >2-3 mp'
+                'Láz vagy hypothermia',
+                'Tachycardia (>90/perc)',
+                'Tachypnoe (>20/perc)',
+                'Megnyúlt kapilláris újratelődési idő (>3 mp)',
+                'Márványozott bőr (mottling score)',
+                'Zavartság'
               ],
               complications: ['Szeptikus shock (vazopresszor igény + laktát >2)', 'ARDS', 'DIC', 'Akut veseelégtelenség', 'Máj elégtelenség', 'Halál']
             },
@@ -113,18 +115,19 @@ Object.assign(window.diseases, {
               incubation: 'Gyors (órák-napok)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Magas láz', description: '>38.9°C', severity: 'severe' },
-                { name: 'Diffúz erythroderma', description: 'Napégés-szerű kiütés', severity: 'moderate' },
-                { name: 'Hypotonia', description: 'Shock, ájulás', severity: 'severe' },
-                { name: 'Hányás, hasmenés', description: 'Gyakori prodroma', severity: 'moderate' },
-                { name: 'Izomfájdalom', description: 'Súlyos myalgia', severity: 'moderate' }
+                { name: 'Magas láz', description: '>38.9°C (hirtelen kezdet)', severity: 'severe' },
+                { name: 'Hypotonia', description: 'Systolés RR <90 Hgmm (felnőtt), orthostaticus szédülés', severity: 'severe' },
+                { name: 'Diffúz erythroderma', description: 'Napégés-szerű kiütés (Staph: >90%, Strep: ritkább)', severity: 'moderate' },
+                { name: 'Multiszisztémás tünetek', description: 'GI (hányás/hasmenés), Izomfájdalom (CK emelkedés), Nyálkahártya hyperaemia', severity: 'severe' },
+                { name: 'Hámlás', description: '1-2 héttel a kezdet után (tenyér/talp)', severity: 'mild' }
               ],
               physical_exam: [
-                'Diffúz vörös kiütés (később hámlik, tenyér/talp)',
-                'Epernyelv (Strep)',
-                'Nyálkahártya hyperaemia',
+                'Diffúz vörös kiütés (erythroderma)',
                 'Hypotonia, tachycardia',
-                'Tudatzavar'
+                'Nyálkahártya hyperaemia (conjunctiva, oropharynx, vagina)',
+                'Epernyelv (főleg Strep TSS)',
+                'Tudatzavar (55%)',
+                'Lokális lágyrész fertőzés jelei (Strep TSS: nekrotizáló fasciitis, myositis)'
               ],
               complications: ['Shock', 'ARDS', 'DIC', 'Veseelégtelenség', 'Végtag nekrózis (Strep)', 'Halál']
             },
@@ -204,16 +207,18 @@ Object.assign(window.diseases, {
               incubation: 'Változó',
               onset: 'Lassú vagy akut',
               symptoms: [
-                { name: 'Perzisztáló láz', description: 'Antibiotikumra nem reagáló', severity: 'severe' },
-                { name: 'Sepszis jelei', description: 'Hypotonia, tachycardia', severity: 'severe' },
-                { name: 'Endophthalmitis', description: 'Látászavar, szemfájdalom', severity: 'moderate' },
-                { name: 'Hepatosplenikus', description: 'Hasi fájdalom, májenzim emelkedés', severity: 'moderate' }
+                { name: 'Perzisztáló láz', description: 'Antibiotikumra nem reagáló láz (gyakori)', severity: 'severe' },
+                { name: 'Sepszis/Szeptikus shock', description: 'Hypotonia, tachycardia, tudatzavar', severity: 'severe' },
+                { name: 'Endophthalmitis', description: 'Látászavar, szemfájdalom (10-20% candidemia esetén)', severity: 'moderate' },
+                { name: 'Bőrtünetek', description: 'Erythemás papulák/pustulák (5-10%)', severity: 'mild' },
+                { name: 'Hepatosplenikus candidiasis', description: 'Láz, hasi fájdalom neutropenia után', severity: 'moderate' }
               ],
               physical_exam: [
-                'Láz',
-                'Hemodinamikai instabilitás',
-                'Retina vizsgálat (fundoscopia): fehér gócok',
-                'Bőrtünetek (ritka disszeminált esetben)'
+                'Láz, hemodinamikai instabilitás (sepsis/shock jelei)',
+                'Szemfenéki vizsgálat (kötelező!): Fehér, vattaszerű gócok (Roth-folt), chorioretinitis',
+                'Bőrtünetek: Erythemás papulák vagy pustulák',
+                'Új szívzörej (endocarditis gyanú)',
+                'Izomérzékenység (myositis)'
               ],
               complications: ['Szeptikus shock', 'Endophthalmitis (vakság)', 'Endocarditis', 'Osteomyelitis', 'Halál']
             },
@@ -283,17 +288,18 @@ Object.assign(window.diseases, {
               incubation: 'Napok-hetek (immunszuppresszió alatt)',
               onset: 'Szubakut/Akut',
               symptoms: [
-                { name: 'Láz', description: 'Antibiotikum rezisztens', severity: 'severe' },
-                { name: 'Pleurális fájdalom', description: 'Mellkasi szúró fájdalom', severity: 'moderate' },
-                { name: 'Haemoptoe', description: 'Véres köpet (angioinvázió)', severity: 'severe' },
-                { name: 'Dyspnoe', description: 'Nehézlégzés', severity: 'moderate' }
+                { name: 'Láz', description: 'Antibiotikumra nem reagáló láz (leggyakoribb jel neutropéniában)', severity: 'severe' },
+                { name: 'Köhögés', description: 'Száraz vagy produktív köhögés', severity: 'moderate' },
+                { name: 'Pleurális mellkasi fájdalom', description: 'Éles, szúró fájdalom (angioinvázió jele)', severity: 'moderate' },
+                { name: 'Haemoptysis', description: 'Véres köpet (késői, súlyos jel)', severity: 'severe' },
+                { name: 'Sinusitis tünetek', description: 'Arcfájdalom, fekete orrváladék (rinoszinuszitisz forma)', severity: 'moderate' }
               ],
               physical_exam: [
-                'Láz',
-                'Pleurális dörzszörej',
-                'Tüdő infiltrátum jelei',
-                'Melléküreg érzékenység (sinusitis)',
-                'Neurológiai jelek (agyi tályog)'
+                'Láz, tachypnoe',
+                'Tüdő felett hallgatózva lehet szegényes lelet, vagy pleurális dörzszörej',
+                'Orr/melléküreg vizsgálat: Fekete, nekrotikus pörk az orrkagylón (invazív sinusitis)',
+                'Fokális neurológiai jelek (agyi disszemináció)',
+                'Bőrtünetek (nekrotikus fekélyek disszeminált esetben)'
               ],
               complications: ['Masszív tüdővérzés', 'Agyi tályog', 'Disseminált aspergillosis', 'Halál']
             },

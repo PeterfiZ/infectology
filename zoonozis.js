@@ -29,12 +29,12 @@ Object.assign(window.diseases, {
               incubation: '2-30 nap (átlag 7-12 nap)',
               onset: 'Bifázisos lefolyás',
               symptoms: [
-                { name: 'Hirtelen láz', description: '39-40°C, hidegrázás', severity: 'severe' },
-                { name: 'Súlyos fejfájás', description: 'Frontális, retrobulbaris fájdalom', severity: 'severe' },
-                { name: 'Myalgia', description: 'Vádli és hát kifejezett fájdalma (jellemző!)', severity: 'severe' },
-                { name: 'Conjunctivalis suffusio', description: 'Kötőhártya vérbőség, icterus NÉLKÜL (korai)', severity: 'moderate' },
-                { name: 'Icterus', description: 'Weil-betegség (10-15%)', severity: 'severe' },
-                { name: 'Vérzéses manifesztációk', description: 'Petechiae, epistaxis, haemoptoe', severity: 'severe' }
+                { name: 'Hirtelen láz', description: '>95%-ban jelen van (39-40°C), hidegrázással', severity: 'severe' },
+                { name: 'Fejfájás', description: '>95%-ban, súlyos, frontális/retrobulbaris', severity: 'severe' },
+                { name: 'Myalgia', description: '>80%-ban, főleg vádli és lumbális régió (jellemző!)', severity: 'severe' },
+                { name: 'Conjunctivalis suffusio', description: '30-40%-ban, de nagyon specifikus (icterus nélkül)', severity: 'moderate' },
+                { name: 'Icterus', description: '5-10%-ban (Weil-betegség)', severity: 'severe' },
+                { name: 'Vérzéses manifesztációk', description: '30-40%-ban súlyos formánál (tüdővérzés, petechiae)', severity: 'severe' }
               ],
               physical_exam: [
                 'Magas láz, tachycardia',
@@ -124,13 +124,13 @@ Object.assign(window.diseases, {
               incubation: '1-8 hét (átlag 2-4 hét)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: '39-41°C, hirtelen kezdet', severity: 'severe' },
-                { name: 'Fejfájás', description: 'Intenzív, retrobulbaris', severity: 'severe' },
-                { name: 'Hasi/hát fájdalom', description: 'Vesefájdalom (HFRS)', severity: 'severe' },
-                { name: 'Oliguria/anuria', description: 'Akut veseelégtelenség (HFRS)', severity: 'severe' },
-                { name: 'Dyspnoe', description: 'Gyorsan progrediáló (HPS)', severity: 'severe' },
-                { name: 'Myalgia', description: 'Vádli, derék', severity: 'moderate' },
-                { name: 'Látászavar', description: 'Homályos látás', severity: 'moderate' }
+                { name: 'Láz', description: '100%-ban, hirtelen kezdet (39-41°C)', severity: 'severe' },
+                { name: 'Myalgia', description: '85-100%-ban (hát, comb)', severity: 'moderate' },
+                { name: 'Fejfájás', description: '>90%-ban', severity: 'severe' },
+                { name: 'Hasi fájdalom', description: '30-50%-ban (HFRS-ben gyakoribb)', severity: 'severe' },
+                { name: 'Látászavar', description: '20-30%-ban (HFRS - átmeneti myopia)', severity: 'moderate' },
+                { name: 'HPS tünetek', description: 'Köhögés, dyspnoe (>90% a prodroma végén)', severity: 'severe' },
+                { name: 'HFRS tünetek', description: 'Oliguria/anuria, vesetáji fájdalom', severity: 'severe' }
               ],
               physical_exam: [
                 'Magas láz',
@@ -218,12 +218,12 @@ Object.assign(window.diseases, {
               incubation: '3-30 nap (átlag 7 nap)',
               onset: 'Stádiumos',
               symptoms: [
-                { name: 'Erythema migrans (EM)', description: 'Terjeszkedő "céltábla" kiütés (70-80%)', severity: 'moderate' },
-                { name: 'Influenza-szerű tünetek', description: 'Láz, fáradtság, myalgia, fejfájás', severity: 'mild' },
-                { name: 'Idegrendszeri', description: 'Facialis paresis (Bell-bénulás), meningitis, radiculopathia', severity: 'severe' },
-                { name: 'Kardiális', description: 'AV blokk (ritkán)', severity: 'severe' },
-                { name: 'Arthritis', description: 'Krónikus, térd dominál (60%)', severity: 'moderate' },
-                { name: 'Acrodermatitis chronica atrophicans', description: 'Késői bőrtünet (Európa)', severity: 'mild' }
+                { name: 'Erythema migrans (EM)', description: '70-80%-ban megjelenik (céltábla vagy homogén)', severity: 'moderate' },
+                { name: 'Általános tünetek', description: 'Láz, fáradtság, fejfájás (korai fázisban gyakori)', severity: 'mild' },
+                { name: 'Neuroborreliosis', description: '10-15% (kezeletleneknél): Facialis paresis, meningitis, radiculopathia', severity: 'severe' },
+                { name: 'Lyme Carditis', description: '1-5% (kezeletleneknél): AV blokk', severity: 'severe' },
+                { name: 'Lyme Arthritis', description: '60% (kezeletleneknél, USA): Térdízületi duzzanat', severity: 'moderate' },
+                { name: 'Borrelia lymphocytoma', description: 'Ritka (<1%), fülcimpa/emlőbimbó (Európa)', severity: 'mild' }
               ],
               physical_exam: [
                 'Korai lokalizált: EM (átmérő 5-70cm, gyakran centrális clearance)',
@@ -310,12 +310,12 @@ Object.assign(window.diseases, {
               incubation: '3-5 nap (1-14 nap)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: '39-41°C, hirtelen', severity: 'severe' },
-                { name: 'Bőrfekély', description: 'Fájdalmas papula → pusztula → fekély (ulceroglandularis)', severity: 'moderate' },
-                { name: 'Lymphadenitis', description: 'Regionális, nagyon fájdalmas, fluktualó', severity: 'severe' },
-                { name: 'Tífuszszerű tünetek', description: 'Typhoidealis forma: láz, prostráció, NINCS lokális lézió', severity: 'severe' },
-                { name: 'Pneumonia', description: 'Pulmonalis forma: köhögés, mellkasi fájdalom', severity: 'severe' },
-                { name: 'Oculoglandularis', description: 'Conjunctivitis + preauricularis lymphadenitis', severity: 'moderate' }
+                { name: 'Láz', description: '>90%-ban, hirtelen kezdet', severity: 'severe' },
+                { name: 'Ulceroglandularis', description: '75-85%-ban: Fájdalmas fekély + regionális nyirokcsomó', severity: 'moderate' },
+                { name: 'Glandularis', description: '5-10%-ban: Csak nyirokcsomó duzzanat (fekély nélkül)', severity: 'moderate' },
+                { name: 'Typhoidealis', description: '5-15%-ban: Szisztémás lázas állapot, lokalizáció nélkül', severity: 'severe' },
+                { name: 'Pneumonia', description: '30-80%-a a typhoidealis eseteknek (vagy primer inhaláció)', severity: 'severe' },
+                { name: 'Oculoglandularis', description: '1-2%-ban: Conjunctivitis + nyirokcsomó', severity: 'moderate' }
               ],
               physical_exam: [
                 'Ulceroglandularis (75%): bőrfekély (fekete eschar) + tender nyirokcsomó',
@@ -402,12 +402,12 @@ Object.assign(window.diseases, {
               incubation: '3-10 nap (papula), 1-3 hét (lymphadenitis)',
               onset: 'Szubakut',
               symptoms: [
-                { name: 'Inokulációs lézió', description: 'Papula/pusztula a karcolás helyén (50%)', severity: 'mild' },
-                { name: 'Regionális lymphadenitis', description: 'Fájdalmas nyirokcsomó megnagyobbodás (elsődleges jel)', severity: 'moderate' },
-                { name: 'Láz', description: 'Enyhe-közepes (30%)', severity: 'mild' },
-                { name: 'Fejfájás, fáradtság', description: 'Általános tünetek', severity: 'mild' },
-                { name: 'Parinaud oculoglandularis szindróma', description: 'Conjunctivitis + preauricularis lymphadenitis (5%)', severity: 'moderate' },
-                { name: 'Encephalopathia', description: 'Ritka (2%), gyerekeknél', severity: 'severe' }
+                { name: 'Lymphadenopathia', description: '85-90%-ban: Regionális, fájdalmas nyirokcsomó duzzanat', severity: 'moderate' },
+                { name: 'Inokulációs lézió', description: '25-60%-ban: Papula/pusztula a karcolás helyén', severity: 'mild' },
+                { name: 'Láz', description: '30-50%-ban, általában enyhe', severity: 'mild' },
+                { name: 'Szisztémás tünetek', description: 'Fáradtság, rossz közérzet (50%)', severity: 'mild' },
+                { name: 'Parinaud szindróma', description: '2-8%-ban: Conjunctivitis + preauricularis csomó', severity: 'moderate' },
+                { name: 'Neuroretinitis', description: '1-2%-ban: Egyoldali látásvesztés', severity: 'severe' }
               ],
               physical_exam: [
                 'Papula/pusztula a karcolás helyén (gyógyul, hegesedik)',
@@ -494,10 +494,10 @@ Object.assign(window.diseases, {
               incubation: '2-3 hét',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: 'Magas, elhúzódó', severity: 'severe' },
-                { name: 'Fejfájás', description: 'Retrobulbaris', severity: 'severe' },
-                { name: 'Hepatitis', description: 'Jobb bordaív alatti fájdalom', severity: 'moderate' },
-                { name: 'Pneumonia', description: 'Atípusos, enyhe köhögés', severity: 'moderate' }
+                { name: 'Akut Q-láz', description: 'Influenza-szerű: Láz, fáradtság, súlyos fejfájás (>90% tüneteseknél)', severity: 'severe' },
+                { name: 'Hepatitis', description: '60-75%-ban (granulomás), hepatomegalia', severity: 'moderate' },
+                { name: 'Pneumonia', description: '30-50%-ban (atípusos), gyakran enyhe köhögés', severity: 'moderate' },
+                { name: 'Krónikus Q-láz', description: '<5% akut eset után; Endocarditis (60-70% krónikusoknál)', severity: 'severe' }
               ],
               physical_exam: [
                 'Hepatomegalia',
@@ -571,11 +571,11 @@ Object.assign(window.diseases, {
               incubation: '1-3 hónap (napoktól évekig)',
               onset: 'Prodroma után akut neurológiai',
               symptoms: [
-                { name: 'Prodroma', description: 'Láz, fájdalom/zsibbadás a harapás helyén', severity: 'moderate' },
-                { name: 'Hydrophobia', description: 'Gégegörcs víz látványára/iváskor', severity: 'severe' },
-                { name: 'Agitáció', description: 'Dühöngő forma (80%)', severity: 'severe' },
-                { name: 'Bénulás', description: 'Csendes forma (20%)', severity: 'severe' },
-                { name: 'Kóma', description: 'Végstádium', severity: 'severe' }
+                { name: 'Prodroma', description: 'Paresthesia/fájdalom a harapás helyén (50-80%)', severity: 'moderate' },
+                { name: 'Dühöngő (Encephalitises) forma', description: '80%-ban: Hydrophobia (50-80%), aerophobia, agitáció', severity: 'severe' },
+                { name: 'Csendes (Paralitikus) forma', description: '20%-ban: Ascendáló bénulás (Guillain-Barré szerű)', severity: 'severe' },
+                { name: 'Hydrophobia', description: 'Gégegörcs iváskor/víz látványára (pathognomikus)', severity: 'severe' },
+                { name: 'Kóma', description: 'Végstádium, halál', severity: 'severe' }
               ],
               physical_exam: [
                 'Autonóm instabilitás (hypersalivatio, piloerectio)',
@@ -648,10 +648,10 @@ Object.assign(window.diseases, {
               incubation: 'Bőr: 1-7 nap; Inhalációs: 1-60 nap',
               onset: 'Formától függ',
               symptoms: [
-                { name: 'Bőr anthrax', description: 'Papula → vezikula → fekete pörk (eschar), fájdalmatlan', severity: 'moderate' },
-                { name: 'Inhalációs', description: 'Influenzaszerű → súlyos dyspnoe, shock', severity: 'severe' },
-                { name: 'GI anthrax', description: 'Hasi fájdalom, véres hasmenés, hányás', severity: 'severe' },
-                { name: 'Meningitis', description: 'Hemorrhagiás', severity: 'severe' }
+                { name: 'Bőr anthrax', description: '95% természetes eseteknek; Fájdalmatlan fekete pörk (eschar)', severity: 'moderate' },
+                { name: 'Inhalációs anthrax', description: 'Ritka; Bifázisos: influenza-szerű → fulmináns mediastinitis/shock', severity: 'severe' },
+                { name: 'GI anthrax', description: 'Ritka; Hasi fájdalom, véres hasmenés, ascites', severity: 'severe' },
+                { name: 'Meningitis', description: 'Hemorrhagiás meningitis (bármely forma szövődménye lehet)', severity: 'severe' }
               ],
               physical_exam: [
                 'Malignus pustula (fekete pörk, ödémás udvar)',

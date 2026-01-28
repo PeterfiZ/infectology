@@ -28,16 +28,18 @@ Object.assign(window.diseases, {
           incubation: '4-10 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Láz', description: 'Magas, hirtelen', severity: 'severe' },
-            { name: 'Csonttörő láz', description: 'Súlyos izom- és ízületi fájdalom', severity: 'severe' },
-            { name: 'Retrobulbaris fájdalom', description: 'Szem mögötti fájdalom', severity: 'moderate' },
-            { name: 'Kiütés', description: 'Maculopapularis', severity: 'moderate' }
+            { name: 'Láz', description: 'Magas, hirtelen (>99% tüneteseknél)', severity: 'severe' },
+            { name: 'Csonttörő láz', description: 'Súlyos izom- és ízületi fájdalom (>90%)', severity: 'severe' },
+            { name: 'Fejfájás/Retrobulbaris fájdalom', description: 'Szem mögötti fájdalom (>90%)', severity: 'moderate' },
+            { name: 'Kiütés', description: 'Maculopapularis (50-80%), láz után jelenik meg', severity: 'moderate' },
+            { name: 'Hányinger/Hányás', description: 'Gyakori figyelmeztető jel lehet', severity: 'moderate' }
           ],
           physical_exam: [
             'Láz',
-            'Kiütés',
+            'Kiütés ("fehér szigetek a vörös tengerben")',
             'Tourniquet teszt pozitív (kapilláris fragilitás)',
-            'Hepatomegalia'
+            'Hepatomegalia',
+            'Figyelmeztető jelek: hasi fájdalom, perzisztáló hányás, folyadékgyülem'
           ],
           complications: ['Dengue hemorrhagiás láz (DHF)', 'Dengue shock szindróma (DSS)', 'Súlyos vérzés']
         },
@@ -85,10 +87,11 @@ Object.assign(window.diseases, {
           incubation: '3-14 nap',
           onset: 'Enyhe',
           symptoms: [
-            { name: 'Láz', description: 'Alacsony', severity: 'mild' },
-            { name: 'Kiütés', description: 'Maculopapularis, viszkető', severity: 'moderate' },
-            { name: 'Conjunctivitis', description: 'Nem gennyes', severity: 'moderate' },
-            { name: 'Arthralgia', description: 'Kisízületek', severity: 'mild' }
+            { name: 'Tünetmentes', description: 'Az esetek 80%-a tünetmentes', severity: 'mild' },
+            { name: 'Kiütés', description: 'Maculopapularis, viszkető (>90% tüneteseknél)', severity: 'moderate' },
+            { name: 'Láz', description: 'Alacsony (65%), gyakran hiányzik', severity: 'mild' },
+            { name: 'Arthralgia', description: 'Kisízületek (65%), ödémával', severity: 'mild' },
+            { name: 'Conjunctivitis', description: 'Nem gennyes (55%)', severity: 'moderate' }
           ],
           physical_exam: ['Kiütés', 'Conjunctivitis', 'Láz'],
           complications: ['Guillain-Barré szindróma', 'Congenitalis Zika szindróma (microcephalia)']
@@ -128,12 +131,12 @@ Object.assign(window.diseases, {
           incubation: '3-7 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Láz', description: 'Magas', severity: 'severe' },
-            { name: 'Polyarthralgia', description: 'Súlyos, bénító ízületi fájdalom ("görnyedt")', severity: 'severe' },
-            { name: 'Kiütés', description: 'Maculopapularis', severity: 'moderate' }
+            { name: 'Láz és ízületi fájdalom', description: 'Hirtelen magas láz és súlyos, szimmetrikus polyarthralgia (>95%)', severity: 'severe' },
+            { name: 'Kiütés', description: 'Maculopapularis kiütés (50-75%)', severity: 'moderate' },
+            { name: 'Egyéb tünetek', description: 'Fejfájás, myalgia, hányinger', severity: 'mild' }
           ],
-          physical_exam: ['Ízületi duzzanat/érzékenység', 'Láz', 'Kiütés'],
-          complications: ['Krónikus arthritis (hónapokig/évekig tarthat)']
+          physical_exam: ['Szimmetrikus polyarthritis/tenosynovitis (kéz, csukló, boka)', 'Láz', 'Maculopapularis kiütés'],
+          complications: ['Krónikus, perzisztáló arthritis (30-60%-ban, főleg időseknél)', 'Ritkán: myocarditis, encephalitis']
         },
         diagnostics: {
           laboratory: [{ test: 'Vérkép', finding: 'Lymphopenia', interpretation: '-' }],
