@@ -1,0 +1,27 @@
+{
+  "name": "Infektológia Tankönyv",
+  "short_name": "Infekto",
+  "description": "Interaktív infektológia tankönyv orvostanhallgatók számára.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#065f46",
+  "icons": [
+    {
+      "src": "bacterium-icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "bacterium-icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "maskable_bacterium_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Baktérium Ikon Generátor</title>
+    <style>
+        body { font-family: sans-serif; background: #333; color: white; text-align: center; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        canvas { border: 2px solid #666; margin: 20px; max-width: 300px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        button { padding: 12px 24px; font-size: 16px; cursor: pointer; background: #0891b2; color: white; border: none; border-radius: 8px; margin: 10px; transition: background 0.2s; }
+        button:hover { background: #0e7490; }
+        .controls { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Baktérium Ikon Generátor</h1>
+    <p>Válaszd ki a színeket, majd kattints a gombokra az ikonok letöltéséhez.</p>
+    
+    <div class="controls">
+        <label for="bg-color">Háttérszín:</label>
+        <input type="color" id="bg-color" value="#0f172a">
+        <label for="line-color" style="margin-left: 20px;">Baktérium színe:</label>
+        <input type="color" id="line-color" value="#38bdf8">
+    </div>
+
+    <canvas id="canvas"></canvas>
+    
+    <div>
+        <button onclick="downloadIcon('bacterium-icon', 192, false)">bacterium-192.png</button>
+        <button onclick="downloadIcon('bacterium-icon', 512, false)">bacterium-512.png</button>
+        <button onclick="downloadIcon('maskable_bacterium_icon', 512, true)">maskable_bacterium_icon_x512.png</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const bgColorInput = document.getElementById('bg-color');
+        const lineColorInput = document.getElementById('line-color');
+
+        function drawIcon(size, isMaskable) {
+            canvas.width = size;
+            canvas.height = size;
+
+            // Háttér
+            ctx.fillStyle = bgColorInput.value;
+            ctx.fillRect(0, 0, size, size);
+
+            const scale = isMaskable ? 0.7 : 0.8;
+            const center = size / 2;
+            const bodyWidth = size * 0.4 * scale;
+            const bodyHeight = size * 0.2 * scale;
+            
+            ctx.fillStyle = lineColorInput.value;
+            ctx.strokeStyle = lineColorInput.value;
+            ctx.lineWidth = size * 0.03 * scale;
+
+            // Test
+            ctx.beginPath();
+            ctx.arc(center - bodyWidth / 2, center, bodyHeight / 2, Math.PI / 2, -Math.PI / 2);
+            ctx.arc(center + bodyWidth / 2, center, bodyHeight / 2, -Math.PI / 2, Math.PI / 2);
+            ctx.closePath();
+            ctx.fill();
+
+            // Flagellumok
+            ctx.beginPath();
+            const flagellumStartX = center - bodyWidth / 2 - bodyHeight / 2;
+            ctx.moveTo(flagellumStartX, center);
+            ctx.quadraticCurveTo(flagellumStartX - size * 0.1, center - size * 0.1, flagellumStartX - size * 0.2, center);
+            ctx.moveTo(flagellumStartX, center);
+            ctx.quadraticCurveTo(flagellumStartX - size * 0.15, center, flagellumStartX - size * 0.25, center + size * 0.1);
+            ctx.moveTo(flagellumStartX, center);
+            ctx.quadraticCurveTo(flagellumStartX - size * 0.15, center, flagellumStartX - size * 0.25, center - size * 0.1);
+            ctx.stroke();
+        }
+
+        function downloadIcon(baseName, size, isMaskable) {
+            drawIcon(size, isMaskable);
+            const link = document.createElement('a');
+            link.download = `${baseName}_x${size}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        bgColorInput.addEventListener('input', () => drawIcon(512, true));
+        lineColorInput.addEventListener('input', () => drawIcon(512, true));
+
+        drawIcon(512, true); // Kezdő nézet a maszkolható
+    </script>
+</body>
+</html>
