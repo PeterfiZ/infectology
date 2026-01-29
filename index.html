@@ -15,10 +15,11 @@
     .font-sans-book { font-family: 'Source Sans 3', system-ui, sans-serif; }
     
     .disease-card {
-      transition: all 0.3s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .disease-card:hover {
       transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
     
     .tab-btn.active {
@@ -86,6 +87,11 @@
     .category-pill.active {
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
+    
+    .category-item.dragging {
+      opacity: 0.5;
+      cursor: grabbing;
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <!-- <script src="_sdk/data_sdk.js" type="text/javascript"></script> -->
@@ -103,19 +109,27 @@
        <div>
         <h1 id="main-title" class="font-serif-book text-2xl font-bold tracking-tight">Infektológia Tankönyv</h1>
         <p id="main-subtitle" class="text-emerald-100 text-sm mt-0.5">Orvostanhallgatók számára</p>
+        <div class="text-emerald-200 text-xs mt-1">
+         <p>Írta és szerkesztette: Dr. Péterfi Zoltán</p>
+         <p>Copyright: Dr. Péterfi Zoltán | Verzió: 1.0</p>
+        </div>
        </div>
       </div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-4">
+       <a href="print.html" target="_blank" id="export-pdf-btn" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2" title="A teljes tartalom nyomtatása/mentése PDF-be">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        <span>Export PDF</span>
+       </a>
        <div class="relative"><input type="text" id="search-input" placeholder="Keresés betegségek között..." class="w-64 px-4 py-2 pl-10 rounded-lg bg-white/15 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/25 focus:border-white/40 transition-all text-sm">
-        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-white/60" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
+        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-white/60" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
        </div>
       </div>
      </div>
     </div>
-   </header><!-- Main Content -->
+   </header>
+   <!-- Main Content -->
    <div class="flex-1 flex overflow-hidden"><!-- Sidebar - Disease Categories -->
-    <aside id="sidebar" class="w-72 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out">
+    <aside id="sidebar" class="w-56 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out">
      <div class="h-14 flex items-center justify-between px-4 border-b border-slate-100 overflow-hidden">
       <h2 id="sidebar-title" class="font-semibold text-slate-700 text-sm uppercase tracking-wider whitespace-nowrap transition-all duration-300">Betegségcsoportok</h2>
       <button onclick="toggleSidebar()" class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0" title="Oldalsáv váltása">
@@ -204,14 +218,17 @@
     // Render categories
     function renderCategories() {
       categoryNav.innerHTML = Object.entries(diseases).map(([key, category]) => `
-        <button onclick="selectCategory('${key}')" 
-          class="category-pill w-full flex items-center ${isSidebarCollapsed ? 'justify-center px-2' : 'gap-3 px-4 text-left'} py-3 rounded-xl transition-all ${selectedCategory === key ? 'active text-white' : 'bg-slate-50 hover:bg-slate-100 text-slate-700'}"
-          style="${selectedCategory === key ? `background: ${category.color}` : ''}"
-          title="${category.name}">
-          <span class="text-2xl">${category.icon}</span>
-          ${!isSidebarCollapsed ? `<span class="font-medium text-sm leading-tight">${category.name}</span>` : ''}
-        </button>
+        <div class="category-item" draggable="true" data-id="${key}">
+          <button onclick="selectCategory('${key}')" 
+            class="category-pill w-full flex items-center ${isSidebarCollapsed ? 'justify-center px-2' : 'gap-3 px-4 text-left'} py-3 rounded-xl transition-all ${selectedCategory === key ? 'active text-white' : 'bg-slate-50 hover:bg-slate-100 text-slate-700'}"
+            style="${selectedCategory === key ? `background: ${category.color}` : ''}"
+            title="${category.name}">
+            <span class="text-2xl pointer-events-none">${category.icon}</span>
+            ${!isSidebarCollapsed ? `<span class="font-medium text-sm leading-tight pointer-events-none">${category.name}</span>` : ''}
+          </button>
+        </div>
       `).join('');
+      setupDragAndDrop();
     }
 
     // Select category
@@ -233,16 +250,67 @@
       const sidebarTitle = document.getElementById('sidebar-title');
       
       if (isSidebarCollapsed) {
-        sidebar.classList.remove('w-72');
+        sidebar.classList.remove('w-56');
         sidebar.classList.add('w-20');
         sidebarTitle.classList.add('opacity-0', 'w-0', 'px-0');
       } else {
         sidebar.classList.remove('w-20');
-        sidebar.classList.add('w-72');
+        sidebar.classList.add('w-56');
         sidebarTitle.classList.remove('opacity-0', 'w-0', 'px-0');
       }
       renderCategories();
     };
+
+    // Drag and Drop functionality
+    function setupDragAndDrop() {
+      const draggables = document.querySelectorAll('.category-item');
+      const container = document.getElementById('category-nav');
+
+      draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', () => {
+          draggable.classList.add('dragging');
+        });
+
+        draggable.addEventListener('dragend', () => {
+          draggable.classList.remove('dragging');
+          updateDiseaseOrder();
+        });
+      });
+
+      container.addEventListener('dragover', e => {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(container, e.clientY);
+        const draggable = document.querySelector('.dragging');
+        if (afterElement == null) {
+          container.appendChild(draggable);
+        } else {
+          container.insertBefore(draggable, afterElement);
+        }
+      });
+    }
+
+    function getDragAfterElement(container, y) {
+      const draggableElements = [...container.querySelectorAll('.category-item:not(.dragging)')];
+
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    function updateDiseaseOrder() {
+      const newOrder = [...document.querySelectorAll('.category-item')].map(el => el.dataset.id);
+      const newDiseases = {};
+      newOrder.forEach(key => {
+        if (window.diseases[key]) newDiseases[key] = window.diseases[key];
+      });
+      window.diseases = newDiseases;
+    }
 
     // Render disease list
     function renderDiseaseList() {
@@ -259,17 +327,17 @@
 
       diseaseList.innerHTML = category.diseases.map(disease => `
         <button onclick="selectDisease('${disease.id}')" 
-          class="disease-card w-full text-left p-4 rounded-xl border-2 transition-all ${selectedDisease === disease.id ? 'border-emerald-500 bg-emerald-50' : 'border-slate-200 bg-white hover:border-slate-300'}">
-          <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white flex-shrink-0" style="background: ${category.color}">
+          class="disease-card w-full text-left p-3.5 rounded-xl border transition-all group ${selectedDisease === disease.id ? 'border-emerald-500 bg-emerald-50 shadow-md ring-1 ring-emerald-500/20' : 'border-slate-100 bg-white shadow-sm hover:border-emerald-200'}">
+          <div class="flex items-start gap-3.5">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-sm transition-transform group-hover:scale-105" style="background: ${category.color}">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
                 <circle cx="12" cy="12" r="3"/>
               </svg>
             </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="font-semibold text-slate-800 text-sm leading-tight">${disease.name}</h3>
-              <p class="text-xs text-slate-500 mt-1 truncate">${disease.pathogen.name}</p>
+            <div class="flex-1 min-w-0 py-0.5">
+              <h3 class="font-semibold text-slate-800 text-sm leading-tight group-hover:text-emerald-700 transition-colors">${disease.name}</h3>
+              <p class="text-xs text-slate-500 mt-1 truncate group-hover:text-slate-600 transition-colors">${disease.pathogen.name}</p>
             </div>
           </div>
         </button>
@@ -835,9 +903,9 @@
       // Display results
       diseaseList.innerHTML = results.length ? results.map(disease => `
         <button onclick="selectCategory('${disease.categoryKey}'); selectDisease('${disease.id}')" 
-          class="disease-card w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 transition-all">
-          <h3 class="font-semibold text-slate-800 text-sm">${disease.name}</h3>
-          <p class="text-xs text-slate-500 mt-1">${disease.pathogen.name}</p>
+          class="disease-card w-full text-left p-3.5 rounded-xl border border-slate-100 bg-white shadow-sm hover:border-emerald-200 transition-all group">
+          <h3 class="font-semibold text-slate-800 text-sm group-hover:text-emerald-700 transition-colors">${disease.name}</h3>
+          <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-600 transition-colors">${disease.pathogen.name}</p>
           <p class="text-xs text-emerald-600 mt-1">${disease.categoryName}</p>
         </button>
       `).join('') : '<p class="text-slate-500 text-sm text-center py-8">Nincs találat</p>';

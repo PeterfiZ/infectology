@@ -23,7 +23,7 @@ Object.assign(window.diseases, {
         diseases: [
           {
             id: 'bacterial_meningitis',
-            name: 'Bakteriális meningitis',
+            name: 'Bakteriális meningitis (Empirikus)',
             pathogen: { type: 'Baktérium', name: 'N. meningitidis, S. pneumoniae, L. monocytogenes', gram: 'Vegyes', shape: 'Kórokozó függő' },
             epidemiology: {
               incidence: '2-5/100,000 fő/év fejlett országokban',
@@ -46,12 +46,13 @@ Object.assign(window.diseases, {
               incubation: '2-10 nap (meningococcus), rövidebb (pneumococcus)',
               onset: 'Akut, órák-napok',
               symptoms: [
-                { name: 'Klasszikus triász', description: 'Láz, tarkókötöttség, tudatzavar (44% együtt, de 95%-ban legalább 2 a 4 fő tünetből)', severity: 'severe' },
+                { name: 'Klasszikus tünetek', description: 'Láz, fejfájás, tarkókötöttség, tudatzavar (a triász nem mindig van jelen!)', severity: 'severe' },
+                { name: 'Korai "Red Flag" jelek (NICE)', description: 'Láb/izomfájdalom, hideg végtagok, márványozott bőr (korai szepszis jelek!)', severity: 'severe' },
+                { name: 'Kiütés', description: 'Nem halványuló (non-blanching) petechiae/purpura (Meningococcus gyanú)', severity: 'severe' },
                 { name: 'Fejfájás', description: 'Súlyos, generalizált (>85%)', severity: 'severe' },
                 { name: 'Láz', description: '>38°C (95%)', severity: 'severe' },
                 { name: 'Tarkókötöttség', description: 'Nuchalis rigiditás (>80%)', severity: 'severe' },
                 { name: 'Tudatzavar', description: 'GCS <14 (>80%)', severity: 'severe' },
-                { name: 'Egyéb', description: 'Hányinger/hányás, photophobia, görcsök (20-30%)', severity: 'moderate' }
               ],
               physical_exam: [
                 'Meningealis jelek: Kernig (+), Brudzinski (+), tarkókötöttség',
@@ -67,15 +68,16 @@ Object.assign(window.diseases, {
               laboratory: [
                 { test: 'Vérkép', finding: 'Leukocytosis (15-30 G/L), balra tolt', interpretation: 'Bakteriális fertőzés' },
                 { test: 'CRP/PCT', finding: 'Jelentősen emelkedett (PCT >2)', interpretation: 'Bakteriális szepszis' },
-                { test: 'Lactát', finding: 'Emelkedett', interpretation: 'Szöveti hipoperfúzió' },
+                { test: 'Vér PCR', finding: 'Meningococcus/Pneumococcus DNS', interpretation: 'NICE ajánlás: minden gyanús esetben levenni!' },
                 { test: 'Koagulogram', finding: 'DIC jelek (↓fibrinogén, ↑D-dimer)', interpretation: 'Meningococcus' }
               ],
               imaging: [
-                { modality: 'Koponya CT (kontrasztos)', finding: 'Meningealis enhancement, hydrocephalus', significance: 'LP előtt ha fokális jel/tudatzavar!' },
+                { modality: 'Koponya CT', finding: 'Kontraindikációk kizárása', significance: 'LP előtt, ha: GCS<9, görcsök, fokális jelek, papillaödéma' },
                 { modality: 'MRI', finding: 'Érzékenyebb, komplikációk', significance: 'Empyema, infarktus' }
               ],
               microbiology: [
-                { test: 'Liquor analízis', finding: '↑sejt (>1000, PMN), ↑fehérje (>1g/L), ↓glükóz (<2.2 vagy <40% vércukor)', significance: 'Bakteriális meningitisre jellegzetes!' },
+                { test: 'Liquor analízis (NICE)', finding: 'Sejtszám >1000/µL (PMN), Fehérje >1 g/L, Glükóz < a vércukor 50%-a', significance: 'Bakteriális meningitisre jellegzetes!' },
+                { test: 'Liquor Laktát', finding: 'Emelkedett', significance: 'Segít elkülöníteni a vírusostól' },
                 { test: 'Liquor Gram-festés', finding: '60-90% pozitív', significance: 'Gyors orientáció' },
                 { test: 'Liquor/vér tenyésztés', finding: 'Kórokozó izolálás', significance: 'Rezisztencia' },
                 { test: 'Liquor PCR (multiplex)', finding: 'DNS kimutatás', significance: 'Gyors, érzékeny, előkezelt beteg' },
@@ -90,21 +92,21 @@ Object.assign(window.diseases, {
               { disease: 'Carcinomás meningitis', distinguishing: 'Malignus betegség, citológia' }
             ],
             therapy: {
+              guidelines: ['NICE NG240 (2024): Meningitis (bacterial) and meningococcal disease'],
               empirical: {
                 outpatient: [
-                  { drug: 'NINCS ambuláns kezelés!', dose: 'Azonnali kórházi beutalás', duration: '', note: 'Sürgősségi állapot!' }
+                  { drug: 'Benzylpenicillin vagy Ceftriaxon', dose: 'IM/IV', duration: 'Stat', note: 'Csak ha a kórházba szállítás jelentősen késik (NICE)' }
                 ],
                 inpatient: [
-                  { drug: 'Ceftriaxon', dose: '2x2g IV', duration: '10-14 nap', note: 'Első választás' },
-                  { drug: '+ Ampicillin', dose: '6x2g IV', duration: '21 nap', note: 'Ha Listeria rizikó (>50év, immunszuppresszió)' },
-                  { drug: '+ Vancomycin', dose: '2x1g IV', duration: '10-14 nap', note: 'Pneumococcus rezisztencia gyanú' },
-                  { drug: 'Dexamethason', dose: '4x0.15mg/kg IV', duration: '4 nap', note: 'Első AB dózis ELŐTT vagy azzal együtt!' }
+                  { drug: 'Ceftriaxon', dose: '2g IV 12 óránként (vagy 4g 24 óránként)', duration: 'Kórokozó függő', note: 'Első választás (NICE). Alternatíva: Cefotaxim.' },
+                  { drug: '+ Amoxicillin', dose: '2g IV 4 óránként', duration: 'Kórokozó függő', note: 'Ha Listeria rizikó (>60 év, immunszuppresszió, terhesség).' },
+                  { drug: 'Dexamethason', dose: '10mg IV 6 óránként', duration: '4 nap', note: 'Az első antibiotikum adag ELŐTT vagy azzal EGYÜTT. Ne adjuk, ha szeptikus shock van meningitis nélkül.' }
                 ],
                 icu: [
-                  { drug: 'Mint fent + intenzív monitorozás', dose: '', duration: '', note: 'Agyödéma, shock kezelése' }
+                  { drug: 'Szupportív', dose: '-', duration: '-', note: 'Légútbiztosítás, folyadékreszuszcitáció, vazopresszorok' }
                 ]
               },
-              targeted: 'Meningococcus: Penicillin G; Pneumococcus: MIC alapján ceftriaxon±vancomycin; Listeria: Ampicillin+gentamicin',
+              targeted: 'Meningococcus: 7 nap; Pneumococcus: 14 nap; Listeria: 21 nap; H. influenzae: 10 nap; GBS: 14-21 nap.',
               supportive: ['Folyadék/elektrolit egyensúly', 'ICP monitorozás', 'Görcsprofilaxis', 'Izolálás (meningococcus, 24h AB után megszüntethető)'],
               prevention: ['MenACWY, MenB vakcinák', 'PCV13/PPSV23', 'Hib vakcina', 'Kemoprofilaxis kontaktok: Rifampicin vagy Ciprofloxacin']
             },
@@ -353,8 +355,8 @@ Object.assign(window.diseases, {
               microbiology: [{ test: 'Gram festés', finding: 'Gram-negatív diplococcusok', significance: 'Gyors' }]
             },
             therapy: {
-              empirical: { inpatient: [{ drug: 'Ceftriaxon', dose: '2x2g IV', duration: '7 nap', note: 'Azonnal!' }, { drug: 'Penicillin G', dose: '24 millió E IV', duration: '7 nap', note: 'Ha érzékeny' }] },
-              targeted: 'Kontaktoknak profilaxis: Rifampicin vagy Ciprofloxacin vagy Ceftriaxon.',
+              empirical: { inpatient: [{ drug: 'Ceftriaxon', dose: '2g IV 12 óránként', duration: '7 nap', note: 'NICE NG240 ajánlás' }] },
+              targeted: 'Ceftriaxon 7 napig. Kontaktoknak profilaxis: Ciprofloxacin (egyszeri 500mg PO) vagy Rifampicin.',
               supportive: [],
               prevention: ['Vakcináció (MenACWY, MenB)']
             },
@@ -390,8 +392,8 @@ Object.assign(window.diseases, {
               microbiology: [{ test: 'Gram festés', finding: 'Gram-pozitív diplococcusok', significance: '-' }]
             },
             therapy: {
-              empirical: { inpatient: [{ drug: 'Ceftriaxon', dose: '2x2g IV', duration: '10-14 nap', note: '' }, { drug: 'Vancomycin', dose: '2x1g IV', duration: '', note: 'Rezisztencia gyanú esetén' }, { drug: 'Dexamethason', dose: '4x10mg IV', duration: '4 nap', note: 'AB előtt!' }] },
-              targeted: 'Penicillin érzékeny: Penicillin G. Rezisztens: Ceftriaxon + Vancomycin.',
+              empirical: { inpatient: [{ drug: 'Ceftriaxon', dose: '2g IV 12 óránként', duration: '14 nap', note: 'NICE NG240 ajánlás' }, { drug: 'Dexamethason', dose: '10mg IV 6 óránként', duration: '4 nap', note: 'Folytatandó, ha Pneumococcus igazolódik!' }] },
+              targeted: 'Ceftriaxon 14 napig. Ha rezisztencia igazolt: + Vancomycin/Rifampicin.',
               supportive: [],
               prevention: ['Pneumococcus oltás (PCV, PPSV)']
             },
@@ -429,8 +431,8 @@ Object.assign(window.diseases, {
               microbiology: [{ test: 'Gram festés', finding: 'Gyakran negatív vagy Gram+ pálcák (diphtheroidnak nézhető)', significance: '-' }]
             },
             therapy: {
-              empirical: { inpatient: [{ drug: 'Ampicillin', dose: '6x2g IV', duration: '21 nap', note: 'Cefalosporinok HATÁSTALANOK!' }, { drug: 'Gentamicin', dose: 'Kiegészítésként', duration: 'szinergista', note: '' }] },
-              targeted: 'Ampicillin vagy Penicillin G + Gentamicin. Allergia esetén: Cotrimoxazol.',
+              empirical: { inpatient: [{ drug: 'Amoxicillin / Ampicillin', dose: '2g IV 4 óránként', duration: '21 nap', note: 'NICE NG240 ajánlás. Cefalosporinok HATÁSTALANOK!' }, { drug: '+ Gentamicin', dose: '5mg/kg IV naponta 1x', duration: 'Első 7 nap', note: 'Szinergista hatás' }] },
+              targeted: 'Amoxicillin/Ampicillin (21 nap) + Gentamicin (első 7 nap). Penicillin allergia esetén: Cotrimoxazol (Trimethoprim/Sulfamethoxazol).',
               supportive: [],
               prevention: ['Élelmiszerhigiénia rizikócsoportban']
             },
