@@ -1,8 +1,8 @@
 Object.assign(window.diseases, {
   tropical: {
     name: 'Trópusi betegségek',
-    icon: '🌴',
-    color: '#f97316',
+    icon: window.diseaseMetadata.tropical.icon,
+    color: window.diseaseMetadata.tropical.color,
     diseases: [
       {
         id: 'dengue',

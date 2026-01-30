@@ -1,8 +1,8 @@
 Object.assign(window.diseases, {
   childhood: {
     name: 'Gyermekkori fertőzések',
-    icon: '🧸',
-    color: '#f472b6',
+    icon: window.diseaseMetadata.childhood.icon,
+    color: window.diseaseMetadata.childhood.color,
     diseases: [
       {
         id: 'measles',
@@ -41,6 +41,15 @@ Object.assign(window.diseases, {
           targeted: 'A-vitamin adása csökkenti a morbiditást/mortalitást (WHO ajánlás).',
           prevention: ['MMR vakcina (15 hó, 11 év)']
         },
+        guidelines: {
+          diagnosis: [
+            'Klinikai gyanú: Láz + 3C (köhögés, nátha, conjunctivitis) + Koplik-foltok.',
+            'Megerősítés: Anti-kanyaró IgM szerológia.'
+          ],
+          treatment_indications: [
+            'Minden esetben szupportív terápia. A-vitamin adása javasolt a szövődmények csökkentésére.'
+          ]
+        },
         prognosis: { mortality: 'Fejlett országokban alacsony, fejlődőkben magas (pneumonia)', prognostic_scores: [], factors: 'Életkor, vakcináció státusz' }
       },
       {
@@ -77,6 +86,15 @@ Object.assign(window.diseases, {
           targeted: 'Nincs.',
           prevention: ['MMR vakcina']
         },
+        guidelines: {
+          diagnosis: [
+            'Klinikai gyanú: Akut, fájdalmas fültőmirigy-duzzanat.',
+            'Megerősítés: Anti-mumpsz IgM szerológia.'
+          ],
+          treatment_indications: [
+            'Szupportív terápia. Orchitis esetén ágynyugalom, here hűtése, NSAID.'
+          ]
+        },
         prognosis: { mortality: 'Nagyon alacsony', prognostic_scores: [], factors: 'Életkor, vakcináció' }
       },
       {
@@ -111,6 +129,15 @@ Object.assign(window.diseases, {
           empirical: { outpatient: [{ drug: 'Szupportív', dose: '-', duration: '-', note: '-' }] },
           targeted: 'Nincs.',
           prevention: ['MMR vakcina', 'Terhesek szűrése']
+        },
+        guidelines: {
+          diagnosis: [
+            'Klinikai gyanú: Enyhe kiütés + jellegzetes retroauricularis/occipitalis nyirokcsomó-duzzanat.',
+            'Megerősítés: Anti-rubella IgM szerológia. Terhességben kritikus a diagnózis!'
+          ],
+          treatment_indications: [
+            'Szupportív terápia. Congenitalis Rubella Szindróma megelőzése a legfőbb cél.'
+          ]
         },
         prognosis: { mortality: 'Jó, kivéve CRS' }
       },
@@ -157,6 +184,15 @@ Object.assign(window.diseases, {
           targeted: 'Penicillin.',
           prevention: ['Higiénia', 'Nincs vakcina']
         },
+        guidelines: {
+          diagnosis: [
+            'Klinikai gyanú (Centor/FeverPAIN score) + Strep A gyorsteszt vagy torokváladék tenyésztés.'
+          ],
+          treatment_indications: [
+            'Minden igazolt GAS pharyngitis/tonsillitis kezelendő a reumás láz megelőzése érdekében.'
+          ],
+          first_line: ['Penicillin V 10 napig. Allergia esetén makrolid.']
+        },
         prognosis: { mortality: 'Kezeléssel kiváló' }
       },
       {
@@ -201,6 +237,15 @@ Object.assign(window.diseases, {
           supportive: ['Fizikai kímélet (lépruptúra veszély miatt sporttilalom 3-4 hétig!)'],
           prevention: ['Higiénia']
         },
+        guidelines: {
+          diagnosis: [
+            'Klinikai triász (láz, torokfájás, nycs. duzzanat) + Vérkép (atípusos lymphocyták) + Szerológia (Monospot vagy EBV-specifikus IgM/IgG).'
+          ],
+          treatment_indications: [
+            'Szupportív. Amoxicillin/Ampicillin kerülendő (kiütés).',
+            'Fizikai kímélet a lépruptúra megelőzése miatt.'
+          ]
+        },
         prognosis: { mortality: 'Nagyon alacsony' }
       },
       {
@@ -237,6 +282,14 @@ Object.assign(window.diseases, {
           targeted: 'Nincs.',
           prevention: ['-']
         },
+        guidelines: {
+          diagnosis: [
+            'Jellegzetes klinikai kép: 3-5 nap magas láz, majd a láz megszűnésével megjelenő kiütés.'
+          ],
+          treatment_indications: [
+            'Szupportív. Lázgörcsre való felkészülés/kezelés fontos.'
+          ]
+        },
         prognosis: { mortality: 'Kiváló' }
       },
       {
@@ -272,6 +325,15 @@ Object.assign(window.diseases, {
           targeted: 'Acyclovir (kockázati csoportoknak, felnőtteknek, immunszupprimáltaknak).',
           prevention: ['Varicella vakcina (kötelező)']
         },
+        guidelines: {
+          diagnosis: [
+            'Klinikai kép: Polimorf, viszkető kiütések, melyek egyszerre több stádiumban vannak jelen.'
+          ],
+          treatment_indications: [
+            'Egészséges gyermekeknél szupportív. Acyclovir javasolt: >12 évesek, krónikus bőr/tüdőbetegség, szteroidot szedők, felnőttek, terhesek.'
+          ],
+          prevention: ['Kötelező védőoltás. Post-expozíciós profilaxis (oltás vagy VZIG).']
+        },
         prognosis: { mortality: 'Alacsony, de szövődmények előfordulnak' }
       },
       {
@@ -305,6 +367,15 @@ Object.assign(window.diseases, {
           empirical: { outpatient: [{ drug: 'Acyclovir', dose: '5x800mg PO', duration: '7 nap', note: '72 órán belül kezdve' }, { drug: 'Valacyclovir', dose: '3x1000mg PO', duration: '7 nap', note: 'Jobb biohasznosulás' }] },
           targeted: 'Antivirális szer + Fájdalomcsillapítás.',
           prevention: ['Zoster vakcina (időseknek)']
+        },
+        guidelines: {
+          diagnosis: [
+            'Klinikai kép: Egyoldali, dermatómának megfelelő vezikuláris kiütés, gyakran prodromális fájdalommal.'
+          ],
+          treatment_indications: [
+            'Antivirális kezelés (Acyclovir, Valacyclovir) 72 órán belül kezdve csökkenti a tünetek súlyosságát és a postherpeses neuralgia (PHN) kockázatát.',
+            'Ophthalmicus zoster esetén sürgős szemészeti konzílium szükséges.'
+          ]
         },
         prognosis: { mortality: 'Alacsony, PHN életminőséget rontja' }
       },
@@ -340,6 +411,15 @@ Object.assign(window.diseases, {
           empirical: { outpatient: [{ drug: 'Szupportív', dose: '-', duration: '-', note: 'Fájdalomcsillapítás, folyadék, ecsetelés' }, { drug: 'Acyclovir', dose: 'PO/IV', duration: '5-7 nap', note: 'Súlyos esetben vagy immunszuppressziónál' }] },
           targeted: 'Acyclovir.',
           prevention: ['Kontaktus kerülése aktív lézióval']
+        },
+        guidelines: {
+          diagnosis: [
+            'Klinikai kép: Fájdalmas, duzzadt, vérzékeny íny és fekélyek a szájban, lázzal kísérve kisgyermekkorban.'
+          ],
+          treatment_indications: [
+            'Elsősorban szupportív (fájdalomcsillapítás, folyadékpótlás a dehidráció elkerülésére).',
+            'Acyclovir súlyos esetekben, immunkompromittáltaknál vagy eczema herpeticum esetén javasolt.'
+          ]
         },
         prognosis: { mortality: 'Alacsony, dehidráció veszély' }
       },
@@ -399,6 +479,18 @@ Object.assign(window.diseases, {
           targeted: 'Makrolid antibiotikum (erythromycin, azithromycin).',
           supportive: ['Szupportív (oxigén, rehidráció)', 'Izoláció (5 nap antibiotikum után)', 'Köhögéscsillapítók NEM (mukus retenció!)'],
           prevention: ['DTP vakcina (kötelező, 3+1 dózis)', 'Felnőttkori emlékeztető']
+        },
+        guidelines: {
+          diagnosis: [
+            'Klinikai gyanú (elhúzódó, rohamokban jelentkező köhögés) + Labor (kifejezett lymphocytosis).',
+            'Megerősítés: Nasopharyngealis PCR (gold standard).'
+          ],
+          treatment_indications: [
+            'Minden gyanús/igazolt esetet kezelni kell a fertőzőképesség csökkentésére és a tünetek enyhítésére (ha korán kezdik).',
+            'Csecsemők kórházi ellátást igényelnek (apnoe veszély).',
+            'Kontaktusok profilaxisa szükséges.'
+          ],
+          first_line: ['Makrolidok (pl. Azithromycin 5 napig).']
         },
         prognosis: {
           mortality: 'Alacsony fejlett országokban, de csecsemőknél magas (1-2%)',

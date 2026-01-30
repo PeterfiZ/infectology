@@ -1,8 +1,10 @@
-const CACHE_NAME = 'infectologia-tankonyv-v1';
+const CACHE_NAME = 'infectologia-tankonyv-v2';
 const urlsToCache = [
   '/',
   'index.html',
   'print.html',
+  'metadata.js',
+  // HU
   'Thorax.js',
   'abdomen.js',
   'BoneandSST.js',
@@ -14,6 +16,30 @@ const urlsToCache = [
   'tropical.js',
   'emerging.js',
   'childhood.js',
+  // EN
+  'Thorax_en.js',
+  'abdomen_en.js',
+  'BoneandSST_en.js',
+  'CNS_en.js',
+  'STD_en.js',
+  'parazita_en.js',
+  'zoonozis_en.js',
+  'systemic_en.js',
+  'tropical_en.js',
+  'emerging_en.js',
+  'childhood_en.js',
+  // DE
+  'thorax_de.js',
+  'abdomen_de.js',
+  'BoneandSST_de.js',
+  'CNS_de.js',
+  'STD_de.js',
+  'parazita_de.js',
+  'zoonozis_de.js',
+  'systemic_de.js',
+  'tropical_de.js',
+  'emerging_de.js',
+  'childhood_de.js',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/maskable_icon_x512.png'

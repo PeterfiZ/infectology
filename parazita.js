@@ -1,8 +1,8 @@
 Object.assign(window.diseases, {
       parasitic: {
         name: 'Parazita fertőzések',
-        icon: '🦟',
-        color: '#854d0e',
+        icon: window.diseaseMetadata.parasitic.icon,
+        color: window.diseaseMetadata.parasitic.color,
         diseases: [
            {
             id: 'malaria',
@@ -60,15 +60,15 @@ Object.assign(window.diseases, {
             },
             differential: [
               { disease: 'Influenza', distinguishing: 'Utazási anamnézis, periodicitás hiánya' },
-              { disease: 'Dengue láz', distinguishing: 'Retrobulbaris fájdalom, kiütés, csonttörő fájdalom' },
-              { disease: 'Typhus', distinguishing: 'Bratykardia, rózsahimlő, GI tünetek dominálnak' },
+              { disease: 'Dengue-láz', distinguishing: 'Retrobulbaris fájdalom, kiütés, csonttörő fájdalom' },
+              { disease: 'Tífusz', distinguishing: 'Bradycardia, roseolák, GI tünetek dominálnak' },
               { disease: 'Meningitis', distinguishing: 'Tarkókötöttség, liquor lelet' }
             ],
             therapy: {
               guidelines: ['WHO Guidelines for malaria (2023)'],
               empirical: {
                 outpatient: [
-                  { drug: 'Artemether-Lumefantrine', dose: 'PO (súlyfüggő)', duration: '3 nap', note: 'Első vonalbeli ACT nem komplikált P. falciparum esetén.' },
+                  { drug: 'Artemether-Lumefantrine', dose: 'PO (súlyalapú)', duration: '3 nap', note: 'Első vonalbeli ACT nem komplikált P. falciparum esetén.' },
                   { drug: 'Dihydroartemisinin-Piperaquine', dose: 'PO', duration: '3 nap', note: 'Alternatív ACT.' },
                   { drug: 'Artesunate-Pyronaridine', dose: 'PO', duration: '3 nap', note: 'Alternatív ACT.' },
                   { drug: 'Chloroquin', dose: 'PO', duration: '3 nap', note: 'Csak P. vivax/ovale/malariae esetén, ha klorokvin-érzékeny terület.' }
@@ -76,7 +76,7 @@ Object.assign(window.diseases, {
                 inpatient: [
                   { drug: 'Artesunate', dose: '2.4 mg/kg IV/IM', duration: 'Legalább 24 óra (0, 12, 24 óra)', note: 'Súlyos malária első választás (felnőtt/gyermek/terhes). Utána teljes ACT kúra!' },
                   { drug: 'Artemether', dose: '3.2 mg/kg IM', duration: '', note: 'Alternatíva, ha artesunate nem elérhető.' },
-                  { drug: 'Kinin', dose: '20 mg/kg telítő, majd 10 mg/kg 8ó', duration: '', note: 'Harmadik vonal, EKG monitorozás szükséges!' }
+                  { drug: 'Kinin', dose: '20 mg/kg telítő, majd 10 mg/kg 8 óránként', duration: '', note: 'Harmadik vonal, EKG monitorozás szükséges!' }
                 ]
               },
               targeted: 'P. vivax/ovale radikális kúra: Primaquin (0.25-0.5 mg/kg 14 napig) vagy Tafenoquin (egyszeri dózis) a hipnozoiták ellen. G6PD hiány szűrése kötelező!',
@@ -154,7 +154,7 @@ Object.assign(window.diseases, {
                 { test: 'CD4 szám', finding: '<100/µL', interpretation: 'Reaktiváció rizikó (HIV)' }
               ],
               imaging: [
-                { modality: 'MRI agy', finding: 'Multiplex gyűrű alakú halmozó gócok (basalis ganglionok)', significance: 'Cerebrális toxo (AIDS)' },
+                { modality: 'MRI agy', finding: 'Többszörös, gyűrűszerűen kontrasztanyagot halmozó gócok (főleg a bazális ganglionokban)', significance: 'Cerebrális toxo (AIDS)' },
                 { modality: 'CT agy', finding: 'Meszesedés (congenitalis)', significance: 'Újszülött' }
               ],
               microbiology: [
@@ -175,7 +175,7 @@ Object.assign(window.diseases, {
                   { drug: 'Nincs', dose: '-', duration: '-', note: 'Immundompetens tünetmentes nem igényel kezelést' }
                 ],
                 inpatient: [
-                  { drug: 'Pyrimethamin + Sulfadiazine', dose: 'PO', duration: '6 hét', note: 'Standard kezelés (+Folsav!)' },
+                  { drug: 'Pyrimethamin + Sulfadiazine', dose: 'PO', duration: '6 hét', note: 'Standard kezelés (+Folinsav!)' },
                   { drug: 'Trimethoprim/Sulfamethoxazol', dose: 'PO/IV', duration: '6 hét', note: 'Alternatíva' }
                 ],
                 icu: [
@@ -185,6 +185,18 @@ Object.assign(window.diseases, {
               targeted: 'Terhesség: Spiramycin (I. trimeszter) vagy Pyrimethamin/Sulfadiazine (később). HIV profilaxis: TMP/SMX.',
               supportive: ['Folsav pótlás (Leucovorin) csontvelő védelemre', 'Görcsgátlók'],
               prevention: ['Hús alapos sütése', 'Macskaalom kerülése (terhesek)', 'Kézmosás', 'Profilaxis CD4<100 esetén (TMP/SMX)']
+            },
+            guidelines: {
+              diagnosis: [
+                'Szerológia (IgM/IgG) alapvető; aviditás vizsgálat terhességben a fertőzés idejének meghatározására',
+                'PCR (liquor, amnionfolyadék, vér) aktív fertőzés igazolására immunszupprimáltaknál vagy magzatnál',
+                'Képalkotó (MRI) agyi toxoplasmosis gyanúja esetén (gyűrűs halmozás)'
+              ],
+              treatment_indications: [
+                'Immunkompetens: általában nem igényel kezelést, kivéve súlyos tünetek vagy chorioretinitis',
+                'Immunszupprimált (AIDS, CD4<100): mindig kezelendő (akut + fenntartó)',
+                'Terhesség: akut fertőzés esetén kezelés szükséges a transzmisszió csökkentésére/magzati károsodás mérséklésére'
+              ]
             },
             prognosis: {
               mortality: 'Immundompetens: kiváló; AIDS/TE: kezelés nélkül halálos, recidíva gyakori',
@@ -297,7 +309,7 @@ Object.assign(window.diseases, {
                   { drug: 'Niclosamid', dose: '2g PO', duration: 'Egyszeri dózis', note: 'Alternatíva' }
                 ]
               },
-              targeted: 'Neurocysticercosis: Albendazol + Praziquantel + Szteroid (gyulladás csökkentés).',
+              targeted: 'Neurocysticercosis: Albendazol + Praziquantel + Szteroid (a gyulladás csökkentésére).',
               prevention: ['Húsok alapos sütése', 'Húsvizsgálat', 'Kézmosás (T. solium autoinfekció ellen)']
             },
             prognosis: { mortality: 'Bélférgesség: 0%; Neurocysticercosis: változó, epilepszia maradhat', prognostic_scores: [], factors: 'Kórokozó típus, lokalizáció' }
@@ -423,7 +435,7 @@ Object.assign(window.diseases, {
                 { name: 'Láz', description: 'Magas, elhúzódó', severity: 'moderate' },
                 { name: 'Myalgia', description: 'Súlyos izomfájdalom, gyengeség', severity: 'severe' },
                 { name: 'Periorbitalis ödéma', description: 'Jellegzetes arcduzzanat', severity: 'moderate' },
-                { name: 'Körömágyi vérzések', description: 'Splinter haemorrhagia', severity: 'mild' }
+                { name: 'Szálkavérzések', description: 'A körmök alatt', severity: 'mild' }
               ],
               physical_exam: ['Periorbitalis ödéma', 'Izomérzékenység', 'Láz', 'Conjunctivitis'],
               complications: ['Myocarditis (halálok!)', 'Encephalitis', 'Pneumonia']
@@ -521,7 +533,7 @@ Object.assign(window.diseases, {
                   { drug: 'Mebendazol', dose: '2x100-200mg PO', duration: '5 nap', note: 'Kevésbé szívódik fel' }
                 ]
               },
-              targeted: 'Albendazol + Szteroid (gyulladás csökkentése, főleg OLM-ben és súlyos VLM-ben).',
+              targeted: 'Albendazol + Szteroid (a gyulladás csökkentésére, főleg OLM-ben és súlyos VLM-ben).',
               supportive: ['Szemészeti műtét (vitrectomia) ha szükséges'],
               prevention: ['Kutyák/macskák féregtelenítése', 'Kézmosás', 'Homokozók fedése']
             },

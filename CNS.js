@@ -1,8 +1,8 @@
 Object.assign(window.diseases, {
      cns_infections: {
         name: 'Központi idegrendszeri fertőzések',
-        icon: '🧠',
-        color: '#0891b2',
+        icon: window.diseaseMetadata.cns_infections.icon,
+        color: window.diseaseMetadata.cns_infections.color,
         tables: [
           {
             title: 'Liquor leletek differenciáldiagnosztikája',

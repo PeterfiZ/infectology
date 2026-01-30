@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Infektológia Tankönyv - Nyomtatható Verzió</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm;
+        }
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 10pt;
+            line-height: 1.4;
+            color: #333;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 600;
+            color: #111;
+            page-break-after: avoid;
+        }
+        .book-title {
+            font-size: 24pt;
+            text-align: center;
+            margin-bottom: 1cm;
+            page-break-after: always;
+        }
+        .category-title {
+            font-size: 20pt;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 1.5cm;
+            page-break-before: always;
+        }
+        .disease-block {
+            margin-top: 1cm;
+            border-top: 1px solid #eee;
+            padding-top: 0.5cm;
+            page-break-inside: avoid;
+        }
+        .disease-title {
+            font-size: 16pt;
+        }
+        .section-title {
+            font-size: 12pt;
+            margin-top: 0.7cm;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 2px;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9pt;
+            margin-top: 10px;
+            page-break-inside: avoid;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .no-print {
+            display: none;
+        }
+        @media screen {
+            body { max-width: 800px; margin: 20px auto; }
+            .no-print { display: block; text-align: center; padding: 15px; background: #fffbe6; border: 1px solid #f59e0b; border-radius: 8px; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        Ez az oldal a teljes tankönyv nyomtatható verziója. A nyomtatáshoz használja a böngésző "Nyomtatás" funkcióját (Ctrl+P vagy Cmd+P).
+    </div>
+    <div id="content"></div>
+
+    <script>
+        window.diseases = {};
+    </script>
+    <!-- Adatfájlok betöltése -->
+    <script src="Thorax.js"></script>
+    <script src="abdomen.js"></script>
+    <script src="BoneandSST.js"></script>
+    <script src="CNS.js"></script>
+    <script src="STD.js"></script>
+    <script src="parazita.js"></script>
+    <script src="zoonozis.js"></script>
+    <script src="systemic.js"></script>
+    <script src="tropical.js"></script>
+    <script src="emerging.js"></script>
+    <script src="childhood.js"></script>
+
+    <script>
+        // Helper funkciók
+        const renderList = (items) => (!items || items.length === 0) ? '<p>N/A</p>' : `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+        const renderTable = (headers, rows) => {
+            if (!rows || rows.length === 0) return '<p>N/A</p>';
+            return `<table><thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+        };
+
+        function renderContent() {
+            const contentDiv = document.getElementById('content');
+            let html = '<h1 class="book-title">Infektológia Tankönyv</h1>';
+
+            for (const categoryKey in window.diseases) {
+                const category = window.diseases[categoryKey];
+                html += `<h2 class="category-title">${category.icon} ${category.name}</h2>`;
+
+                if (category.tables) {
+                    category.tables.forEach(table => {
+                        html += `<div class="disease-block">`;
+                        html += `<h3 class="section-title">${table.title}</h3>`;
+                        html += renderTable(table.headers, table.rows);
+                        html += `</div>`;
+                    });
+                }
+
+                (category.diseases || []).forEach(disease => {
+                    html += `<div class="disease-block">`;
+                    html += `<h3 class="disease-title">${disease.name}</h3>`;
+                    if(disease.pathogen) html += `<p><i>${disease.pathogen.name} (${disease.pathogen.type})</i></p>`;
+
+                    // Epidemiology
+                    if(disease.epidemiology) {
+                        html += `<h4 class="section-title">Epidemiológia</h4>`;
+                        html += `<p><strong>Incidencia:</strong> ${disease.epidemiology.incidence || 'N/A'}</p>`;
+                        html += `<p><strong>Rizikócsoportok:</strong> ${(disease.epidemiology.risk_groups || []).join(', ')}</p>`;
+                        html += `<p><strong>Transzmisszió:</strong> ${disease.epidemiology.transmission || 'N/A'}</p>`;
+                    }
+
+                    // Pathomechanism
+                    if(disease.pathomechanism) {
+                        html += `<h4 class="section-title">Pathomechanizmus</h4>`;
+                        html += '<h5>Lépések:</h5>' + renderList(disease.pathomechanism.steps);
+                        html += '<h5>Virulencia faktorok:</h5>' + renderList(disease.pathomechanism.virulence_factors);
+                    }
+                    
+                    // Clinical
+                    if(disease.clinical) {
+                        html += `<h4 class="section-title">Klinikum</h4>`;
+                        html += `<p><strong>Inkubáció:</strong> ${disease.clinical.incubation || 'N/A'}</p>`;
+                        html += `<p><strong>Kezdet:</strong> ${disease.clinical.onset || 'N/A'}</p>`;
+                        html += '<h5>Tünetek:</h5>';
+                        html += `<ul>${(disease.clinical.symptoms || []).map(s => `<li><strong>${s.name}:</strong> ${s.description}</li>`).join('')}</ul>`;
+                        html += '<h5>Fizikális vizsgálat:</h5>' + renderList(disease.clinical.physical_exam);
+                        html += '<h5>Komplikációk:</h5>' + renderList(disease.clinical.complications);
+                    }
+
+                    // Diagnostics
+                    if(disease.diagnostics) {
+                        html += `<h4 class="section-title">Diagnosztika</h4>`;
+                        if (disease.diagnostics.laboratory && disease.diagnostics.laboratory.length > 0) {
+                            html += '<h5>Labor:</h5>';
+                            html += renderTable(['Vizsgálat', 'Eredmény', 'Értelmezés'], disease.diagnostics.laboratory.map(l => [l.test, l.finding, l.interpretation]));
+                        }
+                        if (disease.diagnostics.imaging && disease.diagnostics.imaging.length > 0) {
+                            html += '<h5>Képalkotó:</h5>';
+                            html += `<ul>${disease.diagnostics.imaging.map(img => `<li><strong>${img.modality}:</strong> ${img.finding} (${img.significance})</li>`).join('')}</ul>`;
+                        }
+                        if (disease.diagnostics.microbiology && disease.diagnostics.microbiology.length > 0) {
+                            html += '<h5>Mikrobiológia:</h5>';
+                            html += `<ul>${disease.diagnostics.microbiology.map(micro => `<li><strong>${micro.test}:</strong> ${micro.finding} (${micro.significance})</li>`).join('')}</ul>`;
+                        }
+                    }
+
+                    // Differential
+                    const diffList = disease.differential || disease.diagnostics?.differential || [];
+                    if (diffList.length > 0) {
+                        html += `<h4 class="section-title">Differenciáldiagnózis</h4>`;
+                        html += `<ul>${diffList.map(diff => `<li><strong>${diff.disease}:</strong> ${diff.distinguishing}</li>`).join('')}</ul>`;
+                    }
+
+                    // Therapy
+                    if(disease.therapy) {
+                        html += `<h4 class="section-title">Terápia</h4>`;
+                        if (disease.therapy.empirical) {
+                            html += '<h5>Empirikus terápia:</h5>';
+                            Object.entries(disease.therapy.empirical).forEach(([key, group]) => {
+                                if (Array.isArray(group)) {
+                                    group.forEach(drug => { html += `<p><strong>${drug.drug}:</strong> ${drug.dose} ${drug.duration}. <i>${drug.note || ''}</i></p>`; });
+                                } else if (group && group.drugs) {
+                                    html += `<h6>${group.title || key}</h6>`;
+                                    group.drugs.forEach(drug => { html += `<p><strong>${drug.drug}:</strong> ${drug.dose} ${drug.duration}. <i>${drug.note || ''}</i></p>`; });
+                                }
+                            });
+                        }
+                        html += '<h5>Szupportív terápia:</h5>' + renderList(disease.therapy.supportive);
+                        html += '<h5>Prevenció:</h5>' + renderList(disease.therapy.prevention);
+                    }
+
+                    // Prognosis
+                    if(disease.prognosis) {
+                        html += `<h4 class="section-title">Prognózis</h4>`;
+                        html += `<p><strong>Mortalitás:</strong> ${disease.prognosis.mortality || 'N/A'}</p>`;
+                        html += `<p><strong>Faktorok:</strong> ${disease.prognosis.factors || 'N/A'}</p>`;
+                    }
+
+                    html += `</div>`;
+                });
+            }
+            contentDiv.innerHTML = html;
+        }
+
+        renderContent();
+    </script>
+</body>
+</html>

@@ -1,8 +1,8 @@
 Object.assign(window.diseases, {
          sexually_transmitted: {
         name: 'Szexuálisan terjedő fertőzések',
-        icon: '🔬',
-        color: '#7c3aed',
+        icon: window.diseaseMetadata.sexually_transmitted.icon,
+        color: window.diseaseMetadata.sexually_transmitted.color,
         diseases: [
           {
             id: 'syphilis',
@@ -83,6 +83,30 @@ Object.assign(window.diseases, {
               targeted: 'Penicillin mindig első választás, nincs rezisztencia',
               supportive: ['Jarisch-Herxheimer reakció figyelmeztetés', 'HIV tesztelés', 'Partner értesítés és kezelés', 'Szerológiai követés (3, 6, 12, 24 hónap)'],
               prevention: ['Óvszerhasználat', 'Partner értesítés', 'Rendszeres szűrés rizikócsoportokban', 'Várandós nők szűrése']
+            },
+            guidelines: {
+              diagnosis: [
+                'Szűrés: RPR/VDRL (nem-treponema) vagy reverz algoritmus (EIA/CIA)',
+                'Megerősítés: TPHA/FTA-ABS (treponema-specifikus) tesztekkel',
+                'Neuroszifilisz: Liquor VDRL (specifikus, de nem érzékeny), pleocytosis, fehérje emelkedés'
+              ],
+              treatment_indications: [
+                'Minden igazolt szifiliszes esetet kezelni kell a stádiumnak megfelelően',
+                'Szexuális partnereket értesíteni és kezelni kell'
+              ],
+              first_line: [
+                'Korai szifilisz (primer, szekunder, korai latens): Benzathin Penicillin G 2.4 millió NE IM egyszeri adag',
+                'Késői latens vagy tercier szifilisz: Benzathin Penicillin G 2.4 millió NE IM heti 1x, 3 héten át',
+                'Neuroszifilisz: Kristályos Penicillin G 18-24 millió NE/nap IV (3-4 millió NE 4 óránként) 10-14 napig'
+              ],
+              special_populations: [
+                'Penicillin allergia: Doxycyclin 2x100mg PO 14 nap (korai) vagy 28 nap (késői). Terhességben deszenzitizálás és Penicillin adása kötelező!',
+                'Terhesség: Minden terhest szűrni kell. A kezelés megegyezik a nem terhes felnőttekével.',
+                'Jarisch-Herxheimer reakció: Lázas reakció a kezelés első 24 órájában, nem allergia. Tüneti kezelés.'
+              ],
+              monitoring: [
+                'A kezelés sikerességét a nem-treponema tesztek (RPR/VDRL) titerének csökkenésével követjük (legalább négyszeres csökkenés 12 hónapon belül).'
+              ]
             },
             prognosis: {
               mortality: 'Kezelt szifilisz: alacsony; Neuroszifilisz: irreverzibilis károsodás lehetséges',

@@ -1,8 +1,8 @@
 Object.assign(window.diseases, {
       bacterial_respiratory: {
         name: 'Bakteriális légúti fertőzések',
-        icon: '🫁',
-        color: '#dc2626',
+        icon: window.diseaseMetadata.bacterial_respiratory.icon,
+        color: window.diseaseMetadata.bacterial_respiratory.color,
         diseases: [
           {
             id: 'bacterial_pneumonia',
@@ -640,8 +640,8 @@ Object.assign(window.diseases, {
       },
       viral_respiratory: {
         name: 'Vírusos légúti fertőzések',
-        icon: '🦠',
-        color: '#7c3aed',
+        icon: window.diseaseMetadata.viral_respiratory.icon,
+        color: window.diseaseMetadata.viral_respiratory.color,
         diseases: [
           {
             id: 'influenza',
@@ -826,8 +826,8 @@ Object.assign(window.diseases, {
       },
            cardiovascular: {
         name: 'Szív- és érrendszeri fertőzések',
-        icon: '❤️',
-        color: '#be123c',
+        icon: window.diseaseMetadata.cardiovascular.icon,
+        color: window.diseaseMetadata.cardiovascular.color,
         diseases: [
           {
             id: 'endocarditis',
@@ -1124,8 +1124,8 @@ Object.assign(window.diseases, {
       },
       upper_respiratory: {
         name: 'Felsőlégúti fertőzések',
-        icon: '👃',
-        color: '#059669',
+        icon: window.diseaseMetadata.upper_respiratory.icon,
+        color: window.diseaseMetadata.upper_respiratory.color,
         diseases: [
           {
             id: 'upper_respiratory_infections',

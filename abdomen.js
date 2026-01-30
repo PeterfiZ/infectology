@@ -1,8 +1,8 @@
 Object.assign(window.diseases, {
       gastrointestinal: {
         name: 'Gastrointestinális fertőzések',
-        icon: '🦠',
-        color: '#ca8a04',
+        icon: window.diseaseMetadata.gastrointestinal.icon,
+        color: window.diseaseMetadata.gastrointestinal.color,
         diseases: [
           {
             id: 'cdiff',
@@ -1035,8 +1035,8 @@ Object.assign(window.diseases, {
       },
       viral_hepatitis: {
         name: 'Vírusos hepatitisek',
-        icon: '🧬',
-        color: '#eab308',
+        icon: window.diseaseMetadata.viral_hepatitis.icon,
+        color: window.diseaseMetadata.viral_hepatitis.color,
         diseases: [
           {
             id: 'hav',
@@ -1595,8 +1595,8 @@ Object.assign(window.diseases, {
       },
       urinary_tract: {
         name: 'Húgyúti fertőzések',
-        icon: '🚽',
-        color: '#3b82f6',
+        icon: window.diseaseMetadata.urinary_tract.icon,
+        color: window.diseaseMetadata.urinary_tract.color,
         diseases: [
           {
             id: 'cystitis',

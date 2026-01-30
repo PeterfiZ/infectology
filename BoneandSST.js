@@ -90,6 +90,20 @@ Object.assign(window.diseases, {
               supportive: ['AZONNALI agresszív sebészi débridement', 'Intenzív osztály', 'Vazopresszor', 'Többszöri revízió (24-48 óránként)', 'HBO terápia (kiegészítő)'],
               prevention: ['Sebhigiéné', 'Diabétesz kontroll', 'Korai cellulitis kezelés']
             },
+            guidelines: {
+              diagnosis: [
+                'Klinikai gyanú: Fájdalom aránytalan a lelethez képest, gyors progresszió, toxikus állapot.',
+                'LRINEC score >6 növeli a gyanút, de nem zárja ki.',
+                'Képalkotó (CT/MRI): Gáz, fascia megvastagodás, de nem késleltetheti a sebészetet!',
+                'Definitív diagnózis: Sebészi exploráció ("finger test").'
+              ],
+              treatment_indications: [
+                'Minden gyanús eset azonnali sebészi beavatkozást igényel.'
+              ],
+              first_line: [
+                'Azonnali és radikális sebészi débridement + Széles spektrumú antibiotikum (pl. Piperacillin/tazobactam VAGY Carbapenem + Clindamycin + Vancomycin).'
+              ]
+            },
             prognosis: {
               mortality: '20-40% kezeléssel is, 100% kezelés nélkül',
               prognostic_scores: ['LRINEC', 'SOFA'],
@@ -172,6 +186,18 @@ Object.assign(window.diseases, {
               targeted: 'Streptococcus pyogenes: Penicillin. Allergia: Erythromycin/Clindamycin',
               supportive: ['Nyugalom', 'Emelt végtag', 'Fájdalomcsillapítás', 'Antipiretikumok'],
               prevention: ['Bőrsérülések megelőzése', 'Hygiene', 'Recidíva esetén profilaxis (Penicillin havonta)']
+            },
+            guidelines: {
+              diagnosis: [
+                'Klinikai diagnózis: Éles szélű, lángnyelvszerű, emelkedett vörös plakk.',
+                'Labor: Leukocytosis, magas CRP. Tenyésztés általában nem szükséges.'
+              ],
+              treatment_indications: [
+                'Minden eset kezelendő. Kórházi felvétel: szisztémás tünetek, súlyos lokális lelet, komorbiditások.'
+              ],
+              first_line: [
+                'Penicillin V (PO) vagy Penicillin G (IV). Allergia esetén Clindamycin.'
+              ]
             },
             prognosis: {
               mortality: 'Alacsony (<1%)',
@@ -256,6 +282,18 @@ Object.assign(window.diseases, {
               targeted: 'Streptococcus: Penicillin; Staphylococcus: Flucloxacillin; MRSA: Vancomycin',
               supportive: ['Nyugalom', 'Emelt végtag', 'Fájdalomcsillapítás', 'Antibiotikum lokálisan nem hatékony'],
               prevention: ['Bőrsérülések megelőzése', 'Hygiene', 'Diabetes kontroll']
+            },
+            guidelines: {
+              diagnosis: [
+                'Klinikai diagnózis: Diffúz, nem éles szélű erythema, melegség, duzzanat.',
+                'Képalkotó (UH): Abscessus vagy mélyebb terjedés gyanúja esetén.'
+              ],
+              treatment_indications: [
+                'Minden eset kezelendő. Kórházi felvétel: szisztémás tünetek, gyors progresszió, komorbiditások.'
+              ],
+              first_line: [
+                'Streptococcus és Staphylococcus fedezet szükséges: Amoxicillin/clavulanate vagy Cephalosporin. MRSA gyanú esetén Vancomycin/Linezolid.'
+              ]
             },
             prognosis: {
               mortality: 'Alacsony (<1%), de emelkedik immunszuppresszióval',
@@ -345,6 +383,18 @@ Object.assign(window.diseases, {
               supportive: ['Sebészi debridement (nekrotikus csont eltávolítása) - KRITIKUS!', 'Rögzítés', 'Fájdalomcsillapítás'],
               prevention: ['Nyílt törések azonnali ellátása', 'Műtéti sterilitás', 'Diabeteses láb gondozása']
             },
+            guidelines: {
+              diagnosis: [
+                'Képalkotó: MRI a gold standard a korai diagnózisban.',
+                'Mikrobiológia: Csontbiopszia tenyésztésre a célzott terápia alapja. Sipolyváladék nem megbízható.'
+              ],
+              treatment_indications: [
+                'Minden igazolt osteomyelitis kezelendő.'
+              ],
+              first_line: [
+                'Hosszú távú (4-6 hét) IV antibiotikum terápia a biopszia eredménye alapján + sebészi debridement.'
+              ]
+            },
             prognosis: {
               mortality: 'Alacsony, de morbiditás magas (krónikussá válás)',
               prognostic_scores: ['Cierny-Mader osztályozás'],
@@ -428,6 +478,18 @@ Object.assign(window.diseases, {
               supportive: ['Ízületi drenázs (tűaspiráció naponta VAGY arthroscopia) - KÖTELEZŐ!', 'Fájdalomcsillapítás', 'Korai mobilizáció gyulladás csökkenése után'],
               prevention: ['Protézis műtétek sterilitása', 'Gonorrhoea megelőzése']
             },
+            guidelines: {
+              diagnosis: [
+                'Ízületi punkció (arthrocentesis) kötelező: gennyes folyadék, >50,000 fvs/µL, >90% PMN.',
+                'Synovialis folyadék Gram-festés és tenyésztés, valamint hemokultúra levétele.'
+              ],
+              treatment_indications: [
+                'Minden gyanús eset sürgősségi ellátást igényel.'
+              ],
+              first_line: [
+                'Azonnali ízületi drenázs + empirikus IV antibiotikum (pl. Vancomycin + Ceftriaxon), majd célzott terápia.'
+              ]
+            },
             prognosis: {
               mortality: '10-15% (polyarticularis/idős betegnél magasabb)',
               prognostic_scores: ['Nincs'],
@@ -509,6 +571,19 @@ Object.assign(window.diseases, {
               targeted: 'Biopszia alapján! S. aureus: Flucloxacillin/Cefazolin; MRSA: Vancomycin; Gram-negatív: Ceftriaxon. Időtartam: 6-12 hét (IV majd PO)',
               supportive: ['Sebészi debridement (abscessus esetén) - gyakran szükséges!', 'Gerincstabilizáció', 'Fájdalomcsillapítás', 'Fizioterápia'],
               prevention: ['UTI/endo prophylaxis', 'Műtéti sterilitás', 'Diabetes kontroll']
+            },
+            guidelines: {
+              diagnosis: [
+                'Klinikai gyanú: Új vagy rosszabbodó hátfájás lázzal/emelkedett gyulladásos markerekkel.',
+                'Képalkotó: MRI a gold standard.',
+                'Mikrobiológia: Hemokultúra. Ha negatív, CT-vezérelt biopszia szükséges.'
+              ],
+              treatment_indications: [
+                'Minden igazolt eset kezelendő. Sebészi beavatkozás: neurológiai deficit, instabilitás, tályog.'
+              ],
+              first_line: [
+                'Hosszú távú (6-12 hét) IV, majd PO antibiotikum terápia a tenyésztés alapján.'
+              ]
             },
             prognosis: {
               mortality: '2-10%',

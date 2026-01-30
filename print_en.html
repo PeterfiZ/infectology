@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Infectious Diseases Textbook - Printable Version</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm;
+        }
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 10pt;
+            line-height: 1.4;
+            color: #333;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 600;
+            color: #111;
+            page-break-after: avoid;
+        }
+        .book-title {
+            font-size: 24pt;
+            text-align: center;
+            margin-bottom: 1cm;
+            page-break-after: always;
+        }
+        .category-title {
+            font-size: 20pt;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 1.5cm;
+            page-break-before: always;
+        }
+        .disease-block {
+            margin-top: 1cm;
+            border-top: 1px solid #eee;
+            padding-top: 0.5cm;
+            page-break-inside: avoid;
+        }
+        .disease-title {
+            font-size: 16pt;
+        }
+        .section-title {
+            font-size: 12pt;
+            margin-top: 0.7cm;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 2px;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9pt;
+            margin-top: 10px;
+            page-break-inside: avoid;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .no-print {
+            display: none;
+        }
+        @media screen {
+            body { max-width: 800px; margin: 20px auto; }
+            .no-print { display: block; text-align: center; padding: 15px; background: #fffbe6; border: 1px solid #f59e0b; border-radius: 8px; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        This page is the printable version of the entire textbook. To print, use your browser's "Print" function (Ctrl+P or Cmd+P).
+    </div>
+    <div id="content"></div>
+
+    <script>
+        window.diseases = {};
+    </script>
+    <!-- Loading English Data Files -->
+    <script src="Thorax_en.js"></script>
+    <script src="abdomen_en.js"></script>
+    <script src="BoneandSST_en.js"></script>
+    <script src="CNS_en.js"></script>
+    <script src="STD_en.js"></script>
+    <script src="parazita_en.js"></script>
+    <script src="zoonozis_en.js"></script>
+    <script src="systemic_en.js"></script>
+    <script src="tropical_en.js"></script>
+    <script src="emerging_en.js"></script>
+    <script src="childhood_en.js"></script>
+
+    <script>
+        // Helper functions
+        const renderList = (items) => (!items || items.length === 0) ? '<p>N/A</p>' : `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+        const renderTable = (headers, rows) => {
+            if (!rows || rows.length === 0) return '<p>N/A</p>';
+            return `<table><thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+        };
+
+        function renderContent() {
+            const contentDiv = document.getElementById('content');
+            let html = '<h1 class="book-title">Infectious Diseases Textbook</h1>';
+
+            for (const categoryKey in window.diseases) {
+                const category = window.diseases[categoryKey];
+                html += `<h2 class="category-title">${category.icon} ${category.name}</h2>`;
+
+                if (category.tables) {
+                    category.tables.forEach(table => {
+                        html += `<div class="disease-block">`;
+                        html += `<h3 class="section-title">${table.title}</h3>`;
+                        html += renderTable(table.headers, table.rows);
+                        html += `</div>`;
+                    });
+                }
+
+                (category.diseases || []).forEach(disease => {
+                    html += `<div class="disease-block">`;
+                    html += `<h3 class="disease-title">${disease.name}</h3>`;
+                    if(disease.pathogen) html += `<p><i>${disease.pathogen.name} (${disease.pathogen.type})</i></p>`;
+
+                    // Epidemiology
+                    if(disease.epidemiology) {
+                        html += `<h4 class="section-title">Epidemiology</h4>`;
+                        html += `<p><strong>Incidence:</strong> ${disease.epidemiology.incidence || 'N/A'}</p>`;
+                        html += `<p><strong>Risk groups:</strong> ${(disease.epidemiology.risk_groups || []).join(', ')}</p>`;
+                        html += `<p><strong>Transmission:</strong> ${disease.epidemiology.transmission || 'N/A'}</p>`;
+                    }
+
+                    // Pathogenesis
+                    if(disease.pathomechanism) {
+                        html += `<h4 class="section-title">Pathogenesis</h4>`;
+                        html += '<h5>Steps:</h5>' + renderList(disease.pathomechanism.steps);
+                        html += '<h5>Virulence factors:</h5>' + renderList(disease.pathomechanism.virulence_factors);
+                    }
+                    
+                    // Clinical
+                    if(disease.clinical) {
+                        html += `<h4 class="section-title">Clinical Features</h4>`;
+                        html += `<p><strong>Incubation:</strong> ${disease.clinical.incubation || 'N/A'}</p>`;
+                        html += `<p><strong>Onset:</strong> ${disease.clinical.onset || 'N/A'}</p>`;
+                        html += '<h5>Symptoms:</h5>';
+                        html += `<ul>${(disease.clinical.symptoms || []).map(s => `<li><strong>${s.name}:</strong> ${s.description}</li>`).join('')}</ul>`;
+                        html += '<h5>Physical examination:</h5>' + renderList(disease.clinical.physical_exam);
+                        html += '<h5>Complications:</h5>' + renderList(disease.clinical.complications);
+                    }
+
+                    // Diagnostics
+                    if(disease.diagnostics) {
+                        html += `<h4 class="section-title">Diagnostics</h4>`;
+                        if (disease.diagnostics.laboratory && disease.diagnostics.laboratory.length > 0) {
+                            html += '<h5>Laboratory:</h5>';
+                            html += renderTable(['Test', 'Finding', 'Interpretation'], disease.diagnostics.laboratory.map(l => [l.test, l.finding, l.interpretation]));
+                        }
+                        if (disease.diagnostics.imaging && disease.diagnostics.imaging.length > 0) {
+                            html += '<h5>Imaging:</h5>';
+                            html += `<ul>${disease.diagnostics.imaging.map(img => `<li><strong>${img.modality}:</strong> ${img.finding} (${img.significance})</li>`).join('')}</ul>`;
+                        }
+                        if (disease.diagnostics.microbiology && disease.diagnostics.microbiology.length > 0) {
+                            html += '<h5>Microbiology:</h5>';
+                            html += `<ul>${disease.diagnostics.microbiology.map(micro => `<li><strong>${micro.test}:</strong> ${micro.finding} (${micro.significance})</li>`).join('')}</ul>`;
+                        }
+                    }
+
+                    // Differential
+                    const diffList = disease.differential || disease.diagnostics?.differential || [];
+                    if (diffList.length > 0) {
+                        html += `<h4 class="section-title">Differential Diagnosis</h4>`;
+                        html += `<ul>${diffList.map(diff => `<li><strong>${diff.disease}:</strong> ${diff.distinguishing}</li>`).join('')}</ul>`;
+                    }
+
+                    // Therapy
+                    if(disease.therapy) {
+                        html += `<h4 class="section-title">Management</h4>`;
+                        if (disease.therapy.empirical) {
+                            html += '<h5>Empirical therapy:</h5>';
+                            Object.entries(disease.therapy.empirical).forEach(([key, group]) => {
+                                if (Array.isArray(group)) {
+                                    group.forEach(drug => { html += `<p><strong>${drug.drug}:</strong> ${drug.dose} ${drug.duration}. <i>${drug.note || ''}</i></p>`; });
+                                } else if (group && group.drugs) {
+                                    html += `<h6>${group.title || key}</h6>`;
+                                    group.drugs.forEach(drug => { html += `<p><strong>${drug.drug}:</strong> ${drug.dose} ${drug.duration}. <i>${drug.note || ''}</i></p>`; });
+                                }
+                            });
+                        }
+                        html += '<h5>Supportive therapy:</h5>' + renderList(disease.therapy.supportive);
+                        html += '<h5>Prevention:</h5>' + renderList(disease.therapy.prevention);
+                    }
+
+                    // Prognosis
+                    if(disease.prognosis) {
+                        html += `<h4 class="section-title">Prognosis</h4>`;
+                        html += `<p><strong>Mortality:</strong> ${disease.prognosis.mortality || 'N/A'}</p>`;
+                        html += `<p><strong>Factors:</strong> ${disease.prognosis.factors || 'N/A'}</p>`;
+                    }
+
+                    html += `</div>`;
+                });
+            }
+            contentDiv.innerHTML = html;
+        }
+
+        renderContent();
+    </script>
+</body>
+</html>
