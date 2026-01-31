@@ -1,3 +1,5 @@
+// c:\Users\Peterfi\OneDrive - Pécsi Tudományegyetem\A folyó ügyek\a gyorsan elintézendő\a leadandó, határidős dolgok\Cikkek, előadások\programok\Infectologia\thorax_de.js
+
 Object.assign(window.diseases, {
       bacterial_respiratory: {
         name: 'Bakterielle Atemwegsinfektionen',
@@ -686,7 +688,7 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               laboratory: [
-                { test: 'Blutbild', finding: 'Leukopenie oder normal, Lymphopenie', interpretation: 'Typisch für Virusinfektion' },
+                { test: 'Blutbild', finding: 'Leukozytose oder normal, Lymphopenie', interpretation: 'Typisch für Virusinfektion' },
                 { test: 'CRP', finding: 'Mäßig erhöht', interpretation: 'Niedriger als bei bakteriell' },
                 { test: 'PCT', finding: 'Normal (<0.25)', interpretation: 'Ausschluss einer bakteriellen Superinfektion' }
               ],
@@ -824,7 +826,7 @@ Object.assign(window.diseases, {
           }
         ]
       },
-           cardiovascular: {
+      cardiovascular: {
         name: 'Kardiovaskuläre Infektionen',
         icon: window.diseaseMetadata.cardiovascular.icon,
         color: window.diseaseMetadata.cardiovascular.color,
@@ -1122,4 +1124,370 @@ Object.assign(window.diseases, {
           }
         ]
       },
+      upper_respiratory: {
+        name: 'Infektionen der oberen Atemwege',
+        icon: window.diseaseMetadata.upper_respiratory.icon,
+        color: window.diseaseMetadata.upper_respiratory.color,
+        diseases: [
+          {
+            id: 'upper_respiratory_infections',
+            name: 'Infektionen der oberen Atemwege (Erkältung)',
+            pathogen: { type: 'Virus', name: 'Rhinovirus (am häufigsten), Coronavirus, Adenovirus, Influenza', gram: 'RNA-Viren', shape: 'variabel' },
+            epidemiology: {
+              incidence: 'Häufigste Infektion, Erwachsene 2-3x/Jahr, Kinder 6-8x/Jahr',
+              risk_groups: ['Kinder', 'Ältere', 'Immunsupprimierte'],
+              seasonality: 'Ganzjährig, Gipfel Herbst-Winter',
+              transmission: 'Tröpfcheninfektion, Kontakt, Fomiten'
+            },
+            pathomechanism: {
+              steps: [
+                'Viruseintritt in Nasen-/Rachenschleimhaut',
+                'Infektion von Epithelzellen',
+                'Lokale Entzündung (Neutrophile, Ödem)',
+                'Ziliostase, erhöhte Schleimproduktion',
+                'Systemische Reaktion (Fieber, Allgemeinsymptome)'
+              ],
+              virulence_factors: ['Rezeptorbindung (ICAM-1 bei Rhinovirus)', 'Immunmodulation']
+            },
+            clinical: {
+              incubation: '1-3 Tage',
+              onset: 'Plötzlich',
+              symptoms: [
+                { name: 'Rhinorrhö', description: 'Klar → mukopurulent', severity: 'mild' },
+                { name: 'Niesen', description: 'Paroxysmal', severity: 'mild' },
+                { name: 'Halsschmerzen', description: 'Mild', severity: 'mild' },
+                { name: 'Husten', description: 'Trocken, irritativ', severity: 'mild' },
+                { name: 'Fieber', description: 'Leicht oder fehlend', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Nasenschleimhauthyperämie, Ödem',
+                'Leichte Pharynxrötung',
+                'Zervikale Lymphadenopathie',
+                'Normale Lungenkultation'
+              ],
+              complications: ['Sinusitis', 'Otitis media', 'Bronchitis', 'Pneumonie (selten)']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Nicht erforderlich', finding: '-', interpretation: 'Klinische Diagnose' }
+              ],
+              imaging: [
+                { test: 'Nicht erforderlich', finding: '-', interpretation: 'Klinische Diagnose' }
+              ],
+              microbiology: [
+                { test: 'Virus-PCR', finding: 'Ätiologie', significance: 'Falls erforderlich (z.B. Epidemie)' }
+              ]
+            },
+            differential: [
+              { disease: 'Allergische Rhinitis', distinguishing: 'Pruritus, Saisonalität, Eosinophilie' },
+              { disease: 'Bakterielle Sinusitis', distinguishing: 'Anhaltende Symptome, Fieber, Schmerzen' },
+              { disease: 'Influenza', distinguishing: 'Hohes Fieber, Myalgie, Prostration' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Supportiv', dose: '-', duration: '7-10 Tage', note: 'Ruhe, Flüssigkeit, symptomatische Behandlung' },
+                  { drug: 'Abschwellendes Mittel', dose: 'Oxymetazolin nasal', duration: '3-5 Tage', note: 'Nicht länger!' },
+                  { drug: 'Antihistaminikum', dose: 'Loratadin', duration: '', note: 'Bei Verdacht auf Allergie' }
+                ],
+                inpatient: [
+                  { drug: 'Nicht erforderlich', dose: '-', duration: '-', note: 'Selten' }
+                ],
+                icu: [
+                  { drug: 'Nicht erforderlich', dose: '-', duration: '-', note: 'Selten' }
+                ]
+              },
+              targeted: 'Kein spezifisches antivirales Mittel',
+              supportive: ['Ruhe', 'Flüssigkeitszufuhr', 'Fiebersenkung'],
+              prevention: ['Händehygiene', 'Maskentragen bei Epidemien']
+            },
+            prognosis: {
+              mortality: 'Sehr niedrig',
+              prognostic_scores: ['Keine'],
+              factors: 'Immunstatus'
+            }
+          },
+          {
+            id: 'rsv_infection',
+            name: 'RSV-Infektion (Respiratorisches Synzytial-Virus)',
+            pathogen: { type: 'Virus', name: 'Humanes Respiratorisches Synzytial-Virus (HRSV)', gram: 'RNA-Virus, Pneumoviridae', shape: 'helikal' },
+            epidemiology: {
+              incidence: 'Alle Kinder bis zum 2. Lebensjahr infiziert, Erwachsene Reinfektion',
+              risk_groups: ['Säuglinge (<6 Monate)', 'Ältere (>65)', 'Chronisch Lungenkranke', 'Immunsupprimierte'],
+              seasonality: 'Winter-Frühling',
+              transmission: 'Tröpfcheninfektion, Kontakt (sehr ansteckend!)'
+            },
+            pathomechanism: {
+              steps: [
+                'Viruseintritt in die Atemwege',
+                'Fusion mit zilientragenden Epithelzellen',
+                'Synzytienbildung',
+                'Zilienzerstörung, gestörte mukoziliäre Clearance',
+                'Entwicklung von Bronchiolitis oder Pneumonie'
+              ],
+              virulence_factors: ['Fusionsprotein (F)', 'G-Glykoprotein (Adhärenz)']
+            },
+            clinical: {
+              incubation: '4-6 Tage',
+              onset: 'Schleichend',
+              symptoms: [
+                { name: 'Rhinorrhö', description: 'Klar', severity: 'mild' },
+                { name: 'Husten', description: 'Trocken, dann produktiv', severity: 'moderate' },
+                { name: 'Fieber', description: 'Leicht-mäßig', severity: 'mild' },
+                { name: 'Dyspnoe', description: 'Schwer bei Säuglingen', severity: 'severe' },
+                { name: 'Giemen', description: 'Zeichen der Bronchiolitis', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Tachypnoe, Einziehungen',
+                'Giemen, Rasselgeräusche',
+                'Apnoe bei Säuglingen',
+                'Hypoxie'
+              ],
+              complications: ['Bronchiolitis obliterans', 'Pneumonie', 'Apnoe', 'Tod (selten bei Säuglingen, aber möglich)']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blutbild', finding: 'Normal oder leichte Leukozytose', interpretation: 'Unspezifisch' }
+              ],
+              imaging: [
+                { modality: 'Thorax-Röntgen', finding: 'Überblähung, Atelektasen', significance: 'Bronchiolitis' }
+              ],
+              microbiology: [
+                { test: 'Nasopharyngeal-Aspirat-PCR', finding: 'RSV-RNA', significance: 'Goldstandard' },
+                { test: 'Immunfluoreszenz', finding: 'Antigennachweis', significance: 'Schnell' }
+              ]
+            },
+            differential: [
+              { disease: 'Bronchiolitis andere Ursachen', distinguishing: 'Virus-PCR' },
+              { disease: 'Asthma', distinguishing: 'Anamnese, Atopie' },
+              { disease: 'Pertussis', distinguishing: 'Keuchen, Lymphozytose' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Supportiv', dose: '-', duration: '-', note: 'Sauerstoff, Hydratation' },
+                  { drug: 'Bronchodilatator', dose: 'Salbutamol', duration: '', note: 'Bei Giemen' }
+                ],
+                inpatient: [
+                  { drug: 'Ribavirin', dose: 'Aerosol', duration: '3-5 Tage', note: 'In schweren Fällen, Immunsupprimierte' }
+                ],
+                icu: [
+                  { drug: 'Beatmung', dose: 'NIV oder Intubation', duration: '', note: 'Bei Apnoe' }
+                ]
+              },
+              targeted: 'Palivizumab-Prophylaxe für Hochrisiko-Säuglinge',
+              supportive: ['Sauerstoff', 'Hydratation', 'Physiotherapie'],
+              prevention: ['Händehygiene', 'Isolierung', 'Palivizumab (monoklonaler Ak)']
+            },
+            prognosis: {
+              mortality: 'Niedrig, aber höheres Risiko bei Säuglingen',
+              prognostic_scores: ['Keine'],
+              factors: 'Alter, Komorbidität'
+            }
+          },
+          {
+            id: 'tonsillitis',
+            name: 'Tonsillitis (Mandelentzündung)',
+            pathogen: { type: 'Bakterium', name: 'Streptococcus pyogenes (GAS, am häufigsten)', gram: 'Gram-positiv', shape: 'Kette' },
+            epidemiology: {
+              incidence: 'Häufig im Kindesalter, 5-15 Jahre',
+              risk_groups: ['Kinder', 'Junge Erwachsene'],
+              seasonality: 'Winter-Frühling',
+              transmission: 'Tröpfcheninfektion, Kontakt'
+            },
+            pathomechanism: {
+              steps: [
+                'Bakterielle Kolonisation der Mandeln',
+                'Lokale Entzündung, Ödem',
+                'Toxinproduktion (Streptolysin O)',
+                'Systemische Reaktion (Fieber, Allgemeinsymptome)'
+              ],
+              virulence_factors: ['M-Protein', 'Streptolysine', 'Hyaluronidase']
+            },
+            clinical: {
+              incubation: '2-5 Tage',
+              onset: 'Plötzlich',
+              symptoms: [
+                { name: 'Halsschmerzen', description: 'Schwer, Schluckbeschwerden', severity: 'severe' },
+                { name: 'Fieber', description: 'Hoch', severity: 'moderate' },
+                { name: 'Dysphagie', description: 'Schmerzen beim Schlucken', severity: 'moderate' },
+                { name: 'Tonsillenbeläge', description: 'Weiß, eitrig', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Tonsillenhyperämie, Schwellung',
+                'Exsudat',
+                'Zervikale Lymphadenitis',
+                'Scharlach-Symptome (selten)'
+              ],
+              complications: ['Peritonsillarabszess', 'Rheumatisches Fieber', 'Glomerulonephritis', 'Lemierre-Syndrom']
+            },
+            diagnostics: {
+              microbiology: [
+                { test: 'Strep-Test', finding: 'Positiv', interpretation: 'Schnelldiagnose' },
+                { test: 'Rachenabstrichkultur', finding: 'GAS', significance: 'Bestätigung' }
+              ]
+            },
+            differential: [
+              { disease: 'Virale Pharyngitis', distinguishing: 'Milde Symptome, kein Exsudat' },
+              { disease: 'Mononukleose', distinguishing: 'Lymphozytose, Hepatosplenomegalie' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Penicillin V', dose: '4x500mg p.o.', duration: '10 Tage', note: 'Erste Wahl' },
+                  { drug: 'Amoxicillin', dose: '3x500mg p.o.', duration: '10 Tage', note: 'Alternative' }
+                ],
+                inpatient: [
+                  { drug: 'Penicillin G', dose: '4x4 Mio. IE i.v.', duration: '7-10 Tage', note: 'In schweren Fällen' }
+                ],
+                icu: [
+                  { drug: 'Chirurgische Drainage', dose: 'Bei Abszess', duration: '', note: '' }
+                ]
+              },
+              targeted: 'Penicillin',
+              supportive: ['Schmerzmittel', 'Flüssigkeit'],
+              prevention: ['Hygiene']
+            },
+            prognosis: {
+              mortality: 'Niedrig',
+              prognostic_scores: ['Keine'],
+              factors: 'Späte Behandlung'
+            }
+          },
+          {
+            id: 'sinusitis',
+            name: 'Sinusitis (Nasennebenhöhlenentzündung)',
+            pathogen: { type: 'Virus/Bakterium', name: 'Viren (erste 7-10 Tage), dann Streptococcus pneumoniae, Haemophilus influenzae', gram: 'Gemischt', shape: 'variabel' },
+            epidemiology: {
+              incidence: 'Häufig, Erwachsene 1-2x/Jahr',
+              risk_groups: ['Allergiker', 'Raucher', 'Immunsupprimierte'],
+              seasonality: 'Winter',
+              transmission: 'Endogen, Komplikation einer Infektion der oberen Atemwege'
+            },
+            pathomechanism: {
+              steps: [
+                'Entzündung der Nasenschleimhaut (Virus)',
+                'Ostiumobstruktion',
+                'Bakterielle Superinfektion',
+                'Eitrige Entzündung'
+              ],
+              virulence_factors: ['Biofilmbildung']
+            },
+            clinical: {
+              incubation: 'Nach Infektion der oberen Atemwege',
+              onset: 'Schleichend',
+              symptoms: [
+                { name: 'Gesichtsschmerzen', description: 'Über Stirn, Nebenhöhlen', severity: 'moderate' },
+                { name: 'Nasenverstopfung', description: 'Mukopurulenter Ausfluss', severity: 'moderate' },
+                { name: 'Kopfschmerzen', description: 'Frontal', severity: 'moderate' },
+                { name: 'Fieber', description: 'In akuten Fällen', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Gesichtsdruckempfindlichkeit',
+                'Mukopurulenter Nasenausfluss',
+                'Postnasal Drip'
+              ],
+              complications: ['Orbitale Zellulitis', 'Meningitis', 'Osteomyelitis']
+            },
+            diagnostics: {
+              imaging: [
+                { modality: 'CT Nebenhöhlen', finding: 'Flüssigkeitsspiegel, Schleimhautverdickung', significance: 'Falls erforderlich' }
+              ]
+            },
+            differential: [
+              { disease: 'Migräne', distinguishing: 'Einseitiger Kopfschmerz, Aura' },
+              { disease: 'Zahnschmerzen', distinguishing: 'Zahnärztliche Untersuchung' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Amoxicillin/Clavulansäure', dose: '2x875/125mg p.o.', duration: '7-10 Tage', note: 'Bei Verdacht auf bakteriell' },
+                  { drug: 'Abschwellendes Mittel', dose: 'Pseudoephedrin', duration: '3-5 Tage', note: 'Symptomatisch' }
+                ],
+                inpatient: [
+                  { drug: 'i.v. Antibiotika', dose: 'Wenn kompliziert', duration: '', note: '' }
+                ],
+                icu: [
+                  { drug: 'Chirurgische Drainage', dose: 'Bei Abszess', duration: '', note: '' }
+                ]
+              },
+              targeted: 'Antibiotika wenn bakteriell',
+              supportive: ['Abschwellende Mittel', 'Dampfinhalation'],
+              prevention: ['Allergiebehandlung']
+            },
+            prognosis: {
+              mortality: 'Niedrig',
+              prognostic_scores: ['Keine'],
+              factors: 'Immunstatus'
+            }
+          },
+          {
+            id: 'otitis_media',
+            name: 'Otitis media (Mittelohrentzündung)',
+            pathogen: { type: 'Bakterium', name: 'Streptococcus pneumoniae, Haemophilus influenzae, Moraxella catarrhalis', gram: 'Gemischt', shape: 'Kokken/Bazillen' },
+            epidemiology: {
+              incidence: 'Häufig im Kindesalter, 80% erleben es bis zum 3. Lebensjahr',
+              risk_groups: ['Säuglinge', 'Kinder', 'Passivrauchen'],
+              seasonality: 'Winter',
+              transmission: 'Komplikation einer Infektion der oberen Atemwege'
+            },
+            pathomechanism: {
+              steps: [
+                'Eustachische Röhrenobstruktion (adenoide Hyperplasie, Rhinitis)',
+                'Bakterieller Aufstieg',
+                'Eitrige Entzündung im Mittelohr',
+                'Mögliche Trommelfellperforation'
+              ],
+              virulence_factors: ['Biofilm', 'Toxine']
+            },
+            clinical: {
+              incubation: 'Nach Infektion der oberen Atemwege',
+              onset: 'Plötzlich',
+              symptoms: [
+                { name: 'Ohrenschmerzen', description: 'Schwer, Kinder weinen', severity: 'severe' },
+                { name: 'Fieber', description: 'Häufig', severity: 'moderate' },
+                { name: 'Hörverlust', description: 'Vorübergehend', severity: 'moderate' },
+                { name: 'Rhinorrhö', description: 'Assoziiert', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Trommelfellhyperämie, Vorwölbung',
+                'Ausfluss bei Perforation',
+                'Tympanozentese falls erforderlich'
+              ],
+              complications: ['Mastoiditis', 'Meningitis', 'Labyrinthitis']
+            },
+            diagnostics: {
+              imaging: [
+                { modality: 'Otoskopie', finding: 'Trommelfelluntersuchung', significance: 'Diagnostisch' }
+              ]
+            },
+            differential: [
+              { disease: 'Otitis externa', distinguishing: 'Ohrmuschel ist betroffen' },
+              { disease: 'Pharyngitis', distinguishing: 'Keine Ohrenschmerzen' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Amoxicillin', dose: '3x40mg/kg p.o.', duration: '7-10 Tage', note: 'Erste Wahl' },
+                  { drug: 'Cefuroxim', dose: '2x250mg p.o.', duration: '7 Tage', note: 'Alternative' }
+                ],
+                inpatient: [
+                  { drug: 'i.v. Antibiotika', dose: 'Wenn kompliziert', duration: '', note: '' }
+                ],
+                icu: [
+                  { drug: 'Chirurgische Drainage', dose: 'Bei Abszess', duration: '', note: '' }
+                ]
+              },
+              targeted: 'Antibiotika',
+              supportive: ['Schmerzmittel', 'Abschwellende Mittel'],
+              prevention: ['Impfstoffe (Pneumokokken, Hib)']
+            },
+            prognosis: {
+              mortality: 'Niedrig',
+              prognostic_scores: ['Keine'],
+              factors: 'Alter, Rezidiv'
+            }
+          }
+        ]
+      }
 });

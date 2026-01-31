@@ -114,7 +114,7 @@
         <p id="main-subtitle" class="text-emerald-100 text-sm mt-0.5">Orvostanhallgatók számára</p>
         <div class="text-emerald-200 text-xs mt-1">
          <p>Írta és szerkesztette: Dr. Péterfi Zoltán</p>
-         <p>Copyright: Dr. Péterfi Zoltán | Verzió: 1.0</p>
+         <p>Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 2.1</p>
         </div>
        </div>
       </div>
@@ -130,10 +130,10 @@
         </button>
       </div>
       <div class="flex items-center gap-4">
-       <a href="print.html" target="_blank" id="export-pdf-btn" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2" title="A teljes tartalom nyomtatása/mentése PDF-be">
+       <button onclick="exportPDF()" id="export-pdf-btn" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2" title="A teljes tartalom nyomtatása/mentése PDF-be">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
         <span>Export PDF</span>
-       </a>
+       </button>
        <div class="relative"><input type="text" id="search-input" placeholder="Keresés betegségek között..." class="w-64 px-4 py-2 pl-10 rounded-lg bg-white/15 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/25 focus:border-white/40 transition-all text-sm">
         <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-white/60" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
        </div>
@@ -204,6 +204,331 @@
   <script src="metadata.js"></script>
 
   <script>
+    /**
+     * A teljes adatbázis PDF exportálása a kiválasztott nyelven.
+     * Tartalmazza a szerzőt, copyrightot és verziószámot.
+     */
+    function exportPDF() {
+        // Ellenőrizzük, hogy az adatbázis betöltődött-e
+        if (!window.diseases) {
+            alert('Az adatbázis nem elérhető.');
+            return;
+        }
+
+        // Nyelv detektálása a betöltött adatok alapján
+        let lang = 'hu';
+        if (typeof currentLanguage !== 'undefined') {
+            lang = currentLanguage;
+        } else {
+            const testName = window.diseases.bacterial_respiratory?.name || '';
+            if (testName.includes('Respiratory')) lang = 'en';
+            else if (testName.includes('Atemweg')) lang = 'de';
+        }
+
+        // Szövegek a nyelv függvényében
+        const texts = {
+            hu: { 
+                title: "Infectologia Adatbázis", author: "Szerző", date: "Dátum", version: "Verzió", 
+                pathogen: "Kórokozó", 
+                epidemiology: "Epidemiológia", incidence: "Incidencia", seasonality: "Szezonalitás", transmission: "Transzmisszió", risk_groups: "Rizikócsoportok",
+                pathomechanism: "Pathomechanizmus", steps: "Lépések", virulence: "Virulencia faktorok",
+                clinical: "Klinikum", incubation: "Inkubáció", onset: "Kezdet", symptoms: "Tünetek", physical: "Fizikális vizsgálat", complications: "Komplikációk",
+                diagnostics: "Diagnosztika", laboratory: "Labor", imaging: "Képalkotó", microbiology: "Mikrobiológia", criteria: "Kritériumok",
+                differential: "Differenciáldiagnózis",
+                therapy: "Terápia", empirical: "Empirikus", targeted: "Célzott", supportive: "Szupportív", prevention: "Prevenció", guidelines: "Irányelvek", drug: "Gyógyszer", dose: "Dózis", note: "Megjegyzés",
+                prognosis: "Prognózis", mortality: "Mortalitás", factors: "Faktorok", scores: "Score-ok",
+                table_test: "Vizsgálat", table_finding: "Eredmény", table_interpretation: "Értelmezés"
+            },
+            en: { 
+                title: "Infectology Database", author: "Author", date: "Date", version: "Version", 
+                pathogen: "Pathogen", 
+                epidemiology: "Epidemiology", incidence: "Incidence", seasonality: "Seasonality", transmission: "Transmission", risk_groups: "Risk Groups",
+                pathomechanism: "Pathomechanism", steps: "Steps", virulence: "Virulence Factors",
+                clinical: "Clinical Features", incubation: "Incubation", onset: "Onset", symptoms: "Symptoms", physical: "Physical Exam", complications: "Complications",
+                diagnostics: "Diagnostics", laboratory: "Laboratory", imaging: "Imaging", microbiology: "Microbiology", criteria: "Criteria",
+                differential: "Differential Diagnosis",
+                therapy: "Therapy", empirical: "Empirical", targeted: "Targeted", supportive: "Supportive", prevention: "Prevention", guidelines: "Guidelines", drug: "Drug", dose: "Dose", note: "Note",
+                prognosis: "Prognosis", mortality: "Mortality", factors: "Factors", scores: "Scores",
+                table_test: "Test", table_finding: "Finding", table_interpretation: "Interpretation"
+            },
+            de: { 
+                title: "Infektiologie Datenbank", author: "Autor", date: "Datum", version: "Version", 
+                pathogen: "Erreger", 
+                epidemiology: "Epidemiologie", incidence: "Inzidenz", seasonality: "Saisonalität", transmission: "Übertragung", risk_groups: "Risikogruppen",
+                pathomechanism: "Pathomechanismus", steps: "Schritte", virulence: "Virulenzfaktoren",
+                clinical: "Klinik", incubation: "Inkubation", onset: "Beginn", symptoms: "Symptome", physical: "Körperliche Untersuchung", complications: "Komplikationen",
+                diagnostics: "Diagnostik", laboratory: "Labor", imaging: "Bildgebung", microbiology: "Mikrobiologie", criteria: "Kriterien",
+                differential: "Differentialdiagnose",
+                therapy: "Therapie", empirical: "Empirisch", targeted: "Gezielt", supportive: "Supportiv", prevention: "Prävention", guidelines: "Leitlinien", drug: "Medikament", dose: "Dosis", note: "Hinweis",
+                prognosis: "Prognose", mortality: "Mortalität", factors: "Faktoren", scores: "Scores",
+                table_test: "Test", table_finding: "Befund", table_interpretation: "Interpretation"
+            }
+        };
+        const t = texts[lang] || texts.hu;
+
+        // Metadata
+        const meta = {
+            authorName: "Dr. Péterfi Zoltán",
+            copyright: "© 2024 Dr. Péterfi Zoltán",
+            versionNum: "1.0"
+        };
+
+        // Új ablak nyitása a nyomtatáshoz
+        const printWindow = window.open('', '_blank');
+        if (!printWindow) {
+            alert('A felugró ablakok tiltva vannak. Kérlek engedélyezd őket az exporthoz.');
+            return;
+        }
+        
+        let htmlContent = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>${t.title}</title>
+                <style>
+                    @page { size: A4; margin: 1.5cm; }
+                    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.4; color: #333; padding: 20px; max-width: 1000px; margin: 0 auto; }
+                    .header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid #333; padding-bottom: 15px; }
+                    .header h1 { margin: 0 0 10px 0; color: #2c3e50; }
+                    .meta { font-size: 0.9em; color: #555; }
+                    
+                    /* Kategória stílusok */
+                    .category { margin-top: 30px; }
+                    .category:first-of-type { page-break-before: auto; }
+                    .category-header { border-bottom: 2px solid #eee; padding-bottom: 5px; margin-bottom: 15px; }
+                    .category-title { font-size: 1.6em; color: #2c3e50; margin: 0; display: flex; align-items: center; gap: 10px; }
+                    
+                    /* Betegség kártya stílusok */
+                    .disease { margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 6px; border: 1px solid #e9ecef; }
+                    .disease h3 { margin-top: 0; margin-bottom: 10px; color: #e11d48; border-bottom: 1px solid #e11d48; padding-bottom: 5px; display: inline-block; }
+                    
+                    .section { margin-bottom: 8px; }
+                    .label { font-weight: bold; color: #444; }
+                    .sub-label { font-weight: 600; color: #555; text-decoration: underline; margin-top: 5px; display: block; }
+                    
+                    /* Táblázat stílusok */
+                    table { width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 0.85em; background: white; }
+                    th, td { border: 1px solid #ddd; padding: 6px; text-align: left; vertical-align: top; }
+                    th { background-color: #e9ecef; font-weight: bold; }
+                    
+                    ul { margin: 5px 0; padding-left: 20px; }
+                    li { margin-bottom: 2px; }
+
+                    .footer { margin-top: 40px; text-align: center; font-size: 0.8em; color: #999; border-top: 1px solid #eee; padding-top: 10px; }
+                    
+                    @media print {
+                        body { padding: 0; max-width: none; width: 100%; }
+                        .disease { border: 1px solid #ccc; }
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h1>${t.title}</h1>
+                    <div class="meta">
+                        <p><strong>${t.author}:</strong> ${meta.authorName} &nbsp;|&nbsp; <strong>Copyright:</strong> ${meta.copyright}</p>
+                        <p><strong>${t.version}:</strong> ${meta.versionNum} &nbsp;|&nbsp; <strong>${t.date}:</strong> ${new Date().toLocaleDateString()}</p>
+                    </div>
+                </div>
+        `;
+
+        // Helper functions
+        const renderList = (items) => {
+            if (!items || items.length === 0) return '';
+            return `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+        };
+
+        // Adatok iterálása (Kategóriák -> Betegségek)
+        for (const [catKey, category] of Object.entries(window.diseases)) {
+            htmlContent += `
+                <div class="category">
+                    <div class="category-header">
+                        <h2 class="category-title" style="color: ${category.color || '#2c3e50'}">${category.icon || ''} ${category.name}</h2>
+                    </div>
+            `;
+
+            if (category.diseases) {
+                category.diseases.forEach(disease => {
+                    htmlContent += `<div class="disease"><h3>${disease.name}</h3>`;
+
+                    // Kórokozó
+                    if (disease.pathogen) {
+                        htmlContent += `<div class="section"><span class="label">${t.pathogen}:</span> ${disease.pathogen.type} - ${disease.pathogen.name} ${disease.pathogen.gram ? `(${disease.pathogen.gram})` : ''}</div>`;
+                    }
+
+                    // Epidemiológia
+                    if (disease.epidemiology) {
+                        htmlContent += `<div class="section"><span class="label">${t.epidemiology}:</span>`;
+                        if (disease.epidemiology.incidence) htmlContent += `<div>- ${t.incidence}: ${disease.epidemiology.incidence}</div>`;
+                        if (disease.epidemiology.seasonality) htmlContent += `<div>- ${t.seasonality}: ${disease.epidemiology.seasonality}</div>`;
+                        if (disease.epidemiology.transmission) htmlContent += `<div>- ${t.transmission}: ${disease.epidemiology.transmission}</div>`;
+                        if (disease.epidemiology.risk_groups && disease.epidemiology.risk_groups.length > 0) {
+                            htmlContent += `<div>- ${t.risk_groups}: ${disease.epidemiology.risk_groups.join(', ')}</div>`;
+                        }
+                        htmlContent += `</div>`;
+                    }
+
+                    // Pathomechanizmus
+                    if (disease.pathomechanism) {
+                        htmlContent += `<div class="section"><span class="label">${t.pathomechanism}:</span>`;
+                        if (disease.pathomechanism.steps && disease.pathomechanism.steps.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.steps}:</div>${renderList(disease.pathomechanism.steps)}`;
+                        }
+                        if (disease.pathomechanism.virulence_factors && disease.pathomechanism.virulence_factors.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.virulence}:</div>${renderList(disease.pathomechanism.virulence_factors)}`;
+                        }
+                        htmlContent += `</div>`;
+                    }
+
+                    // Klinikum
+                    if (disease.clinical) {
+                        htmlContent += `<div class="section"><span class="label">${t.clinical}:</span>`;
+                        if (disease.clinical.incubation) htmlContent += `<div>- ${t.incubation}: ${disease.clinical.incubation}</div>`;
+                        if (disease.clinical.onset) htmlContent += `<div>- ${t.onset}: ${disease.clinical.onset}</div>`;
+                        
+                        if (disease.clinical.symptoms && disease.clinical.symptoms.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.symptoms}:</div><ul>`;
+                            disease.clinical.symptoms.forEach(s => {
+                                htmlContent += `<li><strong>${s.name}:</strong> ${s.description}</li>`;
+                            });
+                            htmlContent += `</ul>`;
+                        }
+                        
+                        if (disease.clinical.physical_exam && disease.clinical.physical_exam.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.physical}:</div>${renderList(disease.clinical.physical_exam)}`;
+                        }
+                        if (disease.clinical.complications && disease.clinical.complications.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.complications}:</div>${renderList(disease.clinical.complications)}`;
+                        }
+                        htmlContent += `</div>`;
+                    }
+
+                    // Diagnosztika
+                    if (disease.diagnostics) {
+                        htmlContent += `<div class="section"><span class="label">${t.diagnostics}:</span>`;
+                        
+                        if (disease.diagnostics.criteria && disease.diagnostics.criteria.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.criteria}:</div>`;
+                            disease.diagnostics.criteria.forEach(c => {
+                                htmlContent += `<div><strong>${c.name}:</strong> ${c.items.join(', ')}</div>`;
+                            });
+                        }
+
+                        if (disease.diagnostics.laboratory && disease.diagnostics.laboratory.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.laboratory}:</div>`;
+                            htmlContent += `<table><tr><th>${t.table_test || 'Vizsgálat'}</th><th>${t.table_finding || 'Eredmény'}</th><th>${t.table_interpretation || 'Értelmezés'}</th></tr>`;
+                            disease.diagnostics.laboratory.forEach(l => {
+                                htmlContent += `<tr><td>${l.test}</td><td>${l.finding}</td><td>${l.interpretation}</td></tr>`;
+                            });
+                            htmlContent += `</table>`;
+                        }
+
+                        if (disease.diagnostics.imaging && disease.diagnostics.imaging.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.imaging}:</div><ul>`;
+                            disease.diagnostics.imaging.forEach(img => {
+                                htmlContent += `<li><strong>${img.modality}:</strong> ${img.finding} <em>(${img.significance})</em></li>`;
+                            });
+                            htmlContent += `</ul>`;
+                        }
+
+                        if (disease.diagnostics.microbiology && disease.diagnostics.microbiology.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.microbiology}:</div><ul>`;
+                            disease.diagnostics.microbiology.forEach(m => {
+                                htmlContent += `<li><strong>${m.test}:</strong> ${m.finding} <em>(${m.significance})</em></li>`;
+                            });
+                            htmlContent += `</ul>`;
+                        }
+                        htmlContent += `</div>`;
+                    }
+
+                    // Differenciáldiagnózis
+                    const diffList = disease.differential || disease.diagnostics?.differential || [];
+                    if (diffList.length > 0) {
+                        htmlContent += `<div class="section"><span class="label">${t.differential}:</span><ul>`;
+                        diffList.forEach(d => {
+                            htmlContent += `<li><strong>${d.disease}:</strong> ${d.distinguishing}</li>`;
+                        });
+                        htmlContent += `</ul></div>`;
+                    }
+
+                    // Terápia táblázatos megjelenítése
+                    if (disease.therapy) {
+                        htmlContent += `<div class="section"><span class="label">${t.therapy}:</span>`;
+                        
+                        if (disease.therapy.guidelines && disease.therapy.guidelines.length > 0) {
+                            htmlContent += `<div><strong>${t.guidelines}:</strong> ${disease.therapy.guidelines.join(', ')}</div>`;
+                        }
+
+                        if (disease.therapy.empirical) {
+                            const empirical = disease.therapy.empirical;
+                        
+                        // Helper a gyógyszerek táblázatos megjelenítéséhez
+                        const renderDrugsTable = (drugs) => {
+                            if (!drugs || !Array.isArray(drugs)) return '';
+                            let rows = drugs.map(d => `<tr><td style="width:30%"><strong>${d.drug}</strong></td><td style="width:25%">${d.dose}</td><td>${d.note || ''}</td></tr>`).join('');
+                            return `<table><tr><th>${t.drug}</th><th>${t.dose}</th><th>${t.note}</th></tr>${rows}</table>`;
+                        };
+
+                        // Kezeljük a különböző adatstruktúrákat (tömb vagy objektum kulcsokkal)
+                        if (!Array.isArray(empirical)) {
+                            for (const [key, value] of Object.entries(empirical)) {
+                                let title = key;
+                                let drugs = [];
+                                
+                                // Ha a value egy tömb (pl. outpatient: [...])
+                                if (Array.isArray(value)) {
+                                    // Cím formázása (pl. outpatient -> Outpatient)
+                                    title = key.charAt(0).toUpperCase() + key.slice(1);
+                                    drugs = value;
+                                } 
+                                // Ha a value egy objektum (pl. cap_outpatient: { title: '...', drugs: [...] })
+                                else if (value.title && value.drugs) {
+                                    title = value.title;
+                                    drugs = value.drugs;
+                                }
+                                
+                                if (drugs.length > 0) {
+                                    htmlContent += `<div class="section"><span class="label">${title}:</span>${renderDrugsTable(drugs)}</div>`;
+                                }
+                            }
+                        }
+                    }
+
+                        if (disease.therapy.targeted) {
+                            htmlContent += `<div class="sub-label">${t.targeted}:</div><div>${disease.therapy.targeted}</div>`;
+                        }
+
+                        if (disease.therapy.supportive && disease.therapy.supportive.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.supportive}:</div>${renderList(disease.therapy.supportive)}`;
+                        }
+
+                        if (disease.therapy.prevention && disease.therapy.prevention.length > 0) {
+                            htmlContent += `<div class="sub-label">${t.prevention}:</div>${renderList(disease.therapy.prevention)}`;
+                        }
+                        htmlContent += `</div>`;
+                    }
+                    
+                    htmlContent += `</div>`; // End disease
+                });
+            }
+            htmlContent += `</div>`; // End category
+        }
+
+        htmlContent += `
+            <div class="footer">Generálva / Generated: ${new Date().toLocaleString()}</div>
+            <script>
+                window.onload = function() { 
+                    // Kis késleltetés a rendereléshez, majd nyomtatás
+                    setTimeout(function() { window.print(); }, 500); 
+                }
+            <\/script>
+            </body></html>
+        `;
+
+        printWindow.document.write(htmlContent);
+        printWindow.document.close();
+    }
+
     const defaultConfig = {
       app_title: 'Infektológia Tankönyv',
       subtitle: 'Orvostanhallgatók számára',
@@ -575,6 +900,201 @@
           if (score < 2) return { risk: 'Alacsony valószínűség (<2)', action: 'Monitorozás, klinikai megítélés', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
           return { risk: 'Magas rizikó (≥2)', action: 'Szepszis gyanúja, további kivizsgálás (SOFA)', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
         }
+      },
+      'ATLAS': {
+        title: 'ATLAS Score (C. difficile)',
+        description: 'Clostridioides difficile fertőzés súlyosságának és a mortalitás kockázatának becslése.',
+        items: [
+          { type: 'header', label: 'Életkor' },
+          { type: 'radio', name: 'atlas_age', label: '< 60 év', points: 0, checked: true },
+          { type: 'radio', name: 'atlas_age', label: '60 - 79 év', points: 1 },
+          { type: 'radio', name: 'atlas_age', label: '≥ 80 év', points: 2 },
+          { type: 'header', label: 'Klinikum és Labor' },
+          { type: 'checkbox', label: 'Szisztémás antibiotikum kezelés a CDI terápia alatt', points: 1 },
+          { type: 'header', label: 'Leukocyta szám (G/L)' },
+          { type: 'radio', name: 'atlas_wbc', label: '< 16', points: 0, checked: true },
+          { type: 'radio', name: 'atlas_wbc', label: '16 - 25', points: 1 },
+          { type: 'radio', name: 'atlas_wbc', label: '> 25', points: 2 },
+          { type: 'header', label: 'Albumin (g/L)' },
+          { type: 'radio', name: 'atlas_alb', label: '> 35', points: 0, checked: true },
+          { type: 'radio', name: 'atlas_alb', label: '26 - 35', points: 1 },
+          { type: 'radio', name: 'atlas_alb', label: '≤ 25', points: 2 },
+          { type: 'header', label: 'Kreatinin (µmol/L)' },
+          { type: 'radio', name: 'atlas_crea', label: '≤ 120', points: 0, checked: true },
+          { type: 'radio', name: 'atlas_crea', label: '121 - 179', points: 1 },
+          { type: 'radio', name: 'atlas_crea', label: '≥ 180', points: 2 }
+        ],
+        interpret: (score) => {
+          if (score <= 2) return { risk: 'Enyhe (0-2 pont)', action: '0% mortalitás, >95% gyógyulás', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+          if (score <= 5) return { risk: 'Közepes (3-5 pont)', action: 'Mortalitás növekszik', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
+          return { risk: 'Súlyos (6-7 pont)', action: 'Magas mortalitás, intenzív terápia mérlegelendő', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
+      },
+      'SOFA': {
+        title: 'SOFA Score (Sepsis)',
+        description: 'Szervelégtelenség mértékének megítélése (Sequential Organ Failure Assessment).',
+        items: [
+          { type: 'header', label: 'Légzés (PaO2/FiO2 Hgmm)' },
+          { type: 'radio', name: 'sofa_resp', label: '≥ 400', points: 0, checked: true },
+          { type: 'radio', name: 'sofa_resp', label: '< 400', points: 1 },
+          { type: 'radio', name: 'sofa_resp', label: '< 300', points: 2 },
+          { type: 'radio', name: 'sofa_resp', label: '< 200 (lélegeztetve)', points: 3 },
+          { type: 'radio', name: 'sofa_resp', label: '< 100 (lélegeztetve)', points: 4 },
+          { type: 'header', label: 'Véralvadás (Thrombocyta G/L)' },
+          { type: 'radio', name: 'sofa_plt', label: '≥ 150', points: 0, checked: true },
+          { type: 'radio', name: 'sofa_plt', label: '< 150', points: 1 },
+          { type: 'radio', name: 'sofa_plt', label: '< 100', points: 2 },
+          { type: 'radio', name: 'sofa_plt', label: '< 50', points: 3 },
+          { type: 'radio', name: 'sofa_plt', label: '< 20', points: 4 },
+          { type: 'header', label: 'Máj (Bilirubin µmol/L)' },
+          { type: 'radio', name: 'sofa_bili', label: '< 20', points: 0, checked: true },
+          { type: 'radio', name: 'sofa_bili', label: '20 - 32', points: 1 },
+          { type: 'radio', name: 'sofa_bili', label: '33 - 101', points: 2 },
+          { type: 'radio', name: 'sofa_bili', label: '102 - 204', points: 3 },
+          { type: 'radio', name: 'sofa_bili', label: '> 204', points: 4 },
+          { type: 'header', label: 'Keringés (MAP / Vazopresszorok)' },
+          { type: 'radio', name: 'sofa_cv', label: 'MAP ≥ 70 Hgmm', points: 0, checked: true },
+          { type: 'radio', name: 'sofa_cv', label: 'MAP < 70 Hgmm', points: 1 },
+          { type: 'radio', name: 'sofa_cv', label: 'Dopamin ≤ 5 vagy Dobutamin', points: 2 },
+          { type: 'radio', name: 'sofa_cv', label: 'Dopamin > 5 vagy Noradrenalin ≤ 0.1', points: 3 },
+          { type: 'radio', name: 'sofa_cv', label: 'Dopamin > 15 vagy Noradrenalin > 0.1', points: 4 },
+          { type: 'header', label: 'Központi idegrendszer (GCS)' },
+          { type: 'radio', name: 'sofa_gcs', label: '15', points: 0, checked: true },
+          { type: 'radio', name: 'sofa_gcs', label: '13 - 14', points: 1 },
+          { type: 'radio', name: 'sofa_gcs', label: '10 - 12', points: 2 },
+          { type: 'radio', name: 'sofa_gcs', label: '6 - 9', points: 3 },
+          { type: 'radio', name: 'sofa_gcs', label: '< 6', points: 4 },
+          { type: 'header', label: 'Vese (Kreatinin µmol/L)' },
+          { type: 'radio', name: 'sofa_ren', label: '< 110', points: 0, checked: true },
+          { type: 'radio', name: 'sofa_ren', label: '110 - 170', points: 1 },
+          { type: 'radio', name: 'sofa_ren', label: '171 - 299', points: 2 },
+          { type: 'radio', name: 'sofa_ren', label: '300 - 440 (vagy <500ml vizelet)', points: 3 },
+          { type: 'radio', name: 'sofa_ren', label: '> 440 (vagy <200ml vizelet)', points: 4 }
+        ],
+        interpret: (score) => {
+          return { risk: `Összpontszám: ${score}`, action: 'A pontszám növekedése romló prognózist jelez. Sepszis definíció: fertőzés + SOFA változás ≥2.', color: 'text-slate-800', bg: 'bg-slate-50', border: 'border-slate-200' };
+        }
+      },
+      'PORT': {
+        title: 'Pneumonia Severity Index (PSI/PORT)',
+        description: 'Közösségben szerzett tüdőgyulladás (CAP) rizikóbecslése.',
+        items: [
+          { type: 'header', label: 'Demográfia' },
+          { type: 'number', label: 'Életkor (év)', points: 1, min: 0, max: 120 },
+          { type: 'checkbox', label: 'Nőnemű beteg', points: -10 },
+          { type: 'checkbox', label: 'Otthonlakó / Intézeti gondozott', points: 10 },
+          { type: 'header', label: 'Társbetegségek' },
+          { type: 'checkbox', label: 'Daganatos betegség', points: 30 },
+          { type: 'checkbox', label: 'Májbetegség', points: 20 },
+          { type: 'checkbox', label: 'Szívelégtelenség (CHF)', points: 10 },
+          { type: 'checkbox', label: 'Cerebrovascularis betegség', points: 10 },
+          { type: 'checkbox', label: 'Vesebetegség', points: 10 },
+          { type: 'header', label: 'Fizikális vizsgálat' },
+          { type: 'checkbox', label: 'Megváltozott mentális státusz', points: 20 },
+          { type: 'checkbox', label: 'Légzésszám ≥ 30/perc', points: 20 },
+          { type: 'checkbox', label: 'Szisztolés RR < 90 Hgmm', points: 20 },
+          { type: 'checkbox', label: 'Testhőmérséklet < 35°C vagy > 40°C', points: 15 },
+          { type: 'checkbox', label: 'Pulzus ≥ 125/perc', points: 10 },
+          { type: 'header', label: 'Laboratóriumi és Képalkotó leletek' },
+          { type: 'checkbox', label: 'Artériás pH < 7.35', points: 30 },
+          { type: 'checkbox', label: 'BUN > 10.7 mmol/L (Urea > 30 mg/dL)', points: 20 },
+          { type: 'checkbox', label: 'Nátrium < 130 mmol/L', points: 20 },
+          { type: 'checkbox', label: 'Glükóz > 13.9 mmol/L', points: 10 },
+          { type: 'checkbox', label: 'Hematokrit < 30%', points: 10 },
+          { type: 'checkbox', label: 'PaO2 < 60 Hgmm (vagy SpO2 < 90%)', points: 10 },
+          { type: 'checkbox', label: 'Pleuralis folyadék', points: 10 }
+        ],
+        interpret: (score) => {
+          if (score <= 50) return { risk: 'I. Osztály (≤50)', action: 'Alacsony rizikó (0.1% mortalitás). Otthoni kezelés.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+          if (score <= 70) return { risk: 'II. Osztály (51-70)', action: 'Alacsony rizikó (0.6% mortalitás). Otthoni kezelés.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+          if (score <= 90) return { risk: 'III. Osztály (71-90)', action: 'Közepes rizikó (0.9-2.8%). Rövid kórházi megfigyelés vagy otthoni.', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
+          if (score <= 130) return { risk: 'IV. Osztály (91-130)', action: 'Magas rizikó (8-9%). Kórházi felvétel.', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' };
+          return { risk: 'V. Osztály (>130)', action: 'Nagyon magas rizikó (27-30%). Kórházi/ITO felvétel.', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
+      },
+      'APACHE II': {
+        title: 'APACHE II Score',
+        description: 'Súlyossági pontrendszer intenzív osztályos betegeknél (Acute Physiology and Chronic Health Evaluation II).',
+        items: [
+          { type: 'header', label: 'Életkor' },
+          { type: 'radio', name: 'ap_age', label: '≤ 44', points: 0, checked: true },
+          { type: 'radio', name: 'ap_age', label: '45 - 54', points: 2 },
+          { type: 'radio', name: 'ap_age', label: '55 - 64', points: 3 },
+          { type: 'radio', name: 'ap_age', label: '65 - 74', points: 5 },
+          { type: 'radio', name: 'ap_age', label: '≥ 75', points: 6 },
+          { type: 'header', label: 'Krónikus Egészségi Állapot' },
+          { type: 'checkbox', label: 'Súlyos szervelégtelenség (máj, szív, légző, vese) vagy immunszuppresszió', points: 5 },
+          { type: 'checkbox', label: 'Sürgősségi műtét után vagy nem műtéti beteg', points: 0 }, 
+          { type: 'header', label: 'Akut Fiziológiai Paraméterek (Legrosszabb érték az első 24 órában)' },
+          { type: 'header', label: 'Hőmérséklet (°C)' },
+          { type: 'radio', name: 'ap_temp', label: '36 - 38.4', points: 0, checked: true },
+          { type: 'radio', name: 'ap_temp', label: '34 - 35.9 vagy 38.5 - 38.9', points: 1 },
+          { type: 'radio', name: 'ap_temp', label: '32 - 33.9', points: 2 },
+          { type: 'radio', name: 'ap_temp', label: '30 - 31.9 vagy 39 - 40.9', points: 3 },
+          { type: 'radio', name: 'ap_temp', label: '≤ 29.9 vagy ≥ 41', points: 4 },
+          { type: 'header', label: 'MAP (Középnyomás Hgmm)' },
+          { type: 'radio', name: 'ap_map', label: '70 - 109', points: 0, checked: true },
+          { type: 'radio', name: 'ap_map', label: '110 - 129 vagy 50 - 69', points: 2 },
+          { type: 'radio', name: 'ap_map', label: '130 - 159', points: 3 },
+          { type: 'radio', name: 'ap_map', label: '≥ 160 vagy ≤ 49', points: 4 },
+          { type: 'header', label: 'Pulzus (/perc)' },
+          { type: 'radio', name: 'ap_hr', label: '70 - 109', points: 0, checked: true },
+          { type: 'radio', name: 'ap_hr', label: '55 - 69 vagy 110 - 139', points: 2 },
+          { type: 'radio', name: 'ap_hr', label: '40 - 54 vagy 140 - 179', points: 3 },
+          { type: 'radio', name: 'ap_hr', label: '≤ 39 vagy ≥ 180', points: 4 },
+          { type: 'header', label: 'Légzésszám (/perc)' },
+          { type: 'radio', name: 'ap_rr', label: '12 - 24', points: 0, checked: true },
+          { type: 'radio', name: 'ap_rr', label: '10 - 11 vagy 25 - 34', points: 1 },
+          { type: 'radio', name: 'ap_rr', label: '6 - 9', points: 2 },
+          { type: 'radio', name: 'ap_rr', label: '35 - 49', points: 3 },
+          { type: 'radio', name: 'ap_rr', label: '≤ 5 vagy ≥ 50', points: 4 },
+          { type: 'header', label: 'Oxigenizáció (AaDO2 vagy PaO2)' },
+          { type: 'radio', name: 'ap_ox', label: 'Normál', points: 0, checked: true },
+          { type: 'radio', name: 'ap_ox', label: 'Enyhe romlás', points: 1 },
+          { type: 'radio', name: 'ap_ox', label: 'Közepes romlás', points: 3 },
+          { type: 'radio', name: 'ap_ox', label: 'Súlyos romlás', points: 4 },
+          { type: 'header', label: 'Artériás pH' },
+          { type: 'radio', name: 'ap_ph', label: '7.33 - 7.49', points: 0, checked: true },
+          { type: 'radio', name: 'ap_ph', label: 'Eltérés', points: 2 },
+          { type: 'radio', name: 'ap_ph', label: 'Jelentős eltérés (<7.15 vagy >7.7)', points: 4 },
+          { type: 'header', label: 'Szérum Nátrium (mmol/L)' },
+          { type: 'radio', name: 'ap_na', label: '130 - 149', points: 0, checked: true },
+          { type: 'radio', name: 'ap_na', label: 'Eltérés', points: 1 },
+          { type: 'radio', name: 'ap_na', label: 'Jelentős eltérés', points: 4 },
+          { type: 'header', label: 'Szérum Kálium (mmol/L)' },
+          { type: 'radio', name: 'ap_k', label: '3.5 - 5.4', points: 0, checked: true },
+          { type: 'radio', name: 'ap_k', label: 'Eltérés', points: 1 },
+          { type: 'radio', name: 'ap_k', label: 'Jelentős eltérés', points: 4 },
+          { type: 'header', label: 'Szérum Kreatinin (mg/dL)' },
+          { type: 'radio', name: 'ap_cr', label: '0.6 - 1.4', points: 0, checked: true },
+          { type: 'radio', name: 'ap_cr', label: '< 0.6 vagy 1.5 - 1.9', points: 2 },
+          { type: 'radio', name: 'ap_cr', label: '2.0 - 3.4', points: 3 },
+          { type: 'radio', name: 'ap_cr', label: '≥ 3.5', points: 4 },
+          { type: 'checkbox', label: 'Akut veseelégtelenség (Kreatinin pontszám duplázódik)', points: 0 }, 
+          { type: 'header', label: 'Hematokrit (%)' },
+          { type: 'radio', name: 'ap_hct', label: '30 - 45.9', points: 0, checked: true },
+          { type: 'radio', name: 'ap_hct', label: 'Eltérés', points: 2 },
+          { type: 'radio', name: 'ap_hct', label: 'Jelentős eltérés', points: 4 },
+          { type: 'header', label: 'Fehérvérsejt (G/L)' },
+          { type: 'radio', name: 'ap_wbc', label: '3 - 14.9', points: 0, checked: true },
+          { type: 'radio', name: 'ap_wbc', label: 'Eltérés', points: 2 },
+          { type: 'radio', name: 'ap_wbc', label: 'Jelentős eltérés', points: 4 },
+          { type: 'header', label: 'Glasgow Coma Scale (GCS)' },
+          { type: 'number', label: 'GCS pontszám (15 - GCS = pont)', points: -1, min: 3, max: 15, value: 15 } 
+        ],
+        interpret: (score) => {
+          // APACHE II score calculation usually involves adding (15 - GCS) to the total. 
+          // Here we use a trick: base score includes 15, and GCS input subtracts from it.
+          // Wait, simpler: GCS points = 15 - Actual GCS.
+          // My input logic adds: value * multiplier. So if input is 15, multiplier -1 -> -15.
+          // Total needs to be adjusted. Let's handle this in the logic or just ask for "Points for GCS" (15-GCS).
+          // Better: Ask for GCS and handle logic? No, generic logic.
+          // Let's change input to: "GCS pontveszteség (15 - GCS)" -> input 0 to 12.
+          // Or keep generic.
+          // Let's assume the user enters the GCS value, and I set points: -1. Then I need to add 15 to the base.
+          // To keep it generic, I will ask for "15 mínusz GCS" value.
+          return { risk: `APACHE II Score: ${score + 15}`, action: 'A mortalitás a pontszámmal korrelál (pl. 25 pont ~50% halálozás).', color: 'text-slate-800', bg: 'bg-slate-50', border: 'border-slate-200' };
+        }
       }
     };
 
@@ -600,14 +1120,36 @@
       html += `<div class="space-y-2 mb-6">`;
       
       calc.items.forEach(item => {
-        html += `
-          <label class="flex items-start gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors select-none">
-            <div class="flex items-center h-5">
-              <input type="checkbox" class="w-5 h-5 text-emerald-600 rounded focus:ring-emerald-500 border-gray-300 score-input" data-points="${item.points}">
-            </div>
-            <span class="text-slate-700 font-medium text-sm">${item.label}</span>
-          </label>
-        `;
+        if (item.type === 'header') {
+            html += `<h4 class="font-semibold text-slate-700 mt-4 mb-2 text-sm uppercase tracking-wide border-b border-slate-100 pb-1">${item.label}</h4>`;
+        } else if (item.type === 'number') {
+            html += `
+              <div class="flex items-center justify-between p-3 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="text-slate-700 font-medium text-sm">${item.label}</span>
+                <input type="number" class="w-20 px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:border-emerald-500 score-input" 
+                  data-points="${item.points}" min="${item.min || 0}" max="${item.max || 999}" value="${item.value || ''}" placeholder="0">
+              </div>
+            `;
+        } else if (item.type === 'radio') {
+            html += `
+              <label class="flex items-start gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors select-none mb-1">
+                <div class="flex items-center h-5">
+                  <input type="radio" name="${item.name}" class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 score-input" data-points="${item.points}" ${item.checked ? 'checked' : ''}>
+                </div>
+                <span class="text-slate-700 font-medium text-sm">${item.label}</span>
+              </label>
+            `;
+        } else {
+            // Default checkbox
+            html += `
+              <label class="flex items-start gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors select-none">
+                <div class="flex items-center h-5">
+                  <input type="checkbox" class="w-5 h-5 text-emerald-600 rounded focus:ring-emerald-500 border-gray-300 score-input" data-points="${item.points}">
+                </div>
+                <span class="text-slate-700 font-medium text-sm">${item.label}</span>
+              </label>
+            `;
+        }
       });
       
       html += `</div>`;
@@ -625,7 +1167,7 @@
       // Add event listeners
       const inputs = content.querySelectorAll('.score-input');
       inputs.forEach(input => {
-        input.addEventListener('change', () => calculateScore(calc));
+        input.addEventListener('input', () => calculateScore(calc)); // Changed to 'input' for immediate number update
       });
       
       // Show modal
@@ -654,18 +1196,42 @@
     };
 
     function calculateScore(calc) {
-      const inputs = document.querySelectorAll('.score-input');
+      const container = document.getElementById('score-modal-content');
       let total = 0;
-      inputs.forEach(input => {
-        if (input.checked) total += parseFloat(input.dataset.points);
+      
+      // Checkboxes
+      container.querySelectorAll('input[type="checkbox"]').forEach(input => {
+        if (input.checked) total += parseFloat(input.dataset.points || 0);
+      });
+
+      // Radios
+      container.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+        total += parseFloat(input.dataset.points || 0);
+      });
+
+      // Number inputs
+      container.querySelectorAll('input[type="number"]').forEach(input => {
+        const val = parseFloat(input.value) || 0;
+        const multiplier = parseFloat(input.dataset.points || 1);
+        total += val * multiplier;
       });
       
-      const container = document.getElementById('score-result-container');
+      const resultContainer = document.getElementById('score-result-container');
       const resultEl = document.getElementById('score-result');
       const interpEl = document.getElementById('score-interpretation');
       const actionEl = document.getElementById('score-action');
       
-      resultEl.textContent = total;
+      // Special handling for APACHE II GCS logic (15 - GCS)
+      // My input logic does: total += GCS * -1. So total is -GCS.
+      // I need to add 15 to the display if it's APACHE II.
+      // Or simpler: The interpret function handles the offset.
+      // For APACHE II, interpret adds 15.
+      
+      if (calc.title.includes('APACHE II')) {
+          displayScore = total + 15;
+      }
+      
+      resultEl.textContent = displayScore;
       
       if (calc.interpret) {
         const interpretation = calc.interpret(total);
@@ -674,7 +1240,7 @@
         actionEl.textContent = interpretation.action;
         
         // Update container style
-        container.className = `rounded-xl p-4 text-center border transition-colors duration-300 ${interpretation.bg} ${interpretation.border}`;
+        resultContainer.className = `rounded-xl p-4 text-center border transition-colors duration-300 ${interpretation.bg} ${interpretation.border}`;
       }
     };
 
