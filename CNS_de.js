@@ -27,7 +27,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'N. meningitidis, S. pneumoniae, L. monocytogenes', gram: 'Gemischt', shape: 'Erregerabhängig' },
             epidemiology: {
               incidence: '2-5/100.000 pro Jahr in Industrieländern',
-              risk_groups: ['Neugeborene (<1 Monat)', 'Kinder', 'Über 65-Jährige', 'Splenektomierte', 'Komplementdefizienz', 'Cochlea-Implantat'],
+              risk_groups: ['Neugeborene (<1 Monat)', 'Kinder', 'Über 65-Jährige', 'Splenektomierte', 'Komplementdefizienz', 'Cochlea-Implantat-Träger'],
               seasonality: 'Meningokokken: Winter-Frühling',
               transmission: 'Tröpfcheninfektion (Meningokokken), endogen (Pneumokokken), vertikal (GBS, Listerien)'
             },
@@ -51,7 +51,7 @@ Object.assign(window.diseases, {
                 { name: 'Ausschlag', description: 'Nicht wegdrückbare (non-blanching) Petechien/Purpura (Verdacht auf Meningokokken)', severity: 'severe' },
                 { name: 'Kopfschmerzen', description: 'Schwer, generalisiert (>85%)', severity: 'severe' },
                 { name: 'Fieber', description: '>38°C (95%)', severity: 'severe' },
-                { name: 'Nackensteifigkeit', description: 'Nuchale Rigidität (>80%)', severity: 'severe' },
+                { name: 'Nackensteifigkeit', description: 'Nackensteifigkeit (>80%)', severity: 'severe' },
                 { name: 'Bewusstseinsstörung', description: 'GCS <14 (>80%)', severity: 'severe' },
               ],
               physical_exam: [
@@ -103,7 +103,7 @@ Object.assign(window.diseases, {
                   { drug: 'Dexamethason', dose: '10mg i.v. alle 6 Stunden', duration: '4 Tage', note: 'VOR oder MIT der ersten Antibiotikagabe. Nicht geben bei septischem Schock ohne Meningitis.' }
                 ],
                 icu: [
-                  { drug: 'Supportiv', dose: '-', duration: '-', note: 'Atemwegssicherung, Flüssigkeitsresuscitation, Vasopressoren' }
+                  { drug: 'Supportiv', dose: '-', duration: '-', note: 'Atemwegssicherung, Volumensubstitution, Vasopressoren' }
                 ]
               },
               targeted: 'Meningokokken: 7 Tage; Pneumokokken: 14 Tage; Listerien: 21 Tage; H. influenzae: 10 Tage; GBS: 14-21 Tage.',
@@ -231,7 +231,7 @@ Object.assign(window.diseases, {
                 { name: 'Gedächtnisstörung', description: 'In 24% (Kurzzeit)', severity: 'moderate' }
               ],
               physical_exam: ['Bewusstseinsstörung', 'Fokale neurologische Zeichen', 'Gedächtnisstörung'],
-              complications: ['Unkus-Einklemmung', 'Bleibende kognitive Schäden', 'Tod']
+              complications: ['Unkuseinklemmung', 'Bleibende kognitive Schäden', 'Tod']
             },
             diagnostics: {
               laboratory: [{ test: 'Liquor', finding: 'Lymphozytär, Erythrozyten erhöht (xanthochrom), Protein erhöht', interpretation: 'Hämorrhagische Nekrose' }],
@@ -291,7 +291,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'FSME-Virus', gram: 'RNA, Flaviviridae', shape: 'kugelförmig' },
             epidemiology: {
               incidence: 'Endemisch in Mitteleuropa',
-              risk_groups: ['Waldgänger', 'Zeckenstich'],
+              risk_groups: ['Forstarbeiter', 'Wanderer', 'Personen mit Zeckenexposition'],
               seasonality: 'Frühling-Herbst',
               transmission: 'Zeckenstich, unpasteurisierte Milch'
             },
@@ -368,7 +368,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Streptococcus pneumoniae', gram: 'Gram-positiv', shape: 'Diplokokken' },
             epidemiology: {
               incidence: 'Häufigste Meningitis bei Erwachsenen',
-              risk_groups: ['Ältere', 'Alkoholiker', 'Splenektomie', 'Otitis/Sinusitis/Pneumonie', 'Liquorrhoe'],
+              risk_groups: ['Ältere', 'Alkoholiker', 'Splenektomierte', 'Otitis/Sinusitis/Pneumonie', 'Liquorrhoe'],
               seasonality: 'Winter',
               transmission: 'Endogene Ausbreitung oder Tröpfcheninfektion'
             },
@@ -410,7 +410,7 @@ Object.assign(window.diseases, {
               transmission: 'Lebensmittel (Weichkäse, Aufschnitt)'
             },
             pathomechanism: {
-              steps: ['GI-Trakt-Invasion', 'Bakteriämie', 'ZNS-Invasion (Rhombenzephalitis-Tropismus)'],
+              steps: ['Invasion des Gastrointestinaltrakts', 'Bakteriämie', 'ZNS-Invasion (Rhombenzephalitis-Tropismus)'],
               virulence_factors: ['Intrazelluläres Überleben', 'Listeriolysin O']
             },
             clinical: {
@@ -446,7 +446,7 @@ Object.assign(window.diseases, {
               incidence: 'Häufigste Pilzmeningitis bei HIV/AIDS-Patienten',
               risk_groups: ['HIV (CD4 <100)', 'Transplantierte', 'Steroidbehandlung'],
               seasonality: 'Keine',
-              transmission: 'Inhalation (Taubenkotstaub) -> Lunge -> hämatogene Streuung'
+              transmission: 'Inhalation (kontaminierter Staub/Taubenkot) -> Lunge -> hämatogene Streuung'
             },
             pathomechanism: {
               steps: ['Inhalation', 'Lungeninfektion (oft asymptomatisch)', 'Reaktivierung/Disseminierung bei Immunsuppression', 'Überwindung der Blut-Hirn-Schranke', 'Polysaccharidkapsel hemmt Phagozytose'],
@@ -489,7 +489,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Protozoon', name: 'Naegleria fowleri', gram: '-', shape: 'Amöbe' },
             epidemiology: {
               incidence: 'Sehr selten, aber tödlich',
-              risk_groups: ['Kinder/Jugendliche', 'Süßwasserschwimmer'],
+              risk_groups: ['Kinder/Jugendliche', 'Personen, die in Süßwasser schwimmen'],
               seasonality: 'Sommer (warmes Wasser)',
               transmission: 'Wasser dringt in die Nase ein -> Riechnerv -> Gehirn'
             },

@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bacterium', name: 'Polymicrobial or Strep. pyogenes/S. aureus', gram: 'Mixed', shape: 'Variable' },
             epidemiology: {
               incidence: 'Rare (0.4/100,000), but increasing incidence',
-              risk_groups: ['Diabetes mellitus', 'Peripheral vascular disease', 'Immunosuppression', 'Chronic alcoholism', 'IV drug users', 'Post-trauma/surgery'],
+              risk_groups: ['Diabetes mellitus', 'Peripheral vascular disease', 'Immunocompromised', 'Chronic alcoholism', 'People who inject drugs (PWID)', 'Post-trauma/surgery'],
               seasonality: 'None',
               transmission: 'Endogenous (skin breach) or direct inoculation'
             },
@@ -23,7 +23,7 @@ Object.assign(window.diseases, {
                 'Toxin-mediated shock (streptococcus)',
                 'Skin initially intact as superficial blood supply is compromised later'
               ],
-              virulence_factors: ['Strep: M protein, Streptolysins, SpeA/B/C superantigens', 'Staph: PVL, α-toxin', 'Anaerobes: collagenases, proteases']
+              virulence_factors: ['Streptococcus: M protein, Streptolysins, SpeA/B/C superantigens', 'Staphylococcus: PVL, α-toxin', 'Anaerobes: collagenases, proteases']
             },
             clinical: {
               incubation: 'Hours-days (after trauma)',
@@ -31,7 +31,7 @@ Object.assign(window.diseases, {
               symptoms: [
                 { name: 'Intense pain', description: 'DISPROPORTIONATE to physical findings (75-100%), early sign', severity: 'severe' },
                 { name: 'Swelling/Edema', description: 'Tense, spreading edema (75-100%)', severity: 'severe' },
-                { name: 'Skin changes', description: 'Erythema (70-100%), later livid discoloration, bullae, necrosis (late signs!)', severity: 'severe' },
+                { name: 'Skin changes', description: 'Erythema (70-100%), later violaceous discoloration, bullae, necrosis (late signs!)', severity: 'severe' },
                 { name: 'Fever', description: 'Common, but may be absent', severity: 'moderate' },
                 { name: 'Crepitus', description: 'Gas formation (13-30% - not always present!)', severity: 'severe' },
                 { name: 'Toxic state', description: 'Hypotension, tachycardia, altered mental status', severity: 'severe' }
@@ -39,7 +39,7 @@ Object.assign(window.diseases, {
               physical_exam: [
                 'Pain is disproportionately SEVERE to what is seen (early sign!)',
                 'Tense edema, rapid spread',
-                'Skin: erythema → livid → bullae → necrosis',
+                'Skin: erythema → violaceous → bullae → necrosis',
                 'Anesthesia in the area (nerve damage)',
                 'Crepitus on palpation (gas)',
                 'Systemic signs: tachycardia, hypotension, confusion'
@@ -73,12 +73,12 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'NO outpatient treatment!', dose: 'IMMEDIATE SURGERY!', duration: '', note: 'Surgical emergency!' }
+                  { drug: 'No outpatient treatment!', dose: 'IMMEDIATE SURGERY!', duration: '', note: 'Surgical emergency!' }
                 ],
                 inpatient: [
                   { drug: 'Piperacillin/tazobactam', dose: '4x4.5g IV', duration: 'Based on clinical response', note: 'Broad spectrum' },
-                  { drug: '+ Vancomycin', dose: '2x15-20mg/kg IV', duration: '', note: 'MRSA coverage' },
-                  { drug: '+ Clindamycin', dose: '3x900mg IV', duration: '', note: 'Toxin production inhibition!' }
+                  { drug: '+ Vancomycin', dose: '15-20 mg/kg IV every 12 hours', duration: '', note: 'MRSA coverage' },
+                  { drug: '+ Clindamycin', dose: '900 mg IV every 8 hours', duration: '', note: 'Inhibition of toxin production' }
                 ],
                 icu: [
                   { drug: 'Meropenem', dose: '3x1g IV', duration: '', note: 'Alternative' },
@@ -87,7 +87,7 @@ Object.assign(window.diseases, {
                 ]
               },
               targeted: 'Based on culture results. For Group A Strep (GAS): Penicillin G + Clindamycin. For MRSA: Vancomycin or Linezolid. For polymicrobial infections: continue broad-spectrum coverage guided by sensitivities.',
-              supportive: ['IMMEDIATE aggressive surgical debridement', 'ICU admission', 'Vasopressors', 'Multiple revisions (every 24-48 hours)', 'HBO therapy (adjunctive)'],
+              supportive: ['IMMEDIATE aggressive surgical debridement', 'ICU admission', 'Vasopressors', 'Multiple revisions (every 24-48 hours)', 'Hyperbaric oxygen (HBO) therapy (adjunctive)'],
               prevention: ['Wound hygiene', 'Diabetes control', 'Early cellulitis treatment']
             },
             guidelines: {
@@ -138,7 +138,7 @@ Object.assign(window.diseases, {
                 { name: 'Skin symptoms', description: 'Sharp-edged, raised, bright red plaque ("flame-like")', severity: 'severe' },
                 { name: 'Location', description: 'Lower limb (70-80%), Face (5-20%)', severity: 'mild' },
                 { name: 'Pain', description: 'Burning, tense character', severity: 'moderate' },
-                { name: 'Lymph node', description: 'Regional lymphadenitis is common', severity: 'moderate' }
+                { name: 'Lymph node', description: 'Regional lymphadenopathy is common', severity: 'moderate' }
               ],
               physical_exam: [
                 'Red, warm, swollen area',
@@ -171,15 +171,15 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Penicillin V', dose: '4x500mg PO', duration: '10-14 days', note: 'First choice' },
-                  { drug: 'Amoxicillin', dose: '3x500mg PO', duration: '10-14 days', note: 'Alternative' }
+                  { drug: 'Penicillin V', dose: '500 mg PO 4 times daily', duration: '10-14 days', note: 'First choice' },
+                  { drug: 'Amoxicillin', dose: '500 mg PO 3 times daily', duration: '10-14 days', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Penicillin G', dose: '4x4-6 million IU IV', duration: '7-10 days', note: 'In severe cases' },
-                  { drug: 'Ceftriaxone', dose: '1x2g IV', duration: '7-10 days', note: 'In case of penicillin allergy' }
+                  { drug: 'Penicillin G', dose: '4-6 million IU IV 4 times daily', duration: '7-10 days', note: 'In severe cases' },
+                  { drug: 'Ceftriaxone', dose: '2 g IV once daily', duration: '7-10 days', note: 'In case of penicillin allergy' }
                 ],
                 icu: [
-                  { drug: 'Broad spectrum', dose: 'IV', duration: '', note: 'In complicated cases' }
+                  { drug: 'Broad-spectrum antibiotics', dose: 'IV', duration: '', note: 'In complicated cases' }
                 ]
               },
               targeted: 'Streptococcus pyogenes: Penicillin. Allergy: Erythromycin/Clindamycin',
@@ -210,7 +210,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bacterium', name: 'Streptococcus pyogenes or Staphylococcus aureus (most common)', gram: 'Gram-positive', shape: 'coccus' },
             epidemiology: {
               incidence: 'Common, 200/100,000 per year',
-              risk_groups: ['Diabetes mellitus', 'Peripheral vascular disease', 'Obesity', 'Immunosuppression', 'Skin injuries', 'Lymphedema'],
+              risk_groups: ['Diabetes mellitus', 'Peripheral vascular disease', 'Obesity', 'Immunocompromised', 'Skin injuries', 'Lymphedema'],
               seasonality: 'Mostly summer',
               transmission: 'Endogenous (skin breach) or exogenous inoculation'
             },
@@ -228,7 +228,7 @@ Object.assign(window.diseases, {
               incubation: '1-3 days',
               onset: 'Acute',
               symptoms: [
-                { name: 'Skin symptoms', description: 'Diffuse, non-sharp-edged erythema, warmth, swelling', severity: 'moderate' },
+                { name: 'Skin symptoms', description: 'Diffuse, poorly demarcated erythema, warmth, swelling', severity: 'moderate' },
                 { name: 'Pain', description: 'Tenderness, tension', severity: 'moderate' },
                 { name: 'Systemic symptoms', description: 'Fever, chills, malaise (common)', severity: 'moderate' },
                 { name: 'Lymphangitis', description: 'Red streaks along lymphatic vessels', severity: 'mild' },
@@ -236,7 +236,7 @@ Object.assign(window.diseases, {
               ],
               physical_exam: [
                 'Red, warm, swollen skin',
-                'Diffuse, non-sharp borders',
+                'Diffuse, poorly demarcated borders',
                 'Tenderness',
                 'Lymphangitis (red streaks)',
                 'Systemic: tachycardia, fever'
@@ -266,15 +266,15 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Amoxicillin/Clavulanate', dose: '3x875/125mg PO', duration: '7-10 days', note: 'First choice' },
-                  { drug: 'Cephalexin', dose: '4x500mg PO', duration: '7-10 days', note: 'Alternative' }
+                  { drug: 'Amoxicillin/Clavulanate', dose: '875/125 mg PO twice daily', duration: '7-10 days', note: 'First choice' },
+                  { drug: 'Cephalexin', dose: '500 mg PO 4 times daily', duration: '7-10 days', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Ceftriaxone', dose: '1x2g IV', duration: '7-10 days', note: 'In severe cases' },
-                  { drug: '+ Vancomycin', dose: '2x15-20mg/kg IV', duration: '', note: 'If MRSA is suspected' }
+                  { drug: 'Ceftriaxone', dose: '2 g IV once daily', duration: '7-10 days', note: 'In severe cases' },
+                  { drug: '+ Vancomycin', dose: '15-20 mg/kg IV every 12 hours', duration: '', note: 'If MRSA is suspected' }
                 ],
                 icu: [
-                  { drug: 'Piperacillin/Tazobactam', dose: '3x4.5g IV', duration: '', note: 'Broad spectrum' }
+                  { drug: 'Piperacillin/Tazobactam', dose: '4.5 g IV 3 times daily', duration: '', note: 'Broad spectrum' }
                 ]
               },
               targeted: 'Streptococcus: Penicillin; Staphylococcus: Flucloxacillin; MRSA: Vancomycin',
@@ -312,7 +312,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus (most common)', gram: 'Gram-positive', shape: 'coccus' },
             epidemiology: {
               incidence: 'Hematogenous in children, post-traumatic/diabetic foot in adults',
-              risk_groups: ['Diabetes mellitus', 'Peripheral vascular disease', 'Trauma/surgery', 'IV drug users', 'Hemodialysis'],
+              risk_groups: ['Diabetes mellitus', 'Peripheral vascular disease', 'Trauma/surgery', 'People who inject drugs (PWID)', 'Hemodialysis'],
               seasonality: 'None',
               transmission: 'Hematogenous spread, direct spread (wound), inoculation (trauma)'
             },
@@ -370,11 +370,11 @@ Object.assign(window.diseases, {
                   { drug: 'None', dose: '-', duration: '-', note: 'Usually requires hospital treatment/investigation' }
                 ],
                 inpatient: [
-                  { drug: 'Vancomycin', dose: '15-20mg/kg IV', duration: '4-6 weeks', note: 'MRSA coverage' },
+                  { drug: 'Vancomycin', dose: '15-20 mg/kg IV', duration: '4-6 weeks', note: 'MRSA coverage' },
                   { drug: '+ Ceftriaxone/Cefepime', dose: 'IV', duration: '4-6 weeks', note: 'Gram-negative coverage' }
                 ],
                 icu: [
-                  { drug: 'Broad spectrum', dose: 'IV', duration: '', note: 'In case of sepsis' }
+                  { drug: 'Broad-spectrum antibiotics', dose: 'IV', duration: '', note: 'In case of sepsis' }
                 ]
               },
               targeted: 'Based on bone biopsy! S. aureus: Flucloxacillin/Cefazolin; MRSA: Vancomycin/Daptomycin. Duration: 4-6 weeks (often IV)',
@@ -405,7 +405,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus, N. gonorrhoeae', gram: 'Mixed', shape: 'coccus' },
             epidemiology: {
               incidence: '2-10/100,000 per year',
-              risk_groups: ['Rheumatoid arthritis', 'Joint prosthesis', 'Elderly (>80 years)', 'Diabetes', 'IV drug users', 'Sexually active young people (Gonococcus)'],
+              risk_groups: ['Rheumatoid arthritis', 'Joint prosthesis', 'Elderly (>80 years)', 'Diabetes', 'People who inject drugs (PWID)', 'Sexually active young people (Gonococcus)'],
               seasonality: 'None',
               transmission: 'Hematogenous (most common), direct inoculation, per continuitatem'
             },
@@ -465,11 +465,11 @@ Object.assign(window.diseases, {
                   { drug: 'None', dose: '-', duration: '-', note: 'Emergency hospital admission!' }
                 ],
                 inpatient: [
-                  { drug: 'Vancomycin', dose: '15-20mg/kg IV', duration: '', note: 'Gram+ (MRSA) coverage' },
-                  { drug: '+ Ceftriaxone', dose: '1x2g IV', duration: '', note: 'Gram- (Gonococcus) coverage' }
+                  { drug: 'Vancomycin', dose: '15-20 mg/kg IV', duration: '', note: 'Gram+ (MRSA) coverage' },
+                  { drug: '+ Ceftriaxone', dose: '2 g IV once daily', duration: '', note: 'Gram- (Gonococcus) coverage' }
                 ],
                 icu: [
-                  { drug: 'Broad spectrum', dose: 'IV', duration: '', note: 'In case of sepsis' }
+                  { drug: 'Broad-spectrum antibiotics', dose: 'IV', duration: '', note: 'In case of sepsis' }
                 ]
               },
               targeted: 'S. aureus: Cefazolin/Oxacillin; MRSA: Vancomycin; Gonococcus: Ceftriaxone. Duration: 2-4 weeks (IV then PO)',
@@ -497,10 +497,10 @@ Object.assign(window.diseases, {
           {
             id: 'spondylodiscitis',
             name: 'Spondylodiscitis',
-            pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus (most common), Streptococcus spp., Gram-negatives', gram: 'Mixed', shape: 'coccus/bacillus' },
+            pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus (most common), Streptococcus spp., Gram-negative bacteria', gram: 'Mixed', shape: 'coccus/bacillus' },
             epidemiology: {
               incidence: 'Rare, 2-7/100,000 per year',
-              risk_groups: ['Elderly (>50 years)', 'Diabetes mellitus', 'Immunosuppression', 'IV drug users', 'Post-spine surgery', 'Urogenital infections'],
+              risk_groups: ['Elderly (>50 years)', 'Diabetes mellitus', 'Immunocompromised', 'People who inject drugs (PWID)', 'Post-spine surgery', 'Urogenital infections'],
               seasonality: 'None',
               transmission: 'Hematogenous (most common), direct (surgery, trauma), per continuitatem'
             },
@@ -559,11 +559,11 @@ Object.assign(window.diseases, {
                   { drug: 'None', dose: '-', duration: '-', note: 'Hospitalization required' }
                 ],
                 inpatient: [
-                  { drug: 'Vancomycin', dose: '15-20mg/kg IV', duration: '4-6 weeks', note: 'MRSA coverage' },
+                  { drug: 'Vancomycin', dose: '15-20 mg/kg IV', duration: '4-6 weeks', note: 'MRSA coverage' },
                   { drug: '+ Ceftriaxone/Cefepime', dose: 'IV', duration: '4-6 weeks', note: 'Gram-negative coverage' }
                 ],
                 icu: [
-                  { drug: 'Broad spectrum', dose: 'IV', duration: '', note: 'In case of sepsis/abscess' }
+                  { drug: 'Broad-spectrum antibiotics', dose: 'IV', duration: '', note: 'In case of sepsis/abscess' }
                 ]
               },
               targeted: 'Based on biopsy! S. aureus: Flucloxacillin/Cefazolin; MRSA: Vancomycin; Gram-negative: Ceftriaxone. Duration: 6-12 weeks (IV then PO)',

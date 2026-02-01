@@ -10,14 +10,14 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Syndrom', name: 'Bakterien (G+/G-), Pilze, Viren', gram: 'Variabel', shape: '-' },
             epidemiology: {
               incidence: 'Weltweit 49 Millionen Fälle/Jahr, 11 Millionen Todesfälle (20% aller Todesfälle)',
-              risk_groups: ['Ältere (>65 Jahre)', 'Säuglinge (<1 Jahr)', 'Immunsupprimierte', 'Chronisch Kranke', 'Patienten mit invasiven Geräten'],
+              risk_groups: ['Ältere (>65 Jahre)', 'Säuglinge (<1 Jahr)', 'Immungeschwächte', 'Chronisch Kranke', 'Patienten mit invasiven Geräten'],
               seasonality: 'Keine (im Winter häufiger wegen respiratorischem Ursprung)',
               transmission: 'Nicht ansteckend (die auslösende Infektion kann es sein)'
             },
             pathomechanism: {
               steps: [
                 'Erkennung der Infektion (PAMPs) durch das angeborene Immunsystem (TLR)',
-                'Pro-inflammatorischer Zytokinsturm (TNF-α, IL-1, IL-6)',
+                'Proinflammatorischer Zytokinsturm (TNF-α, IL-1, IL-6)',
                 'Endothelaktivierung und -schädigung (vaskuläre Permeabilität↑)',
                 'Aktivierung der Gerinnungskaskade (DIC) + Hemmung der Fibrinolyse',
                 'Mikrozirkulationsstörung, Gewebehypoxie, mitochondriale Dysfunktion',
@@ -72,7 +72,7 @@ Object.assign(window.diseases, {
               empirical: {
                 initial_management: [
                   { drug: 'Antibiotika', dose: 'Breitspektrum i.v.', duration: 'Innerhalb 1 Stunde!', note: 'Nach Abnahme von Blutkulturen. Fokusabhängige Wahl (z.B. Pip/Tazo, Meropenem).' },
-                  { drug: 'Flüssigkeitssubstitution', dose: '30 ml/kg Kristalloid', duration: 'In den ersten 3 Stunden', note: 'Bei Hypotonie oder Laktat ≥4 mmol/L.' }
+                  { drug: 'Volumensubstitution', dose: '30 ml/kg Kristalloid', duration: 'In den ersten 3 Stunden', note: 'Bei Hypotonie oder Laktat ≥4 mmol/L.' }
                 ],
                 icu: [
                   { drug: 'Noradrenalin', dose: 'MAP >65 mmHg halten', duration: 'Kontinuierlich', note: 'Vasopressor der ersten Wahl.' },
@@ -81,7 +81,7 @@ Object.assign(window.diseases, {
                 ]
               },
               targeted: 'Deeskalation basierend auf Antibiogramm (PCT kann Entscheidung unterstützen). Fokussanierung (Abszessdrainage, Entfernung von nekrotischem Gewebe) ist unerlässlich.',
-              supportive: ['Laktat-Clearance-Überwachung', 'Beatmung (ARDS-Protokoll)', 'Nierenersatztherapie (CRRT)', 'Blutzuckerkontrolle', 'Thromboseprophylaxe', 'Stressulkusprophylaxe'],
+              supportive: ['Überwachung der Laktat-Clearance', 'Beatmung (ARDS-Protokoll)', 'Nierenersatztherapie (CRRT)', 'Blutzuckerkontrolle', 'Thromboseprophylaxe', 'Stressulkusprophylaxe'],
               prevention: ['Krankenhaushygiene', 'Impfungen (Pneumokokken, Influenza)', 'Frühzeitige Entfernung von Kathetern', 'Angemessene Wundversorgung']
             },
             prognosis: {
@@ -104,7 +104,7 @@ Object.assign(window.diseases, {
               steps: [
                 'Lokale Infektion (Vagina, Wunde) oder Kolonisation',
                 'Exotoxinproduktion (TSST-1, Enterotoxine, SpeA/C)',
-                'Superantigen-Effekt: Unspezifische Aktivierung von T-Zellen (bis zu 20%)',
+                'Superantigenwirkung: Unspezifische Aktivierung von T-Zellen (bis zu 20%)',
                 'Massive Zytokinfreisetzung (Zytokinsturm)',
                 'Kapillarleck, Vasodilatation, Schock',
                 'Multiorganversagen'
@@ -125,7 +125,7 @@ Object.assign(window.diseases, {
                 'Diffuser roter Ausschlag (Erythrodermie)',
                 'Hypotonie, Tachykardie',
                 'Schleimhauthyperämie (Konjunktiva, Oropharynx, Vagina)',
-                'Erdbeerzunge (hauptsächlich Strep TSS)',
+                'Himbeerzunge (hauptsächlich Strep TSS)',
                 'Bewusstseinsstörung (55%)',
                 'Zeichen einer lokalen Weichteilinfektion (Strep TSS: nekrotisierende Fasziitis, Myositis)'
               ],
@@ -168,7 +168,7 @@ Object.assign(window.diseases, {
                 ]
               },
               targeted: 'Staph (MSSA): Flucloxacillin + Clindamycin; Strep: Penicillin G + Clindamycin. Fokussanierung (Tampon entfernen, chirurgische Exploration)!',
-              supportive: ['Massive Flüssigkeitssubstitution', 'Beatmung', 'Dialyse', 'Wundversorgung'],
+              supportive: ['Massive Volumensubstitution', 'Beatmung', 'Dialyse', 'Wundversorgung'],
               prevention: ['Tamponhygiene (häufiger Wechsel)', 'Wunddesinfektion']
             },
             prognosis: {
@@ -190,7 +190,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Pilz', name: 'Candida albicans (und Non-albicans-Arten)', gram: 'Hefepilz', shape: 'oval' },
             epidemiology: {
               incidence: '4. häufigste Ursache für nosokomiale Blutstrominfektionen',
-              risk_groups: ['Intensivpatienten', 'Zentraler Venenkatheter (ZVK)', 'Breitspektrum-AB', 'TPN', 'Bauchchirurgie'],
+              risk_groups: ['Intensivpatienten', 'Zentraler Venenkatheter (ZVK)', 'Breitbandantibiotika', 'TPN', 'Bauchchirurgie'],
               seasonality: 'Keine',
               transmission: 'Endogen (aus dem GI-Trakt), exogen (Hände, Geräte)'
             },
@@ -199,7 +199,7 @@ Object.assign(window.diseases, {
                 'Schädigung der Schleimhautbarriere (AB, Chemo)',
                 'Translokation in den Blutkreislauf',
                 'Biofilmbildung (Katheter)',
-                'Hämatogene Streuung (Auge, Herz, Leber, Milz)'
+                'Hämatogene Disseminierung (Auge, Herz, Leber, Milz)'
               ],
               virulence_factors: ['Biofilm', 'Adhäsine', 'Enzyme (Protease, Phospholipase)']
             },
@@ -225,14 +225,14 @@ Object.assign(window.diseases, {
             diagnostics: {
               laboratory: [
                 { test: 'Blutkultur', finding: 'Positiv (nur 50-70% sensitiv!)', interpretation: 'Goldstandard' },
-                { test: 'Beta-D-Glukan', finding: 'Erhöht (>80 pg/mL)', interpretation: 'Pan-Pilz-Marker (außer Mucor/Crypto)' }
+                { test: 'Beta-D-Glukan', finding: 'Erhöht (>80 pg/mL)', interpretation: 'Pan-fungaler Marker (außer Mucor/Crypto)' }
               ],
               imaging: [
                 { modality: 'Abdomen-US/CT', finding: 'Mikroabszesse (Leber, Milz)', significance: 'Chronisch disseminiert' },
                 { modality: 'Augenheilkunde', finding: 'Chorioretinitis', significance: 'Obligatorisch bei allen fungämischen Patienten!' }
               ],
               microbiology: [
-                { test: 'Kultur', finding: 'Candida sp.', significance: 'Artenidentifikation und Resistenz (Fluconazol!)' },
+                { test: 'Kultur', finding: 'Candida sp.', significance: 'Speziesidentifizierung und Resistenz (Fluconazol!)' },
                 { test: 'T2Candida', finding: 'DNA-Nachweis aus Blut', significance: 'Schnell, sensitiv' }
               ]
             },
@@ -268,7 +268,7 @@ Object.assign(window.diseases, {
             name: 'Invasive Aspergillose',
             pathogen: { type: 'Pilz', name: 'Aspergillus fumigatus', gram: 'Schimmelpilz', shape: 'Hyphen (45° Verzweigung)' },
             epidemiology: {
-              incidence: '5-10% der neutropenischen Patienten',
+              incidence: '5-10% der neutropenen Patienten',
               risk_groups: ['Verlängerte Neutropenie', 'Allogene Stammzelltransplantation', 'Solide Organtransplantation', 'Hochdosis-Steroide'],
               seasonality: 'Keine (Baustaubrisiko)',
               transmission: 'Inhalation von Konidien (aus der Luft)'
@@ -276,11 +276,11 @@ Object.assign(window.diseases, {
             pathomechanism: {
               steps: [
                 'Inhalation von Konidien in die Alveolen',
-                'Makrophagenversagen (Immunsuppression)',
+                'Makrophagendysfunktion (Immunsuppression)',
                 'Keimung zu Hyphen',
                 'Angioinvasion (Einbruch in Gefäße)',
                 'Thrombose, Infarkt, Gewebenekrose',
-                'Hämatogene Streuung (Gehirn, Haut)'
+                'Hämatogene Disseminierung (Gehirn, Haut)'
               ],
               virulence_factors: ['Angioinvasion', 'Gliotoxin', 'Melanin']
             },
@@ -290,13 +290,13 @@ Object.assign(window.diseases, {
               symptoms: [
                 { name: 'Fieber', description: 'Antibiotika-resistentes Fieber (häufigstes Zeichen bei Neutropenie)', severity: 'severe' },
                 { name: 'Husten', description: 'Trockener oder produktiver Husten', severity: 'moderate' },
-                { name: 'Pleuritischer Brustschmerz', description: 'Scharfer, stechender Schmerz (Zeichen der Angioinvasion)', severity: 'moderate' },
+                { name: 'Pleuritischer Thoraxschmerz', description: 'Scharfer, stechender Schmerz (Zeichen der Angioinvasion)', severity: 'moderate' },
                 { name: 'Hämoptyse', description: 'Blutiger Auswurf (spätes, schweres Zeichen)', severity: 'severe' },
                 { name: 'Sinusitis-Symptome', description: 'Gesichtsschmerz, schwarzer Nasenausfluss (Rhinosinusitis-Form)', severity: 'moderate' }
               ],
               physical_exam: [
                 'Fieber, Tachypnoe',
-                'Lungenkultation kann spärlich sein, oder Pleurareiben',
+                'Lungenauskultation kann spärlich sein, oder Pleurareiben',
                 'Nasen-/Nebenhöhlenuntersuchung: Schwarzer, nekrotischer Schorf an der Nasenmuschel (invasive Sinusitis)',
                 'Fokale neurologische Zeichen (Hirndissemination)',
                 'Hautsymptome (nekrotische Geschwüre bei disseminiertem Fall)'

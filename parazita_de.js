@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Protozoon', name: 'Plasmodium falciparum, vivax, ovale, malariae', gram: '-', shape: 'Ringform/Gametozyt' },
             epidemiology: {
               incidence: '>200 Millionen Fälle/Jahr weltweit, >400.000 Todesfälle',
-              risk_groups: ['Reisende in Endemiegebiete', 'Kinder (<5 Jahre)', 'Schwangere', 'Immunsupprimierte'],
+              risk_groups: ['Reisende in Endemiegebiete', 'Kinder (<5 Jahre)', 'Schwangere', 'Immungeschwächte'],
               seasonality: 'Regenzeit (Mücken)',
               transmission: 'Stich der Anopheles-Mücke'
             },
@@ -18,7 +18,7 @@ Object.assign(window.diseases, {
               steps: [
                 'Mückenstich → Sporozoiten ins Blut',
                 'Leberphase (exoerythrozytär): Schizontenbildung',
-                'Blutphase (erythrozytär): Erythrozyten-Invasion, Vermehrung, Ruptur',
+                'Blutphase (erythrozytär): Erythrozyteninvasion, Vermehrung, Ruptur',
                 'Zyklische Fieberanfälle (Erythrozyten-Ruptur)',
                 'Zytoadhärenz (P. falciparum): Blockade der Mikrozirkulation (Gehirn, Niere)'
               ],
@@ -28,7 +28,7 @@ Object.assign(window.diseases, {
               incubation: '7-30 Tage (je nach Art)',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Fieberanfall', description: 'Schüttelfrost → Fieber → Schwitzen (zyklisch)', severity: 'severe' },
+                { name: 'Fieberschub', description: 'Schüttelfrost → Fieber → Schwitzen (zyklisch)', severity: 'severe' },
                 { name: 'Kopfschmerzen', description: 'Intensiv', severity: 'moderate' },
                 { name: 'Übelkeit, Erbrechen', description: 'Häufig', severity: 'moderate' },
                 { name: 'Schwere Anämie', description: 'Erythrozytenzerstörung', severity: 'severe' },
@@ -68,7 +68,7 @@ Object.assign(window.diseases, {
               guidelines: ['WHO Guidelines for malaria (2023)'],
               empirical: {
                 outpatient: [
-                  { drug: 'Artemether-Lumefantrin', dose: 'p.o. (gewichtsabhängig)', duration: '3 Tage', note: 'Erstlinien-ACT bei unkomplizierter P. falciparum.' },
+                  { drug: 'Artemether-Lumefantrin', dose: 'p.o. (gewichtsabhängig)', duration: '3 Tage', note: 'Mittel der ersten Wahl (ACT) bei unkomplizierter P. falciparum.' },
                   { drug: 'Dihydroartemisinin-Piperaquin', dose: 'p.o.', duration: '3 Tage', note: 'Alternative ACT.' },
                   { drug: 'Artesunat-Pyronaridin', dose: 'p.o.', duration: '3 Tage', note: 'Alternative ACT.' },
                   { drug: 'Chloroquin', dose: 'p.o.', duration: '3 Tage', note: 'Nur für P. vivax/ovale/malariae, wenn aus einem Chloroquin-sensitiven Gebiet.' }
@@ -76,7 +76,7 @@ Object.assign(window.diseases, {
                 inpatient: [
                   { drug: 'Artesunat', dose: '2.4 mg/kg i.v./i.m.', duration: 'Mindestens 24 Stunden (0, 12, 24 Stunden)', note: 'Erste Wahl bei schwerer Malaria (Erwachsene/Kinder/Schwangere). Danach vollständiger ACT-Kurs!' },
                   { drug: 'Artemether', dose: '3.2 mg/kg i.m.', duration: '', note: 'Alternative, wenn Artesunat nicht verfügbar.' },
-                  { drug: 'Chinin', dose: '20 mg/kg Ladedosis, dann 10 mg/kg alle 8h', duration: '', note: 'Drittlinie, EKG-Überwachung erforderlich!' }
+                  { drug: 'Chinin', dose: '20 mg/kg Ladedosis, dann 10 mg/kg alle 8h', duration: '', note: 'Reservemittel, EKG-Überwachung erforderlich!' }
                 ]
               },
               targeted: 'Radikale Heilung bei P. vivax/ovale: Primaquin (0.25-0.5 mg/kg für 14 Tage) oder Tafenoquin (Einzeldosis) gegen Hypnozoiten. G6PD-Mangel-Screening ist obligatorisch!',
@@ -85,7 +85,7 @@ Object.assign(window.diseases, {
             },
             guidelines: {
               diagnosis: [
-                'Verdacht: Fieber bei Reisenden aus Endemiegebieten',
+                'Verdacht: Fieber bei Reiserückkehrern aus Endemiegebieten',
                 'Goldstandard: Mikroskopie (Dicker Tropfen/Blutausstrich); RDT (Schnelltest) ist nützlich, aber P. falciparum HRP2-Deletionen können auftreten'
               ],
               treatment_indications: [
@@ -115,14 +115,14 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Protozoon', name: 'Toxoplasma gondii', gram: '-', shape: 'intrazellulär' },
             epidemiology: {
               incidence: '30-50% der Weltbevölkerung ist seropositiv (latent)',
-              risk_groups: ['Immunsupprimierte (HIV/AIDS, Transplantierte)', 'Schwangere (Fötus!)', 'Katzenhalter'],
+              risk_groups: ['Immungeschwächte (HIV/AIDS, Transplantierte)', 'Schwangere (Fötus!)', 'Katzenhalter'],
               seasonality: 'Keine',
               transmission: 'Fäkal-oral (Katzenkot), rohes Fleisch (Zyste), vertikal'
             },
             pathomechanism: {
               steps: [
-                'Ingestion von Oozysten/Gewebezysten',
-                'Darmwandpenetration → Tachyzoiten (schnelle Vermehrung)',
+                'Aufnahme von Oozysten/Gewebezysten',
+                'Penetration der Darmwand → Tachyzoiten (schnelle Vermehrung)',
                 'Hämatogene Streuung (akute Phase)',
                 'Immunantwort → Bradyzoiten (langsam) → Gewebezystenbildung (Muskel, Gehirn, Auge)',
                 'Latenz (lebenslang)',
@@ -135,10 +135,10 @@ Object.assign(window.diseases, {
               onset: 'Langsam/asymptomatisch',
               symptoms: [
                 { name: 'Asymptomatisch', description: '80-90% der immunkompetenten Personen', severity: 'mild' },
-                { name: 'Mononukleose-ähnlich', description: 'Fieber, Lymphadenopathie, Müdigkeit', severity: 'mild' },
+                { name: 'Mononukleose-artiges Syndrom', description: 'Fieber, Lymphadenopathie, Müdigkeit', severity: 'mild' },
                 { name: 'Zerebral (AIDS)', description: 'Kopfschmerzen, Verwirrtheit, Krämpfe, Hemiparese', severity: 'severe' },
                 { name: 'Chorioretinitis', description: 'Verschwommenes Sehen, Augenschmerzen', severity: 'moderate' },
-                { name: 'Angeboren', description: 'Hydrozephalus, Verkalkung, Chorioretinitis (Sabin-Tetrade)', severity: 'severe' }
+                { name: 'Konnatale Toxoplasmose', description: 'Hydrozephalus, Verkalkung, Chorioretinitis (Sabin-Tetrade)', severity: 'severe' }
               ],
               physical_exam: [
                 'Zervikale Lymphadenopathie (schmerzlos)',
@@ -175,7 +175,7 @@ Object.assign(window.diseases, {
                   { drug: 'Keine', dose: '-', duration: '-', note: 'Asymptomatische immunkompetente Personen benötigen keine Behandlung' }
                 ],
                 inpatient: [
-                  { drug: 'Pyrimethamin + Sulfadiazin', dose: 'p.o.', duration: '6 Wochen', note: 'Standardbehandlung (+Folsäure!)' },
+                  { drug: 'Pyrimethamin + Sulfadiazin', dose: 'p.o.', duration: '6 Wochen', note: 'Standardtherapie (+Folinsäure!)' },
                   { drug: 'Trimethoprim/Sulfamethoxazol', dose: 'p.o./i.v.', duration: '6 Wochen', note: 'Alternative' }
                 ],
                 icu: [
@@ -183,7 +183,7 @@ Object.assign(window.diseases, {
                 ]
               },
               targeted: 'Schwangerschaft: Spiramycin (1. Trimenon) oder Pyrimethamin/Sulfadiazin (später). HIV-Prophylaxe: TMP/SMX.',
-              supportive: ['Folsäure-Supplementierung (Leucovorin) zum Schutz des Knochenmarks', 'Antikonvulsiva'],
+              supportive: ['Folinsäure-Supplementierung (Leucovorin) zum Schutz des Knochenmarks', 'Antikonvulsiva'],
               prevention: ['Fleisch gründlich garen', 'Katzenklo meiden (Schwangere)', 'Händewaschen', 'Prophylaxe bei CD4<100 (TMP/SMX)']
             },
             guidelines: {
@@ -193,8 +193,8 @@ Object.assign(window.diseases, {
                 'Bildgebung (MRT) bei Verdacht auf zerebrale Toxoplasmose (ringförmige Anreicherung)'
               ],
               treatment_indications: [
-                'Immunkompetent: erfordert in der Regel keine Behandlung, außer bei schweren Symptomen oder Chorioretinitis',
-                'Immunsupprimiert (AIDS, CD4<100): erfordert immer eine Behandlung (akut + Erhaltungstherapie)',
+                'Immunkompetente: erfordern in der Regel keine Behandlung, außer bei schweren Symptomen oder Chorioretinitis',
+                'Immungeschwächte (AIDS, CD4<100): erfordern immer eine Behandlung (akut + Erhaltungstherapie)',
                 'Schwangerschaft: Behandlung bei akuter Infektion erforderlich, um die Übertragung zu reduzieren/den Fötus zu schützen'
               ]
             },
@@ -207,7 +207,7 @@ Object.assign(window.diseases, {
           {
             id: 'ascariasis',
             name: 'Ascariasis (Spulwurmbefall)',
-            pathogen: { type: 'Helminth', name: 'Ascaris lumbricoides', gram: '-', shape: 'Rundwurm (15-35 cm)' },
+            pathogen: { type: 'Helminth', name: 'Ascaris lumbricoides', gram: '-', shape: 'Spulwurm (Nematode)' },
             epidemiology: {
               incidence: 'Häufigste Wurminfektion weltweit (>800 Millionen)',
               risk_groups: ['Kinder', 'Menschen in schlechten hygienischen Bedingungen'],
@@ -216,11 +216,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Eier-Ingestion',
+                'Ei-Aufnahme',
                 'Larve schlüpft im Dünndarm',
-                'Wandert über das venöse System in die Lunge (Löffler-Syndrom)',
+                'Wanderung über das venöse System in die Lunge (Löffler-Syndrom)',
                 'Wird hochgehustet und verschluckt',
-                'Erwachsener Wurm im Dünndarm (Nährstoffentzug, Obstruktion)'
+                'Adulter Wurm im Dünndarm (Nährstoffentzug, Obstruktion)'
               ],
               virulence_factors: ['Protease-Inhibitoren', 'Migrationsfähigkeit']
             },
@@ -228,8 +228,8 @@ Object.assign(window.diseases, {
               incubation: '4-8 Wochen',
               onset: 'Langsam',
               symptoms: [
-                { name: 'Lungenphase', description: 'Husten, Dyspnoe, Löffler-Syndrom', severity: 'moderate' },
-                { name: 'Darmphase', description: 'Bauchschmerzen, Blähungen, Übelkeit', severity: 'mild' },
+                { name: 'Pulmonale Phase', description: 'Husten, Dyspnoe, Löffler-Syndrom', severity: 'moderate' },
+                { name: 'Intestinale Phase', description: 'Bauchschmerzen, Blähungen, Übelkeit', severity: 'mild' },
                 { name: 'Obstruktion', description: 'Ileus (Wurmknäuel), Gallengangsobstruktion', severity: 'severe' }
               ],
               physical_exam: [
@@ -263,7 +263,7 @@ Object.assign(window.diseases, {
                   { drug: 'Albendazol', dose: '400mg p.o.', duration: 'Einzeldosis', note: 'Alternative' }
                 ]
               },
-              targeted: 'Benzimidazole (Mebendazol, Albendazol). In der Schwangerschaft: Pyrantel-Pamoat.',
+              targeted: 'Benzimidazole (Mebendazol, Albendazol). In der Schwangerschaft: Pyrantel.',
               supportive: ['Chirurgische/endoskopische Entfernung bei Obstruktion'],
               prevention: ['Gemüse waschen', 'Händewaschen', 'Abwasserbehandlung']
             },
@@ -272,16 +272,16 @@ Object.assign(window.diseases, {
           {
             id: 'taeniasis',
             name: 'Taeniasis (Bandwurmbefall)',
-            pathogen: { type: 'Helminth', name: 'Taenia saginata (Rind), Taenia solium (Schwein)', gram: '-', shape: 'Plattwurm (Band)' },
+            pathogen: { type: 'Helminth', name: 'Taenia saginata (Rind), Taenia solium (Schwein)', gram: '-', shape: 'Bandwurm (Zestode)' },
             epidemiology: {
               incidence: 'Weltweit verbreitet',
-              risk_groups: ['Konsumenten von rohem Fleisch'],
+              risk_groups: ['Verzehr von rohem Fleisch'],
               transmission: 'Rohes/ungenügend gegartes Fleisch (Larve/Cysticercus). T. solium Eier von Mensch zu Mensch -> Zystizerkose!'
             },
             pathomechanism: {
               steps: [
-                'Ingestion von Zystizerken aus Fleisch -> erwachsener Wurm im Darm (Taeniasis)',
-                'Ingestion von T. solium EI (fäkal-oral) -> Larve schlüpft -> Gewebewanderung -> Zystizerkose (Gehirn, Muskel, Auge)'
+                'Aufnahme von Zystizerken aus Fleisch -> adulter Wurm im Darm (Taeniasis)',
+                'Aufnahme von T. solium-Eiern (fäkal-oral) -> Larve schlüpft -> Gewebewanderung -> Zystizerkose (Gehirn, Muskel, Auge)'
               ],
               virulence_factors: ['Scolex (Haken/Saugnäpfe)']
             },
@@ -289,7 +289,7 @@ Object.assign(window.diseases, {
               incubation: '8-14 Wochen',
               onset: 'Asymptomatisch/Mild',
               symptoms: [
-                { name: 'Intestinal', description: 'Leichte Bauchbeschwerden, Abgang von Proglottiden (Gliedern)', severity: 'mild' },
+                { name: 'Intestinale Infektion', description: 'Leichte Bauchbeschwerden, Abgang von Proglottiden (Gliedern)', severity: 'mild' },
                 { name: 'Neurozystizerkose (T. solium)', description: 'Epilepsie, Kopfschmerzen, erhöhter Hirndruck', severity: 'severe' }
               ],
               physical_exam: ['Unauffällig (Darmwurm)', 'Neurologische Symptome (Zystizerkose)'],
@@ -305,7 +305,7 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Praziquantel', dose: '5-10 mg/kg p.o.', duration: 'Einzeldosis', note: 'Für Darmwurm' },
+                  { drug: 'Praziquantel', dose: '5-10 mg/kg p.o.', duration: 'Einzeldosis', note: 'Für den Darmbefall' },
                   { drug: 'Niclosamid', dose: '2g p.o.', duration: 'Einzeldosis', note: 'Alternative' }
                 ]
               },
@@ -317,15 +317,15 @@ Object.assign(window.diseases, {
           {
             id: 'echinococcosis',
             name: 'Echinokokkose (Hydatidenkrankheit)',
-            pathogen: { type: 'Helminth', name: 'Echinococcus granulosus (zystisch), E. multilocularis (alveolär)', gram: '-', shape: 'Bandwurm' },
+            pathogen: { type: 'Helminth', name: 'Echinococcus granulosus (zystisch), E. multilocularis (alveolär)', gram: '-', shape: 'Bandwurm (Zestode)' },
             epidemiology: {
               incidence: 'Endemisch (Mittelmeerraum, Osteuropa, Asien)',
-              risk_groups: ['Hundehalter, Hirten', 'Konsumenten von Waldbeeren (Fuchs - E. multilocularis)'],
-              transmission: 'Fäkal-oral: Ingestion von Eiern aus Hunde-/Fuchskot'
+              risk_groups: ['Hundehalter, Hirten', 'Verzehr von Waldbeeren (Fuchs - E. multilocularis)'],
+              transmission: 'Fäkal-oral: Aufnahme von Eiern aus Hunde-/Fuchskot'
             },
             pathomechanism: {
               steps: [
-                'Eier-Ingestion -> Onkosphäre im Darm',
+                'Ei-Aufnahme -> Onkosphäre im Darm',
                 'Pfortaderkreislauf -> Leber (am häufigsten) -> Lunge -> Andere',
                 'Hydatidenzystenbildung (langsames Wachstum)',
                 'Zystenruptur -> Anaphylaxie und Dissemination'
@@ -336,8 +336,8 @@ Object.assign(window.diseases, {
               incubation: 'Jahre (langsames Wachstum)',
               onset: 'Langsam',
               symptoms: [
-                { name: 'Leberzyste', description: 'Schmerzen im rechten Oberbauch, Hepatomegalie', severity: 'moderate' },
-                { name: 'Lungenzyste', description: 'Husten, Brustschmerzen, Hämoptyse', severity: 'moderate' },
+                { name: 'Leberzysten', description: 'Schmerzen im rechten Oberbauch, Hepatomegalie', severity: 'moderate' },
+                { name: 'Lungenzysten', description: 'Husten, Brustschmerzen, Hämoptyse', severity: 'moderate' },
                 { name: 'Ruptur', description: 'Anaphylaktischer Schock, Fieber, Urtikaria', severity: 'severe' }
               ],
               physical_exam: ['Hepatomegalie', 'Tastbare Raumforderung'],
@@ -355,7 +355,7 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Albendazol', dose: '2x400mg p.o.', duration: 'Monatelang', note: 'Vor/nach OP oder bei Inoperabilität' }
+                  { drug: 'Albendazol', dose: '2x400mg p.o.', duration: 'Monatelang', note: 'Perioperativ oder bei Inoperabilität' }
                 ]
               },
               targeted: 'PAIR-Technik (Punktion, Aspiration, Injektion, Re-Aspiration) oder Chirurgische Entfernung (Vorsicht vor Ruptur!). E. multilocularis: radikale Chirurgie + lebenslang Albendazol.',
@@ -366,17 +366,17 @@ Object.assign(window.diseases, {
           {
             id: 'enterobiasis',
             name: 'Enterobiasis (Madenwurmbefall)',
-            pathogen: { type: 'Helminth', name: 'Enterobius vermicularis', gram: '-', shape: 'kleiner weißer Wurm' },
+            pathogen: { type: 'Helminth', name: 'Enterobius vermicularis', gram: '-', shape: 'Madenwurm (Nematode)' },
             epidemiology: {
               incidence: 'Häufigste Wurminfektion in gemäßigten Zonen (auch in Industrieländern)',
-              risk_groups: ['Kleinkinder', 'Gemeinschaften (Kita, Schule)', 'Familienmitglieder'],
+              risk_groups: ['Kleinkinder', 'Gemeinschaftseinrichtungen (Kita, Schule)', 'Familienmitglieder'],
               transmission: 'Fäkal-oral, Autoinfektion (Kratzen -> Mund), Inhalation (Staub)'
             },
             pathomechanism: {
               steps: [
-                'Eier-Ingestion',
+                'Ei-Aufnahme',
                 'Larve im Dünndarm',
-                'Erwachsener Wurm im Zäkum',
+                'Adulte Würmer im Zäkum',
                 'Weibchen wandert nachts in die Perianalregion zur Eiablage -> Juckreiz'
               ],
               virulence_factors: ['-']
@@ -385,7 +385,7 @@ Object.assign(window.diseases, {
               incubation: '2-6 Wochen',
               onset: 'Allmählich',
               symptoms: [
-                { name: 'Perianaler Juckreiz', description: 'Hauptsächlich nachts (Pruritus ani)', severity: 'moderate' },
+                { name: 'Perianaler Juckreiz (Pruritus ani)', description: 'Hauptsächlich nachts', severity: 'moderate' },
                 { name: 'Schlafstörung', description: 'Aufgrund von Juckreiz', severity: 'mild' },
                 { name: 'Vulvovaginitis', description: 'Bei jungen Mädchen (aberrante Wanderung)', severity: 'moderate' }
               ],
@@ -394,7 +394,7 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               microbiology: [
-                { test: 'Klebestreifen-Test (Scotch-tape)', finding: 'Eier in der Morgenprobe', significance: 'Goldstandard (Stuhluntersuchung oft negativ!)' }
+                { test: 'Klebestreifen-Test (Tesafilm-Abklatsch)', finding: 'Eier in der Morgenprobe', significance: 'Goldstandard (Stuhluntersuchung oft negativ!)' }
               ]
             },
             therapy: {
@@ -412,16 +412,16 @@ Object.assign(window.diseases, {
           {
             id: 'trichinellosis',
             name: 'Trichinellose',
-            pathogen: { type: 'Helminth', name: 'Trichinella spiralis', gram: '-', shape: 'Fadenwurm' },
+            pathogen: { type: 'Helminth', name: 'Trichinella spiralis', gram: '-', shape: 'Fadenwurm (Nematode)' },
             epidemiology: {
               incidence: 'Sporadische Ausbrüche (Hausschlachtung)',
-              risk_groups: ['Konsumenten von rohem/geräuchertem Schweinefleisch, Wildschwein'],
+              risk_groups: ['Verzehr von rohem/geräuchertem Schweinefleisch, Wildschwein'],
               transmission: 'Verzehr von larvenhaltigem Fleisch (unzureichende Erhitzung)'
             },
             pathomechanism: {
               steps: [
-                'Ingestion von enzystierten Larven',
-                'Erwachsener Wurm im Darm -> neue Larven (Enterale Phase)',
+                'Aufnahme von enzystierten Larven',
+                'Adulte Würmer im Darm -> neue Larven (Intestinale Phase)',
                 'Larven in den Blutkreislauf -> Wanderung in quergestreifte Muskulatur',
                 'Enzystierung im Muskel (Parenterale Phase)'
               ],
@@ -431,7 +431,7 @@ Object.assign(window.diseases, {
               incubation: 'Enteral: 1-2 Tage; Parenteral: 1-4 Wochen',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Enterale Phase', description: 'Durchfall, Übelkeit, Bauchschmerzen', severity: 'moderate' },
+                { name: 'Intestinale Phase', description: 'Durchfall, Übelkeit, Bauchschmerzen', severity: 'moderate' },
                 { name: 'Fieber', description: 'Hoch, anhaltend', severity: 'moderate' },
                 { name: 'Myalgie', description: 'Starke Muskelschmerzen, Schwäche', severity: 'severe' },
                 { name: 'Periorbitales Ödem', description: 'Charakteristische Gesichtsschwellung', severity: 'moderate' },
@@ -473,20 +473,20 @@ Object.assign(window.diseases, {
           {
             id: 'toxocariasis',
             name: 'Toxocariasis (Larva Migrans Visceralis/Ocularis)',
-            pathogen: { type: 'Helminth', name: 'Toxocara canis (Hund), Toxocara cati (Katze)', gram: '-', shape: 'Spulwurmlarve' },
+            pathogen: { type: 'Helminth', name: 'Toxocara canis (Hund), Toxocara cati (Katze)', gram: '-', shape: 'Spulwurmlarven (Nematoden)' },
             epidemiology: {
               incidence: 'Weltweit verbreitete Zoonose',
               risk_groups: ['Kleinkinder (Sandkasten, Geophagie)', 'Hundehalter'],
               seasonality: 'Keine',
-              transmission: 'Fäkal-oral: Ingestion von mit Eiern kontaminiertem Boden (kein direkter Tierkontakt!)'
+              transmission: 'Fäkal-oral: Aufnahme von mit Eiern kontaminiertem Boden (kein direkter Tierkontakt!)'
             },
             pathomechanism: {
               steps: [
-                'Eier-Ingestion',
+                'Ei-Aufnahme',
                 'Larve schlüpft im Dünndarm',
                 'Dringt durch die Darmwand und gelangt in den Kreislauf',
                 'Gewebewanderung (Leber, Lunge, Gehirn, Auge)',
-                'Entwickelt sich im Menschen NICHT zum erwachsenen Wurm (paratenischer Wirt)',
+                'Entwickeln sich im Menschen NICHT zu adulten Würmern (Fehlwirt)',
                 'Granulomatöse Entzündung um die Larve'
               ],
               virulence_factors: ['Gewebewanderung', 'Exkretorisch-sekretorische Antigene (TES)']
@@ -497,7 +497,7 @@ Object.assign(window.diseases, {
               symptoms: [
                 { name: 'Viszerale Larva Migrans (VLM)', description: 'Fieber, Husten, Bauchschmerzen, Hepatomegalie', severity: 'moderate' },
                 { name: 'Okuläre Larva Migrans (OLM)', description: 'Einseitiger Sehverlust, Strabismus, Leukokorie', severity: 'severe' },
-                { name: 'Versteckte (covert) Toxocariasis', description: 'Bauchschmerzen, Kopfschmerzen, Husten', severity: 'mild' }
+                { name: 'Verdeckte (covert) Toxocariasis', description: 'Bauchschmerzen, Kopfschmerzen, Husten', severity: 'mild' }
               ],
               physical_exam: [
                 'Hepatomegalie',
@@ -529,7 +529,7 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Albendazol', dose: '2x400mg p.o.', duration: '5 Tage (VLM), 2-4 Wochen (OLM)', note: 'Mit fettreicher Mahlzeit einnehmen' },
+                  { drug: 'Albendazol', dose: '2x400mg p.o.', duration: '5 Tage (VLM), 2-4 Wochen (OLM)', note: 'Einnahme mit fettreicher Mahlzeit' },
                   { drug: 'Mebendazol', dose: '2x100-200mg p.o.', duration: '5 Tage', note: 'Wird weniger resorbiert' }
                 ]
               },

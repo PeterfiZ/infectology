@@ -9,14 +9,14 @@ Object.assign(window.diseases, {
             name: 'Clostridioides-difficile-Infektion',
             pathogen: { type: 'Bakterium', name: 'Clostridioides difficile', gram: 'Gram-positiv', shape: 'sporenbildendes anaerobes Stäbchen' },
             epidemiology: {
-              incidence: 'Häufigste Ursache für nosokomialen Durchfall, 500.000 Fälle/Jahr in den USA',
-              risk_groups: ['Über 65-Jährige', 'Hospitalisierte Patienten', 'Antibiotika-Exposition', 'PPI-Einnahme', 'Entzündliche Darmerkrankungen', 'Immunsupprimierte'],
+              incidence: 'Häufigste Ursache für nosokomiale Diarrhoe, 500.000 Fälle/Jahr in den USA',
+              risk_groups: ['Über 65-Jährige', 'Hospitalisierte Patienten', 'Antibiotika-Exposition', 'PPI-Einnahme', 'Entzündliche Darmerkrankungen', 'Immungeschwächte'],
               seasonality: 'Keine',
               transmission: 'Fäkal-oral (Sporen), nosokomiale Übertragung, Händehygiene!'
             },
             pathomechanism: {
               steps: [
-                'Antibiotika → Störung der Darmflora',
+                'Antibiotika → Dysbiose der Darmflora',
                 'Keimung von C. difficile-Sporen, Kolonisation',
                 'Toxin A (TcdA): Enterotoxin – Flüssigkeitssekretion, Entzündung',
                 'Toxin B (TcdB): Zytotoxin → Epithelschädigung',
@@ -29,15 +29,15 @@ Object.assign(window.diseases, {
               incubation: '2-10 Tage nach Antibiotika, bis zu 8 Wochen später',
               onset: 'Akut',
               symptoms: [
-                { name: 'Wässriger Durchfall', description: '3-15x/Tag, grünlich, übelriechend', severity: 'severe' },
-                { name: 'Bauchschmerzen/Krämpfe', description: 'Diffus, krampfartig', severity: 'moderate' },
+                { name: 'Wässrige Diarrhoe', description: '3-15x/Tag, grünlich, übelriechend', severity: 'severe' },
+                { name: 'Abdominelle Schmerzen/Krämpfe', description: 'Diffus, krampfartig', severity: 'moderate' },
                 { name: 'Fieber', description: 'Mäßig bis hoch', severity: 'moderate' },
                 { name: 'Übelkeit', description: 'Variabel', severity: 'mild' },
                 { name: 'Anorexie', description: 'Appetitlosigkeit', severity: 'mild' }
               ],
               physical_exam: [
                 'Diffuse Druckempfindlichkeit des Abdomens',
-                'Distension',
+                'Abdominelle Distension',
                 'Fieber, Tachykardie',
                 'Zeichen der Dehydratation',
                 'Schwer: Zeichen von Ileus, toxischem Megakolon'
@@ -52,7 +52,7 @@ Object.assign(window.diseases, {
                 { test: 'Laktat', finding: 'Erhöht', interpretation: 'Fulminante Kolitis' }
               ],
               imaging: [
-                { modality: 'Abdomen-Röntgen', finding: 'Megakolon (>6cm)', significance: 'Toxisches Megakolon' },
+                { modality: 'Abdomenübersichtsaufnahme', finding: 'Megakolon (>6cm)', significance: 'Toxisches Megakolon' },
                 { modality: 'Abdomen-CT', finding: 'Dickdarmwandverdickung, Akkordeon-Zeichen, Aszites', significance: 'Beurteilung des Schweregrads' }
               ],
               microbiology: [
@@ -63,7 +63,7 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-              { disease: 'Anderer Antibiotika-assoziierter Durchfall', distinguishing: 'Toxin negativ, milder' },
+              { disease: 'Andere Antibiotika-assoziierte Diarrhoe', distinguishing: 'Toxin negativ, milder' },
               { disease: 'Schub einer entzündlichen Darmerkrankung', distinguishing: 'Anamnese, Endoskopie' },
               { disease: 'Ischämische Kolitis', distinguishing: 'Risikofaktoren, CT-Angiographie' },
               { disease: 'Andere infektiöse Enterokolitis', distinguishing: 'Stuhlkultur, Epidemiologie' }
@@ -71,27 +71,27 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Fidaxomicin', dose: '2x200mg p.o.', duration: '10 Tage', note: 'Erste Wahl (weniger Rezidive)' },
-                  { drug: 'Vancomycin', dose: '4x125mg p.o.', duration: '10 Tage', note: 'Alternative' }
+                  { drug: 'Fidaxomicin', dose: '200 mg zweimal täglich p.o.', duration: '10 Tage', note: 'Erste Wahl (weniger Rezidive)' },
+                  { drug: 'Vancomycin', dose: '125 mg 4-mal täglich p.o.', duration: '10 Tage', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Vancomycin', dose: '4x125mg p.o.', duration: '10-14 Tage', note: 'Wenn Fidaxomicin nicht verfügbar ist' },
-                  { drug: 'Fidaxomicin', dose: '2x200mg p.o.', duration: '10 Tage', note: 'Bevorzugt' }
+                  { drug: 'Vancomycin', dose: '125 mg 4-mal täglich p.o.', duration: '10-14 Tage', note: 'Wenn Fidaxomicin nicht verfügbar ist' },
+                  { drug: 'Fidaxomicin', dose: '200 mg zweimal täglich p.o.', duration: '10 Tage', note: 'Bevorzugt' }
                 ],
                 icu: [
-                  { drug: 'Vancomycin', dose: '4x500mg p.o. + rektal', duration: '10-14 Tage', note: 'Fulminant: höhere Dosis' },
-                  { drug: '+ Metronidazol', dose: '3x500mg i.v.', duration: '10-14 Tage', note: 'Bei Ileus (i.v. Penetration)' },
+                  { drug: 'Vancomycin', dose: '500 mg 4-mal täglich p.o. + rektal', duration: '10-14 Tage', note: 'Fulminant: höhere Dosis' },
+                  { drug: '+ Metronidazol', dose: '500 mg dreimal täglich i.v.', duration: '10-14 Tage', note: 'Bei Ileus (i.v. Penetration)' },
                   { drug: 'Chirurgie', dose: 'Kolektomie', duration: '', note: 'Toxisches Megakolon, Perforation' }
                 ]
               },
-              targeted: 'Nicht schwer: Vancomycin oder Fidaxomicin; Schwer: Vancomycin; Fulminant: Vancomycin+Metronidazol±Chirurgie',
-              supportive: ['Antibiotika absetzen (wenn möglich)', 'Flüssigkeitsersatz', 'Elektrolytkorrektur', 'KEINE Motilitätshemmer!', 'Kontaktisolierung'],
+              targeted: 'Nicht schwer: Vancomycin oder Fidaxomicin; Schwer: Vancomycin; Fulminant: Vancomycin + Metronidazol ± Chirurgie',
+              supportive: ['Antibiotika absetzen (wenn möglich)', 'Flüssigkeitsersatz', 'Elektrolytkorrektur', 'KEINE Motilitätshemmer (Peristaltikhemmer)!', 'Kontaktisolierung'],
               prevention: ['Antibiotic Stewardship', 'Händewaschen (Alkohol tötet Sporen nicht!)', 'Kontaktisolierung', 'Bezlotoxumab (Rezidivprophylaxe)', 'FMT bei rezidivierenden Fällen']
             },
             guidelines: {
               diagnosis: [
-                'Verdacht: neu aufgetretener Durchfall nach Antibiotika-Exposition oder im Krankenhausumfeld',
-                'Labor: Leukozytose, erhöhtes Kreatinin/ALP/Albuminabfall sind Zeichen der Schwere',
+                'Verdacht: neu aufgetretene Diarrhoe nach Antibiotika-Exposition oder im Krankenhausumfeld',
+                'Labor: Leukozytose, erhöhtes Kreatinin/ALP, Albuminabfall sind Schwerezeichen',
                 'Mikro: zweistufiger Algorithmus (GDH + Toxin EIA) und/oder NAAT; positive PCR allein kann Kolonisation bedeuten',
                 'Endoskopie nur in Ausnahmefällen (Pseudomembranen)'
               ],
@@ -100,8 +100,8 @@ Object.assign(window.diseases, {
                 'Bei rezidivierender Erkrankung frühe Intervention (Bezlotoxumab, FMT erwägen)'
               ],
               first_line: [
-                'Nicht schwer/schwer: Fidaxomicin 200 mg zweimal täglich 10 Tage oder Vancomycin 125 mg 4x täglich 10 Tage',
-                'Fulminanter Fall: Orales/rektales Vancomycin höhere Dosis + i.v. Metronidazol (bei Ileus)',
+                'Nicht schwer/schwer: Fidaxomicin 200 mg zweimal täglich für 10 Tage oder Vancomycin 125 mg 4-mal täglich für 10 Tage',
+                'Fulminanter Fall: Vancomycin oral/rektal in höherer Dosis + Metronidazol i.v. (bei Ileus)',
               ],
               supportive: [
                 'Absetzen des auslösenden Antibiotikums wenn möglich, Flüssigkeits- und Elektrolytersatz, Ernährung',
@@ -115,13 +115,13 @@ Object.assign(window.diseases, {
                 'Antibiotic Stewardship, Händehygiene, Kontaktisolierung, Umgebungsdesinfektion (sporozide Mittel)'
               ],
               special_populations: [
-                'Ältere, Immunsupprimierte und hospitalisierte Patienten haben ein höheres Risiko; hier niedrigere Schwelle für frühen Behandlungsbeginn'
+                'Ältere, Immungeschwächte und hospitalisierte Patienten haben ein höheres Risiko; hier niedrigere Schwelle für frühen Behandlungsbeginn'
               ],
               dosing: {
                 adult: {
-                  fidaxomicin: '200 mg p.o. zweimal täglich (BID) 10 Tage',
-                  vancomycin: '125 mg p.o. 4x/Tag 10 Tage (nicht schwer); fulminanter Fall 500 mg p.o. 4x/Tag + rektale Gabe erwägen',
-                  metronidazol_iv: '500 mg i.v. 3x/Tag (zusätzlich bei fulminant/Ileus)'
+                  fidaxomicin: '200 mg p.o. zweimal täglich (BID) für 10 Tage',
+                  vancomycin: '125 mg p.o. 4-mal täglich für 10 Tage (nicht schwer); fulminanter Fall 500 mg p.o. 4-mal täglich + rektale Gabe erwägen',
+                  metronidazol_iv: '500 mg i.v. 3-mal täglich (zusätzlich bei fulminantem Verlauf/Ileus)'
                 },
                 pediatric: 'Kinderdosen gemäß lokalem Protokoll; gewichtsadaptierte Dosierung von Vancomycin erforderlich',
               },
@@ -142,13 +142,13 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Salmonella enterica (z.B. Enteritidis, Typhimurium)', gram: 'Gram-negativ', shape: 'Stäbchen' },
             epidemiology: {
               incidence: 'Häufige Lebensmittelvergiftung (häufiger im Sommer)',
-              risk_groups: ['Säuglinge', 'Ältere', 'Magensäuremangel (PPI)', 'Immunsupprimierte'],
+              risk_groups: ['Säuglinge', 'Ältere', 'Magensäuremangel (PPI)', 'Immungeschwächte'],
               seasonality: 'Sommer-Herbst',
               transmission: 'Fäkal-oral: kontaminierte Lebensmittel (Eier, Geflügel, Fleisch), Kontakt mit Reptilien'
             },
             pathomechanism: {
               steps: [
-                'Verschlucken (hohe Keimzahl erforderlich, außer bei Säuremangel)',
+                'Ingestion (hohe Keimzahl erforderlich, außer bei Säuremangel)',
                 'Invasion durch M-Zellen des Dünndarms (Peyer-Plaques)',
                 'Neutrophilen-Infiltration, Entzündung, Flüssigkeitssekretion'
               ],
@@ -158,13 +158,13 @@ Object.assign(window.diseases, {
               incubation: '6-72 Stunden (durchschnittlich 12-36 Stunden)',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Durchfall', description: 'Wässrig, selten blutig, übelriechend', severity: 'moderate' },
+                { name: 'Diarrhoe', description: 'Wässrig, selten blutig, übelriechend', severity: 'moderate' },
                 { name: 'Fieber', description: 'Häufig (38-39°C)', severity: 'moderate' },
-                { name: 'Bauchkrämpfe', description: 'Diffus oder periumbilikal', severity: 'moderate' },
-                { name: 'Übelkeit, Erbrechen', description: 'Geht oft dem Durchfall voraus', severity: 'mild' }
+                { name: 'Abdominelle Krämpfe', description: 'Diffus oder periumbilikal', severity: 'moderate' },
+                { name: 'Übelkeit, Erbrechen', description: 'Geht oft der Diarrhoe voraus', severity: 'mild' }
               ],
-              physical_exam: ['Fieber', 'Druckempfindlichkeit des Abdomens', 'Zeichen der Dehydratation'],
-              complications: ['Bakteriämie (5%, vor allem Ältere/Immunsupprimierte)', 'Septische Arthritis', 'Osteomyelitis (Sichelzellenanämie)', 'Endovaskuläre Infektion (Aneurysma)']
+              physical_exam: ['Fieber', 'Abdominelle Druckempfindlichkeit', 'Exsikkosezeichen'],
+              complications: ['Bakteriämie (5%, vor allem Ältere/Immungeschwächte)', 'Septische Arthritis', 'Osteomyelitis (Sichelzellenanämie)', 'Endovaskuläre Infektion (Aneurysma)']
             },
             diagnostics: {
               laboratory: [{ test: 'Entzündungsparameter', finding: 'CRP erhöht', interpretation: 'Bakterieller Ursprung' }],
@@ -172,21 +172,21 @@ Object.assign(window.diseases, {
             },
             therapy: {
               empirical: {
-                outpatient: [{ drug: 'Supportiv', dose: '-', duration: '-', note: 'Gesunde Erwachsene benötigen KEINE Antibiotika (verursacht verlängerte Ausscheidung!)' }],
-                inpatient: [{ drug: 'Ceftriaxon', dose: '1-2g i.v.', duration: '7-14 Tage', note: 'Bei schweren/invasiven Fällen' }, { drug: 'Ciprofloxacin', dose: '2x500mg p.o.', duration: '7-10 Tage', note: 'Alternative (wenn empfindlich)' }]
+                outpatient: [{ drug: 'Supportiv', dose: '-', duration: '-', note: 'Gesunde Erwachsene benötigen KEINE Antibiotika (verlängert die Ausscheidung!)' }],
+                inpatient: [{ drug: 'Ceftriaxon', dose: '1-2 g i.v.', duration: '7-14 Tage', note: 'Bei schweren/invasiven Fällen' }, { drug: 'Ciprofloxacin', dose: '500 mg zweimal täglich p.o.', duration: '7-10 Tage', note: 'Alternative (wenn empfindlich)' }]
               },
-              targeted: 'Nur bei Risikogruppen (Säuglinge, Ältere, Immunsupprimierte) oder schweren Fällen: Fluorchinolon oder Ceftriaxon.',
+              targeted: 'Nur bei Risikogruppen (Säuglinge, Ältere, Immungeschwächte) oder schweren Fällen: Fluorchinolon oder Ceftriaxon.',
               supportive: ['Flüssigkeitsersatz (ORS)', 'Probiotika'],
               prevention: ['Lebensmittelhygiene', 'Gründliches Erhitzen von Eiern/Fleisch']
             },
             guidelines: {
               diagnosis: [
-                'Verdacht: akuter Durchfall mit Fieber; bei Säuglingen/Älteren/Immunsupprimierten höheres Risiko für schwere Komplikationen',
+                'Verdacht: akute Diarrhoe mit Fieber; bei Säuglingen/Älteren/Immungeschwächten höheres Risiko für schwere Komplikationen',
                 'Mikrobiologie: Stuhlkultur zur Identifizierung von Salmonellen; Blutkultur bei schwerem Verlauf oder Verdacht auf Sepsis'
               ],
               treatment_indications: [
                 'Gesunde Erwachsene, nicht-invasive Infektion: in der Regel keine Antibiotika',
-                'Antibiotika empfohlen: Säuglinge, Ältere, Immunsupprimierte, Sepsis, extraintestinale Infektion, Schwangerschaft in bestimmten Situationen'
+                'Antibiotika empfohlen: Säuglinge, Ältere, Immungeschwächte, Sepsis, extraintestinale Infektion, Schwangerschaft in bestimmten Situationen'
               ],
               first_line: [
                 'Schwerer/invasiver Fall: Ceftriaxon i.v. oder Fluorchinolon (abhängig von Empfindlichkeit)'
@@ -196,7 +196,7 @@ Object.assign(window.diseases, {
               dosing: {
                 adult: {
                   ceftriaxone: '1–2 g i.v. einmal täglich (übliche Dauer 5–14 Tage, abhängig vom klinischen Status)',
-                  ciprofloxacin: '500 mg p.o. 2x/Tag (7–10 Tage) – nur bei empfindlichen Stämmen; lokale Resistenzlage beachten'
+                  ciprofloxacin: '500 mg p.o. zweimal täglich (7–10 Tage) – nur bei empfindlichen Stämmen; lokale Resistenzlage beachten'
                 },
                 pediatric: 'Kinderdosen für Ceftriaxon und Fluorchinolone sind alters- und gewichtsabhängig; lokales pädiatrisches Protokoll konsultieren'
               },
@@ -213,7 +213,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Shigella (dysenteriae, flexneri, sonnei)', gram: 'Gram-negativ', shape: 'Stäbchen' },
             epidemiology: {
               incidence: 'Weltweit häufig, endemisch in Entwicklungsländern',
-              risk_groups: ['Kinder (Kita, Kindergarten)', 'Reisende', 'MSM'],
+              risk_groups: ['Kinder (Kita, Kindergarten)', 'Reisende', 'Männer, die Sex mit Männern haben (MSM)'],
               transmission: 'Fäkal-oral (Mensch zu Mensch), sehr niedrige Infektionsdosis (10-100 Bakterien)!'
             },
             pathomechanism: {
@@ -229,7 +229,7 @@ Object.assign(window.diseases, {
               incubation: '1-3 Tage',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Dysenterie', description: 'Blutiger, schleimiger, eitriger Stuhl', severity: 'severe' },
+                { name: 'Dysenterie (Ruhr)', description: 'Blutiger, schleimiger, eitriger Stuhl', severity: 'severe' },
                 { name: 'Tenesmen', description: 'Schmerzhafter Stuhldrang ohne Entleerung', severity: 'severe' },
                 { name: 'Hohes Fieber', description: 'Häufig, toxischer Zustand', severity: 'moderate' },
                 { name: 'Bauchkrämpfe', description: 'Dominanz im linken Unterbauch', severity: 'moderate' }
@@ -242,10 +242,10 @@ Object.assign(window.diseases, {
             },
             therapy: {
               empirical: {
-                outpatient: [{ drug: 'Azithromycin', dose: '1x500mg p.o.', duration: '3 Tage', note: 'Erste Wahl' }, { drug: 'Ciprofloxacin', dose: '2x500mg p.o.', duration: '3 Tage', note: 'Alternative (Resistenz nimmt zu)' }]
+                outpatient: [{ drug: 'Azithromycin', dose: '500 mg einmal täglich p.o.', duration: '3 Tage', note: 'Erste Wahl' }, { drug: 'Ciprofloxacin', dose: '500 mg zweimal täglich p.o.', duration: '3 Tage', note: 'Alternative (Resistenz nimmt zu)' }]
               },
               targeted: 'Antibiotika empfohlen zur Verkürzung der Krankheit und Reduzierung der Infektiosität. Azithromycin, Ceftriaxon, Ciprofloxacin.',
-              supportive: ['Flüssigkeitsersatz', 'Motilitätshemmer (Loperamid) VERBOTEN!'],
+              supportive: ['Flüssigkeitsersatz', 'Motilitätshemmer (Loperamid) KONTRAINDIZIERT!'],
               prevention: ['Strenge Händehygiene', 'Patientenisolierung']
             },
             guidelines: {
@@ -257,14 +257,14 @@ Object.assign(window.diseases, {
                 'Antibiotika empfohlen zur Verkürzung der Krankheit und Reduzierung der Ausbreitung (besonders bei Ausbrüchen, schweren Symptomen oder Risikogruppen)'
               ],
               first_line: [
-                'Azithromycin (1 g Einzeldosis oder 500 mg 3 Tage), Alternative: Ceftriaxon i.v. bei schweren Fällen'
+                'Azithromycin (1 g Einzeldosis oder 500 mg für 3 Tage), Alternative: Ceftriaxon i.v. bei schweren Fällen'
               ],
               supportive: ['Flüssigkeitsersatz, symptomatische Behandlung'],
               prevention: ['Regelmäßige Händehygiene, Kontaktisolierung, seuchenhygienische Maßnahmen'],
               dosing: {
                 adult: {
-                  azithromycin: "1 g p.o. Einzeldosis oder 500 mg p.o. 1x täglich für 3 Tage (gemäß lokalem Protokoll)",
-                  ciprofloxacin: '500 mg p.o. 2x/Tag für 3 Tage (Alternative; Resistenz nimmt zu)',
+                  azithromycin: "1 g p.o. Einzeldosis oder 500 mg p.o. einmal täglich für 3 Tage (gemäß lokalem Protokoll)",
+                  ciprofloxacin: '500 mg p.o. zweimal täglich für 3 Tage (Alternative; Resistenz nimmt zu)',
                   ceftriaxone: '1 g i.v. einmal täglich bei schweren Fällen'
                 },
                 pediatric: 'Kinderdosen für Azithromycin und Ceftriaxon sind alters- und gewichtsabhängig; pädiatrisches Protokoll konsultieren'
@@ -300,7 +300,7 @@ Object.assign(window.diseases, {
               incubation: '2-5 Tage',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Durchfall', description: 'Wässrig, oft blutig', severity: 'moderate' },
+                { name: 'Diarrhoe', description: 'Wässrig, oft blutig', severity: 'moderate' },
                 { name: 'Bauchschmerzen', description: 'Ausgeprägt, krampfartig (Pseudoappendizitis)', severity: 'severe' },
                 { name: 'Fieber', description: 'Kann Prodromalsymptom sein', severity: 'moderate' }
               ],
@@ -318,7 +318,7 @@ Object.assign(window.diseases, {
             },
             therapy: {
               empirical: {
-                outpatient: [{ drug: 'Azithromycin', dose: '1x500mg p.o.', duration: '3 Tage', note: 'Erste Wahl bei schweren Fällen' }]
+                outpatient: [{ drug: 'Azithromycin', dose: '500 mg einmal täglich p.o.', duration: '3 Tage', note: 'Erste Wahl bei schweren Fällen' }]
               },
               targeted: 'Bei milden Fällen nur Flüssigkeitsersatz. Bei schweren Fällen Makrolide (Azithromycin). Fluorchinolon-Resistenz hoch!',
               supportive: ['Flüssigkeitsersatz'],
@@ -326,20 +326,20 @@ Object.assign(window.diseases, {
             },
             guidelines: {
               diagnosis: [
-                'Verdacht: akute Bauchschmerzen, blutiger Durchfall; Pseudoappendizitis-Symptome möglich',
+                'Verdacht: akute Bauchschmerzen, blutige Diarrhoe; Pseudoappendizitis-Symptome möglich',
                 'Mikrobiologie: Stuhlkultur unter speziellen Bedingungen (42°C); Antigen/PCR wo verfügbar'
               ],
               treatment_indications: [
                 'Milder, nicht systemischer Fall: nur supportive Behandlung',
-                'Schwere oder persistierende Symptome, Immunsupprimierte: Makrolid-Therapie empfohlen'
+                'Schwere oder persistierende Symptome, Immungeschwächte: Makrolid-Therapie empfohlen'
               ],
               first_line: ['Azithromycin 500 mg Einzeldosis oder 500 mg täglich für 3 Tage (bei schwereren Fällen)'],
               supportive: ['Flüssigkeitsersatz, Elektrolytersatz'],
               prevention: ['Gründliches Erhitzen von Geflügel, Küchenhygiene'],
               dosing: {
                 adult: {
-                  azithromycin: '500 mg p.o. Einzeldosis oder 500 mg p.o. 1x täglich, 3 Tage (alternatives Schema: 500 mg Tag 1, dann 250 mg täglich 2–3) ',
-                  ciprofloxacin: '500 mg p.o. 2x/Tag 3 Tage (wenn empfindlich und schwerer Fall)'
+                  azithromycin: '500 mg p.o. Einzeldosis oder 500 mg p.o. einmal täglich für 3 Tage (alternatives Schema: 500 mg Tag 1, dann 250 mg täglich an den Tagen 2–3) ',
+                  ciprofloxacin: '500 mg p.o. zweimal täglich für 3 Tage (wenn empfindlich und schwerer Fall)'
                 },
                 pediatric: 'Kinderdosen für Makrolide sind alters- und gewichtsabhängig; lokales Protokoll anfordern'
               },
@@ -371,8 +371,8 @@ Object.assign(window.diseases, {
               incubation: 'ETEC: 1-3 Tage; EHEC: 3-4 Tage',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'ETEC: Wässriger Durchfall', description: 'Kein Fieber, "Reisedurchfall"', severity: 'moderate' },
-                { name: 'EHEC: Blutiger Durchfall', description: 'Fieber fehlt oder niedrig, schwere Bauchkrämpfe', severity: 'severe' }
+                { name: 'ETEC: Wässrige Diarrhoe', description: 'Kein Fieber, "Reisedurchfall"', severity: 'moderate' },
+                { name: 'EHEC: Blutige Diarrhoe', description: 'Fieber fehlt oder niedrig, schwere Bauchkrämpfe', severity: 'severe' }
               ],
               physical_exam: ['Dehydratation', 'Druckempfindlichkeit des Abdomens (EHEC: ausgeprägt)', 'Fehlen von Fieber (EHEC)'],
               complications: ['Hämolytisch-urämisches Syndrom (HUS) - 5-10% nach EHEC-Infektion (hauptsächlich Kinder)', 'TTP (Erwachsene)']
@@ -392,7 +392,7 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'ETEC: Rifaximin', dose: '2x200mg p.o.', duration: '3 Tage', note: 'Reisedurchfall' },
+                  { drug: 'ETEC: Rifaximin', dose: '200 mg zweimal täglich p.o.', duration: '3 Tage', note: 'Reisedurchfall' },
                   { drug: 'EHEC: ANTIBIOTIKA KONTRAINDIZIERT!', dose: '-', duration: '-', note: 'Erhöht das HUS-Risiko (Toxinfreisetzung)!' }
                 ]
               },
@@ -402,7 +402,7 @@ Object.assign(window.diseases, {
             },
             guidelines: {
               diagnosis: [
-                'Verdacht: blutiger Durchfall mit HUS-Vorkommen; bei Kindern besonders vorsichtig behandeln',
+                'Verdacht: blutige Diarrhoe mit HUS-Vorkommen; bei Kindern besonders vorsichtig behandeln',
                 'Mikrobiologie: EHEC-Screening (Sorbitol-MacConkey, Shiga-Toxin PCR/EIA)'
               ],
               treatment_indications: [
@@ -413,8 +413,8 @@ Object.assign(window.diseases, {
               prevention: ['Lebensmittelhygiene, gut durchgebratenes Rindfleisch, Vorsichtsmaßnahmen für Reisende'],
               dosing: {
                 adult: {
-                  rifaximin: '200 mg p.o. 3x/Tag 3 Tage (ETEC, nicht-invasiver Reisedurchfall)',
-                  azithromycin: '1 g p.o. Einzeldosis oder 500 mg p.o. 1x täglich 1–3 Tage (schwere ETEC oder Ciprofloxacin-Resistenz)'
+                  rifaximin: '200 mg p.o. dreimal täglich für 3 Tage (ETEC, nicht-invasiver Reisedurchfall)',
+                  azithromycin: '1 g p.o. Einzeldosis oder 500 mg p.o. einmal täglich für 1–3 Tage (schwere ETEC oder Ciprofloxacin-Resistenz)'
                 },
                 pediatric: 'Rifaximin-Kinderdosen begrenzt; bei EHEC Antibiotika bei Kindern vermeiden'
               },
@@ -449,7 +449,7 @@ Object.assign(window.diseases, {
               incubation: '4-7 Tage',
               onset: 'Schleichend',
               symptoms: [
-                { name: 'Enterokolitis', description: 'Fieber, Durchfall (kann blutig sein)', severity: 'moderate' },
+                { name: 'Enterokolitis', description: 'Fieber, Diarrhoe (kann blutig sein)', severity: 'moderate' },
                 { name: 'Pseudoappendizitis', description: 'Schmerzen im rechten Unterbauch (Mesenteriallymphadenitis)', severity: 'moderate' },
                 { name: 'Pharyngitis', description: 'Kommt bei Erwachsenen vor', severity: 'mild' }
               ],
@@ -469,14 +469,14 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'Supportiv', dose: '-', duration: '-', note: 'Meist selbstlimitierend' }],
-                inpatient: [{ drug: 'Ciprofloxacin', dose: '2x500mg p.o.', duration: '7-10 Tage', note: 'Bei schweren Fällen' }, { drug: 'Doxycyclin', dose: '2x100mg p.o.', duration: '7-10 Tage', note: 'Alternative' }]
+                inpatient: [{ drug: 'Ciprofloxacin', dose: '500 mg zweimal täglich p.o.', duration: '7-10 Tage', note: 'Bei schweren Fällen' }, { drug: 'Doxycyclin', dose: '100 mg zweimal täglich p.o.', duration: '7-10 Tage', note: 'Alternative' }]
               },
               targeted: 'Fluorchinolone, Doxycyclin, TMP-SMX. Sepsis: Ceftriaxon.',
               prevention: ['Vermeidung von rohem Schweinefleisch', 'Pasteurisierung von Milch']
             },
             guidelines: {
               diagnosis: [
-                'Verdacht: Schmerzen im rechten Unterbauch, Fieber, gelegentlich blutiger Durchfall; Pseudoappendizitis-Bild möglich',
+                'Verdacht: Schmerzen im rechten Unterbauch, Fieber, gelegentlich blutige Diarrhoe; Pseudoappendizitis-Bild möglich',
                 'Mikrobiologie: Stuhlkultur auf CIN-Agar, Labor auf Notwendigkeit der Kälteanreicherung hinweisen'
               ],
               treatment_indications: [
@@ -487,8 +487,8 @@ Object.assign(window.diseases, {
               prevention: ['Aufklärung: Vermeidung von rohem Schweinefleisch, Konsum von pasteurisierter Milch'],
               dosing: {
                 adult: {
-                  ciprofloxacin: '500 mg p.o. 2x/Tag 7–10 Tage',
-                  doxycycline: '100 mg p.o. 2x/Tag 7–10 Tage'
+                  ciprofloxacin: '500 mg p.o. zweimal täglich für 7–10 Tage',
+                  doxycycline: '100 mg p.o. zweimal täglich für 7–10 Tage'
                 },
                 pediatric: 'Bei Kindern meist symptomatische Behandlung; Antibiotika nur bei schwerer, systemischer Infektion (pädiatrisches Konsil)'
               },

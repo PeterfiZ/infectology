@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Spirochäte', name: 'Treponema pallidum', gram: 'Gram-negativ (schlecht anfärbbar)', shape: 'spiralförmig' },
             epidemiology: {
               incidence: 'Zunehmende Inzidenz weltweit, hoch in der MSM-Population',
-              risk_groups: ['MSM (Männer, die Sex mit Männern haben)', 'HIV-positive Personen', 'Sexarbeiter', 'Mehrere Sexualpartner', 'Drogenkonsumenten'],
+              risk_groups: ['MSM (Männer, die Sex mit Männern haben)', 'HIV-positive Personen', 'Sexarbeiter', 'Mehrere Sexualpartner', 'i.v.-Drogenkonsumenten'],
               seasonality: 'Keine',
               transmission: 'Direkter Kontakt mit Schleimhäuten/Haut, vertikal (kongenital)'
             },
@@ -120,7 +120,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Humanes Immundefizienz-Virus (HIV-1, HIV-2)', gram: 'RNA-Retrovirus', shape: 'sphärisch' },
             epidemiology: {
               incidence: '~38 Millionen Menschen leben weltweit mit HIV',
-              risk_groups: ['MSM', 'IV-Drogenkonsumenten', 'Sexarbeiter', 'Transfusionsempfänger (Entwicklungsländer)', 'Partner'],
+              risk_groups: ['MSM', 'i.v.-Drogenkonsumenten', 'Sexarbeiter', 'Transfusionsempfänger (Entwicklungsländer)', 'Partner'],
               seasonality: 'Keine',
               transmission: 'Sexuell, parenteral (Blut), vertikal (Mutter-Kind)'
             },

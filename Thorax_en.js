@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bacterium', name: 'Streptococcus pneumoniae', gram: 'Gram-positive', shape: 'diplococcus' },
             epidemiology: {
               incidence: 'Most common cause of community-acquired pneumonia (CAP) (30-40%)',
-              risk_groups: ['Elderly (>65 years)', 'Chronic patients (COPD, heart failure, diabetes)', 'Immunosuppressed', 'Splenectomized', 'Alcoholics', 'Smokers'],
+              risk_groups: ['Elderly (>65 years)', 'Patients with chronic diseases (COPD, heart failure, diabetes)', 'Immunocompromised', 'Asplenic patients', 'Patients with alcohol use disorder', 'Smokers'],
               seasonality: 'Winter-spring peak, often as influenza superinfection',
               transmission: 'Droplet infection, endogenous activation'
             },
@@ -32,7 +32,7 @@ Object.assign(window.diseases, {
                 { name: 'Fever and chills', description: 'Fever (80%), chills (40-50%)', severity: 'severe' },
                 { name: 'Dyspnea', description: 'Shortness of breath (66%)', severity: 'moderate' },
                 { name: 'Pleuritic pain', description: 'Sharp, increases with inspiration (50%)', severity: 'moderate' },
-                { name: 'Other', description: 'GI symptoms (10-20%), altered mental status (elderly)', severity: 'mild' }
+                { name: 'Other', description: 'GI symptoms (10-20%), altered mental status (in the elderly)', severity: 'mild' }
               ],
               physical_exam: [
                 'Tachypnea, tachycardia',
@@ -140,13 +140,13 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Mycobacterium', name: 'Mycobacterium tuberculosis', gram: 'Acid-fast (Ziehl-Neelsen+)', shape: 'rod' },
             epidemiology: {
               incidence: '~10 million new cases/year worldwide, ~500 cases/year in Hungary',
-              risk_groups: ['HIV positive (20-30x risk)', 'Diabetics', 'Immunosuppressed', 'Socially disadvantaged', 'Healthcare workers', 'Immigrants from endemic areas'],
+              risk_groups: ['People living with HIV (20-30x risk)', 'Patients with diabetes', 'Immunocompromised', 'Socially disadvantaged', 'Healthcare workers', 'Immigrants from endemic areas'],
               seasonality: 'No seasonality',
               transmission: 'Droplet infection (< 5 μm aerosol), 8+ hours exposure in a closed space'
             },
             pathomechanism: {
               steps: [
-                'Inhalation: Bacillus reaches the alveoli',
+                'Inhalation: Bacilli reach the alveoli',
                 'Phagocytosis: Alveolar macrophages engulf but cannot kill them',
                 'Intracellular multiplication: Primary complex (Ghon focus + hilar lymph node) in 2-12 weeks',
                 'Granuloma formation: T-cell mediated immune response → epithelioid cells, Langhans giant cells',
@@ -244,7 +244,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bacterium', name: 'Legionella pneumophila', gram: 'Gram-negative (stains poorly)', shape: 'rod, intracellular' },
             epidemiology: {
               incidence: '2-9% of CAP, up to 30% of nosocomial pneumonia',
-              risk_groups: ['Elderly (>50 years)', 'Smokers', 'COPD patients', 'Immunosuppressed', 'Chronic kidney disease', 'Diabetes'],
+              risk_groups: ['Elderly (>50 years)', 'Smokers', 'COPD patients', 'Immunocompromised', 'Chronic kidney disease', 'Diabetes'],
               seasonality: 'Summer-autumn (air conditioning)',
               transmission: 'Inhalation (aerosol from contaminated water: cooling towers, showers, hot tubs). NOT transmitted person-to-person!'
             },
@@ -323,7 +323,7 @@ Object.assign(window.diseases, {
               prevention: ['Water system maintenance (>60°C)', 'Disinfection of cooling towers', 'Nosocomial surveillance']
             },
             prognosis: {
-              mortality: 'Overall 10-15%, immunosuppressed 40%',
+              mortality: 'Overall 10-15%, immunocompromised 40%',
               prognostic_scores: ['CURB-65', 'PSI'],
               factors: 'Delayed diagnosis, inappropriate antibiotics, immunosuppression'
             }
@@ -334,7 +334,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bacterium', name: 'Mycoplasma pneumoniae', gram: 'No cell wall', shape: 'pleomorphic' },
             epidemiology: {
               incidence: '15-20% of CAP, 50% in epidemics',
-              risk_groups: ['School-aged children', 'Young adults', 'Closed communities (dorms, barracks)'],
+              risk_groups: ['School-age children', 'Young adults', 'Closed communities (dorms, barracks)'],
               seasonality: 'Autumn-winter, but occurs year-round',
               transmission: 'Droplet infection (close contact)'
             },
@@ -351,7 +351,7 @@ Object.assign(window.diseases, {
               incubation: '2-3 weeks',
               onset: 'Slow, gradual',
               symptoms: [
-                { name: 'Cough', description: '>95%; dry, hacking, paroxysmal, lasts for weeks', severity: 'moderate' },
+                { name: 'Cough', description: '>95%; dry, hacking, paroxysmal, lasting for weeks', severity: 'moderate' },
                 { name: 'General symptoms', description: 'Headache, malaise (common)', severity: 'mild' },
                 { name: 'Sore throat', description: 'Common (non-exudative)', severity: 'mild' },
                 { name: 'Fever', description: 'Variable, can be high or absent', severity: 'mild' },
@@ -412,10 +412,10 @@ Object.assign(window.diseases, {
           {
             id: 'chlamydia_pneumoniae',
             name: 'Chlamydia pneumoniae',
-            pathogen: { type: 'Bacterium', name: 'Chlamydophila pneumoniae', gram: 'Gram-negative (intracellular)', shape: 'coccoid' },
+            pathogen: { type: 'Bacterium', name: 'Chlamydia pneumoniae', gram: 'Gram-negative (intracellular)', shape: 'coccoid' },
             epidemiology: {
               incidence: '5-10% of CAP',
-              risk_groups: ['Elderly', 'Chronic patients', 'Closed communities'],
+              risk_groups: ['Elderly', 'Patients with chronic diseases', 'Closed communities'],
               seasonality: 'Year-round',
               transmission: 'Droplet infection'
             },
@@ -514,7 +514,7 @@ Object.assign(window.diseases, {
               physical_exam: [
                 'Relative bradycardia (Faget\'s sign)',
                 'Splenomegaly (10-70%)',
-                'Horder\'s spots (pink rash - rare)',
+                'Horder spots (pink rash - rare)',
                 'Sparse lung findings'
               ],
               complications: ['Endocarditis', 'Hepatitis', 'Neurological symptoms', 'ARDS']
@@ -575,7 +575,7 @@ Object.assign(window.diseases, {
                 'Infection of alveolar macrophages',
                 'Replication in acidic phagosomes',
                 'Hematogenous spread',
-                'Granuloma formation (doughnut granuloma)'
+                'Granuloma formation (doughnut granuloma / fibrin ring granuloma)'
               ],
               virulence_factors: ['Spore-like form (resistant)', 'LPS phase variation']
             },
@@ -649,7 +649,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Influenza A/B/C virus', gram: 'RNA virus, Orthomyxoviridae', shape: 'helical' },
             epidemiology: {
               incidence: 'Seasonal epidemic: 5-20% of population/year, pandemics: up to 50%',
-              risk_groups: ['Elderly (>65)', 'Children (<5)', 'Pregnant women', 'Chronic patients', 'Healthcare workers', 'Immunosuppressed'],
+              risk_groups: ['Elderly (>65)', 'Children (<5)', 'Pregnant women', 'Patients with chronic diseases', 'Healthcare workers', 'Immunocompromised'],
               seasonality: 'November-March (northern hemisphere)',
               transmission: 'Droplet, contact (1-2 meters), fomites'
             },
@@ -737,7 +737,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'SARS-CoV-2', gram: 'RNA virus, Coronaviridae', shape: 'spherical, with spike proteins' },
             epidemiology: {
               incidence: 'Pandemic from 2020, becoming endemic',
-              risk_groups: ['Elderly (>65)', 'Obese (BMI>30)', 'Diabetes', 'Cardiovascular disease', 'Immunosuppressed', 'Chronic lung disease'],
+              risk_groups: ['Elderly (>65)', 'Patients with obesity (BMI>30)', 'Diabetes', 'Cardiovascular disease', 'Immunocompromised', 'Chronic lung disease'],
               seasonality: 'Winter peak, but year-round',
               transmission: 'Respiratory (aerosol + droplet), contact, fecal-oral rare'
             },
@@ -832,10 +832,10 @@ Object.assign(window.diseases, {
           {
             id: 'endocarditis',
             name: 'Infective Endocarditis',
-            pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus, Streptococcus viridans', gram: 'Gram-positive', shape: 'coccus' },
+            pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus, Viridans group streptococci', gram: 'Gram-positive', shape: 'coccus' },
             epidemiology: {
               incidence: '3-10/100,000 per year',
-              risk_groups: ['Valvular defects', 'Prosthetic valves', 'IV drug users', 'Congenital heart disease', 'Previous endocarditis'],
+              risk_groups: ['Valvular defects', 'Prosthetic valves', 'People who inject drugs (PWID)', 'Congenital heart disease', 'Previous endocarditis'],
               seasonality: 'None',
               transmission: 'Bacteremia (dental procedure, skin infection, catheter)'
             },
@@ -954,7 +954,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Coxsackie B, Adenovirus, Parvovirus B19', gram: 'RNA/DNA viruses', shape: 'variable' },
             epidemiology: {
               incidence: 'Hard to estimate (many mild cases), 10-20% of sudden cardiac death in young people',
-              risk_groups: ['Young adults', 'Men', 'Immunosuppressed'],
+              risk_groups: ['Young adults', 'Men', 'Immunocompromised'],
               seasonality: 'Virus-dependent (e.g., enterovirus summer-autumn)',
               transmission: 'Fecal-oral, droplet (pathogen-dependent)'
             },
@@ -1038,7 +1038,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus/Idiopathic', name: 'Coxsackie, Echovirus, Adenovirus, CMV, EBV', gram: 'Variable', shape: '-' },
             epidemiology: {
               incidence: 'Common (0.1% of hospitalized)',
-              risk_groups: ['Men (20-50 years)', 'Post-cardiotomy', 'Autoimmune patients'],
+              risk_groups: ['Men (20-50 years)', 'Post-cardiotomy patients', 'Autoimmune patients'],
               seasonality: 'Virus-dependent',
               transmission: 'Droplet (viral)'
             },
@@ -1128,7 +1128,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Rhinovirus (most common), Coronavirus, Adenovirus, Influenza', gram: 'RNA viruses', shape: 'variable' },
             epidemiology: {
               incidence: 'Most common infection, adults 2-3x/year, children 6-8x/year',
-              risk_groups: ['Children', 'Elderly', 'Immunosuppressed'],
+              risk_groups: ['Children', 'Elderly', 'Immunocompromised'],
               seasonality: 'Year-round, peak in autumn-winter',
               transmission: 'Droplet, contact, fomites'
             },
@@ -1206,7 +1206,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Human Respiratory Syncytial Virus (HRSV)', gram: 'RNA virus, Pneumoviridae', shape: 'helical' },
             epidemiology: {
               incidence: 'All children infected by age 2, adults reinfection',
-              risk_groups: ['Infants (<6 months)', 'Elderly (>65)', 'Chronic lung patients', 'Immunosuppressed'],
+              risk_groups: ['Infants (<6 months)', 'Elderly (>65)', 'Patients with chronic lung disease', 'Immunocompromised'],
               seasonality: 'Winter-spring',
               transmission: 'Droplet, contact (very contagious!)'
             },
@@ -1262,7 +1262,7 @@ Object.assign(window.diseases, {
                   { drug: 'Bronchodilator', dose: 'Salbutamol', duration: '', note: 'If wheezing' }
                 ],
                 inpatient: [
-                  { drug: 'Ribavirin', dose: 'Aerosol', duration: '3-5 days', note: 'In severe cases, immunosuppressed' }
+                  { drug: 'Ribavirin', dose: 'Aerosol', duration: '3-5 days', note: 'In severe cases, immunocompromised' }
                 ],
                 icu: [
                   { drug: 'Ventilation', dose: 'NIV or intubation', duration: '', note: 'In case of apnea' }
@@ -1353,7 +1353,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus/Bacterium', name: 'Viruses (first 7-10 days), then Streptococcus pneumoniae, Haemophilus influenzae', gram: 'Mixed', shape: 'variable' },
             epidemiology: {
               incidence: 'Common, adults 1-2x/year',
-              risk_groups: ['Allergic individuals', 'Smokers', 'Immunosuppressed'],
+              risk_groups: ['Patients with allergies', 'Smokers', 'Immunocompromised'],
               seasonality: 'Winter',
               transmission: 'Endogenous, complication of upper respiratory infection'
             },
@@ -1420,7 +1420,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bacterium', name: 'Streptococcus pneumoniae, Haemophilus influenzae, Moraxella catarrhalis', gram: 'Mixed', shape: 'coccus/bacillus' },
             epidemiology: {
               incidence: 'Common in childhood, 80% experience by age 3',
-              risk_groups: ['Infants', 'Children', 'Passive smoking'],
+              risk_groups: ['Infants', 'Children', 'Exposure to passive smoking'],
               seasonality: 'Winter',
               transmission: 'Complication of upper respiratory infection'
             },

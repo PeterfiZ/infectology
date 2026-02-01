@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Protozoan', name: 'Plasmodium falciparum, vivax, ovale, malariae', gram: '-', shape: 'ring/gametocyte' },
             epidemiology: {
               incidence: '>200 million cases/year worldwide, >400,000 deaths',
-              risk_groups: ['Travelers to endemic areas', 'Children (<5 years)', 'Pregnant women', 'Immunosuppressed'],
+              risk_groups: ['Travelers to endemic areas', 'Children (<5 years)', 'Pregnant women', 'Immunocompromised'],
               seasonality: 'Rainy season (mosquitoes)',
               transmission: 'Anopheles mosquito bite'
             },
@@ -28,7 +28,7 @@ Object.assign(window.diseases, {
               incubation: '7-30 days (species-dependent)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Fever attack', description: 'Chills → Fever → Sweating (cyclic)', severity: 'severe' },
+                { name: 'Febrile paroxysm', description: 'Chills → Fever → Diaphoresis (cyclic)', severity: 'severe' },
                 { name: 'Headache', description: 'Intense', severity: 'moderate' },
                 { name: 'Nausea, vomiting', description: 'Common', severity: 'moderate' },
                 { name: 'Severe anemia', description: 'RBC destruction', severity: 'severe' },
@@ -53,7 +53,7 @@ Object.assign(window.diseases, {
                 { modality: 'Head CT', finding: 'Cerebral edema', significance: 'Exclusion of cerebral malaria' }
               ],
               microbiology: [
-                { test: 'Thick/Thin blood smear', finding: 'Plasmodium forms', significance: 'GOLD STANDARD (Giemsa)' },
+                { test: 'Thick and thin blood smears', finding: 'Plasmodium forms', significance: 'GOLD STANDARD (Giemsa)' },
                 { test: 'Rapid Diagnostic Test (RDT)', finding: 'HRP-2 or pLDH antigen', significance: 'Fast, but less sensitive at low parasitemia' },
                 { test: 'PCR', finding: 'DNA', significance: 'At low parasitemia' }
               ]
@@ -79,7 +79,7 @@ Object.assign(window.diseases, {
                   { drug: 'Quinine', dose: '20 mg/kg loading, then 10 mg/kg q8h', duration: '', note: 'Third-line, ECG monitoring required!' }
                 ]
               },
-              targeted: 'P. vivax/ovale radical cure: Primaquine (0.25-0.5 mg/kg for 14 days) or Tafenoquine (single dose) against hypnozoites. G6PD deficiency screening is mandatory!',
+              targeted: 'P. vivax/ovale radical cure: Primaquine (0.25-0.5 mg/kg for 14 days) or Tafenoquine (single dose) against hypnozoites (hypnozoiticide). G6PD deficiency screening is mandatory!',
               supportive: ['Fluid resuscitation (cautiously, risk of pulmonary edema!)', 'Blood glucose monitoring (hypoglycemia is common)', 'Antipyretics (paracetamol)', 'Transfusion (severe anemia)', 'Dialysis (renal failure)'],
               prevention: ['Chemoprophylaxis (Atovaquone-Proguanil, Doxycycline, Mefloquine)', 'Mosquito net (LLIN)', 'Vaccine (RTS,S/AS01 and R21/Matrix-M for children in endemic areas)']
             },
@@ -91,7 +91,7 @@ Object.assign(window.diseases, {
               treatment_indications: [
                 'Uncomplicated malaria: ACT (Artemisinin-based Combination Therapy)',
                 'Severe malaria: IV Artesunate (any species, any trimester)',
-                'P. vivax/ovale: Schizontocide (Chloroquine/ACT) + Hypnozoitocide (Primaquine/Tafenoquine)'
+                'P. vivax/ovale: Schizonticide (Chloroquine/ACT) + Hypnozoiticide (Primaquine/Tafenoquine)'
               ],
               first_line: [
                 'Uncomplicated P. falciparum: Artemether-Lumefantrine or Artesunate-Amodiaquine or Dihydroartemisinin-Piperaquine',
@@ -115,9 +115,9 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Protozoan', name: 'Toxoplasma gondii', gram: '-', shape: 'intracellular' },
             epidemiology: {
               incidence: '30-50% of the world\'s population is seropositive (latent)',
-              risk_groups: ['Immunosuppressed (HIV/AIDS, transplant)', 'Pregnant women (fetus!)', 'Cat owners'],
+              risk_groups: ['Immunocompromised (HIV/AIDS, transplant)', 'Pregnant women (fetus!)', 'Cat owners'],
               seasonality: 'None',
-              transmission: 'Feco-oral (cat feces), raw meat (cyst), vertical'
+              transmission: 'Fecal-oral (cat feces), raw meat (cyst), vertical'
             },
             pathomechanism: {
               steps: [
@@ -126,7 +126,7 @@ Object.assign(window.diseases, {
                 'Hematogenous spread (acute phase)',
                 'Immune response → bradyzoites (slow) → tissue cyst formation (muscle, brain, eye)',
                 'Latency (lifelong)',
-                'Reactivation (immunosuppression): cyst rupture → encephalitis'
+                'Reactivation (in immunocompromised state): cyst rupture → encephalitis'
               ],
               virulence_factors: ['Intracellular survival', 'Cyst formation', 'Immunomodulation']
             },
@@ -135,7 +135,7 @@ Object.assign(window.diseases, {
               onset: 'Slow/asymptomatic',
               symptoms: [
                 { name: 'Asymptomatic', description: '80-90% of immunocompetent individuals', severity: 'mild' },
-                { name: 'Mononucleosis-like', description: 'Fever, lymphadenopathy, fatigue', severity: 'mild' },
+                { name: 'Mononucleosis-like syndrome', description: 'Fever, lymphadenopathy, fatigue', severity: 'mild' },
                 { name: 'Cerebral (AIDS)', description: 'Headache, confusion, seizures, hemiparesis', severity: 'severe' },
                 { name: 'Chorioretinitis', description: 'Blurred vision, eye pain', severity: 'moderate' },
                 { name: 'Congenital', description: 'Hydrocephalus, calcification, chorioretinitis (Sabin\'s tetrad)', severity: 'severe' }
@@ -182,8 +182,8 @@ Object.assign(window.diseases, {
                   { drug: 'Steroid', dose: 'Dexamethasone', duration: '', note: 'In case of mass effect (cerebral edema)' }
                 ]
               },
-              targeted: 'Pregnancy: Spiramycin (1st trimester) or Pyrimethamine/Sulfadiazine (later). HIV prophylaxis: TMP/SMX.',
-              supportive: ['Folinic acid supplementation (Leucovorin) for bone marrow protection', 'Anticonvulsants'],
+              targeted: 'Pregnancy: Spiramycin (1st trimester) or Pyrimethamine/Sulfadiazine (later). HIV prophylaxis: TMP-SMX.',
+              supportive: ['Leucovorin (Folinic acid) supplementation for bone marrow protection', 'Anticonvulsants'],
               prevention: ['Thorough cooking of meat', 'Avoid cat litter (pregnant women)', 'Hand washing', 'Prophylaxis if CD4<100 (TMP/SMX)']
             },
             guidelines: {
@@ -194,7 +194,7 @@ Object.assign(window.diseases, {
               ],
               treatment_indications: [
                 'Immunocompetent: generally does not require treatment, except for severe symptoms or chorioretinitis',
-                'Immunosuppressed (AIDS, CD4<100): always requires treatment (acute + maintenance)',
+                'Immunocompromised (AIDS, CD4<100): always requires treatment (acute + maintenance)',
                 'Pregnancy: treatment is necessary in case of acute infection to reduce transmission/fetal damage'
               ]
             },
@@ -207,19 +207,19 @@ Object.assign(window.diseases, {
           {
             id: 'ascariasis',
             name: 'Ascariasis (Roundworm)',
-            pathogen: { type: 'Helminth', name: 'Ascaris lumbricoides', gram: '-', shape: 'roundworm (15-35 cm)' },
+            pathogen: { type: 'Helminth', name: 'Ascaris lumbricoides', gram: '-', shape: 'nematode (roundworm)' },
             epidemiology: {
               incidence: 'Most common helminth infection worldwide (>800 million)',
               risk_groups: ['Children', 'People in poor hygienic conditions'],
               seasonality: 'None',
-              transmission: 'Feco-oral (soil/vegetables contaminated with eggs)'
+              transmission: 'Fecal-oral (soil/vegetables contaminated with eggs)'
             },
             pathomechanism: {
               steps: [
                 'Egg ingestion',
                 'Larva hatches in the small intestine',
                 'Migrates to the lungs via the venous system (Löffler\'s syndrome)',
-                'Coughed up and swallowed',
+                'Swallowed after being coughed up',
                 'Adult worm in the small intestine (nutrient deprivation, obstruction)'
               ],
               virulence_factors: ['Protease inhibitors', 'Migration ability']
@@ -228,7 +228,7 @@ Object.assign(window.diseases, {
               incubation: '4-8 weeks',
               onset: 'Slow',
               symptoms: [
-                { name: 'Lung phase', description: 'Cough, dyspnea, Löffler\'s syndrome', severity: 'moderate' },
+                { name: 'Pulmonary phase', description: 'Cough, dyspnea, Löffler\'s syndrome', severity: 'moderate' },
                 { name: 'Intestinal phase', description: 'Abdominal pain, bloating, nausea', severity: 'mild' },
                 { name: 'Obstruction', description: 'Ileus (worm bolus), biliary obstruction', severity: 'severe' }
               ],
@@ -248,7 +248,7 @@ Object.assign(window.diseases, {
                 { modality: 'Abdominal US', finding: 'Worms in biliary tract/intestine ("railway track" sign)', significance: 'Complication' }
               ],
               microbiology: [
-                { test: 'Stool for ova and parasites', finding: 'Characteristic mammillated eggs', significance: 'Diagnostic' }
+                { test: 'Stool examination for ova and parasites', finding: 'Characteristic mammillated eggs', significance: 'Diagnostic' }
               ]
             },
             differential: [
@@ -272,16 +272,16 @@ Object.assign(window.diseases, {
           {
             id: 'taeniasis',
             name: 'Taeniasis (Tapeworm)',
-            pathogen: { type: 'Helminth', name: 'Taenia saginata (beef), Taenia solium (pork)', gram: '-', shape: 'flatworm (tape)' },
+            pathogen: { type: 'Helminth', name: 'Taenia saginata (beef), Taenia solium (pork)', gram: '-', shape: 'cestode (tapeworm)' },
             epidemiology: {
               incidence: 'Widespread worldwide',
-              risk_groups: ['Consumers of raw meat'],
+              risk_groups: ['People who consume raw meat'],
               transmission: 'Raw/undercooked meat (larva/cysticercus). T. solium eggs person-to-person -> Cysticercosis!'
             },
             pathomechanism: {
               steps: [
-                'Ingestion of cysticercus from meat -> adult worm in intestine (Taeniasis)',
-                'Ingestion of T. solium EGG (feco-oral) -> larva hatches -> tissue migration -> Cysticercosis (brain, muscle, eye)'
+                'Ingestion of cysticerci in meat → adult worm in intestine (Taeniasis)',
+                'Ingestion of T. solium eggs (fecal-oral) → larva hatches → tissue migration → Cysticercosis (brain, muscle, eye)'
               ],
               virulence_factors: ['Scolex (hooks/suckers)']
             },
@@ -289,10 +289,10 @@ Object.assign(window.diseases, {
               incubation: '8-14 weeks',
               onset: 'Asymptomatic/Mild',
               symptoms: [
-                { name: 'Intestinal', description: 'Mild abdominal discomfort, passage of proglottids (segments)', severity: 'mild' },
+                { name: 'Intestinal infection', description: 'Mild abdominal discomfort, passage of proglottids (segments)', severity: 'mild' },
                 { name: 'Neurocysticercosis (T. solium)', description: 'Epilepsy, headache, increased ICP', severity: 'severe' }
               ],
-              physical_exam: ['Negative (intestinal worm)', 'Neurological symptoms (cysticercosis)'],
+              physical_exam: ['Unremarkable (intestinal infection)', 'Neurological symptoms (cysticercosis)'],
               complications: ['Neurocysticercosis (leading cause of epilepsy in developing countries)', 'Ocular cysticercosis']
             },
             diagnostics: {
@@ -317,18 +317,18 @@ Object.assign(window.diseases, {
           {
             id: 'echinococcosis',
             name: 'Echinococcosis (Hydatid Disease)',
-            pathogen: { type: 'Helminth', name: 'Echinococcus granulosus (cystic), E. multilocularis (alveolar)', gram: '-', shape: 'tapeworm' },
+            pathogen: { type: 'Helminth', name: 'Echinococcus granulosus (cystic), E. multilocularis (alveolar)', gram: '-', shape: 'cestode (tapeworm)' },
             epidemiology: {
               incidence: 'Endemic (Mediterranean, E-Europe, Asia)',
-              risk_groups: ['Dog owners, shepherds', 'Consumers of wild berries (fox - E. multilocularis)'],
-              transmission: 'Feco-oral: ingestion of eggs from dog/fox feces'
+              risk_groups: ['Dog owners, shepherds', 'People who consume wild berries (fox - E. multilocularis)'],
+              transmission: 'Fecal-oral: ingestion of eggs from dog/fox feces'
             },
             pathomechanism: {
               steps: [
-                'Egg ingestion -> oncosphere in the intestine',
-                'Portal circulation -> Liver (most common) -> Lungs -> Other',
+                'Egg ingestion → oncosphere in the intestine',
+                'Portal circulation → Liver (most common) → Lungs → Other',
                 'Hydatid cyst formation (slow growth)',
-                'Cyst rupture -> anaphylaxis and dissemination'
+                'Cyst rupture → anaphylaxis and dissemination'
               ],
               virulence_factors: ['Laminated layer (immune protection)', 'Protoscolices']
             },
@@ -336,8 +336,8 @@ Object.assign(window.diseases, {
               incubation: 'Years (slow growth)',
               onset: 'Slow',
               symptoms: [
-                { name: 'Liver cyst', description: 'Right upper quadrant pain, hepatomegaly', severity: 'moderate' },
-                { name: 'Lung cyst', description: 'Cough, chest pain, hemoptysis', severity: 'moderate' },
+                { name: 'Hepatic cyst', description: 'Right upper quadrant pain, hepatomegaly', severity: 'moderate' },
+                { name: 'Pulmonary cyst', description: 'Cough, chest pain, hemoptysis', severity: 'moderate' },
                 { name: 'Rupture', description: 'Anaphylactic shock, fever, urticaria', severity: 'severe' }
               ],
               physical_exam: ['Hepatomegaly', 'Palpable mass'],
@@ -346,7 +346,7 @@ Object.assign(window.diseases, {
             diagnostics: {
               laboratory: [{ test: 'CBC', finding: 'Eosinophilia (25%)', interpretation: 'Not always present' }],
               imaging: [
-                { modality: 'US/CT', finding: 'Cyst, daughter cysts ("rosette"), calcification', significance: 'Diagnostic (WHO classification)' }
+                { modality: 'Ultrasound/CT', finding: 'Cyst, daughter cysts ("rosette"), calcification', significance: 'Diagnostic (WHO classification)' }
               ],
               microbiology: [
                 { test: 'Serology (ELISA, IHA)', finding: 'Positive', significance: 'Confirmation (not always positive)' }
@@ -366,18 +366,18 @@ Object.assign(window.diseases, {
           {
             id: 'enterobiasis',
             name: 'Enterobiasis (Pinworm)',
-            pathogen: { type: 'Helminth', name: 'Enterobius vermicularis', gram: '-', shape: 'small white worm' },
+            pathogen: { type: 'Helminth', name: 'Enterobius vermicularis', gram: '-', shape: 'nematode (pinworm)' },
             epidemiology: {
               incidence: 'Most common helminth infection in temperate zones (also in developed countries)',
-              risk_groups: ['Small children', 'Communities (daycare, school)', 'Family members'],
-              transmission: 'Feco-oral, autoinfection (scratching -> mouth), inhalation (dust)'
+              risk_groups: ['Small children', 'Institutionalized settings (daycare, school)', 'Family members'],
+              transmission: 'Fecal-oral, autoinfection (scratching → mouth), inhalation (dust)'
             },
             pathomechanism: {
               steps: [
                 'Egg ingestion',
                 'Larva in the small intestine',
                 'Adult worm in the cecum',
-                'Female migrates to the perianal region at night to lay eggs -> itching'
+                'Female migrates to the perianal region at night to lay eggs → pruritus'
               ],
               virulence_factors: ['-']
             },
@@ -385,8 +385,8 @@ Object.assign(window.diseases, {
               incubation: '2-6 weeks',
               onset: 'Gradual',
               symptoms: [
-                { name: 'Perianal itching', description: 'Mainly at night (pruritus ani)', severity: 'moderate' },
-                { name: 'Sleep disturbance', description: 'Due to itching', severity: 'mild' },
+                { name: 'Perianal pruritus', description: 'Mainly at night (pruritus ani)', severity: 'moderate' },
+                { name: 'Insomnia', description: 'Due to pruritus', severity: 'mild' },
                 { name: 'Vulvovaginitis', description: 'In young girls (aberrant migration)', severity: 'moderate' }
               ],
               physical_exam: ['Perianal excoriation (scratch marks)', 'Worms may be visible (rare)'],
@@ -394,7 +394,7 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               microbiology: [
-                { test: 'Scotch-tape test', finding: 'Eggs in the morning sample', significance: 'Gold standard (stool exam often negative!)' }
+                { test: 'Cellophane tape test', finding: 'Eggs in the morning sample', significance: 'Gold standard (stool exam often negative!)' }
               ]
             },
             therapy: {
@@ -412,17 +412,17 @@ Object.assign(window.diseases, {
           {
             id: 'trichinellosis',
             name: 'Trichinellosis',
-            pathogen: { type: 'Helminth', name: 'Trichinella spiralis', gram: '-', shape: 'nematode' },
+            pathogen: { type: 'Helminth', name: 'Trichinella spiralis', gram: '-', shape: 'nematode (roundworm)' },
             epidemiology: {
               incidence: 'Sporadic outbreaks (pig slaughter)',
-              risk_groups: ['Consumers of raw/smoked pork, wild boar'],
+              risk_groups: ['People who consume raw/smoked pork, wild boar'],
               transmission: 'Consumption of meat containing larvae (improper cooking)'
             },
             pathomechanism: {
               steps: [
                 'Ingestion of encysted larva',
-                'Adult worm in intestine -> new larvae (Enteral phase)',
-                'Larvae into bloodstream -> migration to striated muscles',
+                'Adult worm in intestine → new larvae (Enteral phase)',
+                'Larvae into bloodstream → migration to striated muscles',
                 'Encystment in muscle (Parenteral phase)'
               ],
               virulence_factors: ['Nurse cell formation in muscle']
@@ -431,7 +431,7 @@ Object.assign(window.diseases, {
               incubation: 'Enteral: 1-2 days; Parenteral: 1-4 weeks',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Enteral phase', description: 'Diarrhea, nausea, abdominal pain', severity: 'moderate' },
+                { name: 'Enteral (intestinal) phase', description: 'Diarrhea, nausea, abdominal pain', severity: 'moderate' },
                 { name: 'Fever', description: 'High, prolonged', severity: 'moderate' },
                 { name: 'Myalgia', description: 'Severe muscle pain, weakness', severity: 'severe' },
                 { name: 'Periorbital edema', description: 'Characteristic facial swelling', severity: 'moderate' },
@@ -465,7 +465,7 @@ Object.assign(window.diseases, {
                   { drug: 'Steroid (Prednisolone)', dose: '40-60mg PO', duration: 'Symptomatic', note: 'In case of severe inflammation/allergic reaction (Herxheimer-like)' }
                 ]
               },
-              targeted: 'Anthelmintic + Steroid.',
+              targeted: 'Antihelminthic + Steroid.',
               prevention: ['Meat inspection (trichinelloscopy)', 'Thorough cooking of meat (>71°C)', 'Freezing (-15°C for 3 weeks - not always sufficient for wild boar!)']
             },
             prognosis: { mortality: 'Low, but can be fatal in myocarditis/encephalitis', prognostic_scores: [], factors: 'Organ involvement, timing of treatment' }
@@ -473,12 +473,12 @@ Object.assign(window.diseases, {
           {
             id: 'toxocariasis',
             name: 'Toxocariasis (Visceral/Ocular Larva Migrans)',
-            pathogen: { type: 'Helminth', name: 'Toxocara canis (dog), Toxocara cati (cat)', gram: '-', shape: 'roundworm larva' },
+            pathogen: { type: 'Helminth', name: 'Toxocara canis (dog), Toxocara cati (cat)', gram: '-', shape: 'nematode (roundworm) larvae' },
             epidemiology: {
               incidence: 'Widespread zoonosis worldwide',
               risk_groups: ['Small children (sandbox, geophagia)', 'Dog owners'],
               seasonality: 'None',
-              transmission: 'Feco-oral: ingestion of soil contaminated with eggs (not direct animal contact!)'
+              transmission: 'Fecal-oral: ingestion of soil contaminated with eggs (not direct animal contact!)'
             },
             pathomechanism: {
               steps: [
@@ -486,7 +486,7 @@ Object.assign(window.diseases, {
                 'Larva hatches in the small intestine',
                 'Penetrates intestinal wall and enters circulation',
                 'Tissue migration (liver, lung, brain, eye)',
-                'Does NOT develop into adult worm in humans (paratenic host)',
+                'Humans are accidental hosts; larvae do not mature into adults',
                 'Granulomatous inflammation around the larva'
               ],
               virulence_factors: ['Tissue migration', 'Excretory-secretory antigens (TES)']
@@ -513,7 +513,7 @@ Object.assign(window.diseases, {
                 { test: 'IgE', finding: 'Elevated', interpretation: 'Allergic/parasitic response' }
               ],
               imaging: [
-                { modality: 'Abdominal US', finding: 'Hepatomegaly, hypoechoic lesions', significance: 'VLM' },
+                { modality: 'Abdominal Ultrasound', finding: 'Hepatomegaly, hypoechoic lesions', significance: 'VLM' },
                 { modality: 'Ophthalmology', finding: 'Retinal granuloma', significance: 'OLM' }
               ],
               microbiology: [

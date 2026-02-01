@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Syndrome', name: 'Bacteria (G+/G-), Fungi, Virus', gram: 'Variable', shape: '-' },
             epidemiology: {
               incidence: 'Worldwide 49 million cases/year, 11 million deaths (20% of all deaths)',
-              risk_groups: ['Elderly (>65 years)', 'Infants (<1 year)', 'Immunosuppressed', 'Chronic patients', 'Patients with invasive devices'],
+              risk_groups: ['Elderly (>65 years)', 'Infants (<1 year)', 'Immunocompromised', 'Patients with chronic diseases', 'Patients with invasive devices'],
               seasonality: 'None (more common in winter due to respiratory origin)',
               transmission: 'Not contagious (the causative infection might be)'
             },
@@ -71,7 +71,7 @@ Object.assign(window.diseases, {
               guidelines: ['Surviving Sepsis Campaign 2021'],
               empirical: {
                 initial_management: [
-                  { drug: 'Antibiotics', dose: 'Broad spectrum IV', duration: 'Within 1 hour!', note: 'After taking blood cultures. Source-dependent choice (e.g., Pip/Tazo, Meropenem).' },
+                  { drug: 'Antibiotics', dose: 'Broad-spectrum IV', duration: 'Within 1 hour!', note: 'After taking blood cultures. Source-dependent choice (e.g., Pip/Tazo, Meropenem).' },
                   { drug: 'Fluid resuscitation', dose: '30 ml/kg crystalloid', duration: 'In first 3 hours', note: 'If hypotension or lactate ≥4 mmol/L.' }
                 ],
                 icu: [
@@ -183,7 +183,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Fungus', name: 'Candida albicans (and non-albicans species)', gram: 'Yeast', shape: 'oval' },
             epidemiology: {
               incidence: '4th most common cause of nosocomial bloodstream infections',
-              risk_groups: ['ICU patients', 'Central venous catheter (CVC)', 'Broad-spectrum AB', 'TPN', 'Abdominal surgery'],
+              risk_groups: ['ICU patients', 'Central venous catheter (CVC)', 'Broad-spectrum antibiotics', 'TPN', 'Abdominal surgery'],
               seasonality: 'None',
               transmission: 'Endogenous (from GI tract), exogenous (hands, devices)'
             },
@@ -240,13 +240,13 @@ Object.assign(window.diseases, {
                   { drug: 'None', dose: '-', duration: '-', note: 'Hospital treatment' }
                 ],
                 inpatient: [
-                  { drug: 'Fluconazole', dose: '800mg loading, then 400mg', duration: '14 days', note: 'Only stable patient, no prior azole exposure' }
+                  { drug: 'Fluconazole', dose: '800 mg loading, then 400 mg', duration: '14 days', note: 'Only for stable patients with no prior azole exposure' }
                 ],
                 icu: [
-                  { drug: 'Echinocandin (Caspofungin)', dose: '70mg -> 50mg', duration: '14 days (after negative BC)', note: 'First choice in unstable/severe patient' }
+                  { drug: 'Echinocandin (Caspofungin)', dose: '70 mg loading, then 50 mg', duration: '14 days (after negative BC)', note: 'First choice in unstable/severe patients' }
                 ]
               },
-              targeted: 'C. albicans: Fluconazole (if sensitive); C. glabrata/krusei: Echinocandin. Ophthalmology: systemic + intravitreal.',
+              targeted: 'C. albicans: Fluconazole (if sensitive); C. glabrata/krusei: Echinocandin. Ophthalmology: systemic + intravitreal therapy.',
               supportive: ['CVC removal (strongly recommended!)', 'Ophthalmology consultation'],
               prevention: ['Hand washing', 'Catheter care', 'Prophylaxis (transplant patients)']
             },
@@ -262,7 +262,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Fungus', name: 'Aspergillus fumigatus', gram: 'Mold', shape: 'hyphae (45° branching)' },
             epidemiology: {
               incidence: '5-10% of neutropenic patients',
-              risk_groups: ['Prolonged neutropenia', 'Allogeneic stem cell transplant', 'Solid organ transplant', 'High dose steroids'],
+              risk_groups: ['Prolonged neutropenia', 'Allogeneic stem cell transplant', 'Solid organ transplant', 'High-dose steroids'],
               seasonality: 'None (construction dust risk)',
               transmission: 'Inhalation of conidia (from air)'
             },
@@ -320,11 +320,11 @@ Object.assign(window.diseases, {
                   { drug: 'None', dose: '-', duration: '-', note: 'Hospital treatment' }
                 ],
                 inpatient: [
-                  { drug: 'Voriconazole', dose: '6mg/kg -> 4mg/kg IV/PO', duration: '6-12 weeks', note: 'GOLD STANDARD (level monitoring!)' }
+                  { drug: 'Voriconazole', dose: '6 mg/kg followed by 4 mg/kg IV/PO', duration: '6-12 weeks', note: 'GOLD STANDARD (therapeutic drug monitoring required!)' }
                 ],
                 icu: [
-                  { drug: 'Isavuconazole', dose: '200mg IV/PO', duration: 'Long', note: 'Fewer side effects' },
-                  { drug: 'Liposomal Amphotericin B', dose: '3-5mg/kg IV', duration: '', note: 'Alternative' }
+                  { drug: 'Isavuconazole', dose: '200 mg IV/PO', duration: 'Long-term', note: 'Fewer side effects' },
+                  { drug: 'Liposomal Amphotericin B', dose: '3-5 mg/kg IV', duration: '', note: 'Alternative' }
                 ]
               },
               targeted: 'Voriconazole or Isavuconazole. Salvage: L-AmB, Caspofungin (combination controversial).',

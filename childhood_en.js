@@ -13,7 +13,7 @@ Object.assign(window.diseases, {
         pathogen: { type: 'Virus', name: 'Measles morbillivirus', gram: 'ssRNA, Paramyxoviridae', shape: 'pleomorphic' },
         epidemiology: {
           incidence: 'Epidemic in unvaccinated populations',
-          risk_groups: ['Unvaccinated', 'Immunosuppressed'],
+          risk_groups: ['Unvaccinated', 'Immunocompromised'],
           seasonality: 'Winter-Spring',
           transmission: 'Droplet infection (highly contagious! R0=12-18)'
         },
@@ -26,11 +26,11 @@ Object.assign(window.diseases, {
           onset: 'Prodrome (fever, 3C)',
           symptoms: [
             { name: 'Prodrome (3C)', description: 'Fever (>40°C), Cough, Coryza, Conjunctivitis - almost 100%', severity: 'moderate' },
-            { name: 'Koplik spots', description: 'Pathognomonic salt grain-like spots on the buccal mucosa (60-70% before rash)', severity: 'mild' },
+            { name: 'Koplik spots', description: 'Pathognomonic salt-grain-like spots on the buccal mucosa (60-70% before rash)', severity: 'mild' },
             { name: 'Rash', description: 'Maculopapular, starts behind ears → face → trunk (3rd day) → limbs (confluent)', severity: 'moderate' }
           ],
           physical_exam: ['Koplik spots', 'Exanthema', 'Fever', 'Conjunctivitis'],
-          complications: ['Otitis media', 'Pneumonia (giant cell)', 'Encephalitis', 'SSPE (years later)']
+          complications: ['Otitis media', 'Giant cell pneumonia', 'Encephalitis', 'SSPE (years later)']
         },
         diagnostics: {
           laboratory: [{ test: 'CBC', finding: 'Leukopenia', interpretation: '-' }],
@@ -118,7 +118,7 @@ Object.assign(window.diseases, {
           incubation: '14-21 days',
           onset: 'Mild',
           symptoms: [
-            { name: 'Rash', description: 'Fine, pale pink (50-80%), spreads from face downwards, disappears in 3 days', severity: 'mild' },
+            { name: 'Rash', description: 'Fine, pink maculopapular rash (50-80%), spreads from face downwards, disappears in 3 days', severity: 'mild' },
             { name: 'Lymphadenopathy', description: 'Occipital, retroauricular, posterior cervical (nearly 100%)', severity: 'moderate' },
             { name: 'Arthralgia/Arthritis', description: 'Common in adult women (up to 70%)', severity: 'mild' }
           ],
@@ -165,9 +165,9 @@ Object.assign(window.diseases, {
             { name: 'Sore throat', description: 'Severe pharyngitis (>90%)', severity: 'moderate' },
             { name: 'Fever', description: 'High, sudden onset', severity: 'moderate' },
             { name: 'Rash', description: 'Diffuse red, "sandpaper" feel, blanches on pressure (Pastia lines in folds)', severity: 'moderate' },
-            { name: 'Tongue', description: 'White strawberry tongue (days 1-2) → Red raspberry tongue (days 4-5)', severity: 'moderate' }
+            { name: 'Tongue', description: 'White strawberry tongue (days 1-2) → Red strawberry tongue (days 4-5)', severity: 'moderate' }
           ],
-          physical_exam: ['Pharyngeal hyperemia', 'Raspberry tongue', 'Filatov\'s sign (circumoral pallor)', 'Pastia lines (in folds)', 'Desquamation (later)'],
+          physical_exam: ['Pharyngeal hyperemia', 'Strawberry tongue', 'Filatov\'s sign (circumoral pallor)', 'Pastia lines (in folds)', 'Desquamation (later)'],
           complications: ['Rheumatic fever', 'Glomerulonephritis', 'Peritonsillar abscess']
         },
         diagnostics: {
@@ -216,7 +216,7 @@ Object.assign(window.diseases, {
           incubation: '4-6 weeks',
           onset: 'Gradual',
           symptoms: [
-            { name: 'Sore throat', description: 'Severe, often pseudomembranous (>80%)', severity: 'severe' },
+            { name: 'Sore throat', description: 'Severe, often with exudate (>80%)', severity: 'severe' },
             { name: 'Fever', description: 'Prolonged (can last 10-14 days), >90%', severity: 'moderate' },
             { name: 'Lymphadenopathy', description: 'Generalized, symmetrical, mainly posterior cervical (>90%)', severity: 'moderate' },
             { name: 'Fatigue', description: 'Pronounced, can last for weeks to months', severity: 'moderate' }
@@ -270,7 +270,7 @@ Object.assign(window.diseases, {
           onset: 'Sudden',
           symptoms: [
             { name: 'High fever', description: '39-40°C, for 3-5 days (100%), with good general condition', severity: 'moderate' },
-            { name: 'Rash', description: 'Appears AFTER fever subsides (important difference!), pink maculopapular', severity: 'mild' },
+            { name: 'Rash', description: 'Rash appears after defervescence (important difference!), pink maculopapular', severity: 'mild' },
             { name: 'Nagayama spots', description: 'Ulcers/papules at the base of the uvula', severity: 'mild' }
           ],
           physical_exam: ['Fever', 'Nagayama spots (at base of uvula)', 'Cervical/occipital lymphadenopathy', 'Rash (later)'],
@@ -301,7 +301,7 @@ Object.assign(window.diseases, {
         pathogen: { type: 'Virus', name: 'Varicella-zoster virus (VZV)', gram: 'dsDNA, Herpesviridae (HHV-3)', shape: 'spherical' },
         epidemiology: {
           incidence: 'Very common in childhood (unvaccinated)',
-          risk_groups: ['Unvaccinated children', 'Immunosuppressed', 'Pregnant women', 'Adults (more severe)'],
+          risk_groups: ['Unvaccinated children', 'Immunocompromised', 'Pregnant women', 'Adults (more severe)'],
           seasonality: 'Winter-Spring',
           transmission: 'Droplet infection, vesicle fluid (airborne!)'
         },
@@ -313,7 +313,7 @@ Object.assign(window.diseases, {
           incubation: '10-21 days',
           onset: 'Sudden',
           symptoms: [
-            { name: 'Rash', description: 'Polymorphic (macule-papule-vesicle-crust simultaneously), itchy (100%)', severity: 'moderate' },
+            { name: 'Rash', description: 'Polymorphic rash (macules, papules, vesicles, and crusts present simultaneously), itchy (100%)', severity: 'moderate' },
             { name: 'Fever', description: 'Moderate (in children), higher in adults', severity: 'mild' },
             { name: 'Enanthema', description: 'Oral mucosal vesicles, painful', severity: 'moderate' }
           ],
@@ -325,7 +325,7 @@ Object.assign(window.diseases, {
         },
         therapy: {
           empirical: { outpatient: [{ drug: 'Supportive', dose: '-', duration: '-', note: 'Cooling lotions NOT recommended (superinfection), rather powder or nothing. Itch relief.' }] },
-          targeted: 'Acyclovir (for risk groups, adults, immunosuppressed).',
+          targeted: 'Acyclovir (for risk groups, adults, immunocompromised).',
           prevention: ['Varicella vaccine (mandatory)']
         },
         guidelines: {
@@ -344,8 +344,8 @@ Object.assign(window.diseases, {
         name: 'Shingles (Herpes Zoster)',
         pathogen: { type: 'Virus', name: 'Varicella-zoster virus (VZV) reactivation', gram: 'dsDNA', shape: '-' },
         epidemiology: {
-          incidence: 'Mainly elderly, but also in immunosuppressed children',
-          risk_groups: ['Immunosuppressed', 'Previous varicella'],
+          incidence: 'Mainly elderly, but also in immunocompromised children',
+          risk_groups: ['Immunocompromised', 'Previous varicella'],
           seasonality: 'None',
           transmission: 'Vesicle fluid is infectious (can cause varicella in seronegative individuals)'
         },
@@ -358,7 +358,7 @@ Object.assign(window.diseases, {
           onset: 'Starts with pain',
           symptoms: [
             { name: 'Pain', description: 'Prodromal (70-80%), burning, shooting in the dermatome', severity: 'severe' },
-            { name: 'Rash', description: 'Grouped vesicles on red base, unilateral, dermatomal', severity: 'moderate' }
+            { name: 'Rash', description: 'Grouped vesicles on an erythematous base, unilateral, dermatomal', severity: 'moderate' }
           ],
           physical_exam: ['Dermatomal distribution of vesicles (does not cross midline)'],
           complications: ['Postherpetic neuralgia (PHN)', 'Zoster ophthalmicus (eye)', 'Ramsay Hunt syndrome (ear/facial nerve)']
@@ -450,7 +450,7 @@ Object.assign(window.diseases, {
           onset: 'Catarrhal phase (1-2 weeks)',
           symptoms: [
             { name: 'Catarrhal phase', description: 'Mild fever, coryza, cough (1-2 weeks) - most contagious phase', severity: 'mild' },
-            { name: 'Paroxysmal phase', description: 'Severe coughing fits (100%), whoop (inspiratory gasp 60-70%), vomiting (50%)', severity: 'severe' },
+            { name: 'Paroxysmal phase', description: 'Severe coughing fits (100%), inspiratory whoop (60-70%), vomiting (50%)', severity: 'severe' },
             { name: 'Convalescent phase', description: 'Cough decreases, but can last for weeks ("100-day cough")', severity: 'moderate' }
           ],
           physical_exam: [
@@ -480,7 +480,7 @@ Object.assign(window.diseases, {
             ]
           },
           targeted: 'Macrolide antibiotic (erythromycin, azithromycin).',
-          supportive: ['Supportive (oxygen, rehydration)', 'Isolation (5 days after antibiotic)', 'Cough suppressants NO (mucus retention!)'],
+          supportive: ['Supportive (oxygen, rehydration)', 'Isolation (5 days after antibiotic)', 'Cough suppressants contraindicated (mucus retention!)'],
           prevention: ['DTP vaccine (mandatory, 3+1 doses)', 'Adult booster']
         },
         guidelines: {

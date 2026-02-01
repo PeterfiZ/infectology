@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
         pathogen: { type: 'Virus', name: 'Masernvirus (Measles morbillivirus)', gram: 'ssRNA, Paramyxoviridae', shape: 'pleomorph' },
         epidemiology: {
           incidence: 'Epidemisch in ungeimpften Populationen',
-          risk_groups: ['Ungeimpfte', 'Immunsupprimierte'],
+          risk_groups: ['Ungeimpfte', 'Immungeschwächte'],
           seasonality: 'Winter-Frühling',
           transmission: 'Tröpfcheninfektion (hoch ansteckend! R0=12-18)'
         },
@@ -20,14 +20,14 @@ Object.assign(window.diseases, {
         },
         clinical: {
           incubation: '10-14 Tage',
-          onset: 'Prodromalstadium (Fieber, 3K)',
+          onset: 'Prodromalstadium (Fieber, Katarrh)',
           symptoms: [
-            { name: 'Prodrom (3K)', description: 'Fieber (>40°C), Husten (Kough), Schnupfen (Koryza), Konjunktivitis (Konjunktivitis) - fast 100%', severity: 'moderate' },
+            { name: 'Prodrom', description: 'Fieber (>40°C), Husten, Schnupfen (Coryza), Konjunktivitis - fast 100%', severity: 'moderate' },
             { name: 'Koplik-Flecken', description: 'Pathognomonische salzkornartige Flecken an der Wangenschleimhaut (60-70% vor dem Ausschlag)', severity: 'mild' },
             { name: 'Ausschlag', description: 'Makulopapulös, beginnt hinter den Ohren → Gesicht → Rumpf (3. Tag) → Extremitäten (konfluierend)', severity: 'moderate' }
           ],
           physical_exam: ['Koplik-Flecken', 'Exanthem', 'Fieber', 'Konjunktivitis'],
-          complications: ['Otitis media', 'Pneumonie (Riesenzell)', 'Enzephalitis', 'SSPE (Jahre später)']
+          complications: ['Otitis media', 'Riesenzellpneumonie', 'Enzephalitis', 'SSPE (Jahre später)']
         },
         diagnostics: {
           laboratory: [{ test: 'Blutbild', finding: 'Leukopenie', interpretation: '-' }],
@@ -43,7 +43,7 @@ Object.assign(window.diseases, {
         },
         guidelines: {
           diagnosis: [
-            'Klinischer Verdacht: Fieber + 3K (Husten, Schnupfen, Konjunktivitis) + Koplik-Flecken.',
+            'Klinischer Verdacht: Fieber + Husten/Schnupfen/Konjunktivitis + Koplik-Flecken.',
             'Bestätigung: Anti-Masern-IgM-Serologie.'
           ],
           treatment_indications: [
@@ -164,7 +164,7 @@ Object.assign(window.diseases, {
             { name: 'Ausschlag', description: 'Diffus rot, "Sandpapier"-artig, verblasst auf Druck (Pastia-Linien in den Beugen)', severity: 'moderate' },
             { name: 'Zunge', description: 'Weiße Erdbeerzunge (1.-2. Tag) → Rote Himbeerzunge (4.-5. Tag)', severity: 'moderate' }
           ],
-          physical_exam: ['Pharynxhyperämie', 'Himbeerzunge', 'Filatow-Dreieck (Mundblässe)', 'Pastia-Linien (in den Beugen)', 'Schuppung (später)'],
+          physical_exam: ['Pharynxhyperämie', 'Himbeerzunge', 'Periorale Blässe (Filatow-Dreieck)', 'Pastia-Linien (in den Beugen)', 'Schuppung (später)'],
           complications: ['Rheumatisches Fieber', 'Glomerulonephritis', 'Peritonsillarabszess']
         },
         diagnostics: {
@@ -215,10 +215,10 @@ Object.assign(window.diseases, {
           symptoms: [
             { name: 'Halsschmerzen', description: 'Schwer, oft pseudomembranös (>80%)', severity: 'severe' },
             { name: 'Fieber', description: 'Anhaltend (kann 10-14 Tage dauern), >90%', severity: 'moderate' },
-            { name: 'Lymphadenopathie', description: 'Generalisiert, symmetrisch, vor allem hintere Halslymphknoten (>90%)', severity: 'moderate' },
+            { name: 'Lymphadenopathie', description: 'Generalisiert, symmetrisch, vor allem hintere zervikale Lymphknoten (>90%)', severity: 'moderate' },
             { name: 'Müdigkeit', description: 'Ausgeprägt, kann Wochen bis Monate anhalten', severity: 'moderate' }
           ],
-          physical_exam: ['Generalisierte Lymphadenopathie (zervikale Dominanz)', 'Hepatosplenomegalie', 'Tonsillenbeläge', 'Ampicillin-Rash (wenn AB gegeben wurde)'],
+          physical_exam: ['Generalisierte Lymphadenopathie (zervikale Dominanz)', 'Hepatosplenomegalie', 'Tonsillenbeläge', 'Ampicillin-Exanthem (wenn AB gegeben wurde)'],
           complications: ['Milzruptur (selten, aber gefährlich)', 'Atemwegsobstruktion (Tonsillen)', 'Hepatitis', 'Burkitt-Lymphom (spät, endemisch)']
         },
         diagnostics: {
@@ -298,7 +298,7 @@ Object.assign(window.diseases, {
         pathogen: { type: 'Virus', name: 'Varizella-Zoster-Virus (VZV)', gram: 'dsDNA, Herpesviridae (HHV-3)', shape: 'kugelförmig' },
         epidemiology: {
           incidence: 'Sehr häufig im Kindesalter (Ungeimpfte)',
-          risk_groups: ['Ungeimpfte Kinder', 'Immunsupprimierte', 'Schwangere', 'Erwachsene (schwerer)'],
+          risk_groups: ['Ungeimpfte Kinder', 'Immungeschwächte', 'Schwangere', 'Erwachsene (schwerer)'],
           seasonality: 'Winter-Frühling',
           transmission: 'Tröpfcheninfektion, Bläscheninhalt (aerogen!)'
         },
@@ -342,7 +342,7 @@ Object.assign(window.diseases, {
         pathogen: { type: 'Virus', name: 'Varizella-Zoster-Virus (VZV) Reaktivierung', gram: 'dsDNA', shape: '-' },
         epidemiology: {
           incidence: 'Hauptsächlich Ältere, aber auch immunsupprimierte Kinder',
-          risk_groups: ['Immunsupprimierte', 'Frühere Varizellen'],
+          risk_groups: ['Immungeschwächte', 'Frühere Varizellen'],
           seasonality: 'Keine',
           transmission: 'Bläscheninhalt infektiös (kann Varizellen bei Seronegativen verursachen)'
         },
@@ -408,7 +408,7 @@ Object.assign(window.diseases, {
           microbiology: [{ test: 'Klinisches Bild', finding: 'Charakteristisch', significance: 'Diagnostisch' }, { test: 'PCR', finding: 'HSV-DNA', significance: 'Bei schweren/atypischen Fällen' }]
         },
         therapy: {
-          empirical: { outpatient: [{ drug: 'Supportiv', dose: '-', duration: '-', note: 'Schmerzmittel, Flüssigkeit, Pinselung' }, { drug: 'Acyclovir', dose: 'p.o./i.v.', duration: '5-7 Tage', note: 'Bei schweren Fällen oder Immunsuppression' }] },
+          empirical: { outpatient: [{ drug: 'Supportiv', dose: '-', duration: '-', note: 'Schmerzlinderung, Flüssigkeit, Lokaltherapie' }, { drug: 'Acyclovir', dose: 'p.o./i.v.', duration: '5-7 Tage', note: 'Bei schweren Fällen oder Immunsuppression' }] },
           targeted: 'Acyclovir.',
           prevention: ['Kontaktvermeidung mit aktiven Läsionen']
         },
@@ -447,11 +447,11 @@ Object.assign(window.diseases, {
           onset: 'Stadium catarrhale (1-2 Wochen)',
           symptoms: [
             { name: 'Stadium catarrhale', description: 'Leichtes Fieber, Schnupfen, Husten (1-2 Wochen) - ansteckendste Phase', severity: 'mild' },
-            { name: 'Stadium convulsivum', description: 'Schwere Hustenanfälle (100%), "Juchzen" (inspiratorisches Ziehen 60-70%), Erbrechen (50%)', severity: 'severe' },
+            { name: 'Stadium convulsivum', description: 'Schwere Hustenanfälle (100%), "Reprise" (inspiratorisches Ziehen 60-70%), Erbrechen (50%)', severity: 'severe' },
             { name: 'Stadium decrementi', description: 'Husten nimmt ab, kann aber wochenlang anhalten ("100-Tage-Husten")', severity: 'moderate' }
           ],
           physical_exam: [
-            'Hustenanfälle (Juchzen typisch bei Kindern)',
+            'Hustenanfälle (Reprise typisch bei Kindern)',
             'Apnoe (Säuglinge)',
             'Lymphozytose (>20.000/µL)',
             'Petechien (durch Anstrengung)'

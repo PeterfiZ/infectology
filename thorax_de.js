@@ -12,7 +12,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Streptococcus pneumoniae', gram: 'Gram-positiv', shape: 'Diplokokken' },
             epidemiology: {
               incidence: 'Häufigster Erreger der ambulant erworbenen Pneumonie (CAP) (30-40%)',
-              risk_groups: ['Über 65-Jährige', 'Chronisch Kranke (COPD, Herzinsuffizienz, Diabetes)', 'Immunsupprimierte', 'Splenektomierte', 'Alkoholiker', 'Raucher'],
+              risk_groups: ['Personen über 65 Jahre', 'Patienten mit chronischen Erkrankungen (COPD, Herzinsuffizienz, Diabetes)', 'Immungeschwächte', 'Splenektomierte Patienten', 'Alkoholkranke', 'Raucher'],
               seasonality: 'Winter-Frühling-Gipfel, oft Influenza-Superinfektion',
               transmission: 'Tröpfcheninfektion, endogene Aktivierung'
             },
@@ -33,12 +33,12 @@ Object.assign(window.diseases, {
                 { name: 'Husten', description: 'In 90% vorhanden; produktiv (66%), rostbrauner Auswurf klassisch, aber seltener', severity: 'severe' },
                 { name: 'Fieber und Schüttelfrost', description: 'Fieber (80%), Schüttelfrost (40-50%)', severity: 'severe' },
                 { name: 'Dyspnoe', description: 'Atemnot (66%)', severity: 'moderate' },
-                { name: 'Pleuritischer Schmerz', description: 'Scharf, bei Inspiration zunehmend (50%)', severity: 'moderate' },
-                { name: 'Sonstiges', description: 'GI-Symptome (10-20%), veränderter Geisteszustand (Ältere)', severity: 'mild' }
+                { name: 'Pleuritischer Schmerz', description: 'Scharfer Brustschmerz, bei Inspiration zunehmend (50%)', severity: 'moderate' },
+                { name: 'Sonstiges', description: 'Gastrointestinale Symptome (10-20%), veränderter Geisteszustand (bei Älteren)', severity: 'mild' }
               ],
               physical_exam: [
                 'Tachypnoe, Tachykardie',
-                'Dämpfung bei Perkussion über dem Zwerchfell',
+                'Dämpfung bei Perkussion über dem betroffenen Lappen',
                 'Bronchialatmen, Rasselgeräusche (Crepitatio)',
                 'Erhöhte Bronchophonie und Stimmfremitus',
                 'Zyanose in schweren Fällen'
@@ -50,7 +50,7 @@ Object.assign(window.diseases, {
                 { test: 'Blutbild', finding: 'Leukozytose (15-30 G/L), Linksverschiebung', interpretation: 'Typisch für bakterielle Infektion' },
                 { test: 'CRP', finding: 'Deutlich erhöht (>100 mg/L)', interpretation: 'Marker für aktive Entzündung' },
                 { test: 'PCT', finding: '>0.5 ng/mL', interpretation: 'Verdacht auf bakterielle Sepsis' },
-                { test: 'Arterielle Blutgase', finding: 'Hypoxämie, evtl. Hypokapnie', interpretation: 'Respiratorische Insuffizienz' },
+                { test: 'Arterielle BGA', finding: 'Hypoxämie, evtl. Hypokapnie', interpretation: 'Respiratorische Insuffizienz' },
                 { test: 'Blutkultur', finding: 'In 20-30% positiv', interpretation: 'Erregeridentifikation' }
               ],
               imaging: [
@@ -66,7 +66,7 @@ Object.assign(window.diseases, {
             },
             differential: [
               { disease: 'Legionellen-Pneumonie', distinguishing: 'Hyponatriämie, GI-Symptome, atypisches Röntgenbild' },
-              { disease: 'Klebsiella-Pneumonie', distinguishing: 'Alkoholiker, Johannisbeergelee-Sputum, Oberlappen' },
+              { disease: 'Klebsiella-Pneumonie', distinguishing: 'Alkoholkranke, Johannisbeergelee-Sputum, Oberlappen' },
               { disease: 'Mykoplasmen-Pneumonie', distinguishing: 'Junge Leute, langsamer Beginn, atypische Symptome' },
               { disease: 'Lungenembolie', distinguishing: 'Risikofaktoren, D-Dimer, CTPA' },
               { disease: 'Herzinsuffizienz', distinguishing: 'Kardiale Anamnese, BNP, beidseitige Infiltrate' }
@@ -91,7 +91,7 @@ Object.assign(window.diseases, {
                     ]
                 },
                 cap_icu: {
-                    title: 'CAP - Schwer (CURB-65 3-5) / ITS',
+                    title: 'CAP - Intensivstation (Schwer - CURB-65 3-5)',
                     drugs: [
                         { drug: 'Co-Amoxiclav + Clarithromycin', dose: '1.2g i.v. alle 8h + 500mg i.v. alle 12h', duration: '7-10 Tage', note: 'NICE-Empfehlung für schwere CAP.' },
                         { drug: 'Ceftriaxon + Clarithromycin', dose: '1x2g i.v. + 2x500mg i.v.', duration: '7-10 Tage', note: 'Häufige Alternative (nicht NICE erste Wahl, aber verbreitet).' },
@@ -142,14 +142,14 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Mykobakterium', name: 'Mycobacterium tuberculosis', gram: 'Säurefest (Ziehl-Neelsen+)', shape: 'Stäbchen' },
             epidemiology: {
               incidence: 'Weltweit ~10 Millionen neue Fälle/Jahr, in Ungarn ~500 Fälle/Jahr',
-              risk_groups: ['HIV-Positive (20-30x Risiko)', 'Diabetiker', 'Immunsupprimierte', 'Sozial Benachteiligte', 'Gesundheitspersonal', 'Einwanderer aus endemischen Gebieten'],
+              risk_groups: ['HIV-Infizierte (20-30x Risiko)', 'Diabetiker', 'Immungeschwächte', 'Sozial benachteiligte Personen', 'Gesundheitspersonal', 'Einwanderer aus endemischen Gebieten'],
               seasonality: 'Keine Saisonalität',
               transmission: 'Tröpfcheninfektion (< 5 μm Aerosol), 8+ Stunden Exposition in geschlossenem Raum'
             },
             pathomechanism: {
               steps: [
-                'Inhalation: Bazillus erreicht die Alveolen',
-                'Phagozytose: Alveolarmakrophagen nehmen auf, können aber nicht abtöten',
+                'Inhalation: Bazillen erreichen die Alveolen',
+                'Phagozytose: Alveolarmakrophagen nehmen Erreger auf, können sie aber nicht abtöten',
                 'Intrazelluläre Vermehrung: Primärkomplex (Ghon-Herd + hilärer Lymphknoten) in 2-12 Wochen',
                 'Granulombildung: T-Zell-vermittelte Immunantwort → Epitheloidzellen, Langhans-Riesenzellen',
                 'Latente Infektion: Granulome kapseln die Bazillen ein (90%)',
@@ -189,7 +189,7 @@ Object.assign(window.diseases, {
                 { modality: 'Thorax-CT', finding: 'Tree-in-bud-Zeichen, Kavernen, miliares Muster', significance: 'Empfindlicher, extrapulmonal' }
               ],
               microbiology: [
-                { test: 'Sputum Ziehl-Neelsen-Färbung', finding: 'Säurefeste Stäbchen (AFB)', significance: 'Schnell, aber nur >10^4/mL positiv' },
+                { test: 'Ziehl-Neelsen-Färbung des Sputums', finding: 'Säurefeste Stäbchen (AFB)', significance: 'Schnell, aber nur >10^4/mL positiv' },
                 { test: 'Sputum/BAL-Kultur', finding: 'Löwenstein-Jensen/MGIT', significance: 'Goldstandard, 2-8 Wochen' },
                 { test: 'GeneXpert MTB/RIF', finding: 'MTB-DNA + Rifampicin-Resistenz', significance: 'Schnell (<2 Stunden), empfindlich' },
                 { test: 'Tuberkulin-Hauttest (Mantoux)', finding: '>10mm Induration', significance: 'Exposition, keine aktive Krankheit' },
@@ -246,7 +246,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Legionella pneumophila', gram: 'Gram-negativ (schlecht anfärbbar)', shape: 'Stäbchen, intrazellulär' },
             epidemiology: {
               incidence: '2-9% der CAP, bis zu 30% der nosokomialen Pneumonien',
-              risk_groups: ['Über 50-Jährige', 'Raucher', 'COPD-Patienten', 'Immunsupprimierte', 'Chronische Niereninsuffizienz', 'Diabetes'],
+              risk_groups: ['Personen über 50 Jahre', 'Raucher', 'COPD-Patienten', 'Immungeschwächte', 'Chronische Niereninsuffizienz', 'Diabetes'],
               seasonality: 'Sommer-Herbst (Klimaanlagen)',
               transmission: 'Inhalation (Aerosol aus kontaminiertem Wasser: Kühltürme, Duschen, Whirlpools). NICHT von Mensch zu Mensch!'
             },
@@ -254,7 +254,7 @@ Object.assign(window.diseases, {
               steps: [
                 'Inhalation von Aerosol aus kontaminierter Wasserquelle',
                 'Legionellen dringen in Alveolarmakrophagen ein',
-                'Dot/Icm T4SS-System: Hemmung der Phagosom-Lysosom-Fusion',
+                'Dot/Icm-Typ-IV-Sekretionssystem: Hemmung der Phagosom-Lysosom-Fusion',
                 'Intrazelluläre Replikation in spezieller Vakuole',
                 'Zelllyse → Infektion benachbarter Zellen',
                 'Schwere nekrotisierende Alveolitis, entzündliche Infiltration'
@@ -267,7 +267,7 @@ Object.assign(window.diseases, {
               symptoms: [
                 { name: 'Hohes Fieber', description: '>90%, oft >39°C', severity: 'severe' },
                 { name: 'Husten', description: '90%; anfangs trocken, später produktiv (50%)', severity: 'moderate' },
-                { name: 'GI-Symptome', description: 'Durchfall (20-50%), Übelkeit/Erbrechen (10-30%)', severity: 'moderate' },
+                { name: 'Gastrointestinale Symptome', description: 'Durchfall (20-50%), Übelkeit/Erbrechen (10-30%)', severity: 'moderate' },
                 { name: 'Neurologische Symptome', description: 'Verwirrtheit (25-50%), Kopfschmerzen (40-50%)', severity: 'moderate' },
                 { name: 'Dyspnoe', description: 'Atemnot (25-60%)', severity: 'severe' }
               ],
@@ -292,7 +292,7 @@ Object.assign(window.diseases, {
                 { modality: 'Thorax-CT', finding: 'Milchglas und Konsolidierung, Pleuraerguss', significance: 'Empfindlicher' }
               ],
               microbiology: [
-                { test: 'Urin-Legionellen-Antigen', finding: 'L. pneumophila Serogruppe 1 (70%)', significance: 'Schnell (<15 Min), spezifisch >95%' },
+                { test: 'Legionellen-Antigen im Urin', finding: 'L. pneumophila Serogruppe 1 (70%)', significance: 'Schnell (<15 Min), spezifisch >95%' },
                 { test: 'Kultur (BCYE-Agar)', finding: 'Legionellen-Isolierung', significance: 'Goldstandard, 3-5 Tage' },
                 { test: 'PCR', finding: 'Legionellen-DNA', significance: 'Schnell, weist alle Serotypen nach' },
                 { test: 'Serologie', finding: '4-facher Titeranstieg', significance: 'Retrospektive Diagnose' }
@@ -317,7 +317,7 @@ Object.assign(window.diseases, {
                 ],
                 icu: [
                   { drug: 'Levofloxacin + Azithromycin', dose: 'In Kombination', duration: '14-21 Tage', note: 'In schweren Fällen' },
-                  { drug: 'Rifampicin kann hinzugefügt werden', dose: '2x300mg i.v./p.o.', duration: '', note: 'Bei Immunsupprimierten' }
+                  { drug: 'Rifampicin kann hinzugefügt werden', dose: '2x300mg i.v./p.o.', duration: '', note: 'Bei Immungeschwächten' }
                 ]
               },
               targeted: 'Fluorchinolone oder Makrolide (Beta-Laktame sind unwirksam!)',
@@ -325,7 +325,7 @@ Object.assign(window.diseases, {
               prevention: ['Wartung von Wassersystemen (>60°C)', 'Desinfektion von Kühltürmen', 'Nosokomiale Überwachung']
             },
             prognosis: {
-              mortality: 'Insgesamt 10-15%, Immunsupprimierte 40%',
+              mortality: 'Insgesamt 10-15%, Immungeschwächte 40%',
               prognostic_scores: ['CURB-65', 'PSI'],
               factors: 'Späte Diagnose, ungeeignetes Antibiotikum, Immunsuppression'
             }
@@ -414,10 +414,10 @@ Object.assign(window.diseases, {
           {
             id: 'chlamydia_pneumoniae',
             name: 'Chlamydia pneumoniae',
-            pathogen: { type: 'Bakterium', name: 'Chlamydophila pneumoniae', gram: 'Gram-negativ (intrazellulär)', shape: 'kokkoid' },
+            pathogen: { type: 'Bakterium', name: 'Chlamydia pneumoniae', gram: 'Gram-negativ (intrazellulär)', shape: 'kokkoid' },
             epidemiology: {
               incidence: '5-10% der CAP',
-              risk_groups: ['Ältere', 'Chronisch Kranke', 'Geschlossene Gemeinschaften'],
+              risk_groups: ['Ältere', 'Patienten mit chronischen Erkrankungen', 'Geschlossene Gemeinschaften'],
               seasonality: 'Ganzjährig',
               transmission: 'Tröpfcheninfektion'
             },
@@ -651,7 +651,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Influenza A/B/C Virus', gram: 'RNA-Virus, Orthomyxoviridae', shape: 'helikal' },
             epidemiology: {
               incidence: 'Saisonale Epidemie: 5-20% der Bevölkerung/Jahr, Pandemien: bis zu 50%',
-              risk_groups: ['Über 65-Jährige', 'Unter 5-Jährige', 'Schwangere', 'Chronisch Kranke', 'Gesundheitspersonal', 'Immunsupprimierte'],
+              risk_groups: ['Personen über 65 Jahre', 'Kinder unter 5 Jahren', 'Schwangere', 'Patienten mit chronischen Erkrankungen', 'Gesundheitspersonal', 'Immungeschwächte'],
               seasonality: 'November-März (Nordhalbkugel)',
               transmission: 'Tröpfcheninfektion, Kontakt (1-2 Meter), Fomiten'
             },
@@ -739,7 +739,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'SARS-CoV-2', gram: 'RNA-Virus, Coronaviridae', shape: 'sphärisch, Spike-Proteine' },
             epidemiology: {
               incidence: 'Pandemie ab 2020, wird endemisch',
-              risk_groups: ['Über 65-Jährige', 'Adipöse (BMI>30)', 'Diabetes', 'Herz-Kreislauf-Erkrankungen', 'Immunsupprimierte', 'Chronische Lungenkrankheit'],
+              risk_groups: ['Personen über 65 Jahre', 'Adipöse Patienten (BMI>30)', 'Diabetes', 'Herz-Kreislauf-Erkrankungen', 'Immungeschwächte', 'Chronische Lungenkrankheit'],
               seasonality: 'Wintergipfel, aber ganzjährig',
               transmission: 'Respiratorisch (Aerosol + Tröpfchen), Kontakt, fäkal-oral selten'
             },
@@ -834,10 +834,10 @@ Object.assign(window.diseases, {
           {
             id: 'endocarditis',
             name: 'Infektiöse Endokarditis',
-            pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus, Streptococcus viridans', gram: 'Gram-positiv', shape: 'Kokken' },
+            pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus, Viridans-Streptokokken', gram: 'Gram-positiv', shape: 'Kokken' },
             epidemiology: {
               incidence: '3-10/100.000 pro Jahr',
-              risk_groups: ['Klappenfehler', 'Herzklappenprothese', 'IV-Drogenkonsumenten', 'Angeborene Herzfehler', 'Frühere Endokarditis'],
+              risk_groups: ['Klappenfehler', 'Herzklappenprothese', 'i.v.-Drogenkonsumenten', 'Angeborene Herzfehler', 'Frühere Endokarditis'],
               seasonality: 'Keine',
               transmission: 'Bakteriämie (zahnärztlicher Eingriff, Hautinfektion, Katheter)'
             },
@@ -859,7 +859,7 @@ Object.assign(window.diseases, {
                 { name: 'Herzgeräusch', description: 'Neues oder verändertes Regurgitationsgeräusch (85%)', severity: 'severe' },
                 { name: 'Embolische Symptome', description: 'Schlaganfall, Lungenembolie, Milz-/Niereninfarkt (20-50%)', severity: 'severe' },
                 { name: 'Herzinsuffizienz', description: 'Dyspnoe, Ödeme (40-60% - häufigste Komplikation)', severity: 'severe' },
-                { name: 'Hautsymptome', description: 'Petechien (20-40%), Osler/Janeway (5-10% - heute seltener)', severity: 'mild' }
+                { name: 'Hautsymptome', description: 'Petechien (20-40%), Osler-Knötchen/Janeway-Läsionen (5-10% - heute seltener)', severity: 'mild' }
               ],
               physical_exam: [
                 'Fieber',
@@ -961,7 +961,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Coxsackie B, Adenovirus, Parvovirus B19', gram: 'RNA/DNA-Viren', shape: 'variabel' },
             epidemiology: {
               incidence: 'Schwer abzuschätzen (viele milde Fälle), 10-20% des plötzlichen Herztods bei jungen Menschen',
-              risk_groups: ['Junge Erwachsene', 'Männer', 'Immunsupprimierte'],
+              risk_groups: ['Junge Erwachsene', 'Männer', 'Immungeschwächte'],
               seasonality: 'Virusabhängig (z.B. Enterovirus Sommer-Herbst)',
               transmission: 'Fäkal-oral, Tröpfchen (erregerabhängig)'
             },
@@ -1135,7 +1135,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Rhinovirus (am häufigsten), Coronavirus, Adenovirus, Influenza', gram: 'RNA-Viren', shape: 'variabel' },
             epidemiology: {
               incidence: 'Häufigste Infektion, Erwachsene 2-3x/Jahr, Kinder 6-8x/Jahr',
-              risk_groups: ['Kinder', 'Ältere', 'Immunsupprimierte'],
+              risk_groups: ['Kinder', 'Ältere', 'Immungeschwächte'],
               seasonality: 'Ganzjährig, Gipfel Herbst-Winter',
               transmission: 'Tröpfcheninfektion, Kontakt, Fomiten'
             },
@@ -1153,7 +1153,7 @@ Object.assign(window.diseases, {
               incubation: '1-3 Tage',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Rhinorrhö', description: 'Klar → mukopurulent', severity: 'mild' },
+                { name: 'Rhinorrhoe', description: 'Klar → mukopurulent', severity: 'mild' },
                 { name: 'Niesen', description: 'Paroxysmal', severity: 'mild' },
                 { name: 'Halsschmerzen', description: 'Mild', severity: 'mild' },
                 { name: 'Husten', description: 'Trocken, irritativ', severity: 'mild' },
@@ -1213,7 +1213,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Humanes Respiratorisches Synzytial-Virus (HRSV)', gram: 'RNA-Virus, Pneumoviridae', shape: 'helikal' },
             epidemiology: {
               incidence: 'Alle Kinder bis zum 2. Lebensjahr infiziert, Erwachsene Reinfektion',
-              risk_groups: ['Säuglinge (<6 Monate)', 'Ältere (>65)', 'Chronisch Lungenkranke', 'Immunsupprimierte'],
+              risk_groups: ['Säuglinge (<6 Monate)', 'Ältere (>65)', 'Chronisch Lungenkranke', 'Immungeschwächte'],
               seasonality: 'Winter-Frühling',
               transmission: 'Tröpfcheninfektion, Kontakt (sehr ansteckend!)'
             },
@@ -1231,7 +1231,7 @@ Object.assign(window.diseases, {
               incubation: '4-6 Tage',
               onset: 'Schleichend',
               symptoms: [
-                { name: 'Rhinorrhö', description: 'Klar', severity: 'mild' },
+                { name: 'Rhinorrhoe', description: 'Klar', severity: 'mild' },
                 { name: 'Husten', description: 'Trocken, dann produktiv', severity: 'moderate' },
                 { name: 'Fieber', description: 'Leicht-mäßig', severity: 'mild' },
                 { name: 'Dyspnoe', description: 'Schwer bei Säuglingen', severity: 'severe' },
@@ -1269,7 +1269,7 @@ Object.assign(window.diseases, {
                   { drug: 'Bronchodilatator', dose: 'Salbutamol', duration: '', note: 'Bei Giemen' }
                 ],
                 inpatient: [
-                  { drug: 'Ribavirin', dose: 'Aerosol', duration: '3-5 Tage', note: 'In schweren Fällen, Immunsupprimierte' }
+                  { drug: 'Ribavirin', dose: 'Aerosol', duration: '3-5 Tage', note: 'In schweren Fällen, Immungeschwächte' }
                 ],
                 icu: [
                   { drug: 'Beatmung', dose: 'NIV oder Intubation', duration: '', note: 'Bei Apnoe' }
@@ -1360,7 +1360,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus/Bakterium', name: 'Viren (erste 7-10 Tage), dann Streptococcus pneumoniae, Haemophilus influenzae', gram: 'Gemischt', shape: 'variabel' },
             epidemiology: {
               incidence: 'Häufig, Erwachsene 1-2x/Jahr',
-              risk_groups: ['Allergiker', 'Raucher', 'Immunsupprimierte'],
+              risk_groups: ['Allergiker', 'Raucher', 'Immungeschwächte'],
               seasonality: 'Winter',
               transmission: 'Endogen, Komplikation einer Infektion der oberen Atemwege'
             },
@@ -1385,7 +1385,7 @@ Object.assign(window.diseases, {
               physical_exam: [
                 'Gesichtsdruckempfindlichkeit',
                 'Mukopurulenter Nasenausfluss',
-                'Postnasal Drip'
+                'Postnasal-Drip-Syndrom'
               ],
               complications: ['Orbitale Zellulitis', 'Meningitis', 'Osteomyelitis']
             },
@@ -1447,7 +1447,7 @@ Object.assign(window.diseases, {
                 { name: 'Ohrenschmerzen', description: 'Schwer, Kinder weinen', severity: 'severe' },
                 { name: 'Fieber', description: 'Häufig', severity: 'moderate' },
                 { name: 'Hörverlust', description: 'Vorübergehend', severity: 'moderate' },
-                { name: 'Rhinorrhö', description: 'Assoziiert', severity: 'mild' }
+                { name: 'Rhinorrhoe', description: 'Assoziiert', severity: 'mild' }
               ],
               physical_exam: [
                 'Trommelfellhyperämie, Vorwölbung',

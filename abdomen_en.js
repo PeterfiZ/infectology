@@ -91,16 +91,16 @@ Object.assign(window.diseases, {
             guidelines: {
               diagnosis: [
                 'Suspicion: new onset diarrhea after antibiotic exposure or in nosocomial setting',
-                'Lab: leukocytosis, elevated creatinine/ALP/albumin decrease signs of severity',
+                'Lab: leukocytosis, elevated creatinine/ALP, decreased albumin are signs of severity',
                 'Micro: two-step algorithm (GDH + toxin EIA) and/or NAAT; positive PCR alone may indicate colonization',
                 'Endoscopy only in exceptional cases (pseudomembranes)'
               ],
               treatment_indications: [
                 'Acute symptoms, especially severe presentation (leukocytosis >15 G/L, fever, creatinine elevation, jaundice, ileus or toxic megacolon)',
-                'In recurrent patient early intervention (consider bezlotoxumab, FMT)'
+                'In recurrent patients, early intervention (consider bezlotoxumab, FMT)'
               ],
               first_line: [
-                'Non-severe/severe: Fidaxomicin 200 mg twice daily 10 days or Vancomycin 125 mg 4x daily 10 days',
+                'Non-severe/severe: Fidaxomicin 200 mg twice daily for 10 days or Vancomycin 125 mg 4 times daily for 10 days',
                 'Fulminant case: Oral/rectal Vancomycin higher dose + IV Metronidazole (in case of ileus)',
               ],
               supportive: [
@@ -120,8 +120,8 @@ Object.assign(window.diseases, {
               ,
               dosing: {
                 adult: {
-                  fidaxomicin: '200 mg PO twice daily (BID) 10 days',
-                  vancomycin: '125 mg PO 4x/day 10 days (non-severe); in fulminant case 500 mg PO 4x/day + consider rectal administration',
+                  fidaxomicin: '200 mg PO twice daily (BID) for 10 days',
+                  vancomycin: '125 mg PO 4x/day for 10 days (non-severe); in fulminant case 500 mg PO 4x/day + consider rectal administration',
                   metronidazol_iv: '500 mg IV 3x/day (adjunctive in fulminant/ileus)'
                 },
                 pediatric: 'Pediatric doses according to local protocol; weight-based dosing of vancomycin required',
@@ -173,7 +173,7 @@ Object.assign(window.diseases, {
             },
             therapy: {
               empirical: {
-                outpatient: [{ drug: 'Supportive', dose: '-', duration: '-', note: 'Healthy adults do NOT need antibiotics (causes prolonged carriage!)' }],
+                outpatient: [{ drug: 'Supportive', dose: '-', duration: '-', note: 'Healthy adults do NOT need antibiotics (may prolong carriage!)' }],
                 inpatient: [{ drug: 'Ceftriaxone', dose: '1-2g IV', duration: '7-14 days', note: 'In severe/invasive cases' }, { drug: 'Ciprofloxacin', dose: '2x500mg PO', duration: '7-10 days', note: 'Alternative (if susceptible)' }]
               },
               targeted: 'Only in risk groups (infant, elderly, immunosuppressed) or severe cases: Fluoroquinolone or Ceftriaxone.',
@@ -197,7 +197,7 @@ Object.assign(window.diseases, {
               dosing: {
                 adult: {
                   ceftriaxone: '1–2 g IV once daily (usual course 5–14 days, depending on clinical status)',
-                  ciprofloxacin: '500 mg PO 2x/day (7–10 days) – only for susceptible strains; local resistance must be considered'
+                  ciprofloxacin: '500 mg PO twice daily (7–10 days) – only for susceptible strains; local resistance must be considered'
                 },
                 pediatric: 'Ceftriaxone and fluoroquinolone pediatric doses are age and weight dependent; consult local pediatric protocol'
               },
@@ -339,8 +339,8 @@ Object.assign(window.diseases, {
               prevention: ['Thorough cooking of poultry, kitchen hygiene'],
               dosing: {
                 adult: {
-                  azithromycin: '500 mg PO single dose or 500 mg PO 1x daily, 3 days (alternative regimen: 500 mg day 1, then 250 mg daily 2–3) ',
-                  ciprofloxacin: '500 mg PO 2x/day 3 days (if susceptible and severe case)'
+                  azithromycin: '500 mg PO single dose or 500 mg PO once daily for 3 days (alternative regimen: 500 mg day 1, then 250 mg daily 2–3) ',
+                  ciprofloxacin: '500 mg PO twice daily for 3 days (if susceptible and severe case)'
                 },
                 pediatric: 'Macrolide pediatric doses are age and weight dependent; request local protocol'
               },
@@ -414,8 +414,8 @@ Object.assign(window.diseases, {
               prevention: ['Food hygiene, well-cooked beef, precautions for travelers'],
               dosing: {
                 adult: {
-                  rifaximin: '200 mg PO 3x/day 3 days (ETEC, non-invasive traveler\'s diarrhea)',
-                  azithromycin: '1 g PO single dose or 500 mg PO 1x daily 1–3 days (severe ETEC or ciprofloxacin resistance)'
+                  rifaximin: '200 mg PO 3 times daily for 3 days (ETEC, non-invasive traveler\'s diarrhea)',
+                  azithromycin: '1 g PO single dose or 500 mg PO once daily for 1–3 days (severe ETEC or ciprofloxacin resistance)'
                 },
                 pediatric: 'Rifaximin pediatric doses limited; avoid antibiotics in children with EHEC'
               },
@@ -488,8 +488,8 @@ Object.assign(window.diseases, {
               prevention: ['Education: avoid raw pork, consume pasteurized milk'],
               dosing: {
                 adult: {
-                  ciprofloxacin: '500 mg PO 2x/day 7–10 days',
-                  doxycycline: '100 mg PO 2x/day 7–10 days'
+                  ciprofloxacin: '500 mg PO twice daily for 7–10 days',
+                  doxycycline: '100 mg PO twice daily for 7–10 days'
                 },
                 pediatric: 'In children usually symptomatic treatment; antibiotics only in severe, systemic infection (pediatric consultation)'
               },
@@ -559,10 +559,10 @@ Object.assign(window.diseases, {
               prevention: ['Boil/filter drinking water, hand hygiene; hygiene measures in child communities'],
               dosing: {
                 adult: {
-                  metronidazole: '250–500 mg PO 3x/day 5–7 days (many protocols 500 mg 2–3x/day)',
+                  metronidazole: '250–500 mg PO 3 times daily for 5–7 days (many protocols 500 mg 2–3 times daily)',
                   tinidazole: '2 g PO single dose (single dose effective alternative)'
                 },
-                pregnancy: 'In pregnancy: Paromomycin 500 mg PO 3x/day 7 days preferred (avoid metronidazole/tinidazole in first trimester)',
+                pregnancy: 'In pregnancy: Paromomycin 500 mg PO 3 times daily for 7 days preferred (avoid metronidazole/tinidazole in first trimester)',
                 pediatric: 'Pediatric doses age and weight dependent; tinidazole/metronidazole pediatric dosing according to local protocol'
               },
               references: [
@@ -632,9 +632,9 @@ Object.assign(window.diseases, {
               prevention: ['Water and food hygiene, hand washing, precautions for travelers'],
               dosing: {
                 adult: {
-                  metronidazole: '750 mg PO 3x/day 7–10 days (invasive/abscess)',
-                  tinidazole: '2 g PO once daily 3 days (alternative tissue treatment according to local protocol)',
-                  paromomycin: '500 mg PO 3x/day 7 days (luminal supplement)'
+                  metronidazole: '750 mg PO 3 times daily for 7–10 days (invasive/abscess)',
+                  tinidazole: '2 g PO once daily for 3 days (alternative tissue treatment according to local protocol)',
+                  paromomycin: '500 mg PO 3 times daily for 7 days (luminal supplement)'
                 },
                 pregnancy: 'In pregnancy avoid tinidazole/metronidazole in first trimester; paromomycin preferred for luminal treatment',
                 pediatric: 'Pediatric dose according to local protocol; pediatric consultation recommended'
@@ -714,7 +714,7 @@ Object.assign(window.diseases, {
                 prevention: ['Filter/boil drinking water, personal hygiene, avoid swimming pool in case of diarrhea'],
                 dosing: {
                   adult: {
-                    nitazoxanide_immunocompetent: '500 mg PO 2x/day 3 days',
+                    nitazoxanide_immunocompetent: '500 mg PO twice daily for 3 days',
                     nitazoxanide_immunocompromised: 'Consider longer course (local protocol); ART optimization primary'
                   },
                   pediatric: 'Nitazoxanide pediatric dose according to age and weight; request local protocol'
@@ -949,8 +949,8 @@ Object.assign(window.diseases, {
               prevention: ['Food and water safety during travel; prophylaxis only in exceptional cases'],
               dosing: {
                 adult: {
-                  rifaximin: '200 mg PO 3x/day 3 days (non-invasive traveler\'s diarrhea)',
-                  azithromycin: '1 g PO single dose (alternative) or 500 mg PO daily 3 days'
+                  rifaximin: '200 mg PO 3 times daily for 3 days (non-invasive traveler\'s diarrhea)',
+                  azithromycin: '1 g PO single dose (alternative) or 500 mg PO daily for 3 days'
                 },
                 pediatric: 'Pediatric doses weight and age dependent; request local pediatric protocol'
               },

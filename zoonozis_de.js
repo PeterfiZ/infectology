@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Spirochäte', name: 'Leptospira interrogans', gram: 'Gram-negativ', shape: 'spiralförmig, mit Haken' },
             epidemiology: {
               incidence: 'Tropisch/Subtropisch: 10-100/100.000; Gemäßigte Zone: 0.1-1/100.000',
-              risk_groups: ['Landarbeiter', 'Tierärzte', 'Schlachthofarbeiter', 'Kanalarbeiter', 'Wassersportler/Extremsportler', 'Soldaten (Dschungel)'],
+              risk_groups: ['Landarbeiter', 'Tierärzte', 'Schlachthofarbeiter', 'Kanalarbeiter', 'Wassersportler', 'Soldaten (Dschungel)'],
               seasonality: 'Sommer-Herbst, Regenzeit',
               transmission: 'Exposition gegenüber kontaminiertem Wasser/Boden → Haut/Schleimhaut. Übertragung durch Urin von Nagetieren/Tieren'
             },
@@ -76,15 +76,15 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Doxycyclin', dose: '2x100mg p.o.', duration: '7 Tage', note: 'Erste Wahl bei leichten Fällen' },
-                  { drug: 'Amoxicillin', dose: '3x500mg p.o.', duration: '7 Tage', note: 'Alternative (Schwangere, Kinder)' }
+                  { drug: 'Doxycyclin', dose: '100 mg zweimal täglich p.o.', duration: '7 Tage', note: 'Erste Wahl bei leichten Fällen' },
+                  { drug: 'Amoxicillin', dose: '500 mg dreimal täglich p.o.', duration: '7 Tage', note: 'Alternative (Schwangere, Kinder)' }
                 ],
                 inpatient: [
-                  { drug: 'Penicillin G', dose: '6x1.5 Mio. IE i.v.', duration: '7 Tage', note: 'Schwere/Weil-Krankheit' },
-                  { drug: 'Ceftriaxon', dose: '1x1-2g i.v.', duration: '7 Tage', note: 'Alternative' }
+                  { drug: 'Penicillin G', dose: '1.5 Mio. IE alle 4 Stunden i.v.', duration: '7 Tage', note: 'Schwere/Weil-Krankheit' },
+                  { drug: 'Ceftriaxon', dose: '1-2 g einmal täglich i.v.', duration: '7 Tage', note: 'Alternative' }
                 ],
                 icu: [
-                  { drug: 'Penicillin G', dose: '6x1.5 Mio. IE i.v.', duration: '7 Tage', note: 'Schwere Weil-Krankheit' },
+                  { drug: 'Penicillin G', dose: '1.5 Mio. IE alle 4 Stunden i.v.', duration: '7 Tage', note: 'Schwere Weil-Krankheit' },
                   { drug: 'Dialyse', dose: 'Bei Nierenversagen', duration: '', note: 'Supportiv' },
                   { drug: 'Beatmung', dose: 'Lungenblutung', duration: '', note: 'ARDS' }
                 ]
@@ -105,7 +105,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Hantavirus (mehrere Serotypen)', gram: 'Negativ-Strang-RNA-Virus, Bunyaviridae', shape: 'sphärisch' },
             epidemiology: {
               incidence: 'Europa: HFRS 10.000+ Fälle/Jahr; USA: HPS <50 Fälle/Jahr',
-              risk_groups: ['Landarbeiter', 'Förster', 'Soldaten', 'Camper/Wanderer', 'Arbeit mit Nagetierkontakt', 'Reinigung schlecht belüfteter Gebäude'],
+              risk_groups: ['Landarbeiter', 'Förster', 'Soldaten', 'Camper/Wanderer', 'Berufe mit Nagetierkontakt', 'Reinigung schlecht belüfteter Gebäude'],
               seasonality: 'Frühling-Herbst (Nagetierpopulationsspitze)',
               transmission: 'Aerosol (Nagetierkot/-urin/-speichel). NICHT von Mensch zu Mensch!'
             },
@@ -174,7 +174,7 @@ Object.assign(window.diseases, {
                   { drug: 'KEIN spezifisches Virostatikum', dose: 'Supportive Therapie', duration: '', note: 'Häusliche Beobachtung in leichten Fällen' }
                 ],
                 inpatient: [
-                  { drug: 'Ribavirin', dose: '33mg/kg i.v. Ladedosis, dann 16mg/kg alle 6h', duration: '4 Tage, dann 8mg/kg alle 8h für 3 Tage', note: 'Wirksam bei HFRS, in der Frühphase (<5 Tage)' },
+                  { drug: 'Ribavirin', dose: '33 mg/kg i.v. Ladedosis, dann 16 mg/kg alle 6 Stunden', duration: 'für 4 Tage, dann 8 mg/kg alle 8 Stunden für 3 Tage', note: 'Wirksam bei HFRS, in der Frühphase (<5 Tage)' },
                   { drug: 'Flüssigkeitsersatz', dose: 'Vorsichtig! Wegen Kapillarleck', duration: '', note: 'Überwachung' }
                 ],
                 icu: [
@@ -199,7 +199,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Spirochäte', name: 'Borrelia burgdorferi sensu lato', gram: 'Gram-negativ', shape: 'spiralförmig' },
             epidemiology: {
               incidence: 'USA: 476.000 Fälle/Jahr; Europa: 232.000 Fälle/Jahr',
-              risk_groups: ['Besucher von Waldgebieten', 'Wanderer, Camper', 'Förster, Jäger', 'Gärtner', 'Kinder (Sommerspiel)'],
+              risk_groups: ['Personen, die sich im Wald aufhalten', 'Wanderer, Camper', 'Förster, Jäger', 'Gärtner', 'Kinder (Spielen im Sommer)'],
               seasonality: 'April-Oktober (Zeckenaktivität)',
               transmission: 'Ixodes-Zeckenstich (>24-36 Stunden angeheftet)'
             },
@@ -262,16 +262,16 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Doxycyclin', dose: '2x100mg p.o.', duration: '10-14 Tage (EM), 14-21 Tage (Arthritis)', note: 'Erste Wahl Erwachsene/Kinder >8J' },
-                  { drug: 'Amoxicillin', dose: '3x500mg p.o.', duration: '14-21 Tage', note: 'Schwangere, Kinder <8J' },
-                  { drug: 'Cefuroxim-Axetil', dose: '2x500mg p.o.', duration: '14-21 Tage', note: 'Alternative' }
+                  { drug: 'Doxycyclin', dose: '100 mg zweimal täglich p.o.', duration: '10-14 Tage (EM), 14-21 Tage (Arthritis)', note: 'Erste Wahl Erwachsene/Kinder >8J' },
+                  { drug: 'Amoxicillin', dose: '500 mg dreimal täglich p.o.', duration: '14-21 Tage', note: 'Schwangere, Kinder <8J' },
+                  { drug: 'Cefuroxim-Axetil', dose: '500 mg zweimal täglich p.o.', duration: '14-21 Tage', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Ceftriaxon', dose: '1x2g i.v.', duration: '14-28 Tage', note: 'Neuroborreliose, Lyme-Karditis (AV-Block >1°)' },
-                  { drug: 'Penicillin G', dose: '4x5 Mio. IE i.v.', duration: '14-28 Tage', note: 'Alternative Neuroborreliose' }
+                  { drug: 'Ceftriaxon', dose: '2 g einmal täglich i.v.', duration: '14-28 Tage', note: 'Neuroborreliose, Lyme-Karditis (AV-Block >1°)' },
+                  { drug: 'Penicillin G', dose: '5 Mio. IE alle 6 Stunden i.v.', duration: '14-28 Tage', note: 'Alternative Neuroborreliose' }
                 ],
                 icu: [
-                  { drug: 'Ceftriaxon', dose: '1x2g i.v.', duration: '28 Tage', note: 'Schwere Neuroborreliose' },
+                  { drug: 'Ceftriaxon', dose: '2 g einmal täglich i.v.', duration: '28 Tage', note: 'Schwere Neuroborreliose' },
                   { drug: 'Schrittmacher (temporär)', dose: 'Kompletter AV-Block', duration: '', note: 'Karditis' }
                 ]
               },
@@ -291,7 +291,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Francisella tularensis', gram: 'Gram-negativ', shape: 'Kokkobazillus, intrazellulär' },
             epidemiology: {
               incidence: 'USA: 100-200 Fälle/Jahr; Europa: sporadisch',
-              risk_groups: ['Jäger', 'Lederverarbeiter', 'Landarbeiter', 'Laboranten', 'Förster', 'Tierärzte'],
+              risk_groups: ['Jäger', 'Gerber', 'Landarbeiter', 'Laboranten', 'Förster', 'Tierärzte'],
               seasonality: 'Sommer (Zecke), Winter (Jagd)',
               transmission: 'Zecken-/Fliegenstich, Kontakt mit infizierten Tieren (Kaninchen, Nagetiere), Inhalation, Wasser/Nahrung'
             },
@@ -354,17 +354,17 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Doxycyclin', dose: '2x100mg p.o.', duration: '14-21 Tage', note: 'Erste Wahl bei leichter Form' },
-                  { drug: 'Ciprofloxacin', dose: '2x500mg p.o.', duration: '14-21 Tage', note: 'Alternative' }
+                  { drug: 'Doxycyclin', dose: '100 mg zweimal täglich p.o.', duration: '14-21 Tage', note: 'Erste Wahl bei leichter Form' },
+                  { drug: 'Ciprofloxacin', dose: '500 mg zweimal täglich p.o.', duration: '14-21 Tage', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Streptomycin', dose: '2x7.5-10mg/kg i.m.', duration: '10 Tage', note: 'Goldstandard in schweren Fällen' },
-                  { drug: 'Gentamicin', dose: '1x5mg/kg i.v.', duration: '10 Tage', note: 'Streptomycin nicht verfügbar' },
-                  { drug: 'Doxycyclin', dose: '2x100mg i.v.', duration: '14-21 Tage', note: 'In Kombination' }
+                  { drug: 'Streptomycin', dose: '7.5-10 mg/kg zweimal täglich i.m.', duration: '10 Tage', note: 'Goldstandard in schweren Fällen' },
+                  { drug: 'Gentamicin', dose: '5 mg/kg einmal täglich i.v.', duration: '10 Tage', note: 'Streptomycin nicht verfügbar' },
+                  { drug: 'Doxycyclin', dose: '100 mg zweimal täglich i.v.', duration: '14-21 Tage', note: 'In Kombination' }
                 ],
                 icu: [
                   { drug: 'Gentamicin + Doxycyclin', dose: 'Kombination', duration: '14-21 Tage', note: 'Typhös/pulmonal schwer' },
-                  { drug: 'Ciprofloxacin', dose: '2x400mg i.v.', duration: '14-21 Tage', note: 'Bessere Penetration bei Meningitis' }
+                  { drug: 'Ciprofloxacin', dose: '400 mg zweimal täglich i.v.', duration: '14-21 Tage', note: 'Bessere Penetration bei Meningitis' }
                 ]
               },
               targeted: 'Aminoglykosid (Streptomycin, Gentamicin) erste Wahl; Doxycyclin/Ciprofloxacin Alternative',
@@ -383,7 +383,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Bartonella henselae', gram: 'Gram-negativ', shape: 'Stäbchen, intrazellulär' },
             epidemiology: {
               incidence: 'USA: ~12.000 Fälle/Jahr (Schätzung), unterdiagnostiziert',
-              risk_groups: ['Kinder <10 Jahre', 'Katzenkontakt', 'Flohexposition', 'Immunsupprimierte (HIV)', 'Tierärzte, Tierheimmitarbeiter'],
+              risk_groups: ['Kinder <10 Jahre', 'Katzenkontakt', 'Flohexposition', 'Immungeschwächte (HIV)', 'Tierärzte, Tierheimmitarbeiter'],
               seasonality: 'Herbst-Winter (Kätzchen)',
               transmission: 'Katzenkratzer/-biss (95%), selten Hund, Floh'
             },
@@ -447,22 +447,22 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Azithromycin', dose: '1x500mg T1, dann 250mg/Tag', duration: '5 Tage', note: 'Erste Wahl, reduziert Lymphknotengröße' },
-                  { drug: 'Doxycyclin', dose: '2x100mg p.o.', duration: '4-6 Wochen', note: 'Alternative bei Erwachsenen' },
+                  { drug: 'Azithromycin', dose: '500 mg an Tag 1, dann 250 mg täglich', duration: '5 Tage', note: 'Erste Wahl, reduziert Lymphknotengröße' },
+                  { drug: 'Doxycyclin', dose: '100 mg zweimal täglich p.o.', duration: '4-6 Wochen', note: 'Alternative bei Erwachsenen' },
                   { drug: 'BEOBACHTUNG', dose: 'Selbstlimitierende Erkrankung', duration: '2-4 Monate', note: 'In leichten Fällen Antibiotika nicht unbedingt erforderlich' }
                 ],
                 inpatient: [
-                  { drug: 'Azithromycin', dose: '1x500mg i.v.', duration: '5 Tage, dann p.o.', note: 'Wenn p.o. nicht toleriert' },
-                  { drug: 'Doxycyclin + Rifampicin', dose: '2x100mg + 2x300mg p.o.', duration: '4-6 Wochen', note: 'Neuroretinitis' }
+                  { drug: 'Azithromycin', dose: '500 mg täglich i.v.', duration: '5 Tage, dann p.o.', note: 'Wenn p.o. nicht toleriert' },
+                  { drug: 'Doxycyclin + Rifampicin', dose: '100 mg zweimal täglich + 300 mg zweimal täglich p.o.', duration: '4-6 Wochen', note: 'Neuroretinitis' }
                 ],
                 icu: [
-                  { drug: 'Gentamicin + Doxycyclin', dose: '3mg/kg/Tag i.v. + 2x100mg p.o./i.v.', duration: '6 Wochen', note: 'Endokarditis' },
+                  { drug: 'Gentamicin + Doxycyclin', dose: '3 mg/kg täglich i.v. + 100 mg p.o./i.v. zweimal täglich', duration: '6 Wochen', note: 'Endokarditis' },
                   { drug: 'Chirurgie', dose: 'Herzklappenersatz', duration: '', note: 'Bartonella-Endokarditis' }
                 ]
               },
               targeted: 'Typische CSD: Azithromycin (optional); Neuroretinitis/schwer: Doxycyclin±Rifampicin; Endokarditis: Gentamicin+Doxycyclin±Chirurgie',
               supportive: ['Chirurgische Drainage (fluktuierender Lymphknoten)', 'Analgetika', 'Warme Kompressen', 'KEINE INZISIONSBIOPSIE (Narbenbildung, Sinusbildung)'],
-              prevention: ['Katzenflohbekämpfung', 'Vermeidung von Kratzern/Bissen (Spiel)', 'Händewaschen nach Katzenberührung', 'Wunddesinfektion', 'Immunsupprimierte: Katzen meiden']
+              prevention: ['Katzenflohbekämpfung', 'Vermeidung von Kratzern/Bissen (Spiel)', 'Händewaschen nach Katzenberührung', 'Wunddesinfektion', 'Immungeschwächte: Katzen meiden']
             },
             prognosis: {
               mortality: '<1% (Endokarditis selten)',
@@ -528,10 +528,10 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Doxycyclin', dose: '2x100mg', duration: '14 Tage', note: 'Akutes Q-Fieber' }
+                  { drug: 'Doxycyclin', dose: '100 mg zweimal täglich', duration: '14 Tage', note: 'Akutes Q-Fieber' }
                 ],
                 inpatient: [
-                  { drug: 'Doxycyclin', dose: '2x100mg', duration: '14 Tage', note: '' }
+                  { drug: 'Doxycyclin', dose: '100 mg zweimal täglich', duration: '14 Tage', note: '' }
                 ],
                 icu: [
                   { drug: 'Doxycyclin + Hydroxychloroquin', dose: 'Langfristig', duration: '18-24 Monate', note: 'Chronisches Q-Fieber (Endokarditis)' }
@@ -617,7 +617,7 @@ Object.assign(window.diseases, {
               },
               targeted: 'Keine wirksame Therapie nach Symptombeginn.',
               supportive: ['Sedierung', 'Analgesie', 'Isolierung'],
-              prevention: ['PEP: Wundreinigung + Impfstoff (0, 3, 7, 14 Tage) + RIG (Immunglobulin)', 'Tierimpfung', 'Präexpositionsprophylaxe (Reisende, Berufstätige)']
+              prevention: ['PEP: Wundreinigung + Impfstoff (Tage 0, 3, 7, 14) + RIG (Immunglobulin)', 'Tierimpfung', 'Präexpositionsprophylaxe (Reisende, Berufstätige)']
             },
             prognosis: {
               mortality: '~100% nach Symptombeginn',
@@ -631,7 +631,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Bacillus anthracis', gram: 'Gram-positiv', shape: 'sporenbildendes Stäbchen' },
             epidemiology: {
               incidence: 'Selten, Bioterrorismus-Risiko',
-              risk_groups: ['Lederverarbeiter / Gerber', 'Viehzüchter', 'Laboranten'],
+              risk_groups: ['Gerber', 'Viehzüchter', 'Laboranten'],
               seasonality: 'Keine',
               transmission: 'Sporeninokulation (Haut), Inhalation, Ingestion'
             },
@@ -682,8 +682,8 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Ciprofloxacin', dose: '2x500mg', duration: '60 Tage', note: 'Hautmilzbrand (60 Tage bei Bioterror-Verdacht)' },
-                  { drug: 'Doxycyclin', dose: '2x100mg', duration: '60 Tage', note: 'Alternative' }
+                  { drug: 'Ciprofloxacin', dose: '500 mg zweimal täglich', duration: '60 Tage', note: 'Hautmilzbrand (60 Tage bei Bioterror-Verdacht)' },
+                  { drug: 'Doxycyclin', dose: '100 mg zweimal täglich', duration: '60 Tage', note: 'Alternative' }
                 ],
                 inpatient: [
                   { drug: 'Ciprofloxacin + Meropenem + Linezolid', dose: 'IV-Kombination', duration: 'Lang', note: 'Inhalation/systemisch (Antitoxin wird auch gegeben)' }

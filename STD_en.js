@@ -18,7 +18,7 @@ Object.assign(window.diseases, {
               steps: [
                 'T. pallidum enters through mucous membranes/skin',
                 'Local multiplication → primary lesion (chancre)',
-                'Hematogenous spread (primary viremia)',
+                'Hematogenous spread (primary bacteremia)',
                 'Secondary syphilis: disseminated disease',
                 'Latent phase: immune response keeps it under control',
                 'Tertiary: chronic granulomatous inflammation (gumma) or vascular/neurological involvement'
@@ -70,14 +70,14 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Benzylpenicillin G (Bicillin LA)', dose: '2.4 million IU IM', duration: 'Single dose', note: 'Early syphilis (primary, secondary, early latent <1 year)' },
+                  { drug: 'Benzathine Penicillin G', dose: '2.4 million IU IM', duration: 'Single dose', note: 'Early syphilis (primary, secondary, early latent <1 year)' },
                   { drug: 'Penicillin allergy: Doxycycline', dose: '2x100mg PO', duration: '14 days', note: 'Alternative (compliance!)' }
                 ],
                 inpatient: [
-                  { drug: 'Benzylpenicillin G', dose: '2.4 million IU IM', duration: 'Once weekly for 3 weeks', note: 'Late latent (>1 year) or unknown duration' }
+                  { drug: 'Benzathine Penicillin G', dose: '2.4 million IU IM', duration: 'Once weekly for 3 weeks', note: 'Late latent (>1 year) or unknown duration' }
                 ],
                 icu: [
-                  { drug: 'Aqueous Penicillin G', dose: '3-4 million IU IV every 4 hours', duration: '10-14 days', note: 'Neurosyphilis!' }
+                  { drug: 'Aqueous Crystalline Penicillin G', dose: '3-4 million IU IV every 4 hours', duration: '10-14 days', note: 'Neurosyphilis!' }
                 ]
               },
               targeted: 'Penicillin is always the first choice, no resistance',
@@ -120,7 +120,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: 'Human Immunodeficiency Virus (HIV-1, HIV-2)', gram: 'RNA retrovirus', shape: 'spherical' },
             epidemiology: {
               incidence: '~38 million people living with HIV worldwide',
-              risk_groups: ['MSM', 'IV drug users', 'Sex workers', 'Transfusion recipients (developing countries)', 'Partners'],
+              risk_groups: ['MSM', 'People who inject drugs (PWID)', 'Sex workers', 'Transfusion recipients (developing countries)', 'Partners'],
               seasonality: 'None',
               transmission: 'Sexual, parenteral (blood), vertical (mother-to-child)'
             },

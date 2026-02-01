@@ -17,9 +17,9 @@ Object.assign(window.diseases, {
             pathomechanism: {
               steps: [
                 'Infekció (PAMPs) felismerése a veleszületett immunrendszer által (TLR)',
-                'Pro-inflammatorikus citokin vihar (TNF-α, IL-1, IL-6)',
-                'Endothel aktiváció és károsodás (vaszkuláris permeabilitás↑)',
-                'Koagulációs kaszkád aktiválódása (DIC) + fibrinolízis gátlása',
+                'Proinflammatorikus citokinvihar (TNF-α, IL-1, IL-6)',
+                'Endothel-aktiváció és -károsodás (vaszkuláris permeabilitás↑)',
+                'Véralvadási kaszkád aktiválódása (DIC) + fibrinolízis gátlása',
                 'Mikrocirkulációs zavar, szöveti hipoxia, mitokondriális diszfunkció',
                 'Többszervi elégtelenség (MODS)'
               ],
@@ -31,7 +31,7 @@ Object.assign(window.diseases, {
               symptoms: [
                 { name: 'Láz vagy Hypothermia', description: '>38°C vagy <36°C (betegek 10-20%-a hypothermiás)', severity: 'severe' },
                 { name: 'Tudatzavar', description: 'GCS <15, agitáció, letargia (gyakori korai jel időseknél)', severity: 'severe' },
-                { name: 'Hypotonia', description: 'Systolés RR <100 Hgmm vagy MAP <65 Hgmm', severity: 'severe' },
+                { name: 'Hypotonia', description: 'Szisztolés RR <100 Hgmm vagy MAP <65 Hgmm', severity: 'severe' },
                 { name: 'Tachypnoe', description: '>22/perc (gyakran az első jel)', severity: 'moderate' },
                 { name: 'Oliguria', description: '<0.5 ml/kg/óra (veseperfúzió csökkenés)', severity: 'severe' },
                 { name: 'Bőrtünetek', description: 'Márványozottság, hideg végtagok (shock jelei)', severity: 'severe' }
@@ -72,7 +72,7 @@ Object.assign(window.diseases, {
               empirical: {
                 initial_management: [
                   { drug: 'Antibiotikumok', dose: 'Széles spektrumú IV', duration: '1 órán belül!', note: 'Hemokultúra levétele után. Fókuszfüggő választás (pl. Pip/Tazo, Meropenem).' },
-                  { drug: 'Folyadékreszuszcitáció', dose: '30 ml/kg krisztalloid', duration: 'Első 3 órában', note: 'Hypotonia vagy laktát ≥4 mmol/L esetén.' }
+                  { drug: 'Volumenpótlás', dose: '30 ml/kg krisztalloid', duration: 'Első 3 órában', note: 'Hypotonia vagy laktát ≥4 mmol/L esetén.' }
                 ],
                 icu: [
                   { drug: 'Noradrenalin', dose: 'MAP >65 Hgmm tartása', duration: 'Folyamatos', note: 'Első választású vazopresszor.' },
@@ -80,8 +80,8 @@ Object.assign(window.diseases, {
                   { drug: 'Hidrokortizon', dose: '200mg/nap (pl. 50mg 6 óránként)', duration: 'Folyamatos', note: 'Ha a vazopresszor igény perzisztál (refrakter shock).' }
                 ]
               },
-              targeted: 'Antibiogram alapján de-eszkaláció (PCT segíthet a döntésben). Forrás kontroll (tályog drenázs, nekrotikus szövet eltávolítás) elengedhetetlen.',
-              supportive: ['Laktát-clearance követése', 'Lélegeztetés (ARDS protokoll)', 'Vesepótló kezelés (CRRT)', 'Vércukor kontroll', 'Trombózis profilaxis', 'Stress fekély profilaxis'],
+              targeted: 'Antibiogram alapján de-eszkaláció (PCT segíthet a döntésben). Forráskontroll (tályogdrenázs, nekrotikus szövet eltávolítása) elengedhetetlen.',
+              supportive: ['Laktát-clearance követése', 'Lélegeztetés (ARDS protokoll)', 'Vesepótló kezelés (CRRT)', 'Vércukorkontroll', 'Trombózisprofilaxis', 'Stresszfekély-profilaxis'],
               prevention: ['Kórházi higiénia', 'Oltások (Pneumococcus, Influenza)', 'Katéterek korai eltávolítása', 'Megfelelő sebkezelés']
             },
             prognosis: {
@@ -103,10 +103,10 @@ Object.assign(window.diseases, {
             pathomechanism: {
               steps: [
                 'Lokális fertőzés (hüvely, seb) vagy kolonizáció',
-                'Exotoxin termelés (TSST-1, Enterotoxinok, SpeA/C)',
-                'Szuperantigén hatás: T-sejtek nem specifikus aktiválása (akár 20%)',
-                'Masszív citokin felszabadulás (Citokin vihar)',
-                'Kapilláris leak, vasodilatatio, shock',
+                'Exotoxintermelés (TSST-1, Enterotoxinok, SpeA/C)',
+                'Szuperantigén-hatás: T-sejtek nem specifikus aktiválása (akár 20%)',
+                'Masszív citokinfelszabadulás (Citokinvihar)',
+                'Kapilláris szivárgás, vasodilatatio, shock',
                 'Többszervi elégtelenség'
               ],
               virulence_factors: ['TSST-1 (Staph)', 'Streptococcal Pyrogenic Exotoxins (Spe)', 'M-protein (Strep)']
@@ -116,7 +116,7 @@ Object.assign(window.diseases, {
               onset: 'Hirtelen',
               symptoms: [
                 { name: 'Magas láz', description: '>38.9°C (hirtelen kezdet)', severity: 'severe' },
-                { name: 'Hypotonia', description: 'Systolés RR <90 Hgmm (felnőtt), orthostaticus szédülés', severity: 'severe' },
+                { name: 'Hypotonia', description: 'Szisztolés RR <90 Hgmm (felnőtt), orthostaticus szédülés', severity: 'severe' },
                 { name: 'Diffúz erythroderma', description: 'Napégés-szerű kiütés (Staph: >90%, Strep: ritkább)', severity: 'moderate' },
                 { name: 'Multiszisztémás tünetek', description: 'GI (hányás/hasmenés), Izomfájdalom (CK emelkedés), Nyálkahártya hyperaemia', severity: 'severe' },
                 { name: 'Hámlás', description: '1-2 héttel a kezdet után (tenyér/talp)', severity: 'mild' }
@@ -127,7 +127,7 @@ Object.assign(window.diseases, {
                 'Nyálkahártya hyperaemia (conjunctiva, oropharynx, vagina)',
                 'Epernyelv (főleg Strep TSS)',
                 'Tudatzavar (55%)',
-                'Lokális lágyrész fertőzés jelei (Strep TSS: nekrotizáló fasciitis, myositis)'
+                'Lokális lágyrészfertőzés jelei (Strep TSS: nekrotizáló fasciitis, myositis)'
               ],
               complications: ['Shock', 'ARDS', 'DIC', 'Veseelégtelenség', 'Végtag nekrózis (Strep)', 'Halál']
             },
@@ -158,18 +158,18 @@ Object.assign(window.diseases, {
                   { drug: 'Nincs', dose: '-', duration: '-', note: 'Azonnali intenzív osztályos felvétel!' }
                 ],
                 inpatient: [
-                  { drug: 'Clindamycin', dose: '900mg IV 8 óránként', duration: '', note: 'Toxin termelés gátlása! (Kulcsfontosságú)' },
+                  { drug: 'Clindamycin', dose: '900mg IV 8 óránként', duration: '', note: 'Toxintermelés gátlása! (Kulcsfontosságú)' },
                   { drug: '+ Vancomycin/Linezolid', dose: 'IV', duration: '', note: 'MRSA fedezet' },
                   { drug: '+ Pip/Tazo vagy Meropenem', dose: 'IV', duration: '', note: 'Polimikrobiális gyanú esetén' }
                 ],
                 icu: [
-                  { drug: 'IVIG', dose: '1-2g/kg', duration: 'Egyszeri', note: 'Toxin semlegesítés (Strep TSS)' },
+                  { drug: 'IVIG', dose: '1-2g/kg', duration: 'Egyszeri', note: 'Toxinsemlegesítés (Strep TSS)' },
                   { drug: 'Vazopresszorok', dose: 'Noradrenalin', duration: '', note: 'Shock kezelése' }
                 ]
               },
-              targeted: 'Staph (MSSA): Flucloxacillin + Clindamycin; Strep: Penicillin G + Clindamycin. Forrás kontroll (tampon eltávolítás, sebészi feltárás)!',
-              supportive: ['Masszív folyadékpótlás', 'Lélegeztetés', 'Dialízis', 'Sebkezelés'],
-              prevention: ['Tampon higiénia (gyakori csere)', 'Sebfertőtlenítés']
+              targeted: 'Staph (MSSA): Flucloxacillin + Clindamycin; Strep: Penicillin G + Clindamycin. Forráskontroll (tamponeltávolítás, sebészi feltárás)!',
+              supportive: ['Masszív volumenpótlás', 'Lélegeztetés', 'Dialízis', 'Sebkezelés'],
+              prevention: ['Tamponhigiénia (gyakori csere)', 'Sebfertőtlenítés']
             },
             prognosis: {
               mortality: 'Staph TSS: <3%, Strep TSS: 30-70%',
@@ -190,16 +190,16 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Gomba', name: 'Candida albicans (és non-albicans fajok)', gram: 'Sarjadzó gomba', shape: 'ovális' },
             epidemiology: {
               incidence: 'Nozokomiális véráramfertőzések 4. leggyakoribb oka',
-              risk_groups: ['ICU betegek', 'Centrális véna (CVC)', 'Széles spektrumú AB', 'TPN', 'Hasi műtét'],
+              risk_groups: ['ICU betegek', 'Centrális vénás katéter (CVC)', 'Széles spektrumú AB', 'TPN', 'Hasi műtét'],
               seasonality: 'Nincs',
               transmission: 'Endogén (GI traktusból), exogén (kéz, eszközök)'
             },
             pathomechanism: {
               steps: [
-                'Mucosa barrier sérülése (AB, kemo)',
+                'Mucosa-barrier sérülése (AB, kemo)',
                 'Transzlokáció a véráramba',
-                'Biofilm képzés (katéter)',
-                'Haematogen szórás (szem, szív, máj, lép)'
+                'Biofilmképzés (katéter)',
+                'Hematogén szóródás (szem, szív, máj, lép)'
               ],
               virulence_factors: ['Biofilm', 'Adhezinek', 'Enzimek (proteáz, foszfolipáz)']
             },
@@ -228,7 +228,7 @@ Object.assign(window.diseases, {
                 { test: 'Beta-D-glükán', finding: 'Emelkedett (>80 pg/mL)', interpretation: 'Pan-fungális marker (kivéve Mucor/Crypto)' }
               ],
               imaging: [
-                { modality: 'Has UH/CT', finding: 'Microabscessusok (máj, lép)', significance: 'Krónikus disszeminált' },
+                { modality: 'Hasi UH/CT', finding: 'Microabscessusok (máj, lép)', significance: 'Krónikus disszeminált' },
                 { modality: 'Szemészet', finding: 'Chorioretinitis', significance: 'Minden fungémiás betegnél kötelező!' }
               ],
               microbiology: [
@@ -255,12 +255,12 @@ Object.assign(window.diseases, {
               },
               targeted: 'C. albicans: Fluconazol (ha érzékeny); C. glabrata/krusei: Echinocandin. Szemészet: szisztémás + intravitrealis.',
               supportive: ['CVC eltávolítása (erősen ajánlott!)', 'Szemészeti konzílium'],
-              prevention: ['Kézmosás', 'Katéter care', 'Profilaxis (transzplantáltak)']
+              prevention: ['Kézmosás', 'Katétergondozás', 'Profilaxis (transzplantáltak)']
             },
             prognosis: {
               mortality: '30-40% (szeptikus shock esetén magasabb)',
               prognostic_scores: ['Candida score'],
-              factors: 'Forrás kontroll (katéter), korai terápia'
+              factors: 'Forráskontroll (katéter), korai terápia'
             }
           },
           {
@@ -269,18 +269,18 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Gomba', name: 'Aspergillus fumigatus', gram: 'Penészgomba', shape: 'hifák (45° elágazás)' },
             epidemiology: {
               incidence: 'Neutropéniás betegek 5-10%-a',
-              risk_groups: ['Prolongált neutropenia', 'Allogén őssejt transzplantáció', 'Szolid szerv transzplantáció', 'Nagy dózisú szteroid'],
+              risk_groups: ['Prolongált neutropenia', 'Allogén őssejt-transzplantáció', 'Szolid szervtranszplantáció', 'Nagydózisú szteroid'],
               seasonality: 'Nincs (építkezés pora rizikó)',
               transmission: 'Konídiumok inhalációja (levegőből)'
             },
             pathomechanism: {
               steps: [
                 'Konídiumok belégzése az alveolusokba',
-                'Macrophagok kudarca (immunszuppresszió)',
+                'Makrofág-funkció zavara (immunszuppresszió)',
                 'Germináció hifákká',
                 'Angioinvázió (erekbe törés)',
                 'Thrombózis, infarktus, szöveti nekrózis',
-                'Haematogen szórás (agy, bőr)'
+                'Hematogén szóródás (agy, bőr)'
               ],
               virulence_factors: ['Angioinvázió', 'Gliotoxin', 'Melanin']
             },
@@ -305,11 +305,11 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               laboratory: [
-                { test: 'Galactomannan (GM)', finding: 'Index >0.5', interpretation: 'Szérum vagy BAL (specifikus Aspergillusra)' },
+                { test: 'Galaktomannán (GM)', finding: 'Index >0.5', interpretation: 'Szérum vagy BAL (specifikus Aspergillusra)' },
                 { test: 'Beta-D-glükán', finding: 'Pozitív', interpretation: 'Nem specifikus' }
               ],
               imaging: [
-                { modality: 'CT mellkas', finding: 'Halo jel (korai), Levegő-félhold jel (késői), nodulusok', significance: 'Gold standard képalkotó' }
+                { modality: 'Mellkas CT', finding: 'Halo-jel (korai), Levegő-félhold jel (késői), nodulusok', significance: 'Gold standard képalkotó' }
               ],
               microbiology: [
                 { test: 'BAL tenyésztés', finding: 'Aspergillus sp.', significance: 'Bizonyított eset' },
@@ -336,7 +336,7 @@ Object.assign(window.diseases, {
               },
               targeted: 'Voriconazol vagy Isavuconazol. Salvage: L-AmB, Caspofungin (kombináció vitatott).',
               supportive: ['Immunszuppresszió csökkentése (ha lehet)', 'G-CSF (neutropenia rendezése)', 'Sebészi reszekció (masszív haemoptoe)'],
-              prevention: ['Posaconazol profilaxis (neutropenia)', 'HEPA szűrős szobák', 'Maszkviselés']
+              prevention: ['Posaconazol profilaxis (neutropenia)', 'HEPA-szűrős szobák', 'Maszkviselés']
             },
             prognosis: {
               mortality: 'Magas (30-80% rizikócsoporttól függően)',

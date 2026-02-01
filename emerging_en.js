@@ -10,104 +10,104 @@ Object.assign(window.diseases, {
       {
         id: 'mpox',
         name: 'Mpox (Monkeypox)',
-        pathogen: { type: 'Virus', name: 'Mpox virus (MPXV)', gram: 'dsDNA, Poxviridae', shape: 'brick-shaped' },
+        pathogen: { type: 'Virus', name: 'Mpox virus (MPXV)', genome: 'dsDNA, Poxviridae', shape: 'brick-shaped' },
         epidemiology: {
-          incidence: 'Global outbreak (2022-), endemic in Africa',
-          risk_groups: ['MSM population', 'Healthcare workers', 'Household contacts'],
+          incidence: 'Global outbreak (2022–), endemic in Central and West Africa',
+          risk_groups: ['MSM (Men who have sex with men)', 'Healthcare workers', 'Household contacts'],
           seasonality: 'None',
-          transmission: 'Close skin-to-skin contact, respiratory droplets, fomites, zoonosis (rodents)'
+          transmission: 'Close skin-to-skin contact, respiratory droplets, fomites, zoonotic (rodents)'
         },
-        pathomechanism: {
+        pathomechanism: { 
           steps: [
-            'Entry through broken skin/mucosa',
-            'Replication at entry site and regional lymph nodes',
-            'Viremia',
-            'Development of skin and mucosal lesions'
+            'Inoculation via broken skin or mucous membranes',
+            'Primary replication at entry site and regional lymph nodes',
+            'Viremia (systemic dissemination)',
+            'Seeding of skin and mucosal surfaces'
           ],
-          virulence_factors: ['Immunomodulatory proteins']
+          virulence_factors: ['Immunomodulatory proteins (host immune evasion)']
         },
         clinical: {
-          incubation: '5-21 days',
-          onset: 'Sudden',
+          incubation: '5–21 days',
+          onset: 'Acute', // MORE ACCURATE: Acute is preferred over Sudden
           symptoms: [
-            { name: 'Rash', description: 'Macule → Papule → Vesicle → Pustule → Scab (painful!)', severity: 'moderate' },
-            { name: 'Lymphadenopathy', description: 'Characteristic (distinguishes from smallpox/chickenpox)', severity: 'moderate' },
-            { name: 'Fever', description: 'Prodromal symptom', severity: 'mild' },
-            { name: 'Proctitis', description: 'Rectal pain (in sexual transmission)', severity: 'severe' }
+            { name: 'Rash', description: 'Macule → Papule → Vesicle → Pustule → Scab (often painful and umbilicated)', severity: 'moderate' },
+            { name: 'Lymphadenopathy', description: 'Significant lymph node swelling (distinguishes from variola/varicella)', severity: 'moderate' },
+            { name: 'Febrile prodrome', description: 'Fever, chills, and malaise', severity: 'mild' },
+            { name: 'Proctitis', description: 'Severe rectal pain and tenesmus (common in sexual transmission)', severity: 'severe' }
           ],
           physical_exam: [
-            'Centrifugal distribution of rash (palms/soles too)',
-            'Swollen, painful lymph nodes',
-            'Genital/perianal lesions'
+            'Centrifugal distribution (including palms and soles)',
+            'Tender lymphadenopathy',
+            'Anogenital lesions'
           ],
-          complications: ['Bacterial superinfection', 'Pneumonia', 'Sepsis', 'Encephalitis', 'Corneal scarring (blindness)']
+          complications: ['Secondary bacterial infection', 'Bronchopneumonia', 'Sepsis', 'Encephalitis', 'Keratitis (leading to corneal scarring)']
         },
         diagnostics: {
-          laboratory: [{ test: 'CBC', finding: 'Non-specific', interpretation: '-' }],
+          laboratory: [{ test: 'CBC', finding: 'Non-specific (leukocytosis or leucopenia)', interpretation: '-' }],
           microbiology: [
-            { test: 'PCR', finding: 'MPXV DNA', significance: 'Gold standard (sample from base/roof of lesion)' },
-            { test: 'Electron microscopy', finding: 'Poxvirus morphology', significance: 'Rarely available' }
+            { test: 'NAAT (PCR)', finding: 'MPXV DNA', significance: 'Gold standard (swab from lesion base/roof)' },
+            { test: 'Electron microscopy', finding: 'Poxvirus morphology', significance: 'Research/Public health labs' }
           ]
         },
         therapy: {
           empirical: {
-            outpatient: [{ drug: 'Supportive', dose: '-', duration: '-', note: 'Pain relief, wound care, isolation' }]
+            outpatient: [{ drug: 'Supportive care', dose: '-', duration: '-', note: 'Analgesia, hydration, wound care, strict isolation' }]
           },
-          targeted: 'In severe cases: Tecovirimat (antiviral).',
-          supportive: ['Pain relief', 'Fluid replacement'],
-          prevention: ['Vaccination (JYNNEOS - 3rd generation smallpox vaccine)', 'Isolation', 'Contact tracing']
+          targeted: 'Tecovirimat (TPOXX) indicated for severe disease or immunocompromised patients.',
+          supportive: ['Analgesics (NSAIDs/Opioids)', 'Fluid resuscitation'],
+          prevention: ['Vaccination (JYNNEOS - modified vaccinia Ankara)', 'Infection control', 'Contact tracing']
         },
-        prognosis: { mortality: 'Clade II (global): <0.1%; Clade I (Africa): up to 10%', prognostic_scores: [], factors: 'Clade type, timing of treatment' }
+        prognosis: { mortality: 'Clade IIb (global): <0.1%; Clade I (Congo Basin): up to 10%', prognostic_scores: [], factors: 'Clade type, immune status, access to care' }
       },
       {
         id: 'nipah',
-        name: 'Nipah Virus',
-        pathogen: { type: 'Virus', name: 'Nipah virus (NiV)', gram: 'RNA, Paramyxoviridae (Henipavirus)', shape: 'pleomorphic' },
+        name: 'Nipah Virus (NiV)',
+        pathogen: { type: 'Virus', name: 'Nipah virus (NiV)', genome: 'ssRNA (-), Paramyxoviridae', shape: 'pleomorphic' },
         epidemiology: {
-          incidence: 'Sporadic outbreaks (South Asia, Southeast Asia)',
-          risk_groups: ['Pig farmers', 'Date palm sap collectors/consumers'],
-          seasonality: 'Winter-spring (Bangladesh)',
-          transmission: 'Bat (flying fox) urine/saliva (date palm sap), pigs, person-to-person'
+          incidence: 'Sporadic outbreaks (South and Southeast Asia)',
+          risk_groups: ['Pig farmers', 'Date palm sap collectors/consumers', 'Close contacts of cases'],
+          seasonality: 'December–May (Bangladesh)',
+          transmission: 'Direct contact with bats (Pteropus), consumption of contaminated date palm sap, pigs (intermediate host), human-to-human'
         },
         pathomechanism: {
           steps: [
-            'Entry (oral/respiratory)',
-            'Viremia',
-            'Infection of endothelial cells (Ephrin-B2 receptor)',
-            'Vasculitis, thrombosis, ischemia',
-            'CNS and lung involvement'
+            'Oropharyngeal/respiratory entry',
+            'Systemic viremia',
+            'Endothelial cell infection (Ephrin-B2 receptor)',
+            'Systemic vasculitis, thrombosis, and tissue ischemia',
+            'Neuroinvasion and pulmonary inflammation'
           ],
-          virulence_factors: ['Fusion proteins', 'Immune antagonists']
+          virulence_factors: ['Fusion (F) and Attachment (G) proteins', 'Interferon antagonists (P/V/W proteins)']
         },
         clinical: {
-          incubation: '4-14 days',
-          onset: 'Sudden',
+          incubation: '4–14 days (up to 45 days recorded)',
+          onset: 'Acute',
           symptoms: [
-            { name: 'Fever', description: 'High', severity: 'severe' },
-            { name: 'Headache', description: 'Severe', severity: 'severe' },
-            { name: 'Respiratory symptoms', description: 'Cough, atypical pneumonia', severity: 'moderate' },
-            { name: 'Encephalitis', description: 'Dizziness, altered mental status, coma (within 24-48 hours)', severity: 'severe' }
+            { name: 'Fever', description: 'High-grade fever', severity: 'severe' },
+            { name: 'Headache', description: 'Severe headache', severity: 'severe' },
+            { name: 'Respiratory distress', description: 'Cough, dyspnea, atypical pneumonia (ARDS risk)', severity: 'moderate' },
+            { name: 'Encephalopathy', description: 'Dizziness, altered consciousness, rapid progression to coma (24–48h)', severity: 'severe' }
           ],
-          physical_exam: ['Fever', 'Nuchal rigidity', 'Altered mental status', 'Myoclonus', 'Areflexia/Hyporeflexia'],
-          complications: ['Severe encephalitis', 'ARDS', 'Relapse (months/years later)', 'Death']
+          physical_exam: ['Hyperpyrexia', 'Nuchal rigidity', 'Altered mental status (GCS)', 'Segmental myoclonus', 'Hyporeflexia'],
+          complications: ['Fulminant encephalitis', 'ARDS', 'Relapsed/Late-onset encephalitis', 'Death']
         },
         diagnostics: {
           laboratory: [{ test: 'CBC', finding: 'Thrombocytopenia, leukopenia', interpretation: '-' }],
-          imaging: [{ modality: 'Brain MRI', finding: 'Multiple small infarcts, hyperintensity', significance: 'Encephalitis' }],
+          imaging: [{ modality: 'Brain MRI', finding: 'Small, confluent T2-hyperintense lesions', significance: 'Vascular encephalitis' }],
           microbiology: [
-            { test: 'RT-PCR', finding: 'RNA (throat, urine, CSF)', significance: 'Acute phase' },
-            { test: 'ELISA (IgM/IgG)', finding: 'Positive', significance: 'Later' }
+            { test: 'RT-PCR', finding: 'NiV RNA (throat swab, blood, urine, CSF)', significance: 'Diagnostic during acute phase' },
+            { test: 'Serology (ELISA)', finding: 'IgM/IgG seroconversion', significance: 'Confirmatory' }
           ]
         },
         therapy: {
           empirical: {
-            outpatient: [{ drug: 'None', dose: '-', duration: '-', note: 'Immediate hospital/ICU admission' }]
+            outpatient: [{ drug: 'N/A', dose: '-', duration: '-', note: 'Medical emergency; requires immediate isolation and ICU care' }]
           },
-          targeted: 'No proven antiviral. Monoclonal antibody (m102.4) in experimental phase.',
-          supportive: ['Intensive care', 'Ventilation', 'Seizure control'],
-          prevention: ['Avoid contact with bats', 'Avoid raw date palm sap', 'Isolation/culling of sick pigs', 'Hospital infection control']
+          targeted: 'No approved antiviral. Monoclonal antibody (m102.4) and Ribavirin (limited evidence).',
+          supportive: ['Mechanical ventilation', 'Seizure management', 'Correction of electrolyte imbalances'],
+          prevention: ['Avoid Pteropus bat habitats', 'Boil raw date palm sap', 'Culling of infected livestock', 'Standard, contact, and droplet precautions']
         },
-        prognosis: { mortality: 'High (40-75%)', prognostic_scores: [], factors: 'Development of encephalitis, availability of treatment' }
+        prognosis: { mortality: 'High (40–75%)', prognostic_scores: [], factors: 'Neurological involvement, ARDS, level of supportive care' }
       }
     ]
   }

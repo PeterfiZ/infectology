@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Polymikrobiell oder Strep. pyogenes/S. aureus', gram: 'Gemischt', shape: 'Variabel' },
             epidemiology: {
               incidence: 'Selten (0.4/100.000), aber zunehmende Inzidenz',
-              risk_groups: ['Diabetes mellitus', 'Periphere arterielle Verschlusskrankheit', 'Immunsuppression', 'Chronischer Alkoholismus', 'IV-Drogenkonsumenten', 'Post-Trauma/Operation'],
+              risk_groups: ['Diabetes mellitus', 'Periphere arterielle Verschlusskrankheit', 'Immungeschwächte', 'Chronischer Alkoholismus', 'i.v.-Drogenkonsumenten', 'Zustand nach Trauma/Operation'],
               seasonality: 'Keine',
               transmission: 'Endogen (Hautläsion als Eintrittspforte) oder direkte Inokulation'
             },
@@ -21,7 +21,7 @@ Object.assign(window.diseases, {
                 'Bakterielle Toxine → Thrombose in der Mikrovaskulatur',
                 'Gewebsischämie und Nekrose',
                 'Toxin-vermittelter Schock (Streptokokken)',
-                'Haut anfangs intakt, da die oberflächliche Blutversorgung später beeinträchtigt wird'
+                'Haut anfangs intakt, da die oberflächliche Blutversorgung erst später beeinträchtigt wird'
               ],
               virulence_factors: ['Strep: M-Protein, Streptolysine, SpeA/B/C Superantigene', 'Staph: PVL, α-Toxin', 'Anaerobier: Kollagenasen, Proteasen']
             },
@@ -29,7 +29,7 @@ Object.assign(window.diseases, {
               incubation: 'Stunden-Tage (nach Trauma)',
               onset: 'Hyperakut, schnell fortschreitend',
               symptoms: [
-                { name: 'Intensive Schmerzen', description: 'UNVERHÄLTNISMÄSSIG zum körperlichen Befund (75-100%), Frühzeichen', severity: 'severe' },
+                { name: 'Intensive Schmerzen', description: 'Unverhältnismäßig zum körperlichen Befund (75-100%), Frühzeichen', severity: 'severe' },
                 { name: 'Schwellung/Ödem', description: 'Spannendes, sich ausbreitendes Ödem (75-100%)', severity: 'severe' },
                 { name: 'Hautveränderungen', description: 'Erythem (70-100%), später livide Verfärbung, Bullae, Nekrose (Spätzeichen!)', severity: 'severe' },
                 { name: 'Fieber', description: 'Häufig, kann aber fehlen', severity: 'moderate' },
@@ -37,7 +37,7 @@ Object.assign(window.diseases, {
                 { name: 'Toxischer Zustand', description: 'Hypotonie, Tachykardie, Bewusstseinsstörung', severity: 'severe' }
               ],
               physical_exam: [
-                'Schmerz ist unverhältnismäßig STARK im Vergleich zum sichtbaren Befund (Frühzeichen!)',
+                'Schmerz ist unverhältnismäßig stark im Vergleich zum sichtbaren Befund (Frühzeichen!)',
                 'Spannendes Ödem, schnelle Ausbreitung',
                 'Haut: Erythem → livide → Bullae → Nekrose',
                 'Anästhesie im Bereich (Nervenschädigung)',
@@ -73,7 +73,7 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'KEINE ambulante Behandlung!', dose: 'SOFORTIGE OPERATION!', duration: '', note: 'Chirurgischer Notfall!' }
+                  { drug: 'Keine ambulante Behandlung!', dose: 'Sofortige Operation!', duration: '', note: 'Chirurgischer Notfall!' }
                 ],
                 inpatient: [
                   { drug: 'Piperacillin/Tazobactam', dose: '4x4.5g i.v.', duration: 'Je nach klinischem Ansprechen', note: 'Breitspektrum' },
@@ -83,11 +83,11 @@ Object.assign(window.diseases, {
                 icu: [
                   { drug: 'Meropenem', dose: '3x1g i.v.', duration: '', note: 'Alternative' },
                   { drug: '+ Vancomycin + Clindamycin', dose: '', duration: '', note: 'Dreifachtherapie' },
-                  { drug: 'IVIG', dose: '1-2g/kg', duration: '', note: 'Bei Streptokokken-Toxischem-Schock-Syndrom' }
+                  { drug: 'IVIG', dose: '1-2g/kg', duration: '', note: 'Bei Streptokokken-induziertem toxischen Schocksyndrom' }
                 ]
               },
               targeted: 'GAS: Penicillin+Clindamycin; MRSA: Vancomycin+Clindamycin; Polymikrobiell: Breitspektrum',
-              supportive: ['SOFORTIGES aggressives chirurgisches Débridement', 'Intensivstation', 'Vasopressoren', 'Mehrfache Revisionen (alle 24-48 Stunden)', 'HBO-Therapie (adjuvant)'],
+              supportive: ['Sofortiges aggressives chirurgisches Débridement', 'Intensivstation', 'Vasopressoren', 'Mehrfache Revisionen (alle 24-48 Stunden)', 'HBO-Therapie (adjuvant)'],
               prevention: ['Wundhygiene', 'Diabeteskontrolle', 'Frühzeitige Zellulitis-Behandlung']
             },
             guidelines: {
@@ -116,7 +116,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Streptococcus pyogenes (Gruppe-A-Streptokokken)', gram: 'Gram-positiv', shape: 'Kokken' },
             epidemiology: {
               incidence: 'Häufige Hautinfektion, 10-100/100.000 pro Jahr',
-              risk_groups: ['Ältere Menschen', 'Säuglinge', 'Diabetes mellitus', 'Chronische Veneninsuffizienz', 'Lymphödem', 'Hautläsionen'],
+              risk_groups: ['Ältere', 'Säuglinge', 'Diabetes mellitus', 'Chronische Veneninsuffizienz', 'Lymphödem', 'Hautläsionen'],
               seasonality: 'Meist Winter-Frühling',
               transmission: 'Endogen (Hautläsion) oder Kontakt'
             },
@@ -211,7 +211,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Streptococcus pyogenes oder Staphylococcus aureus (am häufigsten)', gram: 'Gram-positiv', shape: 'Kokken' },
             epidemiology: {
               incidence: 'Häufig, 200/100.000 pro Jahr',
-              risk_groups: ['Diabetes mellitus', 'Periphere arterielle Verschlusskrankheit', 'Adipositas', 'Immunsuppression', 'Hautverletzungen', 'Lymphödem'],
+              risk_groups: ['Diabetes mellitus', 'Periphere arterielle Verschlusskrankheit', 'Adipositas', 'Immungeschwächte', 'Hautverletzungen', 'Lymphödem'],
               seasonality: 'Meist Sommer',
               transmission: 'Endogen (Hautläsion) oder exogene Inokulation'
             },
@@ -314,7 +314,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus (am häufigsten)', gram: 'Gram-positiv', shape: 'Kokken' },
             epidemiology: {
               incidence: 'Hämatogen bei Kindern, posttraumatisch/diabetischer Fuß bei Erwachsenen',
-              risk_groups: ['Diabetes mellitus', 'Periphere arterielle Verschlusskrankheit', 'Trauma/Operation', 'IV-Drogenkonsumenten', 'Hämodialyse'],
+              risk_groups: ['Diabetes mellitus', 'Periphere arterielle Verschlusskrankheit', 'Trauma/Operation', 'i.v.-Drogenkonsumenten', 'Hämodialysepatienten'],
               seasonality: 'Keine',
               transmission: 'Hämatogene Streuung, direkte Ausbreitung (Wunde), Inokulation (Trauma)'
             },
@@ -407,7 +407,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus, N. gonorrhoeae', gram: 'Gemischt', shape: 'Kokken' },
             epidemiology: {
               incidence: '2-10/100.000 pro Jahr',
-              risk_groups: ['Rheumatoide Arthritis', 'Gelenkprothese', 'Ältere (>80 Jahre)', 'Diabetes', 'IV-Drogenkonsumenten', 'Sexuell aktive junge Menschen (Gonokokken)'],
+              risk_groups: ['Rheumatoide Arthritis', 'Gelenkprothese', 'Ältere (>80 Jahre)', 'Diabetes', 'i.v.-Drogenkonsumenten', 'Sexuell aktive junge Menschen (Gonokokken)'],
               seasonality: 'Keine',
               transmission: 'Hämatogen (am häufigsten), direkte Inokulation, per continuitatem'
             },
@@ -428,7 +428,7 @@ Object.assign(window.diseases, {
                 { name: 'Akute Monoarthritis', description: 'Schmerz und Schwellung eines einzelnen Gelenks (80-90%)', severity: 'severe' },
                 { name: 'Schmerz', description: 'Intensiv, auch in Ruhe, extrem bei Bewegung', severity: 'severe' },
                 { name: 'Fieber', description: 'Häufig (60-80%), kann aber fehlen (Ältere, Immunsupprimierte)', severity: 'moderate' },
-                { name: 'Bewegungsunfähigkeit', description: 'Unfähigkeit, das betroffene Gelenk zu benutzen', severity: 'severe' }
+                { name: 'Bewegungsunfähigkeit', description: 'Funktionsverlust des betroffenen Gelenks', severity: 'severe' }
               ],
               physical_exam: [
                 'Geschwollenes, warmes, rotes Gelenk',
@@ -502,7 +502,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus (am häufigsten), Streptococcus spp., Gram-negative', gram: 'Gemischt', shape: 'Kokken/Bazillen' },
             epidemiology: {
               incidence: 'Selten, 2-7/100.000 pro Jahr',
-              risk_groups: ['Ältere (>50 Jahre)', 'Diabetes mellitus', 'Immunsuppression', 'IV-Drogenkonsumenten', 'Nach Wirbelsäulen-OP', 'Urogenitale Infektionen'],
+              risk_groups: ['Ältere (>50 Jahre)', 'Diabetes mellitus', 'Immungeschwächte', 'i.v.-Drogenkonsumenten', 'Zustand nach Wirbelsäulen-OP', 'Urogenitale Infektionen'],
               seasonality: 'Keine',
               transmission: 'Hämatogen (am häufigsten), direkt (OP, Trauma), per continuitatem'
             },

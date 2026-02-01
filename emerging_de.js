@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
         pathogen: { type: 'Virus', name: 'Mpox-Virus (MPXV)', gram: 'dsDNA, Poxviridae', shape: 'ziegelförmig' },
         epidemiology: {
           incidence: 'Globale Epidemie (2022-), endemisch in Afrika',
-          risk_groups: ['MSM-Population', 'Gesundheitspersonal', 'Haushaltskontakte'],
+          risk_groups: ['MSM (Männer, die Sex mit Männern haben)', 'Gesundheitspersonal', 'Haushaltskontakte'],
           seasonality: 'Keine',
           transmission: 'Enger Haut-zu-Haut-Kontakt, Tröpfcheninfektion, Fomiten, Zoonose (Nagetiere)'
         },
@@ -58,13 +58,13 @@ Object.assign(window.diseases, {
       },
       {
         id: 'nipah',
-        name: 'Nipah-Virus',
+        name: 'Nipah-Virus-Infektion',
         pathogen: { type: 'Virus', name: 'Nipah-Virus (NiV)', gram: 'RNA, Paramyxoviridae (Henipavirus)', shape: 'pleomorph' },
         epidemiology: {
           incidence: 'Sporadische Ausbrüche (Südasien, Südostasien)',
-          risk_groups: ['Schweinehalter', 'Palmsaftsammler/-konsumenten'],
+          risk_groups: ['Schweinehalter', 'Dattelpalmsaftsammler/-konsumenten'],
           seasonality: 'Winter-Frühling (Bangladesch)',
-          transmission: 'Fledermaus (Flughund) Urin/Speichel (Palmsaft), Schwein, Mensch zu Mensch'
+          transmission: 'Flughunde (Pteropus) Urin/Speichel (Palmsaft), Schwein, Mensch zu Mensch'
         },
         pathomechanism: {
           steps: [
@@ -101,8 +101,8 @@ Object.assign(window.diseases, {
             outpatient: [{ drug: 'Keine', dose: '-', duration: '-', note: 'Sofortige Krankenhaus-/Intensivstationseinweisung' }]
           },
           targeted: 'Kein bewährtes Virostatikum. Monoklonaler Antikörper (m102.4) in der experimentellen Phase.',
-          supportive: ['Intensivmedizin', 'Beatmung', 'Krampfkontrolle'],
-          prevention: ['Vermeidung von Kontakt mit Fledermäusen', 'Vermeidung von rohem Palmsaft', 'Isolierung/Keulung kranker Schweine', 'Krankenhaus-Infektionskontrolle']
+          supportive: ['Intensivmedizin', 'Beatmung', 'Behandlung von Krampfanfällen'],
+          prevention: ['Vermeidung von Kontakt mit Flughunden', 'Vermeidung von rohem Palmsaft', 'Isolierung/Keulung kranker Schweine', 'Strikte Krankenhaushygiene']
         },
         prognosis: { mortality: 'Hoch (40-75%)', prognostic_scores: [], factors: 'Entwicklung einer Enzephalitis, Verfügbarkeit der Behandlung' }
       }
