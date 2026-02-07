@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
           {
             id: 'leptospirosis',
             name: 'Leptospirosis',
-            pathogen: { type: 'Spirochaeta', name: 'Leptospira interrogans', gram: 'Gram-negatív', shape: 'spirális, horoggal' },
+            pathogen: { type: 'Spirochaeta', name: '<i>Leptospira interrogans</i>', gram: 'Gram-negatív', shape: 'spirális, horoggal' },
             epidemiology: {
               incidence: 'Trópusi/szubtrópusi: 10-100/100,000; Mérsékelt öv: 0.1-1/100,000',
               risk_groups: ['Mezőgazdasági munkások', 'Állatorvosok', 'Vágóhídi dolgozók', 'Csatornakarbantartók', 'Vízisport/extrém sport versenyzők', 'Katonák (dzsungel környezet)'],
@@ -16,12 +16,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Leptospira bejut sérült bőrön/nyálkahártyán keresztül',
-                'Gyors haematogen terjedés minden szervbe',
-                'Endothel károsodás → vaszkuláris permeabilitás fokozódása',
-                'Máj, vese, tüdő érintettség',
-                'Weil-betegség: súlyos forma - máj- és veseelégtelenség, vérzések',
-                'Immunmediált gyulladás (T-sejt aktiváció)'
+                'A Leptospira baktériumok fertőzött állatok (főleg rágcsálók) vizeletével szennyezett vízben vagy talajban élnek túl. A kórokozó sérült bőrön vagy nyálkahártyán (szem, orr, száj) keresztül jut a szervezetbe.',
+                'A behatolást követően a baktériumok gyorsan a véráramba kerülnek (haematogen szórás), és eljutnak a szervezet szinte minden szervébe, különösen a májba, vesébe, tüdőbe és központi idegrendszerbe.',
+                'A kórokozó az erek endothel sejtjeit károsítja, ami fokozott vaszkuláris permeabilitáshoz, folyadékvesztéshez és vérzésekhez vezet.',
+                'A súlyos forma, a Weil-betegség, a máj- és veseelégtelenség, sárgaság (icterus) és súlyos vérzéses szövődmények (pl. tüdővérzés) triászával jellemezhető.',
+                'A klinikai tünetek egy részét a gazdaszervezet heves, immunmediált gyulladásos válasza okozza, nem pedig a baktérium direkt toxikus hatása.'
               ],
               virulence_factors: ['Outer membrane proteins (LipL32)', 'Flagellum (mobilitás)', 'Hemolysinek', 'Lipopoliszacharid', 'Adhezinek']
             },
@@ -29,12 +28,9 @@ Object.assign(window.diseases, {
               incubation: '2-30 nap (átlag 7-12 nap)',
               onset: 'Bifázisos lefolyás',
               symptoms: [
-                { name: 'Hirtelen láz', description: '>95%-ban jelen van (39-40°C), hidegrázással', severity: 'severe' },
-                { name: 'Fejfájás', description: '>95%-ban, súlyos, frontális/retrobulbaris', severity: 'severe' },
-                { name: 'Myalgia', description: '>80%-ban, főleg vádli és lumbális régió (jellemző!)', severity: 'severe' },
-                { name: 'Conjunctivalis suffusio', description: '30-40%-ban, de nagyon specifikus (icterus nélkül)', severity: 'moderate' },
-                { name: 'Icterus', description: '5-10%-ban (Weil-betegség)', severity: 'severe' },
-                { name: 'Vérzéses manifesztációk', description: '30-40%-ban súlyos formánál (tüdővérzés, petechiae)', severity: 'severe' }
+                { name: 'Akut/Szeptikus fázis (első hét)', description: 'Hirtelen kezdődő magas láz hidegrázással, intenzív fejfájás, és jellegzetes, kínzó izomfájdalom, különösen a vádli és a derék területén. Gyakori a conjunctivalis suffusio (a szem bevörösödése gennyes váladék nélkül).', severity: 'severe' },
+                { name: 'Immun fázis (második hét)', description: 'Az első fázis után rövid javulás következhet, majd a tünetek visszatérnek az immunválasz következtében. Itt jelenhet meg az aszeptikus meningitis, uveitis és a szervi manifesztációk.', severity: 'moderate' },
+                { name: 'Weil-betegség (súlyos forma)', description: 'A betegek 5-10%-ánál alakul ki. Jellemzői a sárgaság (icterus), a veseelégtelenség (akut tubuláris nekrózis), és a vérzéses szövődmények, mint a tüdővérzés, ami magas halálozással jár.', severity: 'severe' }
               ],
               physical_exam: [
                 'Magas láz, tachycardia',
@@ -102,7 +98,7 @@ Object.assign(window.diseases, {
           {
             id: 'hantavirus',
             name: 'Hantavírus fertőzés',
-            pathogen: { type: 'Vírus', name: 'Hantavírus (több szerotípus)', gram: 'Negatív-szálú RNS vírus, Bunyaviridae', shape: 'szferikus' },
+            pathogen: { type: 'Vírus', name: '<i>Hantavírus</i> (több szerotípus)', gram: 'Negatív-szálú RNS vírus, Bunyaviridae', shape: 'szferikus' },
             epidemiology: {
               incidence: 'Európa: HFRS 10,000+ eset/év; USA: HPS <50 eset/év',
               risk_groups: ['Mezőgazdasági munkások', 'Erdészek', 'Katonák', 'Kempingezők/túrázók', 'Rágcsálókkal kontakt munka', 'Rosszul szellőzött épületek takarítása'],
@@ -111,12 +107,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Hantavírus inhaláció (rágcsáló ürülék/vizelet por)',
-                'Vírus endothel sejteket fertőz (nem citopatikus)',
-                'Immunmediált vaszkuláris permeabilitás fokozódás',
-                'HFRS: vese érintettség (capillary leak szindróma)',
-                'HPS: pulmonalis capillary leak → tüdőödéma, kardiogén shock',
-                'Trombocitopénia és koagulációs zavarok'
+                'A fertőzés rágcsálók (pl. erdei pocok) beszáradt vizeletével, ürülékével vagy nyálával szennyezett por belélegzésével (aeroszol) történik. Emberről emberre nem terjed.',
+                'A vírus a tüdőn keresztül bejutva a véráramba kerül, és célzottan az erek belső felszínét borító endothel sejteket fertőzi meg, anélkül, hogy direkt sejthalált okozna.',
+                'A fő károsodást a szervezet túlzott immunválasza okozza. Az aktivált T-sejtek és citokinek (TNF-alfa) az endothel sejtek közötti kapcsolatokat meglazítják, ami kapilláris szivárgáshoz (capillary leak) vezet.',
+                'HFRS (Hemorrhagic Fever with Renal Syndrome): A kapillárisszivárgás elsősorban a vesében jelentkezik, ami akut veseelégtelenséghez, proteinuriához és vérzésekhez vezet.',
+                'HPS (Hantavirus Pulmonary Syndrome): A szivárgás a tüdőben dominál, ami gyorsan kialakuló, nem-kardiogén tüdőödémához és kardiogén shockhoz vezet. A thrombocytopenia és a hemokoncentráció a betegség kulcsfontosságú laboratóriumi jelei.'
               ],
               virulence_factors: ['Nukleokapsid protein (immunválasz)', 'Glikoprotein Gn/Gc (sejt entry)', 'Endothel tropizmus', 'Immunmoduláció']
             },
@@ -124,13 +119,9 @@ Object.assign(window.diseases, {
               incubation: '1-8 hét (átlag 2-4 hét)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: '100%-ban, hirtelen kezdet (39-41°C)', severity: 'severe' },
-                { name: 'Myalgia', description: '85-100%-ban (hát, comb)', severity: 'moderate' },
-                { name: 'Fejfájás', description: '>90%-ban', severity: 'severe' },
-                { name: 'Hasi fájdalom', description: '30-50%-ban (HFRS-ben gyakoribb)', severity: 'severe' },
-                { name: 'Látászavar', description: '20-30%-ban (HFRS - átmeneti myopia)', severity: 'moderate' },
-                { name: 'HPS tünetek', description: 'Köhögés, dyspnoe (>90% a prodroma végén)', severity: 'severe' },
-                { name: 'HFRS tünetek', description: 'Oliguria/anuria, vesetáji fájdalom', severity: 'severe' }
+                { name: 'Prodromális fázis (3-5 nap)', description: 'Hirtelen kezdődő, magas láz, hidegrázás, erős fejfájás és izomfájdalom (főleg hát és comb). Gyakori az arcpír (facial flush) és a conjunctiva belövelltsége.', severity: 'severe' },
+                { name: 'HFRS (Veseérintettségű forma)', description: 'A lázas fázist hypotonia, majd oliguria/anuria követi. Jellemző a súlyos vesetáji fájdalom, a masszív proteinuria és a thrombocytopenia. A felépülés fázisában polyuria jelentkezik.', severity: 'severe' },
+                { name: 'HPS (Tüdőérintettségű forma)', description: 'A prodromális fázis után gyorsan progrediáló köhögés és légszomj alakul ki, ami órák alatt súlyos, nem-kardiogén tüdőödémába és kardiogén shockba torkollik. Magas mortalitású forma.', severity: 'severe' }
               ],
               physical_exam: [
                 'Magas láz',
@@ -196,99 +187,84 @@ Object.assign(window.diseases, {
           {
             id: 'lyme',
             name: 'Lyme-kór (Borreliosis)',
-            pathogen: { type: 'Spirochaeta', name: 'Borrelia burgdorferi sensu lato', gram: 'Gram-negatív', shape: 'spirális' },
+            pathogen: { type: 'Spirochaeta', name: '<i>Borrelia burgdorferi sensu lato</i>', gram: 'Gram-negatív', shape: 'spirális' },
             epidemiology: {
-              incidence: 'USA: 476,000 eset/év; Európa: 232,000 eset/év',
-              risk_groups: ['Erdei területek látogatói', 'Kirándulók, kempingezők', 'Erdészek, vadászok', 'Kertészek', 'Gyerekek (nyári játék)'],
-              seasonality: 'Április-október (kullancs aktivitás)',
-              transmission: 'Ixodes kullancs csípés (>24-36 óra attached)'
+              incidence: 'USA: 476,000 eset/év; Európa: 232,000 eset/év; Magyarországon gyakori, endemikus',
+              risk_groups: ['Erdei területek látogatói', 'Kirándulók, kempingezők', 'Erdészek, vadászok', 'Kertészek', 'Gyerekek'],
+              seasonality: 'Tavasztól őszig (kullancs aktivitás)',
+              transmission: 'Ixodes ricinus kullancs csípés (általában >24 óra vérszívás szükséges)'
             },
             pathomechanism: {
               steps: [
-                'Kullancs csípés → Borrelia inokulálása',
-                'Lokális terjedés a bőrben → erythema migrans',
-                'Haematogen disszeminálás (napok-hetek)',
-                'Korai disszeminált: szív, idegrendszer, ízületek',
-                'Késői: krónikus arthritis, neuroborreliosis',
-                'Spirochaeta antigének perzisztálhatnak (immunválasz folytatódik)'
+                'A fertőzött Ixodes kullancs vérszívása során a Borrelia spirochaeták a kullancs nyálmirigyeiből a gazdaszervezet bőrébe jutnak (általában >24 óra vérszívás szükséges).',
+                'A baktériumok lokálisan szaporodnak a bőrben, és centrifugálisan terjednek, létrehozva a jellegzetes Erythema migrans (EM) bőrpírt.',
+                'A kórokozók a véráramba (haematogen) és a nyirokrendszerbe jutva disszeminálódnak, elérve távoli szerveket (szív, idegrendszer, ízületek, bőr).',
+                'A baktériumok képesek az immunrendszer elől rejtőzködni (antigén variáció, komplement gátlás), ami lehetővé teszi a perzisztenciát és a krónikus gyulladás kialakulását.',
+                'A szöveti károsodást elsősorban nem toxinok, hanem a gazdaszervezet gyulladásos válasza (citokinek, immunkomplexek) okozza.'
               ],
-              virulence_factors: ['Outer surface proteins (OspA, OspC)', 'VlsE (antigén variáció)', 'Komplement rezisztencia', 'Extracelluláris mátrix adherencia']
+              virulence_factors: ['Osp (Outer surface proteins)', 'VlsE (antigén variáció)', 'Motilitás']
             },
             clinical: {
-              incubation: '3-30 nap (átlag 7 nap)',
+              incubation: 'EM: 3-30 nap (átlag 7-14 nap)',
               onset: 'Stádiumos',
               symptoms: [
-                { name: 'Erythema migrans (EM)', description: '70-80%-ban megjelenik (céltábla vagy homogén)', severity: 'moderate' },
-                { name: 'Általános tünetek', description: 'Láz, fáradtság, fejfájás (korai fázisban gyakori)', severity: 'mild' },
-                { name: 'Neuroborreliosis', description: '10-15% (kezeletleneknél): Facialis paresis, meningitis, radiculopathia', severity: 'severe' },
-                { name: 'Lyme Carditis', description: '1-5% (kezeletleneknél): AV blokk', severity: 'severe' },
-                { name: 'Lyme Arthritis', description: '60% (kezeletleneknél, USA): Térdízületi duzzanat', severity: 'moderate' },
-                { name: 'Borrelia lymphocytoma', description: 'Ritka (<1%), fülcimpa/emlőbimbó (Európa)', severity: 'mild' }
+                { name: 'Korai lokalizált stádium (Erythema migrans)', description: 'A csípés helyén kialakuló, fájdalmatlan, lassan növekvő (>5 cm), gyakran céltábla-szerű (de lehet homogén is) bőrpír. Ez a leggyakoribb tünet, klinikai diagnózist tesz lehetővé. Általános influenzaszerű tünetek (láz, fejfájás, izomfájdalom) kísérhetik.', severity: 'moderate' },
+                { name: 'Korai disszeminált stádium (Szervek)', description: 'A baktérium szóródása után hetekkel-hónapokkal jelentkezik. Idegrendszer: Bannwarth-szindróma (éjszakai radiculáris fájdalom, facialis paresis, meningitis). Szív: Lyme-carditis (AV-blokk, ritmuszavar). Bőr: Lymphocytoma (kékes-vörös csomó).', severity: 'severe' },
+                { name: 'Késői stádium (Krónikus)', description: 'Hónapokkal-évekkel később. Lyme-arthritis: nagy ízületek (főleg térd) intermittáló duzzanata és fájdalma. Bőr: Acrodermatitis chronica atrophicans (ACA) - a végtagok feszítő felszínének livide elszíneződése és sorvadása.', severity: 'moderate' }
               ],
               physical_exam: [
-                'Korai lokalizált: EM (átmérő 5-70cm, gyakran centrális clearance)',
-                'Multiplex EM (disszeminált)',
-                'Lymphocytoma (fülcimpa, mamma)',
-                'Facialis paresis (uni/bilaterális)',
-                'Meningealis jelek',
-                'Monarthritis/oligoarthritis (térd)',
-                'Bőr atrófia (ACA)'
+                'Erythema migrans: >5 cm átmérőjű, terjedő erythema',
+                'Facialis paresis (lehet kétoldali)',
+                'Meningealis izgalmi jelek (enyhe)',
+                'Ízületi duzzanat (térd)',
+                'ACA: cigarettapapír-szerű bőr'
               ],
-              complications: ['Krónikus Lyme arthritis', 'Post-Lyme szindróma', 'Encephalomyelitis', 'Keratitis', 'Krónikus fáradtság']
+              complications: ['Krónikus ízületi gyulladás', 'Post-Lyme szindróma (szubjektív panaszok)', 'Krónikus neuroborreliosis']
             },
             diagnostics: {
               laboratory: [
-                { test: 'Kétlépcsős szerológia: ELISA → Western blot', finding: 'IgM (2-4 hét), IgG (4-6 hét)', interpretation: 'Gold standard, de korai EM-ben negatív lehet!' },
-                { test: 'Liquor', finding: 'Lymphocytás pleocytosis, ↑fehérje, intrathekális Ab termelés', interpretation: 'Neuroborreliosis' },
-                { test: 'Ízületi folyadék', finding: 'Gyulladásos (WBC >10,000), PCR+', interpretation: 'Lyme arthritis' }
+                { test: 'Kétlépcsős szerológia (ELISA + Western blot)', finding: 'IgM (2-4 hét), IgG (4-6 hét)', interpretation: 'Kétlépcsős! EM stádiumban NEM javasolt (klinikai dg, még negatív lehet). Disszeminált/késői stádiumban indokolt.' },
+                { test: 'Liquor', finding: 'Lymphocytás pleocytosis, intrathekális antitest szintézis (AI > 1.5)', interpretation: 'Neuroborreliosis igazolása' }
               ],
               imaging: [
-                { modality: 'MRI agy', finding: 'White matter léziók (neuroborreliosis)', significance: 'Ritka, differenciáldiagnózis' },
-                { modality: 'EKG', finding: 'AV blokk (1-3 fokozat)', significance: 'Lyme carditis' }
+                { modality: 'EKG', finding: 'AV blokk', significance: 'Carditis gyanú esetén' }
               ],
               microbiology: [
-                { test: 'Szerológia (ELISA + Western blot)', finding: 'IgM/IgG pozitív', significance: 'Kétlépcsős algoritmus! Fals pozitív gyakori' },
-                { test: 'PCR (ízületi folyadék, liquor)', finding: 'Borrelia DNS', significance: 'Alacsony szenzitivitás' },
-                { test: 'Tenyésztés', finding: 'Nem rutin (hetekig tart)', significance: 'Csak speciális esetben' }
+                { test: 'Kullancs vizsgálata', finding: 'NEM javasolt', significance: 'Nincs klinikai relevanciája a kezelés szempontjából' },
+                { test: 'PCR', finding: 'Borrelia DNS', significance: 'Ízületi folyadékból vagy bőrbiopsziából (ACA) hasznos lehet. Vérből/liquorból alacsony szenzitivitás.' }
               ]
             },
             differential: [
-              { disease: 'Tinea corporis (gyűrűsféreg)', distinguishing: 'Nem terjeszkedik, hámlik, KOH mikroszkópia' },
-              { disease: 'Southern tick-associated rash illness (STARI)', distinguishing: 'Lone Star tick, szerológia negatív' },
-              { disease: 'Reaktív arthritis', distinguishing: 'GI/GU fertőzés, HLA-B27' },
-              { disease: 'Rheumatoid arthritis', distinguishing: 'RF/anti-CCP pozitív, szimmetrikus' },
-              { disease: 'MS', distinguishing: 'MRI pattern, oligoklonális sávok' }
+              { disease: 'Orbánc/Cellulitis', distinguishing: 'Láz, fájdalom, gyors terjedés, leukocytosis' },
+              { disease: 'Tinea corporis', distinguishing: 'Hámló szél, viszket, KOH pozitív' },
+              { disease: 'Egyéb arthritis', distinguishing: 'Szeptikus (láz, genny), RA (szimmetrikus, szerológia)' },
+              { disease: 'Sclerosis multiplex', distinguishing: 'MRI, liquor oligoklonális sávok' }
             ],
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Doxycyclin', dose: '2x100mg PO', duration: '10-14 nap (EM), 14-21 nap (arthritis)', note: 'Első választás felnőtt/gyerek >8év' },
-                  { drug: 'Amoxicillin', dose: '3x500mg PO', duration: '14-21 nap', note: 'Várandós, gyerek <8év' },
-                  { drug: 'Cefuroxim axetil', dose: '2x500mg PO', duration: '14-21 nap', note: 'Alternatíva' }
+                  { drug: 'Doxycyclin', dose: '2x100 mg PO', duration: '14-21 nap (EM: 10-14 nap)', note: 'Első választás (EM, Neuroborreliosis, Carditis, Arthritis, ACA). Gyerekeknek is adható.' },
+                  { drug: 'Amoxicillin', dose: '3x500-1000 mg PO', duration: '14-21 nap', note: 'Alternatíva (EM, Arthritis, ACA, terhesség)' },
+                  { drug: 'Cefuroxim axetil', dose: '2x500 mg PO', duration: '14-21 nap', note: 'Alternatíva' }
                 ],
                 inpatient: [
-                  { drug: 'Ceftriaxon', dose: '1x2g IV', duration: '14-28 nap', note: 'Neuroborreliosis, Lyme carditis (AV blokk >1°)' },
-                  { drug: 'Penicillin G', dose: '4x5 millió NE IV', duration: '14-28 nap', note: 'Alternatíva neuroborreliosis' }
-                ],
-                icu: [
-                  { drug: 'Ceftriaxon', dose: '1x2g IV', duration: '28 nap', note: 'Súlyos neuroborreliosis' },
-                  { drug: 'Pacemaker (átmeneti)', dose: 'Komplett AV blokk', duration: '', note: 'Carditis' }
+                  { drug: 'Ceftriaxon', dose: '1x2 g IV', duration: '14-28 nap', note: 'Súlyos neuroborreliosis (pl. encephalitis), carditis (magas fokú blokk), refrakter arthritis' }
                 ]
               },
-              targeted: 'Korai: Doxycyclin; Neuroborreliosis/Carditis: Ceftriaxon IV',
-              supportive: ['Jarisch-Herxheimer reakció lehetséges', 'NSAIDs (arthritis)', 'Átmeneti pacemaker (teljes blokk)'],
-              prevention: ['Védőruha erdőben', 'Repellensek (DEET)', 'Kullancs eltávolítás <24 óra', 'Egyetlen dózis doxycyclin (200mg) <72 óra csípés után (endémiás területen)', 'Nincsen hatékony vakcina']
+              targeted: 'Korai lokalizált (EM): Doxycyclin 10 nap. Neuroborreliosis (Bannwarth): Doxycyclin PO (ugyanolyan hatékony mint IV Ceftriaxon!) 14 nap. Arthritis: Doxycyclin 28 nap.',
+              supportive: ['Tüneti kezelés', 'Fizioterápia'],
+              prevention: ['Kullancs mielőbbi eltávolítása', 'Védőruházat', 'Profilaktikus antibiotikum csípés után NEM javasolt (magyar irányelv)']
             },
             prognosis: {
-              mortality: '<0.001% (Lyme carditis ritka haláleset)',
-              prognostic_scores: ['Nincs specifikus'],
-              factors: 'Korai kezelés, stádium, szerv érintettség, neurológiai/kardiális komplikáció'
+              mortality: 'Nagyon alacsony',
+              prognostic_scores: ['Nincs'],
+              factors: 'Korai felismerés és kezelés'
             }
           },
           {
             id: 'tularemia',
             name: 'Tularémia (Nyúlpestis)',
-            pathogen: { type: 'Baktérium', name: 'Francisella tularensis', gram: 'Gram-negatív', shape: 'kocko-pálca, intracelluláris' },
+            pathogen: { type: 'Baktérium', name: '<i>Francisella tularensis</i>', gram: 'Gram-negatív', shape: 'kocko-pálca, intracelluláris' },
             epidemiology: {
               incidence: 'USA: 100-200 eset/év; Európa: sporadikus',
               risk_groups: ['Vadászok', 'Bőrfeldolgozók', 'Mezőgazdasági munkások', 'Laboránsok', 'Erdészek', 'Állatorvosok'],
@@ -297,12 +273,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Francisella bejut bőrön/nyálkahártyán/inhalálva',
-                'Fagocitózis macrophagok/dendritikus sejtek',
-                'Intracelluláris replikáció (fagoszómából kiszabadulás)',
-                'Regionális nyirokcsomók → nekrotizáló granuloma',
-                'Lymphadenitis, typhoidealis szórás',
-                'Magas fertőzőképesség (<10 organizmus elegendő)'
+                'A Francisella tularensis egy rendkívül fertőző baktérium (<10 organizmus is elég), amely kullancscsípéssel, fertőzött állattal (pl. nyúl) való direkt kontaktussal, vagy szennyezett por inhalációjával jut a szervezetbe.',
+                'A behatolás helyén a baktériumot a makrofágok bekebelezik, de a kórokozó képes kiszabadulni a fagoszómából a citoplazmába, ahol elszaporodik.',
+                'A fertőzött makrofágok a regionális nyirokcsomókba vándorolnak, ahol a baktérium tovább szaporodik, ami fájdalmas, nekrotizáló granulomákat és lymphadenitist (nyirokcsomó-gyulladást) okoz.',
+                'A behatolási kaputól függően különböző klinikai formák alakulnak ki (pl. ulceroglandularis, pulmonalis).',
+                'A baktériumok a nyirokrendszerből a véráramba jutva szisztémás fertőzést (typhoidealis forma) és távoli szervek (tüdő, máj, lép) érintettségét okozhatják.'
               ],
               virulence_factors: ['Kapszula', 'Fagoszóma escape (iglA-D lókusz)', 'LPS (toxikus)', 'Sziderofórok', 'Intracelluláris túlélés']
             },
@@ -310,15 +285,13 @@ Object.assign(window.diseases, {
               incubation: '3-5 nap (1-14 nap)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: '>90%-ban, hirtelen kezdet', severity: 'severe' },
-                { name: 'Ulceroglandularis', description: '75-85%-ban: Fájdalmas fekély + regionális nyirokcsomó', severity: 'moderate' },
-                { name: 'Glandularis', description: '5-10%-ban: Csak nyirokcsomó duzzanat (fekély nélkül)', severity: 'moderate' },
-                { name: 'Typhoidealis', description: '5-15%-ban: Szisztémás lázas állapot, lokalizáció nélkül', severity: 'severe' },
-                { name: 'Pneumonia', description: '30-80%-a a typhoidealis eseteknek (vagy primer inhaláció)', severity: 'severe' },
-                { name: 'Oculoglandularis', description: '1-2%-ban: Conjunctivitis + nyirokcsomó', severity: 'moderate' }
+                { name: 'Ulceroglandularis forma (75-85%)', description: 'A leggyakoribb forma. A behatolási kapunál (pl. csípés helye) egy fájdalmas fekély (ulcus) alakul ki fekete pörkkel, amit a regionális nyirokcsomók fájdalmas duzzanata (bubo) kísér.', severity: 'moderate' },
+                { name: 'Glandularis forma (5-10%)', description: 'Hasonló az ulceroglandularis formához, de a primer bőrfekély hiányzik, csak a fájdalmas nyirokcsomó-duzzanat észlelhető.', severity: 'moderate' },
+                { name: 'Typhoidealis forma (5-15%)', description: 'Súlyos, szisztémás betegség magas lázzal, hidegrázással, fejfájással, de primer lokalizáció (fekély, nyirokcsomó) nélkül. Gyakran tüdőgyulladással társul.', severity: 'severe' },
+                { name: 'Egyéb formák', description: 'Oculoglandularis (szembe jutva conjunctivitis és nyirokcsomó-duzzanat), Oropharyngealis (lenyelve tonsillitis), Pulmonalis (inhalálva atípusos pneumonia).', severity: 'moderate' }
               ],
               physical_exam: [
-                'Ulceroglandularis (75%): bőrfekély (fekete eschar) + tender nyirokcsomó',
+                'Ulceroglandularis (75%): bőrfekély (fekete eschar) + fájdalmas/érzékeny nyirokcsomó',
                 'Glandularis: nyirokcsomó NINCS fekély',
                 'Oculoglandularis: conjunctivitis, nodularis léziók, nyirokcsomó',
                 'Oropharyngealis: tonsillitis, nyaki nyirokcsomó',
@@ -380,7 +353,7 @@ Object.assign(window.diseases, {
           {
             id: 'cat_scratch',
             name: 'Macskakarmolási betegség (Cat-Scratch Disease)',
-            pathogen: { type: 'Baktérium', name: 'Bartonella henselae', gram: 'Gram-negatív', shape: 'pálca, intracelluláris' },
+            pathogen: { type: 'Baktérium', name: '<i>Bartonella henselae</i>', gram: 'Gram-negatív', shape: 'pálca, intracelluláris' },
             epidemiology: {
               incidence: 'USA: ~12,000 eset/év (becslés), aluldiagnosztizált',
               risk_groups: ['Gyerekek <10 év', 'Macskával kontakt', 'Bolha expozíció', 'Immunszupprimáltak (HIV)', 'Állatorvosok, shelter dolgozók'],
@@ -389,12 +362,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bartonella inokulálása macska nyállal (karcolás/harapás)',
-                'Lokális inokulációs papula/pusztula',
-                'Regionális nyirokcsomók inváziója',
-                'Granulomatózus lymphadenitis (stellata nekrózissal)',
-                'Ritka disszeminálás (immunszupprimált): bacilláris angiomatózis, endocarditis',
-                'Immunválasz általában eradikálja (hetek-hónapok)'
+                'A Bartonella henselae baktériumot leggyakrabban fertőzött (de tünetmentes) macskák, főleg kölykök, karmolással vagy harapással juttatják az ember bőrébe. A macskák bolhák közvetítésével fertőződnek egymástól.',
+                'A behatolás helyén 3-10 napon belül egy primer lézió, egy vörös papula vagy pustula alakul ki.',
+                'A baktériumok a nyirokutakon keresztül a regionális nyirokcsomókba vándorolnak (pl. axillaris, nyaki).',
+                'A nyirokcsomókban a kórokozó jellegzetes, csillag alakú (stellata) nekrotizáló granulomákat hoz létre, ami a nyirokcsomók fájdalmas megnagyobbodását okozza.',
+                'Immunkompetens egyénekben a fertőzés általában önlimitáló. Immunszupprimáltakban (pl. HIV) a baktérium szóródhat, és szisztémás betegséget, például bacilláris angiomatózist (érburjánzás) vagy peliosis hepatist okozhat.'
               ],
               virulence_factors: ['Flagellum', 'Pili', 'Adhezinek', 'BadA autotranszporter', 'Intracelluláris túlélés (erythrocyták, endothel)']
             },
@@ -402,12 +374,9 @@ Object.assign(window.diseases, {
               incubation: '3-10 nap (papula), 1-3 hét (lymphadenitis)',
               onset: 'Szubakut',
               symptoms: [
-                { name: 'Lymphadenopathia', description: '85-90%-ban: Regionális, fájdalmas nyirokcsomó duzzanat', severity: 'moderate' },
-                { name: 'Inokulációs lézió', description: '25-60%-ban: Papula/pusztula a karcolás helyén', severity: 'mild' },
-                { name: 'Láz', description: '30-50%-ban, általában enyhe', severity: 'mild' },
-                { name: 'Szisztémás tünetek', description: 'Fáradtság, rossz közérzet (50%)', severity: 'mild' },
-                { name: 'Parinaud szindróma', description: '2-8%-ban: Conjunctivitis + preauricularis csomó', severity: 'moderate' },
-                { name: 'Neuroretinitis', description: '1-2%-ban: Egyoldali látásvesztés', severity: 'severe' }
+                { name: 'Tipikus forma', description: 'A karmolás helyén megjelenő primer papula után 1-3 héttel egyoldali, fájdalmas regionális nyirokcsomó-duzzanat alakul ki (leggyakrabban a hónaljban vagy a nyakon). Enyhe láz és rossz közérzet kísérheti. A nyirokcsomó begennyedhet.', severity: 'moderate' },
+                { name: 'Parinaud oculoglandularis szindróma', description: 'A kórokozó a conjunctiván keresztül jut be, ami egyoldali kötőhártya-gyulladást és a fül előtti (preauricularis) nyirokcsomó duzzanatát okozza.', severity: 'moderate' },
+                { name: 'Atípusos/Disszeminált formák', description: 'Ritkábban, főleg immunszupprimáltakban, a fertőzés szóródhat. Okozhat neuroretinitist (látásvesztés), encephalitist, hepatosplenikus betegséget (máj- és léptályogok), vagy bacilláris angiomatózist (bőrön és belső szervekben megjelenő érdaganatok).', severity: 'severe' }
               ],
               physical_exam: [
                 'Papula/pusztula a karcolás helyén (gyógyul, hegesedik)',
@@ -473,7 +442,7 @@ Object.assign(window.diseases, {
           {
             id: 'q_fever_zoo',
             name: 'Q-láz',
-            pathogen: { type: 'Baktérium', name: 'Coxiella burnetii', gram: 'Gram-negatív (intracelluláris)', shape: 'coccobacillus' },
+            pathogen: { type: 'Baktérium', name: '<i>Coxiella burnetii</i>', gram: 'Gram-negatív (intracelluláris)', shape: 'coccobacillus' },
             epidemiology: {
               incidence: 'Zoonózis, foglalkozási betegség',
               risk_groups: ['Állattenyésztők', 'Vágóhídi dolgozók', 'Állatorvosok'],
@@ -482,11 +451,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhaláció (egyetlen baktérium is fertőzhet!)',
-                'Alveolaris macrophagok fertőzése',
-                'Savas fagoszómában szaporodás',
-                'Haematogen szórás',
-                'Granuloma képződés (doughnut granuloma)'
+                'A Coxiella burnetii egy rendkívül fertőző, obligát intracelluláris baktérium. A fertőzés leggyakrabban fertőzött állatok (juh, kecske, szarvasmarha) szülés közben keletkező, spóraszerű részecskéket tartalmazó aeroszoljának belélegzésével történik.',
+                'A tüdőbe jutva a kórokozót az alveoláris makrofágok fagocitálják.',
+                'A baktérium a makrofágok savas fagoszómáiban nemcsak túléli, hanem ott szaporodik is, egy speciális vakuólumot létrehozva.',
+                'A fertőzött sejtekből kiszabadulva a kórokozó a vérárammal (hematogén szórás) eljut a szervezet különböző részeibe, főleg a májba és a csontvelőbe.',
+                'A szervezet jellegzetes, "fánk" alakú (doughnut) granulomák képzésével próbálja megfékezni a fertőzést. A betegség lehet akut vagy krónikus (endocarditis).'
               ],
               virulence_factors: ['Spóraszerű forma (ellenálló)', 'LPS fázisvariáció']
             },
@@ -494,10 +463,8 @@ Object.assign(window.diseases, {
               incubation: '2-3 hét',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Akut Q-láz', description: 'Influenza-szerű: Láz, fáradtság, súlyos fejfájás (>90% tüneteseknél)', severity: 'severe' },
-                { name: 'Hepatitis', description: '60-75%-ban (granulomás), hepatomegalia', severity: 'moderate' },
-                { name: 'Pneumonia', description: '30-50%-ban (atípusos), gyakran enyhe köhögés', severity: 'moderate' },
-                { name: 'Krónikus Q-láz', description: '<5% akut eset után; Endocarditis (60-70% krónikusoknál)', severity: 'severe' }
+                { name: 'Akut Q-láz', description: 'Az esetek kb. 60%-a tünetmentes. A tünetes forma hirtelen kezdődő magas lázzal, súlyos, retrobulbáris fejfájással és influenzaszerű tünetekkel jár. Gyakori az atípusos tüdőgyulladás (enyhe köhögés) és a granulomás hepatitis (emelkedett májenzimek).', severity: 'moderate' },
+                { name: 'Krónikus Q-láz', description: 'Az akut fertőzés után hónapokkal-évekkel alakul ki, főleg szívbillentyűhibával vagy immunszuppresszióval rendelkező betegeknél. Leggyakoribb manifesztációja a tenyésztés-negatív endocarditis. Egyéb formái a vaszkuláris (aneurysma) és csontfertőzések.', severity: 'severe' }
               ],
               physical_exam: [
                 'Hepatomegalia',
@@ -550,7 +517,7 @@ Object.assign(window.diseases, {
           {
             id: 'rabies',
             name: 'Veszettség (Rabies)',
-            pathogen: { type: 'Vírus', name: 'Rabies lyssavirus', gram: 'RNS vírus', shape: 'lövedék' },
+            pathogen: { type: 'Vírus', name: '<i>Rabies lyssavirus</i>', gram: 'RNS vírus', shape: 'lövedék' },
             epidemiology: {
               incidence: 'Világszerte 59,000 halál/év (főleg Ázsia, Afrika)',
               risk_groups: ['Állatokkal foglalkozók', 'Endémiás területre utazók', 'Barlangászok (denevér)'],
@@ -559,11 +526,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inokuláció (izomszövet)',
-                'Perifériás idegekbe jutás (NMJ)',
-                'Retrográd axonális transzport a KIR-be',
-                'Replikáció az agyban (Negri-testek)',
-                'Centrifugális terjedés (nyálmirigyek, cornea)'
+                'A veszettségvírus fertőzött állat (pl. kutya, róka, denevér) harapásával, a nyálon keresztül jut a szervezetbe, jellemzően az izomszövetbe.',
+                'A vírus kezdetben az izomsejtekben szaporodik, majd a neuromuszkuláris junkción (NMJ) keresztül belép a perifériás idegekbe.',
+                'Az idegsejtek axonjaiban retrográd (a központ felé irányuló) transzporttal halad a központi idegrendszer (KIR), azaz a gerincvelő és az agy felé.',
+                'A KIR-ben a vírus gyorsan szaporodik, súlyos, fatális encephalitist okozva. A fertőzött idegsejtekben jellegzetes zárványok, az ún. Negri-testek jelennek meg.',
+                'Az agyból a vírus centrifugálisan, az idegek mentén eljut más szervekbe, legfontosabbként a nyálmirigyekbe, ami lehetővé teszi a további terjedést.'
               ],
               virulence_factors: ['Neurotropizmus', 'Immunelkerülés']
             },
@@ -571,11 +538,9 @@ Object.assign(window.diseases, {
               incubation: '1-3 hónap (napoktól évekig)',
               onset: 'Prodroma után akut neurológiai',
               symptoms: [
-                { name: 'Prodroma', description: 'Paresthesia/fájdalom a harapás helyén (50-80%)', severity: 'moderate' },
-                { name: 'Dühöngő (Encephalitises) forma', description: '80%-ban: Hydrophobia (50-80%), aerophobia, agitáció', severity: 'severe' },
-                { name: 'Csendes (Paralitikus) forma', description: '20%-ban: Ascendáló bénulás (Guillain-Barré szerű)', severity: 'severe' },
-                { name: 'Hydrophobia', description: 'Gégegörcs iváskor/víz látványára (pathognomikus)', severity: 'severe' },
-                { name: 'Kóma', description: 'Végstádium, halál', severity: 'severe' }
+                { name: 'Prodromális stádium', description: 'A betegség első jelei nem specifikusak: láz, fejfájás, rossz közérzet. Jellegzetes lehet a harapás helyén jelentkező fájdalom, viszketés vagy paraesthesia (érzészavar).', severity: 'moderate' },
+                { name: 'Akut neurológiai stádium', description: 'Két fő formája van. A "dühöngő" (encephalitises) forma (80%) nyugtalansággal, zavartsággal, hydrophobiával (víziszony, a nyelési kísérletre fellépő fájdalmas gégegörcs miatt) és aerophobiával (légáramlattól való félelem) jár. A "csendes" (paralitikus) forma (20%) a harapás helyéről kiinduló, felszálló petyhüdt bénulással jellemezhető.', severity: 'severe' },
+                { name: 'Kóma és halál', description: 'Mindkét forma végül kómába és légzési/keringési elégtelenség miatti halálba torkollik, általában a tünetek megjelenésétől számított 7-10 napon belül.', severity: 'severe' }
               ],
               physical_exam: [
                 'Autonóm instabilitás (hypersalivatio, piloerectio)',
@@ -628,7 +593,7 @@ Object.assign(window.diseases, {
           {
             id: 'anthrax',
             name: 'Lépfene (Anthrax)',
-            pathogen: { type: 'Baktérium', name: 'Bacillus anthracis', gram: 'Gram-pozitív', shape: 'spóraképző pálca' },
+            pathogen: { type: 'Baktérium', name: '<i>Bacillus anthracis</i>', gram: 'Gram-pozitív', shape: 'spóraképző pálca' },
             epidemiology: {
               incidence: 'Ritka, bioterrorizmus veszély',
               risk_groups: ['Állatbőr feldolgozók', 'Állattenyésztők', 'Laboránsok'],
@@ -637,10 +602,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Spóra bejutás → germináció',
-                'Toxin termelés (Edema toxin, Lethal toxin)',
-                'Kapszula (fagocitózis gátlás)',
-                'Szöveti nekrózis, ödéma, szisztémás toxicitás'
+                'A Bacillus anthracis spórái a talajban évtizedekig életképesek. A fertőzés a spórák bejutásával történik: bőrön (cutan), belélegezve (inhalációs) vagy lenyelve (gasztrointesztinális).',
+                'A szervezetben a spórákat a makrofágok felveszik, ahol azok vegetatív baktériumokká alakulnak (germináció), majd a nyirokcsomókba jutnak.',
+                'A baktériumok két fő virulenciafaktorral rendelkeznek: egy antifagocita kapszulával, ami védi őket az immunrendszertől, és egy háromkomponensű exotoxinnal.',
+                'Az anthrax toxin komponensei: a Protective Antigen (PA) a sejtekhez köt, az Edema Factor (EF) ödémát, a Lethal Factor (LF) pedig sejthalált és a citokinválasz zavarát okozza.',
+                'A toxinok masszív szöveti nekrózist, ödémát, vérzést és szisztémás shockot idéznek elő, ami a betegség magas mortalitásáért felelős.'
               ],
               virulence_factors: ['Poly-D-glutaminsav kapszula', 'Protective Antigen (PA)', 'Edema Factor (EF)', 'Lethal Factor (LF)']
             },
@@ -648,10 +614,9 @@ Object.assign(window.diseases, {
               incubation: 'Bőr: 1-7 nap; Inhalációs: 1-60 nap',
               onset: 'Formától függ',
               symptoms: [
-                { name: 'Bőr anthrax', description: '95% természetes eseteknek; Fájdalmatlan fekete pörk (eschar)', severity: 'moderate' },
-                { name: 'Inhalációs anthrax', description: 'Ritka; Bifázisos: influenza-szerű → fulmináns mediastinitis/shock', severity: 'severe' },
-                { name: 'GI anthrax', description: 'Ritka; Hasi fájdalom, véres hasmenés, ascites', severity: 'severe' },
-                { name: 'Meningitis', description: 'Hemorrhagiás meningitis (bármely forma szövődménye lehet)', severity: 'severe' }
+                { name: 'Bőr (cutan) anthrax (95%)', description: 'A behatolás helyén viszkető papula jelenik meg, ami hólyaggá, majd fájdalmatlan, fekete közepű fekéllyé (eschar) alakul, melyet jellegzetes, nem-gyulladásos ödéma vesz körül. Kezelés nélkül a mortalitás 20%.', severity: 'moderate' },
+                { name: 'Inhalációs (pulmonalis) anthrax', description: 'Kétfázisú lefolyású. Kezdetben enyhe, influenzaszerű tünetek (láz, köhögés). 1-3 nap után hirtelen romlás következik be: magas láz, légszomj, shock. A mellkas CT-n jellegzetes a mediastinalis kiszélesedés (vérzéses mediastinitis). Kezelés nélkül szinte mindig halálos.', severity: 'severe' },
+                { name: 'Gasztrointesztinális anthrax', description: 'Fertőzött hús fogyasztása után alakul ki. Hányingerrel, hányással, véres hasmenéssel és súlyos hasi fájdalommal jár. Magas mortalitású forma.', severity: 'severe' }
               ],
               physical_exam: [
                 'Malignus pustula (fekete pörk, ödémás udvar)',
@@ -701,7 +666,58 @@ Object.assign(window.diseases, {
               prognostic_scores: ['Nincs'],
               factors: 'Inhalációs forma, késői kezelés, meningitis'
             }
-          }
-        ]
-      },
+          },
+            {
+            id: 'brucellosis',
+            name: 'Brucellosis (Máltai láz)',
+              pathogen: { type: 'Baktérium', name: '<i>Brucella spp. (melitensis, abortus, suis)</i>', gram: 'Gram-negatív', shape: 'coccobacillus' },
+              epidemiology: {
+                incidence: 'Endémiás a Mediterráneumban, Közel-Keleten',
+                risk_groups: ['Állatorvosok', 'Pásztorok', 'Vágóhídi dolgozók', 'Nyers tejtermék fogyasztók'],
+                seasonality: 'Tavasz-nyár',
+                transmission: 'Direkt kontaktus, inhaláció, pasztőrözetlen tejtermék'
+              },
+              pathomechanism: {
+                steps: [
+                  'Behatolás: A baktérium sérült bőrön, kötőhártyán, légutakon vagy tápcsatornán keresztül jut be.',
+                  'Fagocitózis: A makrofágok bekebelezik, de a baktérium túléli és szaporodik bennük (intracelluláris).',
+                  'Szóródás: A fertőzött makrofágok a regionális nyirokcsomókba, majd a véráramba (bakterémia) jutnak.',
+                  'Szervi érintettség: A retikuloendoteliális rendszer szerveiben (máj, lép, csontvelő, nyirokcsomók) granulómák képződnek.'
+                ],
+                virulence_factors: ['LPS (sima)', 'T4SS szekréciós rendszer', 'Intracelluláris túlélés']
+              },
+              clinical: {
+                incubation: '2-4 hét (1 héttől hónapokig)',
+                onset: 'Fokozatos vagy hirtelen',
+                symptoms: [
+                  { name: 'Unduláló láz', description: 'Hullámzó lefolyású lázmenet (reggel alacsony, délután magas), profúz, penészszagú izzadással.', severity: 'moderate' },
+                  { name: 'Mozgásszervi tünetek', description: 'Ízületi fájdalom (arthralgia), hátfájás (sacroiliitis), izomfájdalom.', severity: 'moderate' },
+                  { name: 'Általános tünetek', description: 'Fáradékonyság, fejfájás, depresszió, fogyás.', severity: 'mild' }
+                ],
+                physical_exam: ['Hepatomegalia', 'Splenomegalia', 'Lymphadenopathia', 'Gerinc ütögetési érzékenység'],
+                complications: ['Osteomyelitis (csigolya)', 'Endocarditis', 'Neurobrucellosis', 'Epididymo-orchitis']
+              },
+              diagnostics: {
+                laboratory: [{ test: 'Vérkép', finding: 'Leukopenia, relatív lymphocytosis', interpretation: '-' }, { test: 'Májenzimek', finding: 'Enyhe emelkedés', interpretation: 'Granulómás hepatitis' }],
+                imaging: [{ modality: 'MRI gerinc', finding: 'Spondylodiscitis', significance: 'Hátfájás esetén' }],
+                microbiology: [
+                  { test: 'Hemokultúra', finding: 'Brucella spp.', significance: 'Lassú növekedés (akár 3-4 hét), jelezni kell a labornak!' },
+                  { test: 'Szerológia (Wright)', finding: 'Titer ≥1:160 vagy 4x emelkedés', significance: 'Standard diagnózis' }
+                ]
+              },
+              differential: [
+                { disease: 'Tífusz', distinguishing: 'Roseolák, bradycardia' },
+                { disease: 'Tuberculosis', distinguishing: 'Légúti tünetek, köpet' },
+                { disease: 'Malária', distinguishing: 'Periodicitás, utazás' }
+              ],
+              therapy: {
+                empirical: { outpatient: [{ drug: 'Doxycyclin + Rifampicin', dose: '2x100mg + 600-900mg PO', duration: '6 hét', note: 'Standard terápia' }] },
+                  targeted: 'Doxycyclin + Rifampicin (6 hét). Alternatíva: Doxycyclin + Streptomycin (2-3 hét). Neurobrucellosis/Endocarditis: Doxy + Rif + Ceftriaxon/Cotrimoxazol (hónapokig).',
+                  supportive: ['Tüneti kezelés'],
+                  prevention: ['Tej pasztőrözése', 'Védőfelszerelés állatoknál', 'Vakcina (állatoknak)']
+                },
+                prognosis: { mortality: '<2% (főleg endocarditis miatt)', prognostic_scores: [], factors: 'Szövődmények, relapszus gyakori' }
+              }
+            ]
+                   },
 });

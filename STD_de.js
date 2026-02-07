@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
           {
             id: 'syphilis',
             name: 'Syphilis',
-            pathogen: { type: 'Spirochäte', name: 'Treponema pallidum', gram: 'Gram-negativ (schlecht anfärbbar)', shape: 'spiralförmig' },
+            pathogen: { type: 'Spirochäte', name: '<i>Treponema pallidum</i>', gram: 'Gram-negativ (schlecht anfärbbar)', shape: 'spiralförmig' },
             epidemiology: {
               incidence: 'Zunehmende Inzidenz weltweit, hoch in der MSM-Population',
               risk_groups: ['MSM (Männer, die Sex mit Männern haben)', 'HIV-positive Personen', 'Sexarbeiter', 'Mehrere Sexualpartner', 'i.v.-Drogenkonsumenten'],
@@ -16,12 +16,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'T. pallidum dringt durch Schleimhäute/Haut ein',
-                'Lokale Vermehrung → Primäraffekt (Ulcus durum)',
-                'Hämatogene Streuung (primäre Virämie)',
-                'Sekundäre Syphilis: disseminierte Erkrankung',
-                'Latenzphase: Immunantwort hält sie unter Kontrolle',
-                'Tertiär: chronische granulomatöse Entzündung (Gumma) oder vaskulär/neurologisch'
+                'Eintritt und Ausbreitung: T. pallidum dringt durch Mikroläsionen in Haut oder Schleimhaut ein. Es gelangt innerhalb von Minuten/Stunden in Lymphbahnen und Blut und wird systemisch, noch bevor der Primäraffekt erscheint.',
+                'Immunumgehung: "Stealth"-Strategie mit geringer Dichte an Außenmembranproteinen zur Vermeidung von Antikörperbindung und Komplementaktivierung.',
+                'Gewebeschaden: Basiert auf obliterierender Endarteriitis (Entzündung und Verschluss kleiner Gefäße) mit perivaskulärer Plasmazellinfiltration.',
+                'Folge: Ischämie durch Gefäßverschluss führt zur Ulzeration des Primäraffekts und zur Bildung von Gummen (nekrotisierende Granulome) im Tertiärstadium.'
               ],
               virulence_factors: ['Fibronektin-bindende Proteine', 'Hyaluronidase', 'Antigenvariation', 'Outer membrane proteins']
             },
@@ -29,12 +27,10 @@ Object.assign(window.diseases, {
               incubation: 'Primär: 9-90 Tage (Durchschnitt 21 Tage)',
               onset: 'Phasenabhängig',
               symptoms: [
-                { name: 'Primär: Ulcus durum', description: 'Schmerzloses, hartrandiges Geschwür (in 60-80% einzeln)', severity: 'moderate' },
-                { name: 'Sekundär: Exanthem', description: 'Generalisiert, nicht juckend (75-100%), Beteiligung von Handflächen/Fußsohlen (60-80%)', severity: 'moderate' },
-                { name: 'Sekundär: Lymphadenopathie', description: 'Generalisiert, schmerzlos (50-85%)', severity: 'mild' },
-                { name: 'Sekundär: Condylomata lata', description: 'Flache, nässende Papeln (10-20%)', severity: 'moderate' },
-                { name: 'Tertiär: Gumma', description: 'Granulomatöse Läsionen (15% bei Unbehandelten)', severity: 'severe' },
-                { name: 'Neurosyphilis', description: 'In jedem Stadium! (Symptomatisch: 5-10%)', severity: 'severe' }
+                { name: 'Primär: Ulcus durum', description: 'Ein schmerzloses, verhärtetes Geschwür mit sauberem Grund an der Eintrittspforte (Genitalien, Mund, Anus) ca. 3 Wochen nach Infektion. Begleitet von schmerzloser regionaler Lymphadenopathie. Es heilt spontan ab, aber die Bakterien verbleiben im Körper.', severity: 'moderate' },
+                { name: 'Sekundär: Hautsymptome', description: 'Zeichen der hämatogenen Streuung (6-8 Wochen später). Generalisierter, nicht juckender, kupferfarbener Ausschlag (Handflächen/Fußsohlen!), Condylomata lata (infektiöse nässende Papeln in Falten).', severity: 'moderate' },
+                { name: 'Sekundär: Allgemeinsymptome', description: 'Fieber, Unwohlsein, generalisierte Lymphknotenschwellung ("Mikropolyadenopathie"), fleckiger Haarausfall ("Mottenfraß") und Schleimhautflecken.', severity: 'mild' },
+                { name: 'Tertiär: Spätkomplikationen', description: 'Entwickelt sich Jahre später. Gumma (destruktive Granulome in Haut/Knochen/Leber), kardiovaskuläre Syphilis (Aortitis, Aneurysma) und Neurosyphilis (Tabes dorsalis, progressive Paralyse/Demenz).', severity: 'severe' }
               ],
               physical_exam: [
                 'Primär: schmerzloses genitales/extragenitales Geschwür + inguinale Lymphadenopathie',
@@ -102,7 +98,8 @@ Object.assign(window.diseases, {
               special_populations: [
                 'Penicillinallergie: Doxycyclin 2x100mg p.o. für 14 Tage (früh) oder 28 Tage (spät). In der Schwangerschaft ist eine Desensibilisierung und Penicillin-Behandlung obligatorisch!',
                 'Schwangerschaft: Alle schwangeren Frauen sollten gescreent werden. Die Behandlung ist die gleiche wie bei nicht-schwangeren Erwachsenen.',
-                'Jarisch-Herxheimer-Reaktion: Fieberhafte Reaktion in den ersten 24 Stunden der Behandlung, keine Allergie. Symptomatische Behandlung.'
+                'Jarisch-Herxheimer-Reaktion: Fieberhafte Reaktion in den ersten 24 Stunden der Behandlung, keine Allergie. Symptomatische Behandlung.',
+                'Kongenitale Syphilis: Wässriges kristallines Penicillin G 100.000-150.000 IE/kg/Tag i.v. (50.000 IE/kg/Dosis alle 12 Stunden in den ersten 7 Tagen, dann alle 8 Stunden) für 10 Tage. ODER Procain-Penicillin G 50.000 IE/kg/Tag i.m. für 10 Tage.'
               ],
               monitoring: [
                 'Der Behandlungserfolg wird durch einen Abfall der nicht-treponemalen Test-Titer (RPR/VDRL) überwacht (mindestens vierfacher Abfall innerhalb von 12 Monaten).'
@@ -117,7 +114,7 @@ Object.assign(window.diseases, {
           {
             id: 'hiv_aids',
             name: 'HIV-Infektion und AIDS',
-            pathogen: { type: 'Virus', name: 'Humanes Immundefizienz-Virus (HIV-1, HIV-2)', gram: 'RNA-Retrovirus', shape: 'sphärisch' },
+            pathogen: { type: 'Virus', name: '<i>Humanes Immundefizienz-Virus</i> (HIV-1, HIV-2)', gram: 'RNA-Retrovirus', shape: 'sphärisch' },
             epidemiology: {
               incidence: '~38 Millionen Menschen leben weltweit mit HIV',
               risk_groups: ['MSM', 'i.v.-Drogenkonsumenten', 'Sexarbeiter', 'Transfusionsempfänger (Entwicklungsländer)', 'Partner'],
@@ -126,11 +123,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Virusbindung an CD4-Rezeptor und Co-Rezeptoren (CCR5/CXCR4)',
-                'Reverse Transkription (RNA -> DNA)',
-                'Integration in das Wirtsgenom (Provirus)',
-                'Progressive Zerstörung von CD4+ T-Zellen',
-                'Erschöpfung des Immunsystems -> Opportunistische Infektionen (AIDS)'
+                'Eintritt und Bindung: Virales gp120 bindet an CD4-Rezeptor und CCR5/CXCR4-Korezeptoren auf T-Helferzellen und Makrophagen.',
+                'Replikation und Integration: Virale RNA wird durch Reverse Transkriptase in DNA umgeschrieben (fehleranfällig) und durch Integrase in das Wirtsgenom integriert (Provirus), wo es latent bleiben kann.',
+                'Immunzerstörung: Infizierte CD4+ T-Zellen sterben durch Virusreplikation (Pyroptose), Angriff durch zytotoxische T-Zellen und Synzytienbildung. Früher Verlust von darmassoziiertem lymphatischem Gewebe (GALT) treibt chronische Entzündung an.',
+                'Folge: Kritischer Abfall der CD4+ Zahl (<200/µL) führt zum Zusammenbruch des Immunsystems und zu opportunistischen Infektionen/Tumoren (AIDS).'
               ],
               virulence_factors: ['gp120/gp41 (Eintritt)', 'Reverse Transkriptase (hohe Mutationsrate)', 'Nef, Tat, Rev (Regulatoren)']
             },
@@ -138,12 +134,9 @@ Object.assign(window.diseases, {
               incubation: '2-4 Wochen (akutes retrovirales Syndrom)',
               onset: 'Akut (ARS) oder latent',
               symptoms: [
-                { name: 'Akut (ARS): Fieber', description: 'Häufigstes Symptom (>80-90%)', severity: 'moderate' },
-                { name: 'Akut (ARS): Müdigkeit', description: 'Ausgeprägt (>70-90%)', severity: 'mild' },
-                { name: 'Akut (ARS): Hautausschlag', description: 'Makulopapulös (40-80%)', severity: 'moderate' },
-                { name: 'Akut (ARS): Pharyngitis', description: 'Halsschmerzen (50-70%)', severity: 'mild' },
-                { name: 'Latenzphase', description: 'Asymptomatisch oder PGL (über Jahre)', severity: 'mild' },
-                { name: 'AIDS', description: 'Opportunistische Infektionen (CD4 <200)', severity: 'severe' }
+                { name: 'Akutes Retrovirales Syndrom (ARS)', description: 'Mononukleose-ähnliche Erkrankung 2-4 Wochen nach Infektion: Fieber, Halsschmerzen, Lymphknotenschwellung, Muskelschmerzen und makulopapulöser Ausschlag. Hohe Viruslast und vorübergehender CD4-Abfall.', severity: 'moderate' },
+                { name: 'Klinische Latenz', description: 'Asymptomatische oder milde Phase (8-10 Jahre ohne Therapie). Das Virus repliziert aktiv in Lymphknoten. Persistierende generalisierte Lymphadenopathie (PGL) kann auftreten.', severity: 'mild' },
+                { name: 'AIDS-Stadium', description: 'Wenn die CD4-Zahl unter 200/µL fällt. Auftreten opportunistischer Infektionen (z.B. Pneumocystis-Pneumonie, Ösophagus-Candidose, Toxoplasma-Enzephalitis, CMV-Retinitis) und Tumoren (Kaposi-Sarkom, Lymphom).', severity: 'severe' }
               ],
               physical_exam: [
                 'Generalisierte Lymphadenopathie (PGL)',
@@ -173,9 +166,9 @@ Object.assign(window.diseases, {
               guidelines: ['EACS-Leitlinien Version 12.0 (2023)'],
               empirical: {
                 outpatient: [
-                  { drug: 'Bictegravir / TAF / Emtricitabin', dose: '1 Tab (50/25/200mg) p.o. 1x/Tag', duration: 'Lebenslang', note: 'Bevorzugte Erstlinientherapie (STR). Erfordert keinen HLA-Test.' },
-                  { drug: 'Dolutegravir + TDF/TAF + FTC/3TC', dose: 'Kombination', duration: 'Lebenslang', note: 'Bevorzugte Erstlinientherapie.' },
-                  { drug: 'Dolutegravir / Lamivudin', dose: '1 Tab (50/300mg) p.o. 1x/Tag', duration: 'Lebenslang', note: 'Zweifachtherapie (wenn VL <500.000, kein HBV, CD4 >200).' }
+                   { drug: 'Bictegravir / Tenofoviralafenamid (TAF) / Emtricitabin (FTC)', dose: '1 Tab (50/25/200mg) p.o. 1x/Tag', duration: 'Lebenslang', note: 'Bevorzugte Erstlinientherapie (STR). Erfordert keinen HLA-Test.' },
+                   { drug: 'Dolutegravir + Tenofovir (TDF/TAF) + Emtricitabin (FTC) / Lamivudin (3TC)', dose: 'Kombination', duration: 'Lebenslang', note: 'Bevorzugte Erstlinientherapie.' },
+                   { drug: 'Dolutegravir / Lamivudin (3TC)', dose: '1 Tab (50/300mg) p.o. 1x/Tag', duration: 'Lebenslang', note: 'Zweifachtherapie (wenn VL <500.000, kein HBV, CD4 >200).' }
                 ]
               },
               targeted: 'Sofortiger ART-Beginn (Rapid Initiation) empfohlen. Ziel: nicht nachweisbare Viruslast (<50 Kopien/ml).',

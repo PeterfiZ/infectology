@@ -16,12 +16,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Recognition of infection (PAMPs) by innate immune system (TLR)',
-                'Pro-inflammatory cytokine storm (TNF-α, IL-1, IL-6)',
-                'Endothelial activation and damage (vascular permeability↑)',
-                'Activation of coagulation cascade (DIC) + inhibition of fibrinolysis',
-                'Microcirculatory dysfunction, tissue hypoxia, mitochondrial dysfunction',
-                'Multiple organ dysfunction syndrome (MODS)'
+                'During infection, pathogen-associated molecular patterns (PAMPs) are recognized by receptors of the innate immune system (e.g., Toll-like receptors), triggering a massive inflammatory response.',
+                'A pro-inflammatory cytokine storm (TNF-α, IL-1, IL-6) develops, leading to systemic endothelial activation and damage, increasing vascular permeability (capillary leakage).',
+                'Activation of the coagulation cascade and inhibition of fibrinolysis lead to disseminated intravascular coagulation (DIC) and formation of microthrombi.',
+                'Microcirculatory dysfunction, tissue hypoxia, and mitochondrial dysfunction ultimately lead to multiple organ dysfunction syndrome (MODS) and death.'
               ],
               virulence_factors: ['Endotoxin (LPS)', 'Superantigens', 'Exotoxins', 'Capsule']
             },
@@ -93,7 +91,7 @@ Object.assign(window.diseases, {
           {
             id: 'toxic_shock',
             name: 'Toxic Shock Syndrome (TSS)',
-            pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus, Streptococcus pyogenes', gram: 'Gram-positive', shape: 'coccus' },
+            pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus, Streptococcus pyogenes</i>', gram: 'Gram-positive', shape: 'coccus' },
             epidemiology: {
               incidence: 'Rare (Staph: 0.5/100,000, Strep: 3/100,000)',
               risk_groups: ['Menstruating women (tampon - rarer now)', 'Surgical patients', 'Burn victims', 'Skin infections'],
@@ -102,12 +100,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Local infection (vagina, wound) or colonization',
-                'Exotoxin production (TSST-1, Enterotoxins, SpeA/C)',
-                'Superantigen effect: Non-specific activation of T-cells (up to 20%)',
-                'Massive cytokine release (Cytokine storm)',
-                'Capillary leak, vasodilation, shock',
-                'Multiple organ failure'
+                'During local infection or colonization by Staphylococcus aureus or Streptococcus pyogenes, exotoxins (e.g., TSST-1, SpeA) are produced.',
+                'These toxins act as superantigens: binding to MHC II molecules on antigen-presenting cells and T-cell receptors, they non-specifically activate up to 20% of T-cells (normally <0.01%).',
+                'This massive T-cell activation leads to an uncontrolled cytokine storm (TNF-α, IL-1, IL-6).',
+                'The cytokines cause severe capillary leakage, vasodilation, and hypotension, rapidly leading to shock and multiple organ failure.'
               ],
               virulence_factors: ['TSST-1 (Staph)', 'Streptococcal Pyrogenic Exotoxins (Spe)', 'M-protein (Strep)']
             },
@@ -167,7 +163,7 @@ Object.assign(window.diseases, {
                   { drug: 'Vasopressors', dose: 'Norepinephrine', duration: '', note: 'Shock management' }
                 ]
               },
-              targeted: 'Staph (MSSA): Flucloxacillin + Clindamycin; Strep: Penicillin G + Clindamycin. Source control (tampon removal, surgical exploration)!',
+              targeted: 'Staph (MSSA): Flucloxacillin (Cefazolin) + Clindamycin; MRSA: Vancomycin + Clindamycin. Strep: Penicillin G + Clindamycin (toxin inhibition). IVIG in severe cases. Source control (tampon removal, surgical exploration) is essential!',
               supportive: ['Massive fluid resuscitation', 'Ventilation', 'Dialysis', 'Wound care'],
               prevention: ['Tampon hygiene (frequent change)', 'Wound disinfection']
             },
@@ -176,11 +172,18 @@ Object.assign(window.diseases, {
               prognostic_scores: ['SOFA'],
               factors: 'Pathogen (Strep worse), age, underlying disease'
             }
-          },
+          }
+        ]
+      },
+      fungal: {
+        name: 'Fungal Infections',
+        icon: '🍄',
+        color: '#d97706',
+        diseases: [
           {
             id: 'candidiasis',
             name: 'Invasive Candidiasis',
-            pathogen: { type: 'Fungus', name: 'Candida albicans (and non-albicans species)', gram: 'Yeast', shape: 'oval' },
+            pathogen: { type: 'Fungus', name: '<i>Candida albicans</i> (and non-albicans species)', gram: 'Yeast', shape: 'oval' },
             epidemiology: {
               incidence: '4th most common cause of nosocomial bloodstream infections',
               risk_groups: ['ICU patients', 'Central venous catheter (CVC)', 'Broad-spectrum antibiotics', 'TPN', 'Abdominal surgery'],
@@ -259,7 +262,7 @@ Object.assign(window.diseases, {
           {
             id: 'aspergillosis',
             name: 'Invasive Aspergillosis',
-            pathogen: { type: 'Fungus', name: 'Aspergillus fumigatus', gram: 'Mold', shape: 'hyphae (45° branching)' },
+            pathogen: { type: 'Fungus', name: '<i>Aspergillus fumigatus</i>', gram: 'Mold', shape: 'hyphae (45° branching)' },
             epidemiology: {
               incidence: '5-10% of neutropenic patients',
               risk_groups: ['Prolonged neutropenia', 'Allogeneic stem cell transplant', 'Solid organ transplant', 'High-dose steroids'],

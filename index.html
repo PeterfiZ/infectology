@@ -113,8 +113,8 @@
         <h1 id="main-title" class="font-serif-book text-2xl font-bold tracking-tight">Infektológia Tankönyv</h1>
         <p id="main-subtitle" class="text-emerald-100 text-sm mt-0.5">Orvostanhallgatók számára</p>
         <div class="text-emerald-200 text-xs mt-1">
-         <p>Írta és szerkesztette: Dr. Péterfi Zoltán</p>
-         <p>Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 2.1</p>
+         <p id="header-author">Írta és szerkesztette: Dr. Péterfi Zoltán</p>
+         <p id="header-version">Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 2.8</p>
         </div>
        </div>
       </div>
@@ -130,6 +130,10 @@
         </button>
       </div>
       <div class="flex items-center gap-4">
+       <button onclick="openFeedbackModal()" id="feedback-btn" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2" title="Visszajelzés küldése">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        <span id="feedback-btn-text">Visszajelzés</span>
+       </button>
        <button onclick="exportPDF()" id="export-pdf-btn" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2" title="A teljes tartalom nyomtatása/mentése PDF-be">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
         <span>Export PDF</span>
@@ -196,9 +200,50 @@
     </div>
   </div>
 
+  <!-- Feedback Modal -->
+  <div id="feedback-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="feedback-modal-panel">
+      <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+        <h3 id="feedback-modal-title" class="font-semibold text-slate-800">Visszajelzés</h3>
+        <button onclick="closeFeedbackModal()" class="text-slate-400 hover:text-slate-600 transition-colors p-1 rounded-full hover:bg-slate-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="p-6">
+        <form id="feedback-form" onsubmit="submitFeedback(event)">
+            <textarea id="feedback-text" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none resize-none h-32 text-sm" placeholder="Írja ide észrevételeit..."></textarea>
+            <div class="mt-4 flex justify-end gap-3">
+                <button type="button" onclick="closeFeedbackModal()" id="feedback-cancel-btn" class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition-colors">Mégse</button>
+                <button type="submit" id="feedback-submit-btn" class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 text-sm font-medium transition-colors shadow-sm">Küldés (Email)</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Globális tároló inicializálása
     window.diseases = {};
+    
+    // Fallback metadata inicializálása (ha a metadata.js nem töltődne be)
+    window.diseaseMetadata = {
+        gastrointestinal: { icon: '🦠', color: '#ca8a04' },
+        viral_hepatitis: { icon: '🧬', color: '#eab308' },
+        urinary_tract: { icon: '🚽', color: '#3b82f6' },
+        bacterial_respiratory: { icon: '🫁', color: '#3b82f6' },
+        viral_respiratory: { icon: '🦠', color: '#6366f1' },
+        cardiovascular: { icon: '❤️', color: '#ef4444' },
+        upper_respiratory: { icon: '👃', color: '#14b8a6' },
+        skin_soft_tissue: { icon: '🩹', color: '#e11d48' },
+        bone_joint: { icon: '🦴', color: '#57534e' },
+        cns_infections: { icon: '🧠', color: '#0891b2' },
+        sexually_transmitted: { icon: '🔬', color: '#7c3aed' },
+        zoonotic: { icon: '🐾', color: '#059669' },
+        tropical: { icon: '🌴', color: '#f97316' },
+        childhood: { icon: '🧸', color: '#f472b6' },
+        sepsis_systemic: { icon: '⚡', color: '#7f1d1d' },
+        fungal: { icon: '🍄', color: '#d97706' }
+    };
   </script>
 
   <script src="metadata.js"></script>
@@ -228,7 +273,7 @@
         // Szövegek a nyelv függvényében
         const texts = {
             hu: { 
-                title: "Infectologia Adatbázis", author: "Szerző", date: "Dátum", version: "Verzió", 
+                title: "Infectologia Tankönyv", author: "Szerző", date: "Dátum", version: "Verzió", 
                 pathogen: "Kórokozó", 
                 epidemiology: "Epidemiológia", incidence: "Incidencia", seasonality: "Szezonalitás", transmission: "Transzmisszió", risk_groups: "Rizikócsoportok",
                 pathomechanism: "Pathomechanizmus", steps: "Lépések", virulence: "Virulencia faktorok",
@@ -240,7 +285,7 @@
                 table_test: "Vizsgálat", table_finding: "Eredmény", table_interpretation: "Értelmezés"
             },
             en: { 
-                title: "Infectology Database", author: "Author", date: "Date", version: "Version", 
+                title: "Infectious Diseases Textbook", author: "Author", date: "Date", version: "Version", 
                 pathogen: "Pathogen", 
                 epidemiology: "Epidemiology", incidence: "Incidence", seasonality: "Seasonality", transmission: "Transmission", risk_groups: "Risk Groups",
                 pathomechanism: "Pathomechanism", steps: "Steps", virulence: "Virulence Factors",
@@ -252,7 +297,7 @@
                 table_test: "Test", table_finding: "Finding", table_interpretation: "Interpretation"
             },
             de: { 
-                title: "Infektiologie Datenbank", author: "Autor", date: "Datum", version: "Version", 
+                title: "Lehrbuch der Infektiologie", author: "Autor", date: "Datum", version: "Version", 
                 pathogen: "Erreger", 
                 epidemiology: "Epidemiologie", incidence: "Inzidenz", seasonality: "Saisonalität", transmission: "Übertragung", risk_groups: "Risikogruppen",
                 pathomechanism: "Pathomechanismus", steps: "Schritte", virulence: "Virulenzfaktoren",
@@ -270,7 +315,7 @@
         const meta = {
             authorName: "Dr. Péterfi Zoltán",
             copyright: "© 2026 Dr. Péterfi Zoltán",
-            versionNum: "2.1.0"
+            versionNum: "2.8.0"
         };
 
         // Új ablak nyitása a nyomtatáshoz
@@ -562,7 +607,7 @@
     const languageFiles = {
       hu: ['Thorax.js', 'abdomen.js', 'BoneandSST.js', 'CNS.js', 'STD.js', 'parazita.js', 'zoonozis.js', 'systemic.js', 'tropical.js', 'emerging.js', 'childhood.js'],
       en: ['Thorax_en.js', 'abdomen_en.js', 'BoneandSST_en.js', 'CNS_en.js', 'STD_en.js', 'parazita_en.js', 'zoonozis_en.js', 'systemic_en.js', 'tropical_en.js', 'emerging_en.js', 'childhood_en.js'],
-      de: ['thorax_de.js', 'abdomen_de.js', 'BoneandSST_de.js', 'CNS_de.js', 'STD_de.js', 'parazita_de.js', 'zoonozis_de.js', 'systemic_de.js', 'tropical_de.js', 'emerging_de.js', 'childhood_de.js']
+      de: ['Thorax_de.js', 'abdomen_de.js', 'BoneandSST_de.js', 'CNS_de.js', 'STD_de.js', 'parazita_de.js', 'zoonozis_de.js', 'systemic_de.js', 'tropical_de.js', 'emerging_de.js', 'childhood_de.js']
     };
 
     const translations = {
@@ -574,6 +619,13 @@
         disease_count: 'betegség',
         welcome_title: 'Üdvözöljük az Infektológia Tankönyvben',
         welcome_text: 'Válasszon egy betegségcsoportot a bal oldali menüből, majd egy konkrét betegséget a részletes klinikai információk megtekintéséhez.',
+        header_author: 'Írta és szerkesztette: Dr. Péterfi Zoltán',
+        header_version: 'Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 2.8.0',
+        feedback_btn: 'Visszajelzés',
+        feedback_title: 'Visszajelzés küldése',
+        feedback_placeholder: 'Írja ide észrevételeit, javaslatait...',
+        feedback_cancel: 'Mégse',
+        feedback_send: 'Küldés (Email)',
         search_placeholder: 'Keresés betegségek között...',
         no_results: 'Nincs találat',
         search_results: 'Keresési eredmények',
@@ -644,6 +696,13 @@
         disease_count: 'diseases',
         welcome_title: 'Welcome to the Infectious Diseases Textbook',
         welcome_text: 'Select a disease category from the left menu, then a specific disease to view detailed clinical information.',
+        header_author: 'Written and edited by: Dr. Zoltán Péterfi',
+        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 2.8.0',
+        feedback_btn: 'Feedback',
+        feedback_title: 'Send Feedback',
+        feedback_placeholder: 'Write your comments or suggestions here...',
+        feedback_cancel: 'Cancel',
+        feedback_send: 'Send (Email)',
         search_placeholder: 'Search diseases...',
         no_results: 'No results found',
         search_results: 'Search Results',
@@ -714,6 +773,13 @@
         disease_count: 'Krankheiten',
         welcome_title: 'Willkommen im Lehrbuch der Infektiologie',
         welcome_text: 'Wählen Sie eine Krankheitskategorie aus dem linken Menü und dann eine bestimmte Krankheit, um detaillierte klinische Informationen anzuzeigen.',
+        header_author: 'Geschrieben und bearbeitet von: Dr. Zoltán Péterfi',
+        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 2.8.0',
+        feedback_btn: 'Feedback',
+        feedback_title: 'Feedback senden',
+        feedback_placeholder: 'Schreiben Sie hier Ihre Kommentare oder Vorschläge...',
+        feedback_cancel: 'Abbrechen',
+        feedback_send: 'Senden (Email)',
         search_placeholder: 'Krankheiten suchen...',
         no_results: 'Keine Ergebnisse gefunden',
         search_results: 'Suchergebnisse',
@@ -785,6 +851,20 @@
       document.getElementById('sidebar-title').textContent = t.sidebar_title;
       document.getElementById('search-input').placeholder = t.search_placeholder;
       
+      document.getElementById('header-author').textContent = t.header_author;
+      document.getElementById('header-version').textContent = t.header_version;
+      document.getElementById('feedback-btn-text').textContent = t.feedback_btn;
+      document.getElementById('feedback-btn').title = t.feedback_title;
+      
+      const fbTitle = document.getElementById('feedback-modal-title');
+      if(fbTitle) fbTitle.textContent = t.feedback_title;
+      const fbPlace = document.getElementById('feedback-text');
+      if(fbPlace) fbPlace.placeholder = t.feedback_placeholder;
+      const fbCancel = document.getElementById('feedback-cancel-btn');
+      if(fbCancel) fbCancel.textContent = t.feedback_cancel;
+      const fbSend = document.getElementById('feedback-submit-btn');
+      if(fbSend) fbSend.textContent = t.feedback_send;
+
       // Update welcome screen if visible
       const welcomeTitle = document.querySelector('#welcome-screen h2');
       const welcomeText = document.querySelector('#welcome-screen p');
@@ -826,7 +906,10 @@
           const script = document.createElement('script');
           script.src = file;
           script.onload = resolve;
-          script.onerror = reject;
+          script.onerror = () => {
+            console.warn(`Failed to load script: ${file}`);
+            resolve(); // Continue even if one file fails
+          };
           document.head.appendChild(script);
         });
       });
@@ -1195,6 +1278,41 @@
       }, 300);
     };
 
+    // Feedback Modal Functions
+    window.openFeedbackModal = function() {
+      const modal = document.getElementById('feedback-modal');
+      const panel = document.getElementById('feedback-modal-panel');
+      
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        panel.classList.remove('scale-95');
+        panel.classList.add('scale-100');
+      }, 10);
+    };
+
+    window.closeFeedbackModal = function() {
+      const modal = document.getElementById('feedback-modal');
+      const panel = document.getElementById('feedback-modal-panel');
+      
+      modal.classList.add('opacity-0');
+      panel.classList.remove('scale-100');
+      panel.classList.add('scale-95');
+      
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    };
+
+    window.submitFeedback = function(e) {
+      e.preventDefault();
+      const text = document.getElementById('feedback-text').value;
+      const subject = encodeURIComponent('Infektológia Tankönyv Feedback');
+      const body = encodeURIComponent(text);
+      window.location.href = `mailto:peterfi.zoltan@pte.hu?subject=${subject}&body=${body}`;
+      closeFeedbackModal();
+    };
+
     function calculateScore(calc) {
       const container = document.getElementById('score-modal-content');
       let total = 0;
@@ -1367,7 +1485,7 @@
             </div>
             <div class="flex-1 min-w-0 py-0.5">
               <h3 class="font-semibold text-slate-800 text-sm leading-tight group-hover:text-emerald-700 transition-colors">${disease.name}</h3>
-              <p class="text-xs text-slate-500 mt-1 truncate group-hover:text-slate-600 transition-colors">${disease.pathogen.name}</p>
+              <p class="text-xs text-slate-500 mt-1 truncate group-hover:text-slate-600 transition-colors">${disease.pathogen ? disease.pathogen.name : ''}</p>
             </div>
           </div>
         </button>
@@ -1446,6 +1564,41 @@
       welcomeScreen.classList.add('hidden');
       diseaseContent.classList.remove('hidden');
 
+      // Special case for table-only entries (like CSF differential)
+      if (disease.table) {
+         diseaseContent.innerHTML = `
+            <div class="animate-fade-in">
+              <div class="p-6 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
+                <div class="flex items-start gap-4">
+                  <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg" style="background: ${category.color}">
+                    <span class="text-3xl">${category.icon}</span>
+                  </div>
+                  <div class="flex-1">
+                    <h1 class="font-serif-book text-2xl font-bold text-slate-800">${disease.name}</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6 overflow-x-auto">
+                <table class="w-full text-sm text-left border-collapse">
+                  <thead>
+                    <tr class="bg-slate-100">
+                      ${disease.table.headers.map(h => `<th class="p-3 font-semibold text-slate-700 border border-slate-200">${h}</th>`).join('')}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${disease.table.rows.map((row, i) => `
+                      <tr class="${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}">
+                        ${row.map(cell => `<td class="p-3 border border-slate-200 text-slate-700">${cell}</td>`).join('')}
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+         `;
+         return;
+      }
+
       const t = translations[currentLanguage];
       const tabs = [
         { id: 'epidemiology', label: t.tabs.epidemiology, icon: '📊' },
@@ -1472,7 +1625,7 @@
               <div class="flex-1">
                 <h1 class="font-serif-book text-2xl font-bold text-slate-800">${disease.name}</h1>
                 <div class="flex flex-wrap items-center gap-2 mt-2">
-                  <span class="pathogen-badge bg-slate-100 text-slate-700">
+                  ${disease.pathogen ? `<span class="pathogen-badge bg-slate-100 text-slate-700">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <circle cx="12" cy="12" r="10"/>
                       <circle cx="12" cy="12" r="3"/>
@@ -1480,7 +1633,7 @@
                     ${disease.pathogen.name}
                   </span>
                   <span class="pathogen-badge bg-emerald-100 text-emerald-700">${disease.pathogen.type}</span>
-                  <span class="pathogen-badge bg-violet-100 text-violet-700">${disease.pathogen.gram}</span>
+                  <span class="pathogen-badge bg-violet-100 text-violet-700">${disease.pathogen.gram}</span>` : ''}
                 </div>
               </div>
             </div>
@@ -1954,8 +2107,22 @@
     // Normalize disease objects at runtime so missing keys don't break templates
     function normalizeDiseases() {
       if (!window.diseases) return;
-      Object.values(window.diseases).forEach(category => {
+      Object.entries(window.diseases).forEach(([catKey, category]) => {
+        // Merge tables into diseases if present (e.g. Gastro, Hepatitis)
+        if (category.tables && Array.isArray(category.tables)) {
+            const tableEntries = category.tables.map((table, index) => ({
+                id: `table-${catKey}-${index}`,
+                name: table.title,
+                table: table,
+                pathogen: null
+            }));
+            category.diseases = [...tableEntries, ...(category.diseases || [])];
+            delete category.tables;
+        }
+
         (category.diseases || []).forEach(d => {
+          d.epidemiology = d.epidemiology || {};
+          d.pathomechanism = d.pathomechanism || {};
           d.clinical = d.clinical || {};
           d.clinical.symptoms = Array.isArray(d.clinical.symptoms) ? d.clinical.symptoms : [];
           d.clinical.physical_exam = Array.isArray(d.clinical.physical_exam) ? d.clinical.physical_exam : [];
@@ -2017,6 +2184,11 @@
     document.getElementById('score-modal').addEventListener('click', function(e) {
         if (e.target === this) {
             closeScoreModal();
+        }
+    });
+    document.getElementById('feedback-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeFeedbackModal();
         }
     });
 

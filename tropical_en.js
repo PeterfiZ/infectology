@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
       {
         id: 'dengue',
         name: 'Dengue Fever',
-        pathogen: { type: 'Virus', name: 'Dengue virus (DENV 1-4)', gram: 'RNA, Flaviviridae', shape: 'spherical' },
+        pathogen: { type: 'Virus', name: '<i>Dengue virus</i> (DENV 1-4)', gram: 'RNA, Flaviviridae', shape: 'spherical' },
         epidemiology: {
           incidence: '390 million infections/year worldwide',
           risk_groups: ['Travelers to tropical regions', 'People living in endemic areas'],
@@ -19,32 +19,32 @@ Object.assign(window.diseases, {
         },
         pathomechanism: {
           steps: [
-            'Mosquito bite',
-            'Virus replication in dendritic cells/monocytes',
-            'Viremia',
-            'Antibody-dependent enhancement (ADE) in secondary infection (more severe course)',
-            'Cytokine storm, capillary leakage'
+            'After the bite of an infected mosquito, the virus infects dendritic cells and monocytes in the skin, then migrates to lymph nodes.',
+            'Entry: After the bite of an infected mosquito, the virus infects dendritic cells and monocytes in the skin, then migrates to lymph nodes.',
+            'Viremia: The virus multiplies and enters the bloodstream (viremia), causing high fever and systemic symptoms.',
+            'ADE Phenomenon: In secondary infection, if the patient has previously encountered another serotype, Antibody-Dependent Enhancement (ADE) occurs: non-neutralizing antibodies facilitate virus entry into cells, leading to increased replication.',
+            'Consequence: This triggers a severe cytokine storm and increased vascular permeability (capillary leakage), leading to plasma loss, hemoconcentration, and shock.'
           ],
-          virulence_factors: ['NS1 protein', 'ADE']
+          virulence_factors: ['NS1 protein', 'ADE (Antibody-Dependent Enhancement)']
         },
         clinical: {
           incubation: '4-10 days',
           onset: 'Sudden',
           symptoms: [
-            { name: 'Fever', description: 'High, sudden (>99% in symptomatic cases)', severity: 'severe' },
-            { name: 'Severe arthralgia/myalgia', description: 'Severe muscle and joint pain ("breakbone fever") (>90%)', severity: 'severe' },
-            { name: 'Headache/Retroorbital pain', description: 'Pain behind the eyes (>90%)', severity: 'moderate' },
-            { name: 'Rash', description: 'Maculopapular (50-80%), appears after fever', severity: 'moderate' },
-            { name: 'Nausea/Vomiting', description: 'Can be a common warning sign', severity: 'moderate' }
+            { name: 'Febrile Phase', description: 'Sudden onset of high fever (40°C), accompanied by severe headache and retroorbital pain.', severity: 'severe' },
+            { name: '"Breakbone Fever"', description: 'Extremely severe muscle and joint pain (myalgia, arthralgia) making movement difficult.', severity: 'severe' },
+            { name: 'Critical Phase', description: 'May occur when fever subsides (days 3-7). Warning signs: intense abdominal pain, persistent vomiting, fluid accumulation (ascites, pleural effusion), mucosal bleeding, lethargy or restlessness.', severity: 'severe' },
+            { name: 'Rash', description: 'Maculopapular rash appearing after fever, often with "white islands in a red sea" pattern.', severity: 'moderate' }
           ],
           physical_exam: [
             'Fever',
-            'Rash ("white islands in a red sea")',
+            'Facial flushing',
             'Positive tourniquet test (capillary fragility)',
             'Hepatomegaly',
-            'Warning signs: abdominal pain, persistent vomiting, fluid accumulation'
+            'Hemorrhagic signs (petechiae, ecchymosis)',
+            'Signs of shock (cold extremities, weak pulse) in critical phase'
           ],
-          complications: ['Dengue hemorrhagic fever (DHF)', 'Dengue shock syndrome (DSS)', 'Severe bleeding']
+          complications: ['Dengue hemorrhagic fever (DHF)', 'Dengue shock syndrome (DSS)', 'Severe organ impairment (liver, kidney, heart)']
         },
         diagnostics: {
           laboratory: [
@@ -70,7 +70,7 @@ Object.assign(window.diseases, {
       {
         id: 'zika',
         name: 'Zika Virus Infection',
-        pathogen: { type: 'Virus', name: 'Zika virus (ZIKV)', gram: 'RNA, Flaviviridae', shape: 'spherical' },
+        pathogen: { type: 'Virus', name: '<i>Zika virus</i> (ZIKV)', gram: 'RNA, Flaviviridae', shape: 'spherical' },
         epidemiology: {
           incidence: 'Epidemic',
           risk_groups: ['Pregnant women (risk of fetal defects)', 'Travelers'],
@@ -79,25 +79,29 @@ Object.assign(window.diseases, {
         },
         pathomechanism: {
           steps: [
-            'Entry via mosquito bite/sexual route',
-            'Replication',
-            'Viremia',
-            'Neurotropism (adults: GBS, fetus: microcephaly)'
+            'Entry: The virus enters via mosquito bite, sexual route, or vertically. Skin cells (keratinocytes, dendritic cells) are infected first.',
+            'Spread: The virus spreads to lymph nodes and bloodstream (viremia). It can cross the blood-brain barrier and the placental barrier.',
+            'Neurotropism: It has strong neurotropism: during fetal development, it specifically infects and destroys neural progenitor cells, leading to brain developmental defects (microcephaly).',
+            'Complication: In adults, it can trigger Guillain-Barré syndrome through an autoimmune mechanism.'
           ],
-          virulence_factors: ['Neurotropism']
+          virulence_factors: ['Neurotropism', 'Placental permeability']
         },
         clinical: {
           incubation: '3-14 days',
           onset: 'Mild',
           symptoms: [
-            { name: 'Asymptomatic', description: 'Approximately 80% of infections are asymptomatic', severity: 'mild' },
-            { name: 'Rash', description: 'Maculopapular, itchy (>90% in symptomatic cases)', severity: 'moderate' },
-            { name: 'Fever', description: 'Low (65%), often absent', severity: 'mild' },
-            { name: 'Arthralgia', description: 'Small joints (65%), with edema', severity: 'mild' },
-            { name: 'Conjunctivitis', description: 'Non-purulent (55%)', severity: 'moderate' }
+            { name: 'Asymptomatic', description: 'About 80% of infected individuals show no symptoms.', severity: 'mild' },
+            { name: 'Rash and Itching', description: 'The most common symptom is a maculopapular rash, often itchy, spreading from face to trunk.', severity: 'moderate' },
+            { name: 'Fever and Pain', description: 'Low-grade fever, joint pain (especially small joints of hands/feet), muscle pain, and headache.', severity: 'mild' },
+            { name: 'Conjunctivitis', description: 'Non-purulent conjunctivitis (red eyes).', severity: 'moderate' }
           ],
-          physical_exam: ['Rash', 'Conjunctivitis', 'Fever'],
-          complications: ['Guillain-Barré syndrome', 'Congenital Zika syndrome (microcephaly)']
+          physical_exam: [
+            'Diffuse maculopapular rash',
+            'Non-purulent conjunctivitis',
+            'Joint swelling (hands/feet)',
+            'Low-grade fever'
+          ],
+          complications: ['Guillain-Barré syndrome (adults)', 'Congenital Zika syndrome (fetal microcephaly, brain calcifications, vision/hearing loss)']
         },
         diagnostics: {
           laboratory: [{ test: 'CBC', finding: 'Mild leukopenia/thrombocytopenia', interpretation: '-' }],
@@ -119,7 +123,7 @@ Object.assign(window.diseases, {
       {
         id: 'chikungunya',
         name: 'Chikungunya',
-        pathogen: { type: 'Virus', name: 'Chikungunya virus (CHIKV)', gram: 'RNA, Togaviridae', shape: 'spherical' },
+        pathogen: { type: 'Virus', name: '<i>Chikungunya virus</i> (CHIKV)', gram: 'RNA, Togaviridae', shape: 'spherical' },
         epidemiology: {
           incidence: 'Epidemic',
           risk_groups: ['Travelers'],
@@ -127,19 +131,29 @@ Object.assign(window.diseases, {
           transmission: 'Aedes mosquito'
         },
         pathomechanism: {
-          steps: ['Mosquito bite', 'Replication in fibroblasts', 'Joint tropism', 'Chronic inflammation'],
-          virulence_factors: ['-']
+          steps: [
+            'Entry: After mosquito bite, the virus replicates in the skin, then enters the bloodstream.',
+            'Tropism: It infects tissues widely but shows specific tropism for joint capsules, muscles, and skin fibroblasts.',
+            'Inflammation: It triggers an intense inflammatory response in joints (infiltration of monocytes, macrophages), causing acute arthritis.',
+            'Chronicity: The virus or antigens can persist in joint tissues for months, maintaining chronic, rheumatoid arthritis-like complaints.'
+          ],
+          virulence_factors: ['Joint tropism']
         },
         clinical: {
-          incubation: '3-7 days',
-          onset: 'Sudden',
+           incubation: '3-7 days',
+           onset: 'Sudden',
           symptoms: [
-            { name: 'Fever and polyarthralgia', description: 'Sudden high fever and severe, symmetrical polyarthralgia (>95%)', severity: 'severe' },
-            { name: 'Rash', description: 'Maculopapular rash (50-75%)', severity: 'moderate' },
-            { name: 'Other symptoms', description: 'Headache, myalgia, nausea', severity: 'mild' }
+            { name: 'Acute Phase', description: 'Sudden onset of high fever (>39°C) and excruciating, severe joint pain (polyarthralgia), often causing incapacitation. The joint pain is usually symmetrical and affects distal joints.', severity: 'severe' },
+            { name: 'Rash', description: 'Maculopapular rash on trunk and limbs (approx. 50%).', severity: 'moderate' },
+            { name: 'Chronic Phase', description: 'In a significant proportion of patients (30-60%), joint pain and stiffness may recur or persist for months or years, significantly impairing quality of life.', severity: 'moderate' }
           ],
-          physical_exam: ['Symmetrical polyarthritis/tenosynovitis (hands, wrists, ankles)', 'Fever', 'Maculopapular rash'],
-          complications: ['Chronic, persistent arthritis (30-60%, mainly in elderly)', 'Rarely: myocarditis, encephalitis']
+          physical_exam: [
+            'High fever',
+            'Symmetrical joint swelling and tenderness (hands, wrists, ankles)',
+            'Tenosynovitis',
+            'Maculopapular rash'
+          ],
+          complications: ['Chronic, disabling arthritis', 'Rarely: myocarditis, encephalitis, hepatitis']
         },
         diagnostics: {
           laboratory: [{ test: 'CBC', finding: 'Lymphopenia', interpretation: '-' }],

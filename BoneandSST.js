@@ -7,113 +7,107 @@ Object.assign(window.diseases, {
           {
             id: 'necrotizing_fasciitis',
             name: 'Nekrotizáló fasciitis',
-            pathogen: { type: 'Baktérium', name: 'Polimikrobiális vagy Strep. pyogenes/S. aureus', gram: 'Vegyes', shape: 'Változó' },
+            pathogen: { type: 'Baktérium', name: 'Polimikrobiális (I. típus) vagy Monomikrobiális (II. típus)', gram: 'Vegyes', shape: 'Változó' },
             epidemiology: {
-              incidence: 'Ritka (0.4/100,000), de növekvő incidencia',
-              risk_groups: ['Diabetes mellitus', 'Perifériás érbetegség', 'Immunszuppresszió', 'Krónikus alkoholizmus', 'IV droghasználók', 'Trauma/sebészet után'],
+              incidence: 'Ritka (0.4-1/100,000), de magas mortalitású',
+              risk_groups: ['I. típus: Diabetes, immunszuppresszió, elhízás, perifériás érbetegség', 'II. típus: Egészséges fiatalok, trauma, műtét, IV droghasználat', 'III. típus: Tengervíz expozíció, májbetegség (Vibrio)'],
               seasonality: 'Nincs',
               transmission: 'Endogén (bőrsérülés kapu) vagy direkt inokulálás'
             },
             pathomechanism: {
               steps: [
-                'Baktériumok bejutása a subcutan szövetekbe (trauma, seb, varicella)',
-                'Rapid terjedés a fascialis síkok mentén',
-                'Bakteriális toxinok → thrombózis a mikrovaszkulatúrában',
-                'Szöveti ischaemia és nekrózis',
-                'Toxin-mediált shock (streptococcus)',
-                'A bőr kezdetben ép, mert a felszíni vérellátás később károsodik'
+                'Behatolás: A fertőzés egy bőrsérülésen (akár minimálison) keresztül jut a subcutan szövetekbe. A baktériumok a felületes fascia mentén gyorsan terjednek, kihasználva a rossz vérellátású síkokat.',
+                'Toxinhatás: A kórokozók (főleg a GAS és Clostridium) erős toxinokat termelnek, amelyek direkt szöveti nekrózist, a kiserek trombózisát és a helyi immunválasz gátlását okozzák.',
+                'Szöveti nekrózis: A trombózis és a gyulladásos ödéma tovább rontja a vérellátást, ami kiterjedt szövetelhaláshoz vezet. A folyamat a bőr alatti idegeket is elpusztítja, ami a terület érzéketlenné válásához vezet (késői jel).',
+                'Szisztémás toxicitás: A toxinok a keringésbe jutva szisztémás toxikus shock szindrómát és többszervi elégtelenséget okoznak.'
               ],
-              virulence_factors: ['Strep: M protein, Streptolysinek, SpeA/B/C szuperantigének', 'Staph: PVL, α-toxin', 'Anaerobok: kollagenázok, proteázok']
+              virulence_factors: ['Strep: M protein, exotoxinok (SpeA/B/C)', 'Staph: PVL, TSST-1', 'Clostridium: alfa-toxin', 'Anaerobok: gázképzés']
             },
             clinical: {
               incubation: 'Órák-napok (trauma után)',
-              onset: 'Hiperakut, gyorsan progrediáló',
+              onset: 'Hiperakut, fulmináns',
               symptoms: [
-                { name: 'Intenzív fájdalom', description: 'ARÁNYTALAN a fizikális lelethez képest (75-100%), korai jel', severity: 'severe' },
-                { name: 'Duzzanat/Ödéma', description: 'Feszes, terjedő ödéma (75-100%)', severity: 'severe' },
-                { name: 'Bőrelváltozások', description: 'Erythema (70-100%), később livid elszíneződés, bullák, nekrózis (késői jelek!)', severity: 'severe' },
-                { name: 'Láz', description: 'Gyakori, de hiányozhat is', severity: 'moderate' },
-                { name: 'Crepitatio', description: 'Gázképződés (13-30% - nem mindig van!)', severity: 'severe' },
-                { name: 'Toxikus állapot', description: 'Hypotonia, tachycardia, tudatzavar', severity: 'severe' }
+                { name: 'Korai jelek', description: 'A legfontosabb korai jel a klinikai képhez képest aránytalanul erős, kínzó fájdalom. A bőrön csak enyhe bőrpír vagy duzzanat látható, de a beteg elesett, lázas.', severity: 'severe' },
+                { name: 'Késői jelek', description: 'A bőr sötétlila vagy fekete lesz, hólyagok (bullák) jelennek meg, és a bőr alatti szövetekben gáz (crepitatio) tapintható. A fájdalom megszűnhet az idegek elhalása miatt, ami rossz jel. Gyorsan szeptikus shock alakul ki.', severity: 'severe' }
               ],
               physical_exam: [
                 'Fájdalom aránytalanul SÚLYOS a látottakhoz képest (korai jel!)',
-                'Feszes ödéma, gyors terjedés',
-                'Bőr: erythema → livid → bullák → nekrózis',
+                'Feszes, "fás" tapintatú ödéma, amely túlterjed a bőrpíron',
+                'Bőr: erythema → livid/szürke → bullák → nekrózis',
                 'Anaesthesia a területen (idegkárosodás)',
-                'Crepitatio tapintásra (gáz)',
-                'Szisztémás jelek: tachycardia, hypotonia, konfúzió'
+                'Crepitatio (főleg I. típusban és Clostridiumnál)',
+                'Szisztémás jelek: láz, tachycardia, hypotonia, tudatzavar'
               ],
-              complications: ['Szeptikus shock', 'Többszervi elégtelenség', 'Végtag vesztés', 'Halál (20-40% kezeléssel is)']
+              complications: ['Szeptikus shock', 'Többszervi elégtelenség (MODS)', 'Végtag vesztés', 'Halál (20-40%, kezelés nélkül 100%)']
             },
             diagnostics: {
               laboratory: [
-                { test: 'LRINEC score', finding: '>6: magas valószínűség', interpretation: 'CRP, fehérvérsejt, hemoglobin, nátrium, kreatinin, glükóz' },
-                { test: 'Vérkép', finding: 'Leukocytosis vagy leukopenia', interpretation: 'Szepszis' },
-                { test: 'CRP/PCT', finding: 'Extrém emelkedett', interpretation: 'Súlyos bakteriális fertőzés' },
-                { test: 'Lactát', finding: 'Emelkedett', interpretation: 'Szöveti hipoperfúzió' },
-                { test: 'CK', finding: 'Emelkedett', interpretation: 'Izom érintettség' }
+                { test: 'LRINEC score', finding: '≥6: gyanú, ≥8: magas valószínűség (de alacsony szenzitivitás!)', interpretation: 'CRP, fvs, Hb, Na, kreatinin, glükóz' },
+                { test: 'Vérkép', finding: 'Leukocytosis (>15 G/L), balra tolt', interpretation: 'Súlyos fertőzés' },
+                { test: 'Nátrium', finding: 'Hyponatraemia (<135 mmol/L)', interpretation: 'Gyakori jelző' },
+                { test: 'Lactát', finding: 'Emelkedett (>2-4 mmol/L)', interpretation: 'Szöveti hipoperfúzió/nekrózis' },
+                { test: 'CK', finding: 'Emelkedett', interpretation: 'Izomérintettség (myositis/nekrózis)' }
               ],
               imaging: [
-                { modality: 'CT kontrasztos', finding: 'Fascia megvastagodás, gáz a lágyrészekben, folyadékgyülem', significance: 'Gyors, terjedés felmérése' },
-                { modality: 'MRI', finding: 'Érzékenyebb fascia érintettségre', significance: 'Ha van idő és stabil a beteg' }
+                { modality: 'CT', finding: 'Fascia megvastagodás, folyadékgyülem, gáz a lágyrészekben (specifikus!)', significance: 'Legjobb képalkotó, de NE késleltesse a műtétet!' },
+                { modality: 'MRI', finding: 'Magas szenzitivitás, alacsony specificitás', significance: 'Időigényes, instabil betegnél kerülendő' }
               ],
               microbiology: [
-                { test: 'Hemokultúra', finding: 'Pozitív 20-40%', significance: 'Kórokozó azonosítás' },
-                { test: 'Szöveti minta (sebészi)', finding: 'Tenyésztés + Gram', significance: 'Gold standard' },
-                { test: 'Finger test', finding: 'Fascia széttolható, "dishwater" pus', significance: 'Intraoperatív diagnózis' }
+                { test: 'Szöveti minta (műtéti)', finding: 'Gram-festés és tenyésztés', significance: 'Gold standard (aerob + anaerob)' },
+                { test: 'Hemokultúra', finding: 'Pozitív (főleg II. típusban)', significance: 'Szisztémás terjedés' },
+                { test: 'Finger test', finding: 'Fascia könnyen elemelhető, nincs vérzés, "mosogatólé" szerű váladék', significance: 'Bedside diagnózis' }
               ]
             },
             differential: [
-              { disease: 'Cellulitis', distinguishing: 'Kevésbé toxikus, nincs aránytalanul nagy fájdalom, lassabb progresszió' },
-              { disease: 'Mély vénás trombózis', distinguishing: 'Nem láz, nem erythema, Doppler UH' },
-              { disease: 'Gázgangraena (Clostridium)', distinguishing: 'Izom nekrózis dominál, gyorsabb, bronz bőr' },
-              { disease: 'Pyomyositis', distinguishing: 'Izom tályog, MRI' }
+              { disease: 'Cellulitis', distinguishing: 'Nincs aránytalan fájdalom, nincs szisztémás toxicitás, lassabb' },
+              { disease: 'Pyomyositis', distinguishing: 'Izom tályog, lokalizáltabb, MRI segít' },
+              { disease: 'Gázgangraena (Clostridium)', distinguishing: 'Izomnekrózis dominál, gyorsabb, krepitáció kifejezettebb' },
+              { disease: 'Mélyvénás trombózis', distinguishing: 'Duzzanat, de nincs láz/toxicitás, Doppler negatív' }
             ],
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'NINCS ambuláns kezelés!', dose: 'AZONNALI MŰTÉT!', duration: '', note: 'Sebészeti sürgősség!' }
+                  { drug: 'NINCS ambuláns kezelés!', dose: 'AZONNALI KÓRHÁZ/MŰTÉT!', duration: '', note: 'Sebészeti vészhelyzet!' }
                 ],
                 inpatient: [
-                  { drug: 'Piperacillin/tazobactam', dose: '4x4.5g IV', duration: 'Klinikai válasz alapján', note: 'Széles spektrum' },
+                  { drug: 'Piperacillin/tazobactam', dose: '4x4.5g IV', duration: 'Klinikai válaszig', note: 'Széles spektrum (G+, G-, anaerob)' },
                   { drug: '+ Vancomycin', dose: '2x15-20mg/kg IV', duration: '', note: 'MRSA fedezet' },
-                  { drug: '+ Clindamycin', dose: '3x900mg IV', duration: '', note: 'Toxintermelés gátlás!' }
+                  { drug: '+ Clindamycin', dose: '3x900mg IV', duration: '', note: 'Toxintermelés gátlás (GAS/Staph)' }
                 ],
                 icu: [
-                  { drug: 'Meropenem', dose: '3x1g IV', duration: '', note: 'Alternatíva' },
-                  { drug: '+ Vancomycin + Clindamycin', dose: '', duration: '', note: 'Triple terápia' },
-                  { drug: 'IVIG', dose: '1-2g/kg', duration: '', note: 'Streptococcus toxikus shock szindrómában' }
+                  { drug: 'Meropenem', dose: '3x1g IV', duration: '', note: 'Alternatíva (I. típus)' },
+                  { drug: '+ Vancomycin + Clindamycin', dose: '', duration: '', note: 'Standard hármas kombináció' },
+                  { drug: 'IVIG', dose: '1g/kg 1. nap, majd 0.5g/kg', duration: '3 nap', note: 'Strep. toxikus shock szindrómában megfontolandó' }
                 ]
               },
-              targeted: 'GAS: Penicillin+Clindamycin; MRSA: Vancomycin+Clindamycin; Polimikrobiális: széles spektrum',
-              supportive: ['AZONNALI agresszív sebészi débridement', 'Intenzív osztály', 'Vazopresszor', 'Többszöri revízió (24-48 óránként)', 'HBO terápia (kiegészítő)'],
-              prevention: ['Sebhigiéné', 'Diabétesz kontroll', 'Korai cellulitis kezelés']
+              targeted: 'Tenyésztés alapján. I. típus: széles spektrum. II. típus (GAS): Penicillin G + Clindamycin. III. típus (Vibrio): Doxycyclin + Ceftriaxon.',
+              supportive: ['AZONNALI agresszív sebészi débridement (kulcsfontosságú!)', 'Folyadékreszuszcitáció', 'Vazopresszorok', 'Re-look műtét 24 órán belül', 'Hiperbár oxigén (vitatott, kiegészítő)'],
+              prevention: ['Sebkezelés', 'Krónikus betegségek gondozása']
             },
             guidelines: {
               diagnosis: [
-                'Klinikai gyanú: Fájdalom aránytalan a lelethez képest, gyors progresszió, toxikus állapot.',
-                'LRINEC score >6 növeli a gyanút, de nem zárja ki.',
-                'Képalkotó (CT/MRI): Gáz, fascia megvastagodás, de nem késleltetheti a sebészetet!',
-                'Definitív diagnózis: Sebészi exploráció ("finger test").'
+                'Klinikai gyanú (aránytalan fájdalom, gyors romlás) elegendő a műtéti feltáráshoz.',
+                'LRINEC score segíthet, de alacsony pontszám nem zárja ki.',
+                'Képalkotó csak stabil betegnél, ha a diagnózis kétséges. Gáz a szövetekben specifikus.'
               ],
               treatment_indications: [
-                'Minden gyanús eset azonnali sebészi beavatkozást igényel.'
+                'Azonnali sebészi beavatkozás (necrotomia/fasciotomia) minden gyanús esetben.',
+                'Empirikus széles spektrumú antibiotikum a műtét előtt/alatt.'
               ],
               first_line: [
-                'Azonnali és radikális sebészi débridement + Széles spektrumú antibiotikum (pl. Piperacillin/tazobactam VAGY Carbapenem + Clindamycin + Vancomycin).'
+                'Sebészi débridement + (Carbapenem vagy Pip/Tazo) + Vancomycin + Clindamycin.'
               ]
             },
             prognosis: {
-              mortality: '20-40% kezeléssel is, 100% kezelés nélkül',
-              prognostic_scores: ['LRINEC', 'SOFA'],
-              factors: 'Késői diagnózis, késői sebészet, immunszuppresszió, STSS, szervi elégtelenség'
+              mortality: '20-40% (megfelelő kezeléssel is), kezeletlenül 100%',
+              prognostic_scores: ['LRINEC', 'FGSI (Fournier\'s Gangrene Severity Index)'],
+              factors: 'Késői műtét (>24h), idős kor, komorbiditások, törzs/fej-nyak lokalizáció'
             }
           },
           {
             id: 'erysipelas',
             name: 'Erysipelas',
-            pathogen: { type: 'Baktérium', name: 'Streptococcus pyogenes (A csoportú Streptococcus)', gram: 'Gram-pozitív', shape: 'coccus' },
+            pathogen: { type: 'Baktérium', name: '<i>Streptococcus pyogenes</i> (A csoportú Streptococcus)', gram: 'Gram-pozitív', shape: 'coccus' },
             epidemiology: {
               incidence: 'Gyakori bőrfertőzés, 10-100/100,000 fő/év',
               risk_groups: ['Idősek', 'Csecsemők', 'Diabetes mellitus', 'Krónikus vénás elégtelenség', 'Lymphoedema', 'Bőrsérülések'],
@@ -122,11 +116,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Baktérium bejutása a bőrbe (sérülés, ekcéma, seb)',
-                'Terjedés a lymphatikus rendszerben',
-                'Lokális gyulladásos válasz',
-                'Toxintermelés (streptolysinek, pyrogén toxinok)',
-                'Szisztémás tünetek (láz, toxémia)'
+                'Behatolás: A kórokozó (leggyakrabban Streptococcus pyogenes) egy apró bőrsérülésen keresztül jut be a dermis felső rétegébe és a felületes nyirokerekbe.',
+                'Nyirokúti terjedés: A baktériumok a nyirokrendszerben gyorsan terjednek, ami a jellegzetes, éles szélű, lángnyelvszerű terjedést eredményezi.',
+                'Gyulladás: A bakteriális toxinok heves lokális gyulladást és szisztémás tüneteket (láz, hidegrázás) okoznak.'
               ],
               virulence_factors: ['M protein', 'Streptolysinek (O, S)', 'Hyaluronidáz', 'Streptokináz']
             },
@@ -134,11 +126,8 @@ Object.assign(window.diseases, {
               incubation: '2-5 nap',
               onset: 'Akut',
               symptoms: [
-                { name: 'Prodroma', description: 'Láz, hidegrázás gyakran megelőzi a bőrtüneteket (4-48 órával)', severity: 'moderate' },
-                { name: 'Bőrtünetek', description: 'Éles szélű, emelkedett, élénkvörös plakk ("lángnyelv")', severity: 'severe' },
-                { name: 'Lokalizáció', description: 'Alsó végtag (70-80%), Arc (5-20%)', severity: 'mild' },
-                { name: 'Fájdalom', description: 'Égő, feszítő jellegű', severity: 'moderate' },
-                { name: 'Nyirokcsomó', description: 'Regionális lymphadenitis gyakori', severity: 'moderate' }
+                { name: 'Bőrtünetek', description: 'Hirtelen kialakuló, éles szélű, lángnyelvszerűen terjedő, élénkvörös, duzzadt, meleg tapintatú, fájdalmas bőrelváltozás. Leggyakrabban az arcon vagy az alsó végtagon jelentkezik.', severity: 'severe' },
+                { name: 'Szisztémás tünetek', description: 'A bőrtüneteket gyakran magas láz, hidegrázás és rossz közérzet előzi meg vagy kíséri.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Vörös, meleg, duzzadt terület',
@@ -208,7 +197,7 @@ Object.assign(window.diseases, {
           {
             id: 'cellulitis',
             name: 'Cellulitis',
-            pathogen: { type: 'Baktérium', name: 'Streptococcus pyogenes vagy Staphylococcus aureus (leggyakoribb)', gram: 'Gram-pozitív', shape: 'coccus' },
+            pathogen: { type: 'Baktérium', name: '<i>Streptococcus pyogenes</i> vagy <i>Staphylococcus aureus</i> (leggyakoribb)', gram: 'Gram-pozitív', shape: 'coccus' },
             epidemiology: {
               incidence: 'Gyakori, 200/100,000 fő/év',
               risk_groups: ['Diabetes mellitus', 'Perifériás érbetegség', 'Obesitas', 'Immunszuppresszió', 'Bőrsérülések', 'Lymphoedema'],
@@ -217,11 +206,8 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Baktérium bejutása a dermisbe és subcutan szövetekbe',
-                'Lokális gyulladás (neutrophilek, ödéma)',
-                'Terjedés a subcutan síkokban',
-                'Lymphatikus obstrukció → ödéma fokozódás',
-                'Szisztémás válasz (láz, leukocytosis)'
+                'Behatolás: A kórokozók (S. pyogenes, S. aureus) egy bőrsérülésen keresztül a mélyebb dermisbe és a subcutan zsírszövetbe jutnak.',
+                'Diffúz terjedés: A fertőzés a szövetekben diffúzan terjed, nem korlátozódik a nyirokutakra, mint az orbánc esetén. Ez egy kevésbé élesen körülhatárolt, de mélyebbre terjedő gyulladást eredményez.'
               ],
               virulence_factors: ['Streptococcus: M protein, toxinok', 'Staphylococcus: PVL, coagulase']
             },
@@ -229,11 +215,8 @@ Object.assign(window.diseases, {
               incubation: '1-3 nap',
               onset: 'Akut',
               symptoms: [
-                { name: 'Bőrtünetek', description: 'Diffúz, nem éles szélű erythema, melegség, duzzanat', severity: 'moderate' },
-                { name: 'Fájdalom', description: 'Nyomásérzékenység, feszülés', severity: 'moderate' },
-                { name: 'Szisztémás tünetek', description: 'Láz, hidegrázás, rossz közérzet (gyakori)', severity: 'moderate' },
-                { name: 'Lymphangitis', description: 'Vörös csíkok a nyirokerek mentén', severity: 'mild' },
-                { name: 'Lokalizáció', description: 'Leggyakrabban alsó végtag (egyoldali)', severity: 'mild' }
+                { name: 'Bőrtünetek', description: 'Az orbánchoz képest kevésbé élesen körülhatárolt, diffúz bőrpír, duzzanat és melegség. A bőr feszül, fájdalmas.', severity: 'moderate' },
+                { name: 'Általános tünetek', description: 'Láz és hidegrázás kísérheti, de nem mindig olyan kifejezett, mint orbánc esetén.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Vörös, meleg, duzzadt bőr',
@@ -311,7 +294,7 @@ Object.assign(window.diseases, {
           {
             id: 'osteomyelitis',
             name: 'Osteomyelitis',
-            pathogen: { type: 'Baktérium', name: 'Staphylococcus aureus (leggyakoribb)', gram: 'Gram-pozitív', shape: 'coccus' },
+            pathogen: { type: 'Baktérium', name: '<i>Staphylococcus aureus</i> (leggyakoribb)', gram: 'Gram-pozitív', shape: 'coccus' },
             epidemiology: {
               incidence: 'Gyermekeknél hematogén, felnőtteknél poszttraumás/diabeteses láb',
               risk_groups: ['Diabetes mellitus', 'Perifériás érbetegség', 'Trauma/műtét', 'IV droghasználók', 'Hemodialízis'],
@@ -320,11 +303,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Baktérium megtapadása a csontszövetben/implantátumon',
-                'Biofilm képzés (krónikus fertőzés alapja)',
-                'Gyulladásos exsudatum növeli az intraosszeális nyomást',
-                'Erek kompressziója → csont nekrózis (sequestrum)',
-                'Új csontképződés a nekrózis körül (involucrum)'
+                'Bejutás: A kórokozók a vérárammal (hematogén), környező lágyrészekből (per continuitatem) vagy direkt sérülés/műtét útján jutnak a csontba.',
+                'Gyulladás és Ischaemia: A csontban gyulladást okoznak, ami a csontvelőben ödémához és nyomásfokozódáshoz vezet. Ez a csont vérellátását rontja, ami csontelhaláshoz (sequester) vezet.',
+                'Krónikussá válás: A szervezet az elhalt csontrészt új csontképződéssel (involucrum) próbálja meg körülvenni. Krónikus esetben a baktériumok biofilmet képezve perzisztálnak.'
               ],
               virulence_factors: ['Biofilm képzés', 'Adhezinek (MSCRAMM)', 'Toxinok']
             },
@@ -332,10 +313,8 @@ Object.assign(window.diseases, {
               incubation: 'Napok (akut) vagy hetek-hónapok (krónikus)',
               onset: 'Változó',
               symptoms: [
-                { name: 'Lokális fájdalom', description: 'Mély, feszítő fájdalom (>90%), terhelésre fokozódik', severity: 'severe' },
-                { name: 'Láz', description: 'Akut hematogén formában gyakori (50-70%), krónikusban ritka', severity: 'moderate' },
-                { name: 'Duzzanat/Erythema', description: 'Érintett terület feletti lágyrészduzzanat és bőrpír', severity: 'moderate' },
-                { name: 'Sipoly (Sinus tract)', description: 'Gennyes váladékozás a bőrfelszínre (krónikus osteomyelitis jele)', severity: 'moderate' }
+                { name: 'Akut osteomyelitis', description: 'Hirtelen kezdődő lokális fájdalom, duzzanat, bőrpír és láz. A beteg nem tudja terhelni az érintett végtagot.', severity: 'severe' },
+                { name: 'Krónikus osteomyelitis', description: 'Alattomosabb, tompa, mély fájdalommal, és gyakran a bőrön megjelenő, váladékozó sipollyal (sinus tract) jár. A láz ritka.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Lokális nyomásérzékenység a csont felett',
@@ -347,18 +326,18 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               laboratory: [
-                { test: 'Vérkép', finding: 'Leukocytosis (akut)', interpretation: 'Gyulladás' },
-                { test: 'CRP/We', finding: 'Emelkedett', interpretation: 'Monitorozásra is jó' },
-                { test: 'Hemokultúra', finding: 'Pozitív (50%)', interpretation: 'Hematogén eredetnél' }
+                { test: 'Vérkép', finding: 'Leukocytosis (akut)', interpretation: 'Gyulladás (krónikusban normál lehet)' },
+                { test: 'CRP/We', finding: 'Emelkedett', interpretation: 'Monitorozásra kiváló (terápiaválasz)' },
+                { test: 'Hemokultúra', finding: 'Pozitív (50%)', interpretation: 'Hematogén eredetnél (csigolya OM-nél fontos)' }
               ],
               imaging: [
-                { modality: 'Röntgen', finding: 'Korai fázisban negatív! Később periostalis reakció, lyticus léziók', significance: 'Késői jel' },
-                { modality: 'MRI', finding: 'Csontvelő ödéma, tályog', significance: 'Gold standard (legérzékenyebb)' },
-                { modality: 'Csontszcintigráfia', finding: 'Fokozott dúsítás', significance: 'Ha MRI nem végezhető' }
+                { modality: 'Röntgen', finding: 'Korai fázisban (10-14 napig) negatív! Később periostalis reakció, lyticus léziók', significance: 'Késői jel, de alapvizsgálat' },
+                { modality: 'MRI', finding: 'Csontvelő ödéma, tályog, sequestrum', significance: 'Gold standard (szenzitivitás >90%)' },
+                { modality: 'Csontszcintigráfia/PET-CT', finding: 'Fokozott dúsítás', significance: 'Ha MRI nem végezhető vagy multifokális folyamat gyanúja' }
               ],
               microbiology: [
-                { test: 'Csontbiopszia tenyésztés', finding: 'Kórokozó azonosítás', significance: 'Gold standard diagnózis' },
-                { test: 'Sipoly váladék', finding: 'Gyakran kontaminált', significance: 'Nem megbízható' }
+                { test: 'Csontbiopszia tenyésztés', finding: 'Kórokozó azonosítás', significance: 'Gold standard diagnózis (antibiotikum előtt!)' },
+                { test: 'Sipoly váladék', finding: 'Gyakran kontaminált', significance: 'Csak S. aureus esetén korrelál jól a csonttal' }
               ]
             },
             differential: [
@@ -369,30 +348,32 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Nincs', dose: '-', duration: '-', note: 'Általában kórházi kezelést/kivizsgálást igényel' }
+                  { drug: 'Nincs', dose: '-', duration: '-', note: 'Kórházi kivizsgálás/mintavétel szükséges' }
                 ],
                 inpatient: [
                   { drug: 'Vancomycin', dose: '15-20mg/kg IV', duration: '4-6 hét', note: 'MRSA fedezet' },
-                  { drug: '+ Ceftriaxon/Cefepim', dose: 'IV', duration: '4-6 hét', note: 'Gram-negatív fedezet' }
+                  { drug: '+ Ceftriaxon/Cefepim', dose: '2g IV', duration: '4-6 hét', note: 'Gram-negatív fedezet (pl. Pseudomonas)' }
                 ],
                 icu: [
                   { drug: 'Széles spektrum', dose: 'IV', duration: '', note: 'Sepszis esetén' }
                 ]
               },
-              targeted: 'Csontbiopszia alapján! S. aureus: Flucloxacillin/Cefazolin; MRSA: Vancomycin/Daptomycin. Időtartam: 4-6 hét (gyakran IV)',
-              supportive: ['Sebészi debridement (nekrotikus csont eltávolítása) - KRITIKUS!', 'Rögzítés', 'Fájdalomcsillapítás'],
+              targeted: 'Csontbiopszia alapján! S. aureus: Cefazolin/Flucloxacillin. MRSA: Vancomycin. Implantátum esetén: Rifampicin kiegészítés (biofilm ellen).',
+              supportive: ['Sebészi debridement (nekrotikus csont eltávolítása) - KRITIKUS!', 'Implantátum eltávolítás (ha lehetséges)', 'Korai orális váltás lehetséges (OVIVA study)'],
               prevention: ['Nyílt törések azonnali ellátása', 'Műtéti sterilitás', 'Diabeteses láb gondozása']
             },
             guidelines: {
               diagnosis: [
-                'Képalkotó: MRI a gold standard a korai diagnózisban.',
-                'Mikrobiológia: Csontbiopszia tenyésztésre a célzott terápia alapja. Sipolyváladék nem megbízható.'
+                'Képalkotó: MRI a legérzékenyebb. Rtg 2 hétig negatív lehet.',
+                'Mikrobiológia: Csontbiopszia (nyílt vagy perkután) tenyésztésre és hisztológiára kötelező az antibiotikum előtt (kivéve szepszis).'
               ],
               treatment_indications: [
-                'Minden igazolt osteomyelitis kezelendő.'
+                'Minden igazolt osteomyelitis kezelendő. Sebészi debridement + antibiotikum.',
+                'Implantátummal asszociált fertőzésnél a biofilm miatt Rifampicin kombináció javasolt.'
               ],
               first_line: [
-                'Hosszú távú (4-6 hét) IV antibiotikum terápia a biopszia eredménye alapján + sebészi debridement.'
+                'Empirikus: Vancomycin + Ceftriaxon/Cefepim.',
+                'Célzott: 4-6 hét terápia. OVIVA vizsgálat alapján a korai (1 hét utáni) orális váltás (pl. kinolonok, clindamycin) nem rosszabb, mint a végig IV.'
               ]
             },
             prognosis: {
@@ -404,7 +385,7 @@ Object.assign(window.diseases, {
           {
             id: 'septic_arthritis',
             name: 'Szeptikus arthritis',
-            pathogen: { type: 'Baktérium', name: 'Staphylococcus aureus, N. gonorrhoeae', gram: 'Vegyes', shape: 'coccus' },
+            pathogen: { type: 'Baktérium', name: '<i>Staphylococcus aureus, N. gonorrhoeae</i>', gram: 'Vegyes', shape: 'coccus' },
             epidemiology: {
               incidence: '2-10/100,000 fő/év',
               risk_groups: ['Rheumatoid arthritis', 'Ízületi protézis', 'Idősek (>80 év)', 'Diabetes', 'IV droghasználók', 'Szexuálisan aktív fiatalok (Gonococcus)'],
@@ -413,11 +394,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Baktérium bejutása az ízületi résbe',
-                'Synovialis membrán kolonizációja',
-                'Akut gyulladásos válasz (neutrophilek beáramlása)',
-                'Proteolytikus enzimek felszabadulása',
-                'Porc és csont gyors pusztulása (napok alatt!)'
+                'Bejutás: A kórokozók a vérárammal (hematogén) vagy direkt sérülésből jutnak az ízületi résbe.',
+                'Gyulladásos válasz: A synovialis membránban megtelepedve heves gyulladásos választ váltanak ki, ami nagy mennyiségű gennyes folyadékgyülemhez vezet.',
+                'Porckárosodás: A neutrofil granulocytákból felszabaduló enzimek és a gyulladásos citokinek órák-napok alatt visszafordíthatatlanul károsítják az ízületi porcot.'
               ],
               virulence_factors: ['Adhezinek', 'Toxinok', 'Porckárosító enzimek']
             },
@@ -425,10 +404,8 @@ Object.assign(window.diseases, {
               incubation: 'Gyors (órák-napok)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Akut monarthritis', description: 'Egyetlen ízület fájdalma, duzzanata (80-90%)', severity: 'severe' },
-                { name: 'Fájdalom', description: 'Intenzív, nyugalomban is, mozgatásra extrém', severity: 'severe' },
-                { name: 'Láz', description: 'Gyakori (60-80%), de hiányozhat (idősek, immunszupprimáltak)', severity: 'moderate' },
-                { name: 'Mozgáskorlátozottság', description: 'Az érintett ízület használatának képtelensége', severity: 'severe' }
+                { name: 'Akut monarthritis', description: 'Leggyakrabban egyetlen nagy ízület (térd, csípő) hirtelen kialakuló, extrém fájdalmas duzzanata, vörössége és melegsége.', severity: 'severe' },
+                { name: 'Funkcióvesztés', description: 'A beteg az ízületet a fájdalom miatt sem aktívan, sem passzívan nem tudja mozgatni. Magas láz és hidegrázás kíséri.', severity: 'severe' }
               ],
               physical_exam: [
                 'Duzzadt, meleg, vörös ízület',
@@ -442,17 +419,18 @@ Object.assign(window.diseases, {
             diagnostics: {
               laboratory: [
                 { test: 'Vérkép', finding: 'Leukocytosis', interpretation: 'Szisztémás reakció' },
-                { test: 'CRP/We', finding: 'Jelentősen emelkedett', interpretation: 'Gyulladás' }
+                { test: 'CRP/We', finding: 'Jelentősen emelkedett', interpretation: 'Gyulladás' },
+                { test: 'Synovialis folyadék', finding: '>50,000 fvs/µL (>90% PMN)', interpretation: 'Szeptikus arthritisre jellemző' }
               ],
               imaging: [
                 { modality: 'Röntgen', finding: 'Kezdetben negatív/lágyrész duzzanat, később ízületi rés beszűkülés', significance: 'Baseline' },
-                { modality: 'UH', finding: 'Ízületi folyadék', significance: 'Punkció vezérlése' }
+                { modality: 'UH', finding: 'Ízületi folyadék, synovialis megvastagodás', significance: 'Punkció vezérlése, korai diagnózis' },
+                { modality: 'MRI', finding: 'Ízületi folyadék, csontvelő ödéma, tályog', significance: 'Osteomyelitis kizárása, komplikációk' }
               ],
               microbiology: [
-                { test: 'Ízületi punkció (Arthrocentesis)', finding: 'Gennyes, >50,000 WBC/µL, >90% PMN', significance: 'DIAGNOSZTIKUS!' },
-                { test: 'Synovialis folyadék tenyésztés', finding: 'Pozitív', significance: 'Gold standard' },
-                { test: 'Hemokultúra', finding: 'Pozitív (50%)', significance: 'Mindig levenni' },
-                { test: 'PCR', finding: 'Gonococcus/Lyme', significance: 'Ha tenyésztés negatív' }
+                { test: 'Ízületi punkció (Arthrocentesis)', finding: 'Gennyes, Gram-festés pozitív (50%)', significance: 'AZONNAL elvégzendő!' },
+                { test: 'Tenyésztés (Synovia + Vér)', finding: 'Pozitív', significance: 'Gold standard' },
+                { test: 'PCR (16S rRNS)', finding: 'Kórokozó DNS', significance: 'Ha a tenyésztés negatív (előkezelt beteg)' }
               ]
             },
             differential: [
@@ -468,26 +446,27 @@ Object.assign(window.diseases, {
                 ],
                 inpatient: [
                   { drug: 'Vancomycin', dose: '15-20mg/kg IV', duration: '', note: 'Gram+ (MRSA) fedezet' },
-                  { drug: '+ Ceftriaxon', dose: '1x2g IV', duration: '', note: 'Gram- (Gonococcus) fedezet' }
+                  { drug: '+ Ceftriaxon', dose: '1x2g IV', duration: '', note: 'Gram- (Gonococcus/G- pálca) fedezet' }
                 ],
                 icu: [
-                  { drug: 'Széles spektrum', dose: 'IV', duration: '', note: 'Sepszis esetén' }
+                  { drug: 'Vancomycin + Meropenem', dose: 'IV', duration: '', note: 'Sepszis/immunszuppresszió esetén' }
                 ]
               },
-              targeted: 'S. aureus: Cefazolin/Oxacillin; MRSA: Vancomycin; Gonococcus: Ceftriaxon. Időtartam: 2-4 hét (IV majd PO)',
-              supportive: ['Ízületi drenázs (tűaspiráció naponta VAGY arthroscopia) - KÖTELEZŐ!', 'Fájdalomcsillapítás', 'Korai mobilizáció gyulladás csökkenése után'],
-              prevention: ['Protézis műtétek sterilitása', 'Gonorrhoea megelőzése']
+              targeted: 'S. aureus: Cefazolin/Flucloxacillin; MRSA: Vancomycin/Daptomycin; Gonococcus: Ceftriaxon. Időtartam: 2-6 hét (IV, majd PO váltás lehetséges - OVIVA).',
+              supportive: ['Ízületi drenázs (tűaspiráció naponta, arthroscopia vagy nyílt feltárás) - KULCSFONTOSSÁGÚ!', 'Fájdalomcsillapítás', 'Korai mobilizáció a gyulladás csökkenése után'],
+              prevention: ['Protézis műtétek sterilitása', 'Gonorrhoea megelőzése', 'Bőrfertőzések kezelése']
             },
             guidelines: {
               diagnosis: [
-                'Ízületi punkció (arthrocentesis) kötelező: gennyes folyadék, >50,000 fvs/µL, >90% PMN.',
-                'Synovialis folyadék Gram-festés és tenyésztés, valamint hemokultúra levétele.'
+                'Ízületi punkció (arthrocentesis) az antibiotikum előtt kötelező! Sejtszám, Gram, tenyésztés, kristály.',
+                'Hemokultúra levétele mindig szükséges (50% pozitív).'
               ],
               treatment_indications: [
-                'Minden gyanús eset sürgősségi ellátást igényel.'
+                'Minden szeptikus arthritis azonnali antibiotikumot és drenázst igényel.'
               ],
               first_line: [
-                'Azonnali ízületi drenázs + empirikus IV antibiotikum (pl. Vancomycin + Ceftriaxon), majd célzott terápia.'
+                'Azonnali ízületi drenázs (tűaspiráció vagy sebészi) + empirikus IV antibiotikum (Vancomycin + Ceftriaxon).',
+                'OVIVA vizsgálat alapján a korai orális váltás biztonságos lehet stabil betegnél.'
               ]
             },
             prognosis: {
@@ -499,7 +478,7 @@ Object.assign(window.diseases, {
           {
             id: 'spondylodiscitis',
             name: 'Spondylodiscitis',
-            pathogen: { type: 'Baktérium', name: 'Staphylococcus aureus (leggyakoribb), Streptococcus spp., Gram-negatívok', gram: 'Vegyes', shape: 'coccus/bacillus' },
+            pathogen: { type: 'Baktérium', name: '<i>Staphylococcus aureus</i> (leggyakoribb), <i>Streptococcus</i> spp., Gram-negatívok', gram: 'Vegyes', shape: 'coccus/bacillus' },
             epidemiology: {
               incidence: 'Ritka, 2-7/100,000 fő/év',
               risk_groups: ['Idősek (>50 év)', 'Diabetes mellitus', 'Immunszuppresszió', 'IV droghasználók', 'Gerincműtét után', 'Urogenitális fertőzések'],
@@ -508,11 +487,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Baktérium szóródása a véráramba (pl. UTI, endocarditis)',
-                'Megtapadás a gerinc ereiben (végartériák)',
-                'Intervertebrális lemez és csigolyák kolonizációja',
-                'Gyulladásos válasz → ödéma, nekrózis',
-                'Biofilm képzés → krónikus fertőzés'
+                'Hematogén szóródás: A kórokozók leggyakrabban a vérárammal (hematogén úton) jutnak a csontvelőben gazdag csigolyatestekbe, gyakran egy távoli fertőzésből (pl. húgyúti, bőr).',
+                'Terjedés: A fertőzés a csigolyatestről ráterjed a szomszédos porckorongra (discus) és a másik csigolyára, gyulladást és szöveti destrukciót okozva.',
+                'Szövődmények: A folyamat epidurális vagy paravertebrális tályog képződéséhez, gerincvelő-kompresszióhoz és neurológiai tünetekhez vezethet.'
               ],
               virulence_factors: ['Adhezinek (MSCRAMM)', 'Biofilm képzés', 'Toxinok']
             },
@@ -520,10 +497,8 @@ Object.assign(window.diseases, {
               incubation: 'Napok-hét',
               onset: 'Lassú, alattomos',
               symptoms: [
-                { name: 'Hátfájás', description: 'Vezető tünet (>90%), fokozatosan erősödő, nyugalomban is fennáll', severity: 'severe' },
-                { name: 'Láz', description: 'Csak az esetek ~50%-ában van jelen, gyakran alacsony', severity: 'moderate' },
-                { name: 'Neurológiai tünetek', description: 'Radicularis fájdalom, gyengeség, paresis (30-50%)', severity: 'severe' },
-                { name: 'Általános tünetek', description: 'Fáradtság, fogyás, éjszakai izzadás', severity: 'mild' }
+                { name: 'Hátfájás', description: 'A vezető tünet (>90%) egy fokozatosan erősödő, nyugalomban is fennálló, lokalizált hát- vagy derékfájás, ami ütögetésre érzékeny.', severity: 'severe' },
+                { name: 'Láz és neurológiai tünetek', description: 'A láz gyakran csak hőemelkedés vagy hiányozhat. Neurológiai tünetek (gyököki fájdalom, végtaggyengeség) epidurális tályogra utalnak és vészhelyzetet jelentenek.', severity: 'severe' }
               ],
               physical_exam: [
                 'Lokális nyomás- vagy ütögetési érzékenység az érintett csigolya felett',

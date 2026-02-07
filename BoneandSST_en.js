@@ -7,113 +7,107 @@ Object.assign(window.diseases, {
           {
             id: 'necrotizing_fasciitis',
             name: 'Necrotizing Fasciitis',
-            pathogen: { type: 'Bacterium', name: 'Polymicrobial or Strep. pyogenes/S. aureus', gram: 'Mixed', shape: 'Variable' },
+            pathogen: { type: 'Bacterium', name: 'Polymicrobial (Type I) or Monomicrobial (Type II)', gram: 'Mixed', shape: 'Variable' },
             epidemiology: {
-              incidence: 'Rare (0.4/100,000), but increasing incidence',
-              risk_groups: ['Diabetes mellitus', 'Peripheral vascular disease', 'Immunocompromised', 'Chronic alcoholism', 'People who inject drugs (PWID)', 'Post-trauma/surgery'],
+              incidence: 'Rare (0.4-1/100,000), but high mortality',
+              risk_groups: ['Type I: Diabetes, immunosuppression, obesity, PVD', 'Type II: Healthy young, trauma, surgery, IV drug use', 'Type III: Seawater exposure, liver disease (Vibrio)'],
               seasonality: 'None',
               transmission: 'Endogenous (skin breach) or direct inoculation'
             },
             pathomechanism: {
               steps: [
-                'Bacteria enter subcutaneous tissues (trauma, wound, varicella)',
-                'Rapid spread along fascial planes',
-                'Bacterial toxins → thrombosis in microvasculature',
-                'Tissue ischemia and necrosis',
-                'Toxin-mediated shock (streptococcus)',
-                'Skin initially intact as superficial blood supply is compromised later'
+                'Entry: Infection enters the subcutaneous tissue through a breach in the skin (even minor). Bacteria spread rapidly along the superficial fascial planes, which are poorly vascularized.',
+                'Toxin Effect: Pathogens (especially GAS and Clostridium) produce potent toxins that cause direct tissue necrosis, thrombosis of small blood vessels, and inhibition of the local immune response.',
+                'Tissue Necrosis: Thrombosis and inflammatory edema further compromise blood supply, leading to extensive tissue death. The process also destroys subcutaneous nerves, leading to anesthesia of the area (a late sign).',
+                'Systemic Toxicity: Toxins entering the circulation cause systemic toxic shock syndrome and multi-organ failure.'
               ],
-              virulence_factors: ['Streptococcus: M protein, Streptolysins, SpeA/B/C superantigens', 'Staphylococcus: PVL, α-toxin', 'Anaerobes: collagenases, proteases']
+              virulence_factors: ['Strep: M protein, exotoxins (SpeA/B/C)', 'Staph: PVL, TSST-1', 'Clostridium: alpha-toxin', 'Anaerobes: gas production']
             },
             clinical: {
               incubation: 'Hours-days (after trauma)',
-              onset: 'Hyperacute, rapidly progressing',
+              onset: 'Hyperacute, fulminant',
               symptoms: [
-                { name: 'Intense pain', description: 'DISPROPORTIONATE to physical findings (75-100%), early sign', severity: 'severe' },
-                { name: 'Swelling/Edema', description: 'Tense, spreading edema (75-100%)', severity: 'severe' },
-                { name: 'Skin changes', description: 'Erythema (70-100%), later violaceous discoloration, bullae, necrosis (late signs!)', severity: 'severe' },
-                { name: 'Fever', description: 'Common, but may be absent', severity: 'moderate' },
-                { name: 'Crepitus', description: 'Gas formation (13-30% - not always present!)', severity: 'severe' },
-                { name: 'Toxic state', description: 'Hypotension, tachycardia, altered mental status', severity: 'severe' }
+                { name: 'Early Signs', description: 'The most important early sign is excruciating pain, which is disproportionate to the clinical findings. The skin may only show mild erythema or swelling, but the patient is systemically ill and febrile.', severity: 'severe' },
+                { name: 'Late Signs', description: 'The skin turns dark purple or black, blisters (bullae) appear, and gas (crepitus) can be felt in the subcutaneous tissues. Pain may subside due to nerve death, which is a poor prognostic sign. Septic shock develops rapidly.', severity: 'severe' }
               ],
               physical_exam: [
-                'Pain is disproportionately SEVERE to what is seen (early sign!)',
-                'Tense edema, rapid spread',
-                'Skin: erythema → violaceous → bullae → necrosis',
+                'Pain disproportionately SEVERE to findings (early sign!)',
+                'Tense, "woody" edema extending beyond erythema',
+                'Skin: erythema → violaceous/grey → bullae → necrosis',
                 'Anesthesia in the area (nerve damage)',
-                'Crepitus on palpation (gas)',
-                'Systemic signs: tachycardia, hypotension, confusion'
+                'Crepitus (mainly Type I and Clostridium)',
+                'Systemic signs: fever, tachycardia, hypotension, confusion'
               ],
-              complications: ['Septic shock', 'Multi-organ failure', 'Limb loss', 'Death (20-40% even with treatment)']
+              complications: ['Septic shock', 'Multi-organ failure (MODS)', 'Limb loss', 'Death (20-40%, 100% without treatment)']
             },
             diagnostics: {
               laboratory: [
-                { test: 'LRINEC score', finding: '>6: high probability', interpretation: 'CRP, white blood cell, hemoglobin, sodium, creatinine, glucose' },
-                { test: 'CBC', finding: 'Leukocytosis or leukopenia', interpretation: 'Sepsis' },
-                { test: 'CRP/PCT', finding: 'Extremely elevated', interpretation: 'Severe bacterial infection' },
-                { test: 'Lactate', finding: 'Elevated', interpretation: 'Tissue hypoperfusion' },
-                { test: 'CK', finding: 'Elevated', interpretation: 'Muscle involvement' }
+                { test: 'LRINEC score', finding: '≥6: suspicion, ≥8: high probability (but low sensitivity!)', interpretation: 'CRP, WBC, Hb, Na, creatinine, glucose' },
+                { test: 'CBC', finding: 'Leukocytosis (>15 G/L), left shift', interpretation: 'Severe infection' },
+                { test: 'Sodium', finding: 'Hyponatremia (<135 mmol/L)', interpretation: 'Common indicator' },
+                { test: 'Lactate', finding: 'Elevated (>2-4 mmol/L)', interpretation: 'Tissue hypoperfusion/necrosis' },
+                { test: 'CK', finding: 'Elevated', interpretation: 'Muscle involvement (myositis/necrosis)' }
               ],
               imaging: [
-                { modality: 'Contrast CT', finding: 'Fascial thickening, gas in soft tissues, fluid collection', significance: 'Fast, assesses extent' },
-                { modality: 'MRI', finding: 'More sensitive for fascial involvement', significance: 'If time permits and patient is stable' }
+                { modality: 'CT', finding: 'Fascial thickening, fluid, gas in soft tissues (specific!)', significance: 'Best imaging, but DO NOT delay surgery!' },
+                { modality: 'MRI', finding: 'High sensitivity, low specificity', significance: 'Time consuming, avoid in unstable patients' }
               ],
               microbiology: [
-                { test: 'Blood culture', finding: 'Positive in 20-40%', significance: 'Pathogen identification' },
-                { test: 'Surgical tissue sample', finding: 'Culture + Gram', significance: 'Gold standard' },
-                { test: 'Finger test', finding: 'Fascia can be dissected, "dishwater" pus', significance: 'Intraoperative diagnosis' }
+                { test: 'Surgical tissue sample', finding: 'Gram stain and culture', significance: 'Gold standard (aerobe + anaerobe)' },
+                { test: 'Blood culture', finding: 'Positive (mainly Type II)', significance: 'Systemic spread' },
+                { test: 'Finger test', finding: 'Fascia easily separated, no bleeding, "dishwater" pus', significance: 'Bedside diagnosis' }
               ]
             }, 
             differential: [
-              { disease: 'Cellulitis', distinguishing: 'Less toxic, no disproportionate pain, slower progression' },
-              { disease: 'Deep Vein Thrombosis (DVT)', distinguishing: 'No fever, no significant erythema, confirmed by Doppler US' },
-              { disease: 'Gas gangrene (Clostridium)', distinguishing: 'Muscle necrosis dominates, faster, bronze skin' },
-              { disease: 'Pyomyositis', distinguishing: 'Muscle abscess, MRI' }
+              { disease: 'Cellulitis', distinguishing: 'No disproportionate pain, no systemic toxicity, slower' },
+              { disease: 'Pyomyositis', distinguishing: 'Muscle abscess, more localized, MRI helps' },
+              { disease: 'Gas gangrene (Clostridium)', distinguishing: 'Muscle necrosis dominates, faster, crepitus more pronounced' },
+              { disease: 'Deep Vein Thrombosis (DVT)', distinguishing: 'Swelling, but no fever/toxicity, Doppler negative' }
             ],
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'No outpatient treatment!', dose: 'IMMEDIATE SURGERY!', duration: '', note: 'Surgical emergency!' }
+                  { drug: 'No outpatient treatment!', dose: 'IMMEDIATE HOSPITAL/SURGERY!', duration: '', note: 'Surgical emergency!' }
                 ],
                 inpatient: [
-                  { drug: 'Piperacillin/tazobactam', dose: '4x4.5g IV', duration: 'Based on clinical response', note: 'Broad spectrum' },
-                  { drug: '+ Vancomycin', dose: '15-20 mg/kg IV every 12 hours', duration: '', note: 'MRSA coverage' },
-                  { drug: '+ Clindamycin', dose: '900 mg IV every 8 hours', duration: '', note: 'Inhibition of toxin production' }
+                  { drug: 'Piperacillin/tazobactam', dose: '4x4.5g IV', duration: 'Until clinical response', note: 'Broad spectrum (G+, G-, anaerobe)' },
+                  { drug: '+ Vancomycin', dose: '2x15-20 mg/kg IV', duration: '', note: 'MRSA coverage' },
+                  { drug: '+ Clindamycin', dose: '3x900 mg IV', duration: '', note: 'Toxin inhibition (GAS/Staph)' }
                 ],
                 icu: [
-                  { drug: 'Meropenem', dose: '3x1g IV', duration: '', note: 'Alternative' },
-                  { drug: '+ Vancomycin + Clindamycin', dose: '', duration: '', note: 'Triple therapy' },
-                  { drug: 'IVIG', dose: '1-2g/kg', duration: '', note: 'In streptococcal toxic shock syndrome' }
+                  { drug: 'Meropenem', dose: '3x1g IV', duration: '', note: 'Alternative (Type I)' },
+                  { drug: '+ Vancomycin + Clindamycin', dose: '', duration: '', note: 'Standard triple therapy' },
+                  { drug: 'IVIG', dose: '1g/kg day 1, then 0.5g/kg', duration: '3 days', note: 'Consider in Strep toxic shock syndrome' }
                 ]
               },
-              targeted: 'Based on culture results. For Group A Strep (GAS): Penicillin G + Clindamycin. For MRSA: Vancomycin or Linezolid. For polymicrobial infections: continue broad-spectrum coverage guided by sensitivities.',
-              supportive: ['IMMEDIATE aggressive surgical debridement', 'ICU admission', 'Vasopressors', 'Multiple revisions (every 24-48 hours)', 'Hyperbaric oxygen (HBO) therapy (adjunctive)'],
-              prevention: ['Wound hygiene', 'Diabetes control', 'Early cellulitis treatment']
+              targeted: 'Based on culture. Type I: broad spectrum. Type II (GAS): Penicillin G + Clindamycin. Type III (Vibrio): Doxycycline + Ceftriaxone.',
+              supportive: ['IMMEDIATE aggressive surgical debridement (crucial!)', 'Fluid resuscitation', 'Vasopressors', 'Re-look surgery within 24h', 'Hyperbaric oxygen (controversial, adjunctive)'],
+              prevention: ['Wound care', 'Management of chronic diseases']
             },
             guidelines: {
               diagnosis: [
-                'Clinical suspicion: Pain disproportionate to findings, rapid progression, toxic state.',
-                'LRINEC score >6 increases suspicion but does not rule it out.',
-                'Imaging (CT/MRI): Gas, fascial thickening, but must not delay surgery!',
-                'Definitive diagnosis: Surgical exploration ("finger test").'
+                'Clinical suspicion (disproportionate pain, rapid deterioration) is sufficient for surgical exploration.',
+                'LRINEC score may help, but low score does not rule out.',
+                'Imaging only in stable patients if diagnosis is doubtful. Gas in tissues is specific.'
               ],
               treatment_indications: [
-                'All suspected cases require immediate surgical intervention.'
+                'Immediate surgical intervention (necrotomy/fasciotomy) in all suspected cases.',
+                'Empiric broad-spectrum antibiotics before/during surgery.'
               ],
               first_line: [
-                'Immediate and radical surgical debridement + Broad-spectrum antibiotics (e.g., Piperacillin/tazobactam OR Carbapenem + Clindamycin + Vancomycin).'
+                'Surgical debridement + (Carbapenem or Pip/Tazo) + Vancomycin + Clindamycin.'
               ]
             },
             prognosis: {
-              mortality: '20-40% even with treatment, 100% without treatment',
-              prognostic_scores: ['LRINEC', 'SOFA'],
-              factors: 'Delayed diagnosis, delayed surgery, immunosuppression, STSS, organ failure'
+              mortality: '20-40% (even with appropriate treatment), 100% untreated',
+              prognostic_scores: ['LRINEC', 'FGSI (Fournier\'s Gangrene Severity Index)'],
+              factors: 'Delayed surgery (>24h), old age, comorbidities, trunk/head-neck location'
             }
           },
           {
             id: 'erysipelas',
             name: 'Erysipelas',
-            pathogen: { type: 'Bacterium', name: 'Streptococcus pyogenes (Group A Streptococcus)', gram: 'Gram-positive', shape: 'coccus' },
+            pathogen: { type: 'Bacterium', name: '<i>Streptococcus pyogenes</i> (Group A Streptococcus)', gram: 'Gram-positive', shape: 'coccus' },
             epidemiology: {
               incidence: 'Common skin infection, 10-100/100,000 per year',
               risk_groups: ['Elderly', 'Infants', 'Diabetes mellitus', 'Chronic venous insufficiency', 'Lymphedema', 'Skin lesions'],
@@ -122,11 +116,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bacteria enter the skin (injury, eczema, wound)',
-                'Spread through the lymphatic system',
-                'Local inflammatory response',
-                'Toxin production (streptolysins, pyrogenic toxins)',
-                'Systemic symptoms (fever, toxemia)'
+                'Entry: The pathogen (most commonly Streptococcus pyogenes) enters the upper dermis and superficial lymphatics through a minor break in the skin.',
+                'Lymphatic Spread: The bacteria spread rapidly through the lymphatic system, resulting in the characteristic, sharply demarcated, flame-like advancing edge.',
+                'Inflammation: Bacterial toxins cause a brisk local inflammation and systemic symptoms (fever, chills).'
               ],
               virulence_factors: ['M protein', 'Streptolysins (O, S)', 'Hyaluronidase', 'Streptokinase']
             },
@@ -134,11 +126,8 @@ Object.assign(window.diseases, {
               incubation: '2-5 days',
               onset: 'Acute',
               symptoms: [
-                { name: 'Prodrome', description: 'Fever, chills often precede skin symptoms (by 4-48 hours)', severity: 'moderate' },
-                { name: 'Skin symptoms', description: 'Sharp-edged, raised, bright red plaque ("flame-like")', severity: 'severe' },
-                { name: 'Location', description: 'Lower limb (70-80%), Face (5-20%)', severity: 'mild' },
-                { name: 'Pain', description: 'Burning, tense character', severity: 'moderate' },
-                { name: 'Lymph node', description: 'Regional lymphadenopathy is common', severity: 'moderate' }
+                { name: 'Skin Manifestations', description: 'Sudden onset of a sharply demarcated, flame-like spreading, bright red, swollen, warm, and painful skin lesion. Most commonly affects the face or lower limbs.', severity: 'severe' },
+                { name: 'Systemic Symptoms', description: 'The skin manifestations are often preceded or accompanied by high fever, chills, and malaise.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Red, warm, swollen area',
@@ -207,7 +196,7 @@ Object.assign(window.diseases, {
           {
             id: 'cellulitis',
             name: 'Cellulitis',
-            pathogen: { type: 'Bacterium', name: 'Streptococcus pyogenes or Staphylococcus aureus (most common)', gram: 'Gram-positive', shape: 'coccus' },
+            pathogen: { type: 'Bacterium', name: '<i>Streptococcus pyogenes</i> or <i>Staphylococcus aureus</i> (most common)', gram: 'Gram-positive', shape: 'coccus' },
             epidemiology: {
               incidence: 'Common, 200/100,000 per year',
               risk_groups: ['Diabetes mellitus', 'Peripheral vascular disease', 'Obesity', 'Immunocompromised', 'Skin injuries', 'Lymphedema'],
@@ -216,11 +205,8 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bacteria enter the dermis and subcutaneous tissues',
-                'Local inflammation (neutrophils, edema)',
-                'Spread in subcutaneous planes',
-                'Lymphatic obstruction → increased edema',
-                'Systemic response (fever, leukocytosis)'
+                'Entry: Pathogens (S. pyogenes, S. aureus) enter the deeper dermis and subcutaneous fat through a break in the skin.',
+                'Diffuse Spread: The infection spreads diffusely through the tissues, not confined to the lymphatics as in erysipelas. This results in a less sharply demarcated but deeper inflammation.'
               ],
               virulence_factors: ['Streptococcus: M protein, toxins', 'Staphylococcus: PVL, coagulase']
             },
@@ -228,11 +214,8 @@ Object.assign(window.diseases, {
               incubation: '1-3 days',
               onset: 'Acute',
               symptoms: [
-                { name: 'Skin symptoms', description: 'Diffuse, poorly demarcated erythema, warmth, swelling', severity: 'moderate' },
-                { name: 'Pain', description: 'Tenderness, tension', severity: 'moderate' },
-                { name: 'Systemic symptoms', description: 'Fever, chills, malaise (common)', severity: 'moderate' },
-                { name: 'Lymphangitis', description: 'Red streaks along lymphatic vessels', severity: 'mild' },
-                { name: 'Location', description: 'Most commonly lower limb (unilateral)', severity: 'mild' }
+                { name: 'Skin Manifestations', description: 'Compared to erysipelas, it is a less sharply demarcated, diffuse erythema, swelling, and warmth. The skin is tense and painful.', severity: 'moderate' },
+                { name: 'General Symptoms', description: 'May be accompanied by fever and chills, but not always as pronounced as in erysipelas.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Red, warm, swollen skin',
@@ -309,7 +292,7 @@ Object.assign(window.diseases, {
           {
             id: 'osteomyelitis',
             name: 'Osteomyelitis',
-            pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus (most common)', gram: 'Gram-positive', shape: 'coccus' },
+            pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus</i> (most common)', gram: 'Gram-positive', shape: 'coccus' },
             epidemiology: {
               incidence: 'Hematogenous in children, post-traumatic/diabetic foot in adults',
               risk_groups: ['Diabetes mellitus', 'Peripheral vascular disease', 'Trauma/surgery', 'People who inject drugs (PWID)', 'Hemodialysis'],
@@ -318,11 +301,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bacteria adhere to bone tissue/implant',
-                'Biofilm formation (basis of chronic infection)',
-                'Inflammatory exudate increases intraosseous pressure',
-                'Vessel compression → bone necrosis (sequestrum)',
-                'New bone formation around the necrosis (involucrum)'
+                'Entry: Pathogens reach the bone via the bloodstream (hematogenous), from adjacent soft tissues (contiguous), or by direct inoculation from trauma/surgery.',
+                'Inflammation and Ischemia: In the bone, they cause inflammation, leading to edema and increased pressure in the bone marrow. This compromises blood supply, leading to bone death (sequestrum).',
+                'Chronicity: The body attempts to wall off the dead bone with new bone formation (involucrum). In chronic cases, bacteria persist by forming a biofilm.'
               ],
               virulence_factors: ['Biofilm formation', 'Adhesins (MSCRAMM)', 'Toxins']
             },
@@ -330,10 +311,8 @@ Object.assign(window.diseases, {
               incubation: 'Days (acute) or weeks-months (chronic)',
               onset: 'Variable',
               symptoms: [
-                { name: 'Local pain', description: 'Deep, throbbing pain (>90%), worsens with weight-bearing', severity: 'severe' },
-                { name: 'Fever', description: 'Common in acute hematogenous form (50-70%), rare in chronic', severity: 'moderate' },
-                { name: 'Swelling/Erythema', description: 'Soft tissue swelling and redness over the affected area', severity: 'moderate' },
-                { name: 'Sinus tract', description: 'Purulent discharge to the skin surface (sign of chronic osteomyelitis)', severity: 'moderate' }
+                { name: 'Acute Osteomyelitis', description: 'Sudden onset of localized pain, swelling, erythema, and fever. The patient is often unable to bear weight on the affected limb.', severity: 'severe' },
+                { name: 'Chronic Osteomyelitis', description: 'More insidious, with a dull, deep pain, and often a draining sinus tract to the skin. Fever is rare.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Local tenderness over the bone',
@@ -345,18 +324,18 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               laboratory: [
-                { test: 'CBC', finding: 'Leukocytosis (acute)', interpretation: 'Inflammation' },
-                { test: 'CRP/ESR', finding: 'Elevated', interpretation: 'Good for monitoring' },
-                { test: 'Blood culture', finding: 'Positive (50%)', interpretation: 'In hematogenous origin' }
+                { test: 'CBC', finding: 'Leukocytosis (acute)', interpretation: 'Inflammation (may be normal in chronic)' },
+                { test: 'CRP/ESR', finding: 'Elevated', interpretation: 'Excellent for monitoring (response to therapy)' },
+                { test: 'Blood culture', finding: 'Positive (50%)', interpretation: 'In hematogenous origin (important in vertebral OM)' }
               ],
               imaging: [
-                { modality: 'X-ray', finding: 'Negative in early phase! Later periosteal reaction, lytic lesions', significance: 'Late sign' },
-                { modality: 'MRI', finding: 'Bone marrow edema, abscess', significance: 'Gold standard (most sensitive)' },
-                { modality: 'Bone scintigraphy', finding: 'Increased uptake', significance: 'If MRI cannot be performed' }
+                { modality: 'X-ray', finding: 'Negative in early phase (10-14 days)! Later periosteal reaction, lytic lesions', significance: 'Late sign, but baseline' },
+                { modality: 'MRI', finding: 'Bone marrow edema, abscess, sequestrum', significance: 'Gold standard (sensitivity >90%)' },
+                { modality: 'Bone scintigraphy/PET-CT', finding: 'Increased uptake', significance: 'If MRI cannot be performed or multifocal suspicion' }
               ],
               microbiology: [
-                { test: 'Bone biopsy culture', finding: 'Pathogen identification', significance: 'Gold standard diagnosis' },
-                { test: 'Sinus tract discharge', finding: 'Often contaminated', significance: 'Not reliable' }
+                { test: 'Bone biopsy culture', finding: 'Pathogen identification', significance: 'Gold standard diagnosis (before antibiotics!)' },
+                { test: 'Sinus tract discharge', finding: 'Often contaminated', significance: 'Correlates well with bone only for S. aureus' }
               ]
             },
             differential: [
@@ -367,30 +346,32 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'None', dose: '-', duration: '-', note: 'Usually requires hospital treatment/investigation' }
+                  { drug: 'None', dose: '-', duration: '-', note: 'Hospital investigation/sampling required' }
                 ],
                 inpatient: [
                   { drug: 'Vancomycin', dose: '15-20 mg/kg IV', duration: '4-6 weeks', note: 'MRSA coverage' },
-                  { drug: '+ Ceftriaxone/Cefepime', dose: 'IV', duration: '4-6 weeks', note: 'Gram-negative coverage' }
+                  { drug: '+ Ceftriaxone/Cefepime', dose: '2g IV', duration: '4-6 weeks', note: 'Gram-negative coverage (e.g. Pseudomonas)' }
                 ],
                 icu: [
                   { drug: 'Broad-spectrum antibiotics', dose: 'IV', duration: '', note: 'In case of sepsis' }
                 ]
               },
-              targeted: 'Based on bone biopsy! S. aureus: Flucloxacillin/Cefazolin; MRSA: Vancomycin/Daptomycin. Duration: 4-6 weeks (often IV)',
-              supportive: ['Surgical debridement (removal of necrotic bone) - CRITICAL!', 'Immobilization', 'Analgesics'],
+              targeted: 'Based on bone biopsy! S. aureus: Cefazolin/Flucloxacillin. MRSA: Vancomycin. Implant-associated: Rifampicin adjunct (biofilm).',
+              supportive: ['Surgical debridement (removal of necrotic bone) - CRITICAL!', 'Implant removal (if possible)', 'Early oral switch possible (OVIVA study)'],
               prevention: ['Immediate care of open fractures', 'Surgical sterility', 'Diabetic foot care']
             },
             guidelines: {
               diagnosis: [
-                'Imaging: MRI is the gold standard for early diagnosis.',
-                'Microbiology: Bone biopsy for culture is essential for targeted therapy. Sinus tract discharge is not reliable.'
+                'Imaging: MRI is most sensitive. X-ray may be negative for 2 weeks.',
+                'Microbiology: Bone biopsy (open or percutaneous) for culture and histology is mandatory before antibiotics (unless sepsis).'
               ],
               treatment_indications: [
-                'All confirmed cases of osteomyelitis must be treated.'
+                'All confirmed cases of osteomyelitis must be treated. Surgical debridement + antibiotics.',
+                'In implant-associated infection, Rifampicin combination is recommended due to biofilm.'
               ],
               first_line: [
-                'Long-term (4-6 weeks) IV antibiotic therapy based on biopsy results + surgical debridement.'
+                'Empiric: Vancomycin + Ceftriaxone/Cefepime.',
+                'Targeted: 4-6 weeks therapy. Based on OVIVA trial, early (after 1 week) oral switch (e.g., quinolones, clindamycin) is non-inferior to IV.'
               ]
             },
             prognosis: {
@@ -402,7 +383,7 @@ Object.assign(window.diseases, {
           {
             id: 'septic_arthritis',
             name: 'Septic Arthritis',
-            pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus, N. gonorrhoeae', gram: 'Mixed', shape: 'coccus' },
+            pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus, N. gonorrhoeae</i>', gram: 'Mixed', shape: 'coccus' },
             epidemiology: {
               incidence: '2-10/100,000 per year',
               risk_groups: ['Rheumatoid arthritis', 'Joint prosthesis', 'Elderly (>80 years)', 'Diabetes', 'People who inject drugs (PWID)', 'Sexually active young people (Gonococcus)'],
@@ -411,11 +392,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bacteria enter the joint space',
-                'Colonization of the synovial membrane',
-                'Acute inflammatory response (neutrophil influx)',
-                'Release of proteolytic enzymes',
-                'Rapid destruction of cartilage and bone (within days!)'
+                'Entry: Pathogens reach the joint space via the bloodstream (hematogenous) or direct injury.',
+                'Inflammatory Response: They colonize the synovial membrane, triggering a massive inflammatory response, leading to a large purulent effusion.',
+                'Cartilage Damage: Enzymes released from neutrophils and inflammatory cytokines cause irreversible damage to the articular cartilage within hours to days.'
               ],
               virulence_factors: ['Adhesins', 'Toxins', 'Cartilage-damaging enzymes']
             },
@@ -423,10 +402,8 @@ Object.assign(window.diseases, {
               incubation: 'Rapid (hours-days)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Acute monoarthritis', description: 'Pain and swelling of a single joint (80-90%)', severity: 'severe' },
-                { name: 'Pain', description: 'Intense, even at rest, extreme on movement', severity: 'severe' },
-                { name: 'Fever', description: 'Common (60-80%), but may be absent (elderly, immunosuppressed)', severity: 'moderate' },
-                { name: 'Immobility', description: 'Inability to use the affected joint', severity: 'severe' }
+                { name: 'Acute Monoarthritis', description: 'Sudden onset of extremely painful swelling, redness, and warmth of a single large joint (most commonly knee, hip).', severity: 'severe' },
+                { name: 'Loss of Function', description: 'The patient is unable to move the joint, either actively or passively, due to pain. High fever and chills are common.', severity: 'severe' }
               ],
               physical_exam: [
                 'Swollen, warm, red joint',
@@ -440,17 +417,18 @@ Object.assign(window.diseases, {
             diagnostics: {
               laboratory: [
                 { test: 'CBC', finding: 'Leukocytosis', interpretation: 'Systemic reaction' },
-                { test: 'CRP/ESR', finding: 'Significantly elevated', interpretation: 'Inflammation' }
+                { test: 'CRP/ESR', finding: 'Significantly elevated', interpretation: 'Inflammation' },
+                { test: 'Synovial fluid', finding: '>50,000 WBC/µL (>90% PMN)', interpretation: 'Typical for septic arthritis' }
               ],
               imaging: [
                 { modality: 'X-ray', finding: 'Initially negative/soft tissue swelling, later joint space narrowing', significance: 'Baseline' },
-                { modality: 'Ultrasound', finding: 'Joint fluid', significance: 'Guiding puncture' }
+                { modality: 'Ultrasound', finding: 'Joint fluid, synovial thickening', significance: 'Guiding puncture, early diagnosis' },
+                { modality: 'MRI', finding: 'Joint effusion, bone marrow edema, abscess', significance: 'Exclusion of osteomyelitis, complications' }
               ],
               microbiology: [
-                { test: 'Joint aspiration (Arthrocentesis)', finding: 'Purulent, >50,000 WBC/µL, >90% PMN', significance: 'DIAGNOSTIC!' },
-                { test: 'Synovial fluid culture', finding: 'Positive', significance: 'Gold standard' },
-                { test: 'Blood culture', finding: 'Positive (50%)', significance: 'Always take' },
-                { test: 'PCR', finding: 'Gonococcus/Lyme', significance: 'If culture is negative' }
+                { test: 'Joint aspiration (Arthrocentesis)', finding: 'Purulent, Gram stain positive (50%)', significance: 'Perform IMMEDIATELY!' },
+                { test: 'Culture (Synovial + Blood)', finding: 'Positive', significance: 'Gold standard' },
+                { test: 'PCR (16S rRNA)', finding: 'Pathogen DNA', significance: 'If culture is negative (pre-treated patient)' }
               ]
             },
             differential: [
@@ -466,26 +444,27 @@ Object.assign(window.diseases, {
                 ],
                 inpatient: [
                   { drug: 'Vancomycin', dose: '15-20 mg/kg IV', duration: '', note: 'Gram+ (MRSA) coverage' },
-                  { drug: '+ Ceftriaxone', dose: '2 g IV once daily', duration: '', note: 'Gram- (Gonococcus) coverage' }
+                  { drug: '+ Ceftriaxone', dose: '2 g IV once daily', duration: '', note: 'Gram- (Gonococcus/G- rods) coverage' }
                 ],
                 icu: [
-                  { drug: 'Broad-spectrum antibiotics', dose: 'IV', duration: '', note: 'In case of sepsis' }
+                  { drug: 'Vancomycin + Meropenem', dose: 'IV', duration: '', note: 'In case of sepsis/immunosuppression' }
                 ]
               },
-              targeted: 'S. aureus: Cefazolin/Oxacillin; MRSA: Vancomycin; Gonococcus: Ceftriaxone. Duration: 2-4 weeks (IV then PO)',
-              supportive: ['Joint drainage (daily needle aspiration OR arthroscopy) - MANDATORY!', 'Analgesics', 'Early mobilization after inflammation subsides'],
-              prevention: ['Sterility in prosthesis surgeries', 'Prevention of gonorrhea']
+              targeted: 'S. aureus: Cefazolin/Flucloxacillin; MRSA: Vancomycin/Daptomycin; Gonococcus: Ceftriaxone. Duration: 2-6 weeks (IV then PO switch possible - OVIVA).',
+              supportive: ['Joint drainage (daily needle aspiration, arthroscopy or open washout) - CRUCIAL!', 'Analgesics', 'Early mobilization after inflammation subsides'],
+              prevention: ['Sterility in prosthesis surgeries', 'Prevention of gonorrhea', 'Treatment of skin infections']
             },
             guidelines: {
               diagnosis: [
-                'Joint aspiration (arthrocentesis) is mandatory: purulent fluid, >50,000 WBC/µL, >90% PMNs.',
-                'Synovial fluid Gram stain and culture, as well as blood cultures, should be obtained.'
+                'Joint aspiration (arthrocentesis) before antibiotics is mandatory! Cell count, Gram, culture, crystals.',
+                'Blood cultures should always be obtained (50% positive).'
               ],
               treatment_indications: [
-                'All suspected cases require emergency management.'
+                'All septic arthritis cases require immediate antibiotics and drainage.'
               ],
               first_line: [
-                'Immediate joint drainage + empiric IV antibiotics (e.g., Vancomycin + Ceftriaxone), followed by targeted therapy.'
+                'Immediate joint drainage (needle or surgical) + empiric IV antibiotics (Vancomycin + Ceftriaxone).',
+                'Based on OVIVA trial, early oral switch may be safe in stable patients.'
               ]
             },
             prognosis: {
@@ -497,7 +476,7 @@ Object.assign(window.diseases, {
           {
             id: 'spondylodiscitis',
             name: 'Spondylodiscitis',
-            pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus (most common), Streptococcus spp., Gram-negative bacteria', gram: 'Mixed', shape: 'coccus/bacillus' },
+            pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus</i> (most common), <i>Streptococcus</i> spp., Gram-negative bacteria', gram: 'Mixed', shape: 'coccus/bacillus' },
             epidemiology: {
               incidence: 'Rare, 2-7/100,000 per year',
               risk_groups: ['Elderly (>50 years)', 'Diabetes mellitus', 'Immunocompromised', 'People who inject drugs (PWID)', 'Post-spine surgery', 'Urogenital infections'],
@@ -506,11 +485,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bacterial spread into the bloodstream (e.g., UTI, endocarditis)',
-                'Adhesion in spinal vessels (end arteries)',
-                'Colonization of intervertebral disc and vertebrae',
-                'Inflammatory response → edema, necrosis',
-                'Biofilm formation → chronic infection'
+                'Hematogenous Spread: Pathogens most commonly reach the highly vascularized vertebral bodies via the bloodstream (hematogenous route), often from a distant infection (e.g., urinary tract, skin).',
+                'Progression: The infection spreads from the vertebral body to the adjacent intervertebral disc and the next vertebra, causing inflammation and tissue destruction.',
+                'Complications: The process can lead to the formation of an epidural or paravertebral abscess, causing spinal cord compression and neurological symptoms.'
               ],
               virulence_factors: ['Adhesins (MSCRAMM)', 'Biofilm formation', 'Toxins']
             },
@@ -518,10 +495,8 @@ Object.assign(window.diseases, {
               incubation: 'Days-weeks',
               onset: 'Slow, insidious',
               symptoms: [
-                { name: 'Back pain', description: 'Leading symptom (>90%), gradually worsening, present even at rest', severity: 'severe' },
-                { name: 'Fever', description: 'Present in only ~50% of cases, often low-grade', severity: 'moderate' },
-                { name: 'Neurological symptoms', description: 'Radicular pain, weakness, paresis (30-50%)', severity: 'severe' },
-                { name: 'General symptoms', description: 'Fatigue, weight loss, night sweats', severity: 'mild' }
+                { name: 'Back Pain', description: 'The leading symptom (>90%) is a gradually worsening, localized back pain that is present even at rest and tender to percussion.', severity: 'severe' },
+                { name: 'Fever and Neurological Symptoms', description: 'Fever is often low-grade or absent. Neurological symptoms (radicular pain, limb weakness) suggest an epidural abscess and represent an emergency.', severity: 'severe' }
               ],
               physical_exam: [
                 'Local tenderness or percussion pain over the affected vertebra',

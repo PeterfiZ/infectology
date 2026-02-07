@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
           {
             id: 'bacterial_pneumonia',
             name: 'Bacterial Pneumonia',
-            pathogen: { type: 'Bacterium', name: 'Streptococcus pneumoniae', gram: 'Gram-positive', shape: 'diplococcus' },
+            pathogen: { type: 'Bacterium', name: '<i>Streptococcus pneumoniae</i>', gram: 'Gram-positive', shape: 'diplococcus' },
             epidemiology: {
               incidence: 'Most common cause of community-acquired pneumonia (CAP) (30-40%)',
               risk_groups: ['Elderly (>65 years)', 'Patients with chronic diseases (COPD, heart failure, diabetes)', 'Immunocompromised', 'Asplenic patients', 'Patients with alcohol use disorder', 'Smokers'],
@@ -16,11 +16,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Colonization: S. pneumoniae from the nasopharynx is aspirated into the lower airways',
-                'Adherence: Pneumococcus surface protein A (PspA) and choline-binding proteins bind to epithelial cells',
-                'Capsular polysaccharide: The capsule inhibits phagocytosis and complement activation',
-                'Pneumolysin: Pore-forming toxin → cell damage, inflammation',
-                'Consolidation: Alveoli fill with inflammatory exudate (red blood cells, fibrin, neutrophils)'
+                'The infection usually begins with microaspiration of bacteria colonizing the upper airways. The pathogen\'s virulence factors (e.g., capsule) help evade host defense mechanisms (e.g., phagocytosis).',
+                'The bacteria multiply in the alveoli, triggering a vigorous inflammatory response. Released toxins (e.g., pneumolysin) damage epithelial cells.',
+                'Inflammatory cells (neutrophils), red blood cells, and fibrin fill the alveoli, leading to the consolidation of lung tissue. This process is responsible for the characteristic picture of lobar pneumonia.'
               ],
               virulence_factors: ['Capsular polysaccharide (93 serotypes)', 'Pneumolysin', 'Autolysin (LytA)', 'Neuraminidase', 'IgA1 protease']
             },
@@ -28,11 +26,9 @@ Object.assign(window.diseases, {
               incubation: '1-3 days',
               onset: 'Sudden, dramatic onset',
               symptoms: [
-                { name: 'Cough', description: 'Present in 90%; productive (66%), rusty sputum is classic but rare', severity: 'severe' },
-                { name: 'Fever and chills', description: 'Fever (80%), chills (40-50%)', severity: 'severe' },
-                { name: 'Dyspnea', description: 'Shortness of breath (66%)', severity: 'moderate' },
-                { name: 'Pleuritic pain', description: 'Sharp, increases with inspiration (50%)', severity: 'moderate' },
-                { name: 'Other', description: 'GI symptoms (10-20%), altered mental status (in the elderly)', severity: 'mild' }
+                { name: 'Sudden Onset', description: 'Characterized by high fever, chills, and malaise.', severity: 'severe' },
+                { name: 'Respiratory Symptoms', description: 'Initially a dry cough, which later becomes productive, classically with rust-colored sputum. Pleuritic, sharp chest pain and shortness of breath are common.', severity: 'moderate' },
+                { name: 'Atypical Presentation', description: 'In the elderly, fever may be absent, and altered mental status can be the leading symptom.', severity: 'severe' }
               ],
               physical_exam: [
                 'Tachypnea, tachycardia',
@@ -137,7 +133,7 @@ Object.assign(window.diseases, {
           {
             id: 'tuberculosis',
             name: 'Pulmonary Tuberculosis',
-            pathogen: { type: 'Mycobacterium', name: 'Mycobacterium tuberculosis', gram: 'Acid-fast (Ziehl-Neelsen+)', shape: 'rod' },
+            pathogen: { type: 'Mycobacterium', name: '<i>Mycobacterium tuberculosis</i>', gram: 'Acid-fast (Ziehl-Neelsen+)', shape: 'rod' },
             epidemiology: {
               incidence: '~10 million new cases/year worldwide, ~500 cases/year in Hungary',
               risk_groups: ['People living with HIV (20-30x risk)', 'Patients with diabetes', 'Immunocompromised', 'Socially disadvantaged', 'Healthcare workers', 'Immigrants from endemic areas'],
@@ -146,12 +142,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhalation: Bacilli reach the alveoli',
-                'Phagocytosis: Alveolar macrophages engulf but cannot kill them',
-                'Intracellular multiplication: Primary complex (Ghon focus + hilar lymph node) in 2-12 weeks',
-                'Granuloma formation: T-cell mediated immune response → epithelioid cells, Langhans giant cells',
-                'Latent infection: Granulomas encapsulate the bacilli (90%)',
-                'Reactivation: Immunosuppression → caseating necrosis → cavity → spreads by coughing'
+                'Infection occurs by inhaling aerosol droplets containing the pathogen. The bacteria are phagocytosed by alveolar macrophages but survive and multiply within them.',
+                'A primary lesion (Ghon focus) develops at the site of infection, and the bacteria spread to regional lymph nodes, forming the primary complex.',
+                'The cellular immune response (T-cells) is activated, leading to granuloma formation. These granulomas encapsulate the bacteria, establishing a latent infection (LTBI) in 90% of cases.',
+                'In case of immunosuppression, the bacteria can reactivate. The center of the granuloma undergoes caseous necrosis, which can liquefy and form a cavity, leading to an open, infectious form of the disease.'
               ],
               virulence_factors: ['Cord factor (trehalose dimycolate)', 'Mycolic acid (cell wall)', 'Lipoarabinomannan', 'ESAT-6 and CFP-10 secreted antigens']
             },
@@ -159,12 +153,9 @@ Object.assign(window.diseases, {
               incubation: 'Primary: 2-12 weeks; Reactivation: years-decades',
               onset: 'Slow, insidious',
               symptoms: [
-                { name: 'Chronic cough', description: '>90% in active pulmonary TB; lasting >3 weeks', severity: 'severe' },
-                { name: 'Fever', description: '60-80%, often afternoon/evening subfebrility', severity: 'moderate' },
-                { name: 'Night sweats', description: 'Profuse (50%)', severity: 'moderate' },
-                { name: 'Weight loss', description: 'Significant weight loss (common)', severity: 'moderate' },
-                { name: 'Hemoptysis', description: 'Bloody sputum (20-30%), usually a late sign', severity: 'severe' },
-                { name: 'Chest pain', description: 'Pleuritic or dull', severity: 'mild' }
+                { name: 'Respiratory Symptoms', description: 'Chronic cough lasting more than 3 weeks, which may initially be dry and later become productive. Bloody sputum (hemoptysis) may appear later.', severity: 'severe' },
+                { name: 'Constitutional (B) Symptoms', description: 'Insidious onset with prolonged symptoms: low-grade fever (especially in the afternoon), profuse night sweats, and significant unintentional weight loss.', severity: 'moderate' },
+                { name: 'Other', description: 'Fatigue, loss of appetite, chest pain.', severity: 'mild' }
               ],
               physical_exam: [
                 'Cachexia',
@@ -241,7 +232,7 @@ Object.assign(window.diseases, {
           {
             id: 'legionella',
             name: 'Legionella Pneumonia (Legionnaires\' Disease)',
-            pathogen: { type: 'Bacterium', name: 'Legionella pneumophila', gram: 'Gram-negative (stains poorly)', shape: 'rod, intracellular' },
+            pathogen: { type: 'Bacterium', name: '<i>Legionella pneumophila</i>', gram: 'Gram-negative (stains poorly)', shape: 'rod, intracellular' },
             epidemiology: {
               incidence: '2-9% of CAP, up to 30% of nosocomial pneumonia',
               risk_groups: ['Elderly (>50 years)', 'Smokers', 'COPD patients', 'Immunocompromised', 'Chronic kidney disease', 'Diabetes'],
@@ -250,12 +241,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Aerosol inhalation from contaminated water source',
-                'Legionella enters alveolar macrophages',
-                'Dot/Icm T4SS system: Inhibition of phagosome-lysosome fusion',
-                'Intracellular replication in a special vacuole',
-                'Cell lysis → infection of adjacent cells',
-                'Severe necrotizing alveolitis, inflammatory infiltration'
+                'Infection occurs by inhaling aerosols (e.g., from showers, cooling towers, air conditioners) containing the bacteria.',
+                'Once in the lungs, Legionella enters alveolar macrophages, where a special secretion system (Dot/Icm) prevents the fusion of phagosomes and lysosomes.',
+                'The bacteria replicate within a protected vacuole inside the macrophage, then lyse the cell to infect new ones.',
+                'This process triggers a severe, necrotizing pneumonia and a strong inflammatory response.'
               ],
               virulence_factors: ['Dot/Icm secretion system', 'Mip (macrophage infectivity potentiator)', 'Flagellum', 'Over 300 effector proteins']
             },
@@ -263,11 +252,9 @@ Object.assign(window.diseases, {
               incubation: '2-10 days (average 5-6 days)',
               onset: 'Prodrome for 1-2 days, then rapid progression',
               symptoms: [
-                { name: 'High fever', description: '>90%, often >39°C', severity: 'severe' },
-                { name: 'Cough', description: '90%; initially dry, later productive (50%)', severity: 'moderate' },
-                { name: 'GI symptoms', description: 'Diarrhea (20-50%), nausea/vomiting (10-30%)', severity: 'moderate' },
-                { name: 'Neurological symptoms', description: 'Confusion (25-50%), headache (40-50%)', severity: 'moderate' },
-                { name: 'Dyspnea', description: 'Shortness of breath (25-60%)', severity: 'severe' }
+                { name: 'Atypical Pneumonia', description: 'High fever, chills, and an initially dry, non-productive cough.', severity: 'severe' },
+                { name: 'Extrapulmonary Symptoms', description: 'Multisystem involvement is characteristic: gastrointestinal (diarrhea, nausea) and neurological (headache, confusion, delirium).', severity: 'moderate' },
+                { name: 'Characteristic Signs', description: 'Relative bradycardia (low pulse rate despite high fever) and hyponatremia in lab tests are common.', severity: 'moderate' }
               ],
               physical_exam: [
                 'High fever with relative bradycardia (Faget\'s sign)',
@@ -331,7 +318,7 @@ Object.assign(window.diseases, {
           {
             id: 'mycoplasma',
             name: 'Mycoplasma Pneumonia',
-            pathogen: { type: 'Bacterium', name: 'Mycoplasma pneumoniae', gram: 'No cell wall', shape: 'pleomorphic' },
+            pathogen: { type: 'Bacterium', name: '<i>Mycoplasma pneumoniae</i>', gram: 'No cell wall', shape: 'pleomorphic' },
             epidemiology: {
               incidence: '15-20% of CAP, 50% in epidemics',
               risk_groups: ['School-age children', 'Young adults', 'Closed communities (dorms, barracks)'],
@@ -340,10 +327,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Adherence to respiratory epithelial cells (P1 adhesin)',
-                'Ciliostasis and ciliary destruction (hydrogen peroxide)',
-                'CARDS toxin production (inflammation, vacuolization)',
-                'Immune-mediated lung injury'
+                'The pathogen adheres tightly to the cilia of respiratory epithelial cells using its P1 adhesin.',
+                'Hydrogen peroxide and the CARDS toxin produced by the bacterium damage the cilia (ciliostasis), leading to impaired mucociliary clearance.',
+                'The inflammatory response and cellular damage cause the prolonged cough and pneumonia.'
               ],
               virulence_factors: ['P1 adhesin', 'CARDS toxin', 'Hydrogen peroxide']
             },
@@ -351,11 +337,9 @@ Object.assign(window.diseases, {
               incubation: '2-3 weeks',
               onset: 'Slow, gradual',
               symptoms: [
-                { name: 'Cough', description: '>95%; dry, hacking, paroxysmal, lasting for weeks', severity: 'moderate' },
-                { name: 'General symptoms', description: 'Headache, malaise (common)', severity: 'mild' },
-                { name: 'Sore throat', description: 'Common (non-exudative)', severity: 'mild' },
-                { name: 'Fever', description: 'Variable, can be high or absent', severity: 'mild' },
-                { name: 'Extrapulmonary', description: 'Hemolysis (subclinical common), rash (Stevens-Johnson <10%)', severity: 'moderate' }
+                { name: 'Atypical Pneumonia', description: 'Gradual onset with low-grade fever, headache, and malaise. The leading symptom is a dry, hacking, paroxysmal cough that lasts for weeks.', severity: 'moderate' },
+                { name: '"Walking Pneumonia"', description: 'Physical findings (sparse auscultation) are often much milder than the extensive inflammation seen on the chest X-ray.', severity: 'mild' },
+                { name: 'Extrapulmonary Symptoms', description: 'Rashes (e.g., erythema multiforme), hemolytic anemia (cold agglutinin disease), or neurological complications can occur.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Often sparse auscultation findings',
@@ -412,7 +396,7 @@ Object.assign(window.diseases, {
           {
             id: 'chlamydia_pneumoniae',
             name: 'Chlamydia pneumoniae',
-            pathogen: { type: 'Bacterium', name: 'Chlamydia pneumoniae', gram: 'Gram-negative (intracellular)', shape: 'coccoid' },
+            pathogen: { type: 'Bacterium', name: '<i>Chlamydia pneumoniae</i>', gram: 'Gram-negative (intracellular)', shape: 'coccoid' },
             epidemiology: {
               incidence: '5-10% of CAP',
               risk_groups: ['Elderly', 'Patients with chronic diseases', 'Closed communities'],
@@ -421,11 +405,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhalation of elementary body (EB)',
-                'Intracellular transformation to reticulate body (RB)',
-                'Replication, inclusion formation',
-                'Cell lysis, EB release',
-                'Ciliostasis'
+                'Infection begins with the inhalation of infectious elementary bodies (EBs). Inside the cell, EBs transform into reticulate bodies (RBs), the replicating form.',
+                'After replication, RBs convert back to EBs, the cell lyses, and the new elementary bodies infect more cells.',
+                'This cycle leads to damage of the respiratory epithelium and inflammation.'
               ],
               virulence_factors: ['Intracellular survival', 'Endotoxin-like substances']
             },
@@ -433,9 +415,8 @@ Object.assign(window.diseases, {
               incubation: '3-4 weeks',
               onset: 'Gradual',
               symptoms: [
-                { name: 'Biphasic course', description: 'Upper respiratory symptoms followed by pneumonia', severity: 'moderate' },
-                { name: 'Hoarseness/Laryngitis', description: 'Characteristic accompanying symptom', severity: 'mild' },
-                { name: 'Cough', description: 'Persistent, lasting for weeks-months', severity: 'moderate' }
+                { name: 'Biphasic Course', description: 'Often occurs in two phases: initially pharyngitis and laryngitis (hoarseness is characteristic), followed 1-3 weeks later by the development of atypical pneumonia.', severity: 'moderate' },
+                { name: 'Prolonged Cough', description: 'The most characteristic feature of the pneumonia is a dry, irritative cough that persists for weeks to months.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Pharyngitis',
@@ -486,7 +467,7 @@ Object.assign(window.diseases, {
           {
             id: 'psittacosis',
             name: 'Ornithosis (Psittacosis)',
-            pathogen: { type: 'Bacterium', name: 'Chlamydia psittaci', gram: 'Intracellular', shape: 'coccoid' },
+            pathogen: { type: 'Bacterium', name: '<i>Chlamydia psittaci</i>', gram: 'Intracellular', shape: 'coccoid' },
             epidemiology: {
               incidence: 'Rare, occupational disease',
               risk_groups: ['Bird owners (parrots, pigeons)', 'Veterinarians', 'Poultry workers'],
@@ -495,10 +476,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhalation',
-                'Infection of the reticuloendothelial system (liver, spleen)',
-                'Hematogenous spread to the lungs',
-                'Interstitial pneumonia'
+                'Infection occurs by inhaling dust contaminated with the dried droppings of birds (especially parrots, pigeons).',
+                'The pathogen spreads from the lungs to the reticuloendothelial system (liver, spleen), where it multiplies.',
+                'During a secondary viremia, the bacteria return to the lungs, causing an atypical, interstitial pneumonia.'
               ],
               virulence_factors: ['Intracellular survival']
             },
@@ -506,10 +486,9 @@ Object.assign(window.diseases, {
               incubation: '5-14 days',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Fever', description: 'Almost 100%, sudden onset', severity: 'severe' },
-                { name: 'Headache', description: 'Severe, often with photophobia', severity: 'severe' },
-                { name: 'Cough', description: 'Dry (50-90%)', severity: 'moderate' },
-                { name: 'Splenomegaly', description: 'Detected in 10-70%', severity: 'moderate' }
+                { name: 'Typhoid-like Symptoms', description: 'Sudden onset of high fever, chills, and a severe, debilitating headache.', severity: 'severe' },
+                { name: 'Respiratory Symptoms', description: 'A dry, non-productive cough. Physical findings are often sparse compared to the chest X-ray.', severity: 'moderate' },
+                { name: 'Systemic Signs', description: 'Hepatosplenomegaly and relative bradycardia (Faget\'s sign) are common.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Relative bradycardia (Faget\'s sign)',
@@ -562,7 +541,7 @@ Object.assign(window.diseases, {
           {
             id: 'q_fever_resp',
             name: 'Q Fever',
-            pathogen: { type: 'Bacterium', name: 'Coxiella burnetii', gram: 'Gram-negative (intracellular)', shape: 'coccobacillus' },
+            pathogen: { type: 'Bacterium', name: '<i>Coxiella burnetii</i>', gram: 'Gram-negative (intracellular)', shape: 'coccobacillus' },
             epidemiology: {
               incidence: 'Zoonosis, occupational disease',
               risk_groups: ['Livestock farmers', 'Slaughterhouse workers', 'Veterinarians'],
@@ -571,11 +550,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhalation (a single bacterium can infect!)',
-                'Infection of alveolar macrophages',
-                'Replication in acidic phagosomes',
-                'Hematogenous spread',
-                'Granuloma formation (doughnut granuloma / fibrin ring granuloma)'
+                'Infection occurs by inhaling highly infectious aerosols from animal birth products (placenta, amniotic fluid).',
+                'The pathogen enters alveolar macrophages, where it not only survives but also replicates within acidic phagosomes.',
+                'It spreads via the bloodstream to the liver and bone marrow.',
+                'The body attempts to contain the infection by forming characteristic "doughnut-shaped" granulomas.',
+                'The disease can be acute or chronic (mainly manifesting as endocarditis).'
               ],
               virulence_factors: ['Spore-like form (resistant)', 'LPS phase variation']
             },
@@ -583,10 +562,8 @@ Object.assign(window.diseases, {
               incubation: '2-3 weeks',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Acute Q fever', description: 'Flu-like: Fever, fatigue, severe headache', severity: 'severe' },
-                { name: 'Pneumonia', description: 'Variable, often mild cough, but radiological findings', severity: 'moderate' },
-                { name: 'Hepatitis', description: 'Hepatomegaly, right upper quadrant pain', severity: 'moderate' },
-                { name: 'Chronic', description: 'Endocarditis (main manifestation)', severity: 'severe' }
+                { name: 'Acute Q Fever', description: 'Presents with a sudden onset of high fever, severe retro-orbital headache, and flu-like symptoms. Atypical pneumonia (mild cough) and granulomatous hepatitis (elevated liver enzymes) are common.', severity: 'moderate' },
+                { name: 'Chronic Q Fever', description: 'Develops months to years later, mainly in patients with pre-existing heart valve defects or immunosuppression. The most common manifestation is culture-negative endocarditis.', severity: 'severe' }
               ],
               physical_exam: [
                 'Hepatomegaly',
@@ -646,7 +623,7 @@ Object.assign(window.diseases, {
           {
             id: 'influenza',
             name: 'Influenza',
-            pathogen: { type: 'Virus', name: 'Influenza A/B/C virus', gram: 'RNA virus, Orthomyxoviridae', shape: 'helical' },
+            pathogen: { type: 'Virus', name: '<i>Influenza A/B/C virus</i>', gram: 'RNA virus, Orthomyxoviridae', shape: 'helical' },
             epidemiology: {
               incidence: 'Seasonal epidemic: 5-20% of population/year, pandemics: up to 50%',
               risk_groups: ['Elderly (>65)', 'Children (<5)', 'Pregnant women', 'Patients with chronic diseases', 'Healthcare workers', 'Immunocompromised'],
@@ -655,12 +632,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Hemagglutinin (HA) binds to sialic acid receptors on respiratory epithelium',
-                'Receptor-mediated endocytosis',
-                'Viral RNA replication in the nucleus',
-                'Neuraminidase (NA) aids in the release of new viruses',
-                'Epithelial cell apoptosis, ciliary damage',
-                'Cytokine storm in severe cases (IL-6, TNF-α, IFN-γ)'
+                'The virus uses its hemagglutinin (HA) to bind to respiratory epithelial cells and enter them.',
+                'It replicates within the cell and then uses neuraminidase (NA) to be released and infect new cells.',
+                'The viral infection leads to the destruction of respiratory epithelial cells and damage to the cilia, impairing airway clearance.',
+                'The body\'s strong immune response (cytokine storm) causes systemic symptoms like fever and muscle pain.'
               ],
               virulence_factors: ['Hemagglutinin (H1-18)', 'Neuraminidase (N1-11)', 'NS1 protein (IFN antagonist)', 'PB1-F2 (pro-apoptotic)']
             },
@@ -668,12 +643,9 @@ Object.assign(window.diseases, {
               incubation: '1-4 days (average 2 days)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Fever', description: 'Sudden onset, 38-41°C (95% of symptomatic cases)', severity: 'severe' },
-                { name: 'Cough', description: 'Dry, non-productive (>90%), often with chest pain', severity: 'moderate' },
-                { name: 'Myalgia', description: 'Severe muscle pain (90%), especially back/limbs', severity: 'severe' },
-                { name: 'Headache', description: 'Severe, often retro-orbital (85%)', severity: 'moderate' },
-                { name: 'Sore throat', description: 'Common accompanying symptom (60-70%)', severity: 'mild' },
-                { name: 'Prostration', description: 'Marked weakness, bedridden', severity: 'moderate' }
+                { name: 'Sudden Onset', description: 'Begins with a high fever (>38°C), chills, severe headache, and muscle pain (myalgia).', severity: 'severe' },
+                { name: 'Respiratory Symptoms', description: 'A dry, hacking cough and sore throat are characteristic.', severity: 'moderate' },
+                { name: 'Constitutional Symptoms', description: 'Marked weakness, malaise (prostration), and loss of appetite.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Febrile, ill-appearing',
@@ -734,7 +706,7 @@ Object.assign(window.diseases, {
           {
             id: 'covid19',
             name: 'COVID-19',
-            pathogen: { type: 'Virus', name: 'SARS-CoV-2', gram: 'RNA virus, Coronaviridae', shape: 'spherical, with spike proteins' },
+            pathogen: { type: 'Virus', name: '<i>SARS-CoV-2</i>', gram: 'RNA virus, Coronaviridae', shape: 'spherical, with spike proteins' },
             epidemiology: {
               incidence: 'Pandemic from 2020, becoming endemic',
               risk_groups: ['Elderly (>65)', 'Patients with obesity (BMI>30)', 'Diabetes', 'Cardiovascular disease', 'Immunocompromised', 'Chronic lung disease'],
@@ -743,12 +715,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Spike protein binds to ACE2 receptor (lung, heart, vessels, gut)',
-                'TMPRSS2 protease cleaves spike protein → fusion',
-                'Viral replication and spread',
-                'Endothelial dysfunction, microthrombosis',
-                'Cytokine storm (IL-6, IL-1β, TNF-α) in severe cases',
-                'ARDS, multi-organ failure'
+                'The virus uses its Spike (S) protein to bind to the ACE2 receptor on the surface of cells, which is found in many organs (lungs, heart, vessels, gut).',
+                'After entry, the virus replicates within the cell (viral phase).',
+                'In severe cases, an excessive immune response, the so-called cytokine storm, can develop in the second week of the disease.',
+                'This hyperinflammation leads to systemic endothelial damage, microthrombosis, and, in the lungs, acute respiratory distress syndrome (ARDS), which is the basis of the severe course.'
               ],
               virulence_factors: ['Spike protein', 'NSP1 (host shutdown)', 'ORF8 (immunomodulation)', 'Nucleocapsid']
             },
@@ -756,12 +726,9 @@ Object.assign(window.diseases, {
               incubation: '2-14 days (median 5 days, Omicron 3 days)',
               onset: 'Variable',
               symptoms: [
-                { name: 'Fever', description: 'Common (70-90%), but may be absent (elderly)', severity: 'moderate' },
-                { name: 'Cough', description: 'Dry (60-80%), persistent', severity: 'moderate' },
-                { name: 'Fatigue', description: 'Pronounced (40-70%)', severity: 'moderate' },
-                { name: 'Dyspnea', description: 'Shortness of breath (30-50% of hospitalized), hypoxia', severity: 'severe' },
-                { name: 'Anosmia/Dysgeusia', description: 'Loss of smell/taste (variant-dependent, 20-60%)', severity: 'mild' },
-                { name: 'Myalgia', description: 'Muscle pain (30-60%)', severity: 'mild' }
+                { name: 'Common Symptoms', description: 'Fever, dry cough, fatigue, and muscle pain (myalgia).', severity: 'moderate' },
+                { name: 'Characteristic Symptoms', description: 'Loss of smell and taste (anosmia, dysgeusia) can be an early, specific sign.', severity: 'mild' },
+                { name: 'Severe Symptoms', description: 'Shortness of breath (dyspnea), chest pain, and hypoxemia (low blood oxygen), which can lead to ARDS.', severity: 'severe' }
               ],
               physical_exam: [
                 'Fever, tachypnea',
@@ -832,7 +799,7 @@ Object.assign(window.diseases, {
           {
             id: 'endocarditis',
             name: 'Infective Endocarditis',
-            pathogen: { type: 'Bacterium', name: 'Staphylococcus aureus, Viridans group streptococci', gram: 'Gram-positive', shape: 'coccus' },
+            pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus, Viridans group streptococci</i>', gram: 'Gram-positive', shape: 'coccus' },
             epidemiology: {
               incidence: '3-10/100,000 per year',
               risk_groups: ['Valvular defects', 'Prosthetic valves', 'People who inject drugs (PWID)', 'Congenital heart disease', 'Previous endocarditis'],
@@ -841,11 +808,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Endothelial injury (turbulent flow)',
-                'Sterile platelet-fibrin thrombus formation (NBTE)',
-                'Bacteremia (pathogen adherence)',
-                'Vegetation formation (bacteria + fibrin + platelets)',
-                'Tissue destruction, embolization'
+                'The process begins with injury to the heart valve endothelium, to which a sterile thrombus (nonbacterial thrombotic endocarditis, NBTE) adheres.',
+                'During a transient bacteremia (e.g., dental procedure), circulating pathogens adhere to this damaged surface.',
+                'The bacteria multiply, form a biofilm, and create a vegetation composed of bacteria, fibrin, and platelets.',
+                'This vegetation damages the valve (causing insufficiency), and fragments can break off, causing septic emboli to various parts of the body (e.g., brain, spleen).'
               ],
               virulence_factors: ['Adhesins (MSCRAMM)', 'Biofilm formation', 'Toxins']
             },
@@ -853,11 +819,9 @@ Object.assign(window.diseases, {
               incubation: 'Days (acute) or weeks (subacute)',
               onset: 'Variable',
               symptoms: [
-                { name: 'Fever', description: 'Most common symptom (>90%), often with chills', severity: 'moderate' },
-                { name: 'Heart murmur', description: 'New or changed regurgitant murmur (85%)', severity: 'severe' },
-                { name: 'Embolic symptoms', description: 'Stroke, pulmonary embolism, spleen/kidney infarct (20-50%)', severity: 'severe' },
-                { name: 'Heart failure', description: 'Dyspnea, edema (40-60% - most common complication)', severity: 'severe' },
-                { name: 'Skin manifestations', description: 'Petechiae (20-40%), Osler/Janeway (5-10% - rarer today)', severity: 'mild' }
+                { name: 'General Symptoms', description: 'The most common are fever, chills, night sweats, and weight loss. The presentation is often that of a fever of unknown origin (FUO).', severity: 'moderate' },
+                { name: 'Cardiac Symptoms', description: 'Appearance of a new or changed heart murmur, or symptoms of heart failure (shortness of breath, edema) due to valve damage.', severity: 'severe' },
+                { name: 'Embolic Phenomena', description: 'Fragments breaking off from the vegetation can cause septic emboli: stroke, splenic or renal infarction, skin manifestations (Janeway lesions, splinter hemorrhages).', severity: 'severe' }
               ],
               physical_exam: [
                 'Fever',
@@ -951,7 +915,7 @@ Object.assign(window.diseases, {
           {
             id: 'myocarditis',
             name: 'Myocarditis',
-            pathogen: { type: 'Virus', name: 'Coxsackie B, Adenovirus, Parvovirus B19', gram: 'RNA/DNA viruses', shape: 'variable' },
+            pathogen: { type: 'Virus', name: '<i>Coxsackie B, Adenovirus, Parvovirus B19</i>', gram: 'RNA/DNA viruses', shape: 'variable' },
             epidemiology: {
               incidence: 'Hard to estimate (many mild cases), 10-20% of sudden cardiac death in young people',
               risk_groups: ['Young adults', 'Men', 'Immunocompromised'],
@@ -960,11 +924,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Virus entry into cardiomyocytes (receptor-mediated)',
-                'Direct cytopathic effect (replication)',
-                'Activation of immune response (T-cells, cytokines)',
-                'Autoimmune reaction (molecular mimicry)',
-                'Myocardial necrosis, fibrosis, dilation'
+                'The infection begins with a viral infection, during which the virus can directly damage heart muscle cells.',
+                'The later, more severe phase of the disease is caused by the body\'s excessive immune response. T-cells and autoantibodies attack the heart muscle cells (molecular mimicry), resulting in extensive inflammation, necrosis, and myocardial dysfunction.',
+                'During healing, scarring (fibrosis) can develop, leading to dilated cardiomyopathy (DCM) and chronic heart failure.'
               ],
               virulence_factors: ['Protease 2A (dystrophin cleavage)', 'Receptor binding (CAR)']
             },
@@ -972,11 +934,9 @@ Object.assign(window.diseases, {
               incubation: '1-2 weeks after viral infection',
               onset: 'Variable (from asymptomatic to fulminant)',
               symptoms: [
-                { name: 'Chest pain', description: 'Sharp, pericardial-like (85-95% in uncomplicated cases)', severity: 'moderate' },
-                { name: 'Dyspnea', description: 'On exertion or at rest (19-49%)', severity: 'severe' },
-                { name: 'Palpitations', description: 'Sensation of arrhythmias (6-18%)', severity: 'moderate' },
-                { name: 'Prodromal symptoms', description: 'Fever, respiratory/GI symptoms days before (60%)', severity: 'mild' },
-                { name: 'Syncope', description: 'Due to arrhythmia (rare, but dangerous)', severity: 'severe' }
+                { name: 'Viral Prodrome', description: 'Cardiac symptoms are often preceded by a febrile, respiratory, or gastrointestinal infection a few days earlier.', severity: 'mild' },
+                { name: 'Heart Failure Symptoms', description: 'Fatigue, shortness of breath on exertion, then at rest, and edema.', severity: 'severe' },
+                { name: 'Chest Pain and Arrhythmia', description: 'Atypical, sharp chest pain (myopericarditis) and palpitations (due to arrhythmias) are common.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Tachycardia (disproportionate to fever)',
@@ -1035,7 +995,7 @@ Object.assign(window.diseases, {
           {
             id: 'pericarditis',
             name: 'Acute Pericarditis',
-            pathogen: { type: 'Virus/Idiopathic', name: 'Coxsackie, Echovirus, Adenovirus, CMV, EBV', gram: 'Variable', shape: '-' },
+            pathogen: { type: 'Virus/Idiopathic', name: '<i>Coxsackie, Echovirus, Adenovirus, CMV, EBV</i>', gram: 'Variable', shape: '-' },
             epidemiology: {
               incidence: 'Common (0.1% of hospitalized)',
               risk_groups: ['Men (20-50 years)', 'Post-cardiotomy patients', 'Autoimmune patients'],
@@ -1044,10 +1004,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inflammation of the pericardium (viral, autoimmune, neoplastic)',
-                'Fibrinous deposits (dry pericarditis)',
-                'Exudate formation (pericardial effusion)',
-                'Risk of tamponade (if fluid accumulates rapidly)'
+                'Inflammation of the pericardial layers, most commonly as a result of a viral infection.',
+                'Due to inflammation, fibrin is deposited between the layers, causing the characteristic friction rub (dry pericarditis).',
+                'Fluid can also accumulate (pericardial effusion), which, if it accumulates rapidly or in large amounts, can compress the heart and cause cardiac tamponade.'
               ],
               virulence_factors: ['-']
             },
@@ -1055,9 +1014,8 @@ Object.assign(window.diseases, {
               incubation: 'Variable',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Chest pain', description: 'Sharp, pleuritic, worse when lying down, improves when leaning forward', severity: 'severe' },
-                { name: 'Fever', description: 'Usually low-grade', severity: 'mild' },
-                { name: 'Dyspnea', description: 'Due to pain or tamponade', severity: 'moderate' }
+                { name: 'Characteristic Chest Pain', description: 'Sharp, stabbing chest pain that worsens with inspiration and lying down, and improves when leaning forward.', severity: 'severe' },
+                { name: 'Other Symptoms', description: 'Often accompanied by low-grade fever, malaise, and shortness of breath.', severity: 'mild' }
               ],
               physical_exam: [
                 'Pericardial friction rub (systolic and diastolic components)',
@@ -1125,7 +1083,7 @@ Object.assign(window.diseases, {
           {
             id: 'upper_respiratory_infections',
             name: 'Upper Respiratory Infections (Common Cold)',
-            pathogen: { type: 'Virus', name: 'Rhinovirus (most common), Coronavirus, Adenovirus, Influenza', gram: 'RNA viruses', shape: 'variable' },
+            pathogen: { type: 'Virus', name: '<i>Rhinovirus</i> (most common), <i>Coronavirus, Adenovirus, Influenza</i>', gram: 'RNA viruses', shape: 'variable' },
             epidemiology: {
               incidence: 'Most common infection, adults 2-3x/year, children 6-8x/year',
               risk_groups: ['Children', 'Elderly', 'Immunocompromised'],
@@ -1134,11 +1092,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Virus entry into nasal/pharyngeal mucosa',
-                'Infection of epithelial cells',
-                'Local inflammation (neutrophils, edema)',
-                'Ciliostasis, increased mucus production',
-                'Systemic response (fever, general symptoms)'
+                'Viruses enter through the mucous membranes of the upper respiratory tract, where they replicate in epithelial cells.',
+                'The infection triggers local inflammation, edema, and increased mucus production.',
+                'This causes the characteristic symptoms: rhinorrhea, nasal congestion, and sore throat.'
               ],
               virulence_factors: ['Receptor binding (ICAM-1 for rhinovirus)', 'Immunomodulation']
             },
@@ -1146,11 +1102,7 @@ Object.assign(window.diseases, {
               incubation: '1-3 days',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Rhinorrhea', description: 'Clear → mucopurulent', severity: 'mild' },
-                { name: 'Sneezing', description: 'Paroxysmal', severity: 'mild' },
-                { name: 'Sore throat', description: 'Mild', severity: 'mild' },
-                { name: 'Cough', description: 'Dry, irritative', severity: 'mild' },
-                { name: 'Fever', description: 'Mild or absent', severity: 'mild' }
+                { name: 'Typical Symptoms', description: 'Typically presents with rhinorrhea, nasal congestion, sneezing, sore throat, and a dry cough. Fever is usually mild or absent. Symptoms generally resolve on their own within 7-10 days.', severity: 'mild' }
               ],
               physical_exam: [
                 'Nasal mucosa hyperemia, edema',
@@ -1203,7 +1155,7 @@ Object.assign(window.diseases, {
           {
             id: 'rsv_infection',
             name: 'RSV Infection (Respiratory Syncytial Virus)',
-            pathogen: { type: 'Virus', name: 'Human Respiratory Syncytial Virus (HRSV)', gram: 'RNA virus, Pneumoviridae', shape: 'helical' },
+            pathogen: { type: 'Virus', name: '<i>Human Respiratory Syncytial Virus</i> (HRSV)', gram: 'RNA virus, Pneumoviridae', shape: 'helical' },
             epidemiology: {
               incidence: 'All children infected by age 2, adults reinfection',
               risk_groups: ['Infants (<6 months)', 'Elderly (>65)', 'Patients with chronic lung disease', 'Immunocompromised'],
@@ -1212,11 +1164,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Virus entry into airways',
-                'Fusion with ciliated epithelial cells',
-                'Syncytium formation',
-                'Ciliary destruction, impaired mucociliary clearance',
-                'Development of bronchiolitis or pneumonia'
+                'The virus infects respiratory epithelial cells and, using its fusion (F) protein, causes the cells to merge, forming so-called syncytia.',
+                'This process leads to epithelial cell destruction, ciliary damage, and increased mucus production.',
+                'In infants, the small airways (bronchioles) become narrowed due to mucus and edema, creating the characteristic picture of bronchiolitis (wheezing, shortness of breath).'
               ],
               virulence_factors: ['Fusion protein (F)', 'G glycoprotein (adherence)']
             },
@@ -1224,11 +1174,8 @@ Object.assign(window.diseases, {
               incubation: '4-6 days',
               onset: 'Gradual',
               symptoms: [
-                { name: 'Rhinorrhea', description: 'Clear', severity: 'mild' },
-                { name: 'Cough', description: 'Dry, then productive', severity: 'moderate' },
-                { name: 'Fever', description: 'Mild-moderate', severity: 'mild' },
-                { name: 'Dyspnea', description: 'Severe in infants', severity: 'severe' },
-                { name: 'Wheezing', description: 'Sign of bronchiolitis', severity: 'moderate' }
+                { name: 'Initial Symptoms', description: 'Begins with mild, upper respiratory symptoms (rhinorrhea, low-grade fever).', severity: 'mild' },
+                { name: 'Bronchiolitis (Infants)', description: 'The most severe form in infants. Characterized by shortness of breath, wheezing, tachypnea, and intercostal retractions. In severe cases, apnea and respiratory failure can occur.', severity: 'severe' }
               ],
               physical_exam: [
                 'Tachypnea, retractions',
@@ -1270,7 +1217,7 @@ Object.assign(window.diseases, {
               },
               targeted: 'Palivizumab prophylaxis for high-risk infants',
               supportive: ['Oxygen', 'Hydration', 'Physiotherapy'],
-              prevention: ['Hand hygiene', 'Isolation', 'Palivizumab (monoclonal Ab)']
+              prevention: ['Hand hygiene', 'Isolation', 'Passive immunization: Nirsevimab, Clesrovimab (long-acting), Palivizumab', 'Vaccination: Elderly (>60 years) and pregnant women (maternal)']
             },
             prognosis: {
               mortality: 'Low, but higher risk in infants',
@@ -1281,7 +1228,7 @@ Object.assign(window.diseases, {
           {
             id: 'tonsillitis',
             name: 'Tonsillitis',
-            pathogen: { type: 'Bacterium', name: 'Streptococcus pyogenes (GAS, most common)', gram: 'Gram-positive', shape: 'chain' },
+            pathogen: { type: 'Bacterium', name: '<i>Streptococcus pyogenes</i> (GAS, most common)', gram: 'Gram-positive', shape: 'chain' },
             epidemiology: {
               incidence: 'Common in childhood, 5-15 years',
               risk_groups: ['Children', 'Young adults'],
@@ -1290,10 +1237,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bacterial colonization of the tonsils',
-                'Local inflammation, edema',
-                'Toxin production (streptolysin O)',
-                'Systemic response (fever, general symptoms)'
+                'Bacteria colonize the pharyngeal mucosa, triggering a strong local inflammatory response.',
+                'This causes swelling and redness of the tonsils and the formation of purulent exudate (follicles).',
+                'Bacterial toxins (e.g., streptolysin) are responsible for systemic symptoms like fever, and erythrogenic toxin for the rash in scarlet fever.'
               ],
               virulence_factors: ['M protein', 'Streptolysins', 'Hyaluronidase']
             },
@@ -1301,10 +1247,8 @@ Object.assign(window.diseases, {
               incubation: '2-5 days',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Sore throat', description: 'Severe, difficulty swallowing', severity: 'severe' },
-                { name: 'Fever', description: 'High', severity: 'moderate' },
-                { name: 'Dysphagia', description: 'Pain on swallowing', severity: 'moderate' },
-                { name: 'Tonsillar exudate', description: 'White, purulent', severity: 'moderate' }
+                { name: 'Local Symptoms', description: 'Sudden onset of severe sore throat and difficulty swallowing. The tonsils are swollen, red, and often covered with a white, purulent exudate (follicles).', severity: 'severe' },
+                { name: 'Systemic Symptoms', description: 'Accompanied by high fever, chills, headache, and painful swelling of the cervical lymph nodes.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Tonsillar hyperemia, swelling',
@@ -1320,6 +1264,24 @@ Object.assign(window.diseases, {
                 { test: 'Throat swab culture', finding: 'GAS', significance: 'Confirmation' }
               ]
             },
+              calculators: [
+                {
+                  name: 'Centor Score (McIsaac) - Strep A Probability',
+                  items: [
+                    { label: 'Fever > 38°C', points: 1 },
+                    { label: 'Absence of cough', points: 1 },
+                    { label: 'Tender anterior cervical adenopathy', points: 1 },
+                    { label: 'Tonsillar swelling or exudate', points: 1 },
+                    { label: 'Age 3-14 years', points: 1 },
+                    { label: 'Age ≥ 45 years', points: -1 }
+                  ],
+                  interpretation: [
+                    { min: -1, max: 1, text: 'Low risk (<10%). No antibiotic needed.' },
+                    { min: 2, max: 3, text: 'Intermediate risk (15-30%). Culture or rapid test recommended.' },
+                    { min: 4, max: 5, text: 'High risk (>50%). Empiric antibiotics or testing.' }
+                  ]
+                }
+              ],
             differential: [
               { disease: 'Viral pharyngitis', distinguishing: 'Mild symptoms, no exudate' },
               { disease: 'Mononucleosis', distinguishing: 'Lymphocytosis, hepatosplenomegaly' }
@@ -1350,7 +1312,7 @@ Object.assign(window.diseases, {
           {
             id: 'sinusitis',
             name: 'Sinusitis',
-            pathogen: { type: 'Virus/Bacterium', name: 'Viruses (first 7-10 days), then Streptococcus pneumoniae, Haemophilus influenzae', gram: 'Mixed', shape: 'variable' },
+            pathogen: { type: 'Virus/Bacterium', name: 'Viruses (first 7-10 days), then <i>Streptococcus pneumoniae, Haemophilus influenzae</i>', gram: 'Mixed', shape: 'variable' },
             epidemiology: {
               incidence: 'Common, adults 1-2x/year',
               risk_groups: ['Patients with allergies', 'Smokers', 'Immunocompromised'],
@@ -1359,10 +1321,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Nasal mucosa inflammation (virus)',
-                'Ostium obstruction',
-                'Bacterial superinfection',
-                'Purulent inflammation'
+                'Following a viral upper respiratory infection (common cold), the nasal and sinus mucosa become swollen.',
+                'The edema blocks the sinus ostia (openings), leading to mucus retention.',
+                'The stagnant mucus provides an ideal breeding ground for bacterial superinfection, resulting in purulent inflammation.'
               ],
               virulence_factors: ['Biofilm formation']
             },
@@ -1370,10 +1331,8 @@ Object.assign(window.diseases, {
               incubation: 'After upper respiratory infection',
               onset: 'Gradual',
               symptoms: [
-                { name: 'Facial pain', description: 'Over forehead, sinuses', severity: 'moderate' },
-                { name: 'Nasal congestion', description: 'Mucopurulent discharge', severity: 'moderate' },
-                { name: 'Headache', description: 'Frontal', severity: 'moderate' },
-                { name: 'Fever', description: 'In acute cases', severity: 'mild' }
+                { name: 'Characteristic Symptoms', description: 'Facial pain or pressure that worsens when bending forward. It is accompanied by nasal congestion, purulent nasal discharge, and often a headache.', severity: 'moderate' },
+                { name: 'Signs of Bacterial Superinfection', description: 'Symptoms lasting more than 10 days, worsening symptoms ("double sickening"), or high fever (>38°C) and unilateral facial pain suggest a bacterial origin.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Facial tenderness',
@@ -1417,7 +1376,7 @@ Object.assign(window.diseases, {
           {
             id: 'otitis_media',
             name: 'Otitis Media',
-            pathogen: { type: 'Bacterium', name: 'Streptococcus pneumoniae, Haemophilus influenzae, Moraxella catarrhalis', gram: 'Mixed', shape: 'coccus/bacillus' },
+            pathogen: { type: 'Bacterium', name: '<i>Streptococcus pneumoniae, Haemophilus influenzae, Moraxella catarrhalis</i>', gram: 'Mixed', shape: 'coccus/bacillus' },
             epidemiology: {
               incidence: 'Common in childhood, 80% experience by age 3',
               risk_groups: ['Infants', 'Children', 'Exposure to passive smoking'],
@@ -1437,10 +1396,8 @@ Object.assign(window.diseases, {
               incubation: 'After upper respiratory infection',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Ear pain', description: 'Severe, children cry', severity: 'severe' },
-                { name: 'Fever', description: 'Common', severity: 'moderate' },
-                { name: 'Hearing loss', description: 'Temporary', severity: 'moderate' },
-                { name: 'Rhinorrhea', description: 'Associated', severity: 'mild' }
+                { name: 'Main Symptoms', description: 'Sudden onset of severe, throbbing ear pain, fever, and hearing loss.', severity: 'severe' },
+                { name: 'Signs in Infants', description: 'In infants, irritability, inconsolable crying, poor feeding, and pulling at the ear are characteristic.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Eardrum hyperemia, bulging',

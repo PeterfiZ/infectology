@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
           {
             id: 'syphilis',
             name: 'Szifilisz',
-            pathogen: { type: 'Spirochaeta', name: 'Treponema pallidum', gram: 'Gram-negatív (nem festődik)', shape: 'spirális' },
+            pathogen: { type: 'Spirochaeta', name: '<i>Treponema pallidum</i>', gram: 'Gram-negatív (nem festődik)', shape: 'spirális' },
             epidemiology: {
               incidence: 'Növekvő incidencia világszerte, MSM populációban magas',
               risk_groups: ['MSM (men who have sex with men)', 'HIV pozitívak', 'Szexmunkások', 'Több szexuális partner', 'Droghasználók'],
@@ -16,12 +16,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'T. pallidum bejut a nyálkahártyán/bőrön keresztül',
-                'Lokális szaporodás → primer affekció (chancre)',
-                'Haematogen szórás (primer viraemia)',
-                'Másodlagos szifilisz: disszeminált betegség',
-                'Latens fázis: immunválasz kontroll alatt tartja',
-                'Tercier: krónikus granulomás gyulladás (gumma) vagy vaszkuláris/neurológiai'
+                'Behatolás és Szóródás: A Treponema pallidum mikrosérüléseken keresztül hatol be a bőrbe vagy nyálkahártyába. Percek alatt bejut a nyirokerekbe és a véráramba, így a fertőzés már a primer fekély megjelenése előtt szisztémássá válik.',
+                'Immunelkerülés: A baktérium "lopakodó" (stealth) stratégiát alkalmaz: külső membránja kevés antigént tartalmaz, így elkerüli az antitestek kötődését és a komplement aktiválást, lehetővé téve a perzisztenciát.',
+                'Szöveti károsodás: A patológia alapja az obliteratív endarteritis (a kis erek gyulladása és elzáródása), amelyet perivaszkuláris plazmasejtes infiltráció kísér.',
+                'Következmény: Az érelzáródás miatti ischaemia okozza a primer sánker fekélyesedését és a tercier stádiumban a gummák (nekrotikus granulómák) kialakulását.'
               ],
               virulence_factors: ['Fibronektin-kötő fehérjék', 'Hyalurionidáz', 'Antigén variáció', 'Outer membrane proteins']
             },
@@ -29,12 +27,10 @@ Object.assign(window.diseases, {
               incubation: 'Primer: 9-90 nap (átlag 21 nap)',
               onset: 'Fázis-függő',
               symptoms: [
-                { name: 'Primer: Chancre', description: 'Fájdalmatlan, kemény szélű fekély (60-80%-ban egyetlen)', severity: 'moderate' },
-                { name: 'Szekunder: Kiütés', description: 'Generalizált, nem viszkető (75-100%), tenyér/talp érintettség (60-80%)', severity: 'moderate' },
-                { name: 'Szekunder: Lymphadenopathia', description: 'Generalizált, fájdalmatlan (50-85%)', severity: 'mild' },
-                { name: 'Szekunder: Condyloma lata', description: 'Lapos, nedvedző papulák (10-20%)', severity: 'moderate' },
-                { name: 'Tercier: Gumma', description: 'Granulomás léziók (15% kezeletleneknél)', severity: 'severe' },
-                { name: 'Neuroszifilisz', description: 'Bármely stádiumban! (Tünetes: 5-10%)', severity: 'severe' }
+                { name: 'Primer: Chancre (Sánker)', description: 'A behatolás helyén (genitáliák, száj, végbél) kb. 3 héttel a fertőzés után kialakuló fájdalmatlan, kemény alapú, tiszta aljú fekély (ulcus durum). Regionális, fájdalmatlan nyirokcsomó-duzzanat kíséri. Kezelés nélkül is gyógyul, de a baktérium a szervezetben marad.', severity: 'moderate' },
+                { name: 'Szekunder: Bőr- és Nyálkahártya tünetek', description: 'A hematogén szóródás jele (6-8 héttel a sánker után). Generalizált, nem viszkető, rézvörös kiütések (roseola syphilitica), amelyek jellegzetesen a tenyereket és talpakat is érintik. A hajlatokban lapos, nedvedző, erősen fertőző papulák (condyloma lata) jelenhetnek meg.', severity: 'moderate' },
+                { name: 'Szekunder: Szisztémás tünetek', description: 'Láz, rossz közérzet, generalizált nyirokcsomó-duzzanat ("micropolyadenopathia"), foltos hajhullás ("moly-rágta" alopecia) és nyálkahártya fekélyek (mucous patches).', severity: 'mild' },
+                { name: 'Tercier: Késői szövődmények', description: 'Évekkel-évtizedekkel később alakul ki. Gumma (bőr, csont, máj destruktív granulómái), kardiovaszkuláris szifilisz (aortitis, aorta aneurysma) és neuroszifilisz (tabes dorsalis, progresszív paralízis/demencia).', severity: 'severe' }
               ],
               physical_exam: [
                 'Primer: fájdalmatlan genitalis/extragenitalis fekély + inguinalis lymphadenopathia',
@@ -77,7 +73,7 @@ Object.assign(window.diseases, {
                   { drug: 'Benzylpenicillin G', dose: '2.4 millió NE IM', duration: 'Heti 1x, 3 hét', note: 'Késői latens (>1év) vagy ismeretlen időtartamú' }
                 ],
                 icu: [
-                  { drug: 'Aqueous Penicillin G', dose: '3-4 millió NE IV 4 óránként', duration: '10-14 nap', note: 'Neuroszifilisz!' }
+                  { drug: 'Kristályos Penicillin G', dose: '3-4 millió NE IV 4 óránként', duration: '10-14 nap', note: 'Neuroszifilisz!' }
                 ]
               },
               targeted: 'Penicillin mindig első választás, nincs rezisztencia',
@@ -102,7 +98,8 @@ Object.assign(window.diseases, {
               special_populations: [
                 'Penicillin allergia: Doxycyclin 2x100mg PO 14 nap (korai) vagy 28 nap (késői). Terhességben deszenzitizálás és Penicillin adása kötelező!',
                 'Terhesség: Minden terhest szűrni kell. A kezelés megegyezik a nem terhes felnőttekével.',
-                'Jarisch-Herxheimer reakció: Lázas reakció a kezelés első 24 órájában, nem allergia. Tüneti kezelés.'
+                'Jarisch-Herxheimer reakció: Lázas reakció a kezelés első 24 órájában, nem allergia. Tüneti kezelés.',
++               'Congenitalis szifilisz: Kristályos Penicillin G 100,000-150,000 NE/kg/nap IV (50,000 NE/kg/dózis 12 óránként az első 7 napban, majd 8 óránként) 10 napig. VAGY Procain Penicillin G 50,000 NE/kg/nap IM 10 napig.'
               ],
               monitoring: [
                 'A kezelés sikerességét a nem-treponema tesztek (RPR/VDRL) titerének csökkenésével követjük (legalább négyszeres csökkenés 12 hónapon belül).'
@@ -117,7 +114,7 @@ Object.assign(window.diseases, {
           {
             id: 'hiv_aids',
             name: 'HIV fertőzés és AIDS',
-            pathogen: { type: 'Vírus', name: 'Humán Immundeficiencia Vírus (HIV-1, HIV-2)', gram: 'RNS retrovírus', shape: 'gömb' },
+            pathogen: { type: 'Vírus', name: '<i>Humán Immundeficiencia Vírus</i> (HIV-1, HIV-2)', gram: 'RNS retrovírus', shape: 'gömb' },
             epidemiology: {
               incidence: 'Világszerte ~38 millió élő fertőzött',
               risk_groups: ['MSM', 'IV droghasználók', 'Szexmunkások', 'Transzfúzió (fejlődő országok)', 'Partnerek'],
@@ -126,11 +123,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Vírus kötődése CD4 receptorhoz és koreceptorokhoz (CCR5/CXCR4)',
-                'Reverz transzkripció (RNS -> DNS)',
-                'Integráció a gazdasejt genomjába (provírus)',
-                'CD4+ T-sejtek progresszív pusztulása',
-                'Immunrendszer kimerülése -> Opportunista fertőzések (AIDS)'
+                'Bejutás és Kötődés: A vírus gp120 felszíni fehérjéje kötődik a T-helper sejtek és makrofágok CD4 receptorához, valamint a CCR5 vagy CXCR4 koreceptorokhoz.',
+                'Replikáció és Integráció: A sejtbe jutva a virális RNS a reverz transzkriptáz segítségével DNS-sé íródik át (ez a lépés hibás, ami rezisztenciához vezethet), majd az integráz enzim beépíti a gazdasejt DNS-ébe (provírus), ahol látens maradhat.',
+                'Immunrendszer pusztulása: A fertőzött CD4+ T-sejtek elpusztulnak a vírusreplikáció (pirotózis), a citotoxikus T-sejtek támadása és a syncytium képződés miatt. A bél-asszociált limfoid szövet (GALT) korai károsodása krónikus szisztémás gyulladást tart fenn.',
+                'Következmény: A CD4+ sejtek számának kritikus csökkenése (<200/µL) az immunrendszer összeomlásához és opportunista fertőzések/daganatok megjelenéséhez vezet (AIDS).'
               ],
               virulence_factors: ['gp120/gp41 (belépés)', 'Reverz transzkriptáz (magas mutációs ráta)', 'Nef, Tat, Rev (regulátorok)']
             },
@@ -138,12 +134,9 @@ Object.assign(window.diseases, {
               incubation: '2-4 hét (akut retrovirális szindróma)',
               onset: 'Akut (ARS) vagy lappangó',
               symptoms: [
-                { name: 'Akut (ARS): Láz', description: 'Leggyakoribb tünet (>80-90%)', severity: 'moderate' },
-                { name: 'Akut (ARS): Fáradtság', description: 'Kifejezett (>70-90%)', severity: 'mild' },
-                { name: 'Akut (ARS): Kiütés', description: 'Maculopapularis (40-80%)', severity: 'moderate' },
-                { name: 'Akut (ARS): Pharyngitis', description: 'Torokfájás (50-70%)', severity: 'mild' },
-                { name: 'Latens fázis', description: 'Tünetmentes vagy PGL (évekig)', severity: 'mild' },
-                { name: 'AIDS', description: 'Opportunista fertőzések (CD4 <200)', severity: 'severe' }
+                { name: 'Akut retrovirális szindróma (ARS)', description: 'A fertőzés után 2-4 héttel jelentkező, mononukleózis-szerű tünetegyüttes: magas láz, torokfájás, nyirokcsomó-duzzanat, izomfájdalom és makulopapulózus kiütés. Magas vírusszám és átmeneti CD4 csökkenés jellemzi.', severity: 'moderate' },
+                { name: 'Klinikai latencia', description: 'Tünetmentes vagy tünetszegény időszak, amely kezelés nélkül 8-10 évig tarthat. A vírus aktívan replikálódik a nyirokcsomókban. Perzisztáló generalizált lymphadenopathia (PGL) előfordulhat.', severity: 'mild' },
+                { name: 'AIDS stádium', description: 'Amikor a CD4 szám 200/µL alá esik. Megjelennek az opportunista fertőzések (pl. Pneumocystis pneumonia, nyelőcső candidiasis, Toxoplasma encephalitis, CMV retinitis) és daganatok (Kaposi sarcoma, lymphoma).', severity: 'severe' }
               ],
               physical_exam: [
                 'Generalizált lymphadenopathia (PGL)',
@@ -173,9 +166,9 @@ Object.assign(window.diseases, {
               guidelines: ['EACS Guidelines Version 12.0 (2023)'],
               empirical: {
                 outpatient: [
-                  { drug: 'Bictegravir / TAF / Emtricitabine', dose: '1 tab (50/25/200mg) PO 1x', duration: 'Élethosszig', note: 'Preferált első vonal (STR). Nem igényel HLA tesztet.' },
-                  { drug: 'Dolutegravir + TDF/TAF + FTC/3TC', dose: 'Kombináció', duration: 'Élethosszig', note: 'Preferált első vonal.' },
-                  { drug: 'Dolutegravir / Lamivudine', dose: '1 tab (50/300mg) PO 1x', duration: 'Élethosszig', note: 'Kettős terápia (ha VL <500.000, nincs HBV, CD4 >200).' }
+                  { drug: 'Bictegravir / Tenofovir-alafenamid (TAF) / Emtricitabin (FTC)', dose: '1 tab (50/25/200mg) PO 1x', duration: 'Élethosszig', note: 'Preferált első vonal (STR). Nem igényel HLA tesztet.' },
+                  { drug: 'Dolutegravir + Tenofovir (TDF/TAF) + Emtricitabin (FTC) / Lamivudin (3TC)', dose: 'Kombináció', duration: 'Élethosszig', note: 'Preferált első vonal.' },
+                  { drug: 'Dolutegravir / Lamivudin (3TC)', dose: '1 tab (50/300mg) PO 1x', duration: 'Élethosszig', note: 'Kettős terápia (ha VL <500.000, nincs HBV, CD4 >200).' }
                 ]
               },
               targeted: 'Azonnali ART indítás (Rapid initiation) javasolt. Cél: undetectable viral load (<50 cp/mL).',
@@ -213,5 +206,5 @@ Object.assign(window.diseases, {
             }
           }
         ]
-}, // End of sexually_transmitted
+    } // End of sexually_transmitted
 });

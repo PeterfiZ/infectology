@@ -3,28 +3,31 @@ Object.assign(window.diseases, {
         name: 'Infektionen des Zentralnervensystems',
         icon: '🧠',
         color: '#0891b2',
-        tables: [
-          {
-            title: 'Differentialdiagnose der Liquorbefunde',
-            headers: ['Parameter', 'Bakteriell', 'Viral', 'Normal'],
-            rows: [
-              ['Eröffnungsdruck', 'Erhöht (>20 cmH2O)', 'Normal oder leicht erhöht', '6-20 cmH2O'],
-              ['Aussehen', 'Trüb, eitrig', 'Klar ("wasserhell")', 'Klar, farblos'],
-              ['Zellzahl (Leukozyten/µL)', '>1000 (oft 100-10000)', '10-500 (selten >1000)', '0-5'],
-              ['Dominante Zelle', 'Neutrophile Granulozyten (>80%)', 'Lymphozyten (in der Frühphase PMN möglich!)', 'Lymphozyten/Monozyten'],
-              ['Protein (g/L)', 'Erhöht (>1 g/L)', 'Normal oder leicht erhöht (<1 g/L)', '0.15-0.45 g/L'],
-              ['Glukose (mmol/L)', 'Erniedrigt (<2.2 mmol/L)', 'Normal (>2.5 mmol/L)', '2.5-4.4 mmol/L'],
-              ['Liquor/Serum-Glukose-Quotient', '< 0.4', '> 0.6', '≥ 0.6'],
-              ['Laktat', 'Erhöht (>3.5 mmol/L)', 'Normal (<3.5 mmol/L)', '< 2.5 mmol/L'],
-              ['Mikrobiologie', 'Gram-Färbung (+ 60-90%), Kultur (+)', 'PCR (+), Gram/Kultur negativ', 'Negativ']
-            ]
-          }
-        ],
         diseases: [
+          { isHeader: true, title: 'Diagnostische Tabellen', color: '#6b7280' },
+          {
+            id: 'csf_differential',
+            name: 'Differentialdiagnose der Liquorbefunde',
+            table: {
+              headers: ['Parameter', 'Bakteriell', 'Viral', 'Normal'],
+              rows: [
+                ['Eröffnungsdruck', 'Erhöht (>20 cmH2O)', 'Normal oder leicht erhöht', '6-20 cmH2O'],
+                ['Aussehen', 'Trüb, eitrig', 'Klar ("wasserhell")', 'Klar, farblos'],
+                ['Zellzahl (Leukozyten/µL)', '>1000 (oft 100-10000)', '10-500 (selten >1000)', '0-5'],
+                ['Dominante Zelle', 'Neutrophile Granulozyten (>80%)', 'Lymphozyten (in der Frühphase PMN möglich!)', 'Lymphozyten/Monozyten'],
+                ['Protein (g/L)', 'Erhöht (>1 g/L)', 'Normal oder leicht erhöht (<1 g/L)', '0.15-0.45 g/L'],
+                ['Glukose (mmol/L)', 'Erniedrigt (<2.2 mmol/L)', 'Normal (>2.5 mmol/L)', '2.5-4.4 mmol/L'],
+                ['Liquor/Serum-Glukose-Quotient', '< 0.4', '> 0.6', '≥ 0.6'],
+                ['Laktat', 'Erhöht (>3.5 mmol/L)', 'Normal (<3.5 mmol/L)', '< 2.5 mmol/L'],
+                ['Mikrobiologie', 'Gram-Färbung (+ 60-90%), Kultur (+)', 'PCR (+), Gram/Kultur negativ', 'Negativ']
+              ]
+            }
+          },
+          { isHeader: true, title: 'Eitrige Meningitiden', color: '#ef4444' },
           {
             id: 'bacterial_meningitis',
             name: 'Bakterielle Meningitis (Empirisch)',
-            pathogen: { type: 'Bakterium', name: 'N. meningitidis, S. pneumoniae, L. monocytogenes', gram: 'Gemischt', shape: 'Erregerabhängig' },
+            pathogen: { type: 'Bakterium', name: '<i>N. meningitidis, S. pneumoniae, L. monocytogenes</i>', gram: 'Gemischt', shape: 'Erregerabhängig' },
             epidemiology: {
               incidence: '2-5/100.000 pro Jahr in Industrieländern',
               risk_groups: ['Neugeborene (<1 Monat)', 'Kinder', 'Über 65-Jährige', 'Splenektomierte', 'Komplementdefizienz', 'Cochlea-Implantat-Träger'],
@@ -33,12 +36,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Nasopharyngeale Kolonisation',
-                'Bakteriämie (Überwindung der Blut-Hirn-Schranke)',
-                'Invasion des Subarachnoidalraums',
-                'Entzündungsreaktion (TNF-α, IL-1β)',
-                'Erhöhte Permeabilität der Blut-Hirn-Schranke → Hirnödem',
-                'Erhöhter Hirndruck, zerebrale Ischämie'
+                'Kolonisation und Invasion: Erreger (z.B. Meningokokken, Pneumokokken) besiedeln die Nasopharynxschleimhaut und dringen in den Blutkreislauf ein (Bakteriämie).',
+                'Überwindung der Blut-Hirn-Schranke: Bakterien gelangen über das Endothel des Plexus choroideus oder der Hirnkapillaren in den Subarachnoidalraum.',
+                'Vermehrung und Entzündung: Im Liquor (wo humorale Immunität fehlt) vermehren sich Bakterien rasch. Zellwandbestandteile (LPS, Teichonsäure) lösen über PRRs eine massive Entzündungsreaktion aus (Zytokine: TNF-α, IL-1β).',
+                'Hirnödem und ICP-Anstieg: Entzündung erhöht die BHS-Permeabilität (vasogenes Ödem), verringert Liquorresorption (interstitielles Ödem) und verursacht Zellschwellung (zytotoxisches Ödem).',
+                'Folge: Das resultierende Hirnödem erhöht den intrakraniellen Druck (ICP), senkt den zerebralen Perfusionsdruck (CPP) und führt zu Ischämie und neuronalen Schäden.'
               ],
               virulence_factors: ['Kapselpolysaccharid', 'IgA-Protease', 'Lipooligosaccharid (LOS)', 'Pili/Fimbrien']
             },
@@ -46,13 +48,11 @@ Object.assign(window.diseases, {
               incubation: '2-10 Tage (Meningokokken), kürzer (Pneumokokken)',
               onset: 'Akut, Stunden-Tage',
               symptoms: [
-                { name: 'Klassische Symptome', description: 'Fieber, Kopfschmerzen, Nackensteifigkeit, Bewusstseinsstörung (die Trias ist nicht immer vorhanden!)', severity: 'severe' },
-                { name: 'Frühe "Red Flag"-Zeichen (NICE)', description: 'Bein-/Muskelschmerzen, kalte Extremitäten, marmorierte Haut (frühe Sepsiszeichen!)', severity: 'severe' },
-                { name: 'Ausschlag', description: 'Nicht wegdrückbare (non-blanching) Petechien/Purpura (Verdacht auf Meningokokken)', severity: 'severe' },
-                { name: 'Kopfschmerzen', description: 'Schwer, generalisiert (>85%)', severity: 'severe' },
-                { name: 'Fieber', description: '>38°C (95%)', severity: 'severe' },
-                { name: 'Nackensteifigkeit', description: 'Nackensteifigkeit (>80%)', severity: 'severe' },
-                { name: 'Bewusstseinsstörung', description: 'GCS <14 (>80%)', severity: 'severe' },
+                { name: 'Klassische Trias', description: 'Die klassische Trias (Fieber, Nackensteifigkeit, Bewusstseinsstörung) liegt bei <50% der Patienten vor. Kopfschmerzen (schwer, diffus) und Fieber sind am häufigsten (95%).', severity: 'severe' },
+                { name: 'Meningeale Zeichen', description: 'Nackensteifigkeit (Kinn berührt Brust nicht), Kernig-Zeichen (Schmerz bei Beinstreckung mit gebeugter Hüfte) und Brudzinski-Zeichen (Beine ziehen an bei Kopfheben).', severity: 'moderate' },
+                { name: 'Systemische "Red Flags"', description: 'Besonders bei Meningokokken: Beinschmerzen, kalte Hände/Füße, marmorierte Haut - frühe Sepsiszeichen, die Meningitissymptomen vorausgehen können.', severity: 'severe' },
+                { name: 'Ausschlag', description: 'Bei Meningokokkämie: Petechien (kleine Blutungen) oder Purpura (größere), die auf Druck NICHT verblassen (non-blanching rash).', severity: 'severe' },
+                { name: 'Neurologische Symptome', description: 'Bewusstseinsstörung (Verwirrtheit bis Koma), Krampfanfälle (20-30%), Hirnnervenlähmungen (III, IV, VI, VII, VIII) und Herdzeichen.', severity: 'severe' }
               ],
               physical_exam: [
                 'Meningeale Zeichen: Kernig (+), Brudzinski (+), Nackensteifigkeit',
@@ -99,7 +99,7 @@ Object.assign(window.diseases, {
                 ],
                 inpatient: [
                   { drug: 'Ceftriaxon', dose: '2g i.v. alle 12 Stunden (oder 4g alle 24 Stunden)', duration: 'Erregerabhängig', note: 'Erste Wahl (NICE). Alternative: Cefotaxim.' },
-                  { drug: '+ Amoxicillin', dose: '2g i.v. alle 4 Stunden', duration: 'Erregerabhängig', note: 'Bei Listerien-Risiko (>60 Jahre, Immunsuppression, Schwangerschaft).' },
+                  { drug: '+ Ampicillin', dose: '2g i.v. alle 4 Stunden', duration: 'Erregerabhängig', note: 'Bei Listerien-Risiko (>60 Jahre, Immunsuppression, Schwangerschaft).' },
                   { drug: 'Dexamethason', dose: '10mg i.v. alle 6 Stunden', duration: '4 Tage', note: 'VOR oder MIT der ersten Antibiotikagabe. Nicht geben bei septischem Schock ohne Meningitis.' }
                 ],
                 icu: [
@@ -117,9 +117,177 @@ Object.assign(window.diseases, {
             }
           },
           {
+            id: 'meningococcal_meningitis',
+            name: 'Meningokokken-Meningitis',
+            pathogen: { type: 'Bakterium', name: '<i>Neisseria meningitidis</i>', gram: 'Gram-negativ', shape: 'Diplokokken' },
+            epidemiology: {
+              incidence: 'Kann epidemisch auftreten',
+              risk_groups: ['Säuglinge', 'Jugendliche', 'Geschlossene Gemeinschaften (Wohnheim)', 'Asplenie'],
+              seasonality: 'Winter-Frühling',
+              transmission: 'Tröpfcheninfektion (enger Kontakt)'
+            },
+            pathomechanism: {
+              steps: [
+                'Bakterium kolonisiert Nasopharynx und gelangt in den Blutkreislauf.',
+                'Schnelle Vermehrung im Blut setzt massive Mengen Endotoxin (LOS) frei (Meningokokkämie).',
+                'Endotoxin löst systemische Entzündung, Vaskulitis und disseminierte intravasale Koagulopathie (DIC) aus.',
+                'Dies führt zu Gefäßverschlüssen (Hautnekrosen, Nebennierenblutung - Waterhouse-Friderichsen-Syndrom) und septischem Schock, oft noch vor Meningitis.'
+              ],
+              virulence_factors: ['Kapsel (A,B,C,W,Y)', 'LOS (Lipooligosaccharid)', 'IgA-Protease']
+            },
+            clinical: {
+              incubation: '1-10 Tage',
+              onset: 'Hyperakut',
+              symptoms: [
+                { name: 'Hyperakuter Beginn', description: 'Zustand verschlechtert sich dramatisch innerhalb von Stunden. Fieber, Erbrechen, Kopfschmerzen als erste Zeichen.', severity: 'severe' },
+                { name: 'Hämorrhagischer Ausschlag', description: 'Anfangs wegdrückbare Makeln, entwickeln sich schnell zu Petechien und Purpura, die auf Druck NICHT verblassen (non-blanching rash). Zeichen der Meningokokkämie.', severity: 'severe' },
+                { name: 'Septischer Schock', description: 'Kalte Extremitäten, Zyanose, niedriger Blutdruck, schneller Puls, Anurie.', severity: 'severe' }
+              ],
+              physical_exam: ['Meningeale Zeichen', 'Purpura', 'Schockzeichen'],
+              complications: ['Gliedmaßennekrose/Amputation', 'Taubheit', 'Tod (innerhalb von Stunden)']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Liquor', finding: 'Eitrig', interpretation: '-' }, { test: 'PCR', finding: 'Positiv', significance: 'Schnell' }],
+              microbiology: [{ test: 'Gram-Färbung', finding: 'Gram-negative Diplokokken', significance: 'Schnell' }]
+            },
+            therapy: {
+              empirical: { inpatient: [{ drug: 'Ceftriaxon', dose: '2g i.v. alle 12 Stunden', duration: '7 Tage', note: 'NICE NG240 Empfehlung' }] },
+              targeted: 'Ceftriaxon für 7 Tage. Prophylaxe für Kontaktpersonen: Ciprofloxacin (einmalig 500mg p.o.) oder Rifampicin.',
+              supportive: [],
+              prevention: ['Impfung (MenACWY, MenB)']
+            },
+            prognosis: { mortality: '10-15% auch mit Behandlung', prognostic_scores: [], factors: 'Alter, Komorbidität, Behandlungszeitpunkt' }
+          },
+          {
+            id: 'pneumococcal_meningitis',
+            name: 'Pneumokokken-Meningitis',
+            pathogen: { type: 'Bakterium', name: '<i>Streptococcus pneumoniae</i>', gram: 'Gram-positiv', shape: 'Diplokokken' },
+            epidemiology: {
+              incidence: 'Häufigste Meningitis bei Erwachsenen',
+              risk_groups: ['Ältere', 'Alkoholiker', 'Splenektomierte', 'Otitis/Sinusitis/Pneumonie', 'Liquorrhoe'],
+              seasonality: 'Winter',
+              transmission: 'Endogene Ausbreitung oder Tröpfcheninfektion'
+            },
+            pathomechanism: {
+              steps: [
+                'Infektion breitet sich oft von benachbartem Fokus (Otitis media, Sinusitis, Mastoiditis) auf Meningen aus oder via Bakteriämie bei Pneumonie.',
+                'Pneumokokken-Kapsel hemmt Phagozytose, Pneumolysin-Toxin schädigt Zellen direkt und fördert Entzündung.',
+                'Dieser Erreger verursacht die schwerste eitrige Meningitis mit häufigem Koma und bleibenden Schäden.'
+              ],
+              virulence_factors: ['Kapsel', 'Pneumolysin']
+            },
+            clinical: {
+              incubation: 'Kurz',
+              onset: 'Akut',
+              symptoms: [
+                { name: 'Schwere Meningitis', description: 'Gekennzeichnet durch rasch einsetzende Bewusstseinsstörung, Koma und Krampfanfälle. Mortalität und Folgeschäden sind bei diesem Typ am höchsten.', severity: 'severe' },
+                { name: 'Prädisponierende Zeichen', description: 'Gleichzeitige Pneumonie, Mittelohrentzündung oder Sinusitis häufig vorhanden.', severity: 'moderate' }
+              ],
+              physical_exam: ['Meningeale Zeichen', 'Zeichen einer Otitis media', 'Bewusstseinsstörung'],
+              complications: ['Taubheit', 'Hydrozephalus', 'Hirnabszess']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Liquor', finding: 'Eitrig, sehr hohes Protein, niedriger Zucker', interpretation: '-' }],
+              microbiology: [{ test: 'Gram-Färbung', finding: 'Gram-positive Diplokokken', significance: '-' }]
+            },
+            therapy: {
+              empirical: { inpatient: [{ drug: 'Ceftriaxon', dose: '2g i.v. alle 12 Stunden', duration: '14 Tage', note: 'NICE NG240 Empfehlung' }, { drug: 'Dexamethason', dose: '10mg i.v. alle 6 Stunden', duration: '4 Tage', note: 'Fortsetzen, wenn Pneumokokken nachgewiesen werden!' }] },
+              targeted: 'Ceftriaxon für 14 Tage. Bei nachgewiesener Resistenz: + Vancomycin/Rifampicin.',
+              supportive: [],
+              prevention: ['Pneumokokken-Impfung (PCV, PPSV)']
+            },
+            prognosis: { mortality: '20-30%, hohe Morbidität', prognostic_scores: [], factors: 'Alter, Immunstatus' }
+          },
+          {
+            id: 'listeria_meningitis',
+            name: 'Listerien-Meningitis',
+            pathogen: { type: 'Bakterium', name: '<i>Listeria monocytogenes</i>', gram: 'Gram-positiv', shape: 'Stäbchen' },
+            epidemiology: {
+              incidence: 'Selten, aber gefährlich',
+              risk_groups: ['Neugeborene', 'Ältere (>50 Jahre)', 'Schwangere', 'Immunsupprimierte (Transplantierte, Alkoholiker)'],
+              seasonality: 'Keine',
+              transmission: 'Lebensmittel (Weichkäse, Aufschnitt)'
+            },
+            pathomechanism: {
+              steps: [
+                'Bakterium gelangt über kontaminierte Nahrung hinein, durchdringt Darmwand, gelangt ins Blut.',
+                'Besonderer Tropismus für Hirnstamm (Rhombenzephalon) und Meningen.',
+                'Als intrazellulärer Erreger breitet es sich von Zelle zu Zelle aus, umgeht Antikörper. Zelluläre Immunität entscheidend (schwächer bei Säuglingen, Alten, Schwangeren).',
+                'Bildet Mikroabszesse und Granulome im Hirnstamm.'
+              ],
+              virulence_factors: ['Intrazelluläres Überleben', 'Listeriolysin O']
+            },
+            clinical: {
+              incubation: '1-4 Wochen',
+              onset: 'Subakut',
+              symptoms: [
+                { name: 'Subakuter Verlauf', description: 'Symptome können sich langsamer über Tage bis Wochen entwickeln, nicht so stürmisch wie andere bakterielle Meningitiden.', severity: 'moderate' },
+                { name: 'Rhombenzephalitis', description: 'Zeichen der Hirnstammbeteiligung: Hirnnervenlähmungen (z.B. Gesichtsschwäche, Schluckstörung), Ataxie, Nystagmus und Atemstörungen.', severity: 'severe' },
+                { name: 'Fehlende Zeichen', description: 'Nackensteifigkeit fehlt oft, nur Fieber und Verwirrtheit bemerkbar.', severity: 'severe' }
+              ],
+              physical_exam: ['Meningeale Zeichen (können fehlen)', 'Fokale Zeichen'],
+              complications: ['Hirnabszess', 'Hydrozephalus']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Liquor', finding: 'Kann lymphozytär sein! (nicht immer PMN)', interpretation: 'Irreführend' }],
+              microbiology: [{ test: 'Gram-Färbung', finding: 'Oft negativ oder Gram+ Stäbchen (können als Diphtheroide fehlgedeutet werden)', significance: '-' }]
+            },
+            therapy: {
+              empirical: { inpatient: [{ drug: 'Amoxicillin / Ampicillin', dose: '2g i.v. alle 4 Stunden', duration: '21 Tage', note: 'NICE NG240 Empfehlung. Cephalosporine sind UNWIRKSAM!' }, { drug: '+ Gentamicin', dose: '5mg/kg i.v. 1x täglich', duration: 'Erste 7 Tage', note: 'Synergistische Wirkung' }] },
+              targeted: 'Amoxicillin/Ampicillin (21 Tage) + Gentamicin (erste 7 Tage). Bei Penicillinallergie: Cotrimoxazol (Trimethoprim/Sulfamethoxazol).',
+              supportive: [],
+              prevention: ['Lebensmittelhygiene in Risikogruppen']
+            },
+            prognosis: { mortality: '20-30%', prognostic_scores: [], factors: 'Alter, Immunstatus' }
+          },
+          { isHeader: true, title: 'Aseptische Meningitiden', color: '#3b82f6' },
+          {
+            id: 'aseptic_meningitis',
+            name: 'Aseptische (Virale) Meningitis',
+            pathogen: { type: 'Virus', name: 'Enteroviren (<i>Coxsackie, Echo</i>), <i>HSV-2, VZV</i>', gram: 'RNA/DNA', shape: '-' },
+            epidemiology: {
+              incidence: 'Häufigste Form der Meningitis',
+              risk_groups: ['Kinder', 'Junge Erwachsene'],
+              seasonality: 'Sommer-Herbst (Enterovirus)',
+              transmission: 'Fäkal-oral (Entero), sexuell (HSV-2)'
+            },
+            pathomechanism: {
+              steps: [
+                'Das Virus (z.B. Enterovirus) gelangt aus Darm oder Atemwegen ins Blut (Virämie).',
+                'Es überwindet die Blut-Hirn-Schranke und infiziert Meningen und Plexus choroideus.',
+                'Löst Entzündungsreaktion aus (meist lymphozytär), aber im Gegensatz zu Bakterien bildet sich kein eitriges Exsudat, und das Hirnparenchym bleibt meist verschont (daher klares Bewusstsein).',
+                'Der Prozess ist meist selbstlimitierend, das Immunsystem eliminiert die Infektion.'
+              ],
+              virulence_factors: ['-']
+            },
+            clinical: {
+              incubation: '3-7 Tage',
+              onset: 'Plötzlich',
+              symptoms: [
+                { name: 'Meningeales Syndrom', description: 'Kopfschmerzen (frontal/retroorbital), Fieber, Lichtscheu (Photophobie) und Nackensteifigkeit.', severity: 'moderate' },
+                { name: 'Klares Bewusstsein', description: 'Wichtigstes Unterscheidungsmerkmal: Patient ist wach, orientiert, keine fokalen neurologischen Ausfälle (im Gegensatz zu Enzephalitis oder bakterieller Meningitis).', severity: 'mild' },
+                { name: 'Systemische Symptome', description: 'Bei Enterovirus Ausschlag, Halsschmerzen, Durchfall; bei HSV-2 genitale Läsionen möglich.', severity: 'mild' }
+              ],
+              physical_exam: ['Meningeale Reizzeichen (milder)', 'Bewusstsein klar (Unterschied zur Enzephalitis!)'],
+              complications: ['Selten (Meningoenzephalitis)']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Liquor', finding: 'Lymphozytäre Pleozytose (zehn-hundert), normale Glukose, leicht erhöhtes Protein', interpretation: 'Virales Bild' }],
+              microbiology: [{ test: 'Liquor-PCR', finding: 'Enterovirus/HSV/VZV', significance: 'Diagnostisch' }]
+            },
+            therapy: {
+              empirical: { outpatient: [{ drug: 'Supportiv', dose: '-', duration: '-', note: 'Schmerzlinderung, Ruhe' }] },
+              targeted: 'Bei HSV-2/VZV Acyclovir erwägen (besonders bei Immunsupprimierten). Enterovirus: symptomatisch.',
+              supportive: [],
+              prevention: ['Hygiene']
+            },
+            prognosis: { mortality: 'Hervorragend, heilt spontan', prognostic_scores: [], factors: 'Keine' }
+          },
+          { isHeader: true, title: 'Enzephalitiden', color: '#8b5cf6' },
+          {
             id: 'viral_encephalitis',
             name: 'Virale Enzephalitis',
-            pathogen: { type: 'Virus', name: 'HSV-1, VZV, Enteroviren, Arboviren', gram: 'DNA/RNA-Viren', shape: 'variabel' },
+            pathogen: { type: 'Virus', name: '<i>HSV-1, VZV</i>, Enteroviren, Arboviren', gram: 'DNA/RNA-Viren', shape: 'variabel' },
             epidemiology: {
               incidence: '0.5-7/100.000 pro Jahr',
               risk_groups: ['Neugeborene (HSV-2)', 'Immunsupprimierte', 'Ältere (VZV-Reaktivierung)', 'Reisende in endemische Gebiete (Arbovirus)'],
@@ -128,12 +296,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Primärinfektion oder Reaktivierung (HSV)',
-                'Neurotropismus: Virus dringt in das Nervengewebe ein',
-                'HSV: Prädilektion für Temporallappen (olfaktorischer oder trigeminaler Weg)',
-                'Direkte neuronale Schädigung + Immunantwort',
-                'Nekrotisierende Enzephalitis (HSV) vs. perivaskuläre Entzündung',
-                'Hirnödem, Hämorrhagie, Nekrose'
+                'Eintritt: Viren erreichen das ZNS hämatogen (z.B. Arboviren) oder über Nervenbahnen (z.B. HSV, Tollwut).',
+                'Neurotropismus: Viren infizieren direkt Neuronen und Gliazellen. HSV-1 zielt spezifisch auf Temporal- und Frontallappen (olfaktorischer oder trigeminaler Weg).',
+                'Schädigungsmechanismus: Neuronentod durch direkten zytopathischen Effekt der Virusreplikation und zytotoxische T-Zell-Immunantwort.',
+                'Histologie: Perivaskuläre lymphozytäre Infiltration, Neuronophagie und Mikroglia-Knötchen. Bei HSV hämorrhagische Nekrose.',
+                'Folge: Hirnödem, Entzündung, Blutung und ausgedehnter Neuronentod führen zu fokalen Ausfällen und Bewusstseinsstörung.'
               ],
               virulence_factors: ['HSV: Glykoprotein B, C, D (Eintritt)', 'VZV: Latenz in Neuronen', 'Enterovirus: VP1-Kapsidprotein']
             },
@@ -141,12 +308,11 @@ Object.assign(window.diseases, {
               incubation: 'HSV-Reaktivierung: variabel; Enterovirus: 3-7 Tage; Arbovirus: 4-14 Tage',
               onset: 'Akut-subakut',
               symptoms: [
-                { name: 'Bewusstseinsstörung', description: 'Hauptmerkmal der Enzephalitis (100%): Verwirrtheit, Lethargie, Koma', severity: 'severe' },
-                { name: 'Fieber', description: 'In >90% vorhanden', severity: 'moderate' },
-                { name: 'Kopfschmerzen', description: 'Häufiges Begleitsymptom', severity: 'moderate' },
-                { name: 'Krampfanfälle', description: 'Häufig (besonders HSV, autoimmun)', severity: 'severe' },
-                { name: 'Fokale neurologische Zeichen', description: 'Hemiparese, Hirnnervenlähmung, Ataxie', severity: 'severe' },
-                { name: 'Verhaltensänderungen', description: 'Psychose, Halluzinationen (HSV, limbisch)', severity: 'severe' }
+                { name: 'Bewusstseinsstörung (Leitsymptom)', description: 'Wichtigstes Unterscheidungsmerkmal zur Meningitis: Das Bewusstsein ist nicht klar. Zeigt sich als Verwirrtheit, Lethargie, Persönlichkeitsveränderung oder Koma.', severity: 'severe' },
+                { name: 'Fieber und Kopfschmerzen', description: 'Fast immer vorhanden (>90%), oft begleitet von Übelkeit und Erbrechen.', severity: 'moderate' },
+                { name: 'Fokale neurologische Defizite', description: 'Je nach betroffenem Areal: Hemiparese, Aphasie, Ataxie, Hirnnervenlähmungen.', severity: 'severe' },
+                { name: 'Krampfanfälle', description: 'Häufig (besonders bei HSV und autoimmunen Ursachen), können fokal oder generalisiert sein.', severity: 'severe' },
+                { name: 'Psychiatrische Symptome', description: 'Halluzinationen, Agitation, Psychose, Gedächtnisverlust - besonders bei Befall des limbischen Systems (z.B. HSV).', severity: 'severe' }
               ],
               physical_exam: [
                 'Bewusstseinsstörung (GCS vermindert)',
@@ -207,7 +373,7 @@ Object.assign(window.diseases, {
           {
             id: 'herpes_encephalitis',
             name: 'Herpes-Simplex-Enzephalitis',
-            pathogen: { type: 'Virus', name: 'Herpes-Simplex-Virus 1 (HSV-1)', gram: 'dsDNA', shape: 'kugelförmig' },
+            pathogen: { type: 'Virus', name: '<i>Herpes-Simplex-Virus 1</i> (HSV-1)', gram: 'dsDNA', shape: 'kugelförmig' },
             epidemiology: {
               incidence: 'Häufigste sporadische, tödliche Enzephalitis',
               risk_groups: ['Jeder (keine Saisonalität)'],
@@ -215,20 +381,22 @@ Object.assign(window.diseases, {
               transmission: 'Reaktivierung (Ganglion trigeminale) oder Primärinfektion'
             },
             pathomechanism: {
-              steps: ['Neurotrope Ausbreitung', 'Nekrose des Temporal- und Frontallappens', 'Hämorrhagische Entzündung', 'Hirnödem'],
-              virulence_factors: ['-']
+              steps: [
+                'Das latente Virus reaktiviert im Ganglion trigeminale und wandert retrograd über Nervenfasern zurück ins Gehirn.',
+                'Es greift selektiv Temporal- und Frontallappen sowie das limbische System an.',
+                'Virusreplikation und Immunantwort verursachen schwere, asymmetrische, nekrotisierende, hämorrhagische Entzündung in diesen Bereichen.',
+                'Resultierendes Hirnödem und Temporallappenschwellung können zur Unkuseinklemmung führen.'
+              ],
+              virulence_factors: ['Neurovirulenz-Gene']
             },
             clinical: {
               incubation: 'Variabel',
               onset: 'Akut (Tage)',
               symptoms: [
-                { name: 'Fieber', description: 'In 90% vorhanden', severity: 'moderate' },
-                { name: 'Kopfschmerzen', description: 'In 81%', severity: 'moderate' },
-                { name: 'Psychiatrische Symptome', description: 'Persönlichkeitsveränderung, Desorientierung (71%)', severity: 'severe' },
-                { name: 'Krampfanfälle', description: 'In 67% (fokal oder generalisiert)', severity: 'severe' },
-                { name: 'Erbrechen', description: 'In 46%', severity: 'mild' },
-                { name: 'Fokale Schwäche', description: 'In 33%', severity: 'severe' },
-                { name: 'Gedächtnisstörung', description: 'In 24% (Kurzzeit)', severity: 'moderate' }
+                { name: 'Prodrom', description: 'Fieber, Kopfschmerzen, Unwohlsein für einige Tage.', severity: 'moderate' },
+                { name: 'Verhaltensänderungen', description: 'Plötzlich auftretendes bizarres Verhalten, Persönlichkeitsveränderung, Psychose, Halluzinationen (olfaktorisch/gustatorisch). Oft anfangs als psychiatrisch fehldiagnostiziert.', severity: 'severe' },
+                { name: 'Neurologische Defizite', description: 'Aphasie (Sprachstörung), Hemiparese, Gedächtnisverlust (v.a. Kurzzeit).', severity: 'severe' },
+                { name: 'Krampfanfälle', description: 'Häufig, oft mit fokalem Beginn.', severity: 'severe' }
               ],
               physical_exam: ['Bewusstseinsstörung', 'Fokale neurologische Zeichen', 'Gedächtnisstörung'],
               complications: ['Unkuseinklemmung', 'Bleibende kognitive Schäden', 'Tod']
@@ -249,7 +417,7 @@ Object.assign(window.diseases, {
           {
             id: 'aseptic_meningitis',
             name: 'Aseptische (Virale) Meningitis',
-            pathogen: { type: 'Virus', name: 'Enteroviren (Coxsackie, Echo), HSV-2, VZV', gram: 'RNA/DNA', shape: '-' },
+            pathogen: { type: 'Virus', name: 'Enteroviren (<i>Coxsackie, Echo</i>), <i>HSV-2, VZV</i>', gram: 'RNA/DNA', shape: '-' },
             epidemiology: {
               incidence: 'Häufigste Form der Meningitis',
               risk_groups: ['Kinder', 'Junge Erwachsene'],
@@ -257,18 +425,21 @@ Object.assign(window.diseases, {
               transmission: 'Fäkal-oral (Entero), sexuell (HSV-2)'
             },
             pathomechanism: {
-              steps: ['Virämie', 'Meningeale Entzündung', 'Kein eitriges Exsudat'],
+              steps: [
+                'Das Virus (z.B. Enterovirus) gelangt aus Darm oder Atemwegen ins Blut (Virämie).',
+                'Es überwindet die Blut-Hirn-Schranke und infiziert Meningen und Plexus choroideus.',
+                'Löst Entzündungsreaktion aus (meist lymphozytär), aber im Gegensatz zu Bakterien bildet sich kein eitriges Exsudat, und das Hirnparenchym bleibt meist verschont (daher klares Bewusstsein).',
+                'Der Prozess ist meist selbstlimitierend, das Immunsystem eliminiert die Infektion.'
+              ],
               virulence_factors: ['-']
             },
             clinical: {
               incubation: '3-7 Tage',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Kopfschmerzen', description: 'Fast immer vorhanden, frontal/retroorbital', severity: 'moderate' },
-                { name: 'Fieber', description: '38-40°C', severity: 'mild' },
-                { name: 'Meningeale Zeichen', description: 'Nackensteifigkeit vorhanden, kann aber milder sein', severity: 'moderate' },
-                { name: 'Photophobie', description: 'Lichtscheu', severity: 'mild' },
-                { name: 'Bewusstsein', description: 'KLAR (Unterscheidung zur Enzephalitis!)', severity: 'mild' }
+                { name: 'Meningeales Syndrom', description: 'Kopfschmerzen (frontal/retroorbital), Fieber, Lichtscheu (Photophobie) und Nackensteifigkeit.', severity: 'moderate' },
+                { name: 'Klares Bewusstsein', description: 'Wichtigstes Unterscheidungsmerkmal: Patient ist wach, orientiert, keine fokalen neurologischen Ausfälle (im Gegensatz zu Enzephalitis oder bakterieller Meningitis).', severity: 'mild' },
+                { name: 'Systemische Symptome', description: 'Bei Enterovirus Ausschlag, Halsschmerzen, Durchfall; bei HSV-2 genitale Läsionen möglich.', severity: 'mild' }
               ],
               physical_exam: ['Meningeale Reizzeichen (milder)', 'Bewusstsein klar (Unterschied zur Enzephalitis!)'],
               complications: ['Selten (Meningoenzephalitis)']
@@ -288,7 +459,7 @@ Object.assign(window.diseases, {
           {
             id: 'tbe',
             name: 'Frühsommer-Meningoenzephalitis (FSME)',
-            pathogen: { type: 'Virus', name: 'FSME-Virus', gram: 'RNA, Flaviviridae', shape: 'kugelförmig' },
+            pathogen: { type: 'Virus', name: '<i>FSME-Virus</i>', gram: 'RNA, Flaviviridae', shape: 'kugelförmig' },
             epidemiology: {
               incidence: 'Endemisch in Mitteleuropa',
               risk_groups: ['Forstarbeiter', 'Wanderer', 'Personen mit Zeckenexposition'],
@@ -296,18 +467,21 @@ Object.assign(window.diseases, {
               transmission: 'Zeckenstich, unpasteurisierte Milch'
             },
             pathomechanism: {
-              steps: ['Zeckenstich', 'Virämie (fieberhafte Phase)', 'ZNS-Invasion (Meningoenzephalitis)'],
+              steps: [
+                'Das Virus gelangt über den Speichel einer infizierten Zecke in den Körper.',
+                'Phase 1 (Virämie): Virus vermehrt sich in Lymphknoten und Milz, verursacht grippeähnliche Symptome.',
+                'Phase 2 (Neuroinvasion): Bei einem Teil der Patienten überwindet das Virus die Blut-Hirn-Schranke und befällt Meningen (Meningitis), Hirnparenchym (Enzephalitis) oder Rückenmark (Myelitis).',
+                'Rückenmarksbefall zerstört typischerweise Motoneurone im Vorderhorn, was zu schlaffen Lähmungen führt.'
+              ],
               virulence_factors: ['-']
             },
             clinical: {
               incubation: '7-14 Tage',
               onset: 'Biphasisch',
               symptoms: [
-                { name: 'Biphasischer Verlauf', description: 'In 70-90% der Fälle', severity: 'mild' },
-                { name: '1. Phase (Virämie)', description: 'Fieber, Kopfschmerzen, Muskelschmerzen, Müdigkeit (2-7 Tage)', severity: 'mild' },
-                { name: 'Symptomfreies Intervall', description: 'Durchschnittlich 8 Tage (1-33 Tage)', severity: 'mild' },
-                { name: '2. Phase (Neurologisch)', description: 'Meningitis (50%), Meningoenzephalitis (40%), Myelitis (10%)', severity: 'severe' },
-                { name: 'Myelitis-Symptome', description: 'Schlaffe Lähmung (oft obere Extremität/Schultergürtel)', severity: 'severe' }
+                { name: '1. Phase (Grippeähnlich)', description: 'Fieber, Kopfschmerzen, Muskelschmerzen, Müdigkeit für 2-7 Tage. Gefolgt von 1-3 Wochen symptomfreiem Intervall.', severity: 'mild' },
+                { name: '2. Phase (Neurologisch)', description: 'Bei 20-30% kehrt Fieber zurück, neurologische Symptome treten auf. Formen: Meningitis (milder), Meningoenzephalitis (Verwirrtheit, Ataxie), Meningoenzephalomyelitis (Lähmungen).', severity: 'severe' },
+                { name: 'Lähmung', description: 'Charakteristisch ist eine asymmetrische schlaffe Lähmung des Schultergürtels und der Arme (Schädigung der Vorderhornzellen).', severity: 'severe' }
               ],
               physical_exam: ['Ataxie', 'Tremor', 'Schlaffe Lähmung des Schultergürtels (Myelitis)', 'Bewusstseinsstörung'],
               complications: ['Bleibende Lähmung', 'Post-Enzephalitis-Syndrom']
@@ -327,7 +501,7 @@ Object.assign(window.diseases, {
           {
             id: 'meningococcal_meningitis',
             name: 'Meningokokken-Meningitis',
-            pathogen: { type: 'Bakterium', name: 'Neisseria meningitidis', gram: 'Gram-negativ', shape: 'Diplokokken' },
+            pathogen: { type: 'Bakterium', name: '<i>Neisseria meningitidis</i>', gram: 'Gram-negativ', shape: 'Diplokokken' },
             epidemiology: {
               incidence: 'Kann epidemisch auftreten',
               risk_groups: ['Säuglinge', 'Jugendliche', 'Geschlossene Gemeinschaften (Wohnheim)', 'Asplenie'],
@@ -335,17 +509,21 @@ Object.assign(window.diseases, {
               transmission: 'Tröpfcheninfektion (enger Kontakt)'
             },
             pathomechanism: {
-              steps: ['Nasopharynx-Kolonisation', 'Invasion', 'Sepsis/Meningitis', 'LOS-Endotoxin -> DIC'],
-              virulence_factors: ['Kapsel (A,B,C,W,Y)', 'LOS', 'IgA-Protease']
+              steps: [
+                'Bakterium kolonisiert Nasopharynx und gelangt in den Blutkreislauf.',
+                'Schnelle Vermehrung im Blut setzt massive Mengen Endotoxin (LOS) frei (Meningokokkämie).',
+                'Endotoxin löst systemische Entzündung, Vaskulitis und disseminierte intravasale Koagulopathie (DIC) aus.',
+                'Dies führt zu Gefäßverschlüssen (Hautnekrosen, Nebennierenblutung - Waterhouse-Friderichsen-Syndrom) und septischem Schock, oft noch vor Meningitis.'
+              ],
+              virulence_factors: ['Kapsel (A,B,C,W,Y)', 'LOS (Lipooligosaccharid)', 'IgA-Protease']
             },
             clinical: {
               incubation: '1-10 Tage',
               onset: 'Hyperakut',
               symptoms: [
-                { name: 'Klassische Symptome', description: 'Fieber, Kopfschmerzen, Nackensteifigkeit', severity: 'severe' },
-                { name: 'Ausschlag', description: 'Petechien/Purpura (in 50-80%!) - verschwinden nicht auf Druck', severity: 'severe' },
-                { name: 'Septischer Zustand', description: 'Hypotonie, Tachykardie, kalte Extremitäten', severity: 'severe' },
-                { name: 'Schnelle Progression', description: 'Zustandsverschlechterung innerhalb von Stunden', severity: 'severe' }
+                { name: 'Hyperakuter Beginn', description: 'Zustand verschlechtert sich dramatisch innerhalb von Stunden. Fieber, Erbrechen, Kopfschmerzen als erste Zeichen.', severity: 'severe' },
+                { name: 'Hämorrhagischer Ausschlag', description: 'Anfangs wegdrückbare Makeln, entwickeln sich schnell zu Petechien und Purpura, die auf Druck NICHT verblassen (non-blanching rash). Zeichen der Meningokokkämie.', severity: 'severe' },
+                { name: 'Septischer Schock', description: 'Kalte Extremitäten, Zyanose, niedriger Blutdruck, schneller Puls, Anurie.', severity: 'severe' }
               ],
               physical_exam: ['Meningeale Zeichen', 'Purpura', 'Schockzeichen'],
               complications: ['Gliedmaßennekrose/Amputation', 'Taubheit', 'Tod (innerhalb von Stunden)']
@@ -365,7 +543,7 @@ Object.assign(window.diseases, {
           {
             id: 'pneumococcal_meningitis',
             name: 'Pneumokokken-Meningitis',
-            pathogen: { type: 'Bakterium', name: 'Streptococcus pneumoniae', gram: 'Gram-positiv', shape: 'Diplokokken' },
+            pathogen: { type: 'Bakterium', name: '<i>Streptococcus pneumoniae</i>', gram: 'Gram-positiv', shape: 'Diplokokken' },
             epidemiology: {
               incidence: 'Häufigste Meningitis bei Erwachsenen',
               risk_groups: ['Ältere', 'Alkoholiker', 'Splenektomierte', 'Otitis/Sinusitis/Pneumonie', 'Liquorrhoe'],
@@ -373,16 +551,19 @@ Object.assign(window.diseases, {
               transmission: 'Endogene Ausbreitung oder Tröpfcheninfektion'
             },
             pathomechanism: {
-              steps: ['Bakteriämie oder Ausbreitung per continuitatem (Ohr/Nebenhöhle)', 'Starke Entzündungsreaktion'],
+              steps: [
+                'Infektion breitet sich oft von benachbartem Fokus (Otitis media, Sinusitis, Mastoiditis) auf Meningen aus oder via Bakteriämie bei Pneumonie.',
+                'Pneumokokken-Kapsel hemmt Phagozytose, Pneumolysin-Toxin schädigt Zellen direkt und fördert Entzündung.',
+                'Dieser Erreger verursacht die schwerste eitrige Meningitis mit häufigem Koma und bleibenden Schäden.'
+              ],
               virulence_factors: ['Kapsel', 'Pneumolysin']
             },
             clinical: {
               incubation: 'Kurz',
               onset: 'Akut',
               symptoms: [
-                { name: 'Schwere Meningitis', description: 'Häufiger Koma/Krampfanfälle als bei Meningokokken', severity: 'severe' },
-                { name: 'Fokussymptome', description: 'Zeichen von Pneumonie (25%), Otitis (30%), Sinusitis (15%)', severity: 'moderate' },
-                { name: 'Neurologisches Defizit', description: 'Häufige Restschäden', severity: 'severe' }
+                { name: 'Schwere Meningitis', description: 'Gekennzeichnet durch rasch einsetzende Bewusstseinsstörung, Koma und Krampfanfälle. Mortalität und Folgeschäden sind bei diesem Typ am höchsten.', severity: 'severe' },
+                { name: 'Prädisponierende Zeichen', description: 'Gleichzeitige Pneumonie, Mittelohrentzündung oder Sinusitis häufig vorhanden.', severity: 'moderate' }
               ],
               physical_exam: ['Meningeale Zeichen', 'Zeichen einer Otitis media', 'Bewusstseinsstörung'],
               complications: ['Taubheit', 'Hydrozephalus', 'Hirnabszess']
@@ -402,7 +583,7 @@ Object.assign(window.diseases, {
           {
             id: 'listeria_meningitis',
             name: 'Listerien-Meningitis',
-            pathogen: { type: 'Bakterium', name: 'Listeria monocytogenes', gram: 'Gram-positiv', shape: 'Stäbchen' },
+            pathogen: { type: 'Bakterium', name: '<i>Listeria monocytogenes</i>', gram: 'Gram-positiv', shape: 'Stäbchen' },
             epidemiology: {
               incidence: 'Selten, aber gefährlich',
               risk_groups: ['Neugeborene', 'Ältere (>50 Jahre)', 'Schwangere', 'Immunsupprimierte (Transplantierte, Alkoholiker)'],
@@ -410,18 +591,21 @@ Object.assign(window.diseases, {
               transmission: 'Lebensmittel (Weichkäse, Aufschnitt)'
             },
             pathomechanism: {
-              steps: ['Invasion des Gastrointestinaltrakts', 'Bakteriämie', 'ZNS-Invasion (Rhombenzephalitis-Tropismus)'],
+              steps: [
+                'Bakterium gelangt über kontaminierte Nahrung hinein, durchdringt Darmwand, gelangt ins Blut.',
+                'Besonderer Tropismus für Hirnstamm (Rhombenzephalon) und Meningen.',
+                'Als intrazellulärer Erreger breitet es sich von Zelle zu Zelle aus, umgeht Antikörper. Zelluläre Immunität entscheidend (schwächer bei Säuglingen, Alten, Schwangeren).',
+                'Bildet Mikroabszesse und Granulome im Hirnstamm.'
+              ],
               virulence_factors: ['Intrazelluläres Überleben', 'Listeriolysin O']
             },
             clinical: {
               incubation: '1-4 Wochen',
               onset: 'Subakut',
               symptoms: [
-                { name: 'Subakuter Beginn', description: 'Langsamere Progression', severity: 'moderate' },
-                { name: 'Fieber', description: 'In 90%', severity: 'moderate' },
-                { name: 'Bewusstseinsstörung', description: 'Häufig', severity: 'severe' },
-                { name: 'Rhombenzephalitis', description: 'Hirnstammsymptome: Ataxie, Hirnnervenlähmung, Nystagmus', severity: 'severe' },
-                { name: 'Meningeale Zeichen', description: 'Weniger ausgeprägt oder fehlend', severity: 'mild' }
+                { name: 'Subakuter Verlauf', description: 'Symptome können sich langsamer über Tage bis Wochen entwickeln, nicht so stürmisch wie andere bakterielle Meningitiden.', severity: 'moderate' },
+                { name: 'Rhombenzephalitis', description: 'Zeichen der Hirnstammbeteiligung: Hirnnervenlähmungen (z.B. Gesichtsschwäche, Schluckstörung), Ataxie, Nystagmus und Atemstörungen.', severity: 'severe' },
+                { name: 'Fehlende Zeichen', description: 'Nackensteifigkeit fehlt oft, nur Fieber und Verwirrtheit bemerkbar.', severity: 'severe' }
               ],
               physical_exam: ['Meningeale Zeichen (können fehlen)', 'Fokale Zeichen'],
               complications: ['Hirnabszess', 'Hydrozephalus']
@@ -441,7 +625,7 @@ Object.assign(window.diseases, {
           {
             id: 'cryptococcal_meningitis',
             name: 'Kryptokokken-Meningitis',
-            pathogen: { type: 'Pilz', name: 'Cryptococcus neoformans', gram: 'Hefepilz (bekapselt)', shape: 'rund' },
+            pathogen: { type: 'Pilz', name: '<i>Cryptococcus neoformans</i>', gram: 'Hefepilz (bekapselt)', shape: 'rund' },
             epidemiology: {
               incidence: 'Häufigste Pilzmeningitis bei HIV/AIDS-Patienten',
               risk_groups: ['HIV (CD4 <100)', 'Transplantierte', 'Steroidbehandlung'],
@@ -449,18 +633,21 @@ Object.assign(window.diseases, {
               transmission: 'Inhalation (kontaminierter Staub/Taubenkot) -> Lunge -> hämatogene Streuung'
             },
             pathomechanism: {
-              steps: ['Inhalation', 'Lungeninfektion (oft asymptomatisch)', 'Reaktivierung/Disseminierung bei Immunsuppression', 'Überwindung der Blut-Hirn-Schranke', 'Polysaccharidkapsel hemmt Phagozytose'],
+              steps: [
+                'Pilz gelangt durch Inhalation in die Lunge, verursacht Primärinfektion (oft asymptomatisch).',
+                'Bei Immunsuppression (z.B. AIDS) streut er hämatogen ins Gehirn.',
+                'Dicke Polysaccharidkapsel schützt vor Phagozytose.',
+                'Ansammlung in Arachnoidalzotten blockiert Liquorresorption, führt zu extrem hohem Hirndruck ohne eitrige Entzündung.'
+              ],
               virulence_factors: ['Polysaccharidkapsel', 'Melaninproduktion']
             },
             clinical: {
               incubation: 'Unbekannt (Reaktivierung)',
               onset: 'Subakut/Chronisch (Wochen)',
               symptoms: [
-                { name: 'Kopfschmerzen', description: 'Leitsymptom (70-90%)', severity: 'severe' },
-                { name: 'Fieber', description: 'In 60-80%', severity: 'moderate' },
-                { name: 'Meningeale Zeichen', description: 'NUR in 20-30%! (irreführend)', severity: 'mild' },
-                { name: 'Sehstörung', description: 'Diplopie, Photophobie (wegen hohem Hirndruck)', severity: 'severe' },
-                { name: 'Bewusstseinsstörung', description: 'Lethargie, Verwirrtheit', severity: 'severe' }
+                { name: 'Langsame Progression', description: 'Symptome entwickeln sich über Wochen. Leitsymptome sind zunehmende Kopfschmerzen und Fieber.', severity: 'moderate' },
+                { name: 'Hirndrucksymptome', description: 'Durch blockierte Liquorresorption: Sehstörungen (Doppelbilder, Verschwommen), Übelkeit, Bewusstseinsstörung.', severity: 'severe' },
+                { name: 'Fehlende Meningismuszeichen', description: 'Da Entzündungsreaktion schwach ist (wenig Leukozyten), fehlt Nackensteifigkeit oft!', severity: 'severe' }
               ],
               physical_exam: ['Meningeale Zeichen fehlen oft!', 'Stauungspapille (hoher Hirndruck)', 'Hautsymptome (Molluscum-artig)'],
               complications: ['Hoher Hirndruck (Erblindung, Einklemmung)', 'Kryptokokkom', 'IRIS (bei Therapiestart)']
@@ -486,7 +673,7 @@ Object.assign(window.diseases, {
           {
             id: 'naegleria_meningitis',
             name: 'Primäre Amöben-Meningoenzephalitis (PAM)',
-            pathogen: { type: 'Protozoon', name: 'Naegleria fowleri', gram: '-', shape: 'Amöbe' },
+            pathogen: { type: 'Protozoon', name: '<i>Naegleria fowleri</i>', gram: '-', shape: 'Amöbe' },
             epidemiology: {
               incidence: 'Sehr selten, aber tödlich',
               risk_groups: ['Kinder/Jugendliche', 'Personen, die in Süßwasser schwimmen'],
@@ -494,16 +681,20 @@ Object.assign(window.diseases, {
               transmission: 'Wasser dringt in die Nase ein -> Riechnerv -> Gehirn'
             },
             pathomechanism: {
-              steps: ['Eindringen von Wasser in die Nase', 'Penetration der Lamina cribrosa', 'Wanderung entlang des Riechnervs', 'Lyse des Hirngewebes (Trophozoiten)'],
+              steps: [
+                'Wasser gelangt beim Schwimmen in warmem Süßwasser in die Nase.',
+                'Amöbe durchdringt Nasenschleimhaut und Lamina cribrosa.',
+                'Wandert entlang des Riechnervs (N. olfactorius) direkt in die Frontallappen des Gehirns.',
+                'Vermehrung im Hirngewebe, enzymatische Auflösung und "Fressen" des Hirngewebes, verursacht massive hämorrhagische Nekrose und Ödem.'
+              ],
               virulence_factors: ['Gewebeabbauende Enzyme', 'Amebostome (Fressapparat)']
             },
             clinical: {
               incubation: '1-9 Tage (durchschnittlich 5)',
               onset: 'Fulminant',
               symptoms: [
-                { name: 'Anfangssymptome', description: 'Schwere frontale Kopfschmerzen, Fieber, Übelkeit, Erbrechen', severity: 'severe' },
-                { name: 'Spätsymptome', description: 'Nackensteifigkeit, Krampfanfälle, Bewusstseinsstörung, Halluzinationen, Koma', severity: 'severe' },
-                { name: 'Geruch/Geschmack', description: 'Parosmie/Ageusie (kann frühes Zeichen sein)', severity: 'moderate' }
+                { name: 'Anfangssymptome', description: 'Plötzlich einsetzende, unerträgliche frontale Kopfschmerzen, Fieber, Übelkeit. Oft gehen Geruchs-/Geschmacksstörungen (Parosmie/Ageusie) voraus.', severity: 'severe' },
+                { name: 'Progression', description: 'Schnelle Entwicklung von Nackensteifigkeit, Halluzinationen, Krampfanfällen und Koma. Tod durch Hirnödem und Einklemmung innerhalb von 3-7 Tagen.', severity: 'severe' }
               ],
               physical_exam: ['Meningeale Reizung', 'Koma', 'Schnelle Verschlechterung'],
               complications: ['Einklemmung', 'Tod (innerhalb von 3-7 Tagen)']
@@ -522,7 +713,76 @@ Object.assign(window.diseases, {
               prevention: ['Nasenklammer in warmem Süßwasser', 'Nasenspülung nur mit sterilem Wasser']
             },
             prognosis: { mortality: '>97% (fast immer tödlich)', prognostic_scores: [], factors: 'Verfügbarkeit der Behandlung' }
+          },
+         { isHeader: true, title: 'Fokale und spezielle Formen', color: '#d97706' }, {
+            id: 'brain_abscess',
+            name: 'Hirnabszess',
+            pathogen: { type: 'Bakterium', name: '<i>Streptococcus</i> spp., <i>Staphylococcus aureus</i>, Anaerobier', gram: 'Gemischt', shape: 'Gemischt' },
+            epidemiology: {
+              incidence: 'Selten, aber schwerwiegend (0.4-1.3/100.000/Jahr)',
+              risk_groups: ['Immunsupprimierte', 'Chronische Otitis/Sinusitis', 'Zahninfektion', 'Endokarditis', 'Schädel-Hirn-Trauma/OP'],
+              seasonality: 'Keine',
+              transmission: 'Endogene Ausbreitung (per continuitatem oder hämatogen)'
+            },
+            pathomechanism: {
+              steps: [
+                'Direkte Ausbreitung: Infektion breitet sich von benachbarten Strukturen (z.B. Mittelohr, Nebenhöhlen, Zähne) auf das Hirnparenchym aus (40-50%).',
+                'Hämatogene Streuung: Bakterien gelangen über den Blutkreislauf von einem entfernten Fokus (z.B. Lunge, Herz - Endokarditis) ins Gehirn (25-35%).',
+                'Trauma/Operation: Direkter Eintritt nach offenem Schädelbruch oder neurochirurgischem Eingriff.',
+                'Abszessbildung: Bakterienvermehrung verursacht lokale Entzündung (Zerebritis), dann Nekrose. Der Körper versucht, den Prozess durch Kapselbildung zu isolieren.'
+              ],
+              virulence_factors: ['Synergismus der Mischflora', 'Kapselbildung']
+            },
+            clinical: {
+              incubation: 'Variabel (Tage-Wochen)',
+              onset: 'Subakut',
+              symptoms: [
+                { name: 'Kopfschmerzen', description: 'Häufigstes Symptom (>70%), oft lokalisiert, dumpf, konstant und progredient.', severity: 'moderate' },
+                { name: 'Fokale neurologische Defizite', description: 'Abhängig von der Abszesslokalisation (z.B. Hemiparese, Aphasie, Gesichtsfeldausfall).', severity: 'severe' },
+                { name: 'Fieber', description: 'Nur in 50% der Fälle vorhanden! Fehlen schließt es nicht aus.', severity: 'mild' },
+                { name: 'Bewusstseinsstörung', description: 'Schläfrigkeit, Verwirrtheit, dann Koma können sich aufgrund des erhöhten Hirndrucks entwickeln.', severity: 'severe' }
+              ],
+              physical_exam: ['Stauungspapille (hoher Hirndruck)', 'Fokale neurologische Zeichen', 'Fieber (kann fehlen)'],
+              complications: ['Einklemmung (Herniation)', 'Abszessruptur in das Ventrikelsystem (Ventrikulitis - hohe Mortalität)', 'Epilepsie']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blutbild', finding: 'Leukozytose (in 60%)', interpretation: 'Unzuverlässig' },
+                { test: 'CRP', finding: 'Erhöht', interpretation: 'Entzündung' },
+                { test: 'Blutkultur', finding: 'Positiv', significance: 'Wichtig bei hämatogenem Ursprung' }
+              ],
+              imaging: [
+                { modality: 'Schädel-CT/MRT', finding: 'Ringförmige Anreicherung (Ring-Enhancement), perifokales Ödem', significance: 'Goldstandard (MRT ist sensitiver)' }
+              ],
+              microbiology: [
+                { test: 'Stereotaktische Aspiration', finding: 'Eiterkultur', significance: 'Basis für ätiologische Diagnose und Therapie' },
+                { test: 'Lumbalpunktion', finding: 'KONTRAINDIZIERT!', significance: 'Wegen Einklemmungsgefahr bei Raumforderung verboten!' }
+              ]
+            },
+            differential: [
+              { disease: 'Hirntumor (Glioblastom, Metastase)', distinguishing: 'Bildgebung (DWI-Sequenz hilft), Biopsie' },
+              { disease: 'Schlaganfall', distinguishing: 'Plötzlicher Beginn, vaskuläre Risikofaktoren' },
+              { disease: 'Enzephalitis', distinguishing: 'Diffuser, kein abgekapselter Abszess' }
+            ],
+            therapy: {
+              empirical: {
+                inpatient: [
+                  { drug: 'Ceftriaxon', dose: '2g i.v. alle 12 Stunden', duration: '4-8 Wochen', note: 'Basistherapie' },
+                  { drug: '+ Metronidazol', dose: '500mg i.v. alle 8 Stunden', duration: '4-8 Wochen', note: 'Anaerobier-Abdeckung' },
+                  { drug: '+ Vancomycin', dose: '15-20mg/kg i.v.', duration: '', note: 'Bei S. aureus-Verdacht (z.B. Trauma, Endokarditis)' }
+                ]
+              },
+              targeted: 'Nach Kultur. Langfristige (6-8 Wochen) i.v., dann p.o. Therapie.',
+              supportive: ['Neurochirurgische Aspiration/Drainage (wenn >2.5 cm)', 'Steroide (Dexamethason) nur bei signifikantem Ödem/Einklemmungsgefahr', 'Antikonvulsiva'],
+              prevention: ['Behandlung von HNO-Infektionen', 'Endokarditis-Prophylaxe']
+            },
+            prognosis: {
+              mortality: '10-20% (besser bei früher Diagnose)',
+              prognostic_scores: [],
+              factors: 'Bewusstseinszustand bei Aufnahme, Ventrikelruptur'
+            }
           }
-        ]
-      },
-});
+                   ]
+                 }
+           });
+ 

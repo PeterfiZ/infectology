@@ -7,113 +7,107 @@ Object.assign(window.diseases, {
           {
             id: 'necrotizing_fasciitis',
             name: 'Nekrotisierende Fasziitis',
-            pathogen: { type: 'Bakterium', name: 'Polymikrobiell oder Strep. pyogenes/S. aureus', gram: 'Gemischt', shape: 'Variabel' },
+            pathogen: { type: 'Bakterium', name: 'Polymikrobiell (Typ I) oder Monomikrobiell (Typ II)', gram: 'Gemischt', shape: 'Variabel' },
             epidemiology: {
-              incidence: 'Selten (0.4/100.000), aber zunehmende Inzidenz',
-              risk_groups: ['Diabetes mellitus', 'Periphere arterielle Verschlusskrankheit', 'Immungeschwächte', 'Chronischer Alkoholismus', 'i.v.-Drogenkonsumenten', 'Zustand nach Trauma/Operation'],
+              incidence: 'Selten (0.4-1/100.000), aber hohe Mortalität',
+              risk_groups: ['Typ I: Diabetes, Immunsuppression, Adipositas, pAVK', 'Typ II: Gesunde Junge, Trauma, OP, i.v. Drogen', 'Typ III: Meerwasserexposition, Lebererkrankung (Vibrio)'],
               seasonality: 'Keine',
               transmission: 'Endogen (Hautläsion als Eintrittspforte) oder direkte Inokulation'
             },
             pathomechanism: {
               steps: [
-                'Eindringen von Bakterien in das subkutane Gewebe (Trauma, Wunde, Varizellen)',
-                'Schnelle Ausbreitung entlang der Faszienebenen',
-                'Bakterielle Toxine → Thrombose in der Mikrovaskulatur',
-                'Gewebsischämie und Nekrose',
-                'Toxin-vermittelter Schock (Streptokokken)',
-                'Haut anfangs intakt, da die oberflächliche Blutversorgung erst später beeinträchtigt wird'
+                'Eintritt: Die Infektion dringt durch eine Hautverletzung (auch minimal) in das subkutane Gewebe ein. Die Bakterien breiten sich schnell entlang der oberflächlichen Faszienebenen aus, die schlecht durchblutet sind.',
+                'Toxinwirkung: Die Erreger (insbesondere GAS und Clostridium) produzieren starke Toxine, die direkte Gewebenekrose, Thrombosen kleiner Blutgefäße und die Hemmung der lokalen Immunantwort verursachen.',
+                'Gewebenekrose: Thrombose und entzündliches Ödem beeinträchtigen die Blutversorgung weiter, was zu ausgedehntem Gewebstod führt. Der Prozess zerstört auch subkutane Nerven, was zur Anästhesie des Bereichs führt (ein Spätzeichen).',
+                'Systemische Toxizität: In den Kreislauf gelangende Toxine verursachen ein systemisches toxisches Schocksyndrom und Multiorganversagen.'
               ],
-              virulence_factors: ['Strep: M-Protein, Streptolysine, SpeA/B/C Superantigene', 'Staph: PVL, α-Toxin', 'Anaerobier: Kollagenasen, Proteasen']
+              virulence_factors: ['Strep: M-Protein, Exotoxine (SpeA/B/C)', 'Staph: PVL, TSST-1', 'Clostridium: Alpha-Toxin', 'Anaerobier: Gasbildung']
             },
             clinical: {
               incubation: 'Stunden-Tage (nach Trauma)',
-              onset: 'Hyperakut, schnell fortschreitend',
+              onset: 'Hyperakut, fulminant',
               symptoms: [
-                { name: 'Intensive Schmerzen', description: 'Unverhältnismäßig zum körperlichen Befund (75-100%), Frühzeichen', severity: 'severe' },
-                { name: 'Schwellung/Ödem', description: 'Spannendes, sich ausbreitendes Ödem (75-100%)', severity: 'severe' },
-                { name: 'Hautveränderungen', description: 'Erythem (70-100%), später livide Verfärbung, Bullae, Nekrose (Spätzeichen!)', severity: 'severe' },
-                { name: 'Fieber', description: 'Häufig, kann aber fehlen', severity: 'moderate' },
-                { name: 'Krepitation', description: 'Gasbildung (13-30% - nicht immer vorhanden!)', severity: 'severe' },
-                { name: 'Toxischer Zustand', description: 'Hypotonie, Tachykardie, Bewusstseinsstörung', severity: 'severe' }
+                { name: 'Frühzeichen', description: 'Das wichtigste Frühzeichen ist ein quälender Schmerz, der in keinem Verhältnis zum klinischen Befund steht. Die Haut zeigt möglicherweise nur eine leichte Rötung oder Schwellung, aber der Patient ist systemisch krank und fiebrig.', severity: 'severe' },
+                { name: 'Spätzeichen', description: 'Die Haut wird dunkelviolett oder schwarz, es bilden sich Blasen (Bullae), und im subkutanen Gewebe ist Gas (Krepitation) zu tasten. Der Schmerz kann aufgrund des Absterbens der Nerven nachlassen, was ein schlechtes prognostisches Zeichen ist. Es entwickelt sich schnell ein septischer Schock.', severity: 'severe' }
               ],
               physical_exam: [
-                'Schmerz ist unverhältnismäßig stark im Vergleich zum sichtbaren Befund (Frühzeichen!)',
-                'Spannendes Ödem, schnelle Ausbreitung',
-                'Haut: Erythem → livide → Bullae → Nekrose',
+                'Schmerz unverhältnismäßig SCHWER zum Befund (Frühzeichen!)',
+                'Spannendes, "holzartiges" Ödem, das über das Erythem hinausgeht',
+                'Haut: Erythem → livide/grau → Bullae → Nekrose',
                 'Anästhesie im Bereich (Nervenschädigung)',
-                'Krepitation bei Palpation (Gas)',
-                'Systemische Zeichen: Tachykardie, Hypotonie, Verwirrtheit'
+                'Krepitation (vor allem Typ I und Clostridium)',
+                'Systemische Zeichen: Fieber, Tachykardie, Hypotonie, Verwirrtheit'
               ],
-              complications: ['Septischer Schock', 'Multiorganversagen', 'Gliedmaßenverlust', 'Tod (20-40% auch mit Behandlung)']
+              complications: ['Septischer Schock', 'Multiorganversagen (MODS)', 'Gliedmaßenverlust', 'Tod (20-40%, 100% ohne Behandlung)']
             },
             diagnostics: {
               laboratory: [
-                { test: 'LRINEC-Score', finding: '>6: hohe Wahrscheinlichkeit', interpretation: 'CRP, Leukozyten, Hämoglobin, Natrium, Kreatinin, Glukose' },
-                { test: 'Blutbild', finding: 'Leukozytose oder Leukopenie', interpretation: 'Sepsis' },
-                { test: 'CRP/PCT', finding: 'Extrem erhöht', interpretation: 'Schwere bakterielle Infektion' },
-                { test: 'Laktat', finding: 'Erhöht', interpretation: 'Gewebehypoperfusion' },
-                { test: 'CK', finding: 'Erhöht', interpretation: 'Muskelbeteiligung' }
+                { test: 'LRINEC-Score', finding: '≥6: Verdacht, ≥8: hohe Wahrscheinlichkeit (aber niedrige Sensitivität!)', interpretation: 'CRP, Leukozyten, Hb, Na, Kreatinin, Glukose' },
+                { test: 'Blutbild', finding: 'Leukozytose (>15 G/L), Linksverschiebung', interpretation: 'Schwere Infektion' },
+                { test: 'Natrium', finding: 'Hyponatriämie (<135 mmol/L)', interpretation: 'Häufiger Indikator' },
+                { test: 'Laktat', finding: 'Erhöht (>2-4 mmol/L)', interpretation: 'Gewebehypoperfusion/Nekrose' },
+                { test: 'CK', finding: 'Erhöht', interpretation: 'Muskelbeteiligung (Myositis/Nekrose)' }
               ],
               imaging: [
-                { modality: 'Kontrast-CT', finding: 'Faszienverdickung, Gas in Weichteilen, Flüssigkeitsansammlung', significance: 'Schnell, beurteilt Ausdehnung' },
-                { modality: 'MRT', finding: 'Sensitiver für Faszienbeteiligung', significance: 'Wenn Zeit und Patient stabil' }
+                { modality: 'CT', finding: 'Faszienverdickung, Flüssigkeit, Gas in Weichteilen (spezifisch!)', significance: 'Beste Bildgebung, darf aber OP NICHT verzögern!' },
+                { modality: 'MRT', finding: 'Hohe Sensitivität, niedrige Spezifität', significance: 'Zeitaufwendig, bei instabilen Patienten vermeiden' }
               ],
               microbiology: [
-                { test: 'Blutkultur', finding: 'Positiv in 20-40%', significance: 'Erregeridentifikation' },
-                { test: 'Chirurgische Gewebeprobe', finding: 'Kultur + Gram', significance: 'Goldstandard' },
-                { test: 'Finger-Test', finding: 'Faszie lässt sich verschieben, "Spülwasser"-Eiter', significance: 'Intraoperative Diagnose' }
+                { test: 'Chirurgische Gewebeprobe', finding: 'Gram-Färbung und Kultur', significance: 'Goldstandard (Aerobier + Anaerobier)' },
+                { test: 'Blutkultur', finding: 'Positiv (vor allem Typ II)', significance: 'Systemische Ausbreitung' },
+                { test: 'Finger-Test', finding: 'Faszie leicht lösbar, keine Blutung, "Spülwasser"-Eiter', significance: 'Bedside-Diagnose' }
               ]
             },
             differential: [
-              { disease: 'Zellulitis', distinguishing: 'Weniger toxisch, keine unverhältnismäßigen Schmerzen, langsamere Progression' },
-              { disease: 'Tiefe Venenthrombose', distinguishing: 'Kein Fieber, kein Erythem, Doppler-US' },
-              { disease: 'Gasbrand (Clostridium)', distinguishing: 'Muskelnekrose dominiert, schneller, bronzefarbene Haut' },
-              { disease: 'Pyomyositis', distinguishing: 'Muskelabszess, MRT' }
+              { disease: 'Zellulitis', distinguishing: 'Kein unverhältnismäßiger Schmerz, keine systemische Toxizität, langsamer' },
+              { disease: 'Pyomyositis', distinguishing: 'Muskelabszess, lokalisierter, MRT hilft' },
+              { disease: 'Gasbrand (Clostridium)', distinguishing: 'Muskelnekrose dominiert, schneller, Krepitation ausgeprägter' },
+              { disease: 'Tiefe Venenthrombose', distinguishing: 'Schwellung, aber kein Fieber/Toxizität, Doppler negativ' }
             ],
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Keine ambulante Behandlung!', dose: 'Sofortige Operation!', duration: '', note: 'Chirurgischer Notfall!' }
+                  { drug: 'Keine ambulante Behandlung!', dose: 'SOFORTIGE KRANKENHAUS/OP!', duration: '', note: 'Chirurgischer Notfall!' }
                 ],
                 inpatient: [
-                  { drug: 'Piperacillin/Tazobactam', dose: '4x4.5g i.v.', duration: 'Je nach klinischem Ansprechen', note: 'Breitspektrum' },
+                  { drug: 'Piperacillin/Tazobactam', dose: '4x4.5g i.v.', duration: 'Bis klinisches Ansprechen', note: 'Breitspektrum (G+, G-, Anaerobier)' },
                   { drug: '+ Vancomycin', dose: '2x15-20mg/kg i.v.', duration: '', note: 'MRSA-Abdeckung' },
-                  { drug: '+ Clindamycin', dose: '3x900mg i.v.', duration: '', note: 'Hemmung der Toxinproduktion!' }
+                  { drug: '+ Clindamycin', dose: '3x900mg i.v.', duration: '', note: 'Toxinhemmung (GAS/Staph)' }
                 ],
                 icu: [
-                  { drug: 'Meropenem', dose: '3x1g i.v.', duration: '', note: 'Alternative' },
-                  { drug: '+ Vancomycin + Clindamycin', dose: '', duration: '', note: 'Dreifachtherapie' },
-                  { drug: 'IVIG', dose: '1-2g/kg', duration: '', note: 'Bei Streptokokken-induziertem toxischen Schocksyndrom' }
+                  { drug: 'Meropenem', dose: '3x1g i.v.', duration: '', note: 'Alternative (Typ I)' },
+                  { drug: '+ Vancomycin + Clindamycin', dose: '', duration: '', note: 'Standard-Dreifachtherapie' },
+                  { drug: 'IVIG', dose: '1g/kg Tag 1, dann 0.5g/kg', duration: '3 Tage', note: 'Erwägen bei Strep. toxischem Schocksyndrom' }
                 ]
               },
-              targeted: 'GAS: Penicillin+Clindamycin; MRSA: Vancomycin+Clindamycin; Polymikrobiell: Breitspektrum',
-              supportive: ['Sofortiges aggressives chirurgisches Débridement', 'Intensivstation', 'Vasopressoren', 'Mehrfache Revisionen (alle 24-48 Stunden)', 'HBO-Therapie (adjuvant)'],
-              prevention: ['Wundhygiene', 'Diabeteskontrolle', 'Frühzeitige Zellulitis-Behandlung']
+              targeted: 'Nach Kultur. Typ I: Breitspektrum. Typ II (GAS): Penicillin G + Clindamycin. Typ III (Vibrio): Doxycyclin + Ceftriaxon.',
+              supportive: ['SOFORTIGES aggressives chirurgisches Débridement (entscheidend!)', 'Flüssigkeitssubstitution', 'Vasopressoren', 'Second-Look-OP innerhalb 24h', 'Hyperbare Oxygenierung (umstritten, adjuvant)'],
+              prevention: ['Wundversorgung', 'Management chronischer Krankheiten']
             },
             guidelines: {
               diagnosis: [
-                'Klinischer Verdacht: Schmerz unverhältnismäßig zum Befund, schnelle Progression, toxischer Zustand.',
-                'LRINEC-Score >6 erhöht den Verdacht, schließt ihn aber nicht aus.',
-                'Bildgebung (CT/MRT): Gas, Faszienverdickung, darf aber die Operation nicht verzögern!',
-                'Definitive Diagnose: Chirurgische Exploration ("Finger-Test").'
+                'Klinischer Verdacht (unverhältnismäßiger Schmerz, rasche Verschlechterung) reicht für chirurgische Exploration.',
+                'LRINEC-Score kann helfen, niedriger Score schließt aber nicht aus.',
+                'Bildgebung nur bei stabilen Patienten, wenn Diagnose zweifelhaft. Gas im Gewebe ist spezifisch.'
               ],
               treatment_indications: [
-                'Alle Verdachtsfälle erfordern einen sofortigen chirurgischen Eingriff.'
+                'Sofortige chirurgische Intervention (Nekrotomie/Fasziotomie) in allen Verdachtsfällen.',
+                'Empirische Breitbandantibiotika vor/während der OP.'
               ],
               first_line: [
-                'Sofortiges und radikales chirurgisches Débridement + Breitbandantibiotika (z.B. Piperacillin/Tazobactam ODER Carbapenem + Clindamycin + Vancomycin).'
+                'Chirurgisches Débridement + (Carbapenem oder Pip/Tazo) + Vancomycin + Clindamycin.'
               ]
             },
             prognosis: {
-              mortality: '20-40% auch mit Behandlung, 100% ohne Behandlung',
-              prognostic_scores: ['LRINEC', 'SOFA'],
-              factors: 'Späte Diagnose, späte Operation, Immunsuppression, STSS, Organversagen'
+              mortality: '20-40% (auch mit adäquater Behandlung), 100% unbehandelt',
+              prognostic_scores: ['LRINEC', 'FGSI (Fournier\'s Gangrene Severity Index)'],
+              factors: 'Verzögerte OP (>24h), hohes Alter, Komorbiditäten, Lokalisation Rumpf/Kopf-Hals'
             }
           },
           {
             id: 'erysipelas',
             name: 'Erysipel (Wundrose)',
-            pathogen: { type: 'Bakterium', name: 'Streptococcus pyogenes (Gruppe-A-Streptokokken)', gram: 'Gram-positiv', shape: 'Kokken' },
+            pathogen: { type: 'Bakterium', name: '<i>Streptococcus pyogenes</i> (Gruppe-A-Streptokokken)', gram: 'Gram-positiv', shape: 'Kokken' },
             epidemiology: {
               incidence: 'Häufige Hautinfektion, 10-100/100.000 pro Jahr',
               risk_groups: ['Ältere', 'Säuglinge', 'Diabetes mellitus', 'Chronische Veneninsuffizienz', 'Lymphödem', 'Hautläsionen'],
@@ -122,11 +116,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Eindringen von Bakterien in die Haut (Verletzung, Ekzem, Wunde)',
-                'Ausbreitung im Lymphsystem',
-                'Lokale Entzündungsreaktion',
-                'Toxinproduktion (Streptolysine, pyrogene Toxine)',
-                'Systemische Symptome (Fieber, Toxämie)'
+                'Eintritt: Der Erreger (am häufigsten Streptococcus pyogenes) dringt durch eine kleine Hautverletzung in die obere Dermis und die oberflächlichen Lymphgefäße ein.',
+                'Lymphatische Ausbreitung: Die Bakterien breiten sich schnell im Lymphsystem aus, was zu der charakteristischen, scharf begrenzten, flammenartigen Ausbreitung führt.',
+                'Entzündung: Bakterielle Toxine verursachen eine heftige lokale Entzündung und systemische Symptome (Fieber, Schüttelfrost).'
               ],
               virulence_factors: ['M-Protein', 'Streptolysine (O, S)', 'Hyaluronidase', 'Streptokinase']
             },
@@ -134,11 +126,8 @@ Object.assign(window.diseases, {
               incubation: '2-5 Tage',
               onset: 'Akut',
               symptoms: [
-                { name: 'Prodrom', description: 'Fieber, Schüttelfrost gehen oft den Hautsymptomen voraus (4-48 Stunden)', severity: 'moderate' },
-                { name: 'Hautsymptome', description: 'Scharf begrenzte, erhabene, leuchtend rote Plaque ("flammenartig")', severity: 'severe' },
-                { name: 'Lokalisation', description: 'Unterschenkel (70-80%), Gesicht (5-20%)', severity: 'mild' },
-                { name: 'Schmerz', description: 'Brennend, spannend', severity: 'moderate' },
-                { name: 'Lymphknoten', description: 'Regionale Lymphadenitis ist häufig', severity: 'moderate' }
+                { name: 'Hautmanifestationen', description: 'Plötzlich auftretende, scharf begrenzte, flammenartig ausbreitende, leuchtend rote, geschwollene, warme und schmerzhafte Hautläsion. Am häufigsten im Gesicht oder an den Unterschenkeln.', severity: 'severe' },
+                { name: 'Systemische Symptome', description: 'Die Hautmanifestationen werden oft von hohem Fieber, Schüttelfrost und Unwohlsein begleitet oder gehen diesen voraus.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Roter, warmer, geschwollener Bereich',
@@ -208,7 +197,7 @@ Object.assign(window.diseases, {
           {
             id: 'cellulitis',
             name: 'Zellulitis (Phlegmone)',
-            pathogen: { type: 'Bakterium', name: 'Streptococcus pyogenes oder Staphylococcus aureus (am häufigsten)', gram: 'Gram-positiv', shape: 'Kokken' },
+            pathogen: { type: 'Bakterium', name: '<i>Streptococcus pyogenes</i> oder <i>Staphylococcus aureus</i> (am häufigsten)', gram: 'Gram-positiv', shape: 'Kokken' },
             epidemiology: {
               incidence: 'Häufig, 200/100.000 pro Jahr',
               risk_groups: ['Diabetes mellitus', 'Periphere arterielle Verschlusskrankheit', 'Adipositas', 'Immungeschwächte', 'Hautverletzungen', 'Lymphödem'],
@@ -217,11 +206,8 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Eindringen von Bakterien in Dermis und subkutanes Gewebe',
-                'Lokale Entzündung (Neutrophile, Ödem)',
-                'Ausbreitung in subkutanen Ebenen',
-                'Lymphatische Obstruktion → Ödemzunahme',
-                'Systemische Reaktion (Fieber, Leukozytose)'
+                'Eintritt: Erreger (S. pyogenes, S. aureus) dringen durch eine Hautverletzung in die tiefere Dermis und das subkutane Fettgewebe ein.',
+                'Diffuse Ausbreitung: Die Infektion breitet sich diffus im Gewebe aus und ist nicht wie beim Erysipel auf die Lymphbahnen beschränkt. Dies führt zu einer weniger scharf begrenzten, aber tiefer reichenden Entzündung.'
               ],
               virulence_factors: ['Streptococcus: M-Protein, Toxine', 'Staphylococcus: PVL, Koagulase']
             },
@@ -229,11 +215,8 @@ Object.assign(window.diseases, {
               incubation: '1-3 Tage',
               onset: 'Akut',
               symptoms: [
-                { name: 'Hautsymptome', description: 'Diffuses, unscharf begrenztes Erythem, Wärme, Schwellung', severity: 'moderate' },
-                { name: 'Schmerz', description: 'Druckempfindlichkeit, Spannung', severity: 'moderate' },
-                { name: 'Systemische Symptome', description: 'Fieber, Schüttelfrost, Unwohlsein (häufig)', severity: 'moderate' },
-                { name: 'Lymphangitis', description: 'Rote Streifen entlang der Lymphgefäße', severity: 'mild' },
-                { name: 'Lokalisation', description: 'Am häufigsten Unterschenkel (einseitig)', severity: 'mild' }
+                { name: 'Hautmanifestationen', description: 'Im Vergleich zum Erysipel ein weniger scharf begrenztes, diffuses Erythem, Schwellung und Wärme. Die Haut ist gespannt und schmerzhaft.', severity: 'moderate' },
+                { name: 'Allgemeine Symptome', description: 'Kann von Fieber und Schüttelfrost begleitet sein, ist aber nicht immer so ausgeprägt wie beim Erysipel.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Rote, warme, geschwollene Haut',
@@ -311,7 +294,7 @@ Object.assign(window.diseases, {
           {
             id: 'osteomyelitis',
             name: 'Osteomyelitis',
-            pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus (am häufigsten)', gram: 'Gram-positiv', shape: 'Kokken' },
+            pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus</i> (am häufigsten)', gram: 'Gram-positiv', shape: 'Kokken' },
             epidemiology: {
               incidence: 'Hämatogen bei Kindern, posttraumatisch/diabetischer Fuß bei Erwachsenen',
               risk_groups: ['Diabetes mellitus', 'Periphere arterielle Verschlusskrankheit', 'Trauma/Operation', 'i.v.-Drogenkonsumenten', 'Hämodialysepatienten'],
@@ -320,11 +303,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bakterien haften an Knochengewebe/Implantat',
-                'Biofilmbildung (Grundlage der chronischen Infektion)',
-                'Entzündliches Exsudat erhöht den intraossären Druck',
-                'Kompression von Gefäßen → Knochennekrose (Sequester)',
-                'Neubildung von Knochen um die Nekrose (Involucrum)'
+                'Eintritt: Erreger gelangen über den Blutkreislauf (hämatogen), von angrenzenden Weichteilen (per continuitatem) oder durch direkte Inokulation bei Trauma/Operation in den Knochen.',
+                'Entzündung und Ischämie: Im Knochen verursachen sie eine Entzündung, die zu Ödemen und Druckerhöhung im Knochenmark führt. Dies beeinträchtigt die Blutversorgung des Knochens und führt zum Absterben von Knochengewebe (Sequester).',
+                'Chronifizierung: Der Körper versucht, den toten Knochen durch Neubildung von Knochen (Involucrum) abzukapseln. Bei chronischen Fällen persistieren die Bakterien durch Biofilmbildung.'
               ],
               virulence_factors: ['Biofilmbildung', 'Adhäsine (MSCRAMM)', 'Toxine']
             },
@@ -332,10 +313,8 @@ Object.assign(window.diseases, {
               incubation: 'Tage (akut) oder Wochen-Monate (chronisch)',
               onset: 'Variabel',
               symptoms: [
-                { name: 'Lokaler Schmerz', description: 'Tiefer, pochender Schmerz (>90%), verschlimmert sich bei Belastung', severity: 'severe' },
-                { name: 'Fieber', description: 'Häufig bei akuter hämatogener Form (50-70%), selten bei chronischer', severity: 'moderate' },
-                { name: 'Schwellung/Erythem', description: 'Weichteilschwellung und Rötung über dem betroffenen Bereich', severity: 'moderate' },
-                { name: 'Fistel (Sinus tract)', description: 'Eitriger Ausfluss zur Hautoberfläche (Zeichen chronischer Osteomyelitis)', severity: 'moderate' }
+                { name: 'Akute Osteomyelitis', description: 'Plötzlich einsetzende lokale Schmerzen, Schwellung, Rötung und Fieber. Der Patient kann die betroffene Extremität oft nicht belasten.', severity: 'severe' },
+                { name: 'Chronische Osteomyelitis', description: 'Schleichender, mit einem dumpfen, tiefen Schmerz und oft einer drainierenden Fistel zur Haut. Fieber ist selten.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Lokale Druckempfindlichkeit über dem Knochen',
@@ -347,18 +326,18 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               laboratory: [
-                { test: 'Blutbild', finding: 'Leukozytose (akut)', interpretation: 'Entzündung' },
-                { test: 'CRP/BSG', finding: 'Erhöht', interpretation: 'Gut zur Überwachung' },
-                { test: 'Blutkultur', finding: 'Positiv (50%)', interpretation: 'Bei hämatogenem Ursprung' }
+                { test: 'Blutbild', finding: 'Leukozytose (akut)', interpretation: 'Entzündung (kann bei chronisch normal sein)' },
+                { test: 'CRP/BSG', finding: 'Erhöht', interpretation: 'Hervorragend zur Überwachung (Therapieansprechen)' },
+                { test: 'Blutkultur', finding: 'Positiv (50%)', interpretation: 'Bei hämatogenem Ursprung (wichtig bei Wirbel-OM)' }
               ],
               imaging: [
-                { modality: 'Röntgen', finding: 'In der Frühphase negativ! Später periostale Reaktion, lytische Läsionen', significance: 'Spätzeichen' },
-                { modality: 'MRT', finding: 'Knochenmarködem, Abszess', significance: 'Goldstandard (sensitivste Methode)' },
-                { modality: 'Knochenszintigraphie', finding: 'Erhöhte Anreicherung', significance: 'Wenn MRT nicht möglich' }
+                { modality: 'Röntgen', finding: 'In der Frühphase (10-14 Tage) negativ! Später periostale Reaktion, lytische Läsionen', significance: 'Spätzeichen, aber Basis' },
+                { modality: 'MRT', finding: 'Knochenmarködem, Abszess, Sequester', significance: 'Goldstandard (Sensitivität >90%)' },
+                { modality: 'Knochenszintigraphie/PET-CT', finding: 'Erhöhte Anreicherung', significance: 'Wenn MRT nicht möglich oder multifokaler Verdacht' }
               ],
               microbiology: [
-                { test: 'Knochenbiopsie-Kultur', finding: 'Erregeridentifikation', significance: 'Goldstandard-Diagnose' },
-                { test: 'Fistelsekret', finding: 'Oft kontaminiert', significance: 'Nicht zuverlässig' }
+                { test: 'Knochenbiopsie-Kultur', finding: 'Erregeridentifikation', significance: 'Goldstandard-Diagnose (vor Antibiotika!)' },
+                { test: 'Fistelsekret', finding: 'Oft kontaminiert', significance: 'Korreliert nur bei S. aureus gut mit Knochen' }
               ]
             },
             differential: [
@@ -369,30 +348,32 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Keine', dose: '-', duration: '-', note: 'Erfordert normalerweise Krankenhausbehandlung/Untersuchung' }
+                  { drug: 'Keine', dose: '-', duration: '-', note: 'Krankenhausuntersuchung/-probenahme erforderlich' }
                 ],
                 inpatient: [
                   { drug: 'Vancomycin', dose: '15-20mg/kg i.v.', duration: '4-6 Wochen', note: 'MRSA-Abdeckung' },
-                  { drug: '+ Ceftriaxon/Cefepim', dose: 'i.v.', duration: '4-6 Wochen', note: 'Gram-negative Abdeckung' }
+                  { drug: '+ Ceftriaxon/Cefepim', dose: '2g i.v.', duration: '4-6 Wochen', note: 'Gram-negative Abdeckung (z.B. Pseudomonas)' }
                 ],
                 icu: [
                   { drug: 'Breitspektrum', dose: 'i.v.', duration: '', note: 'Bei Sepsis' }
                 ]
               },
-              targeted: 'Basierend auf Knochenbiopsie! S. aureus: Flucloxacillin/Cefazolin; MRSA: Vancomycin/Daptomycin. Dauer: 4-6 Wochen (oft i.v.)',
-              supportive: ['Chirurgisches Débridement (Entfernung von nekrotischem Knochen) - KRITISCH!', 'Ruhigstellung', 'Schmerzmittel'],
+              targeted: 'Basierend auf Knochenbiopsie! S. aureus: Cefazolin/Flucloxacillin. MRSA: Vancomycin. Implantat-assoziiert: Rifampicin-Zusatz (Biofilm).',
+              supportive: ['Chirurgisches Débridement (Entfernung von nekrotischem Knochen) - KRITISCH!', 'Implantatentfernung (wenn möglich)', 'Frühe orale Umstellung möglich (OVIVA-Studie)'],
               prevention: ['Sofortige Versorgung offener Frakturen', 'Chirurgische Sterilität', 'Pflege des diabetischen Fußes']
             },
             guidelines: {
               diagnosis: [
-                'Bildgebung: MRT ist der Goldstandard für die Frühdiagnose.',
-                'Mikrobiologie: Knochenbiopsie zur Kultur ist für eine gezielte Therapie unerlässlich. Fistelsekret ist nicht zuverlässig.'
+                'Bildgebung: MRT ist am sensitivsten. Röntgen kann 2 Wochen negativ sein.',
+                'Mikrobiologie: Knochenbiopsie (offen oder perkutan) für Kultur und Histologie ist vor Antibiotika obligatorisch (außer Sepsis).'
               ],
               treatment_indications: [
-                'Alle bestätigten Fälle von Osteomyelitis müssen behandelt werden.'
+                'Alle bestätigten Fälle von Osteomyelitis müssen behandelt werden. Chirurgisches Débridement + Antibiotika.',
+                'Bei implantatassoziierter Infektion wird Rifampicin-Kombination wegen Biofilm empfohlen.'
               ],
               first_line: [
-                'Langzeit (4-6 Wochen) i.v. Antibiotikatherapie basierend auf den Biopsieergebnissen + chirurgisches Débridement.'
+                'Empirisch: Vancomycin + Ceftriaxon/Cefepim.',
+                'Gezielt: 4-6 Wochen Therapie. Laut OVIVA-Studie ist eine frühe (nach 1 Woche) orale Umstellung (z.B. Chinolone, Clindamycin) nicht schlechter als i.v.'
               ]
             },
             prognosis: {
@@ -404,7 +385,7 @@ Object.assign(window.diseases, {
           {
             id: 'septic_arthritis',
             name: 'Septische Arthritis',
-            pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus, N. gonorrhoeae', gram: 'Gemischt', shape: 'Kokken' },
+            pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus, N. gonorrhoeae</i>', gram: 'Gemischt', shape: 'Kokken' },
             epidemiology: {
               incidence: '2-10/100.000 pro Jahr',
               risk_groups: ['Rheumatoide Arthritis', 'Gelenkprothese', 'Ältere (>80 Jahre)', 'Diabetes', 'i.v.-Drogenkonsumenten', 'Sexuell aktive junge Menschen (Gonokokken)'],
@@ -413,11 +394,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Eindringen von Bakterien in den Gelenkspalt',
-                'Kolonisation der Synovialmembran',
-                'Akute Entzündungsreaktion (Neutrophilen-Influx)',
-                'Freisetzung proteolytischer Enzyme',
-                'Schnelle Zerstörung von Knorpel und Knochen (innerhalb von Tagen!)'
+                'Eintritt: Erreger gelangen über den Blutkreislauf (hämatogen) oder durch direkte Verletzung in den Gelenkspalt.',
+                'Entzündungsreaktion: Sie besiedeln die Synovialmembran und lösen eine massive Entzündungsreaktion aus, die zu einem großen eitrigen Erguss führt.',
+                'Knorpelschaden: Von Neutrophilen freigesetzte Enzyme und Entzündungszytokine verursachen innerhalb von Stunden bis Tagen irreversible Schäden am Gelenkknorpel.'
               ],
               virulence_factors: ['Adhäsine', 'Toxine', 'Knorpelschädigende Enzyme']
             },
@@ -425,10 +404,8 @@ Object.assign(window.diseases, {
               incubation: 'Schnell (Stunden-Tage)',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Akute Monoarthritis', description: 'Schmerz und Schwellung eines einzelnen Gelenks (80-90%)', severity: 'severe' },
-                { name: 'Schmerz', description: 'Intensiv, auch in Ruhe, extrem bei Bewegung', severity: 'severe' },
-                { name: 'Fieber', description: 'Häufig (60-80%), kann aber fehlen (Ältere, Immunsupprimierte)', severity: 'moderate' },
-                { name: 'Bewegungsunfähigkeit', description: 'Funktionsverlust des betroffenen Gelenks', severity: 'severe' }
+                { name: 'Akute Monoarthritis', description: 'Plötzlich einsetzende, extrem schmerzhafte Schwellung, Rötung und Überwärmung eines einzelnen großen Gelenks (am häufigsten Knie, Hüfte).', severity: 'severe' },
+                { name: 'Funktionsverlust', description: 'Der Patient kann das Gelenk aufgrund der Schmerzen weder aktiv noch passiv bewegen. Hohes Fieber und Schüttelfrost sind häufig.', severity: 'severe' }
               ],
               physical_exam: [
                 'Geschwollenes, warmes, rotes Gelenk',
@@ -442,17 +419,18 @@ Object.assign(window.diseases, {
             diagnostics: {
               laboratory: [
                 { test: 'Blutbild', finding: 'Leukozytose', interpretation: 'Systemische Reaktion' },
-                { test: 'CRP/BSG', finding: 'Deutlich erhöht', interpretation: 'Entzündung' }
+                { test: 'CRP/BSG', finding: 'Deutlich erhöht', interpretation: 'Entzündung' },
+                { test: 'Synovialflüssigkeit', finding: '>50.000 Leuko/µL (>90% PMN)', interpretation: 'Typisch für septische Arthritis' }
               ],
               imaging: [
                 { modality: 'Röntgen', finding: 'Anfangs negativ/Weichteilschwellung, später Gelenkspaltverschmälerung', significance: 'Ausgangsbefund' },
-                { modality: 'Ultraschall', finding: 'Gelenkflüssigkeit', significance: 'Zur Steuerung der Punktion' }
+                { modality: 'Ultraschall', finding: 'Gelenkflüssigkeit, Synovialisverdickung', significance: 'Zur Steuerung der Punktion, Frühdiagnose' },
+                { modality: 'MRT', finding: 'Gelenkerguss, Knochenmarködem, Abszess', significance: 'Ausschluss Osteomyelitis, Komplikationen' }
               ],
               microbiology: [
-                { test: 'Gelenkpunktion (Arthrozentese)', finding: 'Eitrig, >50.000 Leuko/µL, >90% PMN', significance: 'DIAGNOSTISCH!' },
-                { test: 'Synovialflüssigkeitskultur', finding: 'Positiv', significance: 'Goldstandard' },
-                { test: 'Blutkultur', finding: 'Positiv (50%)', significance: 'Immer abnehmen' },
-                { test: 'PCR', finding: 'Gonokokken/Lyme', significance: 'Wenn Kultur negativ' }
+                { test: 'Gelenkpunktion (Arthrozentese)', finding: 'Eitrig, Gram-Färbung positiv (50%)', significance: 'SOFORT durchführen!' },
+                { test: 'Kultur (Synovia + Blut)', finding: 'Positiv', significance: 'Goldstandard' },
+                { test: 'PCR (16S rRNA)', finding: 'Erreger-DNA', significance: 'Wenn Kultur negativ (vorbehandelter Patient)' }
               ]
             },
             differential: [
@@ -468,26 +446,27 @@ Object.assign(window.diseases, {
                 ],
                 inpatient: [
                   { drug: 'Vancomycin', dose: '15-20mg/kg i.v.', duration: '', note: 'Gram+ (MRSA)-Abdeckung' },
-                  { drug: '+ Ceftriaxon', dose: '1x2g i.v.', duration: '', note: 'Gram- (Gonokokken)-Abdeckung' }
+                  { drug: '+ Ceftriaxon', dose: '1x2g i.v.', duration: '', note: 'Gram- (Gonokokken/G- Stäbchen)-Abdeckung' }
                 ],
                 icu: [
-                  { drug: 'Breitspektrum', dose: 'i.v.', duration: '', note: 'Bei Sepsis' }
+                  { drug: 'Vancomycin + Meropenem', dose: 'i.v.', duration: '', note: 'Bei Sepsis/Immunsuppression' }
                 ]
               },
-              targeted: 'S. aureus: Cefazolin/Oxacillin; MRSA: Vancomycin; Gonokokken: Ceftriaxon. Dauer: 2-4 Wochen (i.v. dann p.o.)',
-              supportive: ['Gelenkdrainage (tägliche Nadelaspiration ODER Arthroskopie) - OBLIGATORISCH!', 'Schmerzmittel', 'Frühe Mobilisierung nach Abklingen der Entzündung'],
-              prevention: ['Sterilität bei Prothesenoperationen', 'Prävention von Gonorrhoe']
+              targeted: 'S. aureus: Cefazolin/Flucloxacillin; MRSA: Vancomycin/Daptomycin; Gonokokken: Ceftriaxon. Dauer: 2-6 Wochen (i.v., dann p.o. Umstellung möglich - OVIVA).',
+              supportive: ['Gelenkdrainage (tägliche Nadelaspiration, Arthroskopie oder offene Spülung) - ENTSCHEIDEND!', 'Schmerzmittel', 'Frühe Mobilisierung nach Abklingen der Entzündung'],
+              prevention: ['Sterilität bei Prothesenoperationen', 'Prävention von Gonorrhoe', 'Behandlung von Hautinfektionen']
             },
             guidelines: {
               diagnosis: [
-                'Gelenkpunktion (Arthrozentese) ist obligatorisch: eitrige Flüssigkeit, >50.000 Leuko/µL, >90% PMN.',
-                'Synovialflüssigkeits-Gram-Färbung und -Kultur sowie Blutkulturen sollten abgenommen werden.'
+                'Gelenkpunktion (Arthrozentese) vor Antibiotika ist obligatorisch! Zellzahl, Gram, Kultur, Kristalle.',
+                'Blutkulturen sollten immer abgenommen werden (50% positiv).'
               ],
               treatment_indications: [
-                'Alle Verdachtsfälle erfordern eine Notfallbehandlung.'
+                'Alle Fälle von septischer Arthritis erfordern sofortige Antibiotika und Drainage.'
               ],
               first_line: [
-                'Sofortige Gelenkdrainage + empirische i.v. Antibiotika (z.B. Vancomycin + Ceftriaxon), gefolgt von gezielter Therapie.'
+                'Sofortige Gelenkdrainage (Nadel oder chirurgisch) + empirische i.v. Antibiotika (Vancomycin + Ceftriaxon).',
+                'Basierend auf der OVIVA-Studie kann eine frühe orale Umstellung bei stabilen Patienten sicher sein.'
               ]
             },
             prognosis: {
@@ -499,7 +478,7 @@ Object.assign(window.diseases, {
           {
             id: 'spondylodiscitis',
             name: 'Spondylodiszitis',
-            pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus (am häufigsten), Streptococcus spp., Gram-negative', gram: 'Gemischt', shape: 'Kokken/Bazillen' },
+            pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus</i> (am häufigsten), <i>Streptococcus</i> spp., Gram-negative', gram: 'Gemischt', shape: 'Kokken/Bazillen' },
             epidemiology: {
               incidence: 'Selten, 2-7/100.000 pro Jahr',
               risk_groups: ['Ältere (>50 Jahre)', 'Diabetes mellitus', 'Immungeschwächte', 'i.v.-Drogenkonsumenten', 'Zustand nach Wirbelsäulen-OP', 'Urogenitale Infektionen'],
@@ -508,11 +487,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bakterielle Streuung in den Blutkreislauf (z.B. HWI, Endokarditis)',
-                'Anheftung in Wirbelsäulengefäßen (Endarterien)',
-                'Kolonisation von Bandscheibe und Wirbelkörpern',
-                'Entzündungsreaktion → Ödem, Nekrose',
-                'Biofilmbildung → chronische Infektion'
+                'Hämatogene Streuung: Die Erreger gelangen am häufigsten über den Blutkreislauf (hämatogen) in die stark durchbluteten Wirbelkörper, oft von einer entfernten Infektion (z.B. Harnwege, Haut).',
+                'Ausbreitung: Die Infektion breitet sich vom Wirbelkörper auf die benachbarte Bandscheibe und den nächsten Wirbel aus und verursacht Entzündung und Gewebezerstörung.',
+                'Komplikationen: Der Prozess kann zur Bildung eines epiduralen oder paravertebralen Abszesses führen, der eine Rückenmarkskompression und neurologische Symptome verursacht.'
               ],
               virulence_factors: ['Adhäsine (MSCRAMM)', 'Biofilmbildung', 'Toxine']
             },
@@ -520,10 +497,8 @@ Object.assign(window.diseases, {
               incubation: 'Tage-Wochen',
               onset: 'Langsam, schleichend',
               symptoms: [
-                { name: 'Rückenschmerzen', description: 'Leitsymptom (>90%), allmählich schlimmer werdend, auch in Ruhe', severity: 'severe' },
-                { name: 'Fieber', description: 'Nur in ~50% der Fälle vorhanden, oft subfebril', severity: 'moderate' },
-                { name: 'Neurologische Symptome', description: 'Radikulärer Schmerz, Schwäche, Parese (30-50%)', severity: 'severe' },
-                { name: 'Allgemeinsymptome', description: 'Müdigkeit, Gewichtsverlust, Nachtschweiß', severity: 'mild' }
+                { name: 'Rückenschmerzen', description: 'Das Leitsymptom (>90%) ist ein allmählich zunehmender, lokalisierter Rückenschmerz, der auch in Ruhe besteht und klopfempfindlich ist.', severity: 'severe' },
+                { name: 'Fieber und neurologische Symptome', description: 'Fieber ist oft nur subfebril oder fehlt. Neurologische Symptome (radikuläre Schmerzen, Gliederschwäche) deuten auf einen Epiduralabszess hin und stellen einen Notfall dar.', severity: 'severe' }
               ],
               physical_exam: [
                 'Lokaler Druck- oder Klopfschmerz über dem betroffenen Wirbel',

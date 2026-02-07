@@ -1,12 +1,12 @@
 Object.assign(window.diseases, {
       sepsis_systemic: {
-        name: 'Sepszis és szisztémás fertőzések',
+        name: 'Szepszis és szisztémás fertőzések',
         icon: window.diseaseMetadata.sepsis_systemic.icon,
         color: window.diseaseMetadata.sepsis_systemic.color,
         diseases: [
           {
             id: 'sepsis',
-            name: 'Sepszis (Sepsis)',
+            name: 'Szepszis (Sepsis)',
             pathogen: { type: 'Szindróma', name: 'Baktérium (G+/G-), Gomba, Vírus', gram: 'Változó', shape: '-' },
             epidemiology: {
               incidence: 'Világszerte 49 millió eset/év, 11 millió halál (20% összes halál)',
@@ -16,12 +16,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Infekció (PAMPs) felismerése a veleszületett immunrendszer által (TLR)',
-                'Proinflammatorikus citokinvihar (TNF-α, IL-1, IL-6)',
-                'Endothel-aktiváció és -károsodás (vaszkuláris permeabilitás↑)',
-                'Véralvadási kaszkád aktiválódása (DIC) + fibrinolízis gátlása',
-                'Mikrocirkulációs zavar, szöveti hipoxia, mitokondriális diszfunkció',
-                'Többszervi elégtelenség (MODS)'
+                'A fertőzés során a kórokozók molekuláris mintázatait (PAMPs) a veleszületett immunrendszer receptorai (pl. Toll-like receptorok) felismerik, ami masszív gyulladásos választ indít el.',
+                'Proinflammatorikus citokinvihar (TNF-α, IL-1, IL-6) alakul ki, amely szisztémás endothel-aktivációhoz és -károsodáshoz vezet, növelve az erek áteresztőképességét (kapilláris szivárgás).',
+                'A véralvadási kaszkád aktiválódása és a fibrinolízis gátlása disszeminált intravaszkuláris koagulációhoz (DIC) és mikrotrombusok képződéséhez vezet.',
+                'A mikrocirkulációs zavar, a szöveti hipoxia és a mitokondriális diszfunkció végül többszervi elégtelenséget (MODS) és halált okozhat.'
               ],
               virulence_factors: ['Endotoxin (LPS)', 'Szuperantigének', 'Exotoxinok', 'Tok']
             },
@@ -44,7 +42,7 @@ Object.assign(window.diseases, {
                 'Márványozott bőr (mottling score)',
                 'Zavartság'
               ],
-              complications: ['Szeptikus shock (vazopresszor igény + laktát >2)', 'ARDS', 'DIC', 'Akut veseelégtelenség', 'Máj elégtelenség', 'Halál']
+              complications: ['Szeptikus shock (vazopresszor igény + laktát >2)', 'ARDS', 'DIC', 'Akut veseelégtelenség', 'Májelégtelenség', 'Halál']
             },
             diagnostics: {
               laboratory: [
@@ -85,7 +83,7 @@ Object.assign(window.diseases, {
               prevention: ['Kórházi higiénia', 'Oltások (Pneumococcus, Influenza)', 'Katéterek korai eltávolítása', 'Megfelelő sebkezelés']
             },
             prognosis: {
-              mortality: 'Sepszis: 10-20%, Szeptikus shock: 40-60%',
+              mortality: 'Szepszis: 10-20%, Szeptikus shock: 40-60%',
               prognostic_scores: ['SOFA score (≥2 pont változás)', 'qSOFA (szűrés)', 'APACHE II'],
               factors: 'Életkor, komorbiditás, laktát szint, shock időtartama, forrás kontroll sikere'
             }
@@ -93,7 +91,7 @@ Object.assign(window.diseases, {
           {
             id: 'toxic_shock',
             name: 'Toxikus shock szindróma (TSS)',
-            pathogen: { type: 'Baktérium', name: 'Staphylococcus aureus, Streptococcus pyogenes', gram: 'Gram-pozitív', shape: 'coccus' },
+            pathogen: { type: 'Baktérium', name: '<i>Staphylococcus aureus, Streptococcus pyogenes</i>', gram: 'Gram-pozitív', shape: 'coccus' },
             epidemiology: {
               incidence: 'Ritka (Staph: 0.5/100,000, Strep: 3/100,000)',
               risk_groups: ['Menstruáló nők (tampon - ritkább ma már)', 'Sebészi betegek', 'Égési sérültek', 'Bőrfertőzések'],
@@ -102,12 +100,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Lokális fertőzés (hüvely, seb) vagy kolonizáció',
-                'Exotoxintermelés (TSST-1, Enterotoxinok, SpeA/C)',
-                'Szuperantigén-hatás: T-sejtek nem specifikus aktiválása (akár 20%)',
-                'Masszív citokinfelszabadulás (Citokinvihar)',
-                'Kapilláris szivárgás, vasodilatatio, shock',
-                'Többszervi elégtelenség'
+                'A Staphylococcus aureus vagy Streptococcus pyogenes lokális fertőzése vagy kolonizációja során exotoxinokat (pl. TSST-1, SpeA) termel.',
+                'Ezek a toxinok szuperantigénként viselkednek: az antigén-prezentáló sejtek MHC II molekuláihoz és a T-sejt receptorokhoz kötődve a T-sejtek akár 20%-át is nem-specifikusan aktiválják (normál esetben <0.01%).',
+                'Ez a masszív T-sejt aktiváció kontrollálatlan citokinviharhoz (TNF-α, IL-1, IL-6) vezet.',
+                'A citokinek hatására súlyos kapilláris szivárgás, értágulat és hipotenzió alakul ki, ami gyorsan sokkhoz és többszervi elégtelenséghez vezet.'
               ],
               virulence_factors: ['TSST-1 (Staph)', 'Streptococcal Pyrogenic Exotoxins (Spe)', 'M-protein (Strep)']
             },
@@ -147,7 +143,7 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-              { disease: 'Sepszis (egyéb)', distinguishing: 'Nincs jellegzetes kiütés/hámlás' },
+              { disease: 'Szepszis (egyéb)', distinguishing: 'Nincs jellegzetes kiütés/hámlás' },
               { disease: 'Meningococcemia', distinguishing: 'Petechiae/purpura, meningitis jelek' },
               { disease: 'Gyógyszerreakció (DRESS)', distinguishing: 'Új gyógyszer, lassabb, eosinophilia' },
               { disease: 'Skarlát', distinguishing: 'Enyhébb, nincs shock' }
@@ -167,7 +163,7 @@ Object.assign(window.diseases, {
                   { drug: 'Vazopresszorok', dose: 'Noradrenalin', duration: '', note: 'Shock kezelése' }
                 ]
               },
-              targeted: 'Staph (MSSA): Flucloxacillin + Clindamycin; Strep: Penicillin G + Clindamycin. Forráskontroll (tamponeltávolítás, sebészi feltárás)!',
+              targeted: 'Staph (MSSA): Flucloxacillin (Cefazolin) + Clindamycin; MRSA: Vancomycin + Clindamycin. Strep: Penicillin G + Clindamycin (toxin gátlás). IVIG súlyos esetben. Forráskontroll (tamponeltávolítás, sebészi feltárás) elengedhetetlen!',
               supportive: ['Masszív volumenpótlás', 'Lélegeztetés', 'Dialízis', 'Sebkezelés'],
               prevention: ['Tamponhigiénia (gyakori csere)', 'Sebfertőtlenítés']
             },
@@ -186,8 +182,8 @@ Object.assign(window.diseases, {
         diseases: [
           {
             id: 'candidiasis',
-            name: 'Invasive Candidiasis',
-            pathogen: { type: 'Gomba', name: 'Candida albicans (és non-albicans fajok)', gram: 'Sarjadzó gomba', shape: 'ovális' },
+            name: 'Invazív Candidiasis',
+            pathogen: { type: 'Gomba', name: '<i>Candida albicans</i> (és non-albicans fajok)', gram: 'Sarjadzó gomba', shape: 'ovális' },
             epidemiology: {
               incidence: 'Nozokomiális véráramfertőzések 4. leggyakoribb oka',
               risk_groups: ['ICU betegek', 'Centrális vénás katéter (CVC)', 'Széles spektrumú AB', 'TPN', 'Hasi műtét'],
@@ -208,7 +204,7 @@ Object.assign(window.diseases, {
               onset: 'Lassú vagy akut',
               symptoms: [
                 { name: 'Perzisztáló láz', description: 'Antibiotikumra nem reagáló láz (gyakori)', severity: 'severe' },
-                { name: 'Sepszis/Szeptikus shock', description: 'Hypotonia, tachycardia, tudatzavar', severity: 'severe' },
+                { name: 'Szepszis/Szeptikus shock', description: 'Hypotonia, tachycardia, tudatzavar', severity: 'severe' },
                 { name: 'Endophthalmitis', description: 'Látászavar, szemfájdalom (10-20% candidemia esetén)', severity: 'moderate' },
                 { name: 'Bőrtünetek', description: 'Erythemás papulák/pustulák (5-10%)', severity: 'mild' },
                 { name: 'Hepatosplenikus candidiasis', description: 'Láz, hasi fájdalom neutropenia után', severity: 'moderate' }
@@ -266,7 +262,7 @@ Object.assign(window.diseases, {
           {
             id: 'aspergillosis',
             name: 'Invasive Aspergillosis',
-            pathogen: { type: 'Gomba', name: 'Aspergillus fumigatus', gram: 'Penészgomba', shape: 'hifák (45° elágazás)' },
+            pathogen: { type: 'Gomba', name: '<i>Aspergillus fumigatus</i>', gram: 'Penészgomba', shape: 'hifák (45° elágazás)' },
             epidemiology: {
               incidence: 'Neutropéniás betegek 5-10%-a',
               risk_groups: ['Prolongált neutropenia', 'Allogén őssejt-transzplantáció', 'Szolid szervtranszplantáció', 'Nagydózisú szteroid'],
@@ -331,7 +327,7 @@ Object.assign(window.diseases, {
                 ],
                 icu: [
                   { drug: 'Isavuconazol', dose: '200mg IV/PO', duration: 'Hosszú', note: 'Kevesebb mellékhatás' },
-                  { drug: 'Liposomalis Amphotericin B', dose: '3-5mg/kg IV', duration: '', note: 'Alternatíva' }
+                  { drug: 'Liposzómás Amphotericin B', dose: '3-5mg/kg IV', duration: '', note: 'Alternatíva' }
                 ]
               },
               targeted: 'Voriconazol vagy Isavuconazol. Salvage: L-AmB, Caspofungin (kombináció vitatott).',

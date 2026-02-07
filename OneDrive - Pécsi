@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
            {
             id: 'malaria',
             name: 'Malaria',
-            pathogen: { type: 'Protozoon', name: '<i>Plasmodium falciparum, vivax, ovale, malariae, knowlesi</i>', gram: '-', shape: 'Ringform/Gametozyt' },
+            pathogen: { type: 'Protozoon', name: 'Plasmodium falciparum, vivax, ovale, malariae', gram: '-', shape: 'Ringform/Gametozyt' },
             epidemiology: {
               incidence: '>200 Millionen Fälle/Jahr weltweit, >400.000 Todesfälle',
               risk_groups: ['Reisende in Endemiegebiete', 'Kinder (<5 Jahre)', 'Schwangere', 'Immungeschwächte'],
@@ -16,11 +16,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Während des Stichs einer infizierten Anopheles-Mücke gelangen Sporozoiten in den Blutkreislauf und wandern innerhalb von Minuten in die Leberzellen.',
-                'Leberphase (exoerythrozytär): In den Hepatozyten vermehren sich die Parasiten asexuell und bilden Schizonten. Diese Phase ist asymptomatisch. P. vivax und P. ovale können Hypnozoiten (Ruheformen) bilden, die zu Rückfällen führen können.',
-                'Blutphase (erythrozytär): Aus der Leber freigesetzte Merozoiten infizieren rote Blutkörperchen (Erythrozyten). Innerhalb der Erythrozyten entwickeln sie sich zu ringförmigen Trophozoiten und dann zu Schizonten, die bei der Ruptur der Erythrozyten neue Merozoiten freisetzen.',
-                'Die zyklische Ruptur der Erythrozyten (alle 48-72 Stunden) verursacht die charakteristischen, periodischen Fieberanfälle durch die Freisetzung von Entzündungszytokinen (TNF-alpha, IL-1).',
-                'Mit P. falciparum infizierte Erythrozyten haften über das PfEMP1-Protein an den Wänden kleiner Blutgefäße (Zytoadhärenz), was die Mikrozirkulation blockiert und zu schweren Organschäden führt (Gehirn, Nieren, Lunge).'
+                'Mückenstich → Sporozoiten ins Blut',
+                'Leberphase (exoerythrozytär): Schizontenbildung',
+                'Blutphase (erythrozytär): Erythrozyteninvasion, Vermehrung, Ruptur',
+                'Zyklische Fieberanfälle (Erythrozyten-Ruptur)',
+                'Zytoadhärenz (P. falciparum): Blockade der Mikrozirkulation (Gehirn, Niere)'
               ],
               virulence_factors: ['PfEMP1 (Adhäsion)', 'Antigenvariation', 'Hämozoin-Pigment']
             },
@@ -28,8 +28,11 @@ Object.assign(window.diseases, {
               incubation: '7-30 Tage (je nach Art)',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Unkomplizierte Malaria', description: 'Charakterisiert durch Fieberanfälle: Schüttelfrost, hohes Fieber (40-41°C), gefolgt von Schwitzen und Fieberabfall. Der Zyklus wiederholt sich alle 48 (P. falciparum, vivax, ovale) oder 72 Stunden (P. malariae). Begleitsymptome sind Kopfschmerzen, Muskelschmerzen, Übelkeit und Splenomegalie.', severity: 'moderate' },
-                { name: 'Schwere Malaria (P. falciparum)', description: 'Ein lebensbedrohlicher Zustand. Manifestationen umfassen zerebrale Malaria (Bewusstseinsstörung, Koma, Krämpfe), schwere Anämie, ARDS (Lungenödem), Nierenversagen (Schwarzwasserfieber), metabolische Azidose, Hypoglykämie und Schock.', severity: 'severe' }
+                { name: 'Fieberschub', description: 'Schüttelfrost → Fieber → Schwitzen (zyklisch)', severity: 'severe' },
+                { name: 'Kopfschmerzen', description: 'Intensiv', severity: 'moderate' },
+                { name: 'Übelkeit, Erbrechen', description: 'Häufig', severity: 'moderate' },
+                { name: 'Schwere Anämie', description: 'Erythrozytenzerstörung', severity: 'severe' },
+                { name: 'Zerebrale Malaria', description: 'Koma, Krämpfe (P. falciparum)', severity: 'severe' }
               ],
               physical_exam: [
                 'Fieber, Tachykardie',
@@ -109,7 +112,7 @@ Object.assign(window.diseases, {
           {
             id: 'toxoplasmosis',
             name: 'Toxoplasmose',
-            pathogen: { type: 'Protozoon', name: '<i>Toxoplasma gondii</i>', gram: '-', shape: 'intrazellulär' },
+            pathogen: { type: 'Protozoon', name: 'Toxoplasma gondii', gram: '-', shape: 'intrazellulär' },
             epidemiology: {
               incidence: '30-50% der Weltbevölkerung ist seropositiv (latent)',
               risk_groups: ['Immungeschwächte (HIV/AIDS, Transplantierte)', 'Schwangere (Fötus!)', 'Katzenhalter'],
@@ -118,10 +121,12 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Die Infektion kann auf drei Wegen erfolgen: 1. Aufnahme von Oozysten aus mit Katzenkot kontaminiertem Boden/Lebensmitteln. 2. Verzehr von Gewebezysten in rohem oder unzureichend gegartem Fleisch. 3. Vertikale Übertragung (von der Mutter auf den Fötus).',
-                'Im Darm wandeln sich die aus den Zysten freigesetzten Parasiten in Tachyzoiten (schnell teilende Form) um, die die Darmwand durchdringen und sich über den Blutkreislauf im ganzen Körper ausbreiten können.',
-                'Unter dem Einfluss eines intakten Immunsystems wandeln sich Tachyzoiten in Bradyzoiten (langsam teilende Form) um und bilden Gewebezysten, hauptsächlich im Gehirn, in den Muskeln und in den Augen. Dies führt zu einer latenten, lebenslangen Infektion.',
-                'Bei Immunsuppression (z.B. AIDS, Transplantation) können diese latenten Zysten reaktiviert werden. Bradyzoiten wandeln sich zurück in Tachyzoiten, was zu einer schweren, oft tödlichen Erkrankung (z.B. Enzephalitis) führt.'
+                'Aufnahme von Oozysten/Gewebezysten',
+                'Penetration der Darmwand → Tachyzoiten (schnelle Vermehrung)',
+                'Hämatogene Streuung (akute Phase)',
+                'Immunantwort → Bradyzoiten (langsam) → Gewebezystenbildung (Muskel, Gehirn, Auge)',
+                'Latenz (lebenslang)',
+                'Reaktivierung (Immunsuppression): Zystenruptur → Enzephalitis'
               ],
               virulence_factors: ['Intrazelluläres Überleben', 'Zystenbildung', 'Immunmodulation']
             },
@@ -129,10 +134,11 @@ Object.assign(window.diseases, {
               incubation: '5-23 Tage',
               onset: 'Langsam/asymptomatisch',
               symptoms: [
-                { name: 'Infektion bei Immunkompetenten', description: '80-90% der Fälle sind asymptomatisch. Wenn Symptome auftreten, sind sie mild und mononukleoseähnlich: schmerzlose zervikale Lymphadenopathie, Fieber und Müdigkeit.', severity: 'mild' },
-                { name: 'Okuläre Toxoplasmose', description: 'Die häufigste Ursache für Chorioretinitis. Sie verursacht verschwommenes Sehen, Augenschmerzen und "Floaters". Sie kann Folge einer Primärinfektion oder Reaktivierung sein.', severity: 'moderate' },
-                { name: 'Zerebrale Toxoplasmose (AIDS)', description: 'Die häufigste opportunistische ZNS-Infektion bei AIDS (CD4<100). Gekennzeichnet durch Kopfschmerzen, Verwirrtheit, Fieber und fokale neurologische Zeichen (Krämpfe, Hemiparese). Das MRT zeigt typischerweise multiple ringförmig kontrastmittelanreichernde Läsionen.', severity: 'severe' },
-                { name: 'Angeborene (kongenitale) Toxoplasmose', description: 'Folge einer primären mütterlichen Infektion während der Schwangerschaft. Die klassische Sabin-Tetrade umfasst Hydrozephalus, intrakranielle Verkalkungen, Chorioretinitis und Krämpfe. Kann schwere und bleibende Schäden verursachen.', severity: 'severe' }
+                { name: 'Asymptomatisch', description: '80-90% der immunkompetenten Personen', severity: 'mild' },
+                { name: 'Mononukleose-artiges Syndrom', description: 'Fieber, Lymphadenopathie, Müdigkeit', severity: 'mild' },
+                { name: 'Zerebral (AIDS)', description: 'Kopfschmerzen, Verwirrtheit, Krämpfe, Hemiparese', severity: 'severe' },
+                { name: 'Chorioretinitis', description: 'Verschwommenes Sehen, Augenschmerzen', severity: 'moderate' },
+                { name: 'Konnatale Toxoplasmose', description: 'Hydrozephalus, Verkalkung, Chorioretinitis (Sabin-Tetrade)', severity: 'severe' }
               ],
               physical_exam: [
                 'Zervikale Lymphadenopathie (schmerzlos)',
@@ -201,7 +207,7 @@ Object.assign(window.diseases, {
           {
             id: 'ascariasis',
             name: 'Ascariasis (Spulwurmbefall)',
-            pathogen: { type: 'Helminth', name: '<i>Ascaris lumbricoides</i>', gram: '-', shape: 'Spulwurm (Nematode)' },
+            pathogen: { type: 'Helminth', name: 'Ascaris lumbricoides', gram: '-', shape: 'Spulwurm (Nematode)' },
             epidemiology: {
               incidence: 'Häufigste Wurminfektion weltweit (>800 Millionen)',
               risk_groups: ['Kinder', 'Menschen in schlechten hygienischen Bedingungen'],
@@ -210,10 +216,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Die Infektion erfolgt fäkal-oral durch mit Eiern kontaminierten Boden, Gemüse oder Wasser.',
-                'Die aufgenommenen Eier schlüpfen im Dünndarm, und die Larven durchdringen die Darmwand und wandern über den Pfortaderkreislauf zur Leber und dann zur Lunge.',
-                'In der Lunge verursachen die Larven eine Entzündung (Löffler-Syndrom), werden hochgehustet und dann verschluckt, wodurch sie in den Dünndarm zurückkehren.',
-                'Im Dünndarm reifen sie zu erwachsenen Würmern (15-35 cm), wo sie Nährstoffe aufnehmen. Bei starkem Befall kann ein Wurmknäuel einen Darm- oder Gallengangsverschluss verursachen.'
+                'Ei-Aufnahme',
+                'Larve schlüpft im Dünndarm',
+                'Wanderung über das venöse System in die Lunge (Löffler-Syndrom)',
+                'Wird hochgehustet und verschluckt',
+                'Adulter Wurm im Dünndarm (Nährstoffentzug, Obstruktion)'
               ],
               virulence_factors: ['Protease-Inhibitoren', 'Migrationsfähigkeit']
             },
@@ -221,9 +228,9 @@ Object.assign(window.diseases, {
               incubation: '4-8 Wochen',
               onset: 'Langsam',
               symptoms: [
-                { name: 'Lungenphase (Löffler-Syndrom)', description: 'Ein vorübergehendes Syndrom während der Larvenwanderung: trockener Husten, Atemnot, leichtes Fieber und ausgeprägte Eosinophilie im Blutbild.', severity: 'moderate' },
-                { name: 'Intestinale Phase', description: 'Leichte Infektionen können asymptomatisch sein. In schwereren Fällen können Bauchschmerzen, Blähungen, Übelkeit und bei Kindern Mangelernährung und Wachstumsverzögerung auftreten.', severity: 'mild' },
-                { name: 'Obstruktive Komplikationen', description: 'Bei massivem Befall kann ein Wurmknäuel einen mechanischen Darmverschluss (Ileus) verursachen. Würmer, die in die Gallengänge oder den Ductus pancreaticus wandern, können Gelbsucht, Cholangitis oder Pankreatitis verursachen.', severity: 'severe' }
+                { name: 'Pulmonale Phase', description: 'Husten, Dyspnoe, Löffler-Syndrom', severity: 'moderate' },
+                { name: 'Intestinale Phase', description: 'Bauchschmerzen, Blähungen, Übelkeit', severity: 'mild' },
+                { name: 'Obstruktion', description: 'Ileus (Wurmknäuel), Gallengangsobstruktion', severity: 'severe' }
               ],
               physical_exam: [
                 'Oft unauffällig',
@@ -265,7 +272,7 @@ Object.assign(window.diseases, {
           {
             id: 'taeniasis',
             name: 'Taeniasis (Bandwurmbefall)',
-            pathogen: { type: 'Helminth', name: '<i>Taenia saginata</i> (Rind), <i>Taenia solium</i> (Schwein)', gram: '-', shape: 'Bandwurm (Zestode)' },
+            pathogen: { type: 'Helminth', name: 'Taenia saginata (Rind), Taenia solium (Schwein)', gram: '-', shape: 'Bandwurm (Zestode)' },
             epidemiology: {
               incidence: 'Weltweit verbreitet',
               risk_groups: ['Verzehr von rohem Fleisch'],
@@ -273,8 +280,8 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Taeniasis (Darmbandwurm): Entsteht durch den Verzehr von rohem oder unzureichend gegartem Rind- (T. saginata) oder Schweinefleisch (T. solium), das Larven (Zystizerken) enthält. Im Darm entwickelt sich die Larve zu einem mehrere Meter langen, erwachsenen Bandwurm.',
-                'Zystizerkose (Gewebeform): Wird AUSSCHLIESSLICH durch T. solium verursacht! Die Wurmeier werden fäkal-oral aufgenommen (z.B. kontaminierte Lebensmittel, Autoinfektion). Aus den Eiern schlüpfen im Darm Larven, die in den Blutkreislauf gelangen und in Gewebe (Gehirn, Muskel, Auge) wandern, wo sie sich einkapseln (Zystizerkus).'
+                'Aufnahme von Zystizerken aus Fleisch -> adulter Wurm im Darm (Taeniasis)',
+                'Aufnahme von T. solium-Eiern (fäkal-oral) -> Larve schlüpft -> Gewebewanderung -> Zystizerkose (Gehirn, Muskel, Auge)'
               ],
               virulence_factors: ['Scolex (Haken/Saugnäpfe)']
             },
@@ -282,8 +289,8 @@ Object.assign(window.diseases, {
               incubation: '8-14 Wochen',
               onset: 'Asymptomatisch/Mild',
               symptoms: [
-                { name: 'Taeniasis (Darmbandwurm)', description: 'Oft asymptomatisch. Leichte Bauchbeschwerden, Blähungen oder Appetitveränderungen können auftreten. Die Diagnose wird oft durch die Beobachtung von im Stuhl ausgeschiedenen, beweglichen Bandwurmgliedern (Proglottiden) gestellt.', severity: 'mild' },
-                { name: 'Neurozystizerkose (NCC)', description: 'Die schwerste Form, die nach der Aufnahme von T. solium-Eiern auftritt. Zysten im Zentralnervensystem verursachen je nach Lokalisation epileptische Anfälle (am häufigsten), Kopfschmerzen, erhöhten Hirndruck, Hydrozephalus oder fokale neurologische Symptome.', severity: 'severe' }
+                { name: 'Intestinale Infektion', description: 'Leichte Bauchbeschwerden, Abgang von Proglottiden (Gliedern)', severity: 'mild' },
+                { name: 'Neurozystizerkose (T. solium)', description: 'Epilepsie, Kopfschmerzen, erhöhter Hirndruck', severity: 'severe' }
               ],
               physical_exam: ['Unauffällig (Darmwurm)', 'Neurologische Symptome (Zystizerkose)'],
               complications: ['Neurozystizerkose (führende Ursache für Epilepsie in Entwicklungsländern)', 'Okuläre Zystizerkose']
@@ -310,7 +317,7 @@ Object.assign(window.diseases, {
           {
             id: 'echinococcosis',
             name: 'Echinokokkose (Hydatidenkrankheit)',
-            pathogen: { type: 'Helminth', name: '<i>Echinococcus granulosus</i> (zystisch), <i>E. multilocularis</i> (alveolär)', gram: '-', shape: 'Bandwurm (Zestode)' },
+            pathogen: { type: 'Helminth', name: 'Echinococcus granulosus (zystisch), E. multilocularis (alveolär)', gram: '-', shape: 'Bandwurm (Zestode)' },
             epidemiology: {
               incidence: 'Endemisch (Mittelmeerraum, Osteuropa, Asien)',
               risk_groups: ['Hundehalter, Hirten', 'Verzehr von Waldbeeren (Fuchs - E. multilocularis)'],
@@ -318,11 +325,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Die Infektion erfolgt durch die Aufnahme von Eiern aus mit dem Kot von Hunden (E. granulosus) oder Füchsen (E. multilocularis) kontaminiertem Boden oder Gemüse. Der Mensch ist ein Zwischenwirt für den Parasiten.',
-                'Im Darm schlüpfen Onkosphären (Larven) aus den Eiern, durchdringen die Darmwand, gelangen in den Pfortaderkreislauf und siedeln sich am häufigsten in der Leber (70%), seltener in der Lunge (20%) oder anderen Organen an.',
-                'E. granulosus: Die Larve wächst langsam (über Jahre) zu einer flüssigkeitsgefüllten, dickwandigen Hydatidenzyste heran, die Tausende neuer Larven (Protoscolices) enthalten kann. Die Raumforderung der Zyste verursacht Symptome.',
-                'E. multilocularis: Die Larve wächst tumorartig und infiltrativ und zerstört das Lebergewebe. Sie hat keine klare Grenze, was die chirurgische Entfernung erschwert.',
-                'Eine Zystenruptur kann aufgrund der Freisetzung ihrer antigenen Inhalte einen schweren anaphylaktischen Schock und eine Streuung der Infektion (Dissemination) verursachen.'
+                'Ei-Aufnahme -> Onkosphäre im Darm',
+                'Pfortaderkreislauf -> Leber (am häufigsten) -> Lunge -> Andere',
+                'Hydatidenzystenbildung (langsames Wachstum)',
+                'Zystenruptur -> Anaphylaxie und Dissemination'
               ],
               virulence_factors: ['Laminierte Schicht (Immunschutz)', 'Protoscolices']
             },
@@ -330,9 +336,9 @@ Object.assign(window.diseases, {
               incubation: 'Jahre (langsames Wachstum)',
               onset: 'Langsam',
               symptoms: [
-                { name: 'Symptome', description: 'Die Krankheit ist jahrelang asymptomatisch. Die Symptome hängen von der Größe und Lage der Zyste ab. Leberzyste: Schmerzen im rechten Oberbauch, Völlegefühl, Hepatomegalie, Gelbsucht (Gallenkompression). Lungenzyste: Brustschmerzen, Husten, Hämoptyse.', severity: 'moderate' },
-                { name: 'Zystenruptur', description: 'Plötzliche Bauch- oder Brustschmerzen, Fieber, Urtikaria, Eosinophilie und in schweren Fällen anaphylaktischer Schock. Der Zysteninhalt kann sich im Körper ausbreiten und zur Bildung neuer Zysten führen.', severity: 'severe' },
-                { name: 'Alveoläre Echinokokkose (E. multilocularis)', description: 'Verhält sich wie Leberkrebs: Gelbsucht, Bauchschmerzen, Gewichtsverlust, Hepatomegalie. Schlechte Prognose.', severity: 'severe' }
+                { name: 'Leberzysten', description: 'Schmerzen im rechten Oberbauch, Hepatomegalie', severity: 'moderate' },
+                { name: 'Lungenzysten', description: 'Husten, Brustschmerzen, Hämoptyse', severity: 'moderate' },
+                { name: 'Ruptur', description: 'Anaphylaktischer Schock, Fieber, Urtikaria', severity: 'severe' }
               ],
               physical_exam: ['Hepatomegalie', 'Tastbare Raumforderung'],
               complications: ['Zystenruptur (Anaphylaxie)', 'Gallengangsobstruktion', 'Bakterielle Superinfektion']
@@ -360,7 +366,7 @@ Object.assign(window.diseases, {
           {
             id: 'enterobiasis',
             name: 'Enterobiasis (Madenwurmbefall)',
-            pathogen: { type: 'Helminth', name: '<i>Enterobius vermicularis</i>', gram: '-', shape: 'Madenwurm (Nematode)' },
+            pathogen: { type: 'Helminth', name: 'Enterobius vermicularis', gram: '-', shape: 'Madenwurm (Nematode)' },
             epidemiology: {
               incidence: 'Häufigste Wurminfektion in gemäßigten Zonen (auch in Industrieländern)',
               risk_groups: ['Kleinkinder', 'Gemeinschaftseinrichtungen (Kita, Schule)', 'Familienmitglieder'],
@@ -368,9 +374,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Die Infektion erfolgt durch die Aufnahme der klebrigen Eier, die unter Fingernägeln, auf Bettwäsche und im Staub zu finden sind. Autoinfektion (Hand-zu-Mund nach Kratzen) ist häufig.',
-                'Larven schlüpfen aus den Eiern im Dünndarm, wandern in den Zäkalbereich und reifen zu erwachsenen Würmern heran.',
-                'Der befruchtete weibliche Wurm (ca. 1 cm) wandert nachts in die Perianalfalten, legt dort seine Eier ab und stirbt dann. Die Eiablage und die Bewegung des Wurms verursachen den charakteristischen, intensiven Juckreiz.'
+                'Ei-Aufnahme',
+                'Larve im Dünndarm',
+                'Adulte Würmer im Zäkum',
+                'Weibchen wandert nachts in die Perianalregion zur Eiablage -> Juckreiz'
               ],
               virulence_factors: ['-']
             },
@@ -378,8 +385,9 @@ Object.assign(window.diseases, {
               incubation: '2-6 Wochen',
               onset: 'Allmählich',
               symptoms: [
-                { name: 'Perianaler Juckreiz (Pruritus ani)', description: 'Das Leitsymptom, typischerweise nachts am intensivsten, was zu Schlafstörungen und Unruhe führt. Kratzen kann zu sekundären bakteriellen Hautinfektionen führen.', severity: 'moderate' },
-                { name: 'Andere Symptome', description: 'Selten leichte Bauchschmerzen. Bei jungen Mädchen kann der Wurm in die Vagina wandern und eine Vulvovaginitis verursachen. Die meisten Infektionen sind mild oder asymptomatisch.', severity: 'mild' }
+                { name: 'Perianaler Juckreiz (Pruritus ani)', description: 'Hauptsächlich nachts', severity: 'moderate' },
+                { name: 'Schlafstörung', description: 'Aufgrund von Juckreiz', severity: 'mild' },
+                { name: 'Vulvovaginitis', description: 'Bei jungen Mädchen (aberrante Wanderung)', severity: 'moderate' }
               ],
               physical_exam: ['Perianale Exkoriation (Kratzspuren)', 'Würmer können sichtbar sein (selten)'],
               complications: ['Bakterielle Superinfektion (Kratzen)', 'Salpingitis (selten)']
@@ -404,7 +412,7 @@ Object.assign(window.diseases, {
           {
             id: 'trichinellosis',
             name: 'Trichinellose',
-            pathogen: { type: 'Helminth', name: '<i>Trichinella spiralis</i>', gram: '-', shape: 'Fadenwurm (Nematode)' },
+            pathogen: { type: 'Helminth', name: 'Trichinella spiralis', gram: '-', shape: 'Fadenwurm (Nematode)' },
             epidemiology: {
               incidence: 'Sporadische Ausbrüche (Hausschlachtung)',
               risk_groups: ['Verzehr von rohem/geräuchertem Schweinefleisch, Wildschwein'],
@@ -412,10 +420,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Die Infektion erfolgt durch den Verzehr von rohem oder unzureichend gegartem Fleisch (insbesondere Schwein, Wildschwein), das Larven enthält.',
-                'Enterale Phase: Im Darm reifen die Larven zu erwachsenen Würmern, die sich in die Darmwand bohren und neue Larven produzieren. Dies verursacht Durchfall und Übelkeit.',
-                'Parenterale Phase: Die neugeborenen Larven gelangen in den Blut- und Lymphkreislauf, verbreiten sich im Körper und wandern gezielt in stark durchblutete, aktive quergestreifte Muskeln (Kaumuskeln, Zwerchfell, Zunge, Augenmuskeln).',
-                'In den Muskelzellen kapseln sich die Larven ein und bilden einen "Ammenzell"-Komplex, der eine chronische Entzündung und die charakteristischen Muskelschmerzen verursacht.'
+                'Aufnahme von enzystierten Larven',
+                'Adulte Würmer im Darm -> neue Larven (Intestinale Phase)',
+                'Larven in den Blutkreislauf -> Wanderung in quergestreifte Muskulatur',
+                'Enzystierung im Muskel (Parenterale Phase)'
               ],
               virulence_factors: ['Ammenzellbildung im Muskel']
             },
@@ -423,9 +431,11 @@ Object.assign(window.diseases, {
               incubation: 'Enteral: 1-2 Tage; Parenteral: 1-4 Wochen',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Enterale Phase (1. Woche)', description: 'Durchfall, Übelkeit, Erbrechen und Bauchschmerzen, die einige Tage nach der Infektion auftreten.', severity: 'moderate' },
-                { name: 'Parenterale Phase (ab 2. Woche)', description: 'Die Larvenwanderung verursacht die klassische Symptomtrias: 1. Hohes Fieber. 2. Starke Muskelschmerzen (Myalgie), insbesondere in den Kau- und Augenmuskeln. 3. Charakteristisches beidseitiges periorbitales Ödem (Schwellung um die Augen). Im Blutbild zeigt sich eine extreme Eosinophilie.', severity: 'severe' },
-                { name: 'Komplikationen', description: 'Larven können auch den Herzmuskel (Myokarditis) oder das Zentralnervensystem (Enzephalitis) befallen, was lebensbedrohlich sein kann.', severity: 'severe' }
+                { name: 'Intestinale Phase', description: 'Durchfall, Übelkeit, Bauchschmerzen', severity: 'moderate' },
+                { name: 'Fieber', description: 'Hoch, anhaltend', severity: 'moderate' },
+                { name: 'Myalgie', description: 'Starke Muskelschmerzen, Schwäche', severity: 'severe' },
+                { name: 'Periorbitales Ödem', description: 'Charakteristische Gesichtsschwellung', severity: 'moderate' },
+                { name: 'Splitterblutungen', description: 'Unter den Nägeln', severity: 'mild' }
               ],
               physical_exam: ['Periorbitales Ödem', 'Muskelempfindlichkeit', 'Fieber', 'Konjunktivitis'],
               complications: ['Myokarditis (Todesursache!)', 'Enzephalitis', 'Pneumonie']
@@ -463,7 +473,7 @@ Object.assign(window.diseases, {
           {
             id: 'toxocariasis',
             name: 'Toxocariasis (Larva Migrans Visceralis/Ocularis)',
-            pathogen: { type: 'Helminth', name: '<i>Toxocara canis</i> (Hund), <i>Toxocara cati</i> (Katze)', gram: '-', shape: 'Spulwurmlarven (Nematoden)' },
+            pathogen: { type: 'Helminth', name: 'Toxocara canis (Hund), Toxocara cati (Katze)', gram: '-', shape: 'Spulwurmlarven (Nematoden)' },
             epidemiology: {
               incidence: 'Weltweit verbreitete Zoonose',
               risk_groups: ['Kleinkinder (Sandkasten, Geophagie)', 'Hundehalter'],
@@ -472,9 +482,12 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Die Infektion erfolgt durch die versehentliche Aufnahme von Eiern aus mit Hunde- (T. canis) oder Katzenkot (T. cati) kontaminiertem Boden (z.B. Sandkästen). Der Mensch ist ein zufälliger oder paratenischer Wirt für den Parasiten.',
-                'Im Darm schlüpfen Larven aus den Eiern, durchdringen die Darmwand und wandern über den Blutkreislauf zu verschiedenen Organen (Leber, Lunge, Gehirn, Augen).',
-                'Da der Mensch nicht der natürliche Wirt ist, können sich die Larven nicht zu erwachsenen Würmern entwickeln. Stattdessen wandern sie durch das Gewebe (Larva migrans), und der Körper bildet eine granulomatöse Entzündung um sie herum, die Gewebeschäden verursacht.'
+                'Ei-Aufnahme',
+                'Larve schlüpft im Dünndarm',
+                'Dringt durch die Darmwand und gelangt in den Kreislauf',
+                'Gewebewanderung (Leber, Lunge, Gehirn, Auge)',
+                'Entwickeln sich im Menschen NICHT zu adulten Würmern (Fehlwirt)',
+                'Granulomatöse Entzündung um die Larve'
               ],
               virulence_factors: ['Gewebewanderung', 'Exkretorisch-sekretorische Antigene (TES)']
             },
@@ -482,9 +495,9 @@ Object.assign(window.diseases, {
               incubation: 'Wochen-Monate',
               onset: 'Langsam',
               symptoms: [
-                { name: 'Viszerale Larva Migrans (VLM)', description: 'Tritt typischerweise bei Kleinkindern (1-5 Jahre) auf. Symptome sind anhaltendes Fieber, Hepatomegalie, Husten und Giemen. Laboruntersuchungen zeigen eine extrem hohe Eosinophilie und Leukozytose.', severity: 'moderate' },
-                { name: 'Okuläre Larva Migrans (OLM)', description: 'Häufiger bei älteren Kindern und Erwachsenen. Eine ins Auge wandernde Larve kann einseitigen Sehverlust, Strabismus und Leukokorie (weiße Pupille) verursachen, was mit einem Retinoblastom verwechselt werden kann. Systemische Symptome und Eosinophilie fehlen in der Regel.', severity: 'severe' },
-                { name: 'Verdeckte (Covert) Toxocariasis', description: 'Eine Form mit milden, unspezifischen Symptomen wie Bauchschmerzen, Kopfschmerzen und Husten, mit mäßiger Eosinophilie.', severity: 'mild' }
+                { name: 'Viszerale Larva Migrans (VLM)', description: 'Fieber, Husten, Bauchschmerzen, Hepatomegalie', severity: 'moderate' },
+                { name: 'Okuläre Larva Migrans (OLM)', description: 'Einseitiger Sehverlust, Strabismus, Leukokorie', severity: 'severe' },
+                { name: 'Verdeckte (covert) Toxocariasis', description: 'Bauchschmerzen, Kopfschmerzen, Husten', severity: 'mild' }
               ],
               physical_exam: [
                 'Hepatomegalie',

@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
           {
             id: 'leptospirosis',
             name: 'Leptospirose',
-            pathogen: { type: 'Spirochäte', name: 'Leptospira interrogans', gram: 'Gram-negativ', shape: 'spiralförmig, mit Haken' },
+            pathogen: { type: 'Spirochäte', name: '<i>Leptospira interrogans</i>', gram: 'Gram-negativ', shape: 'spiralförmig, mit Haken' },
             epidemiology: {
               incidence: 'Tropisch/Subtropisch: 10-100/100.000; Gemäßigte Zone: 0.1-1/100.000',
               risk_groups: ['Landarbeiter', 'Tierärzte', 'Schlachthofarbeiter', 'Kanalarbeiter', 'Wassersportler', 'Soldaten (Dschungel)'],
@@ -16,12 +16,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Leptospiren dringen durch verletzte Haut/Schleimhaut ein',
-                'Schnelle hämatogene Ausbreitung in alle Organe',
-                'Endothelschädigung → erhöhte Gefäßpermeabilität',
-                'Leber-, Nieren-, Lungenbeteiligung',
-                'Weil-Krankheit: schwere Form - Leber- und Nierenversagen, Blutungen',
-                'Immunvermittelte Entzündung (T-Zell-Aktivierung)'
+                'Leptospiren überleben in Wasser oder Boden, der mit dem Urin infizierter Tiere (v.a. Nagetiere) kontaminiert ist. Der Erreger dringt durch verletzte Haut oder Schleimhäute (Augen, Nase, Mund) in den Körper ein.',
+                'Nach dem Eindringen gelangen die Bakterien schnell in den Blutkreislauf (hämatogene Streuung) und erreichen fast alle Organe, insbesondere Leber, Nieren, Lunge und das zentrale Nervensystem.',
+                'Der Erreger schädigt die Endothelzellen der Blutgefäße, was zu erhöhter vaskulärer Permeabilität, Flüssigkeitsverlust und Blutungen führt.',
+                'Die schwere Verlaufsform, die Weil-Krankheit, ist durch die Trias aus Leber- und Nierenversagen, Gelbsucht (Ikterus) und schweren hämorrhagischen Komplikationen (z.B. Lungenblutung) gekennzeichnet.',
+                'Ein Teil der klinischen Symptome wird durch die heftige, immunvermittelte Entzündungsreaktion des Wirts verursacht, nicht durch die direkte toxische Wirkung des Bakteriums.'
               ],
               virulence_factors: ['Äußere Membranproteine (LipL32)', 'Flagellum (Motilität)', 'Hämolysine', 'Lipopolysaccharid', 'Adhäsine']
             },
@@ -29,12 +28,9 @@ Object.assign(window.diseases, {
               incubation: '2-30 Tage (durchschnittlich 7-12 Tage)',
               onset: 'Biphasischer Verlauf',
               symptoms: [
-                { name: 'Plötzliches Fieber', description: '>95% vorhanden (39-40°C), mit Schüttelfrost', severity: 'severe' },
-                { name: 'Kopfschmerzen', description: '>95%, schwer, frontal/retrobulbär', severity: 'severe' },
-                { name: 'Myalgie', description: '>80%, hauptsächlich Waden und Lendenbereich (charakteristisch!)', severity: 'severe' },
-                { name: 'Konjunktivale Suffusion', description: '30-40%, aber sehr spezifisch (ohne Ikterus)', severity: 'moderate' },
-                { name: 'Ikterus', description: '5-10% (Weil-Krankheit)', severity: 'severe' },
-                { name: 'Hämorrhagische Manifestationen', description: '30-40% bei schwerer Form (Lungenblutung, Petechien)', severity: 'severe' }
+                { name: 'Akute/Septische Phase (erste Woche)', description: 'Plötzlich einsetzendes hohes Fieber mit Schüttelfrost, intensive Kopfschmerzen und charakteristische, quälende Muskelschmerzen, besonders in den Waden und im Lendenbereich. Häufig ist eine konjunktivale Suffusion (Rötung der Augen ohne eitrigen Ausfluss).', severity: 'severe' },
+                { name: 'Immunphase (zweite Woche)', description: 'Nach der ersten Phase kann eine kurze Besserung eintreten, gefolgt von einer Rückkehr der Symptome aufgrund der Immunantwort. Hier können aseptische Meningitis, Uveitis und Organmanifestationen auftreten.', severity: 'moderate' },
+                { name: 'Weil-Krankheit (schwere Form)', description: 'Entwickelt sich bei 5-10% der Patienten. Merkmale sind Gelbsucht (Ikterus), Nierenversagen (akute tubuläre Nekrose) und hämorrhagische Komplikationen wie Lungenblutungen, die mit hoher Mortalität verbunden sind.', severity: 'severe' }
               ],
               physical_exam: [
                 'Hohes Fieber, Tachykardie',
@@ -102,7 +98,7 @@ Object.assign(window.diseases, {
           {
             id: 'hantavirus',
             name: 'Hantavirus-Infektion',
-            pathogen: { type: 'Virus', name: 'Hantavirus (mehrere Serotypen)', gram: 'Negativ-Strang-RNA-Virus, Bunyaviridae', shape: 'sphärisch' },
+            pathogen: { type: 'Virus', name: '<i>Hantavirus</i> (mehrere Serotypen)', gram: 'Negativ-Strang-RNA-Virus, Bunyaviridae', shape: 'sphärisch' },
             epidemiology: {
               incidence: 'Europa: HFRS 10.000+ Fälle/Jahr; USA: HPS <50 Fälle/Jahr',
               risk_groups: ['Landarbeiter', 'Förster', 'Soldaten', 'Camper/Wanderer', 'Berufe mit Nagetierkontakt', 'Reinigung schlecht belüfteter Gebäude'],
@@ -111,12 +107,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Hantavirus-Inhalation (Staub von Nagetierausscheidungen)',
-                'Virus infiziert Endothelzellen (nicht zytopathisch)',
-                'Immunvermittelte Erhöhung der Gefäßpermeabilität',
-                'HFRS: Nierenbeteiligung (Capillary-Leak-Syndrom)',
-                'HPS: pulmonales Capillary-Leak → Lungenödem, kardiogener Schock',
-                'Thrombozytopenie und Gerinnungsstörungen'
+                'Die Infektion erfolgt durch Inhalation von Aerosol, das mit getrocknetem Urin, Kot oder Speichel von Nagetieren (z.B. Rötelmaus) kontaminiert ist. Eine Übertragung von Mensch zu Mensch findet nicht statt.',
+                'Das Virus gelangt über die Lunge in den Blutkreislauf und infiziert gezielt die Endothelzellen, die die Innenfläche der Blutgefäße auskleiden, ohne direkten Zelltod zu verursachen.',
+                'Der Hauptschaden wird durch die übermäßige Immunantwort des Körpers verursacht. Aktivierte T-Zellen und Zytokine (TNF-alpha) lockern die Verbindungen zwischen den Endothelzellen, was zu einem Kapillarleck (Capillary Leak) führt.',
+                'HFRS (Hämorrhagisches Fieber mit renalem Syndrom): Das Kapillarleck tritt hauptsächlich in der Niere auf, was zu akutem Nierenversagen, Proteinurie und Blutungen führt.',
+                'HPS (Hantavirus-Pulmonalsyndrom): Das Leck dominiert in der Lunge, was zu einem schnell fortschreitenden, nicht-kardiogenen Lungenödem und kardiogenem Schock führt. Thrombozytopenie und Hämokonzentration sind entscheidende Laborzeichen.'
               ],
               virulence_factors: ['Nukleokapsidprotein (Immunantwort)', 'Glykoprotein Gn/Gc (Zelleintritt)', 'Endotheltropismus', 'Immunmodulation']
             },
@@ -124,13 +119,9 @@ Object.assign(window.diseases, {
               incubation: '1-8 Wochen (durchschnittlich 2-4 Wochen)',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Fieber', description: '100%, plötzlicher Beginn (39-41°C)', severity: 'severe' },
-                { name: 'Myalgie', description: '85-100% (Rücken, Oberschenkel)', severity: 'moderate' },
-                { name: 'Kopfschmerzen', description: '>90%', severity: 'severe' },
-                { name: 'Bauchschmerzen', description: '30-50% (häufiger bei HFRS)', severity: 'severe' },
-                { name: 'Sehstörungen', description: '20-30% (HFRS - vorübergehende Myopie)', severity: 'moderate' },
-                { name: 'HPS-Symptome', description: 'Husten, Dyspnoe (>90% am Ende des Prodroms)', severity: 'severe' },
-                { name: 'HFRS-Symptome', description: 'Oligurie/Anurie, Flankenschmerzen', severity: 'severe' }
+                { name: 'Prodromalphase (3-5 Tage)', description: 'Plötzlich einsetzendes, hohes Fieber, Schüttelfrost, starke Kopfschmerzen und Muskelschmerzen (v.a. Rücken und Oberschenkel). Häufig sind Gesichtsrötung (Facial Flush) und konjunktivale Injektion.', severity: 'severe' },
+                { name: 'HFRS (Nierenbeteiligung)', description: 'Auf die Fieberphase folgen Hypotonie und dann Oligurie/Anurie. Charakteristisch sind starke Flankenschmerzen, massive Proteinurie und Thrombozytopenie. In der Erholungsphase tritt Polyurie auf.', severity: 'severe' },
+                { name: 'HPS (Lungenbeteiligung)', description: 'Nach der Prodromalphase entwickeln sich schnell fortschreitender Husten und Atemnot, die innerhalb von Stunden in ein schweres, nicht-kardiogenes Lungenödem und einen kardiogenen Schock münden. Hohe Mortalität.', severity: 'severe' }
               ],
               physical_exam: [
                 'Hohes Fieber',
@@ -196,99 +187,84 @@ Object.assign(window.diseases, {
           {
             id: 'lyme',
             name: 'Lyme-Borreliose',
-            pathogen: { type: 'Spirochäte', name: 'Borrelia burgdorferi sensu lato', gram: 'Gram-negativ', shape: 'spiralförmig' },
+            pathogen: { type: 'Spirochäte', name: '<i>Borrelia burgdorferi sensu lato</i>', gram: 'Gram-negativ', shape: 'spiralig' },
             epidemiology: {
-              incidence: 'USA: 476.000 Fälle/Jahr; Europa: 232.000 Fälle/Jahr',
-              risk_groups: ['Personen, die sich im Wald aufhalten', 'Wanderer, Camper', 'Förster, Jäger', 'Gärtner', 'Kinder (Spielen im Sommer)'],
-              seasonality: 'April-Oktober (Zeckenaktivität)',
-              transmission: 'Ixodes-Zeckenstich (>24-36 Stunden angeheftet)'
+              incidence: 'USA: 476.000 Fälle/Jahr; Europa: 232.000 Fälle/Jahr. In Ungarn häufig und endemisch.',
+              risk_groups: ['Besucher von Waldgebieten', 'Wanderer, Camper', 'Förster, Jäger', 'Gärtner', 'Kinder'],
+              seasonality: 'Frühling bis Herbst (Zeckenaktivität)',
+              transmission: 'Stich der Ixodes ricinus Zecke (meist >24 Stunden Saugzeit erforderlich)'
             },
             pathomechanism: {
               steps: [
-                'Zeckenstich → Borrelien-Inokulation',
-                'Lokale Ausbreitung in der Haut → Erythema migrans',
-                'Hämatogene Disseminierung (Tage-Wochen)',
-                'Früh disseminiert: Herz, Nervensystem, Gelenke',
-                'Spät: chronische Arthritis, Neuroborreliose',
-                'Spirochäten-Antigene können persistieren (Immunantwort dauert an)'
+                'Während des Saugaktes einer infizierten Ixodes-Zecke gelangen Borrelien aus den Speicheldrüsen der Zecke in die Haut des Wirts (meist >24 Stunden Saugzeit erforderlich).',
+                'Die Bakterien vermehren sich lokal in der Haut und breiten sich zentrifugal aus, wodurch das charakteristische Erythema migrans (EM) entsteht.',
+                'Die Erreger gelangen in den Blutkreislauf (hämatogen) und das Lymphsystem und disseminieren so zu entfernten Organen (Herz, Nervensystem, Gelenke, Haut).',
+                'Die Bakterien können dem Immunsystem ausweichen (Antigenvariation, Komplementhemmung), was eine Persistenz und die Entwicklung einer chronischen Entzündung ermöglicht.',
+                'Die Gewebeschädigung wird primär nicht durch Toxine, sondern durch die Entzündungsreaktion des Wirts (Zytokine, Immunkomplexe) verursacht.'
               ],
-              virulence_factors: ['Äußere Oberflächenproteine (OspA, OspC)', 'VlsE (Antigenvariation)', 'Komplementresistenz', 'Extrazelluläre Matrixadhärenz']
+              virulence_factors: ['Osp (Outer surface proteins)', 'VlsE (Antigenvariation)', 'Motilität']
             },
             clinical: {
-              incubation: '3-30 Tage (durchschnittlich 7 Tage)',
+              incubation: 'EM: 3-30 Tage (Durchschnitt 7-14 Tage)',
               onset: 'Stadienhaft',
               symptoms: [
-                { name: 'Erythema migrans (EM)', description: 'Erscheint in 70-80% (Zielscheibe oder homogen)', severity: 'moderate' },
-                { name: 'Allgemeinsymptome', description: 'Fieber, Müdigkeit, Kopfschmerzen (häufig in der Frühphase)', severity: 'mild' },
-                { name: 'Neuroborreliose', description: '10-15% (bei Unbehandelten): Fazialisparese, Meningitis, Radikulopathie', severity: 'severe' },
-                { name: 'Lyme-Karditis', description: '1-5% (bei Unbehandelten): AV-Block', severity: 'severe' },
-                { name: 'Lyme-Arthritis', description: '60% (bei Unbehandelten, USA): Kniegelenkschwellung', severity: 'moderate' },
-                { name: 'Borrelien-Lymphozytom', description: 'Selten (<1%), Ohrläppchen/Brustwarze (Europa)', severity: 'mild' }
+                { name: 'Frühstadium lokalisiert (Erythema migrans)', description: 'An der Stichstelle entstehende, schmerzlose, langsam wachsende (>5 cm), oft zielscheibenförmige (kann aber auch homogen sein) Hautrötung. Dies ist das häufigste Symptom und ermöglicht eine klinische Diagnose. Allgemeine grippeähnliche Symptome (Fieber, Kopfschmerzen, Muskelschmerzen) können begleitend auftreten.', severity: 'moderate' },
+                { name: 'Frühstadium disseminiert (Organe)', description: 'Tritt Wochen bis Monate nach der Streuung der Bakterien auf. Nervensystem: Bannwarth-Syndrom (nächtliche radikuläre Schmerzen, Fazialisparese, Meningitis). Herz: Lyme-Karditis (AV-Block, Rhythmusstörungen). Haut: Lymphozytom (bläulich-roter Knoten).', severity: 'severe' },
+                { name: 'Spätstadium (Chronisch)', description: 'Monate bis Jahre später. Lyme-Arthritis: intermittierende Schwellung und Schmerzen großer Gelenke (v.a. Knie). Haut: Acrodermatitis chronica atrophicans (ACA) - livide Verfärbung und Atrophie der Streckseiten der Extremitäten.', severity: 'moderate' }
               ],
               physical_exam: [
-                'Früh lokalisiert: EM (Durchmesser 5-70cm, oft zentrale Aufhellung)',
-                'Multiplex EM (disseminiert)',
-                'Lymphozytom (Ohrläppchen, Brust)',
-                'Fazialisparese (ein-/beidseitig)',
-                'Meningeale Zeichen',
-                'Monarthritis/Oligoarthritis (Knie)',
-                'Hautatrophie (ACA)'
+                'Erythema migrans: >5 cm Durchmesser, ausbreitendes Erythem',
+                'Fazialisparese (kann beidseitig sein)',
+                'Meningeale Reizzeichen (mild)',
+                'Gelenkschwellung (Knie)',
+                'ACA: zigarettenpapierartige Haut'
               ],
-              complications: ['Chronische Lyme-Arthritis', 'Post-Lyme-Syndrom', 'Enzephalomyelitis', 'Keratitis', 'Chronische Müdigkeit']
+              complications: ['Chronische Gelenkentzündung', 'Post-Lyme-Syndrom (subjektive Beschwerden)', 'Chronische Neuroborreliose']
             },
             diagnostics: {
               laboratory: [
-                { test: 'Zweistufige Serologie: ELISA → Western Blot', finding: 'IgM (2-4 Wochen), IgG (4-6 Wochen)', interpretation: 'Goldstandard, aber bei frühem EM oft negativ!' },
-                { test: 'Liquor', finding: 'Lymphozytäre Pleozytose, ↑Protein, intrathekale Ak-Produktion', interpretation: 'Neuroborreliose' },
-                { test: 'Gelenkflüssigkeit', finding: 'Entzündlich (WBC >10.000), PCR+', interpretation: 'Lyme-Arthritis' }
+                { test: 'Zweistufige Serologie (ELISA + Western Blot)', finding: 'IgM (2-4 Wochen), IgG (4-6 Wochen)', interpretation: 'Zweistufig! Im EM-Stadium NICHT empfohlen (klinische Dg, kann noch negativ sein). Bei disseminierten/späten Stadien indiziert.' },
+                { test: 'Liquor', finding: 'Lymphozytäre Pleozytose, intrathekale Antikörpersynthese (AI > 1.5)', interpretation: 'Nachweis der Neuroborreliose' }
               ],
               imaging: [
-                { modality: 'MRT Gehirn', finding: 'Läsionen der weißen Substanz (Neuroborreliose)', significance: 'Selten, Differentialdiagnose' },
-                { modality: 'EKG', finding: 'AV-Block (1.-3. Grad)', significance: 'Lyme-Karditis' }
+                { modality: 'EKG', finding: 'AV-Block', significance: 'Bei Verdacht auf Karditis' }
               ],
               microbiology: [
-                { test: 'Serologie (ELISA + Western Blot)', finding: 'IgM/IgG positiv', significance: 'Zweistufiger Algorithmus! Falsch positive häufig' },
-                { test: 'PCR (Gelenkflüssigkeit, Liquor)', finding: 'Borrelien-DNA', significance: 'Geringe Sensitivität' },
-                { test: 'Kultur', finding: 'Nicht routinemäßig (dauert Wochen)', significance: 'Nur in speziellen Fällen' }
+                { test: 'Zeckenuntersuchung', finding: 'NICHT empfohlen', significance: 'Keine klinische Relevanz für die Behandlung' },
+                { test: 'PCR', finding: 'Borrelien-DNA', significance: 'Aus Gelenkflüssigkeit oder Hautbiopsie (ACA) kann nützlich sein. Geringe Sensitivität aus Blut/Liquor.' }
               ]
             },
             differential: [
-              { disease: 'Tinea corporis (Ringelflechte)', distinguishing: 'Breitet sich nicht aus, schuppt, KOH-Mikroskopie' },
-              { disease: 'Southern tick-associated rash illness (STARI)', distinguishing: 'Lone Star Zecke, Serologie negativ' },
-              { disease: 'Reaktive Arthritis', distinguishing: 'GI/GU-Infektion, HLA-B27' },
-              { disease: 'Rheumatoide Arthritis', distinguishing: 'RF/Anti-CCP positiv, symmetrisch' },
-              { disease: 'MS', distinguishing: 'MRT-Muster, oligoklonale Banden' }
+              { disease: 'Erysipel/Zellulitis', distinguishing: 'Fieber, Schmerz, schnelle Ausbreitung, Leukozytose' },
+              { disease: 'Tinea corporis', distinguishing: 'Schuppender Rand, Juckreiz, KOH-positiv' },
+              { disease: 'Andere Arthritis', distinguishing: 'Septisch (Fieber, Eiter), RA (symmetrisch, Serologie)' },
+              { disease: 'Multiple Sklerose', distinguishing: 'MRT, oligoklonale Banden im Liquor' }
             ],
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Doxycyclin', dose: '100 mg zweimal täglich p.o.', duration: '10-14 Tage (EM), 14-21 Tage (Arthritis)', note: 'Erste Wahl Erwachsene/Kinder >8J' },
-                  { drug: 'Amoxicillin', dose: '500 mg dreimal täglich p.o.', duration: '14-21 Tage', note: 'Schwangere, Kinder <8J' },
-                  { drug: 'Cefuroxim-Axetil', dose: '500 mg zweimal täglich p.o.', duration: '14-21 Tage', note: 'Alternative' }
+                  { drug: 'Doxycyclin', dose: '2x100 mg p.o.', duration: '14-21 Tage (EM: 10-14 Tage)', note: 'Erste Wahl (EM, Neuroborreliose, Karditis, Arthritis, ACA). Auch für Kinder geeignet.' },
+                  { drug: 'Amoxicillin', dose: '3x500-1000 mg p.o.', duration: '14-21 Tage', note: 'Alternative (EM, Arthritis, ACA, Schwangerschaft)' },
+                  { drug: 'Cefuroxim-Axetil', dose: '2x500 mg p.o.', duration: '14-21 Tage', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Ceftriaxon', dose: '2 g einmal täglich i.v.', duration: '14-28 Tage', note: 'Neuroborreliose, Lyme-Karditis (AV-Block >1°)' },
-                  { drug: 'Penicillin G', dose: '5 Mio. IE alle 6 Stunden i.v.', duration: '14-28 Tage', note: 'Alternative Neuroborreliose' }
-                ],
-                icu: [
-                  { drug: 'Ceftriaxon', dose: '2 g einmal täglich i.v.', duration: '28 Tage', note: 'Schwere Neuroborreliose' },
-                  { drug: 'Schrittmacher (temporär)', dose: 'Kompletter AV-Block', duration: '', note: 'Karditis' }
+                  { drug: 'Ceftriaxon', dose: '1x2 g i.v.', duration: '14-28 Tage', note: 'Schwere Neuroborreliose (z.B. Enzephalitis), Karditis (hochgradiger Block), refraktäre Arthritis' }
                 ]
               },
-              targeted: 'Früh: Doxycyclin; Neuroborreliose/Karditis: Ceftriaxon i.v.',
-              supportive: ['Jarisch-Herxheimer-Reaktion möglich', 'NSAIDs (Arthritis)', 'Temporärer Schrittmacher (kompletter Block)'],
-              prevention: ['Schutzkleidung im Wald', 'Repellents (DEET)', 'Zeckenentfernung <24 Stunden', 'Einzeldosis Doxycyclin (200mg) <72 Stunden nach Stich (in Endemiegebieten)', 'Kein wirksamer Impfstoff']
+              targeted: 'Frühe Lokalinfektion (EM): Doxycyclin 10 Tage. Neuroborreliose (Bannwarth): Doxycyclin p.o. (genauso wirksam wie i.v. Ceftriaxon!) 14 Tage. Arthritis: Doxycyclin 28 Tage.',
+              supportive: ['Symptomatische Behandlung', 'Physiotherapie'],
+              prevention: ['Frühzeitige Zeckenentfernung', 'Schutzkleidung', 'Antibiotikaprophylaxe nach Stich NICHT empfohlen (ungarische Leitlinie)']
             },
             prognosis: {
-              mortality: '<0.001% (Lyme-Karditis seltener Todesfall)',
-              prognostic_scores: ['Keine spezifischen'],
-              factors: 'Frühe Behandlung, Stadium, Organbeteiligung, neurologische/kardiale Komplikation'
+              mortality: 'Sehr niedrig',
+              prognostic_scores: ['Keine'],
+              factors: 'Früherkennung und Behandlung'
             }
           },
           {
             id: 'tularemia',
             name: 'Tularämie (Hasenpest)',
-            pathogen: { type: 'Bakterium', name: 'Francisella tularensis', gram: 'Gram-negativ', shape: 'Kokkobazillus, intrazellulär' },
+            pathogen: { type: 'Bakterium', name: '<i>Francisella tularensis</i>', gram: 'Gram-negativ', shape: 'Kokkobazillus, intrazellulär' },
             epidemiology: {
               incidence: 'USA: 100-200 Fälle/Jahr; Europa: sporadisch',
               risk_groups: ['Jäger', 'Gerber', 'Landarbeiter', 'Laboranten', 'Förster', 'Tierärzte'],
@@ -297,12 +273,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Francisella dringt durch Haut/Schleimhaut/Inhalation ein',
-                'Phagozytose durch Makrophagen/dendritische Zellen',
-                'Intrazelluläre Replikation (Ausbruch aus dem Phagosom)',
-                'Regionale Lymphknoten → nekrotisierendes Granulom',
-                'Lymphadenitis, typhöse Ausbreitung',
-                'Hohe Infektiosität (<10 Organismen ausreichend)'
+                'Francisella tularensis ist ein extrem ansteckendes Bakterium (<10 Organismen genügen), das durch Zeckenstiche, direkten Kontakt mit infizierten Tieren (z.B. Kaninchen) oder Inhalation von kontaminiertem Staub in den Körper gelangt.',
+                'An der Eintrittsstelle wird das Bakterium von Makrophagen phagozytiert, kann aber aus dem Phagosom ins Zytoplasma entkommen, wo es sich vermehrt.',
+                'Die infizierten Makrophagen wandern zu den regionalen Lymphknoten, wo sich das Bakterium weiter vermehrt, was zu schmerzhaften, nekrotisierenden Granulomen und Lymphadenitis führt.',
+                'Abhängig von der Eintrittspforte entwickeln sich verschiedene klinische Formen (z.B. ulzeroglandulär, pulmonal).',
+                'Die Bakterien können vom Lymphsystem in den Blutkreislauf gelangen und eine systemische Infektion (typhöse Form) sowie eine Beteiligung entfernter Organe (Lunge, Leber, Milz) verursachen.'
               ],
               virulence_factors: ['Kapsel', 'Phagosomen-Escape (iglA-D Locus)', 'LPS (toxisch)', 'Siderophore', 'Intrazelluläres Überleben']
             },
@@ -310,12 +285,10 @@ Object.assign(window.diseases, {
               incubation: '3-5 Tage (1-14 Tage)',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Fieber', description: '>90%, plötzlicher Beginn', severity: 'severe' },
-                { name: 'Ulzeroglandulär', description: '75-85%: Schmerzhaftes Geschwür + regionaler Lymphknoten', severity: 'moderate' },
-                { name: 'Glandulär', description: '5-10%: Nur Lymphknotenschwellung (ohne Geschwür)', severity: 'moderate' },
-                { name: 'Typhös', description: '5-15%: Systemische fieberhafte Erkrankung, ohne Lokalisation', severity: 'severe' },
-                { name: 'Pneumonie', description: '30-80% der typhösen Fälle (oder primäre Inhalation)', severity: 'severe' },
-                { name: 'Okuloglandulär', description: '1-2%: Konjunktivitis + Lymphknoten', severity: 'moderate' }
+                { name: 'Ulzeroglanduläre Form (75-85%)', description: 'Die häufigste Form. An der Eintrittspforte (z.B. Stichstelle) bildet sich ein schmerzhaftes Geschwür (Ulkus) mit schwarzem Schorf, begleitet von einer schmerzhaften Schwellung der regionalen Lymphknoten (Bubo).', severity: 'moderate' },
+                { name: 'Glanduläre Form (5-10%)', description: 'Ähnlich der ulzeroglandulären Form, aber das primäre Hautgeschwür fehlt, nur die schmerzhafte Lymphknotenschwellung ist vorhanden.', severity: 'moderate' },
+                { name: 'Typhöse Form (5-15%)', description: 'Schwere, systemische Erkrankung mit hohem Fieber, Schüttelfrost, Kopfschmerzen, aber ohne primäre Lokalisation (Geschwür, Lymphknoten). Oft mit Lungenentzündung verbunden.', severity: 'severe' },
+                { name: 'Andere Formen', description: 'Okuloglandulär (Konjunktivitis und Lymphknotenschwellung bei Eintritt ins Auge), Oropharyngeal (Tonsillitis bei Verschlucken), Pulmonal (atypische Pneumonie bei Inhalation).', severity: 'moderate' }
               ],
               physical_exam: [
                 'Ulzeroglandulär (75%): Hautgeschwür (schwarzer Eschar) + druckempfindlicher Lymphknoten',
@@ -380,7 +353,7 @@ Object.assign(window.diseases, {
           {
             id: 'cat_scratch',
             name: 'Katzenkratzkrankheit (Cat-Scratch Disease)',
-            pathogen: { type: 'Bakterium', name: 'Bartonella henselae', gram: 'Gram-negativ', shape: 'Stäbchen, intrazellulär' },
+            pathogen: { type: 'Bakterium', name: '<i>Bartonella henselae</i>', gram: 'Gram-negativ', shape: 'Stäbchen, intrazellulär' },
             epidemiology: {
               incidence: 'USA: ~12.000 Fälle/Jahr (Schätzung), unterdiagnostiziert',
               risk_groups: ['Kinder <10 Jahre', 'Katzenkontakt', 'Flohexposition', 'Immungeschwächte (HIV)', 'Tierärzte, Tierheimmitarbeiter'],
@@ -389,12 +362,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bartonella-Inokulation mit Katzenspeichel (Kratzer/Biss)',
-                'Lokale Inokulationspapel/-pustel',
-                'Invasion regionaler Lymphknoten',
-                'Granulomatöse Lymphadenitis (mit sternförmiger Nekrose)',
-                'Seltene Disseminierung (immunsupprimiert): bazilläre Angiomatose, Endokarditis',
-                'Immunantwort eradiziert normalerweise (Wochen-Monate)'
+                'Das Bakterium Bartonella henselae wird am häufigsten durch Kratzer oder Bisse von infizierten (aber symptomlosen) Katzen, insbesondere Jungtieren, auf die menschliche Haut übertragen. Die Katzen infizieren sich gegenseitig durch Flöhe.',
+                'An der Eintrittsstelle entwickelt sich innerhalb von 3-10 Tagen eine Primärläsion, eine rote Papel oder Pustel.',
+                'Die Bakterien wandern über die Lymphbahnen zu den regionalen Lymphknoten (z.B. axillär, zervikal).',
+                'In den Lymphknoten bildet der Erreger charakteristische, sternförmige (stellate) nekrotisierende Granulome, was zu einer schmerzhaften Vergrößerung der Lymphknoten führt.',
+                'Bei immunkompetenten Personen ist die Infektion in der Regel selbstlimitierend. Bei Immunsupprimierten (z.B. HIV) kann das Bakterium streuen und eine systemische Erkrankung wie die bazilläre Angiomatose (Gefäßwucherungen) oder Peliosis hepatis verursachen.'
               ],
               virulence_factors: ['Flagellum', 'Pili', 'Adhäsine', 'BadA-Autotransporter', 'Intrazelluläres Überleben (Erythrozyten, Endothel)']
             },
@@ -402,12 +374,9 @@ Object.assign(window.diseases, {
               incubation: '3-10 Tage (Papel), 1-3 Wochen (Lymphadenitis)',
               onset: 'Subakut',
               symptoms: [
-                { name: 'Lymphadenopathie', description: '85-90%: Regionale, schmerzhafte Lymphknotenschwellung', severity: 'moderate' },
-                { name: 'Inokulationsläsion', description: '25-60%: Papel/Pustel an der Kratzstelle', severity: 'mild' },
-                { name: 'Fieber', description: '30-50%, meist leicht', severity: 'mild' },
-                { name: 'Systemische Symptome', description: 'Müdigkeit, Unwohlsein (50%)', severity: 'mild' },
-                { name: 'Parinaud-Syndrom', description: '2-8%: Konjunktivitis + präaurikulärer Knoten', severity: 'moderate' },
-                { name: 'Neuroretinitis', description: '1-2%: Einseitiger Sehverlust', severity: 'severe' }
+                { name: 'Typische Form', description: 'Nach einer primären Papel an der Kratzstelle entwickelt sich nach 1-3 Wochen eine einseitige, schmerzhafte regionale Lymphknotenschwellung (am häufigsten in der Achselhöhle oder am Hals). Leichtes Fieber und Unwohlsein können begleitend auftreten. Der Lymphknoten kann eitern.', severity: 'moderate' },
+                { name: 'Parinaud-okuloglanduläres Syndrom', description: 'Der Erreger dringt durch die Bindehaut ein, was zu einer einseitigen Konjunktivitis und einer Schwellung des präaurikulären Lymphknotens führt.', severity: 'moderate' },
+                { name: 'Atypische/Disseminierte Formen', description: 'Seltener, vor allem bei Immunsupprimierten, kann die Infektion streuen. Sie kann Neuroretinitis (Sehverlust), Enzephalitis, hepatosplenische Erkrankung (Leber- und Milzabszesse) oder bazilläre Angiomatose (Gefäßtumoren auf Haut und inneren Organen) verursachen.', severity: 'severe' }
               ],
               physical_exam: [
                 'Papel/Pustel an der Kratzstelle (heilt, vernarbt)',
@@ -473,7 +442,7 @@ Object.assign(window.diseases, {
           {
             id: 'q_fever_zoo',
             name: 'Q-Fieber',
-            pathogen: { type: 'Bakterium', name: 'Coxiella burnetii', gram: 'Gram-negativ (intrazellulär)', shape: 'Kokkobazillus' },
+            pathogen: { type: 'Bakterium', name: '<i>Coxiella burnetii</i>', gram: 'Gram-negativ (intrazellulär)', shape: 'Kokkobazillus' },
             epidemiology: {
               incidence: 'Zoonose, Berufskrankheit',
               risk_groups: ['Viehzüchter', 'Schlachthofarbeiter', 'Tierärzte'],
@@ -482,11 +451,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhalation (ein einziges Bakterium kann infizieren!)',
-                'Infektion von Alveolarmakrophagen',
-                'Vermehrung in sauren Phagosomen',
-                'Hämatogene Streuung',
-                'Granulombildung (Doughnut-Granulom)'
+                'Coxiella burnetii ist ein hochinfektiöses, obligat intrazelluläres Bakterium. Die Infektion erfolgt am häufigsten durch Inhalation von Aerosol, das sporenähnliche Partikel aus dem Geburtsvorgang infizierter Tiere (Schafe, Ziegen, Rinder) enthält.',
+                'Nach dem Eindringen in die Lunge wird der Erreger von Alveolarmakrophagen phagozytiert.',
+                'Das Bakterium überlebt nicht nur in den sauren Phagosomen der Makrophagen, sondern vermehrt sich dort auch und bildet eine spezielle Vakuole.',
+                'Nach Freisetzung aus den infizierten Zellen gelangt der Erreger mit dem Blutstrom (hämatogene Streuung) in verschiedene Teile des Körpers, hauptsächlich in Leber und Knochenmark.',
+                'Der Körper versucht, die Infektion durch die Bildung charakteristischer, "Doughnut"-förmiger Granulome einzudämmen. Die Krankheit kann akut oder chronisch (Endokarditis) verlaufen.'
               ],
               virulence_factors: ['Sporenähnliche Form (resistent)', 'LPS-Phasenvariation']
             },
@@ -494,10 +463,8 @@ Object.assign(window.diseases, {
               incubation: '2-3 Wochen',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Akutes Q-Fieber', description: 'Grippeähnlich: Fieber, Müdigkeit, starke Kopfschmerzen (>90% bei symptomatischen)', severity: 'severe' },
-                { name: 'Hepatitis', description: '60-75% (granulomatös), Hepatomegalie', severity: 'moderate' },
-                { name: 'Pneumonie', description: '30-50% (atypisch), oft milder Husten', severity: 'moderate' },
-                { name: 'Chronisches Q-Fieber', description: '<5% nach akutem Fall; Endokarditis (60-70% bei chronischen)', severity: 'severe' }
+                { name: 'Akutes Q-Fieber', description: 'Etwa 60% der Fälle sind asymptomatisch. Die symptomatische Form beginnt plötzlich mit hohem Fieber, starken retrobulbären Kopfschmerzen und grippeähnlichen Symptomen. Häufig sind eine atypische Pneumonie (milder Husten) und eine granulomatöse Hepatitis (erhöhte Leberenzyme).', severity: 'moderate' },
+                { name: 'Chronisches Q-Fieber', description: 'Entwickelt sich Monate bis Jahre nach der akuten Infektion, hauptsächlich bei Patienten mit Herzklappenfehlern oder Immunsuppression. Die häufigste Manifestation ist eine kultur-negative Endokarditis. Andere Formen sind vaskuläre (Aneurysma) und Knocheninfektionen.', severity: 'severe' }
               ],
               physical_exam: [
                 'Hepatomegalie',
@@ -550,7 +517,7 @@ Object.assign(window.diseases, {
           {
             id: 'rabies',
             name: 'Tollwut (Rabies)',
-            pathogen: { type: 'Virus', name: 'Rabies lyssavirus', gram: 'RNA-Virus', shape: 'projektilförmig' },
+            pathogen: { type: 'Virus', name: '<i>Rabies lyssavirus</i>', gram: 'RNA-Virus', shape: 'projektilförmig' },
             epidemiology: {
               incidence: 'Weltweit 59.000 Todesfälle/Jahr (hauptsächlich Asien, Afrika)',
               risk_groups: ['Tierpfleger', 'Reisende in Endemiegebiete', 'Höhlenforscher (Fledermaus)'],
@@ -559,11 +526,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inokulation (Muskelgewebe)',
-                'Eintritt in periphere Nerven (NMJ)',
-                'Retrograder axonaler Transport zum ZNS',
-                'Replikation im Gehirn (Negri-Körperchen)',
-                'Zentrifugale Ausbreitung (Speicheldrüsen, Cornea)'
+                'Das Tollwutvirus wird durch den Biss eines infizierten Tieres (z.B. Hund, Fuchs, Fledermaus) über den Speichel in den Körper, typischerweise ins Muskelgewebe, übertragen.',
+                'Das Virus vermehrt sich zunächst in den Muskelzellen und dringt dann über die neuromuskuläre Endplatte (NMJ) in die peripheren Nerven ein.',
+                'In den Axonen der Nervenzellen wandert es durch retrograden (zum Zentrum gerichteten) Transport zum Zentralnervensystem (ZNS), also zu Rückenmark und Gehirn.',
+                'Im ZNS vermehrt sich das Virus schnell und verursacht eine schwere, tödliche Enzephalitis. In den infizierten Nervenzellen erscheinen charakteristische Einschlusskörperchen, die sogenannten Negri-Körperchen.',
+                'Vom Gehirn aus gelangt das Virus zentrifugal entlang der Nerven zu anderen Organen, am wichtigsten zu den Speicheldrüsen, was eine weitere Ausbreitung ermöglicht.'
               ],
               virulence_factors: ['Neurotropismus', 'Immunumgehung']
             },
@@ -571,11 +538,9 @@ Object.assign(window.diseases, {
               incubation: '1-3 Monate (Tage bis Jahre)',
               onset: 'Akut neurologisch nach Prodrom',
               symptoms: [
-                { name: 'Prodrom', description: 'Parästhesie/Schmerz an der Bissstelle (50-80%)', severity: 'moderate' },
-                { name: 'Enzephalitische Form (wütend)', description: '80%: Hydrophobie (50-80%), Aerophobie, Agitiertheit', severity: 'severe' },
-                { name: 'Paralytische Form (still)', description: '20%: Aufsteigende Lähmung (Guillain-Barré-ähnlich)', severity: 'severe' },
-                { name: 'Hydrophobie', description: 'Kehlkopfkrampf beim Trinken/Anblick von Wasser (pathognomonisch)', severity: 'severe' },
-                { name: 'Koma', description: 'Endstadium, Tod', severity: 'severe' }
+                { name: 'Prodromalstadium', description: 'Die ersten Anzeichen der Krankheit sind unspezifisch: Fieber, Kopfschmerzen, Unwohlsein. Charakteristisch können Schmerzen, Juckreiz oder Parästhesien an der Bissstelle sein.', severity: 'moderate' },
+                { name: 'Akutes neurologisches Stadium', description: 'Es gibt zwei Hauptformen. Die "wütende" (enzephalitische) Form (80%) ist durch Unruhe, Verwirrtheit, Hydrophobie (Wasserscheu aufgrund schmerzhafter Kehlkopfkrämpfe beim Schluckversuch) und Aerophobie (Angst vor Luftzug) gekennzeichnet. Die "stille" (paralytische) Form (20%) ist durch eine von der Bissstelle ausgehende, aufsteigende schlaffe Lähmung charakterisiert.', severity: 'severe' },
+                { name: 'Koma und Tod', description: 'Beide Formen münden schließlich in Koma und Tod durch Atem-/Kreislaufversagen, in der Regel innerhalb von 7-10 Tagen nach Symptombeginn.', severity: 'severe' }
               ],
               physical_exam: [
                 'Autonome Instabilität (Hypersalivation, Piloerektion)',
@@ -628,7 +593,7 @@ Object.assign(window.diseases, {
           {
             id: 'anthrax',
             name: 'Milzbrand (Anthrax)',
-            pathogen: { type: 'Bakterium', name: 'Bacillus anthracis', gram: 'Gram-positiv', shape: 'sporenbildendes Stäbchen' },
+            pathogen: { type: 'Bakterium', name: '<i>Bacillus anthracis</i>', gram: 'Gram-positiv', shape: 'sporenbildendes Stäbchen' },
             epidemiology: {
               incidence: 'Selten, Bioterrorismus-Risiko',
               risk_groups: ['Gerber', 'Viehzüchter', 'Laboranten'],
@@ -637,10 +602,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Sporeneintritt → Keimung',
-                'Toxinproduktion (Ödemtoxin, Letaltoxin)',
-                'Kapsel (Phagozytosehemmung)',
-                'Gewebenekrose, Ödem, systemische Toxizität'
+                'Die Sporen von Bacillus anthracis können im Boden jahrzehntelang überleben. Die Infektion erfolgt durch das Eindringen der Sporen: über die Haut (kutan), durch Einatmen (inhalativ) oder durch Verschlucken (gastrointestinal).',
+                'Im Körper werden die Sporen von Makrophagen aufgenommen, wo sie zu vegetativen Bakterien keimen und dann in die Lymphknoten gelangen.',
+                'Die Bakterien besitzen zwei Hauptvirulenzfaktoren: eine antiphagozytäre Kapsel, die sie vor dem Immunsystem schützt, und ein dreikomponentiges Exotoxin.',
+                'Die Komponenten des Anthrax-Toxins sind: das Protective Antigen (PA), das an die Zellen bindet, der Edema Factor (EF), der Ödeme verursacht, und der Lethal Factor (LF), der Zelltod und eine Störung der Zytokinantwort bewirkt.',
+                'Die Toxine führen zu massiver Gewebenekrose, Ödemen, Blutungen und systemischem Schock, was für die hohe Mortalität der Krankheit verantwortlich ist.'
               ],
               virulence_factors: ['Poly-D-Glutaminsäure-Kapsel', 'Protektives Antigen (PA)', 'Ödemfaktor (EF)', 'Letalfaktor (LF)']
             },
@@ -648,10 +614,9 @@ Object.assign(window.diseases, {
               incubation: 'Haut: 1-7 Tage; Inhalation: 1-60 Tage',
               onset: 'Formabhängig',
               symptoms: [
-                { name: 'Hautmilzbrand', description: '95% der natürlichen Fälle; Schmerzloser schwarzer Schorf (Eschar)', severity: 'moderate' },
-                { name: 'Lungenmilzbrand', description: 'Selten; Biphasisch: grippeähnlich → fulminante Mediastinitis/Schock', severity: 'severe' },
-                { name: 'Magen-Darm-Milzbrand', description: 'Selten; Bauchschmerzen, blutiger Durchfall, Aszites', severity: 'severe' },
-                { name: 'Meningitis', description: 'Hämorrhagische Meningitis (kann jede Form komplizieren)', severity: 'severe' }
+                { name: 'Hautmilzbrand (kutan) (95%)', description: 'An der Eintrittsstelle erscheint eine juckende Papel, die sich zu einer Blase und dann zu einem schmerzlosen Geschwür mit schwarzer Mitte (Eschar) entwickelt, das von einem charakteristischen, nicht-entzündlichen Ödem umgeben ist. Ohne Behandlung beträgt die Mortalität 20%.', severity: 'moderate' },
+                { name: 'Lungenmilzbrand (inhalativ)', description: 'Biphasischer Verlauf. Anfangs milde, grippeähnliche Symptome (Fieber, Husten). Nach 1-3 Tagen tritt eine plötzliche Verschlechterung ein: hohes Fieber, Atemnot, Schock. Im Thorax-CT ist eine charakteristische Mediastinalverbreiterung (hämorrhagische Mediastinitis) zu sehen. Ohne Behandlung fast immer tödlich.', severity: 'severe' },
+                { name: 'Magen-Darm-Milzbrand', description: 'Entwickelt sich nach dem Verzehr von infiziertem Fleisch. Verursacht Übelkeit, Erbrechen, blutigen Durchfall und starke Bauchschmerzen. Hohe Mortalität.', severity: 'severe' }
               ],
               physical_exam: [
                 'Maligne Pustel (schwarzer Schorf, ödematöser Hof)',
@@ -700,8 +665,58 @@ Object.assign(window.diseases, {
               mortality: 'Haut: <1% (behandelt), 20% (unbehandelt); Inhalation: >85% (unbehandelt), 45% (behandelt)',
               prognostic_scores: ['Keine'],
               factors: 'Inhalationsform, späte Behandlung, Meningitis'
-            }
-          }
-        ]
-      },
+            },
+          }, {
+              id: 'brucellosis',
+              name: 'Brucellose (Maltafieber)',
+              pathogen: { type: 'Bakterium', name: '<i>Brucella spp. (melitensis, abortus, suis)</i>', gram: 'Gram-negativ', shape: 'Kokkobazillus' },
+              epidemiology: {
+                incidence: 'Endemisch im Mittelmeerraum, Naher Osten',
+                risk_groups: ['Tierärzte', 'Hirten', 'Schlachthofarbeiter', 'Konsumenten von Rohmilchprodukten'],
+                seasonality: 'Frühling-Sommer',
+                transmission: 'Direkter Kontakt, Inhalation, unpasteurisierte Milchprodukte'
+              },
+              pathomechanism: {
+                steps: [
+                  'Eintritt: Bakterien dringen über verletzte Haut, Bindehaut, Atemwege oder den Magen-Darm-Trakt ein.',
+                  'Phagozytose: Makrophagen nehmen sie auf, aber die Bakterien überleben und vermehren sich intrazellulär.',
+                  'Ausbreitung: Infizierte Makrophagen wandern zu regionalen Lymphknoten und in den Blutkreislauf (Bakteriämie).',
+                  'Organbefall: Granulome bilden sich in retikuloendothelialen Organen (Leber, Milz, Knochenmark, Lymphknoten).'
+                ],
+                virulence_factors: ['LPS (glatt)', 'T4SS-Sekretionssystem', 'Intrazelluläres Überleben']
+              },
+              clinical: {
+                incubation: '2-4 Wochen (1 Woche bis Monate)',
+                onset: 'Schleichend oder plötzlich',
+                symptoms: [
+                  { name: 'Undulierendes Fieber', description: 'Wellenförmiger Fieberverlauf (morgens niedrig, nachmittags hoch) mit profusem, muffig riechendem Schweiß.', severity: 'moderate' },
+                  { name: 'Muskuloskelettal', description: 'Gelenkschmerzen (Arthralgie), Rückenschmerzen (Sakroiliitis), Muskelschmerzen.', severity: 'moderate' },
+                  { name: 'Allgemeinsymptome', description: 'Müdigkeit, Kopfschmerzen, Depression, Gewichtsverlust.', severity: 'mild' }
+                ],
+                physical_exam: ['Hepatomegalie', 'Splenomegalie', 'Lymphadenopathie', 'Klopfschmerz der Wirbelsäule'],
+                complications: ['Osteomyelitis (Wirbel)', 'Endokarditis', 'Neurobrucellose', 'Epididymoorchitis']
+              },
+              diagnostics: {
+                laboratory: [{ test: 'Blutbild', finding: 'Leukopenie, relative Lymphozytose', interpretation: '-' }, { test: 'Leberenzyme', finding: 'Leichte Erhöhung', interpretation: 'Granulomatöse Hepatitis' }],
+                imaging: [{ modality: 'MRT Wirbelsäule', finding: 'Spondylodiszitis', significance: 'Bei Rückenschmerzen' }],
+                microbiology: [
+                  { test: 'Blutkultur', finding: 'Brucella spp.', significance: 'Langsames Wachstum (bis zu 3-4 Wochen), Labor informieren!' },
+                  { test: 'Serologie (Wright)', finding: 'Titer ≥1:160 oder 4-facher Anstieg', significance: 'Standarddiagnose' }
+                ]
+              },
+              differential: [
+                { disease: 'Typhus', distinguishing: 'Roseolen, Bradykardie' },
+                { disease: 'Tuberkulose', distinguishing: 'Atemwegssymptome, Sputum' },
+                { disease: 'Malaria', distinguishing: 'Periodizität, Reise' }
+              ],
+              therapy: {
+                empirical: { outpatient: [{ drug: 'Doxycyclin + Rifampicin', dose: '100mg 2x/Tag + 600-900mg 1x/Tag p.o.', duration: '6 Wochen', note: 'Standardtherapie' }] },
+                targeted: 'Doxycyclin + Rifampicin (6 Wochen). Alternative: Doxycyclin + Streptomycin (2-3 Wochen). Neurobrucellose/Endokarditis: Doxy + Rif + Ceftriaxon/Cotrimoxazol (monatelang).',
+                supportive: ['Symptomatische Behandlung'],
+                prevention: ['Pasteurisierung von Milch', 'Schutzausrüstung', 'Tierimpfung']
+              },
+              prognosis: { mortality: '<2% (hauptsächlich durch Endokarditis)', prognostic_scores: [], factors: 'Komplikationen, Rezidiv häufig' }
+                       }
+                     ]
+                   },
 });

@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
           {
             id: 'leptospirosis',
             name: 'Leptospirosis',
-            pathogen: { type: 'Spirochete', name: 'Leptospira interrogans', gram: 'Gram-negative', shape: 'spiral, hooked' },
+            pathogen: { type: 'Spirochete', name: '<i>Leptospira interrogans</i>', gram: 'Gram-negative', shape: 'spiral, hooked' },
             epidemiology: {
               incidence: 'Tropical/subtropical: 10-100/100,000; Temperate: 0.1-1/100,000',
               risk_groups: ['Agricultural workers', 'Veterinarians', 'Slaughterhouse workers', 'Sewer workers', 'Participants in water sports/extreme sports', 'Soldiers (jungle environment)'],
@@ -16,12 +16,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Leptospira enters through damaged skin/mucosa',
-                'Rapid hematogenous spread to all organs',
-                'Endothelial damage → increased vascular permeability',
-                'Liver, kidney, lung involvement',
-                'Weil\'s disease: severe form - liver and kidney failure, hemorrhages',
-                'Immune-mediated inflammation (T-cell activation)'
+                'Leptospira bacteria survive in water or soil contaminated with the urine of infected animals (especially rodents). The pathogen enters the body through broken skin or mucous membranes (eyes, nose, mouth).',
+                'After entry, the bacteria rapidly enter the bloodstream (hematogenous spread) and reach almost all organs, particularly the liver, kidneys, lungs, and central nervous system.',
+                'The pathogen damages the endothelial cells of blood vessels, leading to increased vascular permeability, fluid leakage, and hemorrhages.',
+                'The severe form, Weil\'s disease, is characterized by the triad of liver and kidney failure, jaundice (icterus), and severe hemorrhagic complications (e.g., pulmonary hemorrhage).',
+                'Some clinical symptoms are caused by the host\'s intense, immune-mediated inflammatory response rather than the direct toxic effect of the bacterium.'
               ],
               virulence_factors: ['Outer membrane proteins (LipL32)', 'Flagellum (motility)', 'Hemolysins', 'Lipopolysaccharide', 'Adhesins']
             },
@@ -29,12 +28,9 @@ Object.assign(window.diseases, {
               incubation: '2-30 days (average 7-12 days)',
               onset: 'Biphasic course',
               symptoms: [
-                { name: 'Sudden fever', description: 'Present in >95% (39-40°C), with chills', severity: 'severe' },
-                { name: 'Headache', description: '>95%, severe, frontal/retrobulbar', severity: 'severe' },
-                { name: 'Myalgia', description: '>80%, mainly calf and lumbar region (characteristic!)', severity: 'severe' },
-                { name: 'Conjunctival suffusion', description: '30-40%, but very specific (without jaundice)', severity: 'moderate' },
-                { name: 'Jaundice', description: '5-10% (Weil\'s disease)', severity: 'severe' },
-                { name: 'Hemorrhagic manifestations', description: '30-40% in severe form (pulmonary hemorrhage, petechiae)', severity: 'severe' }
+                { name: 'Acute/Septic Phase (First Week)', description: 'Sudden onset of high fever with chills, intense headache, and characteristic, excruciating muscle pain, especially in the calves and lower back. Conjunctival suffusion (redness of the eyes without purulent discharge) is common.', severity: 'severe' },
+                { name: 'Immune Phase (Second Week)', description: 'A brief improvement may follow the first phase, then symptoms return due to the immune response. This is when aseptic meningitis, uveitis, and organ manifestations can appear.', severity: 'moderate' },
+                { name: 'Weil\'s Disease (Severe Form)', description: 'Develops in 5-10% of patients. It is characterized by jaundice, renal failure (acute tubular necrosis), and hemorrhagic complications like pulmonary hemorrhage, which has a high mortality rate.', severity: 'severe' }
               ],
               physical_exam: [
                 'High fever, tachycardia',
@@ -102,7 +98,7 @@ Object.assign(window.diseases, {
           {
             id: 'hantavirus',
             name: 'Hantavirus Infection',
-            pathogen: { type: 'Virus', name: 'Hantavirus (multiple serotypes)', gram: 'Negative-sense RNA virus, Bunyaviridae', shape: 'spherical' },
+            pathogen: { type: 'Virus', name: '<i>Hantavirus</i> (multiple serotypes)', gram: 'Negative-sense RNA virus, Bunyaviridae', shape: 'spherical' },
             epidemiology: {
               incidence: 'Europe: HFRS 10,000+ cases/year; USA: HPS <50 cases/year',
               risk_groups: ['Agricultural workers', 'Foresters', 'Soldiers', 'Campers/hikers', 'Occupations with rodent contact', 'Cleaning poorly ventilated buildings'],
@@ -111,12 +107,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Hantavirus inhalation (rodent excreta dust)',
-                'Virus infects endothelial cells (not cytopathic)',
-                'Immune-mediated vascular permeability increase',
-                'HFRS: kidney involvement (capillary leak syndrome)',
-                'HPS: pulmonary capillary leak → pulmonary edema, cardiogenic shock',
-                'Thrombocytopenia and coagulation disorders'
+                'Infection occurs through inhalation of aerosolized dust contaminated with dried urine, feces, or saliva of rodents (e.g., bank vole). Person-to-person transmission does not occur.',
+                'The virus enters the bloodstream via the lungs and specifically infects endothelial cells lining the blood vessels, without causing direct cell death.',
+                'The main damage is caused by the body\'s excessive immune response. Activated T-cells and cytokines (TNF-alpha) loosen the junctions between endothelial cells, leading to capillary leak.',
+                'HFRS (Hemorrhagic Fever with Renal Syndrome): The capillary leak primarily occurs in the kidneys, leading to acute renal failure, proteinuria, and hemorrhages.',
+                'HPS (Hantavirus Pulmonary Syndrome): The leak is dominant in the lungs, leading to rapidly progressing, non-cardiogenic pulmonary edema and cardiogenic shock. Thrombocytopenia and hemoconcentration are key laboratory signs.'
               ],
               virulence_factors: ['Nucleocapsid protein (immune response)', 'Glycoprotein Gn/Gc (cell entry)', 'Endothelial tropism', 'Immunomodulation']
             },
@@ -124,13 +119,9 @@ Object.assign(window.diseases, {
               incubation: '1-8 weeks (average 2-4 weeks)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Fever', description: '100%, sudden onset (39-41°C)', severity: 'severe' },
-                { name: 'Myalgia', description: '85-100% (back, thighs)', severity: 'moderate' },
-                { name: 'Headache', description: '>90%', severity: 'severe' },
-                { name: 'Abdominal pain', description: '30-50% (more common in HFRS)', severity: 'severe' },
-                { name: 'Vision problems', description: '20-30% (HFRS - transient myopia)', severity: 'moderate' },
-                { name: 'HPS symptoms', description: 'Cough, dyspnea (>90% at end of prodrome)', severity: 'severe' },
-                { name: 'HFRS symptoms', description: 'Oliguria/anuria, flank pain', severity: 'severe' }
+                { name: 'Prodromal Phase (3-5 days)', description: 'Sudden onset of high fever, chills, severe headache, and muscle pain (especially back and thighs). Facial flushing and conjunctival injection are common.', severity: 'severe' },
+                { name: 'HFRS (Renal Involvement)', description: 'The febrile phase is followed by hypotension, then oliguria/anuria. Severe flank pain, massive proteinuria, and thrombocytopenia are characteristic. Polyuria occurs during the recovery phase.', severity: 'severe' },
+                { name: 'HPS (Pulmonary Involvement)', description: 'After the prodromal phase, a rapidly progressing cough and shortness of breath develop, leading to severe, non-cardiogenic pulmonary edema and cardiogenic shock within hours. High mortality rate.', severity: 'severe' }
               ],
               physical_exam: [
                 'High fever',
@@ -196,96 +187,80 @@ Object.assign(window.diseases, {
           {
             id: 'lyme',
             name: 'Lyme Disease (Borreliosis)',
-            pathogen: { type: 'Spirochete', name: 'Borrelia burgdorferi sensu lato', gram: 'Gram-negative', shape: 'spiral' },
+            pathogen: { type: 'Spirochaete', name: '<i>Borrelia burgdorferi sensu lato</i>', gram: 'Gram-negative', shape: 'spiral' },
             epidemiology: {
-              incidence: 'USA: 476,000 cases/year; Europe: 232,000 cases/year',
-              risk_groups: ['People frequenting forests', 'Hikers, campers', 'Foresters, hunters', 'Gardeners', 'Children (summer play)'],
-              seasonality: 'April-October (tick activity)',
-              transmission: 'Ixodes tick bite (>24-36 hours attached)'
+              incidence: 'USA: 476,000 cases/year; Europe: 232,000 cases/year. Common and endemic in Hungary.',
+              risk_groups: ['Visitors to wooded areas', 'Hikers, campers', 'Foresters, hunters', 'Gardeners', 'Children'],
+              seasonality: 'From spring to autumn (tick activity)',
+              transmission: 'Ixodes ricinus tick bite (usually >24 hours of feeding required)'
             },
             pathomechanism: {
               steps: [
-                'Tick bite → Borrelia inoculation',
-                'Local spread in skin → erythema migrans',
-                'Hematogenous dissemination (days-weeks)',
-                'Early disseminated: heart, nervous system, joints',
-                'Late: chronic arthritis, neuroborreliosis',
-                'Spirochete antigens may persist (immune response continues)'
+                'During the feeding of an infected Ixodes tick, Borrelia spirochetes are transmitted from the tick\'s salivary glands into the host\'s skin (usually requires >24 hours of attachment).',
+                'The bacteria replicate locally in the skin and spread centrifugally, creating the characteristic Erythema migrans (EM) rash.',
+                'The pathogens disseminate via the bloodstream (hematogenous) and lymphatic system to distant organs (heart, nervous system, joints, skin).',
+                'The bacteria can evade the immune system (antigenic variation, complement inhibition), allowing for persistence and the development of chronic inflammation.',
+                'Tissue damage is primarily caused not by toxins but by the host\'s inflammatory response (cytokines, immune complexes).'
               ],
-              virulence_factors: ['Outer surface proteins (OspA, OspC)', 'VlsE (antigenic variation)', 'Complement resistance', 'Extracellular matrix adherence']
+              virulence_factors: ['Osp (Outer surface proteins)', 'VlsE (antigenic variation)', 'Motility']
             },
             clinical: {
-              incubation: '3-30 days (average 7 days)',
+              incubation: 'EM: 3-30 days (average 7-14 days)',
               onset: 'Staged',
               symptoms: [
-                { name: 'Erythema migrans (EM)', description: 'Appears in 70-80% (bullseye or homogeneous)', severity: 'moderate' },
-                { name: 'General symptoms', description: 'Fever, fatigue, headache (common in early phase)', severity: 'mild' },
-                { name: 'Neuroborreliosis', description: '10-15% (in untreated): Facial palsy, meningitis, radiculopathy', severity: 'severe' },
-                { name: 'Lyme Carditis', description: '1-5% (in untreated): AV block', severity: 'severe' },
-                { name: 'Lyme Arthritis', description: '60% (in untreated, USA): Knee joint swelling', severity: 'moderate' },
-                { name: 'Borrelia lymphocytoma', description: 'Rare (<1%), earlobe/nipple (Europe)', severity: 'mild' }
+                { name: 'Early Localized Stage (Erythema Migrans)', description: 'A painless, slowly expanding (>5 cm) rash at the site of the tick bite, often target-like (but can be uniform). This is the most common symptom and allows for a clinical diagnosis. It may be accompanied by general flu-like symptoms (fever, headache, myalgia).', severity: 'moderate' },
+                { name: 'Early Disseminated Stage (Organs)', description: 'Occurs weeks to months after bacterial spread. Nervous system: Bannwarth syndrome (nocturnal radicular pain, facial palsy, meningitis). Heart: Lyme carditis (AV block, arrhythmia). Skin: Lymphocytoma (bluish-red nodule).', severity: 'severe' },
+                { name: 'Late Stage (Chronic)', description: 'Months to years later. Lyme arthritis: intermittent swelling and pain of large joints (especially the knee). Skin: Acrodermatitis chronica atrophicans (ACA) - livid discoloration and atrophy of the extensor surfaces of the limbs.', severity: 'moderate' }
               ],
               physical_exam: [
-                'Early localized: EM (diameter 5-70cm, often central clearance)',
-                'Multiple EM (disseminated)',
-                'Lymphocytoma (earlobe, breast)',
-                'Facial palsy (uni/bilateral)',
-                'Meningeal signs',
-                'Monoarthritis/oligoarthritis (knee)',
-                'Skin atrophy (ACA)'
+                'Erythema migrans: >5 cm in diameter, expanding erythema',
+                'Facial paresis (can be bilateral)',
+                'Meningeal signs (mild)',
+                'Joint swelling (knee)',
+                'ACA: cigarette paper-like skin'
               ],
-              complications: ['Chronic Lyme arthritis', 'Post-Lyme syndrome', 'Encephalomyelitis', 'Keratitis', 'Chronic fatigue']
+              complications: ['Chronic arthritis', 'Post-Lyme disease syndrome (subjective complaints)', 'Chronic neuroborreliosis']
             },
             diagnostics: {
               laboratory: [
-                { test: 'Two-tier serology: ELISA → Western blot', finding: 'IgM (2-4 weeks), IgG (4-6 weeks)', interpretation: 'Gold standard, but can be negative in early EM!' },
-                { test: 'CSF', finding: 'Lymphocytic pleocytosis, ↑protein, intrathecal Ab production', interpretation: 'Neuroborreliosis' },
-                { test: 'Joint fluid', finding: 'Inflammatory (WBC >10,000), PCR+', interpretation: 'Lyme arthritis' }
+                { test: 'Two-tier serology (ELISA + Western blot)', finding: 'IgM (2-4 weeks), IgG (4-6 weeks)', interpretation: 'Two-tier! NOT recommended in EM stage (clinical dx, may still be negative). Indicated in disseminated/late stages.' },
+                { test: 'CSF', finding: 'Lymphocytic pleocytosis, intrathecal antibody synthesis (AI > 1.5)', interpretation: 'Confirmation of neuroborreliosis' }
               ],
               imaging: [
-                { modality: 'MRI brain', finding: 'White matter lesions (neuroborreliosis)', significance: 'Rare, differential diagnosis' },
-                { modality: 'ECG', finding: 'AV block (1-3 degree)', significance: 'Lyme carditis' }
+                { modality: 'ECG', finding: 'AV block', significance: 'In case of suspected carditis' }
               ],
               microbiology: [
-                { test: 'Serology (ELISA + Western blot)', finding: 'IgM/IgG positive', significance: 'Two-tier algorithm! False positives common' },
-                { test: 'PCR (joint fluid, CSF)', finding: 'Borrelia DNA', significance: 'Low sensitivity' },
-                { test: 'Culture', finding: 'Not routine (takes weeks)', significance: 'Only in special cases' }
+                { test: 'Tick testing', finding: 'NOT recommended', significance: 'No clinical relevance for treatment' },
+                { test: 'PCR', finding: 'Borrelia DNA', significance: 'May be useful from synovial fluid or skin biopsy (ACA). Low sensitivity from blood/CSF.' }
               ]
             },
             differential: [
-              { disease: 'Tinea corporis (ringworm)', distinguishing: 'Does not expand, scaly, KOH microscopy' },
-              { disease: 'Southern tick-associated rash illness (STARI)', distinguishing: 'Lone Star tick, serology negative' },
-              { disease: 'Reactive arthritis', distinguishing: 'GI/GU infection, HLA-B27' },
-              { disease: 'Rheumatoid arthritis', distinguishing: 'RF/anti-CCP positive, symmetrical' },
-              { disease: 'MS', distinguishing: 'MRI pattern, oligoclonal bands' }
+              { disease: 'Erysipelas/Cellulitis', distinguishing: 'Fever, pain, rapid spread, leukocytosis' },
+              { disease: 'Tinea corporis', distinguishing: 'Scaling border, itching, KOH positive' },
+              { disease: 'Other arthritis', distinguishing: 'Septic (fever, pus), RA (symmetrical, serology)' },
+              { disease: 'Multiple sclerosis', distinguishing: 'MRI, CSF oligoclonal bands' }
             ],
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Doxycycline', dose: '100 mg PO twice daily', duration: '10-14 days (EM), 14-21 days (arthritis)', note: 'First choice adult/child >8y' },
-                  { drug: 'Amoxicillin', dose: '500 mg PO 3 times daily', duration: '14-21 days', note: 'Pregnant, child <8y' },
-                  { drug: 'Cefuroxime axetil', dose: '500 mg PO twice daily', duration: '14-21 days', note: 'Alternative' }
+                  { drug: 'Doxycycline', dose: '100 mg BID PO', duration: '14-21 days (EM: 10-14 days)', note: 'First choice (EM, Neuroborreliosis, Carditis, Arthritis, ACA). Can also be given to children.' },
+                  { drug: 'Amoxicillin', dose: '500-1000 mg TID PO', duration: '14-21 days', note: 'Alternative (EM, Arthritis, ACA, pregnancy)' },
+                  { drug: 'Cefuroxime axetil', dose: '500 mg BID PO', duration: '14-21 days', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Ceftriaxone', dose: '2 g IV once daily', duration: '14-28 days', note: 'Neuroborreliosis, Lyme carditis (AV block >1°)' },
-                  { drug: 'Penicillin G', dose: '5 million IU IV every 6 hours', duration: '14-28 days', note: 'Alternative neuroborreliosis' }
-                ],
-                icu: [
-                  { drug: 'Ceftriaxone', dose: '2 g IV once daily', duration: '28 days', note: 'Severe neuroborreliosis' },
-                  { drug: 'Pacemaker (temporary)', dose: 'Complete AV block', duration: '', note: 'Carditis' }
+                  { drug: 'Ceftriaxone', dose: '2 g QD IV', duration: '14-28 days', note: 'Severe neuroborreliosis (e.g., encephalitis), carditis (high-grade block), refractory arthritis' }
                 ]
               },
-              targeted: 'Early: Doxycycline; Neuroborreliosis/Carditis: Ceftriaxone IV',
-              supportive: ['Jarisch-Herxheimer reaction possible', 'NSAIDs (arthritis)', 'Temporary pacemaker (complete block)'],
-              prevention: ['Protective clothing in woods', 'Repellents (DEET)', 'Tick removal <24 hours', 'Single dose doxycycline (200mg) <72 hours after bite (in endemic area)', 'No effective vaccine']
+              targeted: 'Early localized (EM): Doxycycline 10 days. Neuroborreliosis (Bannwarth): Doxycycline PO (as effective as IV Ceftriaxone!) 14 days. Arthritis: Doxycycline 28 days.',
+              supportive: ['Symptomatic treatment', 'Physiotherapy'],
+              prevention: ['Prompt tick removal', 'Protective clothing', 'Prophylactic antibiotics after a bite are NOT recommended (Hungarian guideline)']
             },
             prognosis: {
-              mortality: '<0.001% (Lyme carditis rare fatality)',
-              prognostic_scores: ['None specific'],
-              factors: 'Early treatment, stage, organ involvement, neurological/cardiac complication'
+              mortality: 'Very low',
+              prognostic_scores: ['None'],
+              factors: 'Early recognition and treatment'
             }
-          },
-          {
+          },          {
             id: 'tularemia',
             name: 'Tularemia (Rabbit Fever)',
             pathogen: { type: 'Bacterium', name: 'Francisella tularensis', gram: 'Gram-negative', shape: 'coccobacillus, intracellular' },
@@ -297,12 +272,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Francisella enters through skin/mucosa/inhalation',
-                'Phagocytosis by macrophages/dendritic cells',
-                'Intracellular replication (escape from phagosome)',
-                'Regional lymph nodes → necrotizing granuloma',
-                'Lymphadenitis, typhoidal spread',
-                'High infectivity (<10 organisms sufficient)'
+                'Francisella tularensis is a highly infectious bacterium (<10 organisms are sufficient), which enters the body via tick bites, direct contact with infected animals (e.g., rabbits), or inhalation of contaminated dust.',
+                'At the site of entry, the bacterium is phagocytosed by macrophages, but it can escape from the phagosome into the cytoplasm, where it multiplies.',
+                'Infected macrophages migrate to regional lymph nodes, where the bacterium continues to replicate, causing painful, necrotizing granulomas and lymphadenitis.',
+                'Different clinical forms develop depending on the portal of entry (e.g., ulceroglandular, pulmonary).',
+                'The bacteria can spread from the lymphatic system into the bloodstream, causing systemic infection (typhoidal form) and involvement of distant organs (lungs, liver, spleen).'
               ],
               virulence_factors: ['Capsule', 'Phagosome escape (iglA-D locus)', 'LPS (toxic)', 'Siderophores', 'Intracellular survival']
             },
@@ -310,12 +284,10 @@ Object.assign(window.diseases, {
               incubation: '3-5 days (1-14 days)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Fever', description: '>90%, sudden onset', severity: 'severe' },
-                { name: 'Ulceroglandular', description: '75-85%: Painful ulcer + regional lymph node', severity: 'moderate' },
-                { name: 'Glandular', description: '5-10%: Only lymph node swelling (without ulcer)', severity: 'moderate' },
-                { name: 'Typhoidal', description: '5-15%: Systemic febrile illness, without localization', severity: 'severe' },
-                { name: 'Pneumonia', description: '30-80% of typhoidal cases (or primary inhalation)', severity: 'severe' },
-                { name: 'Oculoglandular', description: '1-2%: Conjunctivitis + lymph node', severity: 'moderate' }
+                { name: 'Ulceroglandular Form (75-85%)', description: 'The most common form. A painful ulcer with a black eschar develops at the portal of entry (e.g., bite site), accompanied by painful swelling of regional lymph nodes (bubo).', severity: 'moderate' },
+                { name: 'Glandular Form (5-10%)', description: 'Similar to the ulceroglandular form, but the primary skin ulcer is absent; only painful lymph node swelling is present.', severity: 'moderate' },
+                { name: 'Typhoidal Form (5-15%)', description: 'A severe, systemic illness with high fever, chills, and headache, but without a primary site of infection (ulcer, lymph node). Often associated with pneumonia.', severity: 'severe' },
+                { name: 'Other Forms', description: 'Oculoglandular (conjunctivitis and lymph node swelling if it enters the eye), Oropharyngeal (tonsillitis if ingested), Pulmonary (atypical pneumonia if inhaled).', severity: 'moderate' }
               ],
               physical_exam: [
                 'Ulceroglandular (75%): skin ulcer (black eschar) + tender lymph node',
@@ -380,7 +352,7 @@ Object.assign(window.diseases, {
           {
             id: 'cat_scratch',
             name: 'Cat-Scratch Disease',
-            pathogen: { type: 'Bacterium', name: 'Bartonella henselae', gram: 'Gram-negative', shape: 'rod, intracellular' },
+            pathogen: { type: 'Bacterium', name: '<i>Bartonella henselae</i>', gram: 'Gram-negative', shape: 'rod, intracellular' },
             epidemiology: {
               incidence: 'USA: ~12,000 cases/year (estimate), underdiagnosed',
               risk_groups: ['Children <10 years', 'Cat contact', 'Flea exposure', 'Immunocompromised (HIV)', 'Veterinarians, shelter workers'],
@@ -389,12 +361,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Bartonella inoculation with cat saliva (scratch/bite)',
-                'Local inoculation papule/pustule',
-                'Regional lymph node invasion',
-                'Granulomatous lymphadenitis (with stellate necrosis)',
-                'Rare dissemination (immunosuppressed): bacillary angiomatosis, endocarditis',
-                'Immune response usually eradicates (weeks-months)'
+                'The bacterium Bartonella henselae is most commonly transmitted to human skin by a scratch or bite from an infected (but asymptomatic) cat, especially a kitten. Cats infect each other via fleas.',
+                'A primary lesion, a red papule or pustule, develops at the site of entry within 3-10 days.',
+                'The bacteria migrate via the lymphatic vessels to the regional lymph nodes (e.g., axillary, cervical).',
+                'In the lymph nodes, the pathogen creates characteristic, stellate (star-shaped) necrotizing granulomas, causing painful enlargement of the lymph nodes.',
+                'In immunocompetent individuals, the infection is usually self-limiting. In the immunosuppressed (e.g., HIV), the bacterium can disseminate and cause systemic disease, such as bacillary angiomatosis (vascular proliferation) or peliosis hepatis.'
               ],
               virulence_factors: ['Flagellum', 'Pili', 'Adhesins', 'BadA autotransporter', 'Intracellular survival (erythrocytes, endothelium)']
             },
@@ -402,12 +373,9 @@ Object.assign(window.diseases, {
               incubation: '3-10 days (papule), 1-3 weeks (lymphadenitis)',
               onset: 'Subacute',
               symptoms: [
-                { name: 'Lymphadenopathy', description: '85-90%: Regional, painful lymph node swelling', severity: 'moderate' },
-                { name: 'Inoculation lesion', description: '25-60%: Papule/pustule at scratch site', severity: 'mild' },
-                { name: 'Fever', description: '30-50%, usually mild', severity: 'mild' },
-                { name: 'Systemic symptoms', description: 'Fatigue, malaise (50%)', severity: 'mild' },
-                { name: 'Parinaud syndrome', description: '2-8%: Conjunctivitis + preauricular node', severity: 'moderate' },
-                { name: 'Neuroretinitis', description: '1-2%: Unilateral vision loss', severity: 'severe' }
+                { name: 'Typical Form', description: 'Following a primary papule at the scratch site, unilateral, painful regional lymph node swelling develops after 1-3 weeks (most commonly in the axilla or neck). It may be accompanied by mild fever and malaise. The lymph node may suppurate.', severity: 'moderate' },
+                { name: 'Parinaud Oculoglandular Syndrome', description: 'The pathogen enters through the conjunctiva, causing unilateral conjunctivitis and swelling of the preauricular lymph node.', severity: 'moderate' },
+                { name: 'Atypical/Disseminated Forms', description: 'Less commonly, especially in the immunosuppressed, the infection can disseminate. It can cause neuroretinitis (vision loss), encephalitis, hepatosplenic disease (liver and spleen abscesses), or bacillary angiomatosis (vascular tumors on the skin and internal organs).', severity: 'severe' }
               ],
               physical_exam: [
                 'Papule/pustule at scratch site (heals, scars)',
@@ -473,7 +441,7 @@ Object.assign(window.diseases, {
           {
             id: 'q_fever_zoo',
             name: 'Q Fever',
-            pathogen: { type: 'Bacterium', name: 'Coxiella burnetii', gram: 'Gram-negative (intracellular)', shape: 'coccobacillus' },
+            pathogen: { type: 'Bacterium', name: '<i>Coxiella burnetii</i>', gram: 'Gram-negative (intracellular)', shape: 'coccobacillus' },
             epidemiology: {
               incidence: 'Zoonosis, occupational disease',
               risk_groups: ['Livestock farmers', 'Slaughterhouse workers', 'Veterinarians'],
@@ -482,11 +450,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhalation (a single bacterium can infect!)',
-                'Infection of alveolar macrophages',
-                'Replication in acidic phagosomes',
-                'Hematogenous spread',
-                'Granuloma formation (doughnut granuloma)'
+                'Coxiella burnetii is a highly infectious, obligate intracellular bacterium. Infection most commonly occurs by inhaling aerosol containing spore-like particles from the birthing products of infected animals (sheep, goats, cattle).',
+                'After entering the lungs, the pathogen is phagocytosed by alveolar macrophages.',
+                'The bacterium not only survives but also replicates within the acidic phagosomes of macrophages, creating a specialized vacuole.',
+                'Upon release from infected cells, the pathogen spreads via the bloodstream (hematogenous spread) to various parts of the body, mainly the liver and bone marrow.',
+                'The body attempts to contain the infection by forming characteristic "doughnut-shaped" granulomas. The disease can be acute or chronic (endocarditis).'
               ],
               virulence_factors: ['Spore-like form (resistant)', 'LPS phase variation']
             },
@@ -494,10 +462,8 @@ Object.assign(window.diseases, {
               incubation: '2-3 weeks',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Acute Q fever', description: 'Flu-like: Fever, fatigue, severe headache (>90% in symptomatic)', severity: 'severe' },
-                { name: 'Hepatitis', description: '60-75% (granulomatous), hepatomegaly', severity: 'moderate' },
-                { name: 'Pneumonia', description: '30-50% (atypical), often mild cough', severity: 'moderate' },
-                { name: 'Chronic Q fever', description: '<5% after acute case; Endocarditis (60-70% in chronic)', severity: 'severe' }
+                { name: 'Acute Q Fever', description: 'About 60% of cases are asymptomatic. The symptomatic form presents with a sudden onset of high fever, severe retro-orbital headache, and flu-like symptoms. Atypical pneumonia (mild cough) and granulomatous hepatitis (elevated liver enzymes) are common.', severity: 'moderate' },
+                { name: 'Chronic Q Fever', description: 'Develops months to years after the acute infection, mainly in patients with pre-existing heart valve defects or immunosuppression. The most common manifestation is culture-negative endocarditis. Other forms include vascular (aneurysm) and bone infections.', severity: 'severe' }
               ],
               physical_exam: [
                 'Hepatomegaly',
@@ -550,7 +516,7 @@ Object.assign(window.diseases, {
           {
             id: 'rabies',
             name: 'Rabies',
-            pathogen: { type: 'Virus', name: 'Rabies lyssavirus', gram: 'RNA virus', shape: 'bullet' },
+            pathogen: { type: 'Virus', name: '<i>Rabies lyssavirus</i>', gram: 'RNA virus', shape: 'bullet' },
             epidemiology: {
               incidence: 'Worldwide 59,000 deaths/year (mainly Asia, Africa)',
               risk_groups: ['Animal handlers', 'Travelers to endemic areas', 'Spelunkers (bat)'],
@@ -559,11 +525,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inoculation (muscle tissue)',
-                'Entry into peripheral nerves (NMJ)',
-                'Retrograde axonal transport to CNS',
-                'Replication in brain (Negri bodies)',
-                'Centrifugal spread (salivary glands, cornea)'
+                'The rabies virus is transmitted through the saliva of an infected animal (e.g., dog, fox, bat) via a bite, typically into muscle tissue.',
+                'The virus initially replicates in muscle cells, then enters peripheral nerves at the neuromuscular junction (NMJ).',
+                'It travels via retrograde axonal transport within nerve cells towards the central nervous system (CNS), i.e., the spinal cord and brain.',
+                'In the CNS, the virus replicates rapidly, causing severe, fatal encephalitis. Characteristic inclusions, known as Negri bodies, appear in infected nerve cells.',
+                'From the brain, the virus spreads centrifugally along nerves to other organs, most importantly the salivary glands, which allows for further transmission.'
               ],
               virulence_factors: ['Neurotropism', 'Immune evasion']
             },
@@ -571,11 +537,9 @@ Object.assign(window.diseases, {
               incubation: '1-3 months (days to years)',
               onset: 'Acute neurological after prodrome',
               symptoms: [
-                { name: 'Prodrome', description: 'Paresthesia/pain at bite site (50-80%)', severity: 'moderate' },
-                { name: 'Furious (Encephalitic) form', description: '80%: Hydrophobia (50-80%), aerophobia, agitation', severity: 'severe' },
-                { name: 'Paralytic (Dumb) form', description: '20%: Ascending paralysis (Guillain-Barré like)', severity: 'severe' },
-                { name: 'Hydrophobia', description: 'Laryngeal spasm on drinking/seeing water (pathognomonic)', severity: 'severe' },
-                { name: 'Coma', description: 'End stage, death', severity: 'severe' }
+                { name: 'Prodromal Stage', description: 'The first signs are non-specific: fever, headache, malaise. Pain, itching, or paresthesia at the bite site can be characteristic.', severity: 'moderate' },
+                { name: 'Acute Neurological Stage', description: 'Two main forms exist. The "furious" (encephalitic) form (80%) involves agitation, confusion, hydrophobia (fear of water due to painful laryngeal spasms on attempting to swallow), and aerophobia (fear of drafts). The "dumb" (paralytic) form (20%) is characterized by ascending flaccid paralysis starting from the bite site.', severity: 'severe' },
+                { name: 'Coma and Death', description: 'Both forms ultimately progress to coma and death from respiratory/circulatory failure, usually within 7-10 days of symptom onset.', severity: 'severe' }
               ],
               physical_exam: [
                 'Autonomic instability (hypersalivation, piloerection)',
@@ -628,7 +592,7 @@ Object.assign(window.diseases, {
           {
             id: 'anthrax',
             name: 'Anthrax',
-            pathogen: { type: 'Bacterium', name: 'Bacillus anthracis', gram: 'Gram-positive', shape: 'spore-forming rod' },
+            pathogen: { type: 'Bacterium', name: '<i>Bacillus anthracis</i>', gram: 'Gram-positive', shape: 'spore-forming rod' },
             epidemiology: {
               incidence: 'Rare, bioterrorism risk',
               risk_groups: ['Tanners', 'Livestock farmers', 'Lab workers'],
@@ -637,10 +601,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Spore entry → germination',
-                'Toxin production (Edema toxin, Lethal toxin)',
-                'Capsule (phagocytosis inhibition)',
-                'Tissue necrosis, edema, systemic toxicity'
+                'Bacillus anthracis spores can survive in the soil for decades. Infection occurs through entry of the spores: via the skin (cutaneous), inhalation, or ingestion (gastrointestinal).',
+                'In the body, spores are taken up by macrophages, where they germinate into vegetative bacteria and then travel to the lymph nodes.',
+                'The bacteria have two main virulence factors: an antiphagocytic capsule that protects them from the immune system, and a three-component exotoxin.',
+                'The components of the anthrax toxin are: Protective Antigen (PA), which binds to cells; Edema Factor (EF), which causes edema; and Lethal Factor (LF), which causes cell death and disrupts the cytokine response.',
+                'The toxins induce massive tissue necrosis, edema, hemorrhage, and systemic shock, which is responsible for the high mortality of the disease.'
               ],
               virulence_factors: ['Poly-D-glutamic acid capsule', 'Protective Antigen (PA)', 'Edema Factor (EF)', 'Lethal Factor (LF)']
             },
@@ -648,10 +613,9 @@ Object.assign(window.diseases, {
               incubation: 'Skin: 1-7 days; Inhalational: 1-60 days',
               onset: 'Form dependent',
               symptoms: [
-                { name: 'Cutaneous anthrax', description: '95% of natural cases; Painless black eschar', severity: 'moderate' },
-                { name: 'Inhalational anthrax', description: 'Rare; Biphasic: flu-like → fulminant mediastinitis/shock', severity: 'severe' },
-                { name: 'GI anthrax', description: 'Rare; Abdominal pain, bloody diarrhea, ascites', severity: 'severe' },
-                { name: 'Meningitis', description: 'Hemorrhagic meningitis (can complicate any form)', severity: 'severe' }
+                { name: 'Cutaneous Anthrax (95%)', description: 'An itchy papule appears at the site of entry, which develops into a vesicle and then a painless ulcer with a black center (eschar), surrounded by characteristic non-inflammatory edema. Without treatment, mortality is 20%.', severity: 'moderate' },
+                { name: 'Inhalational (Pulmonary) Anthrax', description: 'Has a biphasic course. Initially, mild, flu-like symptoms (fever, cough). After 1-3 days, a sudden deterioration occurs: high fever, shortness of breath, shock. A characteristic finding on chest CT is mediastinal widening (hemorrhagic mediastinitis). Almost always fatal without treatment.', severity: 'severe' },
+                { name: 'Gastrointestinal Anthrax', description: 'Develops after consuming infected meat. It causes nausea, vomiting, bloody diarrhea, and severe abdominal pain. High mortality rate.', severity: 'severe' }
               ],
               physical_exam: [
                 'Malignant pustule (black eschar, edematous halo)',
@@ -701,7 +665,58 @@ Object.assign(window.diseases, {
               prognostic_scores: ['None'],
               factors: 'Inhalational form, delayed treatment, meningitis'
             }
-          }
-        ]
-      },
+          },
+          {
+              id: 'brucellosis',
+              name: 'Brucellosis (Malta Fever)',
+              pathogen: { type: 'Bacterium', name: '<i>Brucella spp. (melitensis, abortus, suis)</i>', gram: 'Gram-negative', shape: 'coccobacillus' },
+              epidemiology: {
+                incidence: 'Endemic in Mediterranean, Middle East',
+                risk_groups: ['Veterinarians', 'Shepherds', 'Abattoir workers', 'Consumers of unpasteurized dairy'],
+                seasonality: 'Spring-Summer',
+                transmission: 'Direct contact, inhalation, unpasteurized dairy products'
+              },
+              pathomechanism: {
+                steps: [
+                  'Entry: Bacteria enter through broken skin, conjunctiva, respiratory tract, or GI tract.',
+                  'Phagocytosis: Macrophages engulf them, but bacteria survive and replicate intracellularly.',
+                  'Dissemination: Infected macrophages travel to regional lymph nodes and bloodstream (bacteremia).',
+                  'Organ involvement: Granulomas form in reticuloendothelial organs (liver, spleen, bone marrow, lymph nodes).'
+                ],
+                virulence_factors: ['LPS (smooth)', 'T4SS secretion system', 'Intracellular survival']
+              },
+              clinical: {
+                incubation: '2-4 weeks (1 week to months)',
+                onset: 'Gradual or sudden',
+                symptoms: [
+                  { name: 'Undulant Fever', description: 'Wavelike fever pattern (low in morning, high in afternoon) with profuse, moldy-smelling sweat.', severity: 'moderate' },
+                  { name: 'Musculoskeletal', description: 'Joint pain (arthralgia), back pain (sacroiliitis), myalgia.', severity: 'moderate' },
+                  { name: 'Constitutional', description: 'Fatigue, headache, depression, weight loss.', severity: 'mild' }
+                ],
+                physical_exam: ['Hepatomegaly', 'Splenomegaly', 'Lymphadenopathy', 'Spinal tenderness'],
+                complications: ['Osteomyelitis (vertebral)', 'Endocarditis', 'Neurobrucellosis', 'Epididymo-orchitis']
+              },
+              diagnostics: {
+                laboratory: [{ test: 'CBC', finding: 'Leukopenia, relative lymphocytosis', interpretation: '-' }, { test: 'Liver enzymes', finding: 'Mild elevation', interpretation: 'Granulomatous hepatitis' }],
+                imaging: [{ modality: 'Spine MRI', finding: 'Spondylodiscitis', significance: 'If back pain present' }],
+                microbiology: [
+                  { test: 'Blood culture', finding: 'Brucella spp.', significance: 'Slow growth (up to 3-4 weeks), notify lab!' },
+                  { test: 'Serology (Wright)', finding: 'Titer ≥1:160 or 4x rise', significance: 'Standard diagnosis' }
+                ]
+              },
+              differential: [
+                { disease: 'Typhoid fever', distinguishing: 'Rose spots, bradycardia' },
+                { disease: 'Tuberculosis', distinguishing: 'Respiratory symptoms, sputum' },
+                { disease: 'Malaria', distinguishing: 'Periodicity, travel' }
+              ],
+              therapy: {
+                empirical: { outpatient: [{ drug: 'Doxycycline + Rifampicin', dose: '100mg BID + 600-900mg QD PO', duration: '6 weeks', note: 'Standard therapy' }] },
+                targeted: 'Doxycycline + Rifampicin (6 weeks). Alternative: Doxycycline + Streptomycin (2-3 weeks). Neurobrucellosis/Endocarditis: Doxy + Rif + Ceftriaxone/Cotrimoxazole (months).',
+                supportive: ['Symptomatic treatment'],
+                prevention: ['Pasteurization of milk', 'Protective gear', 'Animal vaccination']
+              },
+              prognosis: { mortality: '<2% (mainly due to endocarditis)', prognostic_scores: [], factors: 'Complications, relapse common' }
+            }
+                     ]
+                   },
 });

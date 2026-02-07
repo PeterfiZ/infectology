@@ -10,7 +10,7 @@ Object.assign(window.diseases, {
       {
         id: 'mpox',
         name: 'Mpox (Monkeypox)',
-        pathogen: { type: 'Virus', name: 'Mpox virus (MPXV)', genome: 'dsDNA, Poxviridae', shape: 'brick-shaped' },
+        pathogen: { type: 'Virus', name: '<i>Mpox virus</i> (MPXV)', genome: 'dsDNA, Poxviridae', shape: 'brick-shaped' },
         epidemiology: {
           incidence: 'Global outbreak (2022–), endemic in Central and West Africa',
           risk_groups: ['MSM (Men who have sex with men)', 'Healthcare workers', 'Household contacts'],
@@ -19,10 +19,10 @@ Object.assign(window.diseases, {
         },
         pathomechanism: { 
           steps: [
-            'Inoculation via broken skin or mucous membranes',
-            'Primary replication at entry site and regional lymph nodes',
-            'Viremia (systemic dissemination)',
-            'Seeding of skin and mucosal surfaces'
+            'Entry: Virus enters through broken skin, mucous membranes, or respiratory tract.',
+            'Replication: Initial replication occurs at the inoculation site and in regional lymph nodes.',
+            'Viremia: The virus spreads via the bloodstream to the skin and internal organs.',
+            'Lesion formation: Viral replication in the skin causes inflammation, necrosis, and characteristic pox-like lesions (macule-papule-vesicle-pustule-scab).'
           ],
           virulence_factors: ['Immunomodulatory proteins (host immune evasion)']
         },
@@ -30,15 +30,16 @@ Object.assign(window.diseases, {
           incubation: '5–21 days',
           onset: 'Acute', // MORE ACCURATE: Acute is preferred over Sudden
           symptoms: [
-            { name: 'Rash', description: 'Macule → Papule → Vesicle → Pustule → Scab (often painful and umbilicated)', severity: 'moderate' },
-            { name: 'Lymphadenopathy', description: 'Significant lymph node swelling (distinguishes from variola/varicella)', severity: 'moderate' },
-            { name: 'Febrile prodrome', description: 'Fever, chills, and malaise', severity: 'mild' },
-            { name: 'Proctitis', description: 'Severe rectal pain and tenesmus (common in sexual transmission)', severity: 'severe' }
+            { name: 'Prodrome', description: 'Fever, intense headache, lymphadenopathy, back pain, myalgia, and intense asthenia.', severity: 'mild' },
+            { name: 'Lymphadenopathy', description: 'Distinctive feature (cervical, inguinal), distinguishing it from smallpox and chickenpox.', severity: 'moderate' },
+            { name: 'Rash', description: 'Appears 1-3 days after fever. Starts on face, spreads centrifugally (palms/soles involved). Stages: Macule → Papule → Vesicle → Pustule (umbilicated) → Scab. Lesions are often painful, then itchy.', severity: 'moderate' },
+            { name: 'Mucosal symptoms', description: 'Oral, genital, and perianal lesions. Proctitis (rectal pain) is common in sexual transmission.', severity: 'severe' }
           ],
           physical_exam: [
-            'Centrifugal distribution (including palms and soles)',
+            'Centrifugal distribution of rash (including palms and soles)',
             'Tender lymphadenopathy',
-            'Anogenital lesions'
+            'Anogenital lesions',
+            'Fever'
           ],
           complications: ['Secondary bacterial infection', 'Bronchopneumonia', 'Sepsis', 'Encephalitis', 'Keratitis (leading to corneal scarring)']
         },
@@ -62,7 +63,7 @@ Object.assign(window.diseases, {
       {
         id: 'nipah',
         name: 'Nipah Virus (NiV)',
-        pathogen: { type: 'Virus', name: 'Nipah virus (NiV)', genome: 'ssRNA (-), Paramyxoviridae', shape: 'pleomorphic' },
+        pathogen: { type: 'Virus', name: '<i>Nipah virus</i> (NiV)', genome: 'ssRNA (-), Paramyxoviridae', shape: 'pleomorphic' },
         epidemiology: {
           incidence: 'Sporadic outbreaks (South and Southeast Asia)',
           risk_groups: ['Pig farmers', 'Date palm sap collectors/consumers', 'Close contacts of cases'],
@@ -71,11 +72,10 @@ Object.assign(window.diseases, {
         },
         pathomechanism: {
           steps: [
-            'Oropharyngeal/respiratory entry',
-            'Systemic viremia',
-            'Endothelial cell infection (Ephrin-B2 receptor)',
-            'Systemic vasculitis, thrombosis, and tissue ischemia',
-            'Neuroinvasion and pulmonary inflammation'
+            'Entry: Ingestion of contaminated food (e.g., date palm sap) or direct contact with infected animals (pigs, bats).',
+            'Dissemination: The virus enters the bloodstream (viremia), either free or bound to leukocytes.',
+            'Vasculitis: It infects endothelial cells (via Ephrin-B2 receptor), causing systemic vasculitis, thrombosis, and tissue ischemia.',
+            'Tropism: High affinity for the CNS (crossing the blood-brain barrier) and lungs, causing severe inflammation and necrosis.'
           ],
           virulence_factors: ['Fusion (F) and Attachment (G) proteins', 'Interferon antagonists (P/V/W proteins)']
         },
@@ -83,10 +83,9 @@ Object.assign(window.diseases, {
           incubation: '4–14 days (up to 45 days recorded)',
           onset: 'Acute',
           symptoms: [
-            { name: 'Fever', description: 'High-grade fever', severity: 'severe' },
-            { name: 'Headache', description: 'Severe headache', severity: 'severe' },
-            { name: 'Respiratory distress', description: 'Cough, dyspnea, atypical pneumonia (ARDS risk)', severity: 'moderate' },
-            { name: 'Encephalopathy', description: 'Dizziness, altered consciousness, rapid progression to coma (24–48h)', severity: 'severe' }
+            { name: 'Prodrome', description: 'Fever, headache, myalgia, sore throat, and vomiting.', severity: 'moderate' },
+            { name: 'Respiratory symptoms', description: 'Cough, dyspnea, progressing to atypical pneumonia and acute respiratory distress syndrome (ARDS).', severity: 'severe' },
+            { name: 'Encephalitis', description: 'Dizziness, altered consciousness, rapidly progressing to coma (within 24–48h). Brainstem signs (areflexia, hypotonia) are common.', severity: 'severe' }
           ],
           physical_exam: ['Hyperpyrexia', 'Nuchal rigidity', 'Altered mental status (GCS)', 'Segmental myoclonus', 'Hyporeflexia'],
           complications: ['Fulminant encephalitis', 'ARDS', 'Relapsed/Late-onset encephalitis', 'Death']

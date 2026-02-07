@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
       {
         id: 'dengue',
         name: 'Dengue láz',
-        pathogen: { type: 'Vírus', name: 'Dengue vírus (DENV 1-4)', gram: 'RNS, Flaviviridae', shape: 'gömb' },
+        pathogen: { type: 'Vírus', name: '<i>Dengue vírus</i> (DENV 1-4)', gram: 'RNS, Flaviviridae', shape: 'gömb' },
         epidemiology: {
           incidence: 'Világszerte 390 millió fertőzés/év',
           risk_groups: ['Trópusi utazók', 'Endémiás területen élők'],
@@ -16,32 +16,31 @@ Object.assign(window.diseases, {
         },
         pathomechanism: {
           steps: [
-            'Szúnyogcsípés',
-            'Vírus replikáció dendritikus sejtekben/monocytákban',
-            'Viremia',
-            'Antitest-dependens enhancement (ADE) másodlagos fertőzésnél (súlyosabb lefolyás)',
-            'Citokin vihar, kapilláris szivárgás'
+            'Behatolás: A fertőzött szúnyog csípése után a vírus a bőrben lévő dendritikus sejteket és monocytákat fertőzi meg, majd a nyirokcsomókba vándorol.',
+            'Virémia: A vírus elszaporodik és a véráramba jut (viremia), ami magas lázat és szisztémás tüneteket okoz.',
+            'ADE jelenség: Másodlagos fertőzés esetén, ha a beteg korábban már találkozott egy másik szerotípussal, az antitest-dependens enhancement (ADE) jelenség lép fel: a nem-neutralizáló antitestek segítik a vírus bejutását a sejtekbe, ami fokozott replikációhoz vezet.',
+            'Következmény: Ez súlyos citokinvihart és vaszkuláris permeabilitás növekedést (kapilláris szivárgás) vált ki, ami plazmavesztéshez, hemokoncentrációhoz és shockhoz vezethet.'
           ],
-          virulence_factors: ['NS1 protein', 'ADE']
+          virulence_factors: ['NS1 protein', 'ADE (Antibody-Dependent Enhancement)']
         },
         clinical: {
           incubation: '4-10 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Láz', description: 'Magas, hirtelen (>99% tüneteseknél)', severity: 'severe' },
-            { name: 'Csonttörő láz', description: 'Súlyos izom- és ízületi fájdalom (>90%)', severity: 'severe' },
-            { name: 'Fejfájás/Retrobulbaris fájdalom', description: 'Szem mögötti fájdalom (>90%)', severity: 'moderate' },
-            { name: 'Kiütés', description: 'Maculopapularis (50-80%), láz után jelenik meg', severity: 'moderate' },
-            { name: 'Hányinger/Hányás', description: 'Gyakori figyelmeztető jel lehet', severity: 'moderate' }
+            { name: 'Lázas fázis', description: 'Hirtelen kezdődő magas láz (40°C), amelyet súlyos fejfájás és retrobulbáris (szem mögötti) fájdalom kísér.', severity: 'severe' },
+            { name: '"Csonttörő láz"', description: 'Extrém erős izom- és ízületi fájdalmak (myalgia, arthralgia), amelyek miatt a beteg alig tud mozogni.', severity: 'severe' },
+            { name: 'Kritikus fázis', description: 'A láz csökkenésekor (3-7. nap) jelentkezhet. Figyelmeztető jelek: intenzív hasi fájdalom, perzisztáló hányás, folyadékfelhalmozódás (ascites, pleurális effúzió), nyálkahártya-vérzések, letargia vagy nyugtalanság.', severity: 'severe' },
+            { name: 'Kiütés', description: 'A láz után megjelenő maculopapularis kiütés, gyakran "fehér szigetek a vörös tengerben" mintázattal.', severity: 'moderate' }
           ],
           physical_exam: [
             'Láz',
-            'Kiütés ("fehér szigetek a vörös tengerben")',
+            'Arcpír',
             'Tourniquet teszt pozitív (kapilláris fragilitás)',
             'Hepatomegalia',
-            'Figyelmeztető jelek: hasi fájdalom, perzisztáló hányás, folyadékgyülem'
+            'Vérzéses jelek (petechiák, ecchymosis)',
+            'Shock jelei (hideg végtagok, gyenge pulzus) a kritikus fázisban'
           ],
-          complications: ['Dengue hemorrhagiás láz (DHF)', 'Dengue shock szindróma (DSS)', 'Súlyos vérzés']
+          complications: ['Dengue hemorrhagiás láz (DHF)', 'Dengue shock szindróma (DSS)', 'Súlyos szervi károsodás (máj, vese, szív)']
         },
         diagnostics: {
           laboratory: [
@@ -67,7 +66,7 @@ Object.assign(window.diseases, {
       {
         id: 'zika',
         name: 'Zika vírus',
-        pathogen: { type: 'Vírus', name: 'Zika vírus (ZIKV)', gram: 'RNS, Flaviviridae', shape: 'gömb' },
+        pathogen: { type: 'Vírus', name: '<i>Zika vírus</i> (ZIKV)', gram: 'RNS, Flaviviridae', shape: 'gömb' },
         epidemiology: {
           incidence: 'Járványos',
           risk_groups: ['Terhesek (magzati károsodás!)', 'Utazók'],
@@ -76,25 +75,29 @@ Object.assign(window.diseases, {
         },
         pathomechanism: {
           steps: [
-            'Szúnyogcsípés/szexuális úton bejutás',
-            'Replikáció',
-            'Viremia',
-            'Neurotropizmus (felnőtt: GBS, magzat: microcephalia)'
+            'Behatolás: A vírus szúnyogcsípéssel, szexuális úton vagy vertikálisan jut a szervezetbe. A bőrben lévő sejtek (keratinocyták, dendritikus sejtek) fertőződnek meg először.',
+            'Terjedés: A vírus terjed a nyirokcsomókba és a véráramba (viremia). Képes átjutni a vér-agy gáton és a placenta-barrieren.',
+            'Neurotropizmus: Erős neurotropizmussal rendelkezik: a magzati fejlődés során célzottan a neurális progenitor sejteket fertőzi meg és pusztítja el, ami agyi fejlődési rendellenességekhez (microcephalia) vezet.',
+            'Szövődmény: Felnőttekben autoimmun mechanizmuson keresztül Guillain-Barré szindrómát válthat ki.'
           ],
-          virulence_factors: ['Neurotropizmus']
+          virulence_factors: ['Neurotropizmus', 'Placenta átjárhatóság']
         },
         clinical: {
           incubation: '3-14 nap',
           onset: 'Enyhe',
           symptoms: [
-            { name: 'Tünetmentes', description: 'Az esetek 80%-a tünetmentes', severity: 'mild' },
-            { name: 'Kiütés', description: 'Maculopapularis, viszkető (>90% tüneteseknél)', severity: 'moderate' },
-            { name: 'Láz', description: 'Alacsony (65%), gyakran hiányzik', severity: 'mild' },
-            { name: 'Arthralgia', description: 'Kisízületek (65%), ödémával', severity: 'mild' },
-            { name: 'Conjunctivitis', description: 'Nem gennyes (55%)', severity: 'moderate' }
+            { name: 'Tünetmentes lefolyás', description: 'A fertőzöttek kb. 80%-a nem mutat tüneteket.', severity: 'mild' },
+            { name: 'Kiütés és viszketés', description: 'A leggyakoribb tünet a makulopapulózus kiütés, amely gyakran viszket, és az arcról terjed a törzsre.', severity: 'moderate' },
+            { name: 'Láz és fájdalom', description: 'Alacsony láz, ízületi fájdalom (főleg a kéz és láb kisízületei), izomfájdalom és fejfájás.', severity: 'mild' },
+            { name: 'Conjunctivitis', description: 'Nem gennyes kötőhártya-gyulladás (vörös szem).', severity: 'moderate' }
           ],
-          physical_exam: ['Kiütés', 'Conjunctivitis', 'Láz'],
-          complications: ['Guillain-Barré szindróma', 'Congenitalis Zika szindróma (microcephalia)']
+          physical_exam: [
+            'Diffúz makulopapulózus kiütés',
+            'Nem purulens conjunctivitis',
+            'Ízületi duzzanat (kéz/láb)',
+            'Hőemelkedés'
+          ],
+          complications: ['Guillain-Barré szindróma (felnőttek)', 'Congenitalis Zika szindróma (magzati microcephalia, agyi meszesedések, látás/halláskárosodás)']
         },
         diagnostics: {
           laboratory: [{ test: 'Vérkép', finding: 'Enyhe leukopenia/thrombocytopenia', interpretation: '-' }],
@@ -116,7 +119,7 @@ Object.assign(window.diseases, {
       {
         id: 'chikungunya',
         name: 'Chikungunya',
-        pathogen: { type: 'Vírus', name: 'Chikungunya vírus (CHIKV)', gram: 'RNS, Togaviridae', shape: 'gömb' },
+        pathogen: { type: 'Vírus', name: '<i>Chikungunya vírus</i> (CHIKV)', gram: 'RNS, Togaviridae', shape: 'gömb' },
         epidemiology: {
           incidence: 'Járványos',
           risk_groups: ['Utazók'],
@@ -124,19 +127,29 @@ Object.assign(window.diseases, {
           transmission: 'Aedes szúnyog'
         },
         pathomechanism: {
-          steps: ['Szúnyogcsípés', 'Replikáció fibroblastokban', 'Ízületi tropizmus', 'Krónikus gyulladás'],
-          virulence_factors: ['-']
+          steps: [
+            'Behatolás: A szúnyogcsípés után a vírus a bőrben replikálódik, majd a véráramba jut.',
+            'Tropizmus: Széles körben fertőzi a szöveteket, de különös tropizmust mutat az ízületi tok, az izmok és a bőr fibroblastjai iránt.',
+            'Gyulladás: Az ízületekben intenzív gyulladásos választ (monocyták, makrofágok infiltrációja) vált ki, ami akut arthritist okoz.',
+            'Krónikussá válás: A vírus vagy antigénjei hónapokig perzisztálhatnak az ízületi szövetekben, krónikus, reumatoid arthritis-szerű panaszokat fenntartva.'
+          ],
+          virulence_factors: ['Ízületi tropizmus']
         },
         clinical: {
           incubation: '3-7 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Láz és ízületi fájdalom', description: 'Hirtelen magas láz és súlyos, szimmetrikus polyarthralgia (>95%)', severity: 'severe' },
-            { name: 'Kiütés', description: 'Maculopapularis kiütés (50-75%)', severity: 'moderate' },
-            { name: 'Egyéb tünetek', description: 'Fejfájás, myalgia, hányinger', severity: 'mild' }
+            { name: 'Akut fázis', description: 'Hirtelen kezdődő magas láz (>39°C) és kínzó, súlyos ízületi fájdalom (polyarthralgia), amely gyakran mozgásképtelenséget okoz. Az ízületi fájdalom általában szimmetrikus és a végtagok disztális ízületeit érinti.', severity: 'severe' },
+            { name: 'Bőrtünetek', description: 'Maculopapularis kiütés a törzsön és a végtagokon (kb. 50%-ban).', severity: 'moderate' },
+            { name: 'Krónikus fázis', description: 'A betegek jelentős részénél (30-60%) az ízületi fájdalom és merevség hónapokig vagy évekig visszatérhet vagy fennmaradhat, jelentősen rontva az életminőséget.', severity: 'moderate' }
           ],
-          physical_exam: ['Szimmetrikus polyarthritis/tenosynovitis (kéz, csukló, boka)', 'Láz', 'Maculopapularis kiütés'],
-          complications: ['Krónikus, perzisztáló arthritis (30-60%-ban, főleg időseknél)', 'Ritkán: myocarditis, encephalitis']
+          physical_exam: [
+            'Magas láz',
+            'Szimmetrikus ízületi duzzanat és érzékenység (kéz, csukló, boka)',
+            'Tenosynovitis',
+            'Maculopapularis kiütés'
+          ],
+          complications: ['Krónikus, rokkantságot okozó arthritis', 'Ritkán: myocarditis, encephalitis, hepatitis']
         },
         diagnostics: {
           laboratory: [{ test: 'Vérkép', finding: 'Lymphopenia', interpretation: '-' }],

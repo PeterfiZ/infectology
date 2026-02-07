@@ -9,7 +9,7 @@ Object.assign(window.diseases, {
           {
             id: 'bacterial_pneumonia',
             name: 'Bakterielle Pneumonie',
-            pathogen: { type: 'Bakterium', name: 'Streptococcus pneumoniae', gram: 'Gram-positiv', shape: 'Diplokokken' },
+            pathogen: { type: 'Bakterium', name: '<i>Streptococcus pneumoniae</i>', gram: 'Gram-positiv', shape: 'Diplokokken' },
             epidemiology: {
               incidence: 'Häufigster Erreger der ambulant erworbenen Pneumonie (CAP) (30-40%)',
               risk_groups: ['Personen über 65 Jahre', 'Patienten mit chronischen Erkrankungen (COPD, Herzinsuffizienz, Diabetes)', 'Immungeschwächte', 'Splenektomierte Patienten', 'Alkoholkranke', 'Raucher'],
@@ -18,11 +18,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Kolonisation: S. pneumoniae aus dem Nasopharynx wird in die unteren Atemwege aspiriert',
-                'Adhärenz: Pneumokokken-Oberflächenprotein A (PspA) und Cholin-bindende Proteine binden an Epithelzellen',
-                'Kapselpolysaccharid: Die Kapsel hemmt Phagozytose und Komplementaktivierung',
-                'Pneumolysin: Porenbildendes Toxin → Zellschädigung, Entzündung',
-                'Konsolidierung: Alveolen füllen sich mit entzündlichem Exsudat (Erythrozyten, Fibrin, Neutrophile)'
+                'Die Infektion beginnt in der Regel mit der Mikroaspiration von Bakterien, die die oberen Atemwege besiedeln. Die Virulenzfaktoren des Erregers (z.B. Kapsel) helfen, die Abwehrmechanismen des Wirts (z.B. Phagozytose) zu umgehen.',
+                'Die Bakterien vermehren sich in den Alveolen und lösen eine heftige Entzündungsreaktion aus. Freigesetzte Toxine (z.B. Pneumolysin) schädigen die Epithelzellen.',
+                'Entzündungszellen (Neutrophile), rote Blutkörperchen und Fibrin füllen die Alveolen, was zur Konsolidierung des Lungengewebes führt. Dieser Prozess ist für das charakteristische Bild der Lobärpneumonie verantwortlich.'
               ],
               virulence_factors: ['Kapselpolysaccharid (93 Serotypen)', 'Pneumolysin', 'Autolysin (LytA)', 'Neuraminidase', 'IgA1-Protease']
             },
@@ -30,11 +28,9 @@ Object.assign(window.diseases, {
               incubation: '1-3 Tage',
               onset: 'Plötzlich, dramatischer Beginn',
               symptoms: [
-                { name: 'Husten', description: 'In 90% vorhanden; produktiv (66%), rostbrauner Auswurf klassisch, aber seltener', severity: 'severe' },
-                { name: 'Fieber und Schüttelfrost', description: 'Fieber (80%), Schüttelfrost (40-50%)', severity: 'severe' },
-                { name: 'Dyspnoe', description: 'Atemnot (66%)', severity: 'moderate' },
-                { name: 'Pleuritischer Schmerz', description: 'Scharfer Brustschmerz, bei Inspiration zunehmend (50%)', severity: 'moderate' },
-                { name: 'Sonstiges', description: 'Gastrointestinale Symptome (10-20%), veränderter Geisteszustand (bei Älteren)', severity: 'mild' }
+                { name: 'Plötzlicher Beginn', description: 'Gekennzeichnet durch hohes Fieber, Schüttelfrost und Krankheitsgefühl.', severity: 'severe' },
+                { name: 'Respiratorische Symptome', description: 'Anfänglich trockener Husten, der später produktiv wird, klassischerweise mit rostbraunem Auswurf. Pleuritische, stechende Brustschmerzen und Atemnot sind häufig.', severity: 'moderate' },
+                { name: 'Atypische Präsentation', description: 'Bei älteren Menschen kann Fieber fehlen, und eine Bewusstseinsstörung kann das führende Symptom sein.', severity: 'severe' }
               ],
               physical_exam: [
                 'Tachypnoe, Tachykardie',
@@ -139,7 +135,7 @@ Object.assign(window.diseases, {
           {
             id: 'tuberculosis',
             name: 'Lungentuberkulose',
-            pathogen: { type: 'Mykobakterium', name: 'Mycobacterium tuberculosis', gram: 'Säurefest (Ziehl-Neelsen+)', shape: 'Stäbchen' },
+            pathogen: { type: 'Mykobakterium', name: '<i>Mycobacterium tuberculosis</i>', gram: 'Säurefest (Ziehl-Neelsen+)', shape: 'Stäbchen' },
             epidemiology: {
               incidence: 'Weltweit ~10 Millionen neue Fälle/Jahr, in Ungarn ~500 Fälle/Jahr',
               risk_groups: ['HIV-Infizierte (20-30x Risiko)', 'Diabetiker', 'Immungeschwächte', 'Sozial benachteiligte Personen', 'Gesundheitspersonal', 'Einwanderer aus endemischen Gebieten'],
@@ -148,12 +144,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhalation: Bazillen erreichen die Alveolen',
-                'Phagozytose: Alveolarmakrophagen nehmen Erreger auf, können sie aber nicht abtöten',
-                'Intrazelluläre Vermehrung: Primärkomplex (Ghon-Herd + hilärer Lymphknoten) in 2-12 Wochen',
-                'Granulombildung: T-Zell-vermittelte Immunantwort → Epitheloidzellen, Langhans-Riesenzellen',
-                'Latente Infektion: Granulome kapseln die Bazillen ein (90%)',
-                'Reaktivierung: Immunsuppression → verkäsende Nekrose → Kaverne → Verbreitung durch Husten'
+                'Die Infektion erfolgt durch Inhalation von Aerosoltröpfchen, die den Erreger enthalten. Die Bakterien werden von Alveolarmakrophagen phagozytiert, überleben und vermehren sich aber in ihnen.',
+                'An der Infektionsstelle entwickelt sich ein Primärherd (Ghon-Herd), und die Bakterien breiten sich auf die regionalen Lymphknoten aus, wodurch der Primärkomplex entsteht.',
+                'Die zelluläre Immunantwort (T-Zellen) wird aktiviert, was zur Bildung von Granulomen führt. Diese Granulome kapseln die Bakterien ein und führen in 90% der Fälle zu einer latenten Infektion (LTBI).',
+                'Bei Immunsuppression können die Bakterien reaktivieren. Das Zentrum des Granuloms unterliegt einer käsigen Nekrose, die verflüssigen und eine Kaverne bilden kann, was zu einer offenen, infektiösen Form der Krankheit führt.'
               ],
               virulence_factors: ['Cord-Faktor (Trehalose-Dimycolat)', 'Mykolsäure (Zellwand)', 'Lipoarabinomannan', 'ESAT-6 und CFP-10 sezernierte Antigene']
             },
@@ -161,12 +155,9 @@ Object.assign(window.diseases, {
               incubation: 'Primär: 2-12 Wochen; Reaktivierung: Jahre-Jahrzehnte',
               onset: 'Langsam, schleichend',
               symptoms: [
-                { name: 'Chronischer Husten', description: '>90% bei aktiver Lungen-TB; >3 Wochen andauernd', severity: 'severe' },
-                { name: 'Fieber', description: '60-80%, oft nachmittags/abends subfebril', severity: 'moderate' },
-                { name: 'Nachtschweiß', description: 'Profus (50%)', severity: 'moderate' },
-                { name: 'Gewichtsverlust', description: 'Signifikanter Gewichtsverlust (häufig)', severity: 'moderate' },
-                { name: 'Hämoptyse', description: 'Blutiger Auswurf (20-30%), meist spätes Zeichen', severity: 'severe' },
-                { name: 'Brustschmerzen', description: 'Pleuritisch oder dumpf', severity: 'mild' }
+                { name: 'Respiratorische Symptome', description: 'Chronischer Husten, der länger als 3 Wochen andauert und anfangs trocken, später produktiv sein kann. Später kann blutiger Auswurf (Hämoptyse) auftreten.', severity: 'severe' },
+                { name: 'Allgemeine (B-)Symptome', description: 'Schleichender Beginn mit langwierigen Symptomen: subfebriles Fieber (besonders nachmittags), starker Nachtschweiß und signifikanter, unbeabsichtigter Gewichtsverlust.', severity: 'moderate' },
+                { name: 'Sonstige', description: 'Müdigkeit, Appetitlosigkeit, Brustschmerzen.', severity: 'mild' }
               ],
               physical_exam: [
                 'Kachexie',
@@ -243,21 +234,19 @@ Object.assign(window.diseases, {
           {
             id: 'legionella',
             name: 'Legionellen-Pneumonie (Legionärskrankheit)',
-            pathogen: { type: 'Bakterium', name: 'Legionella pneumophila', gram: 'Gram-negativ (schlecht anfärbbar)', shape: 'Stäbchen, intrazellulär' },
+            pathogen: { type: 'Bakterium', name: '<i>Legionella pneumophila</i>', gram: 'Gram-negativ (schlecht anfärbbar)', shape: 'Stäbchen, intrazellulär' },
             epidemiology: {
-              incidence: '2-9% der CAP, bis zu 30% der nosokomialen Pneumonien',
+              incidence: '2-9% der CAP, nosokomiale Pneumonie bis zu 30%',
               risk_groups: ['Personen über 50 Jahre', 'Raucher', 'COPD-Patienten', 'Immungeschwächte', 'Chronische Niereninsuffizienz', 'Diabetes'],
               seasonality: 'Sommer-Herbst (Klimaanlagen)',
               transmission: 'Inhalation (Aerosol aus kontaminiertem Wasser: Kühltürme, Duschen, Whirlpools). NICHT von Mensch zu Mensch!'
             },
             pathomechanism: {
               steps: [
-                'Inhalation von Aerosol aus kontaminierter Wasserquelle',
-                'Legionellen dringen in Alveolarmakrophagen ein',
-                'Dot/Icm-Typ-IV-Sekretionssystem: Hemmung der Phagosom-Lysosom-Fusion',
-                'Intrazelluläre Replikation in spezieller Vakuole',
-                'Zelllyse → Infektion benachbarter Zellen',
-                'Schwere nekrotisierende Alveolitis, entzündliche Infiltration'
+                'Die Infektion erfolgt durch Inhalation von Aerosolen (z.B. aus Duschen, Kühltürmen, Klimaanlagen), die die Bakterien enthalten.',
+                'In der Lunge gelangen Legionellen in die Alveolarmakrophagen, wo ein spezielles Sekretionssystem (Dot/Icm) die Fusion von Phagosomen und Lysosomen verhindert.',
+                'Die Bakterien vermehren sich in einer geschützten Vakuole innerhalb der Makrophagen und lysieren dann die Zelle, um neue Zellen zu infizieren.',
+                'Dieser Prozess löst eine schwere, nekrotisierende Pneumonie und eine starke Entzündungsreaktion aus.'
               ],
               virulence_factors: ['Dot/Icm-Sekretionssystem', 'Mip (macrophage infectivity potentiator)', 'Flagellum', 'Über 300 Effektorproteine']
             },
@@ -265,11 +254,9 @@ Object.assign(window.diseases, {
               incubation: '2-10 Tage (durchschnittlich 5-6 Tage)',
               onset: 'Prodrom 1-2 Tage, dann rasche Progression',
               symptoms: [
-                { name: 'Hohes Fieber', description: '>90%, oft >39°C', severity: 'severe' },
-                { name: 'Husten', description: '90%; anfangs trocken, später produktiv (50%)', severity: 'moderate' },
-                { name: 'Gastrointestinale Symptome', description: 'Durchfall (20-50%), Übelkeit/Erbrechen (10-30%)', severity: 'moderate' },
-                { name: 'Neurologische Symptome', description: 'Verwirrtheit (25-50%), Kopfschmerzen (40-50%)', severity: 'moderate' },
-                { name: 'Dyspnoe', description: 'Atemnot (25-60%)', severity: 'severe' }
+                { name: 'Atypische Pneumonie', description: 'Hohes Fieber, Schüttelfrost und ein anfangs trockener, unproduktiver Husten.', severity: 'severe' },
+                { name: 'Extrapulmonale Symptome', description: 'Eine Multisystembeteiligung ist charakteristisch: gastrointestinal (Durchfall, Übelkeit) und neurologisch (Kopfschmerzen, Verwirrtheit, Delirium).', severity: 'moderate' },
+                { name: 'Charakteristische Zeichen', description: 'Relative Bradykardie (niedriger Puls trotz hohem Fieber) und Hyponatriämie im Labor sind häufig.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Hohes Fieber mit relativer Bradykardie (Faget-Zeichen)',
@@ -333,19 +320,18 @@ Object.assign(window.diseases, {
           {
             id: 'mycoplasma',
             name: 'Mykoplasmen-Pneumonie',
-            pathogen: { type: 'Bakterium', name: 'Mycoplasma pneumoniae', gram: 'Keine Zellwand', shape: 'pleomorph' },
+            pathogen: { type: 'Bakterium', name: '<i>Mycoplasma pneumoniae</i>', gram: 'Keine Zellwand', shape: 'pleomorph' },
             epidemiology: {
-              incidence: '15-20% der CAP, 50% in Epidemien',
+              incidence: '15-20% der CAP, in Epidemien bis zu 50%',
               risk_groups: ['Schulkinder', 'Junge Erwachsene', 'Geschlossene Gemeinschaften (Wohnheime, Kasernen)'],
               seasonality: 'Herbst-Winter, kommt aber ganzjährig vor',
               transmission: 'Tröpfcheninfektion (enger Kontakt)'
             },
             pathomechanism: {
               steps: [
-                'Adhärenz an respiratorische Epithelzellen (P1-Adhäsin)',
-                'Ziliostase und Zilienzerstörung (Wasserstoffperoxid)',
-                'CARDS-Toxin-Produktion (Entzündung, Vakuolisierung)',
-                'Immunvermittelte Lungenschädigung'
+                'Der Erreger haftet mit seinem P1-Adhäsin fest an den Zilien der respiratorischen Epithelzellen.',
+                'Das vom Bakterium produzierte Wasserstoffperoxid und das CARDS-Toxin schädigen die Zilien (Ziliostase), was zu einer gestörten mukoziliären Clearance führt.',
+                'Die Entzündungsreaktion und die Zellschädigung verursachen den langwierigen Husten und die Lungenentzündung.'
               ],
               virulence_factors: ['P1-Adhäsin', 'CARDS-Toxin', 'Wasserstoffperoxid']
             },
@@ -353,11 +339,9 @@ Object.assign(window.diseases, {
               incubation: '2-3 Wochen',
               onset: 'Langsam, schleichend',
               symptoms: [
-                { name: 'Husten', description: '>95%; trocken, quälend, anfallsartig, hält wochenlang an', severity: 'moderate' },
-                { name: 'Allgemeinsymptome', description: 'Kopfschmerzen, Unwohlsein (häufig)', severity: 'mild' },
-                { name: 'Halsschmerzen', description: 'Häufig (nicht exsudativ)', severity: 'mild' },
-                { name: 'Fieber', description: 'Variabel, kann hoch sein oder fehlen', severity: 'mild' },
-                { name: 'Extrapulmonal', description: 'Hämolyse (subklinisch häufig), Ausschlag (Stevens-Johnson <10%)', severity: 'moderate' }
+                { name: 'Atypische Pneumonie', description: 'Allmählicher Beginn mit leichtem Fieber, Kopfschmerzen und Unwohlsein. Das Leitsymptom ist ein trockener, quälender, anfallsartiger Husten, der wochenlang anhält.', severity: 'moderate' },
+                { name: '"Walking Pneumonia"', description: 'Der körperliche Befund (spärlicher Auskultationsbefund) ist oft viel milder als die ausgedehnte Entzündung im Röntgenbild.', severity: 'mild' },
+                { name: 'Extrapulmonale Symptome', description: 'Hautausschläge (z.B. Erythema multiforme), hämolytische Anämie (Kälteagglutinin-Krankheit) oder neurologische Komplikationen können auftreten.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Oft spärlicher Auskultationsbefund',
@@ -414,12 +398,11 @@ Object.assign(window.diseases, {
           {
             id: 'chlamydia_pneumoniae',
             name: 'Chlamydia pneumoniae',
-            pathogen: { type: 'Bakterium', name: 'Chlamydia pneumoniae', gram: 'Gram-negativ (intrazellulär)', shape: 'kokkoid' },
+            pathogen: { type: 'Bakterium', name: '<i>Chlamydia pneumoniae</i>', gram: 'Gram-negativ (intrazellulär)', shape: 'kokkoid' },
             epidemiology: {
               incidence: '5-10% der CAP',
               risk_groups: ['Ältere', 'Patienten mit chronischen Erkrankungen', 'Geschlossene Gemeinschaften'],
               seasonality: 'Ganzjährig',
-              transmission: 'Tröpfcheninfektion'
             },
             pathomechanism: {
               steps: [
@@ -435,9 +418,8 @@ Object.assign(window.diseases, {
               incubation: '3-4 Wochen',
               onset: 'Schleichend',
               symptoms: [
-                { name: 'Biphasischer Verlauf', description: 'Symptome der oberen Atemwege gefolgt von Pneumonie', severity: 'moderate' },
-                { name: 'Heiserkeit/Laryngitis', description: 'Charakteristisches Begleitsymptom', severity: 'mild' },
-                { name: 'Husten', description: 'Hartnäckig, wochen- bis monatelang anhaltend', severity: 'moderate' }
+                { name: 'Biphasischer Verlauf', description: 'Verläuft oft in zwei Phasen: anfänglich Pharyngitis und Laryngitis (Heiserkeit ist charakteristisch), gefolgt von der Entwicklung einer atypischen Pneumonie 1-3 Wochen später.', severity: 'moderate' },
+                { name: 'Langwieriger Husten', description: 'Das charakteristischste Merkmal der Pneumonie ist ein trockener, reizender Husten, der wochen- bis monatelang anhält.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Pharyngitis',
@@ -488,19 +470,17 @@ Object.assign(window.diseases, {
           {
             id: 'psittacosis',
             name: 'Ornithose (Psittakose)',
-            pathogen: { type: 'Bakterium', name: 'Chlamydia psittaci', gram: 'Intrazellulär', shape: 'kokkoid' },
+            pathogen: { type: 'Bakterium', name: '<i>Chlamydia psittaci</i>', gram: 'Intrazellulär', shape: 'kokkoid' },
             epidemiology: {
               incidence: 'Selten, Berufskrankheit',
               risk_groups: ['Vogelhalter (Papageien, Tauben)', 'Tierärzte', 'Geflügelarbeiter'],
               seasonality: 'Keine',
-              transmission: 'Inhalation von Staub aus Vogelkot'
             },
             pathomechanism: {
               steps: [
-                'Inhalation',
-                'Infektion des retikuloendothelialen Systems (Leber, Milz)',
-                'Hämatogene Streuung in die Lunge',
-                'Interstitielle Pneumonie'
+                'Die Infektion erfolgt durch Inhalation von Staub, der mit getrocknetem Kot von Vögeln (insbesondere Papageien, Tauben) kontaminiert ist.',
+                'Der Erreger gelangt von der Lunge in das retikuloendotheliale System (Leber, Milz), wo er sich vermehrt.',
+                'Während einer sekundären Virämie kehren die Bakterien in die Lunge zurück und verursachen eine atypische, interstitielle Pneumonie.'
               ],
               virulence_factors: ['Intrazelluläres Überleben']
             },
@@ -508,10 +488,9 @@ Object.assign(window.diseases, {
               incubation: '5-14 Tage',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Fieber', description: 'Fast 100%, plötzlicher Beginn', severity: 'severe' },
-                { name: 'Kopfschmerzen', description: 'Schwer, oft mit Photophobie', severity: 'severe' },
-                { name: 'Husten', description: 'Trocken (50-90%)', severity: 'moderate' },
-                { name: 'Splenomegalie', description: 'In 10-70% nachweisbar', severity: 'moderate' }
+                { name: 'Typhus-ähnliche Symptome', description: 'Plötzlich einsetzendes hohes Fieber, Schüttelfrost und quälende, starke Kopfschmerzen.', severity: 'severe' },
+                { name: 'Respiratorische Symptome', description: 'Trockener, unproduktiver Husten. Der körperliche Befund ist oft spärlicher als das Röntgenbild.', severity: 'moderate' },
+                { name: 'Systemische Zeichen', description: 'Häufig sind Hepatosplenomegalie und relative Bradykardie (Faget-Zeichen).', severity: 'moderate' }
               ],
               physical_exam: [
                 'Relative Bradykardie (Faget-Zeichen)',
@@ -564,7 +543,7 @@ Object.assign(window.diseases, {
           {
             id: 'q_fever_resp',
             name: 'Q-Fieber',
-            pathogen: { type: 'Bakterium', name: 'Coxiella burnetii', gram: 'Gram-negativ (intrazellulär)', shape: 'Kokkobazillus' },
+            pathogen: { type: 'Bakterium', name: '<i>Coxiella burnetii</i>', gram: 'Gram-negativ (intrazellulär)', shape: 'Kokkobazillus' },
             epidemiology: {
               incidence: 'Zoonose, Berufskrankheit',
               risk_groups: ['Viehzüchter', 'Schlachthofarbeiter', 'Tierärzte'],
@@ -573,11 +552,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhalation (ein einziges Bakterium kann infizieren!)',
-                'Infektion von Alveolarmakrophagen',
-                'Vermehrung in sauren Phagosomen',
-                'Hämatogene Streuung',
-                'Granulombildung (Doughnut-Granulom)'
+                'Die Infektion erfolgt durch Inhalation hochinfektiöser Aerosole von tierischen Geburtsprodukten (Plazenta, Fruchtwasser).',
+                'Der Erreger gelangt in die Alveolarmakrophagen, wo er nicht nur überlebt, sondern sich auch in den sauren Phagosomen vermehrt.',
+                'Er streut über den Blutkreislauf in Leber und Knochenmark.',
+                'Der Körper versucht, die Infektion durch die Bildung charakteristischer "Doughnut"-förmiger Granulome einzudämmen.',
+                'Die Krankheit kann akut oder chronisch (hauptsächlich als Endokarditis) verlaufen.'
               ],
               virulence_factors: ['Sporenähnliche Form (resistent)', 'LPS-Phasenvariation']
             },
@@ -585,10 +564,8 @@ Object.assign(window.diseases, {
               incubation: '2-3 Wochen',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Akutes Q-Fieber', description: 'Grippeähnlich: Fieber, Müdigkeit, starke Kopfschmerzen', severity: 'severe' },
-                { name: 'Pneumonie', description: 'Variabel, oft milder Husten, aber radiologische Befunde', severity: 'moderate' },
-                { name: 'Hepatitis', description: 'Hepatomegalie, Schmerzen im rechten Oberbauch', severity: 'moderate' },
-                { name: 'Chronisch', description: 'Endokarditis (Hauptmanifestation)', severity: 'severe' }
+                { name: 'Akutes Q-Fieber', description: 'Präsentiert sich mit einem plötzlichen Beginn von hohem Fieber, starken retroorbitalen Kopfschmerzen und grippeähnlichen Symptomen. Eine atypische Pneumonie (milder Husten) und eine granulomatöse Hepatitis (erhöhte Leberenzyme) sind häufig.', severity: 'moderate' },
+                { name: 'Chronisches Q-Fieber', description: 'Entwickelt sich Monate bis Jahre später, hauptsächlich bei Patienten mit vorbestehenden Herzklappenfehlern oder Immunsuppression. Die häufigste Manifestation ist eine kultur-negative Endokarditis.', severity: 'severe' }
               ],
               physical_exam: [
                 'Hepatomegalie',
@@ -648,7 +625,7 @@ Object.assign(window.diseases, {
           {
             id: 'influenza',
             name: 'Influenza',
-            pathogen: { type: 'Virus', name: 'Influenza A/B/C Virus', gram: 'RNA-Virus, Orthomyxoviridae', shape: 'helikal' },
+            pathogen: { type: 'Virus', name: '<i>Influenza A/B/C Virus</i>', gram: 'RNA-Virus, Orthomyxoviridae', shape: 'helikal' },
             epidemiology: {
               incidence: 'Saisonale Epidemie: 5-20% der Bevölkerung/Jahr, Pandemien: bis zu 50%',
               risk_groups: ['Personen über 65 Jahre', 'Kinder unter 5 Jahren', 'Schwangere', 'Patienten mit chronischen Erkrankungen', 'Gesundheitspersonal', 'Immungeschwächte'],
@@ -657,12 +634,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Hämagglutinin (HA) bindet an Sialinsäure-Rezeptoren auf dem respiratorischen Epithel',
-                'Rezeptorvermittelte Endozytose',
-                'Virale RNA-Replikation im Zellkern',
-                'Neuraminidase (NA) hilft bei der Freisetzung neuer Viren',
-                'Epithelzellapoptose, Zilienschädigung',
-                'Zytokinsturm in schweren Fällen (IL-6, TNF-α, IFN-γ)'
+                'Das Virus bindet mit seinem Hämagglutinin (HA) an die respiratorischen Epithelzellen und dringt in sie ein.',
+                'Es repliziert sich in der Zelle und wird dann mit Hilfe der Neuraminidase (NA) freigesetzt, um neue Zellen zu infizieren.',
+                'Die Virusinfektion führt zur Zerstörung der respiratorischen Epithelzellen und zur Schädigung der Zilien, was die Reinigung der Atemwege beeinträchtigt.',
+                'Die starke Immunantwort des Körpers (Zytokinsturm) verursacht systemische Symptome wie Fieber und Muskelschmerzen.'
               ],
               virulence_factors: ['Hämagglutinin (H1-18)', 'Neuraminidase (N1-11)', 'NS1-Protein (IFN-Antagonist)', 'PB1-F2 (pro-apoptotisch)']
             },
@@ -670,12 +645,9 @@ Object.assign(window.diseases, {
               incubation: '1-4 Tage (durchschnittlich 2 Tage)',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Fieber', description: 'Plötzlicher Beginn, 38-41°C (95% der symptomatischen Fälle)', severity: 'severe' },
-                { name: 'Husten', description: 'Trocken, nicht produktiv (>90%), oft mit Brustschmerzen', severity: 'moderate' },
-                { name: 'Myalgie', description: 'Schwere Muskelschmerzen (90%), besonders Rücken/Gliedmaßen', severity: 'severe' },
-                { name: 'Kopfschmerzen', description: 'Schwer, oft retroorbital (85%)', severity: 'moderate' },
-                { name: 'Halsschmerzen', description: 'Häufiges Begleitsymptom (60-70%)', severity: 'mild' },
-                { name: 'Prostration', description: 'Ausgeprägte Schwäche, Bettlägerigkeit', severity: 'moderate' }
+                { name: 'Plötzlicher Beginn', description: 'Beginnt mit hohem Fieber (>38°C), Schüttelfrost, starken Kopfschmerzen und Muskelschmerzen (Myalgie).', severity: 'severe' },
+                { name: 'Respiratorische Symptome', description: 'Ein trockener, quälender Husten und Halsschmerzen sind charakteristisch.', severity: 'moderate' },
+                { name: 'Allgemeine Symptome', description: 'Ausgeprägte Schwäche, Krankheitsgefühl (Prostration) und Appetitlosigkeit.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Fieberhaft, krankes Aussehen',
@@ -736,7 +708,7 @@ Object.assign(window.diseases, {
           {
             id: 'covid19',
             name: 'COVID-19',
-            pathogen: { type: 'Virus', name: 'SARS-CoV-2', gram: 'RNA-Virus, Coronaviridae', shape: 'sphärisch, Spike-Proteine' },
+            pathogen: { type: 'Virus', name: '<i>SARS-CoV-2</i>', gram: 'RNA-Virus, Coronaviridae', shape: 'sphärisch, Spike-Proteine' },
             epidemiology: {
               incidence: 'Pandemie ab 2020, wird endemisch',
               risk_groups: ['Personen über 65 Jahre', 'Adipöse Patienten (BMI>30)', 'Diabetes', 'Herz-Kreislauf-Erkrankungen', 'Immungeschwächte', 'Chronische Lungenkrankheit'],
@@ -745,12 +717,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Spike-Protein bindet an ACE2-Rezeptor (Lunge, Herz, Gefäße, Darm)',
-                'TMPRSS2-Protease spaltet das Spike-Protein → Fusion',
-                'Virale Replikation und Ausbreitung',
-                'Endotheldysfunktion, Mikrothrombosen',
-                'Zytokinsturm (IL-6, IL-1β, TNF-α) in schweren Fällen',
-                'ARDS, Multiorganversagen'
+                'Das Virus bindet mit seinem Spike (S)-Protein an den ACE2-Rezeptor auf der Zelloberfläche, der in vielen Organen (Lunge, Herz, Gefäße, Darm) vorkommt.',
+                'Nach dem Eintritt repliziert sich das Virus in der Zelle (virale Phase).',
+                'In schweren Fällen kann in der zweiten Krankheitswoche eine übermäßige Immunantwort, der sogenannte Zytokinsturm, auftreten.',
+                'Diese Hyperinflammation führt zu systemischer Endothelschädigung, Mikrothrombosen und in der Lunge zum akuten Atemnotsyndrom (ARDS), was die Grundlage des schweren Verlaufs ist.'
               ],
               virulence_factors: ['Spike-Protein', 'NSP1 (Host-Shutdown)', 'ORF8 (Immunmodulation)', 'Nukleokapsid']
             },
@@ -758,12 +728,9 @@ Object.assign(window.diseases, {
               incubation: '2-14 Tage (Median 5 Tage, Omikron 3 Tage)',
               onset: 'Variabel',
               symptoms: [
-                { name: 'Fieber', description: 'Häufig (70-90%), kann aber fehlen (Ältere)', severity: 'moderate' },
-                { name: 'Husten', description: 'Trocken (60-80%), anhaltend', severity: 'moderate' },
-                { name: 'Müdigkeit', description: 'Ausgeprägt (40-70%)', severity: 'moderate' },
-                { name: 'Dyspnoe', description: 'Atemnot (30-50% der Hospitalisierten), Hypoxie', severity: 'severe' },
-                { name: 'Anosmie/Dysgeusie', description: 'Geruchs-/Geschmacksverlust (variantenabhängig, 20-60%)', severity: 'mild' },
-                { name: 'Myalgie', description: 'Muskelschmerzen (30-60%)', severity: 'mild' }
+                { name: 'Häufige Symptome', description: 'Fieber, trockener Husten, Müdigkeit und Muskelschmerzen (Myalgie).', severity: 'moderate' },
+                { name: 'Charakteristische Symptome', description: 'Der Verlust des Geruchs- und Geschmackssinns (Anosmie, Dysgeusie) kann ein frühes, spezifisches Zeichen sein.', severity: 'mild' },
+                { name: 'Schwere Symptome', description: 'Atemnot (Dyspnoe), Brustschmerzen und Hypoxämie (niedriger Blutsauerstoff), die zu ARDS führen können.', severity: 'severe' }
               ],
               physical_exam: [
                 'Fieber, Tachypnoe',
@@ -834,7 +801,7 @@ Object.assign(window.diseases, {
           {
             id: 'endocarditis',
             name: 'Infektiöse Endokarditis',
-            pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus, Viridans-Streptokokken', gram: 'Gram-positiv', shape: 'Kokken' },
+            pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus, Viridans-Streptokokken</i>', gram: 'Gram-positiv', shape: 'Kokken' },
             epidemiology: {
               incidence: '3-10/100.000 pro Jahr',
               risk_groups: ['Klappenfehler', 'Herzklappenprothese', 'i.v.-Drogenkonsumenten', 'Angeborene Herzfehler', 'Frühere Endokarditis'],
@@ -843,11 +810,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Endothelschädigung (turbulente Strömung)',
-                'Sterile Thrombozyten-Fibrin-Thrombusbildung (NBTE)',
-                'Bakteriämie (Erregeradhäsion)',
-                'Vegetationsbildung (Bakterien + Fibrin + Thrombozyten)',
-                'Gewebedestruktion, Embolisation'
+                'Der Prozess beginnt mit einer Schädigung des Herzklappenendothels, an der ein steriler Thrombus (nichtbakterielle thrombotische Endokarditis, NBTE) haftet.',
+                'Während einer vorübergehenden Bakteriämie (z.B. zahnärztlicher Eingriff) haften zirkulierende Erreger an dieser geschädigten Oberfläche.',
+                'Die Bakterien vermehren sich, bilden einen Biofilm und eine Vegetation aus Bakterien, Fibrin und Thrombozyten.',
+                'Diese Vegetation schädigt die Klappe (verursacht Insuffizienz), und Fragmente können abreißen und septische Embolien in verschiedene Körperteile (z.B. Gehirn, Milz) verursachen.'
               ],
               virulence_factors: ['Adhäsine (MSCRAMM)', 'Biofilmbildung', 'Toxine']
             },
@@ -855,11 +821,9 @@ Object.assign(window.diseases, {
               incubation: 'Tage (akut) oder Wochen (subakut)',
               onset: 'Variabel',
               symptoms: [
-                { name: 'Fieber', description: 'Häufigstes Symptom (>90%), oft mit Schüttelfrost', severity: 'moderate' },
-                { name: 'Herzgeräusch', description: 'Neues oder verändertes Regurgitationsgeräusch (85%)', severity: 'severe' },
-                { name: 'Embolische Symptome', description: 'Schlaganfall, Lungenembolie, Milz-/Niereninfarkt (20-50%)', severity: 'severe' },
-                { name: 'Herzinsuffizienz', description: 'Dyspnoe, Ödeme (40-60% - häufigste Komplikation)', severity: 'severe' },
-                { name: 'Hautsymptome', description: 'Petechien (20-40%), Osler-Knötchen/Janeway-Läsionen (5-10% - heute seltener)', severity: 'mild' }
+                { name: 'Allgemeine Symptome', description: 'Die häufigsten sind Fieber, Schüttelfrost, Nachtschweiß und Gewichtsverlust. Das Bild ist oft das eines Fiebers unklarer Genese (FUO).', severity: 'moderate' },
+                { name: 'Kardiale Symptome', description: 'Auftreten eines neuen oder veränderten Herzgeräuschs oder Symptome einer Herzinsuffizienz (Atemnot, Ödeme) aufgrund von Klappenschäden.', severity: 'severe' },
+                { name: 'Embolische Phänomene', description: 'Von der Vegetation abbrechende Fragmente können septische Embolien verursachen: Schlaganfall, Milz- oder Niereninfarkt, Hautmanifestationen (Janeway-Läsionen, Splitterblutungen).', severity: 'severe' }
               ],
               physical_exam: [
                 'Fieber',
@@ -958,7 +922,7 @@ Object.assign(window.diseases, {
           {
             id: 'myocarditis',
             name: 'Myokarditis',
-            pathogen: { type: 'Virus', name: 'Coxsackie B, Adenovirus, Parvovirus B19', gram: 'RNA/DNA-Viren', shape: 'variabel' },
+            pathogen: { type: 'Virus', name: '<i>Coxsackie B, Adenovirus, Parvovirus B19</i>', gram: 'RNA/DNA-Viren', shape: 'variabel' },
             epidemiology: {
               incidence: 'Schwer abzuschätzen (viele milde Fälle), 10-20% des plötzlichen Herztods bei jungen Menschen',
               risk_groups: ['Junge Erwachsene', 'Männer', 'Immungeschwächte'],
@@ -967,11 +931,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Viruseintritt in Kardiomyozyten (rezeptorvermittelt)',
-                'Direkter zytopathischer Effekt (Replikation)',
-                'Aktivierung der Immunantwort (T-Zellen, Zytokine)',
-                'Autoimmunreaktion (molekulare Mimikry)',
-                'Myokardnekrose, Fibrose, Dilatation'
+                'Die Infektion beginnt mit einer Virusinfektion, bei der das Virus die Herzmuskelzellen direkt schädigen kann.',
+                'Die spätere, schwerere Phase der Krankheit wird durch die übermäßige Immunantwort des Körpers verursacht. T-Zellen und Autoantikörper greifen die Herzmuskelzellen an (molekulare Mimikry), was zu ausgedehnten Entzündungen, Nekrosen und einer myokardialen Dysfunktion führt.',
+                'Während der Heilung kann es zu Vernarbungen (Fibrose) kommen, die zu einer dilatativen Kardiomyopathie (DCM) und chronischer Herzinsuffizienz führen können.'
               ],
               virulence_factors: ['Protease 2A (Dystrophin-Spaltung)', 'Rezeptorbindung (CAR)']
             },
@@ -979,11 +941,9 @@ Object.assign(window.diseases, {
               incubation: '1-2 Wochen nach Virusinfektion',
               onset: 'Variabel (von asymptomatisch bis fulminant)',
               symptoms: [
-                { name: 'Brustschmerzen', description: 'Scharf, perikarditisch (85-95% bei unkomplizierten Fällen)', severity: 'moderate' },
-                { name: 'Dyspnoe', description: 'Bei Belastung oder in Ruhe (19-49%)', severity: 'severe' },
-                { name: 'Palpitationen', description: 'Gefühl von Herzrhythmusstörungen (6-18%)', severity: 'moderate' },
-                { name: 'Prodromalsymptome', description: 'Fieber, respiratorische/GI-Symptome Tage zuvor (60%)', severity: 'mild' },
-                { name: 'Synkope', description: 'Aufgrund von Arrhythmie (selten, aber gefährlich)', severity: 'severe' }
+                { name: 'Virales Prodrom', description: 'Den kardialen Symptomen geht oft eine fieberhafte, respiratorische oder gastrointestinale Infektion einige Tage voraus.', severity: 'mild' },
+                { name: 'Herzinsuffizienzsymptome', description: 'Müdigkeit, Belastungsdyspnoe, dann Ruhedyspnoe, Ödeme.', severity: 'severe' },
+                { name: 'Brustschmerzen und Arrhythmie', description: 'Atypische, stechende Brustschmerzen (Myoperikarditis) und Herzklopfen (Palpitationen) aufgrund von Arrhythmien sind häufig.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Tachykardie (unverhältnismäßig zum Fieber)',
@@ -1042,7 +1002,7 @@ Object.assign(window.diseases, {
           {
             id: 'pericarditis',
             name: 'Akute Perikarditis',
-            pathogen: { type: 'Virus/Idiopathisch', name: 'Coxsackie, Echovirus, Adenovirus, CMV, EBV', gram: 'Variabel', shape: '-' },
+            pathogen: { type: 'Virus/Idiopathisch', name: '<i>Coxsackie, Echovirus, Adenovirus, CMV, EBV</i>', gram: 'Variabel', shape: '-' },
             epidemiology: {
               incidence: 'Häufig (0.1% der Hospitalisierten)',
               risk_groups: ['Männer (20-50 Jahre)', 'Post-Kardiotomie', 'Autoimmunpatienten'],
@@ -1051,10 +1011,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Entzündung des Perikards (viral, autoimmun, neoplastisch)',
-                'Fibrinablagerungen (trockene Perikarditis)',
-                'Exsudatbildung (Perikarderguss)',
-                'Tamponadegefahr (bei rascher Flüssigkeitsansammlung)'
+                'Entzündung der Herzbeutelblätter (Perikard), meist infolge einer Virusinfektion.',
+                'Aufgrund der Entzündung lagert sich Fibrin zwischen den Blättern ab, was das charakteristische Reibegeräusch (trockene Perikarditis) verursacht.',
+                'Es kann sich auch Flüssigkeit ansammeln (Perikarderguss), die bei schneller oder großer Ansammlung das Herz komprimieren und eine Herzbeuteltamponade verursachen kann.'
               ],
               virulence_factors: ['-']
             },
@@ -1062,9 +1021,8 @@ Object.assign(window.diseases, {
               incubation: 'Variabel',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Brustschmerzen', description: 'Scharf, pleuritisch, schlimmer im Liegen, besser beim Vorbeugen', severity: 'severe' },
-                { name: 'Fieber', description: 'Meist leicht', severity: 'mild' },
-                { name: 'Dyspnoe', description: 'Aufgrund von Schmerzen oder Tamponade', severity: 'moderate' }
+                { name: 'Charakteristischer Brustschmerz', description: 'Scharfer, stechender Brustschmerz, der sich beim Einatmen und im Liegen verschlimmert und beim Vorbeugen bessert.', severity: 'severe' },
+                { name: 'Andere Symptome', description: 'Wird oft von leichtem Fieber, Unwohlsein und Atemnot begleitet.', severity: 'mild' }
               ],
               physical_exam: [
                 'Perikardreiben (systolische und diastolische Komponenten)',
@@ -1132,7 +1090,7 @@ Object.assign(window.diseases, {
           {
             id: 'upper_respiratory_infections',
             name: 'Infektionen der oberen Atemwege (Erkältung)',
-            pathogen: { type: 'Virus', name: 'Rhinovirus (am häufigsten), Coronavirus, Adenovirus, Influenza', gram: 'RNA-Viren', shape: 'variabel' },
+            pathogen: { type: 'Virus', name: '<i>Rhinovirus</i> (am häufigsten), <i>Coronavirus, Adenovirus, Influenza</i>', gram: 'RNA-Viren', shape: 'variabel' },
             epidemiology: {
               incidence: 'Häufigste Infektion, Erwachsene 2-3x/Jahr, Kinder 6-8x/Jahr',
               risk_groups: ['Kinder', 'Ältere', 'Immungeschwächte'],
@@ -1141,11 +1099,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Viruseintritt in Nasen-/Rachenschleimhaut',
-                'Infektion von Epithelzellen',
-                'Lokale Entzündung (Neutrophile, Ödem)',
-                'Ziliostase, erhöhte Schleimproduktion',
-                'Systemische Reaktion (Fieber, Allgemeinsymptome)'
+                'Viren dringen über die Schleimhäute der oberen Atemwege ein, wo sie sich in den Epithelzellen vermehren.',
+                'Die Infektion löst eine lokale Entzündung, Ödeme und eine erhöhte Schleimproduktion aus.',
+                'Dies verursacht die charakteristischen Symptome: Rhinorrhoe, verstopfte Nase und Halsschmerzen.'
               ],
               virulence_factors: ['Rezeptorbindung (ICAM-1 bei Rhinovirus)', 'Immunmodulation']
             },
@@ -1153,11 +1109,7 @@ Object.assign(window.diseases, {
               incubation: '1-3 Tage',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Rhinorrhoe', description: 'Klar → mukopurulent', severity: 'mild' },
-                { name: 'Niesen', description: 'Paroxysmal', severity: 'mild' },
-                { name: 'Halsschmerzen', description: 'Mild', severity: 'mild' },
-                { name: 'Husten', description: 'Trocken, irritativ', severity: 'mild' },
-                { name: 'Fieber', description: 'Leicht oder fehlend', severity: 'mild' }
+                { name: 'Typische Symptome', description: 'Typischerweise präsentiert es sich mit Rhinorrhoe, verstopfter Nase, Niesen, Halsschmerzen und trockenem Husten. Das Fieber ist in der Regel leicht oder fehlt. Die Symptome klingen normalerweise innerhalb von 7-10 Tagen von selbst ab.', severity: 'mild' }
               ],
               physical_exam: [
                 'Nasenschleimhauthyperämie, Ödem',
@@ -1210,7 +1162,7 @@ Object.assign(window.diseases, {
           {
             id: 'rsv_infection',
             name: 'RSV-Infektion (Respiratorisches Synzytial-Virus)',
-            pathogen: { type: 'Virus', name: 'Humanes Respiratorisches Synzytial-Virus (HRSV)', gram: 'RNA-Virus, Pneumoviridae', shape: 'helikal' },
+            pathogen: { type: 'Virus', name: '<i>Humanes Respiratorisches Synzytial-Virus</i> (HRSV)', gram: 'RNA-Virus, Pneumoviridae', shape: 'helikal' },
             epidemiology: {
               incidence: 'Alle Kinder bis zum 2. Lebensjahr infiziert, Erwachsene Reinfektion',
               risk_groups: ['Säuglinge (<6 Monate)', 'Ältere (>65)', 'Chronisch Lungenkranke', 'Immungeschwächte'],
@@ -1219,11 +1171,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Viruseintritt in die Atemwege',
-                'Fusion mit zilientragenden Epithelzellen',
-                'Synzytienbildung',
-                'Zilienzerstörung, gestörte mukoziliäre Clearance',
-                'Entwicklung von Bronchiolitis oder Pneumonie'
+                'Das Virus infiziert die respiratorischen Epithelzellen und bewirkt mit seinem Fusionsprotein (F) die Verschmelzung der Zellen zu sogenannten Synzytien.',
+                'Dieser Prozess führt zur Zerstörung der Epithelzellen, zur Schädigung der Zilien und zu einer erhöhten Schleimproduktion.',
+                'Bei Säuglingen verengen sich die kleinen Atemwege (Bronchiolen) durch Schleim und Ödeme, was das charakteristische Bild der Bronchiolitis (Giemen, Atemnot) hervorruft.'
               ],
               virulence_factors: ['Fusionsprotein (F)', 'G-Glykoprotein (Adhärenz)']
             },
@@ -1231,11 +1181,8 @@ Object.assign(window.diseases, {
               incubation: '4-6 Tage',
               onset: 'Schleichend',
               symptoms: [
-                { name: 'Rhinorrhoe', description: 'Klar', severity: 'mild' },
-                { name: 'Husten', description: 'Trocken, dann produktiv', severity: 'moderate' },
-                { name: 'Fieber', description: 'Leicht-mäßig', severity: 'mild' },
-                { name: 'Dyspnoe', description: 'Schwer bei Säuglingen', severity: 'severe' },
-                { name: 'Giemen', description: 'Zeichen der Bronchiolitis', severity: 'moderate' }
+                { name: 'Anfangssymptome', description: 'Beginnt mit milden, oberen Atemwegssymptomen (Rhinorrhoe, leichtes Fieber).', severity: 'mild' },
+                { name: 'Bronchiolitis (Säuglinge)', description: 'Die schwerste Form bei Säuglingen. Gekennzeichnet durch Atemnot, pfeifendes Atmen (Giemen), Tachypnoe und interkostale Einziehungen. In schweren Fällen können Apnoe und Atemversagen auftreten.', severity: 'severe' }
               ],
               physical_exam: [
                 'Tachypnoe, Einziehungen',
@@ -1277,7 +1224,7 @@ Object.assign(window.diseases, {
               },
               targeted: 'Palivizumab-Prophylaxe für Hochrisiko-Säuglinge',
               supportive: ['Sauerstoff', 'Hydratation', 'Physiotherapie'],
-              prevention: ['Händehygiene', 'Isolierung', 'Palivizumab (monoklonaler Ak)']
+              prevention: ['Händehygiene', 'Isolierung', 'Passive Immunisierung: Nirsevimab, Clesrovimab (langwirksam), Palivizumab', 'Impfung: Ältere (>60 Jahre) und Schwangere (maternale Impfung)']
             },
             prognosis: {
               mortality: 'Niedrig, aber höheres Risiko bei Säuglingen',
@@ -1288,7 +1235,7 @@ Object.assign(window.diseases, {
           {
             id: 'tonsillitis',
             name: 'Tonsillitis (Mandelentzündung)',
-            pathogen: { type: 'Bakterium', name: 'Streptococcus pyogenes (GAS, am häufigsten)', gram: 'Gram-positiv', shape: 'Kette' },
+            pathogen: { type: 'Bakterium', name: '<i>Streptococcus pyogenes</i> (GAS, am häufigsten)', gram: 'Gram-positiv', shape: 'Kette' },
             epidemiology: {
               incidence: 'Häufig im Kindesalter, 5-15 Jahre',
               risk_groups: ['Kinder', 'Junge Erwachsene'],
@@ -1302,16 +1249,14 @@ Object.assign(window.diseases, {
                 'Toxinproduktion (Streptolysin O)',
                 'Systemische Reaktion (Fieber, Allgemeinsymptome)'
               ],
-              virulence_factors: ['M-Protein', 'Streptolysine', 'Hyaluronidase']
+              virulence_factors: ['M-Protein', 'Kapsel', 'Streptolysin O/S', 'Pyrogene Exotoxine']
             },
             clinical: {
               incubation: '2-5 Tage',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Halsschmerzen', description: 'Schwer, Schluckbeschwerden', severity: 'severe' },
-                { name: 'Fieber', description: 'Hoch', severity: 'moderate' },
-                { name: 'Dysphagie', description: 'Schmerzen beim Schlucken', severity: 'moderate' },
-                { name: 'Tonsillenbeläge', description: 'Weiß, eitrig', severity: 'moderate' }
+                { name: 'Lokale Symptome', description: 'Plötzlicher Beginn mit starken Halsschmerzen und Schluckbeschwerden. Die Mandeln sind geschwollen, gerötet und oft mit einem weißen, eitrigen Belag (Stippchen) bedeckt.', severity: 'severe' },
+                { name: 'Allgemeine Symptome', description: 'Begleitet von hohem Fieber, Schüttelfrost, Kopfschmerzen und schmerzhafter Schwellung der zervikalen Lymphknoten.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Tonsillenhyperämie, Schwellung',
@@ -1327,6 +1272,24 @@ Object.assign(window.diseases, {
                 { test: 'Rachenabstrichkultur', finding: 'GAS', significance: 'Bestätigung' }
               ]
             },
+             calculators: [
+              {
+                name: 'Centor-Score (McIsaac) - Strep A Wahrscheinlichkeit',
+                items: [
+                  { label: 'Fieber > 38°C', points: 1 },
+                  { label: 'Kein Husten', points: 1 },
+                  { label: 'Druckschmerzhafte vordere Halslymphknoten', points: 1 },
+                  { label: 'Tonsillenschwellung oder Exsudat', points: 1 },
+                  { label: 'Alter 3-14 Jahre', points: 1 },
+                  { label: 'Alter ≥ 45 Jahre', points: -1 }
+                ],
+                interpretation: [
+                  { min: -1, max: 1, text: 'Niedriges Risiko (<10%). Kein Antibiotikum erforderlich.' },
+                  { min: 2, max: 3, text: 'Mittleres Risiko (15-30%). Kultur oder Schnelltest empfohlen.' },
+                  { min: 4, max: 5, text: 'Hohes Risiko (>50%). Empirische Antibiotika oder Testung.' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Virale Pharyngitis', distinguishing: 'Milde Symptome, kein Exsudat' },
               { disease: 'Mononukleose', distinguishing: 'Lymphozytose, Hepatosplenomegalie' }
@@ -1357,7 +1320,7 @@ Object.assign(window.diseases, {
           {
             id: 'sinusitis',
             name: 'Sinusitis (Nasennebenhöhlenentzündung)',
-            pathogen: { type: 'Virus/Bakterium', name: 'Viren (erste 7-10 Tage), dann Streptococcus pneumoniae, Haemophilus influenzae', gram: 'Gemischt', shape: 'variabel' },
+            pathogen: { type: 'Virus/Bakterium', name: 'Viren (erste 7-10 Tage), dann <i>Streptococcus pneumoniae, Haemophilus influenzae</i>', gram: 'Gemischt', shape: 'variabel' },
             epidemiology: {
               incidence: 'Häufig, Erwachsene 1-2x/Jahr',
               risk_groups: ['Allergiker', 'Raucher', 'Immungeschwächte'],
@@ -1366,10 +1329,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Entzündung der Nasenschleimhaut (Virus)',
-                'Ostiumobstruktion',
-                'Bakterielle Superinfektion',
-                'Eitrige Entzündung'
+                'Nach einer viralen Infektion der oberen Atemwege (Erkältung) schwillt die Nasen- und Nebenhöhlenschleimhaut an.',
+                'Das Ödem blockiert die Ausführungsgänge der Nebenhöhlen (Ostien), was zu einem Sekretstau führt.',
+                'Das gestaute Sekret bietet einen idealen Nährboden für eine bakterielle Superinfektion, die zu einer eitrigen Entzündung führt.'
               ],
               virulence_factors: ['Biofilmbildung']
             },
@@ -1377,10 +1339,8 @@ Object.assign(window.diseases, {
               incubation: 'Nach Infektion der oberen Atemwege',
               onset: 'Schleichend',
               symptoms: [
-                { name: 'Gesichtsschmerzen', description: 'Über Stirn, Nebenhöhlen', severity: 'moderate' },
-                { name: 'Nasenverstopfung', description: 'Mukopurulenter Ausfluss', severity: 'moderate' },
-                { name: 'Kopfschmerzen', description: 'Frontal', severity: 'moderate' },
-                { name: 'Fieber', description: 'In akuten Fällen', severity: 'mild' }
+                { name: 'Charakteristische Symptome', description: 'Gesichtsschmerzen oder Druckgefühl, die sich beim Vorbeugen verschlimmern. Begleitet wird dies von einer verstopften Nase, eitrigem Nasenausfluss und oft Kopfschmerzen.', severity: 'moderate' },
+                { name: 'Zeichen einer bakteriellen Superinfektion', description: 'Symptome, die länger als 10 Tage andauern, sich verschlimmern ("doppelte Verschlechterung") oder hohes Fieber (>38°C) und einseitige Gesichtsschmerzen deuten auf einen bakteriellen Ursprung hin.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Gesichtsdruckempfindlichkeit',
@@ -1424,7 +1384,7 @@ Object.assign(window.diseases, {
           {
             id: 'otitis_media',
             name: 'Otitis media (Mittelohrentzündung)',
-            pathogen: { type: 'Bakterium', name: 'Streptococcus pneumoniae, Haemophilus influenzae, Moraxella catarrhalis', gram: 'Gemischt', shape: 'Kokken/Bazillen' },
+            pathogen: { type: 'Bakterium', name: '<i>Streptococcus pneumoniae, Haemophilus influenzae, Moraxella catarrhalis</i>', gram: 'Gemischt', shape: 'Kokken/Bazillen' },
             epidemiology: {
               incidence: 'Häufig im Kindesalter, 80% erleben es bis zum 3. Lebensjahr',
               risk_groups: ['Säuglinge', 'Kinder', 'Passivrauchen'],
@@ -1433,10 +1393,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Eustachische Röhrenobstruktion (adenoide Hyperplasie, Rhinitis)',
-                'Bakterieller Aufstieg',
-                'Eitrige Entzündung im Mittelohr',
-                'Mögliche Trommelfellperforation'
+                'Nach einer Infektion der oberen Atemwege ist die Funktion der Eustachischen Röhre gestört, die Schleimhaut schwillt an.',
+                'Im Mittelohr entsteht ein Unterdruck, der zu einer Flüssigkeitsansammlung führt (seröse Otitis media).',
+                'Diese Flüssigkeit kann sich mit Bakterien aus dem Nasopharynx superinfizieren, was zu einer eitrigen Entzündung führt, die zu einer Vorwölbung des Trommelfells und Schmerzen führt.'
               ],
               virulence_factors: ['Biofilm', 'Toxine']
             },
@@ -1444,10 +1403,8 @@ Object.assign(window.diseases, {
               incubation: 'Nach Infektion der oberen Atemwege',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Ohrenschmerzen', description: 'Schwer, Kinder weinen', severity: 'severe' },
-                { name: 'Fieber', description: 'Häufig', severity: 'moderate' },
-                { name: 'Hörverlust', description: 'Vorübergehend', severity: 'moderate' },
-                { name: 'Rhinorrhoe', description: 'Assoziiert', severity: 'mild' }
+                { name: 'Hauptsymptome', description: 'Plötzlich einsetzende, starke, pochende Ohrenschmerzen, Fieber und Hörverlust.', severity: 'severe' },
+                { name: 'Zeichen bei Säuglingen', description: 'Bei Säuglingen sind Reizbarkeit, untröstliches Weinen, Appetitlosigkeit und das Greifen ans Ohr charakteristisch.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Trommelfellhyperämie, Vorwölbung',

@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
       {
         id: 'mpox',
         name: 'Mpox (Majomhimlő)',
-        pathogen: { type: 'Vírus', name: 'Mpox virus (MPXV)', gram: 'dsDNS, Poxviridae', shape: 'tégla alakú' },
+        pathogen: { type: 'Vírus', name: '<i>Mpox virus</i> (MPXV)', gram: 'dsDNS, Poxviridae', shape: 'tégla alakú' },
         epidemiology: {
           incidence: 'Globális járvány (2022-), endémiás Afrikában',
           risk_groups: ['MSM populáció', 'Eü. dolgozók', 'Háztartási kontaktok'],
@@ -16,10 +16,10 @@ Object.assign(window.diseases, {
         },
         pathomechanism: {
           steps: [
-            'Bejutás sérült bőrön/nyálkahártyán',
-            'Replikáció a behatolási kapuban és regionális nyirokcsomókban',
-            'Viremia',
-            'Bőr és nyálkahártya léziók kialakulása'
+            'Behatolás: A vírus sérült bőrön, nyálkahártyán vagy a légutakon keresztül jut a szervezetbe.',
+            'Replikáció: A behatolási kapuban és a regionális nyirokcsomókban szaporodik (inkubációs idő).',
+            'Viremia: A vírus a véráramba jut (elsődleges, majd másodlagos viremia), és eljut a bőrhöz és a belső szervekhez.',
+            'Léziók: A bőrben a vírusreplikáció gyulladást, sejtnekrózist és a jellegzetes himlőszerű kiütéseket (macula-papula-vezikula-pusztula-pörk) okozza.'
           ],
           virulence_factors: ['Immunmodulációs fehérjék']
         },
@@ -27,15 +27,16 @@ Object.assign(window.diseases, {
           incubation: '5-21 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Kiütés', description: 'Macula → Papula → Vezikula → Pusztula → Pörk (fájdalmas!)', severity: 'moderate' },
-            { name: 'Lymphadenopathia', description: 'Jellegzetes (megkülönbözteti a himlőtől/bárányhimlőtől)', severity: 'moderate' },
-            { name: 'Láz', description: 'Prodromális tünet', severity: 'mild' },
-            { name: 'Proctitis', description: 'Végbélfájdalom (szexuális terjedésnél)', severity: 'severe' }
+            { name: 'Prodromális tünetek', description: 'Láz, intenzív fejfájás, izomfájdalom, hátfájás és kifejezett gyengeség.', severity: 'mild' },
+            { name: 'Lymphadenopathia', description: 'Jellegzetes tünet (nyaki, inguinalis), amely megkülönbözteti a fekete himlőtől és a bárányhimlőtől.', severity: 'moderate' },
+            { name: 'Kiütés', description: '1-3 nappal a láz után jelenik meg. Arcon kezdődik, centrifugálisan terjed (tenyér/talp érintett!). Stádiumai: Macula → Papula → Vezikula → Pusztula (köldökös behúzódással) → Pörk. A kiütések gyakran fájdalmasak, gyógyuláskor viszketnek.', severity: 'moderate' },
+            { name: 'Nyálkahártya tünetek', description: 'Szájüregi, genitális és perianalis léziók. Proctitis (végbélgyulladás) gyakori szexuális terjedés esetén, ami súlyos fájdalommal jár.', severity: 'severe' }
           ],
           physical_exam: [
             'Centrifugális eloszlású kiütések (tenyér/talp is)',
             'Duzzadt, fájdalmas nyirokcsomók',
-            'Genitalis/perianalis léziók'
+            'Genitalis/perianalis léziók',
+            'Láz'
           ],
           complications: ['Bakteriális felülfertőződés', 'Pneumonia', 'Sepszis', 'Encephalitis', 'Szaruhártya hegesedés (vakság)']
         },
@@ -59,7 +60,7 @@ Object.assign(window.diseases, {
       {
         id: 'nipah',
         name: 'Nipah vírus',
-        pathogen: { type: 'Vírus', name: 'Nipah vírus (NiV)', gram: 'RNS, Paramyxoviridae (Henipavirus)', shape: 'pleomorf' },
+        pathogen: { type: 'Vírus', name: '<i>Nipah vírus</i> (NiV)', gram: 'RNS, Paramyxoviridae (Henipavirus)', shape: 'pleomorf' },
         epidemiology: {
           incidence: 'Sporadikus járványok (Dél-Ázsia, Délkelet-Ázsia)',
           risk_groups: ['Sertésgondozók', 'Pálmanedv gyűjtők/fogyasztók'],
@@ -68,11 +69,10 @@ Object.assign(window.diseases, {
         },
         pathomechanism: {
           steps: [
-            'Bejutás (orális/respiratorikus)',
-            'Viremia',
-            'Endothel sejtek fertőzése (Ephrin-B2 receptor)',
-            'Vasculitis, thrombosis, ischaemia',
-            'KIR és tüdő érintettség'
+            'Bejutás: Szennyezett élelmiszer (pl. pálmanedv) fogyasztásával vagy fertőzött állattal (sertés, denevér) való közvetlen kontaktussal.',
+            'Szisztémás terjedés: A vírus a véráramba jut (viremia), szabadon vagy fehérvérsejtekhez kötődve.',
+            'Vasculitis: Az erek endothel sejtjeit fertőzi meg (Ephrin-B2 receptor), ami szisztémás vasculitist, trombózist és szöveti ischemiát okoz.',
+            'Tropizmus: Különös affinitása van a központi idegrendszerhez (átlép a vér-agy gáton) és a tüdőhöz, ahol súlyos gyulladást és nekrózist idéz elő.'
           ],
           virulence_factors: ['Fúziós fehérjék', 'Immunantagonisták']
         },
@@ -80,10 +80,9 @@ Object.assign(window.diseases, {
           incubation: '4-14 nap',
           onset: 'Hirtelen',
           symptoms: [
-            { name: 'Láz', description: 'Magas', severity: 'severe' },
-            { name: 'Fejfájás', description: 'Súlyos', severity: 'severe' },
-            { name: 'Légúti tünetek', description: 'Köhögés, atípusos pneumonia', severity: 'moderate' },
-            { name: 'Encephalitis', description: 'Szédülés, tudatzavar, kóma (24-48 órán belül)', severity: 'severe' }
+            { name: 'Prodroma', description: 'Láz, fejfájás, izomfájdalom, torokfájás és hányás.', severity: 'moderate' },
+            { name: 'Légúti tünetek', description: 'Köhögés, nehézlégzés, amely atípusos pneumoniává és súlyos esetben akut légzési distressz szindrómává (ARDS) progrediálhat.', severity: 'severe' },
+            { name: 'Encephalitis', description: 'Szédülés, tarkókötöttség, tudatzavar, amely gyorsan (24-48 órán belül) kómába torkollhat. Agytörzsi tünetek (areflexia, hypotonia) gyakoriak.', severity: 'severe' }
           ],
           physical_exam: ['Láz', 'Tarkókötöttség', 'Tudatzavar', 'Myoclonus', 'Areflexia/Hyporeflexia'],
           complications: ['Súlyos encephalitis', 'ARDS', 'Relapszus (hónapokkal/évekkel később)', 'Halál']

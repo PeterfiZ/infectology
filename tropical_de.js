@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
       {
         id: 'dengue',
         name: 'Dengue-Fieber',
-        pathogen: { type: 'Virus', name: 'Dengue-Virus (DENV 1-4)', gram: 'RNA, Flaviviridae', shape: 'kugelförmig' },
+        pathogen: { type: 'Virus', name: '<i>Dengue-Virus</i> (DENV 1-4)', gram: 'RNA, Flaviviridae', shape: 'kugelförmig' },
         epidemiology: {
           incidence: 'Weltweit 390 Millionen Infektionen/Jahr',
           risk_groups: ['Tropenreisende', 'Bewohner endemischer Gebiete'],
@@ -16,32 +16,31 @@ Object.assign(window.diseases, {
         },
         pathomechanism: {
           steps: [
-            'Mückenstich',
-            'Virusreplikation in dendritischen Zellen/Monozyten',
-            'Virämie',
-            'Antikörperabhängige Verstärkung (ADE) bei Sekundärinfektion (schwererer Verlauf)',
-            'Zytokinsturm, Kapillarleck'
+            'Nach dem Stich einer infizierten Mücke infiziert das Virus dendritische Zellen und Monozyten in der Haut und wandert dann in die Lymphknoten.',
+            'Das Virus vermehrt sich und gelangt in den Blutkreislauf (Virämie), was hohes Fieber und systemische Symptome verursacht.',
+            'Bei einer Sekundärinfektion, wenn der Patient bereits Kontakt mit einem anderen Serotyp hatte, tritt das Phänomen der antikörperabhängigen Verstärkung (ADE) auf: Nicht-neutralisierende Antikörper erleichtern den Eintritt des Virus in die Zellen, was zu einer verstärkten Replikation führt.',
+            'Dies löst einen schweren Zytokinsturm und eine erhöhte Gefäßpermeabilität (Kapillarleck) aus, was zu Plasmaverlust, Hämokonzentration und Schock führen kann.'
           ],
-          virulence_factors: ['NS1-Protein', 'ADE']
+          virulence_factors: ['NS1-Protein', 'ADE (Antibody-Dependent Enhancement)']
         },
         clinical: {
           incubation: '4-10 Tage',
           onset: 'Plötzlich',
           symptoms: [
-            { name: 'Fieber', description: 'Hoch, plötzlich (>99% bei symptomatischen)', severity: 'severe' },
-            { name: 'Schwere Arthralgie/Myalgie', description: 'Schwere Muskel- und Gelenkschmerzen ("Knochenbrecherfieber") (>90%)', severity: 'severe' },
-            { name: 'Kopfschmerzen/Retrobulbärer Schmerz', description: 'Schmerz hinter den Augen (>90%)', severity: 'moderate' },
-            { name: 'Ausschlag', description: 'Makulopapulös (50-80%), tritt nach Fieber auf', severity: 'moderate' },
-            { name: 'Übelkeit/Erbrechen', description: 'Kann häufiges Warnzeichen sein', severity: 'moderate' }
+            { name: 'Fieberphase', description: 'Plötzlich einsetzendes hohes Fieber (40°C), begleitet von starken Kopfschmerzen und retrobulbären Schmerzen.', severity: 'severe' },
+            { name: '"Knochenbrecherfieber"', description: 'Extrem starke Muskel- und Gelenkschmerzen (Myalgie, Arthralgie), die Bewegung fast unmöglich machen.', severity: 'severe' },
+            { name: 'Kritische Phase', description: 'Kann beim Abklingen des Fiebers (Tag 3-7) auftreten. Warnzeichen: starke Bauchschmerzen, anhaltendes Erbrechen, Flüssigkeitsansammlung (Aszites, Pleuraerguss), Schleimhautblutungen, Lethargie oder Unruhe.', severity: 'severe' },
+            { name: 'Ausschlag', description: 'Makulopapulöser Ausschlag, der nach dem Fieber auftritt, oft mit dem Muster "weiße Inseln im roten Meer".', severity: 'moderate' }
           ],
           physical_exam: [
             'Fieber',
-            'Ausschlag ("weiße Inseln im roten Meer")',
+            'Gesichtsrötung',
             'Positiver Tourniquet-Test (Kapillarfragilität)',
             'Hepatomegalie',
-            'Warnzeichen: Bauchschmerzen, anhaltendes Erbrechen, Flüssigkeitsansammlung'
+            'Hämorrhagische Zeichen (Petechien, Ekchymosen)',
+            'Schockzeichen (kalte Extremitäten, schwacher Puls) in der kritischen Phase'
           ],
-          complications: ['Dengue-hämorrhagisches Fieber (DHF)', 'Dengue-Schock-Syndrom (DSS)', 'Schwere Blutung']
+          complications: ['Dengue-hämorrhagisches Fieber (DHF)', 'Dengue-Schock-Syndrom (DSS)', 'Schwere Organschäden (Leber, Niere, Herz)']
         },
         diagnostics: {
           laboratory: [
@@ -67,7 +66,7 @@ Object.assign(window.diseases, {
       {
         id: 'zika',
         name: 'Zika-Virus-Infektion',
-        pathogen: { type: 'Virus', name: 'Zika-Virus (ZIKV)', gram: 'RNA, Flaviviridae', shape: 'kugelförmig' },
+        pathogen: { type: 'Virus', name: '<i>Zika-Virus</i> (ZIKV)', gram: 'RNA, Flaviviridae', shape: 'kugelförmig' },
         epidemiology: {
           incidence: 'Epidemisch',
           risk_groups: ['Schwangere (Risiko fötaler Schädigungen)', 'Reisende'],
@@ -76,25 +75,29 @@ Object.assign(window.diseases, {
         },
         pathomechanism: {
           steps: [
-            'Eintritt durch Mückenstich/sexuell',
-            'Replikation',
-            'Virämie',
-            'Neurotropismus (Erwachsene: GBS, Fötus: Mikrozephalie)'
+            'Das Virus gelangt durch Mückenstich, auf sexuellem Weg oder vertikal in den Körper. Hautzellen (Keratinozyten, dendritische Zellen) werden zuerst infiziert.',
+            'Das Virus breitet sich in Lymphknoten und Blutkreislauf aus (Virämie). Es kann die Blut-Hirn-Schranke und die Plazentaschranke überwinden.',
+            'Es besitzt einen starken Neurotropismus: Während der fötalen Entwicklung infiziert und zerstört es gezielt neurale Vorläuferzellen, was zu Hirnfehlbildungen (Mikrozephalie) führt.',
+            'Bei Erwachsenen kann es über einen Autoimmunmechanismus das Guillain-Barré-Syndrom auslösen.'
           ],
-          virulence_factors: ['Neurotropismus']
+          virulence_factors: ['Neurotropismus', 'Plazentagängigkeit']
         },
         clinical: {
           incubation: '3-14 Tage',
           onset: 'Mild',
           symptoms: [
-            { name: 'Asymptomatisch', description: 'Etwa 80% der Infektionen verlaufen asymptomatisch', severity: 'mild' },
-            { name: 'Ausschlag', description: 'Makulopapulös, juckend (>90% bei symptomatischen)', severity: 'moderate' },
-            { name: 'Fieber', description: 'Niedrig (65%), fehlt oft', severity: 'mild' },
-            { name: 'Arthralgie', description: 'Kleine Gelenke (65%), mit Ödem', severity: 'mild' },
-            { name: 'Konjunktivitis', description: 'Nicht eitrig (55%)', severity: 'moderate' }
+            { name: 'Asymptomatisch', description: 'Etwa 80% der Infizierten zeigen keine Symptome.', severity: 'mild' },
+            { name: 'Ausschlag und Juckreiz', description: 'Häufigstes Symptom ist ein makulopapulöser Ausschlag, oft juckend, der sich vom Gesicht auf den Rumpf ausbreitet.', severity: 'moderate' },
+            { name: 'Fieber und Schmerzen', description: 'Leichtes Fieber, Gelenkschmerzen (v.a. kleine Gelenke an Händen/Füßen), Muskelschmerzen und Kopfschmerzen.', severity: 'mild' },
+            { name: 'Konjunktivitis', description: 'Nicht-eitrige Bindehautentzündung (rote Augen).', severity: 'moderate' }
           ],
-          physical_exam: ['Ausschlag', 'Konjunktivitis', 'Fieber'],
-          complications: ['Guillain-Barré-Syndrom', 'Kongenitales Zika-Syndrom (Mikrozephalie)']
+          physical_exam: [
+            'Diffuser makulopapulöser Ausschlag',
+            'Nicht-eitrige Konjunktivitis',
+            'Gelenkschwellung (Hände/Füße)',
+            'Leichtes Fieber'
+          ],
+          complications: ['Guillain-Barré-Syndrom (Erwachsene)', 'Kongenitales Zika-Syndrom (fötale Mikrozephalie, Hirnverkalkungen, Seh-/Hörverlust)']
         },
         diagnostics: {
           laboratory: [{ test: 'Blutbild', finding: 'Leichte Leukopenie/Thrombozytopenie', interpretation: '-' }],
@@ -116,7 +119,7 @@ Object.assign(window.diseases, {
       {
         id: 'chikungunya',
         name: 'Chikungunya-Fieber',
-        pathogen: { type: 'Virus', name: 'Chikungunya-Virus (CHIKV)', gram: 'RNA, Togaviridae', shape: 'kugelförmig' },
+        pathogen: { type: 'Virus', name: '<i>Chikungunya-Virus</i> (CHIKV)', gram: 'RNA, Togaviridae', shape: 'kugelförmig' },
         epidemiology: {
           incidence: 'Epidemisch',
           risk_groups: ['Reisende'],
@@ -124,19 +127,29 @@ Object.assign(window.diseases, {
           transmission: 'Aedes-Mücke'
         },
         pathomechanism: {
-          steps: ['Mückenstich', 'Replikation in Fibroblasten', 'Gelenktropismus', 'Chronische Entzündung'],
-          virulence_factors: ['-']
+          steps: [
+            'Nach dem Mückenstich repliziert das Virus in der Haut und gelangt dann in den Blutkreislauf.',
+            'Es infiziert Gewebe weitläufig, zeigt aber einen besonderen Tropismus für Gelenkkapseln, Muskeln und Hautfibroblasten.',
+            'Es löst eine intensive Entzündungsreaktion in den Gelenken aus (Infiltration von Monozyten, Makrophagen), was eine akute Arthritis verursacht.',
+            'Das Virus oder Antigene können monatelang im Gelenkwebe persistieren und chronische, rheumatoide Arthritis-ähnliche Beschwerden aufrechterhalten.'
+          ],
+          virulence_factors: ['Gelenktropismus']
         },
         clinical: {
           incubation: '3-7 Tage',
           onset: 'Plötzlich',
           symptoms: [
-            { name: 'Fieber und Polyarthralgie', description: 'Plötzliches hohes Fieber und schwere, symmetrische Polyarthralgie (>95%)', severity: 'severe' },
-            { name: 'Ausschlag', description: 'Makulopapulöser Ausschlag (50-75%)', severity: 'moderate' },
-            { name: 'Andere Symptome', description: 'Kopfschmerzen, Myalgie, Übelkeit', severity: 'mild' }
+            { name: 'Akute Phase', description: 'Plötzlich einsetzendes hohes Fieber (>39°C) und quälende, schwere Gelenkschmerzen (Polyarthralgie), die oft zur Bewegungsunfähigkeit führen. Die Gelenkschmerzen sind meist symmetrisch und betreffen die distalen Gelenke.', severity: 'severe' },
+            { name: 'Ausschlag', description: 'Makulopapulöser Ausschlag an Rumpf und Gliedmaßen (ca. 50%).', severity: 'moderate' },
+            { name: 'Chronische Phase', description: 'Bei einem signifikanten Teil der Patienten (30-60%) können Gelenkschmerzen und Steifheit über Monate oder Jahre wiederkehren oder anhalten und die Lebensqualität erheblich beeinträchtigen.', severity: 'moderate' }
           ],
-          physical_exam: ['Symmetrische Polyarthritis/Tenosynovitis (Hand, Handgelenk, Knöchel)', 'Fieber', 'Makulopapulöser Ausschlag'],
-          complications: ['Chronische, persistierende Arthritis (30-60%, besonders bei Älteren)', 'Selten: Myokarditis, Enzephalitis']
+          physical_exam: [
+            'Hohes Fieber',
+            'Symmetrische Gelenkschwellung und Druckschmerz (Hände, Handgelenke, Knöchel)',
+            'Tenosynovitis',
+            'Makulopapulöser Ausschlag'
+          ],
+          complications: ['Chronische, invalidisierende Arthritis', 'Selten: Myokarditis, Enzephalitis, Hepatitis']
         },
         diagnostics: {
           laboratory: [{ test: 'Blutbild', finding: 'Lymphopenie', interpretation: '-' }],

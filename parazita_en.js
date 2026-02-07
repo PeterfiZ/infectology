@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
            {
             id: 'malaria',
             name: 'Malaria',
-            pathogen: { type: 'Protozoan', name: 'Plasmodium falciparum, vivax, ovale, malariae', gram: '-', shape: 'ring/gametocyte' },
+             pathogen: { type: 'Protozoan', name: '<i>Plasmodium falciparum, vivax, ovale, malariae, knowlesi</i>', gram: '-', shape: 'ring/gametocyte' },
             epidemiology: {
               incidence: '>200 million cases/year worldwide, >400,000 deaths',
               risk_groups: ['Travelers to endemic areas', 'Children (<5 years)', 'Pregnant women', 'Immunocompromised'],
@@ -16,11 +16,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Mosquito bite → sporozoites into blood',
-                'Liver phase (exoerythrocytic): schizont formation',
-                'Blood phase (erythrocytic): RBC invasion, multiplication, rupture',
-                'Cyclic fever attacks (RBC rupture)',
-                'Cytoadherence (P. falciparum): microcirculation blockage (brain, kidney)'
+                'During the bite of an infected Anopheles mosquito, sporozoites enter the bloodstream and migrate to liver cells within minutes.',
+                'Liver phase (exoerythrocytic): Inside hepatocytes, the parasites multiply asexually, forming schizonts. This phase is asymptomatic. P. vivax and P. ovale can form hypnozoites (dormant forms), which can lead to relapses.',
+                'Blood phase (erythrocytic): Merozoites released from the liver infect red blood cells (RBCs). Inside the RBCs, they develop into ring-stage trophozoites and then into schizonts, which release new merozoites upon RBC rupture.',
+                'The cyclical rupture of RBCs (every 48-72 hours) causes the characteristic, periodic fever paroxysms due to the release of inflammatory cytokines (TNF-alpha, IL-1).',
+                'RBCs infected with P. falciparum adhere to the walls of small blood vessels via the PfEMP1 protein (cytoadherence), obstructing microcirculation and leading to severe organ damage (brain, kidneys, lungs).'
               ],
               virulence_factors: ['PfEMP1 (adhesion)', 'Antigenic variation', 'Hemozoin pigment']
             },
@@ -28,11 +28,8 @@ Object.assign(window.diseases, {
               incubation: '7-30 days (species-dependent)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Febrile paroxysm', description: 'Chills → Fever → Diaphoresis (cyclic)', severity: 'severe' },
-                { name: 'Headache', description: 'Intense', severity: 'moderate' },
-                { name: 'Nausea, vomiting', description: 'Common', severity: 'moderate' },
-                { name: 'Severe anemia', description: 'RBC destruction', severity: 'severe' },
-                { name: 'Cerebral malaria', description: 'Coma, seizures (P. falciparum)', severity: 'severe' }
+                { name: 'Uncomplicated Malaria', description: 'Characterized by febrile paroxysms: chills, high fever (40-41°C), followed by sweating and defervescence. The cycle repeats every 48 (P. falciparum, vivax, ovale) or 72 hours (P. malariae). Accompanying symptoms include headache, myalgia, nausea, and splenomegaly.', severity: 'moderate' },
+                { name: 'Severe Malaria (P. falciparum)', description: 'A life-threatening condition. Manifestations include cerebral malaria (impaired consciousness, coma, seizures), severe anemia, ARDS (pulmonary edema), renal failure (blackwater fever), metabolic acidosis, hypoglycemia, and shock.', severity: 'severe' }
               ],
               physical_exam: [
                 'Fever, tachycardia',
@@ -112,7 +109,7 @@ Object.assign(window.diseases, {
           {
             id: 'toxoplasmosis',
             name: 'Toxoplasmosis',
-            pathogen: { type: 'Protozoan', name: 'Toxoplasma gondii', gram: '-', shape: 'intracellular' },
+            pathogen: { type: 'Protozoan', name: '<i>Toxoplasma gondii</i>', gram: '-', shape: 'intracellular' },
             epidemiology: {
               incidence: '30-50% of the world\'s population is seropositive (latent)',
               risk_groups: ['Immunocompromised (HIV/AIDS, transplant)', 'Pregnant women (fetus!)', 'Cat owners'],
@@ -121,12 +118,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Ingestion of oocyst/tissue cyst',
-                'Intestinal wall penetration → tachyzoites (rapid multiplication)',
-                'Hematogenous spread (acute phase)',
-                'Immune response → bradyzoites (slow) → tissue cyst formation (muscle, brain, eye)',
-                'Latency (lifelong)',
-                'Reactivation (in immunocompromised state): cyst rupture → encephalitis'
+                'Infection can occur via three routes: 1. Ingestion of oocysts from soil/food contaminated with cat feces. 2. Consumption of tissue cysts in raw or undercooked meat. 3. Vertical transmission (from mother to fetus).',
+                'In the intestine, parasites released from cysts transform into tachyzoites (rapidly dividing form), which penetrate the intestinal wall and can spread to any part of the body via the bloodstream.',
+                'In response to an intact immune system, tachyzoites convert into bradyzoites (slowly dividing form) and form tissue cysts, primarily in the brain, muscles, and eyes. This establishes a latent, lifelong infection.',
+                'In cases of immunosuppression (e.g., AIDS, transplantation), these latent cysts can reactivate. Bradyzoites convert back to tachyzoites, leading to severe, often fatal disease (e.g., encephalitis).'
               ],
               virulence_factors: ['Intracellular survival', 'Cyst formation', 'Immunomodulation']
             },
@@ -134,11 +129,10 @@ Object.assign(window.diseases, {
               incubation: '5-23 days',
               onset: 'Slow/asymptomatic',
               symptoms: [
-                { name: 'Asymptomatic', description: '80-90% of immunocompetent individuals', severity: 'mild' },
-                { name: 'Mononucleosis-like syndrome', description: 'Fever, lymphadenopathy, fatigue', severity: 'mild' },
-                { name: 'Cerebral (AIDS)', description: 'Headache, confusion, seizures, hemiparesis', severity: 'severe' },
-                { name: 'Chorioretinitis', description: 'Blurred vision, eye pain', severity: 'moderate' },
-                { name: 'Congenital', description: 'Hydrocephalus, calcification, chorioretinitis (Sabin\'s tetrad)', severity: 'severe' }
+                { name: 'Immunocompetent Infection', description: '80-90% of cases are asymptomatic. When symptoms occur, they are mild and mononucleosis-like: painless cervical lymphadenopathy, fever, and fatigue.', severity: 'mild' },
+                { name: 'Ocular Toxoplasmosis', description: 'The most common cause of chorioretinitis. It causes blurred vision, eye pain, and floaters. It can be a result of primary infection or reactivation.', severity: 'moderate' },
+                { name: 'Cerebral Toxoplasmosis (AIDS)', description: 'The most common CNS opportunistic infection in AIDS (CD4<100). Characterized by headache, confusion, fever, and focal neurological signs (seizures, hemiparesis). MRI typically shows multiple ring-enhancing lesions.', severity: 'severe' },
+                { name: 'Congenital Toxoplasmosis', description: 'A consequence of primary maternal infection during pregnancy. The classic Sabin\'s tetrad includes hydrocephalus, intracranial calcifications, chorioretinitis, and seizures. It can cause severe and permanent damage.', severity: 'severe' }
               ],
               physical_exam: [
                 'Cervical lymphadenopathy (painless)',
@@ -207,7 +201,7 @@ Object.assign(window.diseases, {
           {
             id: 'ascariasis',
             name: 'Ascariasis (Roundworm)',
-            pathogen: { type: 'Helminth', name: 'Ascaris lumbricoides', gram: '-', shape: 'nematode (roundworm)' },
+            pathogen: { type: 'Helminth', name: '<i>Ascaris lumbricoides</i>', gram: '-', shape: 'nematode (roundworm)' },
             epidemiology: {
               incidence: 'Most common helminth infection worldwide (>800 million)',
               risk_groups: ['Children', 'People in poor hygienic conditions'],
@@ -216,11 +210,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Egg ingestion',
-                'Larva hatches in the small intestine',
-                'Migrates to the lungs via the venous system (Löffler\'s syndrome)',
-                'Swallowed after being coughed up',
-                'Adult worm in the small intestine (nutrient deprivation, obstruction)'
+                'Infection occurs via the fecal-oral route from soil, vegetables, or water contaminated with eggs.',
+                'Ingested eggs hatch in the small intestine, and the larvae penetrate the intestinal wall, migrating through the portal circulation to the liver and then the lungs.',
+                'In the lungs, the larvae cause inflammation (Löffler\'s syndrome), are coughed up, and then swallowed, returning to the small intestine.',
+                'In the small intestine, they mature into adult worms (15-35 cm), where they absorb nutrients. In heavy infections, a bolus of worms can cause intestinal or biliary obstruction.'
               ],
               virulence_factors: ['Protease inhibitors', 'Migration ability']
             },
@@ -228,9 +221,9 @@ Object.assign(window.diseases, {
               incubation: '4-8 weeks',
               onset: 'Slow',
               symptoms: [
-                { name: 'Pulmonary phase', description: 'Cough, dyspnea, Löffler\'s syndrome', severity: 'moderate' },
-                { name: 'Intestinal phase', description: 'Abdominal pain, bloating, nausea', severity: 'mild' },
-                { name: 'Obstruction', description: 'Ileus (worm bolus), biliary obstruction', severity: 'severe' }
+                { name: 'Pulmonary Phase (Löffler\'s Syndrome)', description: 'A transient syndrome during larval migration: dry cough, shortness of breath, low-grade fever, and marked eosinophilia in the blood count.', severity: 'moderate' },
+                { name: 'Intestinal Phase', description: 'Mild infections can be asymptomatic. In more severe cases, abdominal pain, bloating, nausea, and in children, malnutrition and growth retardation may occur.', severity: 'mild' },
+                { name: 'Obstructive Complications', description: 'In massive infections, a worm bolus can cause mechanical intestinal obstruction (ileus). Worms migrating into the bile ducts or pancreatic duct can cause jaundice, cholangitis, or pancreatitis.', severity: 'severe' }
               ],
               physical_exam: [
                 'Often negative',
@@ -272,7 +265,7 @@ Object.assign(window.diseases, {
           {
             id: 'taeniasis',
             name: 'Taeniasis (Tapeworm)',
-            pathogen: { type: 'Helminth', name: 'Taenia saginata (beef), Taenia solium (pork)', gram: '-', shape: 'cestode (tapeworm)' },
+            pathogen: { type: 'Helminth', name: '<i>Taenia saginata</i> (beef), <i>Taenia solium</i> (pork)', gram: '-', shape: 'cestode (tapeworm)' },
             epidemiology: {
               incidence: 'Widespread worldwide',
               risk_groups: ['People who consume raw meat'],
@@ -280,8 +273,8 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Ingestion of cysticerci in meat → adult worm in intestine (Taeniasis)',
-                'Ingestion of T. solium eggs (fecal-oral) → larva hatches → tissue migration → Cysticercosis (brain, muscle, eye)'
+                'Taeniasis (Intestinal Tapeworm): Occurs by consuming raw or undercooked beef (T. saginata) or pork (T. solium) containing larvae (cysticerci). In the intestine, the larva develops into an adult tapeworm, several meters long.',
+                'Cysticercosis (Tissue Form): Caused EXCLUSIVELY by T. solium! The worm eggs are ingested via the fecal-oral route (e.g., contaminated food, autoinfection). Larvae hatch from the eggs in the intestine, enter the bloodstream, and travel to tissues (brain, muscle, eye), where they encyst (cysticercus).'
               ],
               virulence_factors: ['Scolex (hooks/suckers)']
             },
@@ -289,8 +282,8 @@ Object.assign(window.diseases, {
               incubation: '8-14 weeks',
               onset: 'Asymptomatic/Mild',
               symptoms: [
-                { name: 'Intestinal infection', description: 'Mild abdominal discomfort, passage of proglottids (segments)', severity: 'mild' },
-                { name: 'Neurocysticercosis (T. solium)', description: 'Epilepsy, headache, increased ICP', severity: 'severe' }
+                { name: 'Taeniasis (Intestinal Infection)', description: 'Often asymptomatic. Mild abdominal discomfort, bloating, or changes in appetite may occur. The diagnosis is often made by observing motile tapeworm segments (proglottids) passed in the stool.', severity: 'mild' },
+                { name: 'Neurocysticercosis (NCC)', description: 'The most severe form, occurring after ingestion of T. solium eggs. Cysts in the central nervous system cause seizures (most common), headaches, increased intracranial pressure, hydrocephalus, or focal neurological symptoms, depending on their location.', severity: 'severe' }
               ],
               physical_exam: ['Unremarkable (intestinal infection)', 'Neurological symptoms (cysticercosis)'],
               complications: ['Neurocysticercosis (leading cause of epilepsy in developing countries)', 'Ocular cysticercosis']
@@ -317,7 +310,7 @@ Object.assign(window.diseases, {
           {
             id: 'echinococcosis',
             name: 'Echinococcosis (Hydatid Disease)',
-            pathogen: { type: 'Helminth', name: 'Echinococcus granulosus (cystic), E. multilocularis (alveolar)', gram: '-', shape: 'cestode (tapeworm)' },
+            pathogen: { type: 'Helminth', name: '<i>Echinococcus granulosus</i> (cystic), <i>E. multilocularis</i> (alveolar)', gram: '-', shape: 'cestode (tapeworm)' },
             epidemiology: {
               incidence: 'Endemic (Mediterranean, E-Europe, Asia)',
               risk_groups: ['Dog owners, shepherds', 'People who consume wild berries (fox - E. multilocularis)'],
@@ -325,10 +318,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Egg ingestion → oncosphere in the intestine',
-                'Portal circulation → Liver (most common) → Lungs → Other',
-                'Hydatid cyst formation (slow growth)',
-                'Cyst rupture → anaphylaxis and dissemination'
+                'Infection occurs by ingesting eggs from soil or vegetables contaminated with the feces of dogs (E. granulosus) or foxes (E. multilocularis). Humans are an intermediate host for the parasite.',
+                'In the intestine, oncospheres (larvae) hatch from the eggs, penetrate the intestinal wall, enter the portal circulation, and most commonly settle in the liver (70%), or less frequently in the lungs (20%) or other organs.',
+                'E. granulosus: The larva slowly grows (over years) into a fluid-filled, thick-walled hydatid cyst, which can contain thousands of new larvae (protoscolices). The mass effect of the cyst causes symptoms.',
+                'E. multilocularis: The larva grows in a tumor-like, infiltrative manner, destroying liver tissue. It has no clear border, making it difficult to remove surgically.',
+                'Cyst rupture can cause severe anaphylactic shock due to the release of its antigenic contents, and dissemination of the infection.'
               ],
               virulence_factors: ['Laminated layer (immune protection)', 'Protoscolices']
             },
@@ -336,9 +330,9 @@ Object.assign(window.diseases, {
               incubation: 'Years (slow growth)',
               onset: 'Slow',
               symptoms: [
-                { name: 'Hepatic cyst', description: 'Right upper quadrant pain, hepatomegaly', severity: 'moderate' },
-                { name: 'Pulmonary cyst', description: 'Cough, chest pain, hemoptysis', severity: 'moderate' },
-                { name: 'Rupture', description: 'Anaphylactic shock, fever, urticaria', severity: 'severe' }
+                { name: 'Symptoms', description: 'The disease is asymptomatic for years. Symptoms depend on the cyst\'s size and location. Liver cyst: right upper quadrant pain, feeling of fullness, hepatomegaly, jaundice (biliary compression). Lung cyst: chest pain, cough, hemoptysis.', severity: 'moderate' },
+                { name: 'Cyst Rupture', description: 'Sudden abdominal or chest pain, fever, urticaria, eosinophilia, and in severe cases, anaphylactic shock. The cyst contents can spread within the body, leading to the formation of new cysts.', severity: 'severe' },
+                { name: 'Alveolar Echinococcosis (E. multilocularis)', description: 'Behaves like liver cancer: jaundice, abdominal pain, weight loss, hepatomegaly. Poor prognosis.', severity: 'severe' }
               ],
               physical_exam: ['Hepatomegaly', 'Palpable mass'],
               complications: ['Cyst rupture (anaphylaxis)', 'Biliary obstruction', 'Bacterial superinfection']
@@ -366,7 +360,7 @@ Object.assign(window.diseases, {
           {
             id: 'enterobiasis',
             name: 'Enterobiasis (Pinworm)',
-            pathogen: { type: 'Helminth', name: 'Enterobius vermicularis', gram: '-', shape: 'nematode (pinworm)' },
+            pathogen: { type: 'Helminth', name: '<i>Enterobius vermicularis</i>', gram: '-', shape: 'nematode (pinworm)' },
             epidemiology: {
               incidence: 'Most common helminth infection in temperate zones (also in developed countries)',
               risk_groups: ['Small children', 'Institutionalized settings (daycare, school)', 'Family members'],
@@ -374,10 +368,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Egg ingestion',
-                'Larva in the small intestine',
-                'Adult worm in the cecum',
-                'Female migrates to the perianal region at night to lay eggs → pruritus'
+                'Infection occurs by ingesting the sticky eggs, which can be found under fingernails, on bedding, and in dust. Autoinfection (hand-to-mouth after scratching) is common.',
+                'Larvae hatch from the eggs in the small intestine, migrate to the cecal area, and mature into adult worms.',
+                'The fertilized female worm (approx. 1 cm) migrates to the perianal folds at night, lays her eggs, and then dies. The egg-laying and movement of the worm cause the characteristic, intense itching.'
               ],
               virulence_factors: ['-']
             },
@@ -385,9 +378,8 @@ Object.assign(window.diseases, {
               incubation: '2-6 weeks',
               onset: 'Gradual',
               symptoms: [
-                { name: 'Perianal pruritus', description: 'Mainly at night (pruritus ani)', severity: 'moderate' },
-                { name: 'Insomnia', description: 'Due to pruritus', severity: 'mild' },
-                { name: 'Vulvovaginitis', description: 'In young girls (aberrant migration)', severity: 'moderate' }
+                { name: 'Perianal Pruritus (Itching)', description: 'The leading symptom, typically most intense at night, causing sleep disturbance and restlessness. Scratching can lead to secondary bacterial skin infections.', severity: 'moderate' },
+                { name: 'Other Symptoms', description: 'Rarely, mild abdominal pain. In young girls, the worm can migrate into the vagina, causing vulvovaginitis. Most infections are mild or asymptomatic.', severity: 'mild' }
               ],
               physical_exam: ['Perianal excoriation (scratch marks)', 'Worms may be visible (rare)'],
               complications: ['Bacterial superinfection (scratching)', 'Salpingitis (rare)']
@@ -412,7 +404,7 @@ Object.assign(window.diseases, {
           {
             id: 'trichinellosis',
             name: 'Trichinellosis',
-            pathogen: { type: 'Helminth', name: 'Trichinella spiralis', gram: '-', shape: 'nematode (roundworm)' },
+            pathogen: { type: 'Helminth', name: '<i>Trichinella spiralis</i>', gram: '-', shape: 'nematode (roundworm)' },
             epidemiology: {
               incidence: 'Sporadic outbreaks (pig slaughter)',
               risk_groups: ['People who consume raw/smoked pork, wild boar'],
@@ -420,10 +412,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Ingestion of encysted larva',
-                'Adult worm in intestine → new larvae (Enteral phase)',
-                'Larvae into bloodstream → migration to striated muscles',
-                'Encystment in muscle (Parenteral phase)'
+                'Infection occurs by consuming raw or undercooked meat (especially pork, wild boar) containing larvae.',
+                'Enteral phase: In the intestine, larvae mature into adult worms, which burrow into the intestinal wall and produce new larvae. This causes diarrhea and nausea.',
+                'Parenteral phase: The newborn larvae enter the blood and lymphatic circulation, disseminate throughout the body, and specifically migrate to highly oxygenated, active striated muscles (masticatory muscles, diaphragm, tongue, eye muscles).',
+                'In the muscle cells, the larvae encyst, creating a "nurse cell" complex, which causes chronic inflammation and the characteristic muscle pain.'
               ],
               virulence_factors: ['Nurse cell formation in muscle']
             },
@@ -431,11 +423,9 @@ Object.assign(window.diseases, {
               incubation: 'Enteral: 1-2 days; Parenteral: 1-4 weeks',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Enteral (intestinal) phase', description: 'Diarrhea, nausea, abdominal pain', severity: 'moderate' },
-                { name: 'Fever', description: 'High, prolonged', severity: 'moderate' },
-                { name: 'Myalgia', description: 'Severe muscle pain, weakness', severity: 'severe' },
-                { name: 'Periorbital edema', description: 'Characteristic facial swelling', severity: 'moderate' },
-                { name: 'Splinter hemorrhages', description: 'Under the nails', severity: 'mild' }
+                { name: 'Enteral Phase (1st week)', description: 'Diarrhea, nausea, vomiting, and abdominal pain occurring a few days after infection.', severity: 'moderate' },
+                { name: 'Parenteral Phase (from 2nd week)', description: 'Larval migration causes the classic triad of symptoms: 1. High fever. 2. Severe muscle pain (myalgia), especially in the chewing and eye muscles. 3. Characteristic bilateral periorbital edema (swelling around the eyes). Extreme eosinophilia is seen in the blood count.', severity: 'severe' },
+                { name: 'Complications', description: 'Larvae can also affect the heart muscle (myocarditis) or the central nervous system (encephalitis), which can be life-threatening.', severity: 'severe' }
               ],
               physical_exam: ['Periorbital edema', 'Muscle tenderness', 'Fever', 'Conjunctivitis'],
               complications: ['Myocarditis (cause of death!)', 'Encephalitis', 'Pneumonia']
@@ -473,7 +463,7 @@ Object.assign(window.diseases, {
           {
             id: 'toxocariasis',
             name: 'Toxocariasis (Visceral/Ocular Larva Migrans)',
-            pathogen: { type: 'Helminth', name: 'Toxocara canis (dog), Toxocara cati (cat)', gram: '-', shape: 'nematode (roundworm) larvae' },
+            pathogen: { type: 'Helminth', name: '<i>Toxocara canis</i> (dog), <i>Toxocara cati</i> (cat)', gram: '-', shape: 'nematode (roundworm) larvae' },
             epidemiology: {
               incidence: 'Widespread zoonosis worldwide',
               risk_groups: ['Small children (sandbox, geophagia)', 'Dog owners'],
@@ -482,12 +472,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Egg ingestion',
-                'Larva hatches in the small intestine',
-                'Penetrates intestinal wall and enters circulation',
-                'Tissue migration (liver, lung, brain, eye)',
-                'Humans are accidental hosts; larvae do not mature into adults',
-                'Granulomatous inflammation around the larva'
+                'Infection occurs by accidental ingestion of eggs from soil contaminated with dog (T. canis) or cat (T. cati) feces (e.g., sandboxes). Humans are accidental, or paratenic, hosts for the parasite.',
+                'In the intestine, larvae hatch from the eggs, penetrate the intestinal wall, and migrate via the bloodstream to various organs (liver, lungs, brain, eyes).',
+                'Because humans are not the natural host, the larvae cannot mature into adult worms. Instead, they wander through the tissues (larva migrans), and the body forms granulomatous inflammation around them, which causes tissue damage.'
               ],
               virulence_factors: ['Tissue migration', 'Excretory-secretory antigens (TES)']
             },
@@ -495,9 +482,9 @@ Object.assign(window.diseases, {
               incubation: 'Weeks-months',
               onset: 'Slow',
               symptoms: [
-                { name: 'Visceral Larva Migrans (VLM)', description: 'Fever, cough, abdominal pain, hepatomegaly', severity: 'moderate' },
-                { name: 'Ocular Larva Migrans (OLM)', description: 'Unilateral vision loss, strabismus, leukocoria', severity: 'severe' },
-                { name: 'Covert toxocariasis', description: 'Abdominal pain, headache, cough', severity: 'mild' }
+                { name: 'Visceral Larva Migrans (VLM)', description: 'Typically occurs in young children (1-5 years). Symptoms include prolonged fever, hepatomegaly, cough, and wheezing. Lab tests show extremely high eosinophilia and leukocytosis.', severity: 'moderate' },
+                { name: 'Ocular Larva Migrans (OLM)', description: 'More common in older children and adults. A larva migrating to the eye can cause unilateral vision loss, strabismus, and leukocoria (white pupil), which can be mistaken for retinoblastoma. Systemic symptoms and eosinophilia are usually absent.', severity: 'severe' },
+                { name: 'Covert Toxocariasis', description: 'A form with mild, non-specific symptoms such as abdominal pain, headache, and cough, with moderate eosinophilia.', severity: 'mild' }
               ],
               physical_exam: [
                 'Hepatomegaly',

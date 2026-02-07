@@ -16,12 +16,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Erkennung der Infektion (PAMPs) durch das angeborene Immunsystem (TLR)',
-                'Proinflammatorischer Zytokinsturm (TNF-α, IL-1, IL-6)',
-                'Endothelaktivierung und -schädigung (vaskuläre Permeabilität↑)',
-                'Aktivierung der Gerinnungskaskade (DIC) + Hemmung der Fibrinolyse',
-                'Mikrozirkulationsstörung, Gewebehypoxie, mitochondriale Dysfunktion',
-                'Multiorgandysfunktionssyndrom (MODS)'
+                'Während der Infektion werden pathogen-assoziierte molekulare Muster (PAMPs) von Rezeptoren des angeborenen Immunsystems (z. B. Toll-like-Rezeptoren) erkannt, was eine massive Entzündungsreaktion auslöst.',
+                'Es entwickelt sich ein proinflammatorischer Zytokinsturm (TNF-α, IL-1, IL-6), der zu einer systemischen Endothelaktivierung und -schädigung führt und die Gefäßpermeabilität erhöht (Kapillarleck).',
+                'Die Aktivierung der Gerinnungskaskade und die Hemmung der Fibrinolyse führen zur disseminierten intravasalen Koagulation (DIC) und zur Bildung von Mikrothromben.',
+                'Mikrozirkulationsstörungen, Gewebehypoxie und mitochondriale Dysfunktion führen letztlich zum Multiorganversagen (MODS) und zum Tod.'
               ],
               virulence_factors: ['Endotoxin (LPS)', 'Superantigene', 'Exotoxine', 'Kapsel']
             },
@@ -93,7 +91,7 @@ Object.assign(window.diseases, {
           {
             id: 'toxic_shock',
             name: 'Toxisches Schocksyndrom (TSS)',
-            pathogen: { type: 'Bakterium', name: 'Staphylococcus aureus, Streptococcus pyogenes', gram: 'Gram-positiv', shape: 'Kokken' },
+            pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus, Streptococcus pyogenes</i>', gram: 'Gram-positiv', shape: 'Kokken' },
             epidemiology: {
               incidence: 'Selten (Staph: 0.5/100.000, Strep: 3/100.000)',
               risk_groups: ['Menstruierende Frauen (Tampon - heute seltener)', 'Chirurgische Patienten', 'Verbrennungsopfer', 'Hautinfektionen'],
@@ -102,14 +100,12 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Lokale Infektion (Vagina, Wunde) oder Kolonisation',
-                'Exotoxinproduktion (TSST-1, Enterotoxine, SpeA/C)',
-                'Superantigenwirkung: Unspezifische Aktivierung von T-Zellen (bis zu 20%)',
-                'Massive Zytokinfreisetzung (Zytokinsturm)',
-                'Kapillarleck, Vasodilatation, Schock',
-                'Multiorganversagen'
+                'Bei einer lokalen Infektion oder Kolonisation durch Staphylococcus aureus oder Streptococcus pyogenes werden Exotoxine (z.B. TSST-1, SpeA) produziert.',
+                'Diese Toxine wirken als Superantigene: Sie binden an MHC-II-Moleküle auf antigenpräsentierenden Zellen und an T-Zell-Rezeptoren und aktivieren unspezifisch bis zu 20% der T-Zellen (normalerweise <0,01%).',
+                'Diese massive T-Zell-Aktivierung führt zu einem unkontrollierten Zytokinsturm (TNF-α, IL-1, IL-6).',
+                'Die Zytokine verursachen ein schweres Kapillarleck, Vasodilatation und Hypotonie, was rasch zu Schock und Multiorganversagen führt.'
               ],
-              virulence_factors: ['TSST-1 (Staph)', 'Streptokokken-pyrogene Exotoxine (Spe)', 'M-Protein (Strep)']
+              virulence_factors: ['TSST-1 (Staph)', 'Streptococcal Pyrogenic Exotoxins (Spe)', 'M-Protein (Strep)']
             },
             clinical: {
               incubation: 'Schnell (Stunden-Tage)',
@@ -167,7 +163,7 @@ Object.assign(window.diseases, {
                   { drug: 'Vasopressoren', dose: 'Noradrenalin', duration: '', note: 'Schockbehandlung' }
                 ]
               },
-              targeted: 'Staph (MSSA): Flucloxacillin + Clindamycin; Strep: Penicillin G + Clindamycin. Fokussanierung (Tampon entfernen, chirurgische Exploration)!',
+              targeted: 'Staph (MSSA): Flucloxacillin (Cefazolin) + Clindamycin; MRSA: Vancomycin + Clindamycin. Strep: Penicillin G + Clindamycin (Toxinhemmung). IVIG in schweren Fällen. Fokussanierung (Tampon entfernen, chirurgische Exploration) ist unerlässlich!',
               supportive: ['Massive Volumensubstitution', 'Beatmung', 'Dialyse', 'Wundversorgung'],
               prevention: ['Tamponhygiene (häufiger Wechsel)', 'Wunddesinfektion']
             },
@@ -187,7 +183,7 @@ Object.assign(window.diseases, {
           {
             id: 'candidiasis',
             name: 'Invasive Candidose',
-            pathogen: { type: 'Pilz', name: 'Candida albicans (und Non-albicans-Arten)', gram: 'Hefepilz', shape: 'oval' },
+            pathogen: { type: 'Pilz', name: '<i>Candida albicans</i> (und Non-albicans-Arten)', gram: 'Hefepilz', shape: 'oval' },
             epidemiology: {
               incidence: '4. häufigste Ursache für nosokomiale Blutstrominfektionen',
               risk_groups: ['Intensivpatienten', 'Zentraler Venenkatheter (ZVK)', 'Breitbandantibiotika', 'TPN', 'Bauchchirurgie'],
@@ -266,7 +262,7 @@ Object.assign(window.diseases, {
           {
             id: 'aspergillosis',
             name: 'Invasive Aspergillose',
-            pathogen: { type: 'Pilz', name: 'Aspergillus fumigatus', gram: 'Schimmelpilz', shape: 'Hyphen (45° Verzweigung)' },
+            pathogen: { type: 'Pilz', name: '<i>Aspergillus fumigatus</i>', gram: 'Schimmelpilz', shape: 'Hyphen (45° Verzweigung)' },
             epidemiology: {
               incidence: '5-10% der neutropenen Patienten',
               risk_groups: ['Verlängerte Neutropenie', 'Allogene Stammzelltransplantation', 'Solide Organtransplantation', 'Hochdosis-Steroide'],

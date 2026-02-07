@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
           {
             id: 'bacterial_pneumonia',
             name: 'Bakteriális pneumonia',
-            pathogen: { type: 'Baktérium', name: 'Streptococcus pneumoniae', gram: 'Gram-pozitív', shape: 'diplococcus' },
+            pathogen: { type: 'Baktérium', name: '<i>Streptococcus pneumoniae</i>', gram: 'Gram-pozitív', shape: 'diplococcus' },
             epidemiology: {
               incidence: 'Leggyakoribb közösségben szerzett pneumonia (CAP) kórokozó (30-40%)',
               risk_groups: ['65 év felettiek', 'Krónikus betegek (COPD, szívelégtelenség, diabetes)', 'Immunszupprimáltak', 'Splenectomizáltak', 'Alkoholisták', 'Dohányosok'],
@@ -16,11 +16,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Kolonizáció: A nasofarynxban élő S. pneumoniae aspirációval jut az alsó légutakba',
-                'Adherencia: Pneumococcus surface protein A (PspA) és choline-binding proteins kötődnek az epithelsejtekhez',
-                'Tok poliszacharid: A kapszula gátolja a fagocitózist és komplement aktivációt',
-                'Pneumolysin: Porin formáló toxin → sejtkárosodás, gyulladáskeltés',
-                'Konszolodáció: Alveolusok megtelnek gyulladásos exudátummal (vörösvérsejtek, fibrin, neutrophilek)'
+                'A fertőzés általában a felső légutakban kolonizáló baktériumok mikroaspirációjával kezdődik. A kórokozó virulenciafaktorai (pl. tok) segítenek elkerülni a gazdaszervezet védekező mechanizmusait (pl. fagocitózis).',
+                'A baktériumok az alveolusokban elszaporodnak, ami heves gyulladásos választ vált ki. A felszabaduló toxinok (pl. pneumolysin) károsítják a hámsejteket.',
+                'A gyulladásos sejtek (neutrophilek), vörösvértestek és fibrin kitöltik az alveolusokat, ami a tüdőszövet tömörödéséhez (konszolidáció) vezet. Ez a folyamat felelős a jellegzetes lobaris pneumonia képéért.'
               ],
               virulence_factors: ['Kapszula poliszacharid (93 szerotípus)', 'Pneumolysin', 'Autolysin (LytA)', 'Neuraminidáz', 'IgA1 proteáz']
             },
@@ -28,11 +26,9 @@ Object.assign(window.diseases, {
               incubation: '1-3 nap',
               onset: 'Hirtelen, drámai kezdet',
               symptoms: [
-                { name: 'Köhögés', description: '90%-ban jelen van; produktív (66%), rozsdabarna köpet klasszikus, de ritkább', severity: 'severe' },
-                { name: 'Láz és hidegrázás', description: 'Láz (80%), hidegrázás (40-50%)', severity: 'severe' },
-                { name: 'Dyspnoe', description: 'Nehézlégzés (66%)', severity: 'moderate' },
-                { name: 'Pleurális fájdalom', description: 'Éles, belégzésre fokozódó (50%)', severity: 'moderate' },
-                { name: 'Egyéb', description: 'GI tünetek (10-20%), mentális státusz változás (idősek)', severity: 'mild' }
+                { name: 'Hirtelen kezdet', description: 'Magas láz, hidegrázás, elesettség jellemzi.', severity: 'severe' },
+                { name: 'Légúti tünetek', description: 'Kezdetben száraz, majd produktív köhögés, klasszikusan rozsdabarna köpettel. Gyakori a pleurális, szúró mellkasi fájdalom és a nehézlégzés.', severity: 'moderate' },
+                { name: 'Atípusos prezentáció', description: 'Időseknél a láz hiányozhat, és a tudatzavar lehet a vezető tünet.', severity: 'severe' }
               ],
               physical_exam: [
                 'Tachypnoe, tachycardia',
@@ -137,7 +133,7 @@ Object.assign(window.diseases, {
           {
             id: 'tuberculosis',
             name: 'Tüdő tuberkulózis',
-            pathogen: { type: 'Mycobacterium', name: 'Mycobacterium tuberculosis', gram: 'Saválló (Ziehl-Neelsen+)', shape: 'pálca' },
+            pathogen: { type: 'Mycobacterium', name: '<i>Mycobacterium tuberculosis</i>', gram: 'Saválló (Ziehl-Neelsen+)', shape: 'pálca' },
             epidemiology: {
               incidence: 'Világszerte ~10 millió új eset/év, Magyarországon ~500 eset/év',
               risk_groups: ['HIV pozitívak (20-30x rizikó)', 'Diabeteszes betegek', 'Immunszupprimáltak', 'Szociálisan hátrányos helyzetűek', 'Egészségügyi dolgozók', 'Bevándorlók endémiás területekről'],
@@ -146,12 +142,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhaláció: Bacillus eléri az alveolusokat',
-                'Fagocitózis: Alveolaris macrophagok felveszik, de nem képesek elpusztítani',
-                'Intracelluláris szaporodás: 2-12 hét alatt primer komplex (Ghon-góc + hilusi nyirokcsomó)',
-                'Granuloma képződés: T-sejt mediált immunválasz → epiteloid sejtek, Langhans óriássejtek',
-                'Latens fertőzés: Granulomák betokolják a bacillusokat (90%)',
-                'Reaktiváció: Immunszuppresszió → kazifikáló nekrózis → caverna → köhögéssel terjed'
+                'A fertőzés a kórokozót tartalmazó aeroszol cseppek belélegzésével történik. A baktériumokat az alveoláris makrofágok fagocitálják, de azok túlélik és szaporodnak bennük.',
+                'A fertőzés helyén kialakul a primer góc (Ghon-góc), és a baktériumok a regionális nyirokcsomókba jutnak, létrehozva a primer komplexust.',
+                'A celluláris immunválasz (T-sejtek) aktiválódik, ami granulómaképződéshez vezet. Ezek a granulómák betokolják a baktériumokat, latens fertőzést (LTBI) hozva létre (az esetek 90%-a).',
+                'Immunszuppresszió esetén a baktériumok reaktiválódhatnak. A granulóma közepe elsajtosodik (kazifikáló nekrózis), beolvadhat és üreget (caverna) képezhet, ami a fertőzés nyílt, fertőző formájához vezet.'
               ],
               virulence_factors: ['Cord factor (trehalóz-dimikolát)', 'Mycolic acid (sejtfal)', 'Lipoarabinomannan', 'ESAT-6 és CFP-10 szekretált antigének']
             },
@@ -159,12 +153,9 @@ Object.assign(window.diseases, {
               incubation: 'Primer: 2-12 hét; Reaktiváció: évek-évtizedek',
               onset: 'Lassú, alattomos',
               symptoms: [
-                { name: 'Krónikus köhögés', description: '>90% aktív tüdő TBC-ben; >3 hétig tartó', severity: 'severe' },
-                { name: 'Láz', description: '60-80%-ban, gyakran délutáni/esti subfebrilitás', severity: 'moderate' },
-                { name: 'Éjszakai izzadás', description: 'Profúz (50%)', severity: 'moderate' },
-                { name: 'Fogyás', description: 'Jelentős súlyvesztés (gyakori)', severity: 'moderate' },
-                { name: 'Haemoptysis', description: 'Véres köpet (20-30%), általában késői jel', severity: 'severe' },
-                { name: 'Mellkasi fájdalom', description: 'Pleurális vagy tompa', severity: 'mild' }
+                { name: 'Légúti tünetek', description: 'Krónikus, 3 hétnél tovább tartó köhögés, amely kezdetben száraz, majd produktívvá válhat. Később véres köpet (haemoptysis) is megjelenhet.', severity: 'severe' },
+                { name: 'Általános (B) tünetek', description: 'Alattomosan kezdődő, elhúzódó tünetek: hőemelkedés vagy láz (főleg délután), profúz éjszakai izzadás, és jelentős, nem szándékos fogyás.', severity: 'moderate' },
+                { name: 'Egyéb', description: 'Fáradékonyság, étvágytalanság, mellkasi fájdalom.', severity: 'mild' }
               ],
               physical_exam: [
                 'Cachexia',
@@ -241,7 +232,7 @@ Object.assign(window.diseases, {
           {
             id: 'legionella',
             name: 'Legionella pneumonia (Legionáriusbetegség)',
-            pathogen: { type: 'Baktérium', name: 'Legionella pneumophila', gram: 'Gram-negatív (rosszul festődik)', shape: 'pálca, intracelluláris' },
+            pathogen: { type: 'Baktérium', name: '<i>Legionella pneumophila</i>', gram: 'Gram-negatív (rosszul festődik)', shape: 'pálca, intracelluláris' },
             epidemiology: {
               incidence: 'CAP 2-9%-a, nozokomiális pneumonia akár 30%',
               risk_groups: ['50 év felettiek', 'Dohányosok', 'COPD betegek', 'Immunszupprimáltak', 'Krónikus veseelégtelenség', 'Diabetes'],
@@ -250,12 +241,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Aeroszol belélegzése kontaminált vízforrásból',
-                'Legionella bejut az alveolaris macrophagokba',
-                'Dot/Icm T4SS rendszer: Fagoszóma-lizoszóma fúzió gátlása',
-                'Intracelluláris replikáció speciális vakuólában',
-                'Sejt lízis → szomszédos sejtek fertőzése',
-                'Súlyos nekrotizáló alveolitis, gyulladásos infiltráció'
+                'A fertőzés a baktériumot tartalmazó aeroszol (pl. zuhany, hűtőtorony, légkondicionáló) belélegzésével történik.',
+                'A tüdőbe jutva a Legionellák az alveoláris makrofágokba kerülnek, ahol egy speciális szekréciós rendszer (Dot/Icm) segítségével megakadályozzák a fagoszóma-lizoszóma fúziót.',
+                'A baktériumok a makrofágokon belül, egy védett vakuólumban szaporodnak, majd a sejtet elpusztítva újabb sejteket fertőznek meg.',
+                'Ez a folyamat súlyos, nekrotizáló tüdőgyulladást és heves gyulladásos választ vált ki.'
               ],
               virulence_factors: ['Dot/Icm szekréciós rendszer', 'Mip (macrophage infectivity potentiator)', 'Flagellum', 'Több mint 300 effektor fehérje']
             },
@@ -263,11 +252,9 @@ Object.assign(window.diseases, {
               incubation: '2-10 nap (átlag 5-6 nap)',
               onset: 'Prodroma 1-2 nap, majd rapid progresszió',
               symptoms: [
-                { name: 'Magas láz', description: '>90%-ban, gyakran >39°C', severity: 'severe' },
-                { name: 'Köhögés', description: '90%-ban; kezdetben száraz, később produktív (50%)', severity: 'moderate' },
-                { name: 'GI tünetek', description: 'Hasmenés (20-50%), hányinger/hányás (10-30%)', severity: 'moderate' },
-                { name: 'Neurológiai tünetek', description: 'Konfúzió (25-50%), fejfájás (40-50%)', severity: 'moderate' },
-                { name: 'Dyspnoe', description: 'Nehézlégzés (25-60%)', severity: 'severe' }
+                { name: 'Atípusos pneumonia', description: 'Magas láz, hidegrázás, kezdetben száraz, improduktív köhögés.', severity: 'severe' },
+                { name: 'Extrapulmonalis tünetek', description: 'Jellegzetes a multisystemás érintettség: gastrointestinalis (hasmenés, hányinger), neurológiai (fejfájás, zavartság, delírium).', severity: 'moderate' },
+                { name: 'Jellegzetes jelek', description: 'Gyakori a relatív bradycardia (magas lázhoz képest alacsony pulzus) és a laborban a hyponatraemia.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Magas láz relatív bradycardiával (Faget-jel)',
@@ -331,7 +318,7 @@ Object.assign(window.diseases, {
           {
             id: 'mycoplasma',
             name: 'Mycoplasma pneumonia',
-            pathogen: { type: 'Baktérium', name: 'Mycoplasma pneumoniae', gram: 'Nincs sejtfal', shape: 'pleomorf' },
+            pathogen: { type: 'Baktérium', name: '<i>Mycoplasma pneumoniae</i>', gram: 'Nincs sejtfal', shape: 'pleomorf' },
             epidemiology: {
               incidence: 'CAP 15-20%-a, járványokban 50%',
               risk_groups: ['Iskoláskorú gyermekek', 'Fiatal felnőttek', 'Zárt közösségek (kollégium, laktanya)'],
@@ -340,10 +327,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Adherencia a légúti hámsejtekhez (P1 adhezin)',
-                'Ciliostasis és cilia pusztulás (hidrogén-peroxid)',
-                'CARDS toxin termelés (gyulladás, vakuolizáció)',
-                'Immunmediált tüdőkárosodás'
+                'A kórokozó a P1 adhezin segítségével szorosan a légúti hámsejtek csillóihoz tapad.',
+                'A baktérium által termelt hidrogén-peroxid és a CARDS toxin károsítja a csillókat (ciliostasis), ami a mukociliáris clearance zavarához vezet.',
+                'A gyulladásos válasz és a sejtkárosodás okozza az elhúzódó köhögést és a tüdőgyulladást.'
               ],
               virulence_factors: ['P1 adhezin', 'CARDS toxin', 'Hidrogén-peroxid']
             },
@@ -351,11 +337,9 @@ Object.assign(window.diseases, {
               incubation: '2-3 hét',
               onset: 'Lassú, fokozatos',
               symptoms: [
-                { name: 'Köhögés', description: '>95%-ban; száraz, kínzó, rohamszerű, hetekig tart', severity: 'moderate' },
-                { name: 'Általános tünetek', description: 'Fejfájás, rossz közérzet (gyakori)', severity: 'mild' },
-                { name: 'Torokfájás', description: 'Gyakori (nem exsudativ)', severity: 'mild' },
-                { name: 'Láz', description: 'Változó, lehet magas vagy hiányozhat', severity: 'mild' },
-                { name: 'Extrapulmonalis', description: 'Hemolízis (szubklinikai gyakori), kiütés (Stevens-Johnson <10%)', severity: 'moderate' }
+                { name: 'Atípusos pneumonia', description: 'Fokozatos kezdet, hőemelkedés, fejfájás, rossz közérzet. A vezető tünet a hetekig tartó, száraz, rohamszerű, kínzó köhögés.', severity: 'moderate' },
+                { name: '"Walking pneumonia"', description: 'A fizikális lelet (szegényes hallgatózási lelet) gyakran sokkal enyhébb, mint a mellkasröntgenen látható kiterjedt gyulladás.', severity: 'mild' },
+                { name: 'Extrapulmonalis tünetek', description: 'Előfordulhatnak kiütések (pl. erythema multiforme), hemolitikus anémia (hideg agglutinin betegség), vagy neurológiai szövődmények.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Gyakran szegényes hallgatózási lelet',
@@ -412,7 +396,7 @@ Object.assign(window.diseases, {
           {
             id: 'chlamydia_pneumoniae',
             name: 'Chlamydia pneumoniae',
-            pathogen: { type: 'Baktérium', name: 'Chlamydophila pneumoniae', gram: 'Gram-negatív (intracelluláris)', shape: 'kokkoid' },
+            pathogen: { type: 'Baktérium', name: '<i>Chlamydophila pneumoniae</i>', gram: 'Gram-negatív (intracelluláris)', shape: 'kokkoid' },
             epidemiology: {
               incidence: 'CAP 5-10%-a',
               risk_groups: ['Idősek', 'Krónikus betegek', 'Zárt közösségek'],
@@ -421,11 +405,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Elemi test (EB) belégzése',
-                'Intracelluláris átalakulás retikuláris testté (RB)',
-                'Replikáció, zárványképzés',
-                'Sejt lízis, EB kiszabadulás',
-                'Ciliostasis'
+                'A fertőzés a fertőző elemi testek (EB) belélegzésével kezdődik. A sejten belül az EB-k retikuláris testekké (RB) alakulnak, amelyek a szaporodó formák.',
+                'A szaporodás után az RB-k visszaalakulnak EB-ké, a sejt szétesik, és az új elemi testek további sejteket fertőznek meg.',
+                'Ez a ciklus a légúti hámsejtek károsodásához és gyulladáshoz vezet.'
               ],
               virulence_factors: ['Intracelluláris életmód', 'Endotoxin-szerű anyagok']
             },
@@ -433,9 +415,8 @@ Object.assign(window.diseases, {
               incubation: '3-4 hét',
               onset: 'Fokozatos',
               symptoms: [
-                { name: 'Bifázisos lefolyás', description: 'Felsőlégúti tünetek után pneumonia', severity: 'moderate' },
-                { name: 'Rekedtség/Laryngitis', description: 'Jellegzetes kísérő tünet', severity: 'mild' },
-                { name: 'Köhögés', description: 'Tartós, hetekig-hónapokig fennálló', severity: 'moderate' }
+                { name: 'Bifázisos lefolyás', description: 'Gyakran két fázisban zajlik: kezdetben pharyngitis és laryngitis (a rekedtség jellegzetes), majd 1-3 hét múlva alakul ki az atípusos pneumonia.', severity: 'moderate' },
+                { name: 'Elhúzódó köhögés', description: 'A tüdőgyulladásra a hetekig, akár hónapokig tartó, száraz, irritatív köhögés a legjellemzőbb.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Pharyngitis',
@@ -486,7 +467,7 @@ Object.assign(window.diseases, {
           {
             id: 'psittacosis',
             name: 'Ornithosis (Psittacosis)',
-            pathogen: { type: 'Baktérium', name: 'Chlamydia psittaci', gram: 'Intracelluláris', shape: 'kokkoid' },
+            pathogen: { type: 'Baktérium', name: '<i>Chlamydia psittaci</i>', gram: 'Intracelluláris', shape: 'kokkoid' },
             epidemiology: {
               incidence: 'Ritka, foglalkozási betegség',
               risk_groups: ['Madártartók (papagáj, galamb)', 'Állatorvosok', 'Baromfifeldolgozók'],
@@ -495,10 +476,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhaláció',
-                'Reticuloendothelialis rendszer fertőzése (máj, lép)',
-                'Haematogen szórás tüdőbe',
-                'Interstitialis pneumonia'
+                'A fertőzés a madár (főleg papagáj, galamb) kiszáradt ürülékével szennyezett por belélegzésével történik.',
+                'A kórokozó a tüdőből a retikuloendoteliális rendszerbe (máj, lép) jut, ahol szaporodik.',
+                'A másodlagos virémia során a baktériumok visszajutnak a tüdőbe, ahol atípusos, interstitialis pneumoniát okoznak.'
               ],
               virulence_factors: ['Intracelluláris túlélés']
             },
@@ -506,10 +486,9 @@ Object.assign(window.diseases, {
               incubation: '5-14 nap',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: 'Majdnem 100%-ban, hirtelen kezdet', severity: 'severe' },
-                { name: 'Fejfájás', description: 'Súlyos, gyakran fotofóbiával', severity: 'severe' },
-                { name: 'Köhögés', description: 'Száraz (50-90%)', severity: 'moderate' },
-                { name: 'Splenomegalia', description: '10-70%-ban észlelhető', severity: 'moderate' }
+                { name: 'Tífusz-szerű tünetek', description: 'Hirtelen kezdődő magas láz, hidegrázás, és kínzó, súlyos fejfájás.', severity: 'severe' },
+                { name: 'Légúti tünetek', description: 'Száraz, improduktív köhögés. A fizikális lelet gyakran szegényes a röntgenképhez képest.', severity: 'moderate' },
+                { name: 'Szisztémás jelek', description: 'Gyakori a hepatosplenomegalia és a relatív bradycardia (Faget-jel).', severity: 'moderate' }
               ],
               physical_exam: [
                 'Relatív bradycardia (Faget-jel)',
@@ -562,7 +541,7 @@ Object.assign(window.diseases, {
           {
             id: 'q_fever_resp',
             name: 'Q-láz',
-            pathogen: { type: 'Baktérium', name: 'Coxiella burnetii', gram: 'Gram-negatív (intracelluláris)', shape: 'coccobacillus' },
+            pathogen: { type: 'Baktérium', name: '<i>Coxiella burnetii</i>', gram: 'Gram-negatív (intracelluláris)', shape: 'coccobacillus' },
             epidemiology: {
               incidence: 'Zoonózis, foglalkozási betegség',
               risk_groups: ['Állattenyésztők', 'Vágóhídi dolgozók', 'Állatorvosok'],
@@ -571,11 +550,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Inhaláció (egyetlen baktérium is fertőzhet!)',
-                'Alveolaris macrophagok fertőzése',
-                'Savas fagoszómában szaporodás',
-                'Haematogen szórás',
-                'Granuloma képződés (doughnut granuloma)'
+                'A fertőzés rendkívül fertőző állati termékek (placenta, magzatvíz) aeroszoljának belélegzésével történik.',
+                'A kórokozó az alveoláris makrofágokba jut, ahol a savas fagoszómákban nemcsak túléli, hanem ott is szaporodik.',
+                'A vérárammal szóródva eljut a májba és a csontvelőbe.',
+                'A szervezet jellegzetes, "fánk" alakú (doughnut) granulómák képzésével próbálja megfékezni a fertőzést.',
+                'A betegség lehet akut vagy krónikus (főleg endocarditis formájában).'
               ],
               virulence_factors: ['Spóraszerű forma (ellenálló)', 'LPS fázisvariáció']
             },
@@ -583,10 +562,8 @@ Object.assign(window.diseases, {
               incubation: '2-3 hét',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Akut Q-láz', description: 'Influenza-szerű: Láz, fáradtság, súlyos fejfájás', severity: 'severe' },
-                { name: 'Pneumonia', description: 'Változó, gyakran enyhe köhögés, de radiológiai eltérés', severity: 'moderate' },
-                { name: 'Hepatitis', description: 'Hepatomegalia, jobb bordaív alatti fájdalom', severity: 'moderate' },
-                { name: 'Krónikus', description: 'Endocarditis (fő manifesztáció)', severity: 'severe' }
+                { name: 'Akut Q-láz', description: 'Hirtelen kezdődő, magas lázzal, súlyos, retrobulbáris fejfájással és influenzaszerű tünetekkel jár. Gyakori az atípusos tüdőgyulladás (enyhe köhögés) és a granulomás hepatitis (emelkedett májenzimek).', severity: 'moderate' },
+                { name: 'Krónikus Q-láz', description: 'Hónapokkal-évekkel később alakul ki, főleg szívbillentyűhibával vagy immunszuppresszióval rendelkező betegeknél. Leggyakoribb manifesztációja a tenyésztés-negatív endocarditis.', severity: 'severe' }
               ],
               physical_exam: [
                 'Hepatomegalia',
@@ -646,7 +623,7 @@ Object.assign(window.diseases, {
           {
             id: 'influenza',
             name: 'Influenza',
-            pathogen: { type: 'Vírus', name: 'Influenza A/B/C vírus', gram: 'RNS vírus, Orthomyxoviridae', shape: 'helikális' },
+            pathogen: { type: 'Vírus', name: '<i>Influenza A/B/C vírus</i>', gram: 'RNS vírus, Orthomyxoviridae', shape: 'helikális' },
             epidemiology: {
               incidence: 'Szezonális járvány: 5-20% populáció/év, pandémiák: akár 50%',
               risk_groups: ['65 év felettiek', '5 év alattiak', 'Várandósok', 'Krónikus betegek', 'Egészségügyi dolgozók', 'Immunszupprimáltak'],
@@ -655,12 +632,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Hemagglutinin (HA) kötődik sziálsav receptorokhoz a légúti epitelen',
-                'Receptor-mediált endocitózis',
-                'Virális RNS replikáció a sejtmagban',
-                'Neuraminidáz (NA) segíti az új vírusok felszabadulását',
-                'Epitelsejt apoptózis, cilia károsodás',
-                'Citokin vihar súlyos esetben (IL-6, TNF-α, IFN-γ)'
+                'A vírus a hemagglutinin (HA) segítségével kötődik a légúti hámsejtekhez, majd bejut a sejtbe.',
+                'A sejten belül replikálódik, majd a neuraminidáz (NA) segítségével kiszabadul, hogy új sejteket fertőzzön meg.',
+                'A vírusfertőzés a légúti hámsejtek pusztulásához és a csillószőrök károsodásához vezet, ami rontja a légutak tisztulását.',
+                'A szervezet heves immunválasza (citokinvihar) okozza a szisztémás tüneteket, mint a láz és az izomfájdalom.'
               ],
               virulence_factors: ['Hemagglutinin (H1-18)', 'Neuraminidáz (N1-11)', 'NS1 protein (IFN antagonista)', 'PB1-F2 (pro-apoptotikus)']
             },
@@ -668,12 +643,9 @@ Object.assign(window.diseases, {
               incubation: '1-4 nap (átlag 2 nap)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: 'Hirtelen kezdet, 38-41°C (95% tünetes esetekben)', severity: 'severe' },
-                { name: 'Köhögés', description: 'Száraz, nem produktív (>90%), gyakran mellkasi fájdalommal', severity: 'moderate' },
-                { name: 'Myalgia', description: 'Súlyos izomfájdalom (90%), főleg hát/végtagok', severity: 'severe' },
-                { name: 'Fejfájás', description: 'Súlyos, gyakran retroorbitális (85%)', severity: 'moderate' },
-                { name: 'Torokfájás', description: 'Gyakori kísérő tünet (60-70%)', severity: 'mild' },
-                { name: 'Prostráció', description: 'Kifejezett gyengeség, ágyhoz kötöttség', severity: 'moderate' }
+                { name: 'Hirtelen kezdet', description: 'Magas láz (>38°C), hidegrázás, súlyos fejfájás és izomfájdalom (myalgia).', severity: 'severe' },
+                { name: 'Légúti tünetek', description: 'Jellemző a száraz, kínzó köhögés és a torokfájás.', severity: 'moderate' },
+                { name: 'Általános tünetek', description: 'Kifejezett gyengeség, elesettség (prostráció) és étvágytalanság.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Lázas, elesett állapot',
@@ -734,7 +706,7 @@ Object.assign(window.diseases, {
           {
             id: 'covid19',
             name: 'COVID-19',
-            pathogen: { type: 'Vírus', name: 'SARS-CoV-2', gram: 'RNS vírus, Coronaviridae', shape: 'gömb, spike fehérjék' },
+            pathogen: { type: 'Vírus', name: '<i>SARS-CoV-2</i>', gram: 'RNS vírus, Coronaviridae', shape: 'gömb, spike fehérjék' },
             epidemiology: {
               incidence: 'Pandémia 2020-tól, endémiássá válás',
               risk_groups: ['65 év felettiek', 'Elhízottak (BMI>30)', 'Diabetes', 'Kardiovaszkuláris betegség', 'Immunszupprimáltak', 'Krónikus tüdőbetegek'],
@@ -743,12 +715,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Spike protein kötődik ACE2 receptorhoz (tüdő, szív, erek, bél)',
-                'TMPRSS2 proteáz hasítja a spike proteint → fúzió',
-                'Vírus replikáció és terjedés',
-                'Endothel diszfunkció, mikrothrombózisok',
-                'Citokin vihar (IL-6, IL-1β, TNF-α) súlyos esetben',
-                'ARDS, többszervi elégtelenség'
+                'A vírus a Spike (S) fehérjével kötődik a sejtek felszínén lévő ACE2 receptorhoz, ami számos szervben (tüdő, szív, erek, bél) megtalálható.',
+                'A bejutás után a vírus a sejtben replikálódik (virális fázis).',
+                'Súlyos esetekben a betegség második hetében egy túlzott immunválasz, az ún. citokinvihar alakulhat ki.',
+                'Ez a hiperinflammáció szisztémás endothelkárosodáshoz, mikrotrombózisokhoz, és a tüdőben akut légzési distressz szindrómához (ARDS) vezet, ami a súlyos lefolyás alapja.'
               ],
               virulence_factors: ['Spike protein', 'NSP1 (host shutdown)', 'ORF8 (immunmoduláció)', 'Nucleocapsid']
             },
@@ -756,12 +726,9 @@ Object.assign(window.diseases, {
               incubation: '2-14 nap (medián 5 nap, Omikron 3 nap)',
               onset: 'Változó',
               symptoms: [
-                { name: 'Láz', description: 'Gyakori (70-90%), de hiányozhat is (idősek)', severity: 'moderate' },
-                { name: 'Köhögés', description: 'Száraz (60-80%), tartós', severity: 'moderate' },
-                { name: 'Fáradékonyság', description: 'Kifejezett (40-70%)', severity: 'moderate' },
-                { name: 'Dyspnoe', description: 'Nehézlégzés (30-50% hospitalizáltaknál), hypoxia', severity: 'severe' },
-                { name: 'Anosmia/Dysgeusia', description: 'Szaglás/ízlelés zavar (variánsfüggő, 20-60%)', severity: 'mild' },
-                { name: 'Myalgia', description: 'Izomfájdalom (30-60%)', severity: 'mild' }
+                { name: 'Gyakori tünetek', description: 'Láz, száraz köhögés, fáradékonyság, izomfájdalom (myalgia).', severity: 'moderate' },
+                { name: 'Jellegzetes tünetek', description: 'A szaglás és ízlelés elvesztése (anosmia, dysgeusia) korai, specifikus jel lehet.', severity: 'mild' },
+                { name: 'Súlyos tünetek', description: 'Nehézlégzés (dyspnoe), mellkasi fájdalom és hypoxaemia (csökkent véroxigénszint), ami ARDS-hez vezethet.', severity: 'severe' }
               ],
               physical_exam: [
                 'Láz, tachypnoe',
@@ -832,7 +799,7 @@ Object.assign(window.diseases, {
           {
             id: 'endocarditis',
             name: 'Infectiv endocarditis',
-            pathogen: { type: 'Baktérium', name: 'Staphylococcus aureus, Streptococcus viridans', gram: 'Gram-pozitív', shape: 'coccus' },
+            pathogen: { type: 'Baktérium', name: '<i>Staphylococcus aureus, Streptococcus viridans</i>', gram: 'Gram-pozitív', shape: 'coccus' },
             epidemiology: {
               incidence: '3-10/100,000 fő/év',
               risk_groups: ['Billentyűhibák', 'Műbillentyű', 'IV droghasználók', 'Congenitalis szívbetegség', 'Korábbi endocarditis'],
@@ -841,11 +808,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Endothel sérülés (turbulens áramlás)',
-                'Steril thrombocyta-fibrin trombus képződés (NBTE)',
-                'Bakterémia (kórokozó megtapadása)',
-                'Vegetáció képződés (baktérium + fibrin + thrombocyta)',
-                'Szöveti destrukció, embólizáció'
+                'A folyamat a szívbillentyű endotheljének sérülésével kezdődik, amihez steril trombus (nem-bakteriális trombotikus endocarditis, NBTE) tapad.',
+                'Egy átmeneti bakterémia során (pl. fogászati beavatkozás) a keringő kórokozók megtapadnak ezen a sérült felszínen.',
+                'A baktériumok szaporodnak, biofilmet képeznek, és egy baktériumokból, fibrinből és vérlemezkékből álló vegetációt hoznak létre.',
+                'Ez a vegetáció károsítja a billentyűt (elégtelenséget okozva), és darabjai leszakadva szeptikus embóliát okozhatnak a test különböző részein (pl. agy, lép).'
               ],
               virulence_factors: ['Adhezinek (MSCRAMM)', 'Biofilm képzés', 'Toxinok']
             },
@@ -853,11 +819,9 @@ Object.assign(window.diseases, {
               incubation: 'Napok (akut) vagy hetek (szubakut)',
               onset: 'Változó',
               symptoms: [
-                { name: 'Láz', description: 'Leggyakoribb tünet (>90%), gyakran hidegrázással', severity: 'moderate' },
-                { name: 'Szívzörej', description: 'Új vagy megváltozott regurgitációs zörej (85%)', severity: 'severe' },
-                { name: 'Embóliás tünetek', description: 'Stroke, tüdőembólia, lép/vese infarctus (20-50%)', severity: 'severe' },
-                { name: 'Szívelégtelenség', description: 'Dyspnoe, ödéma (40-60% - leggyakoribb szövődmény)', severity: 'severe' },
-                { name: 'Bőrtünetek', description: 'Petechiae (20-40%), Osler/Janeway (5-10% - ritkább manapság)', severity: 'mild' }
+                { name: 'Általános tünetek', description: 'A leggyakoribb a láz, hidegrázás, éjszakai izzadás és a fogyás. A kép gyakran egy ismeretlen eredetű láz (FUO).', severity: 'moderate' },
+                { name: 'Kardiális tünetek', description: 'Új vagy megváltozott szívzörej megjelenése, vagy a szívelégtelenség tünetei (nehézlégzés, ödéma) a billentyűkárosodás miatt.', severity: 'severe' },
+                { name: 'Embóliás tünetek', description: 'A vegetációból leszakadó darabok szeptikus embóliát okozhatnak: stroke, lép- vagy veseinfarktus, bőrtünetek (Janeway-léziók, splinter haemorrhagiák).', severity: 'severe' }
               ],
               physical_exam: [
                 'Láz',
@@ -956,7 +920,7 @@ Object.assign(window.diseases, {
           {
             id: 'myocarditis',
             name: 'Myocarditis',
-            pathogen: { type: 'Vírus', name: 'Coxsackie B, Adenovírus, Parvovírus B19', gram: 'RNS/DNS vírusok', shape: 'változó' },
+            pathogen: { type: 'Vírus', name: '<i>Coxsackie B, Adenovírus, Parvovírus B19</i>', gram: 'RNS/DNS vírusok', shape: 'változó' },
             epidemiology: {
               incidence: 'Nehéz becsülni (sok enyhe eset), hirtelen szívhalál 10-20%-a fiatalokban',
               risk_groups: ['Fiatal felnőttek', 'Férfiak', 'Immunszupprimáltak'],
@@ -965,11 +929,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Vírus bejutása a kardiomiocitákba (receptor mediált)',
-                'Direkt citopatikus hatás (replikáció)',
-                'Immunválasz aktiválódása (T-sejtek, citokinek)',
-                'Autoimmun reakció (molekuláris mimikri)',
-                'Szívizom nekrózis, fibrózis, dilatáció'
+                'A fertőzés egy vírusfertőzéssel kezdődik, amely során a vírus direkt módon károsíthatja a szívizomsejteket.',
+                'A betegség későbbi, súlyosabb fázisát a szervezet túlzott immunválasza okozza. A T-sejtek és autoantitestek megtámadják a szívizomsejteket (molekuláris mimikri), ami kiterjedt gyulladást, nekrózist és szívizom-diszfunkciót eredményez.',
+                'A gyógyulás során hegesedés (fibrózis) alakulhat ki, ami dilatatív cardiomyopathiához (DCM) és krónikus szívelégtelenséghez vezethet.'
               ],
               virulence_factors: ['Proteáz 2A (dystrophin hasítás)', 'Receptor kötés (CAR)']
             },
@@ -977,11 +939,9 @@ Object.assign(window.diseases, {
               incubation: 'Vírusfertőzés után 1-2 hét',
               onset: 'Változó (tünetmentestől a fulminánsig)',
               symptoms: [
-                { name: 'Mellkasi fájdalom', description: 'Szúró, perikardiális jellegű (85-95% uncomplicated esetekben)', severity: 'moderate' },
-                { name: 'Dyspnoe', description: 'Terhelésre vagy nyugalomban (19-49%)', severity: 'severe' },
-                { name: 'Palpitáció', description: 'Ritmuszavarok érzése (6-18%)', severity: 'moderate' },
-                { name: 'Prodromális tünetek', description: 'Láz, légúti/GI tünetek napokkal korábban (60%)', severity: 'mild' },
-                { name: 'Syncope', description: 'Ritmuszavar miatt (ritka, de veszélyes)', severity: 'severe' }
+                { name: 'Vírusos prodroma', description: 'A szívtüneteket gyakran megelőzi egy néhány nappal korábbi lázas, légúti vagy gyomor-bélrendszeri fertőzés.', severity: 'mild' },
+                { name: 'Szívelégtelenség tünetei', description: 'Fáradékonyság, terhelésre jelentkező nehézlégzés, majd nyugalmi nehézlégzés, ödéma.', severity: 'severe' },
+                { name: 'Mellkasi fájdalom és ritmuszavar', description: 'Gyakori az atípusos, szúró mellkasi fájdalom (myopericarditis) és a szívdobogásérzés (palpitáció) a ritmuszavarok miatt.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Tachycardia (lázhoz képest aránytalan)',
@@ -1040,7 +1000,7 @@ Object.assign(window.diseases, {
           {
             id: 'pericarditis',
             name: 'Akut pericarditis',
-            pathogen: { type: 'Vírus/Idiopathiás', name: 'Coxsackie, Echovírus, Adenovírus, CMV, EBV', gram: 'Változó', shape: '-' },
+            pathogen: { type: 'Vírus/Idiopathiás', name: '<i>Coxsackie, Echovírus, Adenovírus, CMV, EBV</i>', gram: 'Változó', shape: '-' },
             epidemiology: {
               incidence: 'Gyakori (0.1% hospitalizáltak)',
               risk_groups: ['Férfiak (20-50 év)', 'Post-cardiotomia', 'Autoimmun betegek'],
@@ -1049,10 +1009,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Pericardium gyulladása (vírusos, autoimmun, neoplasiás)',
-                'Fibrines lerakódás (száraz pericarditis)',
-                'Exsudatum képződés (pericardialis folyadék)',
-                'Tamponád veszély (ha gyors a folyadékképződés)'
+                'A szívburok (pericardium) lemezeinek gyulladása, leggyakrabban vírusfertőzés következtében.',
+                'A gyulladás miatt a lemezek között fibrin rakódik le, ami a jellegzetes dörzszörejt okozza (száraz pericarditis).',
+                'Folyadék is termelődhet (pericardialis effúzió), ami ha gyorsan vagy nagy mennyiségben halmozódik fel, összenyomhatja a szívet és szívtamponádot okozhat.'
               ],
               virulence_factors: ['-']
             },
@@ -1060,9 +1019,8 @@ Object.assign(window.diseases, {
               incubation: 'Változó',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Mellkasi fájdalom', description: 'Éles, pleurális, fekvésre rosszabb, előre dőlve javul', severity: 'severe' },
-                { name: 'Láz', description: 'Általában alacsony', severity: 'mild' },
-                { name: 'Dyspnoe', description: 'Fájdalom vagy tamponád miatt', severity: 'moderate' }
+                { name: 'Jellegzetes mellkasi fájdalom', description: 'Éles, szúró, belégzésre és fekvő helyzetben fokozódó fájdalom, amely előre dőlve enyhül.', severity: 'severe' },
+                { name: 'Egyéb tünetek', description: 'Gyakran kíséri alacsony láz, rossz közérzet és nehézlégzés.', severity: 'mild' }
               ],
               physical_exam: [
                 'Pericardialis dörzszörej (systolés és diastolés komponens)',
@@ -1130,7 +1088,7 @@ Object.assign(window.diseases, {
           {
             id: 'upper_respiratory_infections',
             name: 'Felsőlégúti fertőzések (közönséges nátha)',
-            pathogen: { type: 'Vírus', name: 'Rhinovirus (leggyakoribb), Coronavirus, Adenovirus, Influenza', gram: 'RNS vírusok', shape: 'változó' },
+            pathogen: { type: 'Vírus', name: '<i>Rhinovirus</i> (leggyakoribb), <i>Coronavirus, Adenovirus, Influenza</i>', gram: 'RNS vírusok', shape: 'változó' },
             epidemiology: {
               incidence: 'Leggyakoribb fertőzés, felnőttek 2-3x/év, gyermekek 6-8x/év',
               risk_groups: ['Gyermekek', 'Idősek', 'Immunszupprimáltak'],
@@ -1139,11 +1097,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Vírus bejutása az orr/nyelő nyálkahártyájába',
-                'Epithelsejtek fertőzése',
-                'Lokális gyulladás (neutrophilek, ödéma)',
-                'Ciliostasis, mukusz fokozott termelés',
-                'Szisztémás válasz (láz, általános tünetek)'
+                'A vírusok a felső légutak nyálkahártyáján keresztül jutnak be, ahol a hámsejtekben szaporodnak.',
+                'A fertőzés lokális gyulladást, ödémát és fokozott váladéktermelést vált ki.',
+                'Ez okozza a jellegzetes tüneteket: orrfolyás, orrdugulás, torokfájás.'
               ],
               virulence_factors: ['Receptor kötés (ICAM-1 rhinovirusnál)', 'Immunmoduláció']
             },
@@ -1151,11 +1107,7 @@ Object.assign(window.diseases, {
               incubation: '1-3 nap',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Orrfolyás', description: 'Víztiszta → mukopurulens', severity: 'mild' },
-                { name: 'Tüsszögés', description: 'Paroxysmalis', severity: 'mild' },
-                { name: 'Torokfájás', description: 'Enyhe', severity: 'mild' },
-                { name: 'Köhögés', description: 'Száraz, irritatív', severity: 'mild' },
-                { name: 'Láz', description: 'Enyhe vagy hiányzik', severity: 'mild' }
+                { name: 'Tipikus tünetek', description: 'Jellemzően orrfolyás, orrdugulás, tüsszögés, torokfájás és száraz köhögés. A láz általában enyhe vagy hiányzik. A tünetek általában 7-10 nap alatt maguktól gyógyulnak.', severity: 'mild' }
               ],
               physical_exam: [
                 'Orrnyálkahártya hyperaemia, ödéma',
@@ -1208,7 +1160,7 @@ Object.assign(window.diseases, {
           {
             id: 'rsv_infection',
             name: 'RSV fertőzés (Respiratory Syncytial Virus)',
-            pathogen: { type: 'Vírus', name: 'Human Respiratory Syncytial Virus (HRSV)', gram: 'RNS vírus, Pneumoviridae', shape: 'helikális' },
+            pathogen: { type: 'Vírus', name: '<i>Human Respiratory Syncytial Virus</i> (HRSV)', gram: 'RNS vírus, Pneumoviridae', shape: 'helikális' },
             epidemiology: {
               incidence: 'Minden gyermek átesik 2 éves koráig, felnőttek reinfekció',
               risk_groups: ['Csecsemők (<6 hó)', 'Idősek (>65 év)', 'Krónikus tüdőbetegek', 'Immunszupprimáltak'],
@@ -1217,11 +1169,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Vírus bejutása a légutakba',
-                'Fúzió a ciliált epithelsejtekkel',
-                'Syncytium képzés',
-                'Cilia pusztulás, mukociliáris clearance zavara',
-                'Bronchiolitis vagy pneumonia kialakulása'
+                'A vírus a légúti hámsejteket fertőzi, és a fúziós (F) fehérjéje segítségével a sejtek összeolvadását, ún. syncytiumok képződését idézi elő.',
+                'Ez a folyamat a hámsejtek pusztulásához, a csillók károsodásához és fokozott váladéktermeléshez vezet.',
+                'Csecsemőkben a kis légutak (bronchiolusok) a váladék és az ödéma miatt beszűkülnek, ami a jellegzetes bronchiolitis képét hozza létre (sípolás, nehézlégzés).'
               ],
               virulence_factors: ['Fúziós fehérje (F)', 'G glikoprotein (adherencia)']
             },
@@ -1229,11 +1179,8 @@ Object.assign(window.diseases, {
               incubation: '4-6 nap',
               onset: 'Fokozatos',
               symptoms: [
-                { name: 'Orrfolyás', description: 'Víztiszta', severity: 'mild' },
-                { name: 'Köhögés', description: 'Száraz, majd produktív', severity: 'moderate' },
-                { name: 'Láz', description: 'Enyhe-mérsékelt', severity: 'mild' },
-                { name: 'Dyspnoe', description: 'Csecsemőkön súlyos', severity: 'severe' },
-                { name: 'Wheezing', description: 'Bronchiolitis jele', severity: 'moderate' }
+                { name: 'Kezdeti tünetek', description: 'Enyhe, felső légúti tünetekkel (orrfolyás, hőemelkedés) kezdődik.', severity: 'mild' },
+                { name: 'Bronchiolitis (csecsemők)', description: 'A legsúlyosabb forma csecsemőkben. Nehézlégzés, sípoló légzés (wheezing), tachypnoe és bordaközi behúzódások jellemzik. Súlyos esetben apnoe (légzéskimaradás) és légzési elégtelenség is kialakulhat.', severity: 'severe' }
               ],
               physical_exam: [
                 'Tachypnoe, retractions',
@@ -1275,7 +1222,7 @@ Object.assign(window.diseases, {
               },
               targeted: 'Palivizumab profilaxis magas rizikójú csecsemőknek',
               supportive: ['Oxigén', 'Hydratáció', 'Fizioterápia'],
-              prevention: ['Kézhigiéné', 'Izoláció', 'Palivizumab (monoklonális Ab)']
+               prevention: ['Kézhigiéné', 'Izoláció', 'Passzív immunizáció: Nirsevimab, Clesrovimab (hosszú hatásúak), Palivizumab', 'Vakcináció: Idősek (>60 év) és terhesek (anyai oltás)']
             },
             prognosis: {
               mortality: 'Alacsony, de csecsemőkön magasabb rizikó',
@@ -1286,7 +1233,7 @@ Object.assign(window.diseases, {
           {
             id: 'tonsillitis',
             name: 'Tonsillitis (mandulagyulladás)',
-            pathogen: { type: 'Baktérium', name: 'Streptococcus pyogenes (GAS, leggyakoribb)', gram: 'Gram-pozitív', shape: 'lánc' },
+            pathogen: { type: 'Baktérium', name: '<i>Streptococcus pyogenes</i> (GAS, leggyakoribb)', gram: 'Gram-pozitív', shape: 'lánc' },
             epidemiology: {
               incidence: 'Gyakori gyermekkorban, 5-15 év',
               risk_groups: ['Gyermekek', 'Fiatal felnőttek'],
@@ -1295,10 +1242,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Baktérium kolonizációja a tonsillákon',
-                'Lokális gyulladás, ödéma',
-                'Toxintermelés (streptolysin O)',
-                'Szisztémás válasz (láz, általános tünetek)'
+                'A baktériumok a garat nyálkahártyáján megtapadva heves lokális gyulladást váltanak ki.',
+                'Ez a mandulák duzzanatát, vörösségét és gennyes lepedék (tüszők) képződését okozza.',
+                'A bakteriális toxinok (pl. streptolysin) felelősek a szisztémás tünetekért, mint a láz, és az eritrogén toxin a skarlát kiütéseiért.'
               ],
               virulence_factors: ['M protein', 'Streptolysinek', 'Hyaluronidáz']
             },
@@ -1306,16 +1252,14 @@ Object.assign(window.diseases, {
               incubation: '2-5 nap',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Torokfájás', description: 'Súlyos, nyelési nehézség', severity: 'severe' },
-                { name: 'Láz', description: 'Magas', severity: 'moderate' },
-                { name: 'Dysphagia', description: 'Nyelési fájdalom', severity: 'moderate' },
-                { name: 'Tonsilla lepedék', description: 'Fehér, gennyes', severity: 'moderate' }
+                { name: 'Helyi tünetek', description: 'Hirtelen kezdődő, erős torokfájás és nyelési nehézség. A mandulák duzzadtak, vörösek, és gyakran fehér, gennyes lepedék (tüszők) borítja őket.', severity: 'severe' },
+                { name: 'Általános tünetek', description: 'Magas láz, hidegrázás, fejfájás és a nyaki nyirokcsomók fájdalmas duzzanata kíséri.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Tonsilla hyperaemia, duzzanat',
                 'Exsudátum',
                 'Cervicalis lymphadenitis',
-                'Scarlet fever tünetek (ritka)'
+                'Skarlát tünetek (ritka)'
               ],
               complications: ['Peritonsillaris abscessus', 'Reumás láz', 'Glomerulonephritis', 'Lemierre-szindróma']
             },
@@ -1327,6 +1271,24 @@ Object.assign(window.diseases, {
                 { test: 'Torokváladék tenyésztés', finding: 'GAS', significance: 'Konfirmálás' }
               ]
             },
+            calculators: [
+              {
+                name: 'Centor Score (McIsaac) - Strep A valószínűség',
+                items: [
+                  { label: 'Láz > 38°C', points: 1 },
+                  { label: 'Köhögés hiánya', points: 1 },
+                  { label: 'Érzékeny elülső nyaki nyirokcsomók', points: 1 },
+                  { label: 'Tonsilla duzzanat vagy exsudatum', points: 1 },
+                  { label: 'Életkor 3-14 év', points: 1 },
+                  { label: 'Életkor ≥ 45 év', points: -1 }
+                ],
+                interpretation: [
+                  { min: -1, max: 1, text: 'Alacsony kockázat (<10%). Antibiotikum nem javasolt.' },
+                  { min: 2, max: 3, text: 'Közepes kockázat (15-30%). Tenyésztés vagy gyorsteszt javasolt. Pozitív esetben AB.' },
+                  { min: 4, max: 5, text: 'Magas kockázat (>50%). Empirikus antibiotikum adható vagy tesztelés.' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Vírusos pharyngitis', distinguishing: 'Enyhe tünetek, nincs exsudátum' },
               { disease: 'Mononucleosis', distinguishing: 'Lymphocytosis, hepatosplenomegalia' }
@@ -1357,7 +1319,7 @@ Object.assign(window.diseases, {
           {
             id: 'sinusitis',
             name: 'Sinusitis (arcüreggyulladás)',
-            pathogen: { type: 'Vírus/Baktérium', name: 'Vírusok (első 7-10 nap), majd Streptococcus pneumoniae, Haemophilus influenzae', gram: 'Vegyes', shape: 'változó' },
+            pathogen: { type: 'Vírus/Baktérium', name: 'Vírusok (első 7-10 nap), majd <i>Streptococcus pneumoniae, Haemophilus influenzae</i>', gram: 'Vegyes', shape: 'változó' },
             epidemiology: {
               incidence: 'Gyakori, felnőttek 1-2x/év',
               risk_groups: ['Allergiások', 'Dohányosok', 'Immunszupprimáltak'],
@@ -1366,10 +1328,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Orrnyálkahártya gyulladás (vírus)',
-                'Ostium obstrukció',
-                'Bakteriális felülfertőződés',
-                'Gennyes gyulladás'
+                'Egy felső légúti vírusfertőzés (nátha) következtében az orr- és melléküreg-nyálkahártya megduzzad.',
+                'Az ödéma elzárja a melléküregek kivezető nyílásait (ostiumokat), ami a váladék pangásához vezet.',
+                'A pangó váladék ideális táptalajt biztosít a bakteriális felülfertőződés számára, ami gennyes gyulladást eredményez.'
               ],
               virulence_factors: ['Biofilm képzés']
             },
@@ -1377,10 +1338,8 @@ Object.assign(window.diseases, {
               incubation: 'Felsőlégúti fertőzés után',
               onset: 'Fokozatos',
               symptoms: [
-                { name: 'Facialis fájdalom', description: 'Homlok, arcüreg felett', severity: 'moderate' },
-                { name: 'Orrdugulás', description: 'Mukopurulens váladék', severity: 'moderate' },
-                { name: 'Fejfájás', description: 'Frontális', severity: 'moderate' },
-                { name: 'Láz', description: 'Akut esetben', severity: 'mild' }
+                { name: 'Jellegzetes tünetek', description: 'Arcfájdalom vagy nyomásérzés, amely előrehajlásra fokozódik. Orrdugulás, gennyes orrfolyás és gyakran fejfájás kíséri.', severity: 'moderate' },
+                { name: 'Bakteriális felülfertőződés jelei', description: 'A 10 napnál tovább tartó vagy rosszabbodó tünetek ("kettős rosszabbodás"), illetve a magas láz (>38°C) és az egyoldali arcfájdalom utal bakteriális eredetre.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Facialis nyomásérzékenység',
@@ -1424,7 +1383,7 @@ Object.assign(window.diseases, {
           {
             id: 'otitis_media',
             name: 'Otitis media (középfülgyulladás)',
-            pathogen: { type: 'Baktérium', name: 'Streptococcus pneumoniae, Haemophilus influenzae, Moraxella catarrhalis', gram: 'Vegyes', shape: 'coccus/bacillus' },
+            pathogen: { type: 'Baktérium', name: '<i>Streptococcus pneumoniae, Haemophilus influenzae, Moraxella catarrhalis</i>', gram: 'Vegyes', shape: 'coccus/bacillus' },
             epidemiology: {
               incidence: 'Gyakori gyermekkorban, 80% átesik 3 éves koráig',
               risk_groups: ['Csecsemők', 'Gyermekek', 'Passzív dohányzás'],
@@ -1433,10 +1392,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Eustach-kürt obstrukció (adenoid hyperplasia, rhinitis)',
-                'Baktérium ascent',
-                'Gennyes gyulladás a középfülben',
-                'Dobhártya perforáció lehetséges'
+                'Felső légúti fertőzés következtében a fülkürt (Eustach-kürt) funkciója károsodik, a nyálkahártya megduzzad.',
+                'A középfülben negatív nyomás alakul ki, ami folyadék felhalmozódásához vezet (savós középfülgyulladás).',
+                'Ez a folyadék felülfertőződhet a nasopharynxból származó baktériumokkal, gennyes gyulladást okozva, ami a dobhártya elődomborodásához és fájdalomhoz vezet.'
               ],
               virulence_factors: ['Biofilm', 'Toxinok']
             },
@@ -1444,15 +1402,13 @@ Object.assign(window.diseases, {
               incubation: 'Felsőlégúti fertőzés után',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Fülfájás', description: 'Súlyos, gyermekek sírnak', severity: 'severe' },
-                { name: 'Láz', description: 'Gyakori', severity: 'moderate' },
-                { name: 'Hallásvesztés', description: 'Ideiglenes', severity: 'moderate' },
-                { name: 'Orrfolyás', description: 'Társuló', severity: 'mild' }
+                { name: 'Főbb tünetek', description: 'Hirtelen kezdődő, erős, lüktető fülfájás, láz és halláscsökkenés.', severity: 'severe' },
+                { name: 'Csecsemőkori jelek', description: 'Csecsemőkben ingerlékenység, vigasztalhatatlan sírás, étvágytalanság és a fülhöz kapkodás a jellemző.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Dobhártya hyperaemia, duzzanat',
                 'Perforáció esetén váladék',
-                'Tympano puncture ha szükséges'
+                'Dobhártya punctio ha szükséges'
               ],
               complications: ['Mastoiditis', 'Meningitis', 'Labyrinthitis']
             },

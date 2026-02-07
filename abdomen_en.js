@@ -3,11 +3,33 @@ Object.assign(window.diseases, {
         name: 'Gastrointestinal Infections',
         icon: '🦠',
         color: '#ca8a04',
+        tables: [
+          {
+            title: 'Differential Diagnosis of Gastrointestinal Infections',
+            headers: ['Disease', 'Pathogen', 'Stool Characteristics', 'Fever', 'Key Features / Complications'],
+            rows: [
+              ['C. difficile', 'C. difficile', 'Watery, greenish, foul', '+', 'AB-associated, pseudomembrane, toxic megacolon'],
+              ['Salmonella', 'Salmonella', 'Watery (rarely bloody)', '++', 'Food poisoning, reptile contact, extraintestinal complications'],
+              ['Shigella', 'Shigella', 'Bloody-mucoid (dysentery)', '++', 'Tenesmus, low infectious dose, HUS'],
+              ['Campylobacter', 'Campylobacter', 'Watery/Bloody', '+', 'Pseudoappendicitis, GBS, poultry'],
+              ['E. coli (EHEC)', 'E. coli (STEC)', 'Bloody', '-', 'Afebrile, HUS, beef'],
+              ['E. coli (ETEC)', 'E. coli (ETEC)', 'Watery', '-', 'Traveler\'s diarrhea'],
+              ['E. coli (EPEC)', 'E. coli (EPEC)', 'Watery/Mucoid', '+/-', 'Infantile diarrhea'],
+              ['E. coli (EIEC)', 'E. coli (EIEC)', 'Bloody-mucoid', '++', 'Dysentery-like, fever'],
+              ['Yersinia', 'Yersinia', 'Watery/Bloody', '+', 'Pseudoappendicitis, reactive arthritis, pork'],
+              ['Giardia', 'Giardia', 'Greasy, foul-smelling', '-', 'Bloating, malabsorption, chronic'],
+              ['Amoeba', 'E. histolytica', 'Bloody-mucoid', '+/-', 'Liver abscess, travel'],
+              ['Cryptosporidium', 'Cryptosporidium', 'Watery', '-', 'Persistent in immunosuppressed, swimming pools'],
+              ['Viral GE', 'Rota/Noro', 'Watery', '-/+', 'Vomiting dominates (Noro), winter season'],
+              ['Cholera', 'Vibrio cholerae', 'Rice-water', '-', 'Massive fluid loss, dehydration']
+            ]
+          }
+        ],
         diseases: [
           {
             id: 'cdiff',
             name: 'Clostridioides difficile Infection',
-            pathogen: { type: 'Bacterium', name: 'Clostridioides difficile', gram: 'Gram-positive', shape: 'spore-forming anaerobic rod' },
+            pathogen: { type: 'Bacterium', name: '<i>Clostridioides difficile</i>', gram: 'Gram-positive', shape: 'spore-forming anaerobic rod' },
             epidemiology: {
               incidence: 'Most common cause of nosocomial diarrhea, 500,000 cases/year in the USA',
               risk_groups: ['Elderly >65 years', 'Hospitalized patients', 'Antibiotic exposure', 'PPI use', 'Inflammatory bowel disease', 'Immunosuppressed'],
@@ -16,12 +38,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Antibiotic → gut flora disruption',
-                'C. difficile spore germination, colonization',
-                'Toxin A (TcdA): enterotoxin – fluid secretion, inflammation',
-                'Toxin B (TcdB): cytotoxin → epithelial damage',
-                'Binary toxin (CDT): in hypervirulent strains (027/078)',
-                'Pseudomembrane formation in the colon'
+                'Antibiotic treatment disrupts the normal gut flora, allowing C. difficile spores to germinate and multiply.',
+                'The bacterium produces toxins: Toxin A (enterotoxin) causes fluid secretion and inflammation, while Toxin B (cytotoxin) directly damages intestinal epithelial cells.',
+                'Severe inflammation and cell death lead to the formation of characteristic pseudomembranes on the colonic mucosa.'
               ],
               virulence_factors: ['Toxin A (TcdA)', 'Toxin B (TcdB)', 'Binary toxin (CDT)', 'Spore formation', 'Adherence factors']
             },
@@ -29,11 +48,9 @@ Object.assign(window.diseases, {
               incubation: '2-10 days after AB, up to 8 weeks later',
               onset: 'Acute',
               symptoms: [
-                { name: 'Watery diarrhea', description: '3-15x/day, greenish, foul-smelling', severity: 'severe' },
-                { name: 'Abdominal pain/cramps', description: 'Diffuse, crampy', severity: 'moderate' },
-                { name: 'Fever', description: 'Moderate-high', severity: 'moderate' },
-                { name: 'Nausea', description: 'Variable', severity: 'mild' },
-                { name: 'Anorexia', description: 'Loss of appetite', severity: 'mild' }
+                { name: 'Watery Diarrhea', description: 'Frequent (3-15x/day), characteristically greenish, foul-smelling, watery diarrhea.', severity: 'severe' },
+                { name: 'Abdominal Pain', description: 'Diffuse, crampy abdominal pain and tenderness.', severity: 'moderate' },
+                { name: 'Fever', description: 'Often accompanied by fever and leukocytosis.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Diffuse abdominal tenderness',
@@ -62,12 +79,6 @@ Object.assign(window.diseases, {
                 { test: 'Sigmoidoscopy', finding: 'Pseudomembranes', significance: 'Not routine, diagnostic' }
               ]
             },
-            differential: [
-              { disease: 'Other AB-associated diarrhea', distinguishing: 'Toxin negative, milder' },
-              { disease: 'Inflammatory bowel disease flare', distinguishing: 'History, endoscopy' },
-              { disease: 'Ischemic colitis', distinguishing: 'Risk factors, CT angiography' },
-              { disease: 'Other infectious enterocolitis', distinguishing: 'Stool culture, epidemiology' }
-            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -116,8 +127,7 @@ Object.assign(window.diseases, {
               ],
               special_populations: [
                 'Elderly, immunosuppressed and hospitalized patients are at higher risk; lower threshold for early treatment in these'
-              ]
-              ,
+              ],
               dosing: {
                 adult: {
                   fidaxomicin: '200 mg PO twice daily (BID) for 10 days',
@@ -131,6 +141,13 @@ Object.assign(window.diseases, {
                 'CDC C. difficile information: https://www.cdc.gov/cdiff/index.html'
               ]
             },
+            differential: [
+              { disease: 'Other AB-associated diarrhea', distinguishing: 'Toxin negative, milder' },
+              { disease: 'Inflammatory bowel disease flare', distinguishing: 'History, endoscopy' },
+              { disease: 'Ischemic colitis', distinguishing: 'Risk factors, CT angiography' },
+              { disease: 'Other infectious enterocolitis', distinguishing: 'Stool culture, epidemiology' },
+              { disease: 'Medication-induced diarrhea (e.g., laxatives, PPIs)', distinguishing: 'Medication history, resolution after stopping' }
+            ],
             prognosis: {
               mortality: 'Overall 5-10%, Fulminant 30-50%',
               prognostic_scores: ['ATLAS score'],
@@ -140,7 +157,7 @@ Object.assign(window.diseases, {
           {
             id: 'salmonellosis',
             name: 'Salmonellosis (Non-typhoidal)',
-            pathogen: { type: 'Bacterium', name: 'Salmonella enterica (e.g., Enteritidis, Typhimurium)', gram: 'Gram-negative', shape: 'rod' },
+            pathogen: { type: 'Bacterium', name: '<i>Salmonella enterica</i> (e.g., <i>Enteritidis, Typhimurium</i>)', gram: 'Gram-negative', shape: 'rod' },
             epidemiology: {
               incidence: 'Common food poisoning (more common in summer)',
               risk_groups: ['Infants', 'Elderly', 'Achlorhydria (PPI)', 'Immunosuppressed'],
@@ -149,9 +166,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Ingestion (high bacterial load required, except in achlorhydria)',
-                'Invasion through M-cells in the small intestine (Peyer\'s patches)',
-                'Neutrophil infiltration, inflammation, fluid secretion'
+                'After ingestion (high bacterial load required), the pathogens survive gastric acid and reach the small intestine.',
+                'In the small intestine, they enter Peyer\'s patches and deeper layers of the intestinal wall via M-cells.',
+                'Bacterial multiplication triggers a strong inflammatory response, leading to neutrophil infiltration and fluid secretion.'
               ],
               virulence_factors: ['Type III secretion system (T3SS)', 'Enterotoxin']
             },
@@ -159,10 +176,9 @@ Object.assign(window.diseases, {
               incubation: '6-72 hours (average 12-36 hours)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Diarrhea', description: 'Watery, rarely bloody, foul-smelling', severity: 'moderate' },
-                { name: 'Fever', description: 'Common (38-39°C)', severity: 'moderate' },
-                { name: 'Abdominal cramps', description: 'Diffuse or periumbilical', severity: 'moderate' },
-                { name: 'Nausea, vomiting', description: 'Often precedes diarrhea', severity: 'mild' }
+                { name: 'Diarrhea', description: 'Sudden onset of profuse, watery, sometimes mucoid or bloody diarrhea.', severity: 'moderate' },
+                { name: 'Fever', description: 'May be accompanied by high fever, chills, headache, and myalgia.', severity: 'moderate' },
+                { name: 'Abdominal Cramps', description: 'Periumbilical or diffuse abdominal cramps.', severity: 'moderate' }
               ],
               physical_exam: ['Fever', 'Abdominal tenderness', 'Signs of dehydration'],
               complications: ['Bacteremia (5%, mainly elderly/immunosuppressed)', 'Septic arthritis', 'Osteomyelitis (sickle cell anemia)', 'Endovascular infection (aneurysm)']
@@ -171,6 +187,12 @@ Object.assign(window.diseases, {
               laboratory: [{ test: 'Inflammatory markers', finding: 'CRP elevated', interpretation: 'Bacterial origin' }],
               microbiology: [{ test: 'Stool culture', finding: 'Salmonella sp.', significance: 'Diagnostic' }]
             },
+            differential: [
+              { disease: 'Campylobacteriosis', distinguishing: 'Culture, similar clinical picture' },
+              { disease: 'Shigellosis', distinguishing: 'Bloody-mucoid stool more common' },
+              { disease: 'Viral gastroenteritis', distinguishing: 'Vomiting dominates, watery diarrhea' },
+              { disease: 'IBD (Crohn\'s/Colitis)', distinguishing: 'Chronic, non-infectious, endoscopy' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'Supportive', dose: '-', duration: '-', note: 'Healthy adults do NOT need antibiotics (may prolong carriage!)' }],
@@ -211,7 +233,7 @@ Object.assign(window.diseases, {
           {
             id: 'shigellosis',
             name: 'Shigellosis (Dysentery)',
-            pathogen: { type: 'Bacterium', name: 'Shigella (dysenteriae, flexneri, sonnei)', gram: 'Gram-negative', shape: 'rod' },
+            pathogen: { type: 'Bacterium', name: '<i>Shigella (dysenteriae, flexneri, sonnei)</i>', gram: 'Gram-negative', shape: 'rod' },
             epidemiology: {
               incidence: 'Common worldwide, endemic in developing countries',
               risk_groups: ['Children (daycare, kindergarten)', 'Travelers', 'MSM'],
@@ -219,10 +241,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Invasion of colonic epithelium',
-                'Intercellular spread (actin polymerization)',
-                'Shiga toxin (S. dysenteriae): protein synthesis inhibition, HUS',
-                'Mucosal ulceration, inflammation'
+                'Bacteria invade colonic epithelial cells and spread from cell to cell, evading the immune system.',
+                'Bacterial multiplication and produced toxins (e.g., Shiga toxin) cause mucosal necrosis, ulceration, and bleeding.',
+                'Shiga toxin entering the bloodstream can damage renal endothelial cells, causing Hemolytic Uremic Syndrome (HUS).'
               ],
               virulence_factors: ['Shiga toxin (Stx)', 'Invasion plasmid antigens']
             },
@@ -230,10 +251,9 @@ Object.assign(window.diseases, {
               incubation: '1-3 days',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Dysentery', description: 'Bloody, mucoid, purulent stool', severity: 'severe' },
-                { name: 'Tenesmus', description: 'Painful urge to defecate without passage', severity: 'severe' },
-                { name: 'High fever', description: 'Common, toxic state', severity: 'moderate' },
-                { name: 'Abdominal cramps', description: 'Left lower quadrant dominance', severity: 'moderate' }
+                { name: 'Dysentery', description: 'Frequent, small-volume, bloody-mucoid-purulent stools.', severity: 'severe' },
+                { name: 'Tenesmus', description: 'Painful, ineffective urge to defecate.', severity: 'severe' },
+                { name: 'Fever', description: 'Characterized by high fever and a toxic state.', severity: 'moderate' }
               ],
               complications: ['Hemolytic uremic syndrome (HUS - S. dysenteriae)', 'Toxic megacolon', 'Rectal prolapse', 'Reactive arthritis']
             },
@@ -241,6 +261,12 @@ Object.assign(window.diseases, {
               laboratory: [{ test: 'CBC', finding: 'Leukocytosis, left shift', interpretation: 'Invasive infection' }],
               microbiology: [{ test: 'Stool culture', finding: 'Shigella sp.', significance: 'Diagnostic' }]
             },
+            differential: [
+              { disease: 'EIEC (E. coli)', distinguishing: 'Clinically identical, microbiology decides' },
+              { disease: 'Amoebiasis', distinguishing: 'E. histolytica detection, less febrile' },
+              { disease: 'Campylobacteriosis', distinguishing: 'Culture' },
+              { disease: 'C. difficile', distinguishing: 'Antibiotic history, toxin test' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'Azithromycin', dose: '1x500mg PO', duration: '3 days', note: 'First choice' }, { drug: 'Ciprofloxacin', dose: '2x500mg PO', duration: '3 days', note: 'Alternative (resistance increasing)' }]
@@ -280,7 +306,7 @@ Object.assign(window.diseases, {
           {
             id: 'campylobacter',
             name: 'Campylobacteriosis',
-            pathogen: { type: 'Bacterium', name: 'Campylobacter jejuni', gram: 'Gram-negative', shape: 'spiral/gull-wing' },
+            pathogen: { type: 'Bacterium', name: '<i>Campylobacter jejuni</i>', gram: 'Gram-negative', shape: 'spiral/gull-wing' },
             epidemiology: {
               incidence: 'Most common bacterial gastroenteritis in the developed world',
               risk_groups: ['Infants', 'Young adults', 'Elderly'],
@@ -289,11 +315,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Ingestion (low infectious dose)',
-                'Colonization of jejunum/ileum/colon',
-                'Invasion of epithelial cells',
-                'Toxin production (cytolethal distending toxin)',
-                'Inflammatory response, bloody diarrhea'
+                'Bacteria colonize and invade the mucosa of the small and large intestines.',
+                'They produce toxins (e.g., CDT) that inhibit cell division and trigger inflammation.',
+                'The infection can trigger Guillain-Barré syndrome via an autoimmune mechanism.'
               ],
               virulence_factors: ['Flagellum (motility)', 'Adhesins', 'Cytolethal distending toxin (CDT)']
             },
@@ -301,22 +325,22 @@ Object.assign(window.diseases, {
               incubation: '2-5 days',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Diarrhea', description: 'Watery, often bloody', severity: 'moderate' },
-                { name: 'Abdominal pain', description: 'Severe, crampy (pseudoappendicitis)', severity: 'severe' },
-                { name: 'Fever', description: 'Can be a prodromal symptom', severity: 'moderate' }
+                { name: 'Diarrhea', description: 'Profuse, watery, often bloody diarrhea.', severity: 'moderate' },
+                { name: 'Abdominal Pain', description: 'Severe, crampy abdominal pain that can mimic appendicitis (pseudoappendicitis).', severity: 'severe' },
+                { name: 'Fever', description: 'Diarrhea is often preceded by fever, headache, and myalgia.', severity: 'moderate' }
               ],
               physical_exam: ['Diffuse abdominal tenderness', 'Fever', 'Signs of dehydration'],
               complications: ['Guillain-Barré syndrome (GBS) - 1/1000 cases', 'Reactive arthritis', 'Erythema nodosum']
             },
             diagnostics: {
               laboratory: [{ test: 'CBC', finding: 'Leukocytosis', interpretation: 'Inflammation' }, { test: 'Stool', finding: 'Leukocytes, RBCs', interpretation: 'Invasive' }, { test: 'CRP', finding: 'Elevated', interpretation: 'Bacterial origin' }],
-              differential: [
-                { disease: 'Salmonellosis', distinguishing: 'Culture, epidemiology' },
-                { disease: 'Shigellosis', distinguishing: 'More severe dysentery, culture' },
-                { disease: 'Appendicitis', distinguishing: 'US/CT, surgical consultation' }
-              ],
               microbiology: [{ test: 'Stool culture', finding: 'Campylobacter (special medium, 42°C)', significance: 'Diagnostic' }]
             },
+            differential: [
+              { disease: 'Salmonellosis', distinguishing: 'Culture, epidemiology' },
+              { disease: 'Shigellosis', distinguishing: 'More severe dysentery, culture' },
+              { disease: 'Appendicitis', distinguishing: 'US/CT, surgical consultation' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'Azithromycin', dose: '1x500mg PO', duration: '3 days', note: 'First choice in severe cases' }]
@@ -353,83 +377,86 @@ Object.assign(window.diseases, {
           },
           {
             id: 'ecoli_enteritis',
-            name: 'E. coli enteritis (ETEC, EHEC)',
-            pathogen: { type: 'Bacterium', name: 'Escherichia coli (pathogenic strains)', gram: 'Gram-negative', shape: 'rod' },
-            epidemiology: {
-              incidence: 'ETEC: traveler\'s diarrhea; EHEC: foodborne outbreaks',
-              risk_groups: ['Travelers (ETEC)', 'Children, elderly (EHEC)'],
-              seasonality: 'Summer',
-              transmission: 'Fecal-oral, contaminated water/food (beef, vegetables)'
-            },
-            pathomechanism: {
-              steps: [
-                'ETEC: Enterotoxins (LT/ST) → fluid secretion (cholera-like)',
-                'EHEC (STEC): Shiga-toxin production → intestinal wall damage, systemic absorption → renal endothelial damage (HUS)'
-              ],
-              virulence_factors: ['Enterotoxins', 'Shiga-toxin (Stx1, Stx2)', 'Adhesins']
-            },
-            clinical: {
-              incubation: 'ETEC: 1-3 days; EHEC: 3-4 days',
-              onset: 'Sudden',
-              symptoms: [
-                { name: 'ETEC: Watery diarrhea', description: 'No fever, "Traveler\'s diarrhea"', severity: 'moderate' },
-                { name: 'EHEC: Bloody diarrhea', description: 'Fever absent or low, severe abdominal cramps', severity: 'severe' }
-              ],
-              physical_exam: ['Dehydration', 'Abdominal tenderness (EHEC: severe)', 'Absence of fever (EHEC)'],
-              complications: ['Hemolytic uremic syndrome (HUS) - 5-10% after EHEC infection (mainly children)', 'TTP (adults)']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'CBC', finding: 'Thrombocytopenia, anemia', interpretation: 'Suspicion of HUS!' }, { test: 'Renal function', finding: 'Creatinine elevation', interpretation: 'HUS' }],
-              differential: [
-                { disease: 'Shigellosis', distinguishing: 'Fever more common, culture' },
-                { disease: 'Campylobacteriosis', distinguishing: 'Culture, GBS risk' },
-                { disease: 'TTP', distinguishing: 'Adults, neurological symptoms, ADAMTS13' }
-              ],
-               microbiology: [
-                { test: 'Stool culture', finding: 'Sorbitol-MacConkey (E. coli O157:H7)', significance: 'EHEC screening' },
-                { test: 'Shiga-toxin detection', finding: 'PCR or EIA', significance: 'Rapid diagnosis' }
-              ]
-            },
-            therapy: {
-              empirical: {
-                outpatient: [
-                  { drug: 'ETEC: Rifaximin', dose: '2x200mg PO', duration: '3 days', note: 'Traveler\'s diarrhea' },
-                  { drug: 'EHEC: ANTIBIOTICS CONTRAINDICATED!', dose: '-', duration: '-', note: 'Increases risk of HUS (toxin release)!' }
-                ]
-              },
-              targeted: 'ETEC: Ciprofloxacin or Azithromycin (in severe cases). EHEC: ONLY supportive!',
-              supportive: ['Fluid replacement', 'In HUS: dialysis, transfusion'],
-              prevention: ['Food hygiene', 'Thorough cooking of beef', 'Travelers: bottled water']
-            },
-            guidelines: {
-              diagnosis: [
-                'Suspicion: bloody diarrhea with HUS occurrence; treat with special caution in children',
-                'Microbiology: EHEC screening (sorbitol-MacConkey, Shiga-toxin PCR/EIA)'
-              ],
-              treatment_indications: [
-                'In EHEC infection antibiotics are generally contraindicated (increases HUS risk)',
-                'In ETEC short antibiotic course may be given for severe symptoms (e.g. Rifaximin, Azithromycin)'
-              ],
-              supportive: ['Fluid replacement, close monitoring; in HUS nephrological care, dialysis if needed'],
-              prevention: ['Food hygiene, well-cooked beef, precautions for travelers'],
-              dosing: {
-                adult: {
-                  rifaximin: '200 mg PO 3 times daily for 3 days (ETEC, non-invasive traveler\'s diarrhea)',
-                  azithromycin: '1 g PO single dose or 500 mg PO once daily for 1–3 days (severe ETEC or ciprofloxacin resistance)'
-                },
-                pediatric: 'Rifaximin pediatric doses limited; avoid antibiotics in children with EHEC'
-              },
-              references: [
-                'CDC – E. coli (STEC): https://www.cdc.gov/ecoli/index.html',
-                'CDC – Traveler\'s Diarrhea & Rifaximin: https://www.cdc.gov/antibiotic-use/community/for-hcp/common-conditions/travelers-diarrhea.html'
-              ]
-            },
-            prognosis: { mortality: 'ETEC: low; EHEC: 3-5% mortality in HUS', prognostic_scores: [], factors: 'Age (child/elderly), development of HUS, antibiotic use (worsens EHEC!)' }
-          },
+                     name: 'E. coli enteritis (ETEC, EHEC, EPEC, EIEC)',
+                     pathogen: { type: 'Bacterium', name: '<i>Escherichia coli</i> (pathogenic strains)', gram: 'Gram-negative', shape: 'rod' },
+                     epidemiology: {
+                       incidence: 'ETEC: traveler\'s diarrhea; EHEC: foodborne outbreaks; EPEC: infantile diarrhea; EIEC: dysentery-like',
+                       risk_groups: ['Travelers (ETEC)', 'Children, elderly (EHEC)', 'Infants (EPEC)'],
+                       seasonality: 'Summer',
+                       transmission: 'Fecal-oral, contaminated water/food (beef, vegetables)'
+                     },
+                     pathomechanism: {
+                       steps: [
+                         'ETEC: Bacteria adhere in the small intestine and produce enterotoxins, causing massive fluid secretion.',
+                         'EHEC: Produce Shiga toxin in the large intestine, causing bloody diarrhea and potentially renal failure (HUS) upon systemic absorption.',
+                         'EPEC/EIEC: Adhere to or invade intestinal epithelial cells, causing mucosal damage and inflammation.'
+                       ],
+                       virulence_factors: ['Enterotoxins', 'Shiga-toxin (Stx1, Stx2)', 'Adhesins (EPEC)', 'Invasins (EIEC)']
+                     },
+                     clinical: {
+                       incubation: 'ETEC/EPEC: 1-3 days; EHEC/EIEC: 3-4 days',
+                       onset: 'Sudden',
+                       symptoms: [
+                         { name: 'Watery Diarrhea (ETEC/EPEC)', description: 'Sudden onset of profuse watery diarrhea, without fever (traveler\'s diarrhea).', severity: 'moderate' },
+                         { name: 'Bloody Diarrhea (EHEC/EIEC)', description: 'Bloody stools with severe abdominal cramps, often afebrile (EHEC) or with fever (EIEC).', severity: 'severe' }
+                       ],
+                       physical_exam: ['Dehydration', 'Abdominal tenderness (EHEC/EIEC: marked)', 'Fever (common in EIEC, rare in EHEC)'],
+                       complications: ['Hemolytic uremic syndrome (HUS) - 5-10% after EHEC infection (mainly children)', 'TTP (adults)', 'Malnutrition (EPEC)']
+                     },
+                     diagnostics: {
+                       laboratory: [{ test: 'CBC', finding: 'Thrombocytopenia, anemia', interpretation: 'Suspicion of HUS!' }, { test: 'Renal function', finding: 'Creatinine elevation', interpretation: 'HUS' }],
+                        microbiology: [
+                         { test: 'Stool culture', finding: 'Sorbitol-MacConkey (EHEC)', significance: 'EHEC screening' },
+                         { test: 'Shiga-toxin detection', finding: 'PCR or EIA', significance: 'EHEC diagnosis' },
+                         { test: 'PCR panel', finding: 'Virulence genes', significance: 'Differentiation of EPEC/EIEC/ETEC' }
+                       ]
+                     },
+                     differential: [
+                       { disease: 'Shigellosis', distinguishing: 'EIEC clinically identical, culture decides' },
+                       { disease: 'Campylobacteriosis', distinguishing: 'Culture, GBS risk' },
+                       { disease: 'TTP', distinguishing: 'Adults, neurological symptoms, ADAMTS13' }
+                     ],
+                     therapy: {
+                       empirical: {
+                         outpatient: [
+                           { drug: 'ETEC: Rifaximin', dose: '2x200mg PO', duration: '3 days', note: 'Traveler\'s diarrhea' },
+                           { drug: 'EHEC: ANTIBIOTICS CONTRAINDICATED!', dose: '-', duration: '-', note: 'Increases risk of HUS (toxin release)!' },
+                           { drug: 'EIEC: Ciprofloxacin/Azithromycin', dose: 'Standard dose', duration: '3 days', note: 'Severe cases (like Shigella)' }
+                         ]
+                       },
+                       targeted: 'ETEC/EIEC: Ciprofloxacin or Azithromycin (in severe cases). EHEC: ONLY supportive! EPEC: Supportive.',
+                       supportive: ['Fluid replacement', 'In HUS: dialysis, transfusion'],
+                       prevention: ['Food hygiene', 'Thorough cooking of beef', 'Travelers: bottled water']
+                     },
+                     guidelines: {
+                       diagnosis: [
+                         'Suspicion: bloody diarrhea (EHEC/EIEC) or watery diarrhea (ETEC/EPEC); exclusion of HUS is important',
+                         'Microbiology: EHEC screening, PCR panel to differentiate pathotypes'
+                       ],
+                       treatment_indications: [
+                         'In EHEC infection antibiotics are generally contraindicated (increases HUS risk)',
+                         'In ETEC/EIEC antibiotics may be given for severe symptoms'
+                       ],
+                       supportive: ['Fluid replacement, close monitoring; in HUS nephrological care, dialysis if needed'],
+                       prevention: ['Food hygiene, well-cooked beef, precautions for travelers'],
+                       dosing: {
+                         adult: {
+                           rifaximin: '200 mg PO 3 times daily for 3 days (ETEC, non-invasive traveler\'s diarrhea)',
+                           azithromycin: '1 g PO single dose or 500 mg PO once daily for 1–3 days (severe ETEC/EIEC)'
+                         },
+                         pediatric: 'Rifaximin pediatric doses limited; avoid antibiotics in children with EHEC'
+                       },
+                       references: [
+                         'CDC – E. coli (STEC): https://www.cdc.gov/ecoli/index.html',
+                         'CDC – Traveler\'s Diarrhea & Rifaximin: https://www.cdc.gov/antibiotic-use/community/for-hcp/common-conditions/travelers-diarrhea.html'
+                       ]
+                     },
+                     prognosis: { mortality: 'ETEC/EPEC: low; EHEC: 3-5% mortality in HUS', prognostic_scores: [], factors: 'Age (child/elderly), development of HUS, antibiotic use (worsens EHEC!)' }
+                   },
           {
             id: 'yersiniosis',
             name: 'Yersiniosis',
-            pathogen: { type: 'Bacterium', name: 'Yersinia enterocolitica', gram: 'Gram-negative', shape: 'coccobacillus' },
+            pathogen: { type: 'Bacterium', name: '<i>Yersinia enterocolitica</i>', gram: 'Gram-negative', shape: 'coccobacillus' },
             epidemiology: {
               incidence: 'More common in temperate climates, in winter',
               risk_groups: ['Children', 'Iron overload patients (hemochromatosis)'],
@@ -438,11 +465,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Invasion through M-cells (ileum)',
-                'Colonization of Peyer\'s patches',
-                'Spread to mesenteric lymph nodes',
-                'Formation of microabscesses',
-                'Reactive immune response (arthritis)'
+                'Bacteria enter Peyer\'s patches and mesenteric lymph nodes via M-cells in the ileum.',
+                'They cause inflammation and microabscesses in the lymph nodes (mesenteric lymphadenitis).',
+                'The infection can trigger reactive arthritis via immunological mechanisms.'
               ],
               virulence_factors: ['Yersinia outer proteins (Yops)', 'T3SS', 'Invasin']
             },
@@ -450,9 +475,8 @@ Object.assign(window.diseases, {
               incubation: '4-7 days',
               onset: 'Gradual',
               symptoms: [
-                { name: 'Enterocolitis', description: 'Fever, diarrhea (can be bloody)', severity: 'moderate' },
-                { name: 'Pseudoappendicitis', description: 'Right lower quadrant pain (mesenteric lymphadenitis)', severity: 'moderate' },
-                { name: 'Pharyngitis', description: 'Occurs in adults', severity: 'mild' }
+                { name: 'Enterocolitis', description: 'Fever, diarrhea (possibly bloody), vomiting.', severity: 'moderate' },
+                { name: 'Pseudoappendicitis', description: 'Right lower quadrant pain and tenderness mimicking appendicitis.', severity: 'moderate' }
               ],
               physical_exam: ['Right lower quadrant tenderness', 'Fever', 'Erythema nodosum (late)'],
               complications: ['Reactive arthritis (HLA-B27)', 'Erythema nodosum', 'Sepsis (in iron overload patients)']
@@ -460,13 +484,13 @@ Object.assign(window.diseases, {
             diagnostics: {
               laboratory: [{ test: 'Inflammatory markers', finding: 'Elevated', interpretation: 'Bacterial' }],
               imaging: [{ modality: 'Abdominal US', finding: 'Mesenteric lymphadenopathy, terminal ileitis', significance: 'Exclusion of appendicitis' }],
-              differential: [
-                { disease: 'Appendicitis', distinguishing: 'US/CT, surgical consultation' },
-                { disease: 'Crohn\'s disease', distinguishing: 'Chronic, endoscopy, biopsy' },
-                { disease: 'Other bacterial enteritis', distinguishing: 'Culture' }
-              ],
               microbiology: [{ test: 'Stool culture', finding: 'CIN agar (cold enrichment)', significance: 'Must be requested from the lab' }]
             },
+            differential: [
+              { disease: 'Appendicitis', distinguishing: 'US/CT, surgical consultation' },
+              { disease: 'Crohn\'s disease', distinguishing: 'Chronic, endoscopy, biopsy' },
+              { disease: 'Other bacterial enteritis', distinguishing: 'Culture' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'Supportive', dose: '-', duration: '-', note: 'Usually self-limiting' }],
@@ -502,7 +526,7 @@ Object.assign(window.diseases, {
           {
             id: 'giardiasis',
             name: 'Giardiasis',
-            pathogen: { type: 'Protozoan', name: 'Giardia duodenalis (lamblia)', gram: '-', shape: 'pear-shaped (trophozoite)' },
+            pathogen: { type: 'Protozoan', name: '<i>Giardia duodenalis (lamblia)</i>', gram: '-', shape: 'pear-shaped (trophozoite)' },
             epidemiology: {
               incidence: 'Widespread worldwide, most common parasitic intestinal infection',
               risk_groups: ['Children', 'Campers (stream water)', 'IgA deficient individuals'],
@@ -510,32 +534,35 @@ Object.assign(window.diseases, {
               transmission: 'Fecal-oral (cysts), water (chlorine-resistant!), food'
             },
             pathomechanism: {
-              steps: ['Cyst ingestion', 'Excystation in the duodenum', 'Trophozoite attachment to villi (sucking disc)', 'Malabsorption, disaccharidase deficiency']
+              steps: [
+                'Trophozoites are released from ingested cysts in the duodenum.',
+                'Parasites attach to the villi of the small intestine with their sucking discs but do not invade tissues.',
+                'Damage to intestinal villi and deficiency of disaccharidase enzymes cause malabsorption and osmotic diarrhea.'
+              ]
             },
             clinical: {
               incubation: '1-3 weeks',
               onset: 'Gradual',
               symptoms: [
-                { name: 'Diarrhea', description: 'Foul-smelling, greasy (steatorrhea), non-bloody', severity: 'moderate' },
-                { name: 'Bloating, gas', description: 'Severe meteorism, sulfurous burps', severity: 'moderate' },
-                { name: 'Weight loss', description: 'Due to malabsorption', severity: 'moderate' },
-                { name: 'Lactose intolerance', description: 'Secondary, may persist after infection', severity: 'mild' }
+                { name: 'Diarrhea', description: 'Prolonged, foul-smelling, greasy, non-bloody diarrhea.', severity: 'moderate' },
+                { name: 'Bloating', description: 'Marked gas production, abdominal bloating, sulfurous burping.', severity: 'moderate' },
+                { name: 'Weight Loss', description: 'Significant weight loss may occur due to malabsorption.', severity: 'moderate' }
               ],
               physical_exam: ['Meteorism', 'Diffuse abdominal tenderness', 'No fever'],
               complications: ['Chronic diarrhea', 'Malabsorption (vitamin deficiency)', 'Failure to thrive (children)']
             },
             diagnostics: {
               laboratory: [{ test: 'CBC', finding: 'Normal, NO eosinophilia', interpretation: 'Non-invasive parasite' }],
-              differential: [
-                { disease: 'Lactose intolerance', distinguishing: 'Breath test, effect of diet' },
-                { disease: 'IBS', distinguishing: 'Chronic, negative parasite test' },
-                { disease: 'Cryptosporidiosis', distinguishing: 'Acid-fast stain, immunosuppression' }
-              ],
               microbiology: [
                 { test: 'Stool parasite exam', finding: 'Cysts or trophozoites', significance: '3 samples needed (intermittent shedding)' },
                 { test: 'Stool antigen (EIA)', finding: 'Positive', significance: 'More sensitive than microscopy' }
               ]
             },
+            differential: [
+              { disease: 'Lactose intolerance', distinguishing: 'Breath test, effect of diet' },
+              { disease: 'IBS', distinguishing: 'Chronic, negative parasite test' },
+              { disease: 'Cryptosporidiosis', distinguishing: 'Acid-fast stain, immunosuppression' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -574,7 +601,7 @@ Object.assign(window.diseases, {
           {
             id: 'amoebiasis',
             name: 'Amoebiasis',
-            pathogen: { type: 'Protozoan', name: 'Entamoeba histolytica', gram: '-', shape: 'amoeboid' },
+            pathogen: { type: 'Protozoan', name: '<i>Entamoeba histolytica</i>', gram: '-', shape: 'amoeboid' },
             epidemiology: {
               incidence: 'Endemic in tropical/subtropical areas',
               risk_groups: ['Travelers', 'Immigrants', 'Institutionalized individuals', 'MSM'],
@@ -582,25 +609,24 @@ Object.assign(window.diseases, {
               transmission: 'Fecal-oral (cysts)'
             },
             pathomechanism: {
-              steps: ['Cyst ingestion', 'Trophozoite invasion of colonic mucosa', 'Tissue lysis (histolytic enzymes)', 'Ulcer formation (flask-shaped)', 'Hematogenous spread (liver)']
+              steps: [
+                'Trophozoites develop from ingested cysts in the large intestine and invade the mucosa.',
+                'Parasites produce tissue-dissolving enzymes, creating characteristic flask-shaped ulcers.',
+                'Entering the bloodstream, parasites can reach the liver and form abscesses.'
+              ]
             },
             clinical: {
               incubation: '2-4 weeks',
               onset: 'Gradual',
               symptoms: [
-                { name: 'Amoebic dysentery', description: 'Bloody, mucoid diarrhea, abdominal pain', severity: 'severe' },
-                { name: 'Amoebic liver abscess', description: 'Right upper quadrant pain, fever, weight loss (even without diarrhea!)', severity: 'severe' }
+                { name: 'Amoebic Dysentery', description: 'Bloody, mucoid diarrhea with abdominal pain.', severity: 'severe' },
+                { name: 'Amoebic Liver Abscess', description: 'Right upper quadrant pain, fever, weight loss, even without diarrhea.', severity: 'severe' }
               ],
               physical_exam: ['Abdominal tenderness (cecum/colon)', 'Hepatomegaly, liver percussion tenderness (abscess)'],
               complications: ['Bowel perforation', 'Toxic megacolon', 'Abscess rupture (pleura, peritoneum, pericardium)', 'Brain abscess']
             },
             diagnostics: {
               laboratory: [{ test: 'CBC', finding: 'Leukocytosis (in abscess)', interpretation: 'Inflammation' }, { test: 'Liver enzymes', finding: 'ALP elevated', interpretation: 'Abscess' }],
-              differential: [
-                { disease: 'Bacterial dysentery', distinguishing: 'Culture, fever more common' },
-                { disease: 'Pyogenic liver abscess', distinguishing: 'Bacterial culture, more septic' },
-                { disease: 'Echinococcus cyst', distinguishing: 'Serology, imaging (daughter cysts)' }
-              ],
               microbiology: [
                 { test: 'Stool parasite exam', finding: 'Trophozoites (with RBCs in cytoplasm!)', significance: 'Must be distinguished from E. dispar' },
                 { test: 'Stool antigen/PCR', finding: 'E. histolytica specific', significance: 'Gold standard' },
@@ -608,6 +634,11 @@ Object.assign(window.diseases, {
               ],
               imaging: [{ modality: 'Abdominal US/CT', finding: 'Solitary liver abscess (right lobe)', significance: 'Liver abscess diagnosis' }]
             },
+            differential: [
+              { disease: 'Bacterial dysentery', distinguishing: 'Culture, fever more common' },
+              { disease: 'Pyogenic liver abscess', distinguishing: 'Bacterial culture, more septic' },
+              { disease: 'Echinococcus cyst', distinguishing: 'Serology, imaging (daughter cysts)' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -649,7 +680,7 @@ Object.assign(window.diseases, {
           {
             id: 'cryptosporidiosis',
             name: 'Cryptosporidiosis',
-            pathogen: { type: 'Protozoan', name: 'Cryptosporidium hominis/parvum', gram: 'Acid-fast stain', shape: 'oocyst' },
+            pathogen: { type: 'Protozoan', name: '<i>Cryptosporidium hominis/parvum</i>', gram: 'Acid-fast stain', shape: 'oocyst' },
             epidemiology: {
               incidence: 'Common waterborne outbreaks (swimming pools)',
               risk_groups: ['AIDS patients (defining opportunist)', 'Children', 'Veterinarians'],
@@ -658,11 +689,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Oocyst ingestion',
-                'Sporozoite release',
-                'Attachment to apical surface of epithelial cells (intracellular, but extracytoplasmic)',
-                'Villus atrophy, crypt hyperplasia',
-                'Malabsorption, secretory diarrhea'
+                'After ingestion of oocysts, sporozoites attach to the surface of small intestinal epithelial cells (intracellular but extracytoplasmic).',
+                'Infection causes villus atrophy and crypt hyperplasia.',
+                'This leads to severe malabsorption and secretory diarrhea.'
               ],
               virulence_factors: ['Adhesins', 'Proteases']
             },
@@ -670,25 +699,24 @@ Object.assign(window.diseases, {
               incubation: '7-10 days',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Watery diarrhea', description: 'Profuse, can be cholera-like', severity: 'moderate' },
-                { name: 'Abdominal cramps, nausea', description: 'General symptoms', severity: 'mild' },
-                { name: 'Persistent diarrhea', description: 'Can last for weeks/months in immunosuppressed, life-threatening', severity: 'severe' }
+                { name: 'Watery Diarrhea', description: 'Profuse, watery diarrhea with abdominal cramps.', severity: 'moderate' },
+                { name: 'Persistent Diarrhea', description: 'In immunosuppressed patients (e.g., AIDS), diarrhea can become chronic and cause severe fluid loss.', severity: 'severe' }
               ],
               physical_exam: ['Signs of dehydration', 'Cachexia (in chronic cases)'],
               complications: ['Severe dehydration', 'Malnutrition', 'Biliary tract involvement (AIDS)']
             },
             diagnostics: {
               laboratory: [{ test: 'CD4 count', finding: '<100/µL', interpretation: 'Risk of severe course (HIV)' }],
-              differential: [
-                { disease: 'Giardiasis', distinguishing: 'Stool exam, bloating dominates' },
-                { disease: 'Isosporiasis', distinguishing: 'Larger oocysts, TMP-SMX effective' },
-                { disease: 'Microsporidiosis', distinguishing: 'Smaller spores, special stain' }
-              ],
               microbiology: [
                 { test: 'Stool stain', finding: 'Acid-fast oocysts (modified Z-N)', significance: 'On special request' },
                 { test: 'Stool antigen/PCR', finding: 'Positive', significance: 'More sensitive' }
               ]
             },
+            differential: [
+              { disease: 'Giardiasis', distinguishing: 'Stool exam, bloating dominates' },
+              { disease: 'Isosporiasis', distinguishing: 'Larger oocysts, TMP-SMX effective' },
+              { disease: 'Microsporidiosis', distinguishing: 'Smaller spores, special stain' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -729,7 +757,7 @@ Object.assign(window.diseases, {
           {
             id: 'viral_gastroenteritis',
             name: 'Viral Gastroenteritis',
-            pathogen: { type: 'Virus', name: 'Rotavirus, Norovirus, Adenovirus, Astrovirus', gram: 'RNA/DNA', shape: 'variable' },
+            pathogen: { type: 'Virus', name: '<i>Rotavirus, Norovirus, Adenovirus, Astrovirus</i>', gram: 'RNA/DNA', shape: 'variable' },
             epidemiology: {
               incidence: 'Norovirus: most common epidemic GE (all ages); Rotavirus: infants (before vaccine)',
               risk_groups: ['Infants (Rota)', 'Elderly (Noro)', 'Closed communities (ships, barracks)'],
@@ -738,11 +766,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Virus replication in small intestine villus epithelium',
-                'Villus atrophy, reduced absorption surface',
-                'Disaccharidase deficiency (lactose intolerance)',
-                'Osmotic diarrhea',
-                'NSP4 enterotoxin (Rotavirus)'
+                'Viruses replicate in the epithelial cells of small intestinal villi, destroying them.',
+                'Shortening of villi reduces the absorptive surface and digestive enzymes.',
+                'Unabsorbed nutrients draw water into the intestinal lumen (osmotic diarrhea).'
               ],
               virulence_factors: ['Capsid stability', 'NSP4 (Rota)']
             },
@@ -750,26 +776,24 @@ Object.assign(window.diseases, {
               incubation: '12-48 hours (Noro), 1-3 days (Rota)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Vomiting', description: 'Dominant in Norovirus ("winter vomiting disease")', severity: 'severe' },
-                { name: 'Watery diarrhea', description: 'Non-bloody', severity: 'moderate' },
-                { name: 'Fever', description: 'Mild or absent', severity: 'mild' },
-                { name: 'Myalgia, headache', description: 'Viral symptoms', severity: 'mild' }
+                { name: 'Vomiting', description: 'Sudden, repeated vomiting (especially with Norovirus).', severity: 'severe' },
+                { name: 'Watery Diarrhea', description: 'Large volume watery stools accompanied by fever and myalgia.', severity: 'moderate' }
               ],
               physical_exam: ['Signs of dehydration (dry tongue, decreased turgor)', 'Diffuse abdominal tenderness'],
               complications: ['Severe dehydration (infants, elderly)', 'Electrolyte imbalances']
             },
             diagnostics: {
               laboratory: [{ test: 'Electrolytes', finding: 'Imbalances', interpretation: 'Dehydration' }, { test: 'CBC', finding: 'Normal', interpretation: 'Not bacterial' }],
-              differential: [
-                { disease: 'Bacterial gastroenteritis', distinguishing: 'Fever, bloody stool, culture' },
-                { disease: 'Food poisoning (toxin)', distinguishing: 'Shared meal, shorter incubation' },
-                { disease: 'Drug side effect', distinguishing: 'History' }
-              ],
               microbiology: [
                 { test: 'Stool antigen (Rota/Adeno)', finding: 'Positive', significance: 'Rapid test in children' },
                 { test: 'PCR', finding: 'Norovirus', significance: 'For epidemiological purposes' }
               ]
             },
+            differential: [
+              { disease: 'Bacterial gastroenteritis', distinguishing: 'Fever, bloody stool, culture' },
+              { disease: 'Food poisoning (toxin)', distinguishing: 'Shared meal, shorter incubation' },
+              { disease: 'Drug side effect', distinguishing: 'History' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'None', dose: '-', duration: '-', note: 'Antibiotics are ineffective!' }]
@@ -804,7 +828,7 @@ Object.assign(window.diseases, {
           {
             id: 'cholera',
             name: 'Cholera',
-            pathogen: { type: 'Bacterium', name: 'Vibrio cholerae (O1, O139)', gram: 'Gram-negative', shape: 'curved rod (vibrio)' },
+            pathogen: { type: 'Bacterium', name: '<i>Vibrio cholerae</i> (O1, O139)', gram: 'Gram-negative', shape: 'curved rod (vibrio)' },
             epidemiology: {
               incidence: 'Endemic (Asia, Africa, Haiti), epidemic',
               risk_groups: ['People in extreme poverty', 'Victims of natural disasters', 'Travelers (rare)'],
@@ -813,12 +837,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Ingestion (high bacterial load, acid-sensitive)',
-                'Small intestine colonization (TCP pilus)',
-                'Cholera toxin (CTX) production',
-                'Adenylate cyclase activation (cAMP increase)',
-                'Massive Cl- and water secretion (CFTR)',
-                'Secretory diarrhea (rice-water stool)'
+                'Bacteria adhering in the small intestine produce cholera toxin.',
+                'The toxin activates adenylate cyclase, leading to increased cAMP levels.',
+                'This causes massive efflux of chloride ions and water into the intestinal lumen, leading to severe, life-threatening diarrhea.'
               ],
               virulence_factors: ['Cholera toxin (AB5 toxin)', 'Toxin-coregulated pilus (TCP)']
             },
@@ -826,9 +847,8 @@ Object.assign(window.diseases, {
               incubation: 'A few hours - 5 days',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Rice-water stool', description: 'Painless, large volume (up to 1L/hour!)', severity: 'severe' },
-                { name: 'Vomiting', description: 'Common, even without nausea', severity: 'moderate' },
-                { name: 'Muscle cramps', description: 'Due to electrolyte loss (K+, Ca2+, Mg2+)', severity: 'moderate' }
+                { name: 'Rice-water Stool', description: 'Painless, large volume diarrhea resembling rice water.', severity: 'severe' },
+                { name: 'Dehydration', description: 'Rapidly developing severe dehydration, muscle cramps, shock.', severity: 'severe' }
               ],
               physical_exam: [
                 'Severe dehydration (hypovolemic shock)',
@@ -851,6 +871,10 @@ Object.assign(window.diseases, {
                 { test: 'Dark-field microscopy', finding: 'Shooting star motility', significance: 'Rapid' }
               ]
             },
+            differential: [
+              { disease: 'ETEC', distinguishing: 'Travel, less severe' },
+              { disease: 'Viral gastroenteritis', distinguishing: 'Vomiting may dominate, less severe dehydration' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -893,7 +917,7 @@ Object.assign(window.diseases, {
           {
             id: 'travelers_diarrhea',
             name: "Traveler's Diarrhea",
-            pathogen: { type: 'Syndrome', name: 'ETEC (most common), Campylobacter, Salmonella, Shigella, Viruses', gram: 'Variable', shape: '-' },
+            pathogen: { type: 'Syndrome', name: '<i>ETEC</i> (most common), <i>Campylobacter, Salmonella, Shigella</i>, Viruses', gram: 'Variable', shape: '-' },
             epidemiology: {
               incidence: '20-60% of travelers (to developing countries)',
               risk_groups: ['Young adults', 'Immunosuppressed', 'PPI users'],
@@ -901,17 +925,18 @@ Object.assign(window.diseases, {
               transmission: 'Fecal-oral (food, water)'
             },
             pathomechanism: {
-              steps: ['Pathogen ingestion', 'Enterotoxin production (ETEC) or invasion (Campy/Shigella)', 'Inflammation/secretion'],
+              steps: [
+                'Infection is most commonly caused by enterotoxin-producing E. coli (ETEC) or invasive bacteria (Campylobacter, Shigella).',
+                'Pathogens trigger inflammation or fluid secretion in travelers encountering a microbiome different from local hygiene conditions.'
+              ],
               virulence_factors: ['Variable']
             },
             clinical: {
               incubation: 'During travel or after return',
               onset: 'Acute',
               symptoms: [
-                { name: 'Diarrhea', description: 'Usually watery, 3-5 times/day', severity: 'moderate' },
-                { name: 'Abdominal cramps', description: 'Common', severity: 'mild' },
-                { name: 'Nausea/vomiting', description: 'Occurs', severity: 'mild' },
-                { name: 'Fever', description: 'Suggests invasive pathogen (Campy/Shigella)', severity: 'moderate' }
+                { name: 'Diarrhea', description: 'Watery diarrhea with abdominal cramps occurring during or after travel.', severity: 'moderate' },
+                { name: 'Fever', description: 'Fever and bloody stool suggest an invasive pathogen.', severity: 'moderate' }
               ],
               physical_exam: ['Mild abdominal tenderness', 'Signs of dehydration'],
               complications: ['Dehydration', 'Post-infectious IBS', 'Reactive arthritis']
@@ -920,6 +945,10 @@ Object.assign(window.diseases, {
               laboratory: [{ test: '-', finding: '-', interpretation: 'Usually not necessary' }],
               microbiology: [{ test: 'Stool culture/PCR', finding: 'Multiplex panel', significance: 'Only in persistent/severe cases or immunosuppressed' }]
             },
+            differential: [
+              { disease: 'IBD flare', distinguishing: 'History, endoscopy' },
+              { disease: 'Giardiasis', distinguishing: 'Prolonged, greasy stool' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -964,24 +993,25 @@ Object.assign(window.diseases, {
           {
             id: 'dysentery_syndrome',
             name: 'Dysentery Syndrome',
-            pathogen: { type: 'Syndrome', name: 'Shigella, EIEC, EHEC, Campylobacter, Entamoeba, Salmonella', gram: 'Variable', shape: '-' },
+            pathogen: { type: 'Syndrome', name: '<i>Shigella, EIEC, EHEC, Campylobacter, Entamoeba, Salmonella</i>', gram: 'Variable', shape: '-' },
             epidemiology: {
               incidence: 'Variable',
               risk_groups: ['Children', 'Elderly', 'Immunosuppressed'],
               transmission: 'Fecal-oral'
             },
             pathomechanism: {
-              steps: ['Colonic mucosa invasion', 'Inflammation, ulceration', 'Microabscesses', 'Bleeding, mucus production'],
+              steps: [
+                'Pathogens (Shigella, EIEC, EHEC, Campylobacter, Entamoeba) invade the colonic mucosa.',
+                'Tissue invasion causes severe inflammation, ulceration, bleeding, and mucus production.'
+              ],
               virulence_factors: ['Invasins', 'Cytotoxins']
             },
             clinical: {
               incubation: 'Variable',
               onset: 'Acute',
               symptoms: [
-                { name: 'Bloody-mucoid diarrhea', description: 'Small volume, frequent', severity: 'severe' },
-                { name: 'Tenesmus', description: 'Painful urge to defecate', severity: 'severe' },
-                { name: 'Fever', description: 'Common (except sometimes EHEC/Amoeba)', severity: 'moderate' },
-                { name: 'Abdominal pain', description: 'Crampy, lower abdomen', severity: 'moderate' }
+                { name: 'Bloody-mucoid Diarrhea', description: 'Frequent, small-volume, bloody-mucoid-purulent stools.', severity: 'severe' },
+                { name: 'Tenesmus', description: 'Painful, ineffective urge to defecate.', severity: 'severe' }
               ],
               physical_exam: ['Lower abdominal tenderness', 'Fever', 'Toxic state'],
               complications: ['HUS (EHEC/Shigella)', 'Toxic megacolon', 'Perforation', 'Sepsis', 'Rectal prolapse']
@@ -994,6 +1024,10 @@ Object.assign(window.diseases, {
                 { test: 'Shiga toxin', finding: 'Positive', significance: 'EHEC/Shigella' }
               ]
             },
+            differential: [
+              { disease: 'Inflammatory bowel disease (IBD)', distinguishing: 'Chronic history, endoscopy, biopsy' },
+              { disease: 'Ischemic colitis', distinguishing: 'Older age, vascular risk factors, CT' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -1028,11 +1062,36 @@ Object.assign(window.diseases, {
         name: 'Viral Hepatitis',
         icon: '🧬',
         color: '#eab308',
+        tables: [
+          {
+            title: 'Differential Diagnosis of Viral Hepatitis',
+            headers: ['Virus', 'Transmission', 'Incubation', 'Chronicity', 'Key Serology', 'Key Features'],
+            rows: [
+              ['HAV', 'Fecal-oral', '2-6 weeks', 'No', 'Anti-HAV IgM', 'Acute, outbreaks, travel-related'],
+              ['HBV', 'Parenteral, sexual', '2-6 months', 'Yes (esp. perinatal)', 'HBsAg, Anti-HBc IgM', 'Chronic liver disease, HCC risk'],
+              ['HCV', 'Parenteral', '2-26 weeks', 'Yes (>70%)', 'Anti-HCV, HCV RNA', 'Chronic, curable (DAAs), extrahepatic manifestations'],
+              ['HDV', 'Parenteral (with HBV)', 'Variable', 'Yes (superinfection)', 'Anti-HDV (in HBsAg+ patient)', 'Worsens HBV, rapid progression to cirrhosis'],
+              ['HEV', 'Fecal-oral (G1,2), Zoonotic (G3,4)', '2-10 weeks', 'Yes (immunosuppressed)', 'Anti-HEV IgM, HEV RNA', 'Fulminant in pregnancy, associated with pork']
+            ]
+          },
+          {
+            title: 'Interpretation of Hepatitis B Serologic Patterns',
+            headers: ['HBsAg', 'Anti-HBs', 'Anti-HBc (Total)', 'Anti-HBc IgM', 'Interpretation'],
+            rows: [
+              ['-', '-', '-', '-', 'Susceptible (not infected, not immune)'],
+              ['-', '+', '-', '-', 'Immune (due to vaccination)'],
+              ['-', '+', '+', '-', 'Immune (due to natural infection)'],
+              ['+', '-', '+', '+', 'Acutely infected'],
+              ['+', '-', '+', '-', 'Chronically infected'],
+              ['-', '-', '+', '-', 'Possible: 1. Resolved infection (low Anti-HBs); 2. False positive; 3. Occult HBV; 4. Window period']
+            ]
+          }
+        ],
         diseases: [
           {
             id: 'hav',
             name: 'Hepatitis A',
-            pathogen: { type: 'Virus', name: 'Hepatitis A virus (HAV)', gram: 'ssRNA, Picornaviridae', shape: 'icosahedral' },
+            pathogen: { type: 'Virus', name: '<i>Hepatitis A virus</i> (HAV)', gram: 'ssRNA, Picornaviridae', shape: 'icosahedral' },
             epidemiology: {
               incidence: 'High in endemic areas, sporadic/epidemic in developed countries',
               risk_groups: ['Travelers', 'MSM', 'Intravenous drug users', 'Homeless'],
@@ -1041,12 +1100,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Oral entry and absorption from the gut',
-                'Infection of hepatocytes (HAVCR-1 receptor)',
-                'Replication in the cytoplasm',
-                'Virus excretion into bile and stool',
-                'Immune-mediated hepatocyte damage (CD8+ T-cells and NK cells)',
-                'Non-cytopathic virus'
+                'Oral Entry: The virus is absorbed from the gut and reaches the liver via the portal circulation.',
+                'Hepatocyte Infection: The virus enters hepatocytes via the HAVCR-1 receptor, replicates in the cytoplasm, but does not cause direct cell death (non-cytopathic).',
+                'Immune Response: Hepatocyte damage is caused by the host\'s own cellular immune response (CD8+ cytotoxic T-cells and NK cells) killing infected hepatocytes.',
+                'Excretion: The virus is excreted into bile and stool, often before symptoms appear.'
               ],
               virulence_factors: ['Capsid stability (acid-resistant)', 'Membrane envelope in blood (eHAV) - immune evasion']
             },
@@ -1054,11 +1111,9 @@ Object.assign(window.diseases, {
               incubation: '15-50 days (average 28 days)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Fever', description: 'Initial symptom', severity: 'moderate' },
-                { name: 'Icterus', description: 'Jaundice (70% of adults, <10% of children)', severity: 'moderate' },
-                { name: 'Dark urine', description: 'Bilirubinuria', severity: 'moderate' },
-                { name: 'Nausea, vomiting', description: 'Common prodrome', severity: 'moderate' },
-                { name: 'Right upper quadrant pain', description: 'Liver capsule stretching', severity: 'mild' }
+                { name: 'Prodrome', description: 'Flu-like symptoms (fever, headache, myalgia), anorexia, aversion to smoking/fatty foods.', severity: 'moderate' },
+                { name: 'Icteric Phase', description: 'Dark urine (bilirubinuria), pale stool, followed by jaundice (skin, sclera). Fever often subsides by this time.', severity: 'moderate' },
+                { name: 'Abdominal Symptoms', description: 'Dull right upper quadrant pain, hepatomegaly, nausea.', severity: 'mild' }
               ],
               physical_exam: [
                 'Icterus (sclera, skin)',
@@ -1084,9 +1139,11 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-              { disease: 'Other viral hepatitis', distinguishing: 'Serology (HBV, HCV, HEV)' },
-              { disease: 'Toxic hepatitis', distinguishing: 'Drug/alcohol history' },
-              { disease: 'Biliary obstruction', distinguishing: 'US (dilated bile ducts), ALP dominance' }
+              { disease: 'Other viral hepatitis (HBV, HCV, HEV)', distinguishing: 'Serology (HBsAg, Anti-HCV, Anti-HEV)' },
+              { disease: 'Toxic/Drug-induced hepatitis', distinguishing: 'History (acetaminophen, mushroom), toxicology' },
+              { disease: 'Biliary obstruction (Choledocholithiasis)', distinguishing: 'Abdominal US (dilated ducts), ALP/GGT dominance, colic' },
+              { disease: 'EBV/CMV mononucleosis', distinguishing: 'Sore throat, lymphadenopathy, monospot/serology' },
+              { disease: 'Autoimmune hepatitis', distinguishing: 'Autoantibodies (ANA, ASMA), elevated IgG' }
             ],
             therapy: {
               empirical: {
@@ -1135,7 +1192,7 @@ Object.assign(window.diseases, {
           {
             id: 'hbv',
             name: 'Hepatitis B',
-            pathogen: { type: 'Virus', name: 'Hepatitis B virus (HBV)', gram: 'dsDNA (RT), Hepadnaviridae', shape: 'spherical (Dane particle)' },
+            pathogen: { type: 'Virus', name: '<i>Hepatitis B virus</i> (HBV)', gram: 'dsDNA (RT), Hepadnaviridae', shape: 'spherical (Dane particle)' },
             epidemiology: {
               incidence: '290 million chronic carriers worldwide',
               risk_groups: ['IV drug users', 'Sexual partners', 'Healthcare workers', 'Dialysis patients', 'Perinatal (mother-to-child)'],
@@ -1144,11 +1201,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Entry into hepatocytes (NTCP receptor)',
-                'cccDNA formation in the nucleus (basis of persistence)',
-                'Transcription/Translation',
-                'Immune-mediated cell death (virus is not cytopathic)',
-                'Integration into host cell genome (HCC risk)'
+                'Entry and Replication: The virus enters hepatocytes via the NTCP receptor. It forms cccDNA (covalently closed circular DNA) in the nucleus, which is the basis for persistence.',
+                'Immune Pathogenesis: The virus itself is not cytopathic. Liver damage is caused by the cytotoxic T-cell immune response against infected cells.',
+                'Chronicity: If the immune response is insufficient (e.g., in neonates), the virus persists. Viral DNA can integrate into the host genome, increasing the risk of hepatocellular carcinoma (HCC).'
               ],
               virulence_factors: ['HBsAg (decoy)', 'HBeAg (immunotolerance)', 'X protein (transactivator)']
             },
@@ -1156,10 +1211,9 @@ Object.assign(window.diseases, {
               incubation: '45-160 days (average 90 days)',
               onset: 'Slow',
               symptoms: [
-                { name: 'Fatigue', description: 'Common', severity: 'moderate' },
-                { name: 'Joint pain', description: 'Immune complex mediated (prodrome)', severity: 'mild' },
-                { name: 'Icterus', description: 'In acute phase (30-50%)', severity: 'moderate' },
-                { name: 'Asymptomatic', description: 'Most chronic carriers', severity: 'mild' }
+                { name: 'Acute Phase', description: 'Often asymptomatic. If symptomatic: serum sickness-like prodrome (rash, joint pain), then jaundice, fatigue, RUQ pain.', severity: 'moderate' },
+                { name: 'Chronic Phase', description: 'Mostly asymptomatic ("silent killer"). In late stages, signs of liver cirrhosis (ascites, variceal bleeding, encephalopathy) dominate.', severity: 'mild' },
+                { name: 'Extrahepatic Symptoms', description: 'Polyarteritis nodosa, glomerulonephritis.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Hepatomegaly',
@@ -1183,8 +1237,11 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-              { disease: 'Hepatitis D', distinguishing: 'More severe in superinfection, Anti-HDV' },
-              { disease: 'Autoimmune hepatitis', distinguishing: 'Autoantibodies (ASMA, ANA), elevated IgG' }
+              { disease: 'Other viral hepatitis (HAV, HCV, HDV)', distinguishing: 'Serology (Anti-HAV IgM, Anti-HCV, Anti-HDV)' },
+              { disease: 'Autoimmune hepatitis', distinguishing: 'Autoantibodies (ANA, ASMA, LKM-1), hypergammaglobulinemia' },
+              { disease: 'Alcoholic liver disease', distinguishing: 'History, AST > ALT (2:1 ratio), elevated GGT' },
+              { disease: 'Drug-induced liver injury (DILI)', distinguishing: 'Medication history, improvement after withdrawal' },
+              { disease: 'Wilson\'s disease', distinguishing: 'Young age, low ceruloplasmin, Kayser-Fleischer ring' }
             ],
             therapy: {
               guidelines: ['EASL 2017 Clinical Practice Guidelines on the management of hepatitis B virus infection'],
@@ -1244,7 +1301,7 @@ Object.assign(window.diseases, {
           {
             id: 'hcv',
             name: 'Hepatitis C',
-            pathogen: { type: 'Virus', name: 'Hepatitis C virus (HCV)', gram: 'ssRNA, Flaviviridae', shape: 'spherical, enveloped' },
+            pathogen: { type: 'Virus', name: '<i>Hepatitis C virus</i> (HCV)', gram: 'ssRNA, Flaviviridae', shape: 'spherical, enveloped' },
             epidemiology: {
               incidence: '71 million chronic patients worldwide',
               risk_groups: ['IV drug users', 'Transfusion (before 1992)', 'Tattoo/piercing', 'Healthcare workers (needlestick)'],
@@ -1253,10 +1310,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Entry into hepatocytes',
-                'RNA replication in the cytoplasm (no nucleus phase - curable!)',
-                'High mutation rate (quasispecies) - immune evasion',
-                'Chronic inflammation → fibrosis → cirrhosis'
+                'Replication: The virus replicates in the cytoplasm of hepatocytes (no nuclear phase, hence curable).',
+                'Immune Evasion: The viral RNA polymerase is error-prone, leading to constant mutation (quasispecies) and evasion of immune recognition.',
+                'Fibrosis: Chronic inflammation activates stellate cells, which produce collagen, leading to liver fibrosis and eventually cirrhosis.'
               ],
               virulence_factors: ['NS3/4A protease', 'NS5A/B polymerase', 'Lipid metabolism modulation']
             },
@@ -1264,9 +1320,9 @@ Object.assign(window.diseases, {
               incubation: '14-180 days',
               onset: 'Slow/Asymptomatic',
               symptoms: [
-                { name: 'Asymptomatic', description: 'Most cases (both acute and chronic)', severity: 'mild' },
-                { name: 'Fatigue', description: 'Non-specific', severity: 'moderate' },
-                { name: 'Icterus', description: 'Rare in acute phase (20%)', severity: 'moderate' }
+                { name: 'Acute Phase', description: 'Rarely diagnosed (80% asymptomatic). Mild fatigue, anorexia may occur.', severity: 'mild' },
+                { name: 'Chronic Phase', description: 'Can be asymptomatic for decades. The leading symptom is chronic fatigue. Often only complications of cirrhosis or lab findings draw attention.', severity: 'moderate' },
+                { name: 'Extrahepatic Symptoms', description: 'Cryoglobulinemia (vasculitis), porphyria cutanea tarda, lichen planus, diabetes.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Often negative',
@@ -1285,8 +1341,11 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-              { disease: 'Alcoholic liver disease', distinguishing: 'History, AST>ALT' },
-              { disease: 'NASH/NAFLD', distinguishing: 'Metabolic syndrome, US, biopsy' }
+              { disease: 'Hepatitis B', distinguishing: 'HBsAg positive' },
+              { disease: 'Alcoholic liver disease', distinguishing: 'History, AST > ALT, macrocytosis' },
+              { disease: 'Non-alcoholic fatty liver disease (NAFLD/NASH)', distinguishing: 'Metabolic syndrome, US (steatosis), biopsy' },
+              { disease: 'Autoimmune hepatitis', distinguishing: 'Autoantibodies, histology (plasma cell infiltration)' },
+              { disease: 'Hemochromatosis', distinguishing: 'High ferritin, transferrin saturation, HFE gene mutation' }
             ],
             therapy: {
               guidelines: ['EASL Recommendations on Treatment of Hepatitis C 2020'],
@@ -1329,23 +1388,23 @@ Object.assign(window.diseases, {
           {
             id: 'hdv',
             name: 'Hepatitis D',
-            pathogen: { type: 'Virus', name: 'Hepatitis D virus (HDV)', gram: 'ssRNA (defective)', shape: 'enveloped in HBsAg' },
+            pathogen: { type: 'Virus', name: '<i>Hepatitis D virus</i> (HDV)', gram: 'ssRNA (defective)', shape: 'enveloped in HBsAg' },
             epidemiology: {
               incidence: '5% of HBV infected (approx. 15-20 million)',
               transmission: 'Parenteral, sexual (like HBV). Only infects in the presence of HBV!'
             },
             pathomechanism: {
               steps: [
-                'HBV HBsAg required for entry and packaging',
-                'Coinfection: HBV+HDV at the same time (usually resolves)',
-                'Superinfection: chronic HBV + new HDV (severe, becomes chronic)',
-                'Direct cytopathic effect possible'
+                'Defective Virus: Requires Hepatitis B virus surface antigen (HBsAg) for replication and packaging of infectious particles.',
+                'Coinfection: Simultaneous infection with HBV and HDV. Usually causes severe acute hepatitis, but chronicity is rare (<5%).',
+                'Superinfection: Chronic HBV carrier infected with HDV. This is the most severe form, often leading to fulminant course or rapidly progressive cirrhosis.'
               ],
               virulence_factors: ['Delta antigen (HDAg)']
             },
             clinical: {
               symptoms: [
-                { name: 'Severe hepatitis', description: 'More severe than HBV alone', severity: 'severe' }
+                { name: 'Exacerbation', description: 'Sudden deterioration of a known HBV patient\'s condition (acute flare).', severity: 'severe' },
+                { name: 'Decompensation', description: 'Rapidly developing liver failure, jaundice, coagulopathy.', severity: 'severe' }
               ],
               complications: ['Fulminant hepatitis', 'Rapid progression to cirrhosis (most aggressive viral hepatitis)']
             },
@@ -1382,7 +1441,7 @@ Object.assign(window.diseases, {
           {
             id: 'hev',
             name: 'Hepatitis E',
-            pathogen: { type: 'Virus', name: 'Hepatitis E virus (HEV)', gram: 'ssRNA, Hepeviridae', shape: 'icosahedral' },
+            pathogen: { type: 'Virus', name: '<i>Hepatitis E virus</i> (HEV)', gram: 'ssRNA, Hepeviridae', shape: 'icosahedral' },
             epidemiology: {
               incidence: 'Developing countries (water), Developed (pork/wild boar)',
               risk_groups: ['Pregnant women (severe course)', 'Immunosuppressed (chronic)', 'Liver patients', 'Pig farmers'],
@@ -1391,11 +1450,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Oral entry',
-                'Absorption from gut, entry to liver',
-                'Hepatocyte replication',
-                'Biliary excretion',
-                'Immune-mediated cytotoxicity'
+                'Entry: Fecal-oral (contaminated water - Genotype 1,2) or zoonosis (raw meat - Genotype 3,4).',
+                'Pregnancy: In pregnant women (especially 3rd trimester), the virus can cause fulminant liver failure, likely due to hormonal and immunological changes (20% mortality).',
+                'Chronicity: In immunosuppressed patients (e.g., transplant recipients), the virus is not eliminated, causing chronic hepatitis and fibrosis.'
               ],
               virulence_factors: ['ORF3 protein (release)', 'Capsid protein']
             },
@@ -1403,9 +1460,9 @@ Object.assign(window.diseases, {
               incubation: '15-60 days (average 40)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Acute hepatitis', description: 'Similar to HAV', severity: 'moderate' },
-                { name: 'Acute hepatitis', description: 'Similar to HAV, jaundice, fever', severity: 'moderate' },
-                { name: 'Abdominal pain', description: 'Right upper quadrant', severity: 'mild' }
+                { name: 'Acute Hepatitis', description: 'Similar to HAV (fever, jaundice, vomiting).', severity: 'moderate' },
+                { name: 'Neurological Symptoms', description: 'More frequently associated with neurological complications (Guillain-Barré syndrome, neuralgic amyotrophy).', severity: 'severe' },
+                { name: 'In Pregnancy', description: 'Signs of severe, life-threatening liver failure.', severity: 'severe' }
               ],
               physical_exam: ['Icterus', 'Hepatomegaly'],
               complications: ['Fulminant hepatitis in pregnant women (20% mortality! - G1,2)', 'Chronic hepatitis in immunosuppressed (G3)', 'Neurological symptoms (Guillain-Barré, Neuralgic amyotrophy)']
@@ -1423,8 +1480,10 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-               { disease: 'Hepatitis A', distinguishing: 'Serology' },
-               { disease: 'Drug toxicity', distinguishing: 'History' }
+              { disease: 'Hepatitis A', distinguishing: 'Serology (Anti-HAV IgM)' },
+              { disease: 'Drug-induced liver injury (DILI)', distinguishing: 'History (e.g., antibiotics, NSAIDs)' },
+              { disease: 'Ischemic hepatitis', distinguishing: 'History of shock/hypotension, extreme LDH elevation' },
+              { disease: 'Wilson\'s disease (in fulminant cases)', distinguishing: 'Hemolysis, low ALP, high urine copper' }
             ],
             therapy: {
               guidelines: ['EASL Clinical Practice Guidelines on hepatitis E virus infection'],
@@ -1456,7 +1515,7 @@ Object.assign(window.diseases, {
           {
             id: 'hgv',
             name: 'Hepatitis G (GBV-C)',
-            pathogen: { type: 'Virus', name: 'GB virus C (HGV)', gram: 'ssRNA, Flaviviridae', shape: '-' },
+            pathogen: { type: 'Virus', name: '<i>GB virus C</i> (HGV)', gram: 'ssRNA, Flaviviridae', shape: '-' },
             epidemiology: {
               incidence: '1-4% of blood donors',
               risk_groups: ['IV drug users', 'Hemodialysis patients', 'Multiple transfusions'],
@@ -1483,7 +1542,10 @@ Object.assign(window.diseases, {
                 { test: 'PCR', finding: 'RNA', significance: 'Research purpose, not used in clinical routine' }
               ]
             },
-            differential: [],
+            differential: [
+               { disease: 'Other viral hepatitis', distinguishing: 'Serology (HBV, HCV)' },
+               { disease: 'Non-infectious liver diseases', distinguishing: 'Diagnosis of exclusion' }
+            ],
             therapy: {
               empirical: {},
               targeted: 'Does not require treatment.',
@@ -1499,7 +1561,7 @@ Object.assign(window.diseases, {
           {
             id: 'ttv',
             name: 'Torque teno virus (TTV)',
-            pathogen: { type: 'Virus', name: 'Torque teno virus', gram: 'ssDNA, Anelloviridae', shape: '-' },
+            pathogen: { type: 'Virus', name: '<i>Torque teno virus</i>', gram: 'ssDNA, Anelloviridae', shape: '-' },
             epidemiology: {
               incidence: 'Ubiquitous (>90% of population are carriers)',
               risk_groups: ['General population'],
@@ -1526,7 +1588,10 @@ Object.assign(window.diseases, {
                 { test: 'PCR', finding: 'DNA', significance: 'Research' }
               ]
             },
-            differential: [],
+            differential: [
+               { disease: 'Other viral hepatitis', distinguishing: 'Serology (HBV, HCV)' },
+               { disease: 'Non-infectious liver diseases', distinguishing: 'Diagnosis of exclusion' }
+            ],
             therapy: {
               empirical: {},
               targeted: 'None',
@@ -1542,7 +1607,7 @@ Object.assign(window.diseases, {
           {
             id: 'senv',
             name: 'SEN virus',
-            pathogen: { type: 'Virus', name: 'SEN virus', gram: 'ssDNA, Anelloviridae', shape: '-' },
+            pathogen: { type: 'Virus', name: '<i>SEN virus</i>', gram: 'ssDNA, Anelloviridae', shape: '-' },
             epidemiology: {
               incidence: 'Unknown',
               risk_groups: ['Transfusion recipients'],
@@ -1569,7 +1634,10 @@ Object.assign(window.diseases, {
                 { test: 'PCR', finding: 'DNA', significance: 'Research' }
               ]
             },
-            differential: [],
+            differential: [
+               { disease: 'Other viral hepatitis', distinguishing: 'Serology (HBV, HCV)' },
+               { disease: 'Non-infectious liver diseases', distinguishing: 'Diagnosis of exclusion' }
+            ],
             therapy: {
               empirical: {},
               targeted: 'None',
@@ -1591,8 +1659,8 @@ Object.assign(window.diseases, {
         diseases: [
           {
             id: 'cystitis',
-            name: 'Uncomplicated Cystitis',
-            pathogen: { type: 'Bacterium', name: 'Escherichia coli (75-95%)', gram: 'Gram-negative', shape: 'rod' },
+            name: 'Localised Urinary Tract Infection: Cystitis',
+            pathogen: { type: 'Bacterium', name: '<i>Escherichia coli</i> (75-95%)', gram: 'Gram-negative', shape: 'rod' },
             epidemiology: {
               incidence: '50% of women at least once in their lifetime',
               risk_groups: ['Sexually active women', 'Postmenopause', 'Pregnancy', 'Diabetes', 'Catheter use'],
@@ -1601,11 +1669,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Perineal colonization by gut bacteria',
-                'Ascension through the urethra to the bladder',
-                'Adherence to bladder urothelium (P-fimbriae)',
-                'Bacterial multiplication and inflammation',
-                'Bladder mucosal irritation (dysuria, urgency)'
+                'Colonization: Gut bacteria (mainly E. coli) colonize the periurethral area and vaginal introitus.',
+                'Ascension: Bacteria ascend through the urethra into the bladder (shorter urethra in women predisposes).',
+                'Adherence and Invasion: Bacteria adhere to the bladder urothelium using P-fimbriae, avoiding washout by urine, and then invade cells.',
+                'Inflammation: Bacterial multiplication and toxins (e.g., hemolysin) trigger an inflammatory response, causing mucosal hyperemia, edema, and symptoms.'
               ],
               virulence_factors: ['P-fimbriae (adherence)', 'Hemolysin', 'Aerobactin (iron uptake)']
             },
@@ -1613,11 +1680,11 @@ Object.assign(window.diseases, {
               incubation: 'Variable',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Dysuria', description: 'Burning, stinging urination (>90% present)', severity: 'moderate' },
-                { name: 'Frequency', description: 'Frequent, small-volume urination (>90%)', severity: 'moderate' },
-                { name: 'Urgency', description: 'Sudden, compelling urge to urinate', severity: 'moderate' },
-                { name: 'Suprapubic pain', description: 'Lower abdominal discomfort or tenderness (70-80%)', severity: 'mild' },
-                { name: 'Hematuria', description: 'Macroscopic bloody urine (approx. 30%), often at the end of urination', severity: 'mild' }
+                { name: 'Dysuria', description: 'Burning, stinging sensation during urination caused by irritation of the inflamed urethra and bladder neck.', severity: 'moderate' },
+                { name: 'Frequency', description: 'Frequent voiding of small amounts of urine due to bladder wall irritation and reduced capacity.', severity: 'moderate' },
+                { name: 'Urgency', description: 'Sudden, compelling urge to urinate that is difficult to defer (risk of urge incontinence).', severity: 'moderate' },
+                { name: 'Suprapubic pain', description: 'Pressure or pain felt in the lower abdomen, above the pubic bone.', severity: 'mild' },
+                { name: 'Hematuria', description: 'Macroscopic bloody urine (approx. 30%), often at the end of urination (terminal hematuria), due to bleeding from the hyperemic mucosa.', severity: 'mild' }
               ],
               physical_exam: [
                 'Suprapubic tenderness',
@@ -1670,8 +1737,8 @@ Object.assign(window.diseases, {
           },
           {
             id: 'pyelonephritis',
-            name: 'Uncomplicated Pyelonephritis',
-            pathogen: { type: 'Bacterium', name: 'Escherichia coli (80%)', gram: 'Gram-negative', shape: 'rod' },
+            name: 'Localised Urinary Tract Infection: Pyelonephritis',
+            pathogen: { type: 'Bacterium', name: '<i>Escherichia coli</i> (80%)', gram: 'Gram-negative', shape: 'rod' },
             epidemiology: {
               incidence: 'Common complication of untreated cystitis',
               risk_groups: ['Women', 'Pregnancy', 'Obstruction (stone, prostate)', 'Renal developmental anomaly', 'Diabetes'],
@@ -1680,10 +1747,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Ascension of bacteria up the ureter to the renal pelvis',
-                'Invasion of renal parenchyma',
-                'Inflammatory reaction, edema, microabscesses',
-                'Impairment of tubular function'
+                'Ascending Infection: Bacteria ascend from the bladder up the ureter to the renal pelvis (often facilitated by vesicoureteral reflux).',
+                'Parenchymal Invasion: Pathogens invade the renal parenchyma, primarily the medulla.',
+                'Inflammatory Response: A vigorous acute inflammatory reaction (neutrophil infiltration) is triggered against the bacteria, causing tissue edema, microabscesses, and tubular damage.',
+                'Systemic Effect: Inflammatory mediators entering the circulation cause fever and systemic symptoms.'
               ],
               virulence_factors: ['P-fimbriae', 'Endotoxin', 'Capsule']
             },
@@ -1691,10 +1758,10 @@ Object.assign(window.diseases, {
               incubation: 'Days after cystitis',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Fever and chills', description: 'Fever >38°C (90-95%), often with chills', severity: 'severe' },
-                { name: 'Flank pain', description: 'Dull, continuous flank pain (90-95%), unilateral or bilateral', severity: 'severe' },
-                { name: 'Gastrointestinal symptoms', description: 'Nausea, vomiting, loss of appetite (common)', severity: 'moderate' },
-                { name: 'Lower urinary tract symptoms', description: 'Dysuria, frequency (may be absent in 30-50% of cases!)', severity: 'mild' }
+                { name: 'Fever and Chills', description: 'Sudden onset of high fever (>38°C), often accompanied by shaking chills, indicating systemic bacteremia or toxemia.', severity: 'severe' },
+                { name: 'Flank Pain', description: 'Dull, continuous, unilateral or bilateral pain in the kidney area (flank pain), caused by stretching of the renal capsule.', severity: 'severe' },
+                { name: 'Gastrointestinal Symptoms', description: 'Nausea, vomiting, and loss of appetite are common accompanying symptoms due to peritoneal irritation.', severity: 'moderate' },
+                { name: 'Lower Urinary Tract Symptoms', description: 'Dysuria and frequency often precede fever but may be absent in 30-50% of cases.', severity: 'mild' }
               ],
               physical_exam: [
                 'Costovertebral angle tenderness (Giordano\'s sign)',
@@ -1753,8 +1820,8 @@ Object.assign(window.diseases, {
           },
           {
             id: 'complicated_uti',
-            name: 'Complicated Urinary Tract Infection',
-            pathogen: { type: 'Bacterium', name: 'E. coli, Enterococcus, Pseudomonas, Klebsiella, Proteus', gram: 'Mixed', shape: 'Mixed' },
+            name: 'Systemic Urinary Tract Infection',
+            pathogen: { type: 'Bacterium', name: '<i>E. coli, Enterococcus, Pseudomonas, Klebsiella, Proteus</i>', gram: 'Mixed', shape: 'Mixed' },
             epidemiology: {
               incidence: 'Common in hospital settings and urological patients',
               risk_groups: ['Catheter users', 'Men', 'Pregnant women', 'Anatomical/functional abnormality', 'Renal failure', 'Immunosuppression'],
@@ -1763,10 +1830,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Presence of a predisposing factor (e.g., obstruction, catheter)',
-                'Biofilm formation (on catheter, stone)',
-                'Selection of resistant pathogens',
-                'Tissue invasion and persistence'
+                'Predisposing Factor: Anatomical (e.g., stricture, stone) or functional (e.g., neurogenic bladder) abnormality, or presence of a foreign body (catheter) impedes urine flow and bacterial washout.',
+                'Biofilm Formation: Bacteria (e.g., Proteus, Pseudomonas) form a biofilm layer on the catheter or stone, protecting them from antibiotics and the immune system.',
+                'Persistence: Infection is difficult to eradicate; selection of resistant strains and recurrent infection are common.'
               ],
               virulence_factors: ['Biofilm', 'Multidrug resistance', 'Urease (Proteus)']
             },
@@ -1774,10 +1840,10 @@ Object.assign(window.diseases, {
               incubation: 'Variable',
               onset: 'Variable (can be oligosymptomatic)',
               symptoms: [
-                { name: 'Mixed symptoms', description: 'Combination of dysuria, frequency, fever, flank pain', severity: 'moderate' },
-                { name: 'Systemic signs', description: 'Fever, chills, altered mental status (especially in the elderly)', severity: 'severe' },
-                { name: 'Oligosymptomatic', description: 'In catheterized patients or spinal cord injury patients, symptoms may be absent or atypical', severity: 'mild' },
-                { name: 'Urine changes', description: 'Cloudy, foul-smelling urine (not diagnostic on its own!)', severity: 'mild' }
+                { name: 'Mixed Symptoms', description: 'Symptoms of cystitis and pyelonephritis may coexist, but the clinical picture is often atypical.', severity: 'moderate' },
+                { name: 'Systemic Signs', description: 'Fever, chills, tachycardia. In the elderly, confusion or deterioration of general condition may be the only symptom.', severity: 'severe' },
+                { name: 'Oligosymptomatic', description: 'In catheterized patients or those with spinal cord injury, classic pain and voiding complaints may be absent.', severity: 'mild' },
+                { name: 'Urine Changes', description: 'Cloudy, foul-smelling, sedimentous urine, possibly bloody.', severity: 'mild' }
               ],
               physical_exam: [
                 'Can be unremarkable',
@@ -1801,11 +1867,17 @@ Object.assign(window.diseases, {
                 { test: 'Culture + Susceptibility', finding: 'Essential', significance: 'Basis for targeted therapy' }
               ]
             },
+            differential: [
+              { disease: 'Shigellosis', distinguishing: 'Similar to EIEC/EHEC, culture' },
+              { disease: 'Cholera', distinguishing: 'In ETEC (rice-water stool), travel' },
+              { disease: 'Viral gastroenteritis', distinguishing: 'No blood, vomiting may dominate' },
+              { disease: 'Campylobacteriosis', distinguishing: 'Culture' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
                   { drug: 'Cefuroxime axetil', dose: '2x500mg PO', duration: '7-14 days', note: 'no activity against Enterococcus' },
-                  { drug: 'Ciprofloxacin', dose: '2x500-750mg PO', duration: '7-14 days', note: 'Only if no fluoroquinolone treatment in the last 6 months and E. coli resistance >10% (EAU 2025)' },
+                  { drug: 'Ciprofloxacin', dose: '2x500-750mg PO', duration: '7-14 days', note: 'Only if no fluoroquinolone treatment in the last 6 months and E. coli resistance <10% (EAU 2025)' },
                   { drug: 'Levofloxacin', dose: '1x750mg PO', duration: '7-14 days', note: 'Alternative if E. coli resistance <10% (EAU 2025)' },
                   { drug: 'Ceftibuten/Cefixime', dose: 'PO', duration: '10-14 days', note: 'If quinolone cannot be given' }
                 ],
@@ -1832,7 +1904,7 @@ Object.assign(window.diseases, {
           {
             id: 'prostatitis',
             name: 'Bacterial Prostatitis',
-            pathogen: { type: 'Bacterium', name: 'E. coli, Klebsiella, Proteus, Enterococcus, Pseudomonas', gram: 'Mixed', shape: 'Mixed' },
+            pathogen: { type: 'Bacterium', name: '<i>E. coli, Klebsiella, Proteus, Enterococcus, Pseudomonas</i>', gram: 'Mixed', shape: 'Mixed' },
             epidemiology: {
               incidence: '50% of men experience symptoms in their lifetime',
               risk_groups: ['Young/middle-aged men', 'Catheterization', 'Urological procedure (biopsy)', 'HIV', 'Diabetes'],
@@ -1841,10 +1913,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Intraprostatic urine reflux',
-                'Ascending infection from the urethra',
-                'Direct inoculation (e.g., transrectal biopsy)',
-                'Biofilm formation (maintaining chronic infection)'
+                'Route of Infection: Most commonly, bacteria enter the prostatic ducts via intraprostatic reflux of infected urine.',
+                'Inflammation: In acute cases, edema and microabscesses develop in the glands, causing swelling and tension of the prostate.',
+                'Chronicity: Bacteria can form biofilms on prostatic stones or in ductal channels, maintaining recurrent infections.'
               ],
               virulence_factors: ['Biofilm', 'Anatomical location (poor AB penetration)']
             },
@@ -1852,11 +1923,11 @@ Object.assign(window.diseases, {
               incubation: 'Variable',
               onset: 'Acute (ABP) or Chronic (CBP)',
               symptoms: [
-                { name: 'Acute: Systemic symptoms', description: 'Sudden fever, chills, myalgia, malaise', severity: 'severe' },
-                { name: 'Pain', description: 'Perineal, rectal, prostatic, radiating to testes/penis', severity: 'moderate' },
-                { name: 'LUTS (Lower Urinary Tract Symptoms)', description: 'Dysuria, frequency, urgency', severity: 'moderate' },
-                { name: 'Obstruction', description: 'Urinary retention (due to swollen prostate)', severity: 'severe' },
-                { name: 'Chronic symptoms', description: 'Pelvic pain for >3 months, recurrent UTI', severity: 'mild' }
+                { name: 'Acute: Systemic Symptoms', description: 'Sudden onset of high fever, chills, myalgia, malaise (flu-like onset).', severity: 'severe' },
+                { name: 'Pain', description: 'Characteristic perineal, rectal, lower abdominal pain, radiating to testes and penis.', severity: 'moderate' },
+                { name: 'LUTS (Lower Urinary Tract Symptoms)', description: 'Marked dysuria, frequency, urgent need to void.', severity: 'moderate' },
+                { name: 'Obstruction', description: 'The swollen prostate compresses the urethra, which can cause difficulty voiding, weak stream, or complete urinary retention.', severity: 'severe' },
+                { name: 'Chronic Symptoms', description: 'Milder, recurrent complaints: pelvic discomfort, recurrent urinary tract infections, painful ejaculation.', severity: 'mild' }
               ],
               physical_exam: [
                 'Digital rectal exam (DRE):',
@@ -1914,7 +1985,7 @@ Object.assign(window.diseases, {
           {
             id: 'asymptomatic_bacteriuria',
             name: 'Asymptomatic Bacteriuria',
-            pathogen: { type: 'Bacterium', name: 'E. coli, Enterococcus, GBS, etc.', gram: 'Variable', shape: 'Variable' },
+            pathogen: { type: 'Bacterium', name: '<i>E. coli, Enterococcus, GBS</i>, etc.', gram: 'Variable', shape: 'Variable' },
             epidemiology: {
               incidence: 'Common (women 3-5%, elderly 10-50%, catheterized 100%)',
               risk_groups: ['Elderly', 'Diabetes', 'Catheter use', 'Pregnancy'],
@@ -1923,9 +1994,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Urinary tract colonization without virulence factors',
-                'Commensal-like relationship with the host',
-                'No tissue invasion or inflammatory response'
+                'Colonization: Bacteria colonize the urinary tract but lack virulence factors (e.g., specific fimbriae) that would trigger tissue invasion or inflammation.',
+                'Commensalism: A state of equilibrium develops between the bacteria and the host, without symptoms.',
+                'Protective Effect: Colonizing strains may compete with more virulent pathogens, potentially having a protective effect.'
               ],
               virulence_factors: ['Reduced virulence']
             },
@@ -1933,7 +2004,7 @@ Object.assign(window.diseases, {
               incubation: '-',
               onset: 'Asymptomatic',
               symptoms: [
-                { name: 'Asymptomatic', description: 'No dysuria, fever, or lower abdominal pain', severity: 'mild' }
+                { name: 'Asymptomatic', description: 'The patient has no urinary complaints (no dysuria, no fever, no pain). Bacteriuria is an incidental finding.', severity: 'mild' }
               ],
               physical_exam: [
                 'Negative',

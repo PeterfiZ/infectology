@@ -7,7 +7,7 @@ Object.assign(window.diseases, {
            {
             id: 'malaria',
             name: 'Malária',
-            pathogen: { type: 'Protozoon', name: 'Plasmodium falciparum, vivax, ovale, malariae', gram: '-', shape: 'gyűrű/gametocyta' },
+            pathogen: { type: 'Protozoon', name: '<i>Plasmodium falciparum, vivax, ovale, malariae, knowlesi</i>', gram: '-', shape: 'gyűrű/gametocyta' },
             epidemiology: {
               incidence: 'Világszerte >200 millió eset/év, >400,000 halál',
               risk_groups: ['Endémiás területre utazók', 'Gyermekek (<5 év)', 'Terhesek', 'Immunszupprimáltak'],
@@ -16,11 +16,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Szúnyogcsípés → sporozoiták a vérbe',
-                'Máj fázis (exoerythrocytás): schizonták képződése',
-                'Vér fázis (erythrocytás): vvt invázió, szaporodás, ruptúra',
-                'Ciklikus lázrohamok (vvt ruptúra)',
-                'Cytoadherencia (P. falciparum): mikrocirkuláció elzáródása (agy, vese)'
+                'A fertőzött Anopheles szúnyog csípése során a sporozoiták a véráramba jutnak, majd perceken belül a májsejtekbe vándorolnak.',
+                'Máj fázis (exoerythrocytás): A májsejtekben a paraziták ivartalanul szaporodnak, schizontákat képezve. Ez a fázis tünetmentes. A P. vivax és ovale hipnozoitákat (alvó alakokat) képezhet, ami relapszushoz vezethet.',
+                'Vér fázis (erythrocytás): A májból kiszabaduló merozoiták a vörösvértesteket (vvt) fertőzik meg. A vvt-ken belül gyűrű alakú trophozoitákká, majd schizontákká fejlődnek, amelyekből újabb merozoiták szabadulnak fel a vvt-k szétesésével (ruptúra).',
+                'A vvt-k ciklikus szétesése (48-72 óránként) okozza a jellegzetes, periodikus lázrohamokat a gyulladásos citokinek (TNF-alfa, IL-1) felszabadulása miatt.',
+                'A P. falciparum által fertőzött vvt-k a PfEMP1 fehérje segítségével a kiserek falához tapadnak (cytoadherencia), elzárva a mikrocirkulációt, ami súlyos szervi károsodáshoz vezet (agy, vese, tüdő).'
               ],
               virulence_factors: ['PfEMP1 (adhézió)', 'Antigén variáció', 'Hemozoin pigment']
             },
@@ -28,11 +28,8 @@ Object.assign(window.diseases, {
               incubation: '7-30 nap (fajtól függ)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Lázroham', description: 'Hidegrázás → Láz → Izzadás (ciklikus)', severity: 'severe' },
-                { name: 'Fejfájás', description: 'Intenzív', severity: 'moderate' },
-                { name: 'Hányinger, hányás', description: 'Gyakori', severity: 'moderate' },
-                { name: 'Súlyos anémia', description: 'Vvt pusztulás', severity: 'severe' },
-                { name: 'Cerebrális malária', description: 'Kóma, görcsök (P. falciparum)', severity: 'severe' }
+                { name: 'Komplikációmentes malária', description: 'Jellegzetes lázrohamok: hidegrázás, magas láz (40-41°C), majd izzadás és láztalanság. A ciklus 48 (P. falciparum, vivax, ovale) vagy 72 óránként (P. malariae) ismétlődik. Kísérő tünetek: fejfájás, izomfájdalom, hányinger, splenomegalia.', severity: 'moderate' },
+                { name: 'Súlyos malária (P. falciparum)', description: 'Életveszélyes állapot. Cerebrális malária (tudatzavar, kóma, görcsök), súlyos anémia, ARDS (tüdőödéma), veseelégtelenség (fekete víz láz), metabolikus acidózis, hypoglykaemia és shock.', severity: 'severe' }
               ],
               physical_exam: [
                 'Láz, tachycardia',
@@ -112,7 +109,7 @@ Object.assign(window.diseases, {
           {
             id: 'toxoplasmosis',
             name: 'Toxoplasmosis',
-            pathogen: { type: 'Protozoon', name: 'Toxoplasma gondii', gram: '-', shape: 'intracelluláris' },
+            pathogen: { type: 'Protozoon', name: '<i>Toxoplasma gondii</i>', gram: '-', shape: 'intracelluláris' },
             epidemiology: {
               incidence: 'Világnépesség 30-50%-a szeropozitív (latens)',
               risk_groups: ['Immunszupprimáltak (HIV/AIDS, transzplantált)', 'Terhesek (magzat!)', 'Macskatartók'],
@@ -121,12 +118,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Oociszta/szöveti ciszta lenyelése',
-                'Bélfal penetráció → tachyzoiták (gyors szaporodás)',
-                'Haematogen szórás (akut fázis)',
-                'Immunválasz → bradyzoiták (lassú) → szöveti ciszták képződése (izom, agy, szem)',
-                'Latencia (élethosszig)',
-                'Reaktiváció (immunszuppresszió): ciszta ruptúra → encephalitis'
+                'A fertőzés három úton történhet: 1. Macskaürülékkel szennyezett talajból/ételből származó oociszták lenyelése. 2. Nyers vagy nem kellően átsütött húsban lévő szöveti ciszták elfogyasztása. 3. Vertikális transzmisszió (anyáról magzatra).',
+                'A bélben a cisztákból kiszabaduló paraziták tachyzoitákká (gyorsan osztódó alak) alakulnak, amelyek a bélfalon átjutva a vérárammal a szervezet bármely pontjára eljuthatnak.',
+                'Az ép immunrendszer hatására a tachyzoiták bradyzoitákká (lassan osztódó alak) alakulnak, és szöveti cisztákat képeznek, főleg az agyban, izmokban és a szemben. Ez a latens, élethosszig tartó fertőzés.',
+                'Immunszuppresszió (pl. AIDS, transzplantáció) esetén a latens ciszták reaktiválódhatnak, a bradyzoiták visszaalakulnak tachyzoitákká, ami súlyos, gyakran halálos betegséghez (pl. encephalitis) vezet.'
               ],
               virulence_factors: ['Intracelluláris túlélés', 'Ciszta képzés', 'Immunmoduláció']
             },
@@ -134,11 +129,10 @@ Object.assign(window.diseases, {
               incubation: '5-23 nap',
               onset: 'Lassú/tünetmentes',
               symptoms: [
-                { name: 'Tünetmentes', description: 'Immundompetensek 80-90%-a', severity: 'mild' },
-                { name: 'Mononukleózis-szerű', description: 'Láz, nyirokcsomó, fáradtság', severity: 'mild' },
-                { name: 'Cerebrális (AIDS)', description: 'Fejfájás, zavartság, görcsök, hemiparesis', severity: 'severe' },
-                { name: 'Chorioretinitis', description: 'Homályos látás, szemfájdalom', severity: 'moderate' },
-                { name: 'Congenitalis', description: 'Hydrocephalus, calcificatio, chorioretinitis (Sabin-tetrád)', severity: 'severe' }
+                { name: 'Immunkompetens fertőzés', description: 'Az esetek 80-90%-a tünetmentes. Ha vannak tünetek, azok enyhék, mononukleózis-szerűek: fájdalmatlan nyaki nyirokcsomó-duzzanat, láz, fáradtság.', severity: 'mild' },
+                { name: 'Okuláris toxoplasmosis', description: 'A chorioretinitis leggyakoribb oka. Homályos látást, szemfájdalmat, úszkáló homályokat okoz. Lehet primer fertőzés vagy reaktiváció következménye.', severity: 'moderate' },
+                { name: 'Cerebrális toxoplasmosis (AIDS)', description: 'A leggyakoribb KIR opportunista fertőzés AIDS-ben (CD4<100). Fejfájás, zavartság, láz, fokális neurológiai tünetek (görcsök, hemiparesis) jellemzik. Az MRI-n jellegzetes gyűrűhalmozó gócokat mutat.', severity: 'severe' },
+                { name: 'Veleszületett (congenitalis) toxoplasmosis', description: 'A terhesség alatti primer fertőzés következménye. A klasszikus Sabin-tetrád: hydrocephalus, intracranialis meszesedések, chorioretinitis és görcsök. Súlyos, maradandó károsodást okozhat.', severity: 'severe' }
               ],
               physical_exam: [
                 'Cervicalis lymphadenopathia (fájdalmatlan)',
@@ -207,7 +201,7 @@ Object.assign(window.diseases, {
           {
             id: 'ascariasis',
             name: 'Ascariasis (Orsóférgesség)',
-            pathogen: { type: 'Helminth', name: 'Ascaris lumbricoides', gram: '-', shape: 'hengeres féreg (15-35 cm)' },
+            pathogen: { type: 'Helminth', name: '<i>Ascaris lumbricoides</i>', gram: '-', shape: 'hengeres féreg (15-35 cm)' },
             epidemiology: {
               incidence: 'Világszerte leggyakoribb féregfertőzés (>800 millió)',
               risk_groups: ['Gyermekek', 'Rossz higiénés körülmények között élők'],
@@ -216,11 +210,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Pete lenyelése',
-                'Lárva kibújik a vékonybélben',
-                'Vénás úton a tüdőbe vándorol (Löffler-szindróma)',
-                'Felköhögés és lenyelés',
-                'Kifejlett féreg a vékonybélben (tápanyag elvonás, obstrukció)'
+                'A fertőzés a petékkel szennyezett talajjal, zöldséggel vagy vízzel történő feko-orális úton jön létre.',
+                'A lenyelt petékből a vékonybélben kikelnek a lárvák, amelyek átfúrják a bélfalat és a portális keringésen keresztül a májba, majd a tüdőbe vándorolnak.',
+                'A tüdőben a lárvák gyulladást okoznak (Löffler-szindróma), majd felköhögés és lenyelés útján visszajutnak a vékonybélbe.',
+                'A vékonybélben kifejlett, 15-35 cm-es féreggé érnek, ahol tápanyagokat vonnak el. Súlyos fertőzés esetén a férgek tömege (féreg-gombolyag) bélelzáródást (ileus) vagy epeúti obstrukciót okozhat.'
               ],
               virulence_factors: ['Proteáz inhibitorok', 'Migrációs képesség']
             },
@@ -228,9 +221,9 @@ Object.assign(window.diseases, {
               incubation: '4-8 hét',
               onset: 'Lassú',
               symptoms: [
-                { name: 'Tüdő fázis', description: 'Köhögés, dyspnoe, Löffler-szindróma', severity: 'moderate' },
-                { name: 'Bél fázis', description: 'Hasi fájdalom, puffadás, hányinger', severity: 'mild' },
-                { name: 'Obstrukció', description: 'Ileus (férgek tömege), epeúti elzáródás', severity: 'severe' }
+                { name: 'Tüdő fázis (Löffler-szindróma)', description: 'A lárvavándorlás alatt jelentkező, átmeneti tünetegyüttes: száraz köhögés, légszomj, alacsony láz és a vérképben kifejezett eozinofília.', severity: 'moderate' },
+                { name: 'Bél fázis', description: 'Enyhe fertőzés esetén tünetmentes lehet. Súlyosabb esetben hasi fájdalom, puffadás, hányinger és gyermekeknél alultápláltság, növekedésbeli elmaradás jelentkezhet.', severity: 'mild' },
+                { name: 'Obstrukciós szövődmények', description: 'Masszív fertőzés esetén a férgek gombolyaga mechanikus bélelzáródást (ileus) okozhat. A férgek az epeutakba vagy a ductus pancreaticusba vándorolva sárgaságot, cholangitist vagy pancreatitist idézhetnek elő.', severity: 'severe' }
               ],
               physical_exam: [
                 'Gyakran negatív',
@@ -272,7 +265,7 @@ Object.assign(window.diseases, {
           {
             id: 'taeniasis',
             name: 'Taeniasis (Galandférgesség)',
-            pathogen: { type: 'Helminth', name: 'Taenia saginata (marha), Taenia solium (sertés)', gram: '-', shape: 'laposféreg (szalag)' },
+            pathogen: { type: 'Helminth', name: '<i>Taenia saginata</i> (marha), <i>Taenia solium</i> (sertés)', gram: '-', shape: 'laposféreg (szalag)' },
             epidemiology: {
               incidence: 'Világszerte elterjedt',
               risk_groups: ['Nyers húst fogyasztók'],
@@ -280,8 +273,8 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Cysticercus lenyelése hússal -> kifejlett féreg a bélben (Taeniasis)',
-                'T. solium PETE lenyelése (feko-orális) -> lárva kikel -> szöveti vándorlás -> Cysticercosis (agy, izom, szem)'
+                'Taeniasis (Bélférgesség): Nyers vagy nem kellően átsütött, lárvákat (cysticercus) tartalmazó marha- (T. saginata) vagy sertéshús (T. solium) fogyasztásával alakul ki. A bélben a lárvából kifejlett, több méter hosszú galandféreg fejlődik.',
+                'Cysticercosis (Szöveti forma): KIZÁRÓLAG a T. solium okozza! A féregpeték feko-orális úton (pl. szennyezett étel, autoinfekció) jutnak a szervezetbe. A petékből a bélben lárvák kelnek ki, melyek a vérárammal eljutnak a szövetekbe (agy, izom, szem), ahol betokozódnak (cysticercus).'
               ],
               virulence_factors: ['Scolex (horgok/szívókák)']
             },
@@ -289,8 +282,8 @@ Object.assign(window.diseases, {
               incubation: '8-14 hét',
               onset: 'Tünetmentes/Enyhe',
               symptoms: [
-                { name: 'Intestinalis', description: 'Enyhe hasi diszkomfort, proglottisok (ízek) ürülése', severity: 'mild' },
-                { name: 'Neurocysticercosis (T. solium)', description: 'Epilepszia, fejfájás, ICP fokozódás', severity: 'severe' }
+                { name: 'Taeniasis (Bélférgesség)', description: 'Gyakran tünetmentes. Enyhe hasi diszkomfort, puffadás, étvágyváltozás előfordulhat. A diagnózist gyakran a széklettel ürülő, mozgó féregízek (proglottisok) észlelése adja.', severity: 'mild' },
+                { name: 'Neurocysticercosis (NCC)', description: 'A T. solium peték lenyelése után kialakuló legsúlyosabb forma. A központi idegrendszerben lévő ciszták a lokalizációtól függően epilepsziás rohamokat (leggyakoribb), fejfájást, koponyaűri nyomásfokozódást, hydrocephalust vagy fokális neurológiai tüneteket okoznak.', severity: 'severe' }
               ],
               physical_exam: ['Negatív (bélférgesség)', 'Neurológiai tünetek (cysticercosis)'],
               complications: ['Neurocysticercosis (vezető epilepszia ok fejlődő országokban)', 'Szemészeti cysticercosis']
@@ -317,7 +310,7 @@ Object.assign(window.diseases, {
           {
             id: 'echinococcosis',
             name: 'Echinococcosis (Hydatid kór)',
-            pathogen: { type: 'Helminth', name: 'Echinococcus granulosus (cysticus), E. multilocularis (alveolaris)', gram: '-', shape: 'szalagféreg' },
+            pathogen: { type: 'Helminth', name: '<i>Echinococcus granulosus</i> (cysticus), <i>E. multilocularis</i> (alveolaris)', gram: '-', shape: 'szalagféreg' },
             epidemiology: {
               incidence: 'Endémiás (Mediterráneum, K-Európa, Ázsia)',
               risk_groups: ['Kutyatartók, juhászok', 'Vadon termő bogyók fogyasztói (róka - E. multilocularis)'],
@@ -325,10 +318,11 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Pete lenyelése -> onkoszféra a bélben',
-                'Portális keringés -> Máj (leggyakoribb) -> Tüdő -> Egyéb',
-                'Hydatid ciszta képződés (lassú növekedés)',
-                'Ciszta ruptúra -> anafilaxia és disszemináció'
+                'A fertőzés a kutya (E. granulosus) vagy róka (E. multilocularis) ürülékével szennyezett talajról, zöldségről származó peték lenyelésével történik. Az ember egy köztigazda a parazita számára.',
+                'A bélben a petékből onkoszférák (lárvák) kelnek ki, melyek a bélfalon át a portális keringésbe jutnak, és leggyakrabban a májban (70%), ritkábban a tüdőben (20%) vagy más szervekben telepednek meg.',
+                'E. granulosus: A lárva lassan (évek alatt) egy folyadékkal telt, vastag falú hidatid cisztává nő, melyben újabb lárvák (protoscolexek) ezrei lehetnek. A ciszta térfoglaló hatása okoz tüneteket.',
+                'E. multilocularis: A lárva tumor-szerűen, infiltratívan növekszik, elpusztítva a májszövetet. Nincs éles határa, ezért sebészileg nehezen eltávolítható.',
+                'A ciszta megrepedése (ruptúra) a benne lévő antigének kiáramlása miatt súlyos anafilaxiás shockot és a fertőzés szóródását (disszemináció) okozhatja.'
               ],
               virulence_factors: ['Laminált réteg (immunvédelem)', 'Protoscolexek']
             },
@@ -336,9 +330,9 @@ Object.assign(window.diseases, {
               incubation: 'Évek (lassú növekedés)',
               onset: 'Lassú',
               symptoms: [
-                { name: 'Máj ciszta', description: 'Jobb bordaív alatti fájdalom, hepatomegalia', severity: 'moderate' },
-                { name: 'Tüdő ciszta', description: 'Köhögés, mellkasi fájdalom, hemoptoe', severity: 'moderate' },
-                { name: 'Ruptúra', description: 'Anafilaxiás shock, láz, urticaria', severity: 'severe' }
+                { name: 'Tünetek', description: 'A betegség évekig tünetmentes. A tünetek a ciszta méretétől és lokalizációjától függenek. Májciszta: jobb bordaív alatti fájdalom, teltségérzet, hepatomegalia, sárgaság (epeúti kompresszió). Tüdőciszta: mellkasi fájdalom, köhögés, hemoptoe.', severity: 'moderate' },
+                { name: 'Ciszta ruptúra', description: 'Hirtelen hasi vagy mellkasi fájdalom, láz, urticaria, eosinophilia és súlyos esetben anafilaxiás shock. A cisztatartalom a szervezetben szétszóródva újabb ciszták kialakulásához vezethet.', severity: 'severe' },
+                { name: 'Alveoláris echinococcosis (E. multilocularis)', description: 'A májrákhoz hasonlóan viselkedik: sárgaság, hasi fájdalom, fogyás, hepatomegalia. Rossz prognózisú.', severity: 'severe' }
               ],
               physical_exam: ['Hepatomegalia', 'Tapintható terime'],
               complications: ['Ciszta ruptúra (anafilaxia)', 'Biliaris obstrukció', 'Bakteriális felülfertőződés']
@@ -366,7 +360,7 @@ Object.assign(window.diseases, {
           {
             id: 'enterobiasis',
             name: 'Enterobiasis (Cérnagiliszta)',
-            pathogen: { type: 'Helminth', name: 'Enterobius vermicularis', gram: '-', shape: 'kicsi fehér féreg' },
+            pathogen: { type: 'Helminth', name: '<i>Enterobius vermicularis</i>', gram: '-', shape: 'kicsi fehér féreg' },
             epidemiology: {
               incidence: 'Leggyakoribb féregfertőzés mérsékelt övben (fejlett országokban is)',
               risk_groups: ['Kisgyermekek', 'Közösségek (óvoda, iskola)', 'Családtagok'],
@@ -374,10 +368,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Pete lenyelése',
-                'Lárva a vékonybélben',
-                'Kifejlett féreg a coecumban',
-                'Nőstény éjszaka a perianalis régióba vándorol petét rakni -> viszketés'
+                'A fertőzés a ragadós peték lenyelésével történik, melyek a körmök alatt, ágyneműn, porban is megtalálhatók. Gyakori az autoinfekció (vakarózás után a kéz szájba vétele).',
+                'A petékből a vékonybélben kelnek ki a lárvák, melyek a coecum területére vándorolnak és ott ivarérett féreggé fejlődnek.',
+                'A megtermékenyített nőstény féreg (kb. 1 cm) éjszaka a perianalis redőkbe vándorol, ahol lerakja petéit, majd elpusztul. A peték lerakása és a féreg mozgása okozza a jellegzetes, kínzó viszketést.'
               ],
               virulence_factors: ['-']
             },
@@ -385,9 +378,8 @@ Object.assign(window.diseases, {
               incubation: '2-6 hét',
               onset: 'Fokozatos',
               symptoms: [
-                { name: 'Perianalis viszketés', description: 'Főleg éjszaka (pruritus ani)', severity: 'moderate' },
-                { name: 'Alvászavar', description: 'Viszketés miatt', severity: 'mild' },
-                { name: 'Vulvovaginitis', description: 'Kislányoknál (aberráns vándorlás)', severity: 'moderate' }
+                { name: 'Perianalis viszketés (Pruritus ani)', description: 'A vezető tünet, amely jellemzően éjszaka a legintenzívebb, alvászavart, nyugtalanságot okozva. A vakarózás másodlagos bakteriális bőrfertőzéshez vezethet.', severity: 'moderate' },
+                { name: 'Egyéb tünetek', description: 'Ritkán enyhe hasi fájdalom. Kislányoknál a féreg a hüvelybe vándorolva vulvovaginitist okozhat. A legtöbb fertőzés enyhe vagy tünetmentes.', severity: 'mild' }
               ],
               physical_exam: ['Perianalis excoriatio (vakarás nyom)', 'Férgek láthatók lehetnek (ritka)'],
               complications: ['Bakteriális felülfertőződés (vakarás)', 'Salpingitis (ritka)']
@@ -412,7 +404,7 @@ Object.assign(window.diseases, {
           {
             id: 'trichinellosis',
             name: 'Trichinellosis',
-            pathogen: { type: 'Helminth', name: 'Trichinella spiralis', gram: '-', shape: 'fonalféreg' },
+            pathogen: { type: 'Helminth', name: '<i>Trichinella spiralis</i>', gram: '-', shape: 'fonalféreg' },
             epidemiology: {
               incidence: 'Sporadikus járványok (disznóvágás)',
               risk_groups: ['Nyers/füstölt sertéshús, vaddisznó fogyasztók'],
@@ -420,10 +412,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Encisztálódott lárva lenyelése',
-                'Bélben kifejlett féreg -> új lárvák (Enterális fázis)',
-                'Lárvák a véráramba -> harántcsíkolt izmokba vándorlás',
-                'Izomban encisztálódás (Parenterális fázis)'
+                'A fertőzés lárvákat tartalmazó nyers vagy nem kellően átsütött hús (főleg sertés, vaddisznó) fogyasztásával történik.',
+                'Enterális fázis: A bélben a lárvákból kifejlett férgek lesznek, melyek a bélfalba fúródva újabb lárvákat hoznak létre. Ez hasmenést, hányingert okoz.',
+                'Parenterális fázis: Az újszülött lárvák a vér- és nyirokáramba jutva a szervezetben szóródnak, és célzottan a nagy oxigénellátású, aktív harántcsíkolt izmokba (rágóizmok, rekeszizom, nyelv, szemizmok) vándorolnak.',
+                'Az izomsejtekben a lárvák betokozódnak, egy ún. "dajkasejt" (nurse cell) komplexet hozva létre, ami krónikus gyulladást és a jellegzetes izomfájdalmat okozza.'
               ],
               virulence_factors: ['Nurse cell képzés az izomban']
             },
@@ -431,11 +423,9 @@ Object.assign(window.diseases, {
               incubation: 'Enterális: 1-2 nap; Parenterális: 1-4 hét',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Enterális fázis', description: 'Hasmenés, hányinger, hasi fájdalom', severity: 'moderate' },
-                { name: 'Láz', description: 'Magas, elhúzódó', severity: 'moderate' },
-                { name: 'Myalgia', description: 'Súlyos izomfájdalom, gyengeség', severity: 'severe' },
-                { name: 'Periorbitalis ödéma', description: 'Jellegzetes arcduzzanat', severity: 'moderate' },
-                { name: 'Szálkavérzések', description: 'A körmök alatt', severity: 'mild' }
+                { name: 'Enterális fázis (1. hét)', description: 'A fertőzés után néhány nappal jelentkező hasmenés, hányinger, hányás, hasi fájdalom.', severity: 'moderate' },
+                { name: 'Parenterális fázis (2. héttől)', description: 'A lárvavándorlás okozza a klasszikus tünettriászt: 1. Magas láz. 2. Súlyos izomfájdalom (myalgia), főleg a rágó- és szemizmokban. 3. Jellegzetes kétoldali periorbitalis ödéma (szem körüli duzzanat). A vérképben extrém eozinofília látható.', severity: 'severe' },
+                { name: 'Szövődmények', description: 'A lárvák a szívizmot (myocarditis) vagy a központi idegrendszert (encephalitis) is érinthetik, ami életveszélyes lehet.', severity: 'severe' }
               ],
               physical_exam: ['Periorbitalis ödéma', 'Izomérzékenység', 'Láz', 'Conjunctivitis'],
               complications: ['Myocarditis (halálok!)', 'Encephalitis', 'Pneumonia']
@@ -473,7 +463,7 @@ Object.assign(window.diseases, {
           {
             id: 'toxocariasis',
             name: 'Toxocariasis (Larva Migrans Visceralis/Ocularis)',
-            pathogen: { type: 'Helminth', name: 'Toxocara canis (kutya), Toxocara cati (macska)', gram: '-', shape: 'orsóféreg lárva' },
+            pathogen: { type: 'Helminth', name: '<i>Toxocara canis</i> (kutya), <i>Toxocara cati</i> (macska)', gram: '-', shape: 'orsóféreg lárva' },
             epidemiology: {
               incidence: 'Világszerte elterjedt zoonózis',
               risk_groups: ['Kisgyermekek (homokozó, geophagia)', 'Kutyatartók'],
@@ -482,12 +472,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Pete lenyelése',
-                'Lárva kibújik a vékonybélben',
-                'Bélfalon átjutva a keringésbe kerül',
-                'Szöveti migráció (máj, tüdő, agy, szem)',
-                'Emberben NEM fejlődik féreggé (paratenikus gazda)',
-                'Granulomatózus gyulladás a lárva körül'
+                'A fertőzés a kutya (T. canis) vagy macska (T. cati) ürülékével szennyezett talajból (pl. homokozó) származó peték véletlen lenyelésével történik. Az ember a parazita számára egy véletlen, ún. paratenikus gazda.',
+                'A bélben a petékből kikelő lárvák átfúrják a bélfalat és a vérárammal a szervezet különböző szerveibe vándorolnak (máj, tüdő, agy, szem).',
+                'Mivel az ember nem a természetes gazdája, a lárvák nem tudnak kifejlett féreggé fejlődni. Ehelyett a szövetekben vándorolnak (larva migrans), és a szervezet körülöttük granulomatózus gyulladást hoz létre, ami a szöveti károsodást okozza.'
               ],
               virulence_factors: ['Szöveti migráció', 'Exkréciós-szekréciós antigének (TES)']
             },
@@ -495,9 +482,9 @@ Object.assign(window.diseases, {
               incubation: 'Hetek-hónapok',
               onset: 'Lassú',
               symptoms: [
-                { name: 'Visceralis Larva Migrans (VLM)', description: 'Láz, köhögés, hasi fájdalom, hepatomegalia', severity: 'moderate' },
-                { name: 'Ocularis Larva Migrans (OLM)', description: 'Egyoldali látásromlás, strabismus, leukocoria', severity: 'severe' },
-                { name: 'Covert (rejtett) toxocariasis', description: 'Hasi fájdalom, fejfájás, köhögés', severity: 'mild' }
+                { name: 'Visceralis Larva Migrans (VLM)', description: 'Jellemzően kisgyermekeknél (1-5 év) fordul elő. Tünetei: elhúzódó láz, hepatomegalia, köhögés, sípoló légzés. A laborban extrém magas eozinofília és leukocytosis látható.', severity: 'moderate' },
+                { name: 'Ocularis Larva Migrans (OLM)', description: 'Idősebb gyermekeknél és felnőtteknél gyakoribb. A szembe vándorló lárva egyoldali látásromlást, strabismust (kancsalság) és leukocoriát (fehér pupilla) okozhat, ami összetéveszthető a retinoblastomával. A szisztémás tünetek és az eozinofília általában hiányoznak.', severity: 'severe' },
+                { name: 'Rejtett (Covert) toxocariasis', description: 'Enyhe, nem specifikus tünetekkel, például hasi fájdalommal, fejfájással, köhögéssel járó forma, mérsékelt eozinofíliával.', severity: 'mild' }
               ],
               physical_exam: [
                 'Hepatomegalia',
@@ -517,7 +504,7 @@ Object.assign(window.diseases, {
                 { modality: 'Szemészet', finding: 'Retina granuloma', significance: 'OLM' }
               ],
               microbiology: [
-                { test: 'Szerológia (ELISA)', finding: 'Pozitív (TES antigén)', significance: 'Diagnosztikus (nyugati blot megerősítés)' },
+                { test: 'Szerológia (ELISA)', finding: 'Pozitív (TES antigén)', significance: 'Diagnosztikus (Western blot megerősítés)' },
                 { test: 'Székletvizsgálat', finding: 'NEGATÍV', significance: 'Emberben nincs kifejlett féreg, nem ürít petét!' }
               ]
             },

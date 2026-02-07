@@ -3,11 +3,33 @@ Object.assign(window.diseases, {
         name: 'Gastrointestinális fertőzések',
         icon: window.diseaseMetadata.gastrointestinal.icon,
         color: window.diseaseMetadata.gastrointestinal.color,
+        tables: [
+          {
+            title: 'Gastrointestinális fertőzések differenciáldiagnosztikája',
+            headers: ['Betegség', 'Kórokozó', 'Széklet jellege', 'Láz', 'Főbb jellemzők / Komplikációk'],
+            rows: [
+              ['C. difficile', 'C. difficile', 'Vizes, zöldes, bűzös', '+', 'AB-asszociált, pseudomembrán, toxikus megacolon'],
+              ['Salmonella', 'Salmonella', 'Vizes (ritkán véres)', '++', 'Ételmérgezés, hüllő kontakt, extraintesztinális szövődmények'],
+              ['Shigella', 'Shigella', 'Véres-nyákos (dysenteria)', '++', 'Tenesmus, alacsony fertőző dózis, HUS'],
+              ['Campylobacter', 'Campylobacter', 'Vizes/Véres', '+', 'Pseudoappendicitis, GBS, baromfi'],
+              ['E. coli (EHEC)', 'E. coli (STEC)', 'Véres', '-', 'Láz hiánya, HUS, marhahús'],
+              ['E. coli (ETEC)', 'E. coli (ETEC)', 'Vizes', '-', 'Utazók hasmenése'],
+              ['E. coli (EPEC)', 'E. coli (EPEC)', 'Vizes/Nyákos', '+/-', 'Csecsemőkori hasmenés'],
+              ['E. coli (EIEC)', 'E. coli (EIEC)', 'Véres-nyákos', '++', 'Dysenteria-szerű, láz'],
+              ['Yersinia', 'Yersinia', 'Vizes/Véres', '+', 'Pseudoappendicitis, reaktív arthritis, sertéshús'],
+              ['Giardia', 'Giardia', 'Zsíros, bűzös', '-', 'Puffadás, malabszorpció, krónikus'],
+              ['Amoeba', 'E. histolytica', 'Véres-nyákos', '+/-', 'Májtályog, utazás'],
+              ['Cryptosporidium', 'Cryptosporidium', 'Vizes', '-', 'Immunszupprimáltakban perzisztáló, uszoda'],
+              ['Vírusos GE', 'Rota/Noro', 'Vizes', '-/+', 'Hányás dominál (Noro), téli szezon'],
+              ['Cholera', 'Vibrio cholerae', 'Rizslé szerű', '-', 'Masszív folyadékvesztés, dehidráció']
+            ]
+          }
+        ],
         diseases: [
           {
             id: 'cdiff',
             name: 'Clostridioides difficile fertőzés',
-            pathogen: { type: 'Baktérium', name: 'Clostridioides difficile', gram: 'Gram-pozitív', shape: 'spóraképző anaerob pálca' },
+            pathogen: { type: 'Baktérium', name: '<i>Clostridioides difficile</i>', gram: 'Gram-pozitív', shape: 'spóraképző anaerob pálca' },
             epidemiology: {
               incidence: 'Leggyakoribb nozokomiális hasmenés oka, 500,000 eset/év USA',
               risk_groups: ['65 év felettiek', 'Hospitalizált betegek', 'Antibiotikum expozíció', 'PPI használat', 'Gyulladásos bélbetegség', 'Immunszupprimáltak'],
@@ -16,12 +38,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Antibiotikum → bélflóra disrupcio',
-                'C. difficile spórák germinációja, kolonizáció',
-                'Toxin A (TcdA): enterotoxin – folyadék-szekréció, gyulladás',
-                'Toxin B (TcdB): citotoxin → epithel károsodás',
-                'Binaris toxin (CDT): hypervirulens törzsekben (027/078)',
-                'Pseudomembrán képződés a vastagbélben'
+                'Az antibiotikum-kezelés megzavarja a normál bélflóra egyensúlyát, ami lehetővé teszi a C. difficile spórák kicsírázását és elszaporodását.',
+                'A baktérium toxinokat termel: a Toxin A (enterotoxin) folyadékszekréciót és gyulladást okoz, a Toxin B (citotoxin) pedig közvetlenül károsítja a bélhámsejteket.',
+                'A súlyos gyulladás és sejtpusztulás következtében a vastagbél nyálkahártyáján jellegzetes álhártyák (pseudomembránok) képződnek.'
               ],
               virulence_factors: ['Toxin A (TcdA)', 'Toxin B (TcdB)', 'Binaris toxin (CDT)', 'Spóraképzés', 'Adherencia faktorok']
             },
@@ -29,11 +48,9 @@ Object.assign(window.diseases, {
               incubation: 'AB után 2-10 nap, akár 8 hét múlva',
               onset: 'Akut',
               symptoms: [
-                { name: 'Vizes hasmenés', description: '3-15x/nap, zöldes, bűzös', severity: 'severe' },
-                { name: 'Hasi fájdalom/görcs', description: 'Diffúz, görcsös', severity: 'moderate' },
-                { name: 'Láz', description: 'Mérsékelt-magas', severity: 'moderate' },
-                { name: 'Hányinger', description: 'Változó', severity: 'mild' },
-                { name: 'Anorexia', description: 'Étvágytalanság', severity: 'mild' }
+                { name: 'Vizes hasmenés', description: 'Naponta többszöri (3-15x), jellegzetesen zöldes színű, bűzös, vizes hasmenés.', severity: 'severe' },
+                { name: 'Hasi fájdalom', description: 'Diffúz, görcsös hasi fájdalom és érzékenység.', severity: 'moderate' },
+                { name: 'Láz', description: 'Gyakran kíséri láz és leukocytosis.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Diffúz hasi érzékenység',
@@ -62,12 +79,6 @@ Object.assign(window.diseases, {
                 { test: 'Sigmoidoscopia', finding: 'Pseudomembránok', significance: 'Nem rutinszerű, diagnosztikus' }
               ]
             },
-            differential: [
-              { disease: 'Egyéb AB-asszociált hasmenés', distinguishing: 'Toxin negatív, enyhébb' },
-              { disease: 'Gyulladásos bélbetegség fellángolása', distinguishing: 'Anamnézis, endoscopia' },
-              { disease: 'Ischaemiás colitis', distinguishing: 'Rizikófaktorok, CT angiográfia' },
-              { disease: 'Egyéb infektív enterocolitis', distinguishing: 'Széklet tenyésztés, epidemiológia' }
-            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -86,7 +97,7 @@ Object.assign(window.diseases, {
               },
               targeted: 'Nem súlyos: Vancomycin vagy Fidaxomicin; Súlyos: Vancomycin; Fulminans: Vancomycin+Metronidazol±sebészet',
               supportive: ['AB leállítása (ha lehet)', 'Folyadékpótlás', 'Elektrolit korrekció', 'NE antimotilitás szerek!', 'Kontakt izoláció'],
-              prevention: ['Antibiotikum stewardship', 'Kézmosás (alkohol nem öli a spórákat!)', 'Kontakt izoláció', 'Bezlotoxumab (rekurrencia megelőzés)', 'FMT rekurrens esetben']
+              prevention: ['Antibiotikum stewardship', 'Kézmosás (alkohol nem öli meg a spórákat!)', 'Kontakt izoláció', 'Bezlotoxumab (rekurrencia megelőzés)', 'FMT rekurrens esetben']
             },
             guidelines: {
               diagnosis: [
@@ -135,12 +146,18 @@ Object.assign(window.diseases, {
               mortality: 'Összesen 5-10%, Fulminans 30-50%',
               prognostic_scores: ['ATLAS score'],
               factors: 'Életkor, leukocytosis, albumin, kreatinin, hypervirulens törzs, késői kezelés'
-            }
+            },
+            differential: [
+              { disease: 'Egyéb AB-asszociált hasmenés', distinguishing: 'Toxin negatív, enyhébb' },
+              { disease: 'Gyulladásos bélbetegség fellángolása', distinguishing: 'Anamnézis, endoscopia' },
+              { disease: 'Ischaemiás colitis', distinguishing: 'Rizikófaktorok, CT angiográfia' },
+              { disease: 'Egyéb infektív enterocolitis', distinguishing: 'Széklet tenyésztés, epidemiológia' }
+            ]
           },
           {
             id: 'salmonellosis',
             name: 'Salmonellosis (Nem-typhi)',
-            pathogen: { type: 'Baktérium', name: 'Salmonella enterica (pl. Enteritidis, Typhimurium)', gram: 'Gram-negatív', shape: 'pálca' },
+            pathogen: { type: 'Baktérium', name: '<i>Salmonella enterica</i> (pl. <i>Enteritidis, Typhimurium</i>)', gram: 'Gram-negatív', shape: 'pálca' },
             epidemiology: {
               incidence: 'Gyakori ételmérgezés (nyáron gyakoribb)',
               risk_groups: ['Csecsemők', 'Idősek', 'Gyomorsavhiányosok (PPI)', 'Immunszupprimáltak'],
@@ -149,9 +166,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Lenyelés (magas csíraszám szükséges, kivéve savhiányban)',
-                'Invázió a vékonybél M-sejtjein keresztül (Peyer-plakkok)',
-                'Neutrophil infiltráció, gyulladás, folyadékszekréció'
+                'A baktériumok lenyelése után (magas csíraszám szükséges) a kórokozók túlélik a gyomorsavat és eljutnak a vékonybélbe.',
+                'A vékonybélben az M-sejteken keresztül bejutnak a Peyer-plakkokba és a bélfal mélyebb rétegeibe.',
+                'A baktériumok szaporodása heves gyulladásos választ vált ki, ami neutrofil infiltrációhoz és folyadékszekrécióhoz vezet.'
               ],
               virulence_factors: ['III-as típusú szekréciós rendszer (T3SS)', 'Enterotoxin']
             },
@@ -159,10 +176,9 @@ Object.assign(window.diseases, {
               incubation: '6-72 óra (átlag 12-36 óra)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Hasmenés', description: 'Vizes, ritkán véres, bűzös', severity: 'moderate' },
-                { name: 'Láz', description: 'Gyakori (38-39°C)', severity: 'moderate' },
-                { name: 'Hasi görcsök', description: 'Diffúz vagy periumbilicalis', severity: 'moderate' },
-                { name: 'Hányinger, hányás', description: 'Gyakran megelőzi a hasmenést', severity: 'mild' }
+                { name: 'Hasmenés', description: 'Hirtelen kezdődő, bőséges, vizes, néha nyákos vagy véres hasmenés.', severity: 'moderate' },
+                { name: 'Láz', description: 'Magas láz, hidegrázás, fejfájás és izomfájdalom kísérheti.', severity: 'moderate' },
+                { name: 'Hasi görcsök', description: 'Köldök körüli vagy diffúz hasi görcsök.', severity: 'moderate' }
               ],
               physical_exam: ['Láz', 'Hasi érzékenység', 'Dehidráció jelei'],
               complications: ['Bakterémia (5%, főleg idősek/immunszupprimáltak)', 'Szeptikus arthritis', 'Osteomyelitis (sarlósejtes anémia)', 'Endovascularis fertőzés (aneurysma)']
@@ -171,6 +187,12 @@ Object.assign(window.diseases, {
               laboratory: [{ test: 'Gyulladásos paraméterek', finding: 'CRP emelkedett', interpretation: 'Bakteriális eredet' }],
               microbiology: [{ test: 'Széklet tenyésztés', finding: 'Salmonella sp.', significance: 'Diagnosztikus' }]
             },
+            differential: [
+              { disease: 'Campylobacteriosis', distinguishing: 'Tenyésztés, hasonló klinikum' },
+              { disease: 'Shigellosis', distinguishing: 'Véres-nyákos széklet gyakoribb' },
+              { disease: 'Vírusos gastroenteritis', distinguishing: 'Hányás dominál, vizes hasmenés' },
+              { disease: 'IBD (Crohn/Colitis)', distinguishing: 'Krónikus, nem fertőző, endoszkópia' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'Szupportív', dose: '-', duration: '-', note: 'Egészséges felnőttnek NEM kell antibiotikum (elhúzódó hordozást okoz!)' }],
@@ -212,7 +234,7 @@ Object.assign(window.diseases, {
           {
             id: 'shigellosis',
             name: 'Shigellosis (Vérhas)',
-            pathogen: { type: 'Baktérium', name: 'Shigella (dysenteriae, flexneri, sonnei)', gram: 'Gram-negatív', shape: 'pálca' },
+            pathogen: { type: 'Baktérium', name: '<i>Shigella (dysenteriae, flexneri, sonnei)</i>', gram: 'Gram-negatív', shape: 'pálca' },
             epidemiology: {
               incidence: 'Világszerte gyakori, fejlődő országokban endémiás',
               risk_groups: ['Gyermekek (bölcsőde, óvoda)', 'Utazók', 'MSM'],
@@ -220,10 +242,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Vastagbél epithel invázió',
-                'Intercelluláris terjedés (aktin polimerizáció)',
-                'Shiga toxin (S. dysenteriae): fehérjeszintézis gátlás, HUS',
-                'Nyálkahártya fekélyképződés, gyulladás'
+                'A baktériumok behatolnak a vastagbél hámsejtjeibe, és sejtről sejtre terjednek, elkerülve az immunrendszert.',
+                'A baktériumok szaporodása és a termelt toxinok (pl. Shiga-toxin) a nyálkahártya elhalását, fekélyképződést és vérzést okoznak.',
+                'A Shiga-toxin a véráramba jutva károsíthatja a vese endothel sejtjeit, hemolitikus urémiás szindrómát (HUS) okozva.'
               ],
               virulence_factors: ['Shiga toxin (Stx)', 'Inváziós plazmid antigének']
             },
@@ -231,10 +252,9 @@ Object.assign(window.diseases, {
               incubation: '1-3 nap',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Dysenteria', description: 'Véres, nyákos, gennyes széklet', severity: 'severe' },
-                { name: 'Tenesmus', description: 'Fájdalmas székelési inger ürítés nélkül', severity: 'severe' },
-                { name: 'Magas láz', description: 'Gyakori, toxikus állapot', severity: 'moderate' },
-                { name: 'Hasi görcsök', description: 'Bal alhasi dominancia', severity: 'moderate' }
+                { name: 'Dysenteria', description: 'Gyakori, kis mennyiségű, véres-nyákos-gennyes székletürítés.', severity: 'severe' },
+                { name: 'Tenesmus', description: 'Kínzó, eredménytelen székelési inger.', severity: 'severe' },
+                { name: 'Láz', description: 'Magas láz és toxikus állapot jellemzi.', severity: 'moderate' }
               ],
               complications: ['Hemolitikus urémiás szindróma (HUS - S. dysenteriae)', 'Toxikus megacolon', 'Rektális prolapsus', 'Reaktív arthritis']
             },
@@ -242,6 +262,12 @@ Object.assign(window.diseases, {
               laboratory: [{ test: 'Vérkép', finding: 'Leukocytosis, balra tolt', interpretation: 'Invazív fertőzés' }],
               microbiology: [{ test: 'Széklet tenyésztés', finding: 'Shigella sp.', significance: 'Diagnosztikus' }]
             },
+            differential: [
+              { disease: 'EIEC (E. coli)', distinguishing: 'Klinikailag azonos, mikrobiológia dönt' },
+              { disease: 'Amoebiasis', distinguishing: 'E. histolytica kimutatás, kevésbé lázas' },
+              { disease: 'Campylobacteriosis', distinguishing: 'Tenyésztés' },
+              { disease: 'C. difficile', distinguishing: 'Antibiotikum anamnézis, toxin teszt' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'Azithromycin', dose: '1x500mg PO', duration: '3 nap', note: 'Első választás' }, { drug: 'Ciprofloxacin', dose: '2x500mg PO', duration: '3 nap', note: 'Alternatíva (rezisztencia növekszik)' }]
@@ -282,7 +308,7 @@ Object.assign(window.diseases, {
           {
             id: 'campylobacter',
             name: 'Campylobacteriosis',
-            pathogen: { type: 'Baktérium', name: 'Campylobacter jejuni', gram: 'Gram-negatív', shape: 'spirális/sirályszárny' },
+            pathogen: { type: 'Baktérium', name: '<i>Campylobacter jejuni</i>', gram: 'Gram-negatív', shape: 'spirális/sirályszárny' },
             epidemiology: {
               incidence: 'Leggyakoribb bakteriális gastroenteritis a fejlett világban',
               risk_groups: ['Csecsemők', 'Fiatal felnőttek', 'Idősek'],
@@ -291,11 +317,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Lenyelés (alacsony fertőző dózis)',
-                'Jejunum/ileum/colon kolonizáció',
-                'Invázió az epithel sejtekbe',
-                'Toxin termelés (cytolethal distending toxin)',
-                'Gyulladásos válasz, véres hasmenés'
+                'A baktériumok a vékonybél és a vastagbél nyálkahártyáját kolonizálják és invadálják.',
+                'Toxinokat termelnek (pl. CDT), amelyek gátolják a sejtosztódást és gyulladást váltanak ki.',
+                'A fertőzés autoimmun mechanizmuson keresztül Guillain-Barré szindrómát válthat ki.'
               ],
               virulence_factors: ['Flagellum (motilitás)', 'Adhezinek', 'Cytolethal distending toxin (CDT)']
             },
@@ -303,22 +327,22 @@ Object.assign(window.diseases, {
               incubation: '2-5 nap',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Hasmenés', description: 'Vizes, gyakran véres', severity: 'moderate' },
-                { name: 'Hasi fájdalom', description: 'Kifejezett, görcsös (pseudoappendicitis)', severity: 'severe' },
-                { name: 'Láz', description: 'Prodromális tünet lehet', severity: 'moderate' }
+                { name: 'Hasmenés', description: 'Bőséges, vizes, gyakran véres hasmenés.', severity: 'moderate' },
+                { name: 'Hasi fájdalom', description: 'Kifejezett, görcsös hasi fájdalom, amely utánozhatja a vakbélgyulladást (pseudoappendicitis).', severity: 'severe' },
+                { name: 'Láz', description: 'A hasmenést gyakran láz, fejfájás és izomfájdalom előzi meg.', severity: 'moderate' }
               ],
               physical_exam: ['Diffúz hasi érzékenység', 'Láz', 'Dehidráció jelei'],
               complications: ['Guillain-Barré szindróma (GBS) - 1/1000 eset', 'Reaktív arthritis', 'Erythema nodosum']
             },
             diagnostics: {
               laboratory: [{ test: 'Vérkép', finding: 'Leukocytosis', interpretation: 'Gyulladás' }, { test: 'Széklet', finding: 'Leukocyták, vvt-k', interpretation: 'Invazív' }, { test: 'CRP', finding: 'Emelkedett', interpretation: 'Bakteriális eredet' }],
-              differential: [
-                { disease: 'Salmonellosis', distinguishing: 'Tenyésztés, epidemiológia' },
-                { disease: 'Shigellosis', distinguishing: 'Súlyosabb dysenteria, tenyésztés' },
-                { disease: 'Appendicitis', distinguishing: 'UH/CT, sebészi konzílium' }
-              ],
               microbiology: [{ test: 'Széklet tenyésztés', finding: 'Campylobacter (speciális táptalaj, 42°C)', significance: 'Diagnosztikus' }]
             },
+            differential: [
+              { disease: 'Salmonellosis', distinguishing: 'Tenyésztés, epidemiológia' },
+              { disease: 'Shigellosis', distinguishing: 'Súlyosabb dysenteria, tenyésztés' },
+              { disease: 'Appendicitis', distinguishing: 'UH/CT, sebészi konzílium' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'Azithromycin', dose: '1x500mg PO', duration: '3 nap', note: 'Súlyos esetben első választás' }]
@@ -356,69 +380,73 @@ Object.assign(window.diseases, {
           },
           {
             id: 'ecoli_enteritis',
-            name: 'E. coli enteritisek (ETEC, EHEC)',
-            pathogen: { type: 'Baktérium', name: 'Escherichia coli (pathogen törzsek)', gram: 'Gram-negatív', shape: 'pálca' },
+            name: 'E. coli enteritisek (ETEC, EHEC, EPEC, EIEC)',
+            pathogen: { type: 'Baktérium', name: '<i>Escherichia coli</i> (pathogen törzsek)', gram: 'Gram-negatív', shape: 'pálca' },
             epidemiology: {
-              incidence: 'ETEC: utazók hasmenése; EHEC: élelmiszer eredetű járványok',
-              risk_groups: ['Utazók (ETEC)', 'Gyermekek, idősek (EHEC)'],
+              incidence: 'ETEC: utazók hasmenése; EHEC: élelmiszer eredetű járványok; EPEC: csecsemőkori hasmenés; EIEC: dysenteria-szerű',
+              risk_groups: ['Utazók (ETEC)', 'Gyermekek, idősek (EHEC)', 'Csecsemők (EPEC)'],
               seasonality: 'Nyár',
               transmission: 'Feko-orális, szennyezett víz/étel (marhahús, zöldség)'
             },
             pathomechanism: {
               steps: [
-                'ETEC: Enterotoxinok (LT/ST) → folyadékszekréció (kolera-szerű)',
-                'EHEC (STEC): Shiga-toxin termelés → bélfal károsodás, szisztémás felszívódás → vese endothel károsodás (HUS)'
+                'ETEC: A baktériumok a vékonybélben megtapadva enterotoxinokat termelnek, amelyek masszív folyadékszekréciót okoznak.',
+                'EHEC: A vastagbélben Shiga-toxint termelnek, ami véres hasmenést és szisztémásan felszívódva veseelégtelenséget (HUS) okozhat.',
+                'EPEC/EIEC: A bélhámsejtekhez tapadva vagy azokba behatolva károsítják a nyálkahártyát és gyulladást okoznak.'
               ],
-              virulence_factors: ['Enterotoxinok', 'Shiga-toxin (Stx1, Stx2)', 'Adhezinek']
+              virulence_factors: ['Enterotoxinok', 'Shiga-toxin (Stx1, Stx2)', 'Adhezinek (EPEC)', 'Invazinok (EIEC)']
             },
             clinical: {
-              incubation: 'ETEC: 1-3 nap; EHEC: 3-4 nap',
+              incubation: 'ETEC/EPEC: 1-3 nap; EHEC/EIEC: 3-4 nap',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'ETEC: Vizes hasmenés', description: 'Nincs láz, "Utazók hasmenése"', severity: 'moderate' },
-                { name: 'EHEC: Véres hasmenés', description: 'Láz hiányzik vagy alacsony, súlyos hasi görcs', severity: 'severe' }
+                { name: 'Vizes hasmenés (ETEC/EPEC)', description: 'Hirtelen kezdődő, bőséges vizes hasmenés, láz nélkül (utazók hasmenése).', severity: 'moderate' },
+                { name: 'Véres hasmenés (EHEC/EIEC)', description: 'Véres széklet, erős hasi görcsökkel, gyakran láz nélkül (EHEC) vagy lázzal (EIEC).', severity: 'severe' }
               ],
-              physical_exam: ['Dehidráció', 'Hasi érzékenység (EHEC: kifejezett)', 'Láz hiánya (EHEC)'],
-              complications: ['Hemolitikus urémiás szindróma (HUS) - EHEC fertőzés után 5-10% (főleg gyerekek)', 'TTP (felnőttek)']
+              physical_exam: ['Dehidráció', 'Hasi érzékenység (EHEC/EIEC: kifejezett)', 'Láz (EIEC-nél gyakori, EHEC-nél ritka)'],
+              complications: ['Hemolitikus urémiás szindróma (HUS) - EHEC fertőzés után 5-10% (főleg gyerekek)', 'TTP (felnőttek)', 'Malnutríció (EPEC)']
             },
             diagnostics: {
-              laboratory: [{ test: 'Vérkép', finding: 'Thrombocytopenia, anémia', interpretation: 'HUS gyanú!' }, { test: 'Vese', finding: 'Kreatinin emelkedés', interpretation: 'HUS' }],
-              differential: [
-                { disease: 'Shigellosis', distinguishing: 'Láz gyakoribb, tenyésztés' },
-                { disease: 'Campylobacteriosis', distinguishing: 'Tenyésztés, GBS rizikó' },
-                { disease: 'TTP', distinguishing: 'Felnőttek, neurológiai tünetek, ADAMTS13' }
-              ],
+              laboratory: [{ test: 'Vérkép', finding: 'Thrombocytopenia, anémia', interpretation: 'HUS gyanú (EHEC)!' }, { test: 'Vese', finding: 'Kreatinin emelkedés', interpretation: 'HUS' }],
                microbiology: [
-                { test: 'Széklet tenyésztés', finding: 'Sorbitol-MacConkey (E. coli O157:H7)', significance: 'EHEC szűrés' },
-                { test: 'Shiga-toxin kimutatás', finding: 'PCR vagy EIA', significance: 'Gyors diagnózis' }
+                { test: 'Széklet tenyésztés', finding: 'Sorbitol-MacConkey (EHEC)', significance: 'EHEC szűrés' },
+                { test: 'Shiga-toxin kimutatás', finding: 'PCR vagy EIA', significance: 'EHEC diagnózis' },
+                { test: 'PCR panel', finding: 'Virulencia gének', significance: 'EPEC/EIEC/ETEC elkülönítése' }
               ]
             },
+            differential: [
+              { disease: 'Shigellosis', distinguishing: 'EIEC/EHEC esetén hasonló, tenyésztés' },
+              { disease: 'Cholera', distinguishing: 'ETEC esetén (rizslé széklet), utazás' },
+              { disease: 'Vírusos gastroenteritis', distinguishing: 'Nincs vér, hányás dominálhat' },
+              { disease: 'Campylobacteriosis', distinguishing: 'Tenyésztés' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
                   { drug: 'ETEC: Rifaximin', dose: '2x200mg PO', duration: '3 nap', note: 'Utazók hasmenése' },
-                  { drug: 'EHEC: ANTIBIOTIKUM KONTRAINDIKÁLT!', dose: '-', duration: '-', note: 'Növeli a HUS kockázatát (toxin felszabadulás)!' }
+                  { drug: 'EHEC: ANTIBIOTIKUM KONTRAINDIKÁLT!', dose: '-', duration: '-', note: 'Növeli a HUS kockázatát!' },
+                  { drug: 'EIEC: Ciprofloxacin/Azithromycin', dose: 'Szokásos dózis', duration: '3 nap', note: 'Súlyos esetben (mint Shigella)' }
                 ]
               },
-              targeted: 'ETEC: Ciprofloxacin vagy Azithromycin (súlyos esetben). EHEC: CSAK szupportív!',
+              targeted: 'ETEC/EIEC: Ciprofloxacin vagy Azithromycin (súlyos esetben). EHEC: CSAK szupportív! EPEC: Szupportív.',
               supportive: ['Folyadékpótlás', 'HUS esetén dialízis, transzfúzió'],
               prevention: ['Élelmiszerhigiénia', 'Marhahús átsütése', 'Utazóknak: palackozott víz']
             },
             guidelines: {
               diagnosis: [
-                'Gyanú: véres hasmenés HUS előfordulásával; gyermekeknél különösen óvatosan kezelni',
-                'Mikrobiológia: EHEC szűrés (sorbitol-MacConkey, Shiga-toxin PCR/EIA)'
+                'Gyanú: véres hasmenés (EHEC/EIEC) vagy vizes hasmenés (ETEC/EPEC); HUS kizárása fontos',
+                'Mikrobiológia: EHEC szűrés, PCR panel a patotípusok elkülönítésére'
               ],
               treatment_indications: [
                 'EHEC fertőzés esetén antibiotikum általában kontraindikált (növeli a HUS kockázatát)',
-                'ETEC esetén súlyos tüneteknél rövid antibiotikum adható (pl. Rifaximin, Azithromycin)'
+                'ETEC/EIEC esetén súlyos tüneteknél antibiotikum adható'
               ],
-              supportive: ['Folyadékpótlás, szoros megfigyelés; HUS esetén nefrológiai ellátás, dialízis ha szükséges'],
+              supportive: ['Folyadékpótlás, szoros megfigyelés; HUS esetén nefrológiai ellátás'],
               prevention: ['Élelmiszerhigiénia, jól átsütött marhahús, utazóknak óvintézkedések'],
               dosing: {
                 adult: {
                   rifaximin: '200 mg PO 3x/nap 3 nap (ETEC, nem invazív utazók hasmenése)',
-                  azithromycin: '1 g PO egyszeri dózis vagy 500 mg PO 1x naponta 1–3 nap (súlyos ETEC vagy ciprofloxacin-rezisztencia esetén)'
+                  azithromycin: '1 g PO egyszeri dózis vagy 500 mg PO 1x naponta 1–3 nap (súlyos ETEC/EIEC)'
                 },
                 pediatric: 'Rifaximin gyermek-dózisok korlátozottak; EHEC esetén kerülni kell antibiotikumot gyermekeknél'
               },
@@ -427,12 +455,12 @@ Object.assign(window.diseases, {
                 'CDC – Traveler\'s Diarrhea & Rifaximin: https://www.cdc.gov/antibiotic-use/community/for-hcp/common-conditions/travelers-diarrhea.html'
               ]
             },
-            prognosis: { mortality: 'ETEC: alacsony; EHEC: HUS esetén 3-5% halálozás', prognostic_scores: [], factors: 'Életkor (gyerek/idős), HUS kialakulása, antibiotikum használat (EHEC-nél rontja!)' }
+            prognosis: { mortality: 'ETEC/EPEC: alacsony; EHEC: HUS esetén 3-5% halálozás', prognostic_scores: [], factors: 'Életkor (gyerek/idős), HUS kialakulása, antibiotikum használat (EHEC-nél rontja!)' }
           },
           {
             id: 'yersiniosis',
             name: 'Yersiniosis',
-            pathogen: { type: 'Baktérium', name: 'Yersinia enterocolitica', gram: 'Gram-negatív', shape: 'coccobacillus' },
+            pathogen: { type: 'Baktérium', name: '<i>Yersinia enterocolitica</i>', gram: 'Gram-negatív', shape: 'coccobacillus' },
             epidemiology: {
               incidence: 'Mérsékelt övben gyakoribb, télen',
               risk_groups: ['Gyermekek', 'Vasterheléses betegek (hemochromatosis)'],
@@ -441,11 +469,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Invázió az M-sejteken keresztül (ileum)',
-                'Peyer-plakkok kolonizációja',
-                'Mesenterialis nyirokcsomókba terjedés',
-                'Mikrotályogok képződése',
-                'Reaktív immunválasz (arthritis)'
+                'A baktériumok az ileum M-sejtjein keresztül bejutnak a Peyer-plakkokba és a mesenterialis nyirokcsomókba.',
+                'A nyirokcsomókban gyulladást és mikrotályogokat okoznak (mesenterialis lymphadenitis).',
+                'A fertőzés immunológiai úton reaktív arthritist válthat ki.'
               ],
               virulence_factors: ['Yersinia outer proteins (Yops)', 'T3SS', 'Invazin']
             },
@@ -453,9 +479,8 @@ Object.assign(window.diseases, {
               incubation: '4-7 nap',
               onset: 'Fokozatos',
               symptoms: [
-                { name: 'Enterocolitis', description: 'Láz, hasmenés (véres lehet)', severity: 'moderate' },
-                { name: 'Pseudoappendicitis', description: 'Jobb alhasi fájdalom (mesenterialis lymphadenitis)', severity: 'moderate' },
-                { name: 'Pharyngitis', description: 'Felnőtteknél előfordul', severity: 'mild' }
+                { name: 'Enterocolitis', description: 'Láz, hasmenés (esetleg véres), hányás.', severity: 'moderate' },
+                { name: 'Pseudoappendicitis', description: 'Jobb alhasi fájdalom és érzékenység, amely vakbélgyulladást utánoz.', severity: 'moderate' }
               ],
               physical_exam: ['Jobb alhasi nyomásérzékenység', 'Láz', 'Erythema nodosum (késői)'],
               complications: ['Reaktív arthritis (HLA-B27)', 'Erythema nodosum', 'Sepszis (vasterheléses betegekben)']
@@ -463,13 +488,13 @@ Object.assign(window.diseases, {
             diagnostics: {
               laboratory: [{ test: 'Gyulladásos paraméterek', finding: 'Emelkedett', interpretation: 'Bakteriális' }],
               imaging: [{ modality: 'Has UH', finding: 'Mesenterialis lymphadenopathia, terminalis ileitis', significance: 'Appendicitis kizárása' }],
-              differential: [
-                { disease: 'Appendicitis', distinguishing: 'UH/CT, sebészi konzílium' },
-                { disease: 'Crohn-betegség', distinguishing: 'Krónikus, endoszkópia, biopszia' },
-                { disease: 'Egyéb bakteriális enteritis', distinguishing: 'Tenyésztés' }
-              ],
               microbiology: [{ test: 'Széklet tenyésztés', finding: 'CIN agar (hideg dúsítás)', significance: 'Jelezni kell a labornak' }]
             },
+            differential: [
+              { disease: 'Appendicitis', distinguishing: 'UH/CT, sebészi konzílium' },
+              { disease: 'Crohn-betegség', distinguishing: 'Krónikus, endoszkópia, biopszia' },
+              { disease: 'Egyéb bakteriális enteritis', distinguishing: 'Tenyésztés' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [{ drug: 'Szupportív', dose: '-', duration: '-', note: 'Általában önkorlátozó' }],
@@ -505,7 +530,7 @@ Object.assign(window.diseases, {
           {
             id: 'giardiasis',
             name: 'Giardiasis',
-            pathogen: { type: 'Protozoon', name: 'Giardia duodenalis (lamblia)', gram: '-', shape: 'körte alakú (trophozoita)' },
+            pathogen: { type: 'Protozoon', name: '<i>Giardia duodenalis (lamblia)</i>', gram: '-', shape: 'körte alakú (trophozoita)' },
             epidemiology: {
               incidence: 'Világszerte elterjedt, leggyakoribb parazitás bélfertőzés',
               risk_groups: ['Gyermekek', 'Kempingezők (patakvíz)', 'IgA hiányosok'],
@@ -513,16 +538,19 @@ Object.assign(window.diseases, {
               transmission: 'Feko-orális (ciszták), víz (klór-rezisztens!), étel'
             },
             pathomechanism: {
-              steps: ['Ciszta lenyelése', 'Excisztáció a duodenumban', 'Trophozoiták tapadása a bélbolyhokhoz (szívókorong)', 'Malabszorpció, diszacharidáz hiány']
+              steps: [
+                'A lenyelt cisztákból a duodenumban kiszabadulnak a trophozoiták.',
+                'A paraziták a tapadókorongjukkal a vékonybél bolyhaihoz rögzülnek, de nem hatolnak be a szövetekbe.',
+                'A bélbolyhok károsodása és a diszacharidáz enzimek hiánya felszívódási zavart és ozmotikus hasmenést okoz.'
+              ]
             },
             clinical: {
               incubation: '1-3 hét',
               onset: 'Fokozatos',
               symptoms: [
-                { name: 'Hasmenés', description: 'Bűzös, zsíros (steatorrhea), nem véres', severity: 'moderate' },
-                { name: 'Puffadás, gázosodás', description: 'Kifejezett meteorizmus, kénköves böfögés', severity: 'moderate' },
-                { name: 'Fogyás', description: 'Malabszorpció miatt', severity: 'moderate' },
-                { name: 'Laktóz intolerancia', description: 'Másodlagos, fertőzés után is fennállhat', severity: 'mild' }
+                { name: 'Hasmenés', description: 'Elhúzódó, bűzös, zsíros fényű, nem véres hasmenés.', severity: 'moderate' },
+                { name: 'Puffadás', description: 'Kifejezett gázképződés, haspuffadás, kénes böfögés.', severity: 'moderate' },
+                { name: 'Fogyás', description: 'A felszívódási zavar miatt jelentős súlyvesztés alakulhat ki.', severity: 'moderate' }
               ],
               physical_exam: ['Meteorizmus', 'Diffúz hasi érzékenység', 'Nincs láz'],
               complications: ['Krónikus hasmenés', 'Malabszorpció (vitaminhiány)', 'Fejlődésbeli elmaradás (gyerekek)']
@@ -578,7 +606,7 @@ Object.assign(window.diseases, {
           {
             id: 'amoebiasis',
             name: 'Amoebiasis',
-            pathogen: { type: 'Protozoon', name: 'Entamoeba histolytica', gram: '-', shape: 'amőboid' },
+            pathogen: { type: 'Protozoon', name: '<i>Entamoeba histolytica</i>', gram: '-', shape: 'amőboid' },
             epidemiology: {
               incidence: 'Trópusi/szubtrópusi területeken endémiás',
               risk_groups: ['Utazók', 'Bevándorlók', 'Intézeti gondozottak', 'MSM'],
@@ -586,25 +614,24 @@ Object.assign(window.diseases, {
               transmission: 'Feko-orális (ciszták)'
             },
             pathomechanism: {
-              steps: ['Ciszta lenyelése', 'Trophozoiták inváziója a vastagbél nyálkahártyába', 'Szöveti lízis (hisztolítikus enzimek)', 'Fekélyképződés (lombik alakú)', 'Haematogen szórás (máj)']
+              steps: [
+                'A lenyelt cisztákból a vastagbélben trophozoiták alakulnak ki, amelyek behatolnak a nyálkahártyába.',
+                'A paraziták szövetoldó enzimeket termelnek, ami jellegzetes, lombik alakú fekélyeket hoz létre.',
+                'A véráramba jutva a paraziták eljuthatnak a májba, ahol tályogot képezhetnek.'
+              ]
             },
             clinical: {
               incubation: '2-4 hét',
               onset: 'Fokozatos',
               symptoms: [
-                { name: 'Amőbás dysenteria', description: 'Véres, nyákos hasmenés, hasi fájdalom', severity: 'severe' },
-                { name: 'Amőbás májtályog', description: 'Jobb bordaív alatti fájdalom, láz, fogyás (hasmenés nélkül is!)', severity: 'severe' }
+                { name: 'Amőbás dysenteria', description: 'Véres, nyákos hasmenés, hasi fájdalommal.', severity: 'severe' },
+                { name: 'Amőbás májtályog', description: 'Jobb bordaív alatti fájdalom, láz, fogyás, akár hasmenés nélkül is.', severity: 'severe' }
               ],
               physical_exam: ['Hasi érzékenység (coecum/colon)', 'Hepatomegalia, máj ütögetési érzékenység (tályog)'],
               complications: ['Bélperforáció', 'Toxikus megacolon', 'Tályog ruptúra (pleura, peritoneum, pericardium)', 'Agytályog']
             },
             diagnostics: {
               laboratory: [{ test: 'Vérkép', finding: 'Leukocytosis (tályognál)', interpretation: 'Gyulladás' }, { test: 'Májenzimek', finding: 'ALP emelkedett', interpretation: 'Tályog' }],
-              differential: [
-                { disease: 'Bakteriális dysenteria', distinguishing: 'Tenyésztés, láz gyakoribb' },
-                { disease: 'Pyogen májtályog', distinguishing: 'Bakteriális tenyésztés, szeptikusabb' },
-                { disease: 'Echinococcus cysta', distinguishing: 'Szerológia, képalkotó (leányhólyagok)' }
-              ],
               microbiology: [
                 { test: 'Széklet parazita', finding: 'Trophozoiták (vörösvértesttel a plazmában!)', significance: 'E. dispar-tól el kell különíteni' },
                 { test: 'Széklet antigén/PCR', finding: 'E. histolytica specifikus', significance: 'Gold standard' },
@@ -612,6 +639,11 @@ Object.assign(window.diseases, {
               ],
               imaging: [{ modality: 'Has UH/CT', finding: 'Szoliter májtályog (jobb lebeny)', significance: 'Májtályog diagnózis' }]
             },
+            differential: [
+              { disease: 'Bakteriális dysenteria', distinguishing: 'Tenyésztés, láz gyakoribb' },
+              { disease: 'Pyogen májtályog', distinguishing: 'Bakteriális tenyésztés, szeptikusabb' },
+              { disease: 'Echinococcus cysta', distinguishing: 'Szerológia, képalkotó (leányhólyagok)' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -654,7 +686,7 @@ Object.assign(window.diseases, {
           {
             id: 'cryptosporidiosis',
             name: 'Cryptosporidiosis',
-            pathogen: { type: 'Protozoon', name: 'Cryptosporidium hominis/parvum', gram: 'Saválló festés', shape: 'oociszta' },
+            pathogen: { type: 'Protozoon', name: '<i>Cryptosporidium hominis/parvum</i>', gram: 'Saválló festés', shape: 'oociszta' },
             epidemiology: {
               incidence: 'Gyakori víz eredetű járványok (uszodák)',
               risk_groups: ['AIDS betegek (meghatározó opportunista)', 'Gyermekek', 'Állatorvosok'],
@@ -663,11 +695,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Oociszta lenyelése',
-                'Sporozoiták kiszabadulása',
-                'Epithel sejtek apikális felszínéhez tapadás (intracelluláris, de extracytoplasmaticus)',
-                'Villus atrófia, kripta hiperplázia',
-                'Malabszorpció, szekréciós hasmenés'
+                'Az oociszták lenyelése után a sporozoiták a vékonybél hámsejtjeinek felszínéhez tapadnak (intracelluláris, de extracytoplasmatikus).',
+                'A fertőzés a bélbolyhok sorvadását és a kripták hiperpláziáját okozza.',
+                'Ez súlyos felszívódási zavarhoz és szekréciós hasmenéshez vezet.'
               ],
               virulence_factors: ['Adhezinek', 'Proteázok']
             },
@@ -675,25 +705,24 @@ Object.assign(window.diseases, {
               incubation: '7-10 nap',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Vizes hasmenés', description: 'Bőséges, kolera-szerű lehet', severity: 'moderate' },
-                { name: 'Hasgörcs, hányinger', description: 'Általános tünetek', severity: 'mild' },
-                { name: 'Perzisztáló hasmenés', description: 'Immunszupprimáltakban hetekig/hónapokig tarthat, életveszélyes', severity: 'severe' }
+                { name: 'Vizes hasmenés', description: 'Bőséges, vizes hasmenés, hasi görcsökkel.', severity: 'moderate' },
+                { name: 'Perzisztáló hasmenés', description: 'Immunszupprimált betegekben (pl. AIDS) a hasmenés krónikussá válhat, és súlyos folyadékvesztést okozhat.', severity: 'severe' }
               ],
               physical_exam: ['Dehidráció jelei', 'Cachexia (krónikus esetben)'],
               complications: ['Súlyos dehidráció', 'Malnutríció', 'Epeúti érintettség (AIDS)']
             },
             diagnostics: {
               laboratory: [{ test: 'CD4 szám', finding: '<100/µL', interpretation: 'Súlyos lefolyás rizikó (HIV)' }],
-              differential: [
-                { disease: 'Giardiasis', distinguishing: 'Széklet vizsgálat, puffadás dominál' },
-                { disease: 'Isosporiasis', distinguishing: 'Nagyobb oociszták, TMP-SMX hatékony' },
-                { disease: 'Microsporidiosis', distinguishing: 'Kisebb spórák, speciális festés' }
-              ],
               microbiology: [
                 { test: 'Széklet festés', finding: 'Saválló oociszták (módosított Z-N)', significance: 'Specifikus kérésre' },
                 { test: 'Széklet antigén/PCR', finding: 'Pozitív', significance: 'Érzékenyebb' }
               ]
             },
+            differential: [
+              { disease: 'Giardiasis', distinguishing: 'Széklet vizsgálat, puffadás dominál' },
+              { disease: 'Isosporiasis', distinguishing: 'Nagyobb oociszták, TMP-SMX hatékony' },
+              { disease: 'Microsporidiosis', distinguishing: 'Kisebb spórák, speciális festés' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -735,7 +764,7 @@ Object.assign(window.diseases, {
           {
             id: 'viral_gastroenteritis',
             name: 'Vírusos gastroenteritis',
-            pathogen: { type: 'Vírus', name: 'Rotavírus, Norovírus, Adenovírus, Astrovírus', gram: 'RNS/DNS', shape: 'változó' },
+            pathogen: { type: 'Vírus', name: '<i>Rotavírus, Norovírus, Adenovírus, Astrovírus</i>', gram: 'RNS/DNS', shape: 'változó' },
             epidemiology: {
               incidence: 'Norovírus: leggyakoribb járványos GE (minden korosztály); Rotavírus: csecsemők (oltás előtt)',
               risk_groups: ['Csecsemők (Rota)', 'Idősek (Noro)', 'Zárt közösségek (hajó, laktanya)'],
@@ -744,11 +773,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Vírus replikáció a vékonybél villus epithelben',
-                'Villus atrófia, abszorpciós felület csökkenése',
-                'Diszacharidáz hiány (laktóz intolerancia)',
-                'Ozmotikus hasmenés',
-                'NSP4 enterotoxin (Rotavírus)'
+                'A vírusok a vékonybél bolyhainak hámsejtjeiben szaporodnak, és elpusztítják azokat.',
+                'A bélbolyhok megrövidülése miatt csökken a felszívó felület és az emésztőenzimek mennyisége.',
+                'A fel nem szívódott tápanyagok vizet vonnak a bélüregbe (ozmotikus hasmenés).'
               ],
               virulence_factors: ['Kapszid stabilitás', 'NSP4 (Rota)']
             },
@@ -756,21 +783,14 @@ Object.assign(window.diseases, {
               incubation: '12-48 óra (Noro), 1-3 nap (Rota)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Hányás', description: 'Norovírusnál domináns ("winter vomiting disease")', severity: 'severe' },
-                { name: 'Vizes hasmenés', description: 'Nem véres', severity: 'moderate' },
-                { name: 'Láz', description: 'Enyhe vagy hiányzik', severity: 'mild' },
-                { name: 'Myalgia, fejfájás', description: 'Vírusos tünetek', severity: 'mild' }
+                { name: 'Hányás', description: 'Hirtelen kezdődő, ismétlődő hányás (különösen Norovírusnál).', severity: 'severe' },
+                { name: 'Vizes hasmenés', description: 'Nagy mennyiségű, vizes széklet, láz és izomfájdalom kíséretében.', severity: 'moderate' }
               ],
               physical_exam: ['Dehidráció jelei (száraz nyelv, turgor csökkent)', 'Diffúz hasi érzékenység'],
               complications: ['Súlyos dehidráció (csecsemők, idősek)', 'Elektrolit zavarok']
             },
             diagnostics: {
               laboratory: [{ test: 'Elektrolitok', finding: 'Zavarok', interpretation: 'Dehidráció' }, { test: 'Vérkép', finding: 'Normál', interpretation: 'Nem bakteriális' }],
-              differential: [
-                { disease: 'Bakteriális gastroenteritis', distinguishing: 'Láz, véres széklet, tenyésztés' },
-                { disease: 'Ételmérgezés (toxin)', distinguishing: 'Közös étkezés, rövidebb inkubáció' },
-                { disease: 'Gyógyszer mellékhatás', distinguishing: 'Anamnézis' }
-              ],
               microbiology: [
                 { test: 'Széklet antigén (Rota/Adeno)', finding: 'Pozitív', significance: 'Gyors teszt gyermekeknél' },
                 { test: 'PCR', finding: 'Norovírus', significance: 'Járványügyi célból' }
@@ -784,6 +804,11 @@ Object.assign(window.diseases, {
               supportive: ['Orális rehidrálás (ORS) - kulcsfontosságú!', 'Antiemetikumok (Ondansetron)', 'Probiotikumok (Lactobacillus GG, S. boulardii)'],
               prevention: ['Rotavírus vakcina (csecsemők)', 'Kézmosás (alkoholos gél Norovírus ellen kevésbé hatékony!)', 'Izoláció']
             },
+            differential: [
+              { disease: 'Bakteriális gastroenteritis', distinguishing: 'Láz, véres széklet, tenyésztés' },
+              { disease: 'Ételmérgezés (toxin)', distinguishing: 'Közös étkezés, rövidebb inkubáció' },
+              { disease: 'Gyógyszer mellékhatás', distinguishing: 'Anamnézis' }
+            ],
             guidelines: {
               diagnosis: [
                 'Gyanú: hányással és/vagy vizes hasmenéssel járó tünetegyüttes, gyakori járványok zárt közösségekben',
@@ -811,7 +836,7 @@ Object.assign(window.diseases, {
           {
             id: 'cholera',
             name: 'Cholera',
-            pathogen: { type: 'Baktérium', name: 'Vibrio cholerae (O1, O139)', gram: 'Gram-negatív', shape: 'hajlított pálca (vibrio)' },
+            pathogen: { type: 'Baktérium', name: '<i>Vibrio cholerae</i> (O1, O139)', gram: 'Gram-negatív', shape: 'hajlított pálca (vibrio)' },
             epidemiology: {
               incidence: 'Endémiás (Ázsia, Afrika, Haiti), járványos',
               risk_groups: ['Mélyszegénységben élők', 'Természeti katasztrófák áldozatai', 'Utazók (ritka)'],
@@ -820,12 +845,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Lenyelés (magas csíraszám, savérzékeny)',
-                'Vékonybél kolonizáció (TCP pilus)',
-                'Cholera toxin (CTX) termelés',
-                'Adenilát-cikláz aktiváció (cAMP növekedés)',
-                'Masszív Cl- és vízszekréció (CFTR)',
-                'Szekréciós hasmenés (rizslé szerű)'
+                'A baktériumok a vékonybélben megtapadva koleratoxint termelnek.',
+                'A toxin aktiválja az adenilát-cikláz enzimet, ami a cAMP szint növekedéséhez vezet.',
+                'Ez a kloridionok és a víz masszív kiáramlását okozza a bélüregbe, ami súlyos, életveszélyes hasmenéshez vezet.'
               ],
               virulence_factors: ['Cholera toxin (AB5 toxin)', 'Toxin-coregulated pilus (TCP)']
             },
@@ -833,9 +855,8 @@ Object.assign(window.diseases, {
               incubation: 'Néhány óra - 5 nap',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Rizslé szerű hasmenés', description: 'Fájdalmatlan, nagy volumenű (akár 1L/óra!)', severity: 'severe' },
-                { name: 'Hányás', description: 'Gyakori, hányinger nélkül is', severity: 'moderate' },
-                { name: 'Izomgörcsök', description: 'Elektrolitvesztés miatt (K+, Ca2+, Mg2+)', severity: 'moderate' }
+                { name: 'Rizslé szerű hasmenés', description: 'Fájdalmatlan, nagy mennyiségű, rizslére emlékeztető hasmenés.', severity: 'severe' },
+                { name: 'Dehidráció', description: 'Gyorsan kialakuló súlyos kiszáradás, izomgörcsök, sokk.', severity: 'severe' }
               ],
               physical_exam: [
                 'Súlyos dehidráció (hypovolaemiás shock)',
@@ -858,6 +879,10 @@ Object.assign(window.diseases, {
                 { test: 'Sötétlátóteres mikroszkópia', finding: 'Shooting star mozgás', significance: 'Gyors' }
               ]
             },
+            differential: [
+              { disease: 'ETEC', distinguishing: 'Utazás, kevésbé súlyos' },
+              { disease: 'Vírusos gastroenteritis', distinguishing: 'Hányás dominálhat, kevésbé súlyos dehidráció' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -901,7 +926,7 @@ Object.assign(window.diseases, {
           {
             id: 'travelers_diarrhea',
             name: 'Utazók hasmenése (Traveler\'s Diarrhea)',
-            pathogen: { type: 'Szindróma', name: 'ETEC (leggyakoribb), Campylobacter, Salmonella, Shigella, Vírusok', gram: 'Változó', shape: '-' },
+            pathogen: { type: 'Szindróma', name: '<i>ETEC</i> (leggyakoribb), <i>Campylobacter, Salmonella, Shigella</i>, Vírusok', gram: 'Változó', shape: '-' },
             epidemiology: {
               incidence: 'Utazók 20-60%-a (fejlődő országokba)',
               risk_groups: ['Fiatal felnőttek', 'Immunszupprimáltak', 'PPI szedők'],
@@ -909,17 +934,18 @@ Object.assign(window.diseases, {
               transmission: 'Feko-orális (étel, víz)'
             },
             pathomechanism: {
-              steps: ['Kórokozó lenyelése', 'Enterotoxin termelés (ETEC) vagy invázió (Campy/Shigella)', 'Gyulladás/szekréció'],
+              steps: [
+                'A fertőzést leggyakrabban enterotoxin-termelő E. coli (ETEC) vagy invazív baktériumok (Campylobacter, Shigella) okozzák.',
+                'A kórokozók a helyi higiénés viszonyoktól eltérő mikrobiommal találkozó utazóknál gyulladást vagy folyadékszekréciót váltanak ki.'
+              ],
               virulence_factors: ['Változó']
             },
             clinical: {
               incubation: 'Utazás alatt vagy hazaérkezés után',
               onset: 'Akut',
               symptoms: [
-                { name: 'Hasmenés', description: 'Általában vizes, napi 3-5x', severity: 'moderate' },
-                { name: 'Hasi görcsök', description: 'Gyakori', severity: 'mild' },
-                { name: 'Hányinger/hányás', description: 'Előfordul', severity: 'mild' },
-                { name: 'Láz', description: 'Invazív kórokozóra utal (Campy/Shigella)', severity: 'moderate' }
+                { name: 'Hasmenés', description: 'Utazás alatt vagy után jelentkező vizes hasmenés, hasi görcsökkel.', severity: 'moderate' },
+                { name: 'Láz', description: 'Láz és véres széklet invazív kórokozóra utal.', severity: 'moderate' }
               ],
               physical_exam: ['Enyhe hasi érzékenység', 'Dehidráció jelei'],
               complications: ['Dehidráció', 'Post-infectious IBS', 'Reaktív arthritis']
@@ -928,6 +954,10 @@ Object.assign(window.diseases, {
               laboratory: [{ test: '-', finding: '-', interpretation: 'Általában nem szükséges' }],
               microbiology: [{ test: 'Széklet tenyésztés/PCR', finding: 'Multiplex panel', significance: 'Csak perzisztáló/súlyos esetben vagy immunszupprimáltaknál' }]
             },
+            differential: [
+              { disease: 'IBD fellángolás', distinguishing: 'Anamnézis, endoszkópia' },
+              { disease: 'Giardiasis', distinguishing: 'Elhúzódó, zsíros széklet' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -973,24 +1003,25 @@ Object.assign(window.diseases, {
           {
             id: 'dysentery_syndrome',
             name: 'Dysenteria szindróma (Vérhas)',
-            pathogen: { type: 'Szindróma', name: 'Shigella, EIEC, EHEC, Campylobacter, Entamoeba, Salmonella', gram: 'Változó', shape: '-' },
+            pathogen: { type: 'Szindróma', name: '<i>Shigella, EIEC, EHEC, Campylobacter, Entamoeba, Salmonella</i>', gram: 'Változó', shape: '-' },
             epidemiology: {
               incidence: 'Változó',
               risk_groups: ['Gyermekek', 'Idősek', 'Immunszupprimáltak'],
               transmission: 'Feko-orális'
             },
             pathomechanism: {
-              steps: ['Vastagbél nyálkahártya invázió', 'Gyulladás, fekélyképződés', 'Mikrotályogok', 'Vérzés, nyáktermelés'],
+              steps: [
+                'A kórokozók (Shigella, EIEC, EHEC, Campylobacter, Entamoeba) behatolnak a vastagbél nyálkahártyájába.',
+                'A szöveti invázió súlyos gyulladást, fekélyképződést, vérzést és nyáktermelést okoz.'
+              ],
               virulence_factors: ['Invazinok', 'Citotoxinok']
             },
             clinical: {
               incubation: 'Változó',
               onset: 'Akut',
               symptoms: [
-                { name: 'Véres-nyákos hasmenés', description: 'Kis volumenű, gyakori', severity: 'severe' },
-                { name: 'Tenesmus', description: 'Fájdalmas székelési inger', severity: 'severe' },
-                { name: 'Láz', description: 'Gyakori (kivéve EHEC/Amoeba néha)', severity: 'moderate' },
-                { name: 'Hasi fájdalom', description: 'Görcsös, alhasi', severity: 'moderate' }
+                { name: 'Véres-nyákos hasmenés', description: 'Gyakori, kis mennyiségű, véres-nyákos székletürítés.', severity: 'severe' },
+                { name: 'Tenesmus', description: 'Fájdalmas, eredménytelen székelési inger.', severity: 'severe' }
               ],
               physical_exam: ['Alhasi érzékenység', 'Láz', 'Toxikus állapot'],
               complications: ['HUS (EHEC/Shigella)', 'Toxikus megacolon', 'Perforáció', 'Sepszis', 'Rectalis prolapsus']
@@ -1003,6 +1034,11 @@ Object.assign(window.diseases, {
                 { test: 'Shiga toxin', finding: 'Pozitív', significance: 'EHEC/Shigella' }
               ]
             },
+            differential: [
+              { disease: 'Shigellosis', distinguishing: 'EIEC klinikailag azonos, tenyésztés dönt' },
+              { disease: 'Campylobacteriosis', distinguishing: 'Tenyésztés, GBS rizikó' },
+              { disease: 'TTP', distinguishing: 'Felnőttek, neurológiai tünetek, ADAMTS13' }
+            ],
             therapy: {
               empirical: {
                 outpatient: [
@@ -1037,11 +1073,36 @@ Object.assign(window.diseases, {
         name: 'Vírusos hepatitisek',
         icon: window.diseaseMetadata.viral_hepatitis.icon,
         color: window.diseaseMetadata.viral_hepatitis.color,
+        tables: [
+          {
+            title: 'Vírushepatitisek differenciáldiagnosztikája',
+            headers: ['Vírus', 'Terjedés', 'Inkubáció', 'Krónikussá válás', 'Kulcs szerológia', 'Főbb jellemzők'],
+            rows: [
+              ['HAV', 'Feko-orális', '2-6 hét', 'Nem', 'Anti-HAV IgM', 'Akut, járványos, utazáshoz köthető'],
+              ['HBV', 'Parenterális, szexuális', '2-6 hónap', 'Igen (főleg perinatális)', 'HBsAg, Anti-HBc IgM', 'Krónikus májbetegség, HCC rizikó'],
+              ['HCV', 'Parenterális', '2-26 hét', 'Igen (>70%)', 'Anti-HCV, HCV RNS', 'Krónikus, gyógyítható (DAA), extrahepatikus manif.'],
+              ['HDV', 'Parenterális (HBV-vel)', 'Változó', 'Igen (szuperinfekció)', 'Anti-HDV (HBsAg+ betegben)', 'Súlyosbítja a HBV-t, gyors cirrhosis progresszió'],
+              ['HEV', 'Feko-orális (G1,2), Zoonózis (G3,4)', '2-10 hét', 'Igen (immunszuppr.)', 'Anti-HEV IgM, HEV RNS', 'Terhesekben fulmináns, sertéshúshoz köthető']
+            ]
+          },
+          {
+            title: 'Hepatitis B szerológiai mintázatok értelmezése',
+            headers: ['HBsAg', 'Anti-HBs', 'Anti-HBc (Total)', 'Anti-HBc IgM', 'Értelmezés'],
+            rows: [
+              ['-', '-', '-', '-', 'Fogékony (nem fertőzött, nem védett)'],
+              ['-', '+', '-', '-', 'Védett (oltás miatt)'],
+              ['-', '+', '+', '-', 'Gyógyult fertőzés (természetes immunitás)'],
+              ['+', '-', '+', '+', 'Akut fertőzés'],
+              ['+', '-', '+', '-', 'Krónikus fertőzés'],
+              ['-', '-', '+', '-', 'Lehetséges: 1. Gyógyult fertőzés (alacsony Anti-HBs); 2. Álpozitív; 3. Okkult HBV; 4. Ablakperiódus']
+            ]
+          }
+        ],
         diseases: [
           {
             id: 'hav',
             name: 'Hepatitis A',
-            pathogen: { type: 'Vírus', name: 'Hepatitis A vírus (HAV)', gram: 'ssRNS, Picornaviridae', shape: 'ikozahidrális' },
+            pathogen: { type: 'Vírus', name: '<i>Hepatitis A vírus</i> (HAV)', gram: 'ssRNS, Picornaviridae', shape: 'ikozahidrális' },
             epidemiology: {
               incidence: 'Endémiás területeken magas, fejlett országokban sporadikus/járványos',
               risk_groups: ['Utazók', 'MSM', 'Intravénás droghasználók', 'Hajléktalanok'],
@@ -1050,12 +1111,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Orális bejutás és bélből való felszívódás',
-                'Hepatocyták fertőzése (HAVCR-1 receptor)',
-                'Replikáció a citoplazmában',
-                'Vírusürítés az epébe és székletbe',
-                'Immunmediált hepatocyta károsodás (CD8+ T-sejtek és NK sejtek)',
-                'Nem citopatikus vírus'
+                'Orális bejutás: A vírus a bélrendszerből felszívódva a portális keringéssel jut a májba.',
+                'Hepatocyta fertőzés: A vírus a HAVCR-1 receptoron keresztül jut be a májsejtekbe, ahol a citoplazmában replikálódik, de nem okoz direkt sejtpusztulást (nem citopatikus).',
+                'Immunválasz: A májsejt-károsodást a szervezet saját celluláris immunválasza (CD8+ citotoxikus T-sejtek és NK sejtek) okozza, amelyek elpusztítják a fertőzött hepatocytákat.',
+                'Ürítés: A vírus az epével a székletbe ürül, már a tünetek megjelenése előtt.'
               ],
               virulence_factors: ['Kapszid stabilitás (saválló)', 'Membránburok a vérben (eHAV) - immunelkerülés']
             },
@@ -1063,11 +1122,9 @@ Object.assign(window.diseases, {
               incubation: '15-50 nap (átlag 28 nap)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: 'Kezdeti tünet', severity: 'moderate' },
-                { name: 'Icterus', description: 'Sárgaság (felnőttek 70%-a, gyerekek <10%-a)', severity: 'moderate' },
-                { name: 'Sötét vizelet', description: 'Bilirubinuria', severity: 'moderate' },
-                { name: 'Hányinger, hányás', description: 'Gyakori prodroma', severity: 'moderate' },
-                { name: 'Jobb bordaív alatti fájdalom', description: 'Májtok feszülés', severity: 'mild' }
+                { name: 'Prodroma', description: 'Influenzaszerű tünetek (láz, fejfájás, izomfájdalom), étvágytalanság, undor a dohányfüsttől/zsíros ételektől.', severity: 'moderate' },
+                { name: 'Icterusos fázis', description: 'Sötét vizelet (bilirubinuria), világos széklet, majd sárgaság (bőr, sclera). A láz ekkorra gyakran megszűnik.', severity: 'moderate' },
+                { name: 'Hasi panaszok', description: 'Jobb bordaív alatti tompa fájdalom, hepatomegalia, hányinger.', severity: 'mild' }
               ],
               physical_exam: [
                 'Icterus (sclera, bőr)',
@@ -1093,9 +1150,11 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-              { disease: 'Egyéb vírushepatitisek', distinguishing: 'Szerológia (HBV, HCV, HEV)' },
-              { disease: 'Toxikus hepatitis', distinguishing: 'Gyógyszer/alkohol anamnézis' },
-              { disease: 'Epeúti elzáródás', distinguishing: 'UH (tágult epeutak), ALP dominancia' }
+              { disease: 'Egyéb vírushepatitisek (HBV, HCV, HEV)', distinguishing: 'Szerológia (HBsAg, Anti-HCV, Anti-HEV)' },
+              { disease: 'Toxikus/Gyógyszer-indukált hepatitis', distinguishing: 'Anamnézis (paracetamol, gomba), toxikológia' },
+              { disease: 'Epeúti elzáródás (Choledocholithiasis)', distinguishing: 'Hasi UH (tágult epeutak), ALP/GGT dominancia, colica' },
+              { disease: 'EBV/CMV mononucleosis', distinguishing: 'Torokfájás, lymphadenopathia, monospot/szerológia' },
+              { disease: 'Autoimmun hepatitis', distinguishing: 'Autoantitestek (ANA, ASMA), IgG emelkedés' }
             ],
             therapy: {
               empirical: {
@@ -1144,7 +1203,7 @@ Object.assign(window.diseases, {
           {
             id: 'hbv',
             name: 'Hepatitis B',
-            pathogen: { type: 'Vírus', name: 'Hepatitis B vírus (HBV)', gram: 'dsDNS (RT), Hepadnaviridae', shape: 'gömb (Dane-partikula)' },
+            pathogen: { type: 'Vírus', name: '<i>Hepatitis B vírus</i> (HBV)', gram: 'dsDNS (RT), Hepadnaviridae', shape: 'gömb (Dane-partikula)' },
             epidemiology: {
               incidence: 'Világszerte 290 millió krónikus hordozó',
               risk_groups: ['IV droghasználók', 'Szexuális partnerek', 'Eü. dolgozók', 'Dializáltak', 'Perinatális (anya-gyermek)'],
@@ -1153,11 +1212,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Hepatocyta belépés (NTCP receptor)',
-                'cccDNS képződés a sejtmagban (perzisztencia alapja)',
-                'Transzkripció/Transzláció',
-                'Immunmediált sejtpusztulás (nem citopatikus a vírus)',
-                'Integráció a gazdasejt genomjába (HCC rizikó)'
+                'Bejutás és Replikáció: A vírus a véráramból az NTCP receptoron keresztül jut a májsejtekbe. A sejtmagban cccDNS-t (kovalensen zárt cirkuláris DNS) képez, ami a perzisztencia alapja.',
+                'Immunpatogenezis: A vírus önmagában nem citopatikus. A májkárosodást a fertőzött sejtek ellen irányuló citotoxikus T-sejtes immunválasz okozza.',
+                'Krónikussá válás: Ha az immunválasz nem elég erős (pl. újszülöttek), a vírus perzisztál. A vírus DNS integrálódhat a gazdasejt genomjába, növelve a hepatocelluláris carcinoma (HCC) kockázatát.'
               ],
               virulence_factors: ['HBsAg (decoy)', 'HBeAg (immuntolerancia)', 'X protein (transzaktivátor)']
             },
@@ -1165,10 +1222,9 @@ Object.assign(window.diseases, {
               incubation: '45-160 nap (átlag 90 nap)',
               onset: 'Lassú',
               symptoms: [
-                { name: 'Fáradékonyság', description: 'Gyakori', severity: 'moderate' },
-                { name: 'Ízületi fájdalom', description: 'Immunkomplex mediált (prodroma)', severity: 'mild' },
-                { name: 'Icterus', description: 'Akut fázisban (30-50%)', severity: 'moderate' },
-                { name: 'Tünetmentes', description: 'Krónikus hordozók többsége', severity: 'mild' }
+                { name: 'Akut fázis', description: 'Gyakran tünetmentes. Ha van tünet: szérumbetegség-szerű prodroma (kiütés, ízületi fájdalom), majd sárgaság, fáradtság, jobb felhasi fájdalom.', severity: 'moderate' },
+                { name: 'Krónikus fázis', description: 'Többnyire tünetmentes ("csendes gyilkos"). Késői stádiumban a májcirrhosis jelei (ascites, varixvérzés, encephalopathia) dominálnak.', severity: 'mild' },
+                { name: 'Extrahepatikus tünetek', description: 'Polyarteritis nodosa, glomerulonephritis.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Hepatomegalia',
@@ -1192,8 +1248,11 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-              { disease: 'Hepatitis D', distinguishing: 'Szuperinfekció esetén súlyosabb, Anti-HDV' },
-              { disease: 'Autoimmun hepatitis', distinguishing: 'Autoantitestek (ASMA, ANA), IgG emelkedés' }
+              { disease: 'Egyéb vírushepatitisek (HAV, HCV, HDV)', distinguishing: 'Szerológia (Anti-HAV IgM, Anti-HCV, Anti-HDV)' },
+              { disease: 'Autoimmun hepatitis', distinguishing: 'Autoantitestek (ANA, ASMA, LKM-1), hypergammaglobulinaemia' },
+              { disease: 'Alkoholos májbetegség', distinguishing: 'Anamnézis, AST > ALT (2:1 arány), GGT emelkedés' },
+              { disease: 'Gyógyszer-indukált májkárosodás (DILI)', distinguishing: 'Gyógyszer anamnézis, javulás elhagyás után' },
+              { disease: 'Wilson-kór', distinguishing: 'Fiatal kor, alacsony cöruloplazmin, Kayser-Fleischer gyűrű' }
             ],
             therapy: {
               guidelines: ['EASL 2017 Clinical Practice Guidelines on the management of hepatitis B virus infection'],
@@ -1213,9 +1272,13 @@ Object.assign(window.diseases, {
             },
             guidelines: {
               definitions: [
-                'Akut HBV: HBsAg pozitív és Anti-HBc IgM pozitív, tünetekkel vagy tünetmentes',
-                'Krónikus HBV: HBsAg pozitív >6 hónap',
-                'Kezelési indikáció: Krónikus hepatitis (ALT emelkedett + HBV DNS >2000 IU/ml + fibrosis) VAGY Cirrhosis (bármilyen HBV DNS szintnél)'
+                'Akut HBV: HBsAg pozitív és Anti-HBc IgM pozitív.',
+                'Krónikus HBV: HBsAg pozitív >6 hónap.',
+                'Gyógyult (Past infection): HBsAg negatív, Anti-HBc (Total) pozitív, Anti-HBs pozitív.',
+                'Oltott (Vaccinated): Csak Anti-HBs pozitív (minden más negatív).',
+                'Inaktív hordozó: HBsAg+, HBeAg-, Anti-HBe+, normál ALT, alacsony HBV DNS.',
+                'Szerokonverzió: Antigén eltűnése és antitest megjelenése (pl. HBeAg → Anti-HBe).',
+                'Kezelési indikáció: Krónikus hepatitis (ALT emelkedett + HBV DNS >2000 IU/ml + fibrosis) VAGY Cirrhosis.'
               ],
               diagnosis: [
                 'Kezdeti vizsgálat: HBsAg, Anti-HBs, Anti-HBc (IgM/IgG), HBeAg/Anti-HBe, HBV DNS (quantitativ)',
@@ -1245,6 +1308,18 @@ Object.assign(window.diseases, {
               prognostic_scores: ['PAGE-B (HCC rizikó)'],
               factors: 'HBeAg státusz, virális load, genotípus, koinfekciók'
             },
+            gallery: [
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>0</text><text x='200' y='370' class='txt'>4 hét</text><text x='350' y='370' class='txt'>8 hét</text><text x='500' y='370' class='txt'>6 hó</text><text x='650' y='370' class='txt'>12 hó</text><text x='350' y='390' class='txt' text-anchor='middle'>Idő a fertőzés után</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,350 Q100,50 150,50 Q200,50 250,350' fill='none' stroke='red' stroke-width='3' /><text x='120' y='40' class='txt' fill='red'>HBsAg</text><path d='M60,350 Q100,100 140,100 Q180,100 220,350' fill='none' stroke='orange' stroke-width='3' stroke-dasharray='5,5' /><text x='140' y='90' class='txt' fill='orange'>HBeAg</text><path d='M80,350 Q150,80 200,80 Q300,80 350,350' fill='none' stroke='purple' stroke-width='3' /><text x='200' y='70' class='txt' fill='purple'>Anti-HBc IgM</text><path d='M80,350 Q150,120 200,120 L750,120' fill='none' stroke='blue' stroke-width='3' /><text x='600' y='110' class='txt' fill='blue'>Anti-HBc Total</text><path d='M280,350 Q350,150 400,150 L750,150' fill='none' stroke='green' stroke-width='3' /><text x='600' y='140' class='txt' fill='green'>Anti-HBs</text><path d='M240,350 Q300,200 350,200 L750,200' fill='none' stroke='%23b45309' stroke-width='3' stroke-dasharray='5,5' /><text x='600' y='190' class='txt' fill='%23b45309'>Anti-HBe</text><text x='265' y='300' class='txt' font-size='12' fill='gray'>Ablak periódus</text></svg>",
+                caption: 'Akut HBV fertőzés szerológiai lefolyása (Gyógyulás)',
+                type: 'Diagram'
+              },
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>0</text><text x='200' y='370' class='txt'>6 hó</text><text x='350' y='370' class='txt'>1 év</text><text x='500' y='370' class='txt'>Évek...</text><text x='350' y='390' class='txt' text-anchor='middle'>Idő a fertőzés után</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,350 Q80,50 150,50 L750,50' fill='none' stroke='red' stroke-width='3' /><text x='600' y='40' class='txt' fill='red'>HBsAg (Perzisztál)</text><path d='M60,350 Q90,100 150,100 L400,100 Q450,100 500,350' fill='none' stroke='orange' stroke-width='3' stroke-dasharray='5,5' /><text x='200' y='90' class='txt' fill='orange'>HBeAg</text><path d='M80,350 Q120,80 180,80 Q250,80 300,350' fill='none' stroke='purple' stroke-width='3' /><text x='150' y='70' class='txt' fill='purple'>Anti-HBc IgM</text><path d='M80,350 Q120,120 180,120 L750,120' fill='none' stroke='blue' stroke-width='3' /><text x='600' y='110' class='txt' fill='blue'>Anti-HBc Total</text><path d='M450,350 Q500,200 550,200 L750,200' fill='none' stroke='%23b45309' stroke-width='3' stroke-dasharray='5,5' /><text x='600' y='190' class='txt' fill='%23b45309'>Anti-HBe (Késői)</text><text x='400' y='300' class='txt' font-size='12' fill='gray'>Nincs Anti-HBs!</text></svg>",
+                caption: 'Krónikus HBV fertőzés szerológiai lefolyása',
+                type: 'Diagram'
+              }
+            ],
             references: [
               'EASL 2017 Clinical Practice Guidelines on the management of hepatitis B virus infection. J Hepatol. 2017;67(2):370-398. doi:10.1016/j.jhep.2017.03.021',
               'WHO Guidelines for the Prevention, Care and Treatment of Persons with Chronic Hepatitis B Infection. 2015.'
@@ -1253,7 +1328,7 @@ Object.assign(window.diseases, {
           {
             id: 'hcv',
             name: 'Hepatitis C',
-            pathogen: { type: 'Vírus', name: 'Hepatitis C vírus (HCV)', gram: 'ssRNS, Flaviviridae', shape: 'gömb, burokban' },
+            pathogen: { type: 'Vírus', name: '<i>Hepatitis C vírus</i> (HCV)', gram: 'ssRNS, Flaviviridae', shape: 'gömb, burokban' },
             epidemiology: {
               incidence: 'Világszerte 71 millió krónikus beteg',
               risk_groups: ['IV droghasználók', 'Transzfúzió (1992 előtt)', 'Tetoválás/piercing', 'Eü. dolgozók (tűszúrás)'],
@@ -1262,10 +1337,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Hepatocyta belépés',
-                'RNS replikáció a citoplazmában (nincs sejtmag fázis - kúrálható!)',
-                'Magas mutációs ráta (quasispecies) - immunelkerülés',
-                'Krónikus gyulladás → fibrózis → cirrhosis'
+                'Replikáció: A vírus a hepatocyták citoplazmájában replikálódik (nincs sejtmagi fázis, ezért gyógyítható).',
+                'Immunelkerülés: A vírus RNS-polimeráza hibázik, így folyamatosan mutálódik (quasispecies), elkerülve az immunrendszer felismerését.',
+                'Fibrózis: A krónikus gyulladás aktiválja a csillagsejteket (stellate cells), amelyek kollagént termelnek, ami májfibrózishoz, majd cirrhosisoz vezet.'
               ],
               virulence_factors: ['NS3/4A proteáz', 'NS5A/B polimeráz', 'Lipid metabolizmus moduláció']
             },
@@ -1273,9 +1347,9 @@ Object.assign(window.diseases, {
               incubation: '14-180 nap',
               onset: 'Lassú/Tünetmentes',
               symptoms: [
-                { name: 'Tünetmentes', description: 'Az esetek többsége (akut és krónikus is)', severity: 'mild' },
-                { name: 'Fáradtság', description: 'Nem specifikus', severity: 'moderate' },
-                { name: 'Icterus', description: 'Akut fázisban ritka (20%)', severity: 'moderate' }
+                { name: 'Akut fázis', description: 'Ritkán diagnosztizálják (80% tünetmentes). Enyhe fáradtság, étvágytalanság előfordulhat.', severity: 'mild' },
+                { name: 'Krónikus fázis', description: 'Évtizedekig tünetmentes lehet. A vezető tünet a krónikus fáradtság. Gyakran csak a cirrhosis szövődményei vagy a laborlelet hívja fel rá a figyelmet.', severity: 'moderate' },
+                { name: 'Extrahepatikus tünetek', description: 'Krioglobulinémia (vasculitis), porphyria cutanea tarda, lichen planus, diabetes.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Gyakran negatív',
@@ -1294,8 +1368,11 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-              { disease: 'Alkoholos májbetegség', distinguishing: 'Anamnézis, AST>ALT' },
-              { disease: 'NASH/NAFLD', distinguishing: 'Metabolikus szindróma, UH, biopszia' }
+              { disease: 'Hepatitis B', distinguishing: 'HBsAg pozitív' },
+              { disease: 'Alkoholos májbetegség', distinguishing: 'Anamnézis, AST > ALT, makrocitózis' },
+              { disease: 'Nem-alkoholos zsírmáj (NAFLD/NASH)', distinguishing: 'Metabolikus szindróma, UH (steatosis), biopszia' },
+              { disease: 'Autoimmun hepatitis', distinguishing: 'Autoantitestek, szövettan (plazmasejtes infiltráció)' },
+              { disease: 'Hemochromatosis', distinguishing: 'Magas ferritin, transzferrin szaturáció, HFE génmutáció' }
             ],
             therapy: {
               guidelines: ['EASL Recommendations on Treatment of Hepatitis C 2020'],
@@ -1338,23 +1415,23 @@ Object.assign(window.diseases, {
           {
             id: 'hdv',
             name: 'Hepatitis D',
-            pathogen: { type: 'Vírus', name: 'Hepatitis D vírus (HDV)', gram: 'ssRNS (defektív)', shape: 'HBsAg burokban' },
+            pathogen: { type: 'Vírus', name: '<i>Hepatitis D vírus</i> (HDV)', gram: 'ssRNS (defektív)', shape: 'HBsAg burokban' },
             epidemiology: {
               incidence: 'HBV fertőzöttek 5%-a (kb. 15-20 millió)',
               transmission: 'Parenterális, szexuális (mint HBV). Csak HBV jelenlétében fertőz!'
             },
             pathomechanism: {
               steps: [
-                'HBV HBsAg szükséges a bejutáshoz és csomagoláshoz',
-                'Koinfekció: HBV+HDV egyszerre (általában gyógyul)',
-                'Szuperinfekció: krónikus HBV + új HDV (súlyos, krónikussá válik)',
-                'Direkt citopatikus hatás lehetséges'
+                'Defektív vírus: A replikációhoz és a fertőző részecskék képzéséhez a Hepatitis B vírus felszíni antigénjére (HBsAg) van szüksége.',
+                'Koinfekció: HBV és HDV egyszerre fertőz. Általában súlyos akut hepatitist okoz, de a krónikussá válás ritka (<5%).',
+                'Szuperinfekció: Krónikus HBV hordozó fertőződik HDV-vel. Ez a legsúlyosabb forma, gyakran fulmináns lefolyású vagy gyorsan progrediáló cirrhosisba torkollik.'
               ],
               virulence_factors: ['Delta antigén (HDAg)']
             },
             clinical: {
               symptoms: [
-                { name: 'Súlyos hepatitis', description: 'Súlyosabb mint a HBV önmagában', severity: 'severe' }
+                { name: 'Súlyosbodás', description: 'Ismert HBV beteg állapotának hirtelen romlása (akut fellángolás).', severity: 'severe' },
+                { name: 'Dekompenzáció', description: 'Gyorsan kialakuló májelégtelenség, sárgaság, coagulopathia.', severity: 'severe' }
               ],
               complications: ['Fulmináns hepatitis', 'Gyors progresszió cirrhosisba (legagresszívebb vírushepatitis)']
             },
@@ -1391,7 +1468,7 @@ Object.assign(window.diseases, {
           {
             id: 'hev',
             name: 'Hepatitis E',
-            pathogen: { type: 'Vírus', name: 'Hepatitis E vírus (HEV)', gram: 'ssRNS, Hepeviridae', shape: 'ikozahidrális' },
+            pathogen: { type: 'Vírus', name: '<i>Hepatitis E vírus</i> (HEV)', gram: 'ssRNS, Hepeviridae', shape: 'ikozahidrális' },
             epidemiology: {
               incidence: 'Fejlődő országok (víz), Fejlett (sertés/vad)',
               risk_groups: ['Terhesek (súlyos lefolyás)', 'Immunszupprimáltak (krónikus)', 'Májbetegek', 'Sertésgondozók'],
@@ -1400,11 +1477,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Orális bejutás',
-                'Bélből felszívódás, májba jutás',
-                'Hepatocyta replikáció',
-                'Epeúti ürítés',
-                'Immunmediált citotoxicitás'
+                'Bejutás: Feko-orális (szennyezett víz - 1., 2. genotípus) vagy zoonózis (nyers hús - 3., 4. genotípus) útján.',
+                'Terhesség: Terheseknél (főleg 3. trimeszter) a vírus fulmináns májelégtelenséget okozhat, valószínűleg hormonális és immunológiai változások miatt (20% mortalitás).',
+                'Krónikussá válás: Immunszupprimált betegekben (pl. transzplantáltak) a vírus nem eliminálódik, krónikus hepatitist és fibrosist okozva.'
               ],
               virulence_factors: ['ORF3 protein (kiszabadulás)', 'Kapszid protein']
             },
@@ -1412,9 +1487,9 @@ Object.assign(window.diseases, {
               incubation: '15-60 nap (átlag 40)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Akut hepatitis', description: 'Hasonló a HAV-hoz', severity: 'moderate' },
-                { name: 'Akut hepatitis', description: 'Hasonló a HAV-hoz, sárgaság, láz', severity: 'moderate' },
-                { name: 'Hasi fájdalom', description: 'Jobb bordaív alatt', severity: 'mild' }
+                { name: 'Akut hepatitis', description: 'Hasonló a HAV-hoz (láz, sárgaság, hányás).', severity: 'moderate' },
+                { name: 'Neurológiai tünetek', description: 'Gyakrabban társul neurológiai szövődményekkel (Guillain-Barré szindróma, neuralgiás amyotrophia).', severity: 'severe' },
+                { name: 'Terhességben', description: 'Súlyos, életveszélyes májelégtelenség jelei.', severity: 'severe' }
               ],
               physical_exam: ['Icterus', 'Hepatomegalia'],
               complications: ['Fulmináns hepatitis terheseknél (20% mortalitás! - G1,2)', 'Krónikus hepatitis immunszupprimáltakban (G3)', 'Neurológiai tünetek (Guillain-Barré, Neuralgiás amyotrophia)']
@@ -1432,8 +1507,10 @@ Object.assign(window.diseases, {
               ]
             },
             differential: [
-               { disease: 'Hepatitis A', distinguishing: 'Szerológia' },
-               { disease: 'Gyógyszer toxicitás', distinguishing: 'Anamnézis' }
+              { disease: 'Hepatitis A', distinguishing: 'Szerológia (Anti-HAV IgM)' },
+              { disease: 'Gyógyszer-indukált májkárosodás (DILI)', distinguishing: 'Anamnézis (pl. antibiotikumok, NSAID)' },
+              { disease: 'Ischaemiás hepatitis', distinguishing: 'Shock, hypotonia anamnézis, LDH extrém emelkedés' },
+              { disease: 'Wilson-kór (fulmináns esetben)', distinguishing: 'Hemolízis, alacsony ALP, magas vizelet réz' }
             ],
             therapy: {
               guidelines: ['EASL Clinical Practice Guidelines on hepatitis E virus infection'],
@@ -1465,7 +1542,7 @@ Object.assign(window.diseases, {
           {
             id: 'hgv',
             name: 'Hepatitis G (GBV-C)',
-            pathogen: { type: 'Vírus', name: 'GB vírus C (HGV)', gram: 'ssRNS, Flaviviridae', shape: '-' },
+            pathogen: { type: 'Vírus', name: '<i>GB vírus C</i> (HGV)', gram: 'ssRNS, Flaviviridae', shape: '-' },
             epidemiology: {
               incidence: 'Véradók 1-4%-a',
               risk_groups: ['IV droghasználók', 'Hemodializáltak', 'Többszörös transzfúzió'],
@@ -1492,7 +1569,10 @@ Object.assign(window.diseases, {
                 { test: 'PCR', finding: 'RNS', significance: 'Kutatási cél, klinikai rutinban nem használják' }
               ]
             },
-            differential: [],
+            differential: [
+               { disease: 'Egyéb vírushepatitisek', distinguishing: 'Szerológia (HBV, HCV)' },
+               { disease: 'Nem fertőző májbetegségek', distinguishing: 'Kizárásos diagnózis' }
+            ],
             therapy: {
               empirical: {},
               targeted: 'Nem igényel kezelést.',
@@ -1508,7 +1588,7 @@ Object.assign(window.diseases, {
           {
             id: 'ttv',
             name: 'Torque teno vírus (TTV)',
-            pathogen: { type: 'Vírus', name: 'Torque teno virus', gram: 'ssDNS, Anelloviridae', shape: '-' },
+            pathogen: { type: 'Vírus', name: '<i>Torque teno virus</i>', gram: 'ssDNS, Anelloviridae', shape: '-' },
             epidemiology: {
               incidence: 'Ubiquiter (népesség >90%-a hordozó)',
               risk_groups: ['Általános populáció'],
@@ -1535,7 +1615,10 @@ Object.assign(window.diseases, {
                 { test: 'PCR', finding: 'DNS', significance: 'Kutatás' }
               ]
             },
-            differential: [],
+            differential: [
+               { disease: 'Egyéb vírushepatitisek', distinguishing: 'Szerológia (HBV, HCV)' },
+               { disease: 'Nem fertőző májbetegségek', distinguishing: 'Kizárásos diagnózis' }
+            ],
             therapy: {
               empirical: {},
               targeted: 'Nincs',
@@ -1551,7 +1634,7 @@ Object.assign(window.diseases, {
           {
             id: 'senv',
             name: 'SEN vírus',
-            pathogen: { type: 'Vírus', name: 'SEN vírus', gram: 'ssDNS, Anelloviridae', shape: '-' },
+            pathogen: { type: 'Vírus', name: '<i>SEN vírus</i>', gram: 'ssDNS, Anelloviridae', shape: '-' },
             epidemiology: {
               incidence: 'Ismeretlen',
               risk_groups: ['Transzfundáltak'],
@@ -1578,7 +1661,10 @@ Object.assign(window.diseases, {
                 { test: 'PCR', finding: 'DNS', significance: 'Kutatás' }
               ]
             },
-            differential: [],
+            differential: [
+               { disease: 'Egyéb vírushepatitisek', distinguishing: 'Szerológia (HBV, HCV)' },
+               { disease: 'Nem fertőző májbetegségek', distinguishing: 'Kizárásos diagnózis' }
+            ],
             therapy: {
               empirical: {},
               targeted: 'Nincs',
@@ -1600,8 +1686,8 @@ Object.assign(window.diseases, {
         diseases: [
           {
             id: 'cystitis',
-            name: 'Nem komplikált cystitis (Hólyaghurut)',
-            pathogen: { type: 'Baktérium', name: 'Escherichia coli (75-95%)', gram: 'Gram-negatív', shape: 'pálca' },
+            name: 'Szisztémás tünetekkel nem járó cystitis, korábbi nevén nem komplikált cystitis (Hólyaghurut)',
+            pathogen: { type: 'Baktérium', name: '<i>Escherichia coli</i> (75-95%)', gram: 'Gram-negatív', shape: 'pálca' },
             epidemiology: {
               incidence: 'Nők 50%-a élete során legalább egyszer',
               risk_groups: ['Szexuálisan aktív nők', 'Postmenopauza', 'Terhesség', 'Diabetes', 'Katéter viselés'],
@@ -1610,11 +1696,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Perinealis kolonizáció bélbaktériumokkal',
-                'Urethrán keresztüli feljutás a hólyagba',
-                'Adherencia a hólyag urotheliumához (P-fimbriae)',
-                'Bakteriális szaporodás és gyulladás',
-                'Hólyagnyálkahártya irritáció (dysuria, urgencia)'
+                'Kolonizáció: A bélbaktériumok (főleg E. coli) kolonizálják a periurethralis területet és a hüvelybemenetet.',
+                'Feljutás: A baktériumok az urethrán keresztül feljutnak a húgyhólyagba (nőknél rövidebb urethra hajlamosít).',
+                'Adhézió és Invázió: A baktériumok a P-fimbriák segítségével kitapadnak a hólyag urotheliumához, elkerülve a vizelettel való kimosódást, majd behatolnak a sejtekbe.',
+                'Gyulladás: A baktériumok szaporodása és toxinjai (pl. hemolizin) gyulladásos választ váltanak ki, ami a nyálkahártya vérbőségét, ödémáját és a tüneteket okozza.'
               ],
               virulence_factors: ['P-fimbriae (adherencia)', 'Hemolizin', 'Aerobactin (vasfelvétel)']
             },
@@ -1622,16 +1707,11 @@ Object.assign(window.diseases, {
               incubation: 'Változó',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Dysuria', description: 'Csípő, égető vizeletürítés', severity: 'moderate' },
-                { name: 'Pollakisuria', description: 'Gyakori vizelési inger', severity: 'moderate' },
-                { name: 'Urgencia', description: 'Sürgető vizelési inger', severity: 'moderate' },
-                { name: 'Suprapubicus fájdalom', description: 'Alhasi diszkomfort', severity: 'mild' },
-                { name: 'Haematuria', description: 'Véres vizelet (esetek 30%-a)', severity: 'mild' },
-                { name: 'Dysuria', description: 'Csípő, égető vizeletürítés (>90%-ban jelen van)', severity: 'moderate' },
-                { name: 'Pollakisuria', description: 'Gyakori, kis volumenű vizeletürítés (>90%)', severity: 'moderate' },
-                { name: 'Urgencia', description: 'Hirtelen jelentkező, parancsoló vizelési inger', severity: 'moderate' },
-                { name: 'Suprapubicus fájdalom', description: 'Alhasi diszkomfort vagy nyomásérzékenység (70-80%)', severity: 'mild' },
-                { name: 'Haematuria', description: 'Makroszkóposan véres vizelet (kb. 30%), gyakran a vizelés végén', severity: 'mild' }
+                { name: 'Dysuria', description: 'Vizeléskor jelentkező égető, csípő érzés, amely a gyulladt urethra és hólyagnyak irritációja miatt alakul ki.', severity: 'moderate' },
+                { name: 'Pollakisuria', description: 'Gyakori, kis mennyiségű vizeletürítés a hólyagfal irritációja és csökkent kapacitása miatt.', severity: 'moderate' },
+                { name: 'Urgencia', description: 'Hirtelen jelentkező, parancsoló vizelési inger, amelyet nehéz visszatartani (késztetéses inkontinencia veszélye).', severity: 'moderate' },
+                { name: 'Suprapubicus fájdalom', description: 'Az alhasban, a szeméremcsont felett érzett nyomás vagy fájdalom.', severity: 'mild' },
+                { name: 'Haematuria', description: 'Makroszkóposan véres vizelet (kb. 30%-ban), gyakran a vizelés végén (terminalis haematuria), a vérbő nyálkahártya vérzése miatt.', severity: 'mild' }
               ],
               physical_exam: [
                 'Suprapubicus nyomásérzékenység',
@@ -1686,8 +1766,8 @@ Object.assign(window.diseases, {
           },
           {
             id: 'pyelonephritis',
-            name: 'Nem komplikált pyelonephritis',
-            pathogen: { type: 'Baktérium', name: 'Escherichia coli (80%)', gram: 'Gram-negatív', shape: 'pálca' },
+            name: 'Szisztémás tünetekkel nem járó (nem komplikált) pyelonephritis',
+            pathogen: { type: 'Baktérium', name: '<i>Escherichia coli</i> (80%)', gram: 'Gram-negatív', shape: 'pálca' },
             epidemiology: {
               incidence: 'Gyakori szövődménye a kezeletlen cystitisnek',
               risk_groups: ['Nők', 'Terhesség', 'Obstrukció (kő, prostata)', 'Vesefejlődési rendellenesség', 'Diabetes'],
@@ -1696,10 +1776,10 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Baktérium feljutása az ureteren a vesemedencébe',
-                'Veseparenchyma invázió',
-                'Gyulladásos reakció, ödéma, mikrotályogok',
-                'Tubulus funkció károsodás'
+                'Ascendáló fertőzés: A baktériumok a hólyagból az ureteren keresztül (gyakran vesico-ureteralis reflux segítségével) feljutnak a vesemedencébe.',
+                'Parenchyma invázió: A kórokozók behatolnak a vese parenchymájába, elsősorban a velőállományba.',
+                'Gyulladásos válasz: A baktériumok ellen heves akut gyulladásos reakció indul (neutrophil infiltráció), ami szöveti ödémát, mikrotályogokat és tubulus károsodást okoz.',
+                'Szisztémás hatás: A gyulladásos mediátorok a keringésbe jutva lázat és szisztémás tüneteket váltanak ki.'
               ],
               virulence_factors: ['P-fimbriae', 'Endotoxin', 'Kapszula']
             },
@@ -1707,14 +1787,10 @@ Object.assign(window.diseases, {
               incubation: 'Cystitis után napokkal',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Láz', description: '>38°C, hidegrázás', severity: 'severe' },
-                { name: 'Deréktáji fájdalom', description: 'Egy vagy kétoldali, tompa, folyamatos', severity: 'severe' },
-                { name: 'Hányinger, hányás', description: 'Gyakori szisztémás tünet', severity: 'moderate' },
-                { name: 'Cystitis tünetek', description: 'Dysuria, pollakisuria (megelőzheti)', severity: 'mild' },
-                { name: 'Láz és hidegrázás', description: 'Láz >38°C (90-95%), gyakran hidegrázással', severity: 'severe' },
-                { name: 'Deréktáji fájdalom', description: 'Tompa, folyamatos flank pain (90-95%), egy- vagy kétoldali', severity: 'severe' },
-                { name: 'Gastrointestinális tünetek', description: 'Hányinger, hányás, étvágytalanság (gyakori)', severity: 'moderate' },
-                { name: 'Alsó húgyúti tünetek', description: 'Dysuria, pollakisuria (az esetek 30-50%-ában hiányozhat!)', severity: 'mild' }
+                { name: 'Láz és hidegrázás', description: 'Hirtelen kezdődő magas láz (>38°C), gyakran rázóhideggel kísérve, ami a szisztémás bakteriémia vagy toxémia jele.', severity: 'severe' },
+                { name: 'Deréktáji fájdalom', description: 'Tompa, folyamatos, egy- vagy kétoldali fájdalom a vesetájékon (flank pain), amely a vese tokjának feszülése miatt alakul ki.', severity: 'severe' },
+                { name: 'Gastrointestinális tünetek', description: 'Hányinger, hányás, étvágytalanság gyakori kísérő tünetek a peritonealis izgalom miatt.', severity: 'moderate' },
+                { name: 'Alsó húgyúti tünetek', description: 'Dysuria, pollakisuria gyakran megelőzi a lázat, de az esetek 30-50%-ában hiányozhatnak is.', severity: 'mild' }
               ],
               physical_exam: [
                 'Vesetájék ütögetési érzékenysége (costovertebralis szöglet)',
@@ -1774,8 +1850,8 @@ Object.assign(window.diseases, {
           },
           {
             id: 'complicated_uti',
-            name: 'Komplikált húgyúti fertőzés',
-            pathogen: { type: 'Baktérium', name: 'E. coli, Enterococcus, Pseudomonas, Klebsiella, Proteus', gram: 'Vegyes', shape: 'Vegyes' },
+            name: 'Szisztémás tünetekkel járó húgyúti fertőzés',
+            pathogen: { type: 'Baktérium', name: '<i>E. coli, Enterococcus, Pseudomonas, Klebsiella, Proteus</i>', gram: 'Vegyes', shape: 'Vegyes' },
             epidemiology: {
               incidence: 'Gyakori kórházi környezetben és urológiai betegeknél',
               risk_groups: ['Katéter viselők', 'Férfiak', 'Terhesek', 'Anatómiai/funkcionális rendellenesség', 'Veseelégtelenség', 'Immunszuppresszió'],
@@ -1784,10 +1860,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Hajlamosító tényező (pl. obstrukció, katéter) jelenléte',
-                'Biofilm képzés (katéteren, kövön)',
-                'Rezisztens kórokozók szelekciója',
-                'Szöveti invázió és perzisztencia'
+                'Hajlamosító tényező: Anatómiai (pl. szűkület, kő) vagy funkcionális (pl. neurogén hólyag) rendellenesség, vagy idegentest (katéter) jelenléte gátolja a vizeletáramlást és a baktériumok kimosódását.',
+                'Biofilm képzés: A baktériumok (pl. Proteus, Pseudomonas) biofilm réteget képeznek a katéteren vagy kövön, ami védi őket az antibiotikumoktól és az immunrendszertől.',
+                'Perzisztencia: A fertőzés nehezen eradikálható, gyakori a rezisztens törzsek szelekciója és a visszatérő fertőzés.'
               ],
               virulence_factors: ['Biofilm', 'Multidrog rezisztencia', 'Ureáz (Proteus)']
             },
@@ -1795,14 +1870,10 @@ Object.assign(window.diseases, {
               incubation: 'Változó',
               onset: 'Változó (lehet tünetszegény is)',
               symptoms: [
-                { name: 'Dysuria, pollakisuria', description: 'Alsó húgyúti tünetek', severity: 'moderate' },
-                { name: 'Láz', description: 'Gyakori szisztémás jel', severity: 'moderate' },
-                { name: 'Deréktáji/alhasi fájdalom', description: 'Érintettségtől függően', severity: 'moderate' },
-                { name: 'Zavaros/bűzös vizelet', description: 'Pyuria', severity: 'mild' },
-                { name: 'Vegyes tünetek', description: 'Dysuria, pollakisuria, láz, derékfájás kombinációja', severity: 'moderate' },
-                { name: 'Szisztémás jelek', description: 'Láz, hidegrázás, tudatzavar (főleg időseknél)', severity: 'severe' },
-                { name: 'Tünetszegény', description: 'Katéteres betegeknél vagy gerincvelő sérülteknél a tünetek hiányozhatnak vagy atípusosak', severity: 'mild' },
-                { name: 'Vizelet elváltozás', description: 'Zavaros, bűzös vizelet (önmagában nem diagnosztikus!)', severity: 'mild' }
+                { name: 'Vegyes tünetek', description: 'A cystitis és pyelonephritis tünetei keveredhetnek, de a klinikai kép gyakran atípusos.', severity: 'moderate' },
+                { name: 'Szisztémás jelek', description: 'Láz, hidegrázás, tachycardia. Időseknél a zavartság vagy az általános állapot romlása lehet az egyetlen tünet.', severity: 'severe' },
+                { name: 'Tünetszegény', description: 'Katéteres vagy gerincvelő sérült betegeknél a klasszikus fájdalom és vizelési panaszok hiányozhatnak.', severity: 'mild' },
+                { name: 'Vizelet elváltozás', description: 'Zavaros, bűzös, üledékes vizelet, esetleg véres.', severity: 'mild' }
               ],
               physical_exam: [
                 'Lehet szegényes',
@@ -1834,7 +1905,7 @@ Object.assign(window.diseases, {
               empirical: {
                 outpatient: [
                   { drug: 'Cefuroxim axetil', dose: '2x500mg PO', duration: '7-14 nap', note: 'nincs Enterococcus elleni hatása' },
-                  { drug: 'Ciprofloxacin', dose: '2x500-750mg PO', duration: '7-14 nap', note: 'Csak ha nincs fluorokinolon kezelés az elmúlt 6 hónapban és az E. coli rezisztencia >10% (EAU 2025)' },
+                  { drug: 'Ciprofloxacin', dose: '2x500-750mg PO', duration: '7-14 nap', note: 'Csak ha nincs fluorokinolon kezelés az elmúlt 6 hónapban és az E. coli rezisztencia <10% (EAU 2025)' },
                   { drug: 'Levofloxacin', dose: '1x750mg PO', duration: '7-14 nap', note: 'Alternatíva, ha E. coli rezisztencia <10% (EAU 2025)' },
                   { drug: 'Ceftibuten/Cefixim', dose: 'PO', duration: '10-14 nap', note: 'Ha kinolon nem adható' }
                 ],
@@ -1861,7 +1932,7 @@ Object.assign(window.diseases, {
           {
             id: 'prostatitis',
             name: 'Bakteriális prostatitis',
-            pathogen: { type: 'Baktérium', name: 'E. coli, Klebsiella, Proteus, Enterococcus, Pseudomonas', gram: 'Vegyes', shape: 'Vegyes' },
+            pathogen: { type: 'Baktérium', name: '<i>E. coli, Klebsiella, Proteus, Enterococcus, Pseudomonas</i>', gram: 'Vegyes', shape: 'Vegyes' },
             epidemiology: {
               incidence: 'Férfiak 50%-a tapasztal tüneteket élete során',
               risk_groups: ['Fiatal/középkorú férfiak', 'Katéterezés', 'Húgyúti beavatkozás (biopszia)', 'HIV', 'Diabetes'],
@@ -1870,10 +1941,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Intraprostaticus vizelet reflux',
-                'Felszálló fertőzés az urethrából',
-                'Direkt inokuláció (pl. transrectalis biopszia)',
-                'Biofilm képzés (krónikus fertőzés fenntartása)'
+                'Fertőzés útja: Leggyakrabban a fertőzött vizelet intraprostaticus refluxa révén jutnak be a baktériumok a prosztata mirigyeibe.',
+                'Gyulladás: Akut esetben a mirigyekben ödéma és mikroabscessusok alakulnak ki, ami a prosztata duzzanatát és feszülését okozza.',
+                'Krónikussá válás: A baktériumok biofilmet képezhetnek a prosztataköveken vagy a mirigycsatornákban, ami fenntartja a visszatérő fertőzéseket.'
               ],
               virulence_factors: ['Biofilm', 'Anatómiai elhelyezkedés (rossz AB penetráció)']
             },
@@ -1881,15 +1951,11 @@ Object.assign(window.diseases, {
               incubation: 'Változó',
               onset: 'Akut (ABP) vagy Krónikus (CBP)',
               symptoms: [
-                { name: 'Akut: Láz, hidegrázás', description: 'Szisztémás tünetek, toxikus állapot', severity: 'severe' },
-                { name: 'Gáttájéki/alhasi fájdalom', description: 'Perinealis, herébe, péniszbe sugárzó', severity: 'moderate' },
-                { name: 'Dysuria, pollakisuria', description: 'Irritatív és obstruktív tünetek', severity: 'moderate' },
-                { name: 'Vizeletretenció', description: 'Prosztata ödéma miatt', severity: 'severe' },
-                { name: 'Akut: Szisztémás tünetek', description: 'Hirtelen láz, hidegrázás, izomfájdalom, rossz közérzet', severity: 'severe' },
-                { name: 'Fájdalom', description: 'Perinealis, rectalis, prostata táji, herébe/péniszbe sugárzó', severity: 'moderate' },
-                { name: 'LUTS (Alsó húgyúti tünetek)', description: 'Dysuria, pollakisuria, urgencia', severity: 'moderate' },
-                { name: 'Obstrukció', description: 'Vizeletretenció (duzzadt prosztata miatt)', severity: 'severe' },
-                { name: 'Krónikus tünetek', description: '>3 hónapja fennálló kismedencei fájdalom, visszatérő UTI', severity: 'mild' }
+                { name: 'Akut: Szisztémás tünetek', description: 'Hirtelen kezdődő magas láz, hidegrázás, izomfájdalom, rossz közérzet (influenzaszerű kezdet).', severity: 'severe' },
+                { name: 'Fájdalom', description: 'Jellegzetes gáttájéki (perinealis), végbél körüli, alhasi fájdalom, amely sugározhat a herékbe és a péniszbe.', severity: 'moderate' },
+                { name: 'LUTS (Alsó húgyúti tünetek)', description: 'Kifejezett dysuria, pollakisuria, sürgető vizelési inger.', severity: 'moderate' },
+                { name: 'Obstrukció', description: 'A duzzadt prosztata összenyomja a húgycsövet, ami nehezített vizelést, vékony sugarat vagy teljes vizeletretenciót okozhat.', severity: 'severe' },
+                { name: 'Krónikus tünetek', description: 'Enyhébb, visszatérő panaszok: kismedencei diszkomfort, visszatérő húgyúti fertőzések, fájdalmas ejakuláció.', severity: 'mild' }
               ],
               physical_exam: [
                 'Rectalis digitális vizsgálat (RDV):',
@@ -1947,7 +2013,7 @@ Object.assign(window.diseases, {
           {
             id: 'asymptomatic_bacteriuria',
             name: 'Aszimptomatikus bakteriuria',
-            pathogen: { type: 'Baktérium', name: 'E. coli, Enterococcus, GBS, stb.', gram: 'Változó', shape: 'Változó' },
+            pathogen: { type: 'Baktérium', name: '<i>E. coli, Enterococcus, GBS</i>, stb.', gram: 'Változó', shape: 'Változó' },
             epidemiology: {
               incidence: 'Gyakori (nők 3-5%, idősek 10-50%, katéteresek 100%)',
               risk_groups: ['Idősek', 'Diabetes', 'Katéter viselés', 'Terhesség'],
@@ -1956,9 +2022,9 @@ Object.assign(window.diseases, {
             },
             pathomechanism: {
               steps: [
-                'Húgyúti kolonizáció virulencia faktorok nélkül',
-                'Kommenszális jellegű viszony a gazdaszervezettel',
-                'Nincs szöveti invázió vagy gyulladásos válasz'
+                'Kolonizáció: A baktériumok megtelepednek a húgyutakban, de hiányoznak belőlük azok a virulenciafaktorok (pl. specifikus fimbriák), amelyek szöveti inváziót vagy gyulladást váltanának ki.',
+                'Kommensalizmus: A baktériumok és a gazdaszervezet között egyfajta egyensúlyi állapot alakul ki, tünetek nélkül.',
+                'Védő hatás: A kolonizáló törzsek versenghetnek a virulensebb kórokozókkal, így akár védő hatásuk is lehet.'
               ],
               virulence_factors: ['Csökkent virulencia']
             },
@@ -1966,7 +2032,7 @@ Object.assign(window.diseases, {
               incubation: '-',
               onset: 'Tünetmentes',
               symptoms: [
-                { name: 'Tünetmentes', description: 'Nincs dysuria, láz, vagy alhasi fájdalom', severity: 'mild' }
+                { name: 'Tünetmentes', description: 'A betegnek nincsenek húgyúti panaszai (nincs dysuria, nincs láz, nincs fájdalom). A bakteriuria véletlenszerű lelet.', severity: 'mild' }
               ],
               physical_exam: [
                 'Negatív',
