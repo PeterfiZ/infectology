@@ -112,7 +112,7 @@ Object.assign(window.diseases, {
               incidence: 'Häufige Hautinfektion, 10-100/100.000 pro Jahr',
               risk_groups: ['Ältere', 'Säuglinge', 'Diabetes mellitus', 'Chronische Veneninsuffizienz', 'Lymphödem', 'Hautläsionen'],
               seasonality: 'Meist Winter-Frühling',
-              transmission: 'Endogen (Hautläsion) oder Kontakt'
+              transmission: 'Endogen (Hautläsion als Eintrittspforte) oder Kontakt'
             },
             pathomechanism: {
               steps: [
@@ -162,10 +162,12 @@ Object.assign(window.diseases, {
               empirical: {
                 outpatient: [
                   { drug: 'Penicillin V', dose: '4x500mg p.o.', duration: '10-14 Tage', note: 'Erste Wahl' },
-                  { drug: 'Amoxicillin', dose: '3x500mg p.o.', duration: '10-14 Tage', note: 'Alternative' }
+                  { drug: 'Amoxicillin', dose: '3x500mg p.o.', duration: '10-14 Tage', note: 'Alternative' },
+                  { drug: 'Clindamycin', dose: '3x300mg p.o.', duration: '10-14 Tage', note: 'Bei Penicillinallergie, 30% Resistenzrate' }
                 ],
                 inpatient: [
                   { drug: 'Penicillin G', dose: '4x4-6 Mio. IE i.v.', duration: '7-10 Tage', note: 'In schweren Fällen' },
+                  { drug: 'Cefazolin', dose: '3x1g i.v.', duration: '7-10 Tage', note: 'Alternative' },
                   { drug: 'Ceftriaxon', dose: '1x2g i.v.', duration: '7-10 Tage', note: 'Bei Penicillinallergie' }
                 ],
                 icu: [
@@ -255,6 +257,8 @@ Object.assign(window.diseases, {
                   { drug: 'Cephalexin', dose: '4x500mg p.o.', duration: '7-10 Tage', note: 'Alternative' }
                 ],
                 inpatient: [
+                  { drug: 'Amoxicillin/Clavulansäure', dose: '3x500mg p.o.', duration: '7-10 Tage', note: 'Alternative' },
+                  { drug: 'Cefazolin', dose: '3x1g i.v.', duration: '7-10 Tage', note: 'Alternative' },
                   { drug: 'Ceftriaxon', dose: '1x2g i.v.', duration: '7-10 Tage', note: 'In schweren Fällen' },
                   { drug: '+ Vancomycin', dose: '2x15-20mg/kg i.v.', duration: '', note: 'Bei MRSA-Verdacht' }
                 ],
@@ -390,7 +394,7 @@ Object.assign(window.diseases, {
               incidence: '2-10/100.000 pro Jahr',
               risk_groups: ['Rheumatoide Arthritis', 'Gelenkprothese', 'Ältere (>80 Jahre)', 'Diabetes', 'i.v.-Drogenkonsumenten', 'Sexuell aktive junge Menschen (Gonokokken)'],
               seasonality: 'Keine',
-              transmission: 'Hämatogen (am häufigsten), direkte Inokulation, per continuitatem'
+              transmission: 'Hämatogen (am häufigsten), direkt Inokulation, per continuitatem'
             },
             pathomechanism: {
               steps: [

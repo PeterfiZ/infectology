@@ -1391,6 +1391,8 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Virus', name: '<i>Hepatitis D virus</i> (HDV)', gram: 'ssRNA (defective)', shape: 'enveloped in HBsAg' },
             epidemiology: {
               incidence: '5% of HBV infected (approx. 15-20 million)',
+              seasonality: 'None',
+              risk_groups: ['HBV infected', 'IV drug users', 'Sexual partners', 'Healthcare workers'],
               transmission: 'Parenteral, sexual (like HBV). Only infects in the presence of HBV!'
             },
             pathomechanism: {
@@ -1402,6 +1404,8 @@ Object.assign(window.diseases, {
               virulence_factors: ['Delta antigen (HDAg)']
             },
             clinical: {
+              incubation: '30-60 days',
+              onset: 'Sudden',
               symptoms: [
                 { name: 'Exacerbation', description: 'Sudden deterioration of a known HBV patient\'s condition (acute flare).', severity: 'severe' },
                 { name: 'Decompensation', description: 'Rapidly developing liver failure, jaundice, coagulopathy.', severity: 'severe' }
@@ -1409,11 +1413,18 @@ Object.assign(window.diseases, {
               complications: ['Fulminant hepatitis', 'Rapid progression to cirrhosis (most aggressive viral hepatitis)']
             },
             diagnostics: {
+              laboratory: [
+                { test: 'ALT/AST', finding: 'elevated', interpretation: 'Acute flare' }
+              ],
               microbiology: [
                 { test: 'Anti-HDV', finding: 'Positive', significance: 'Screening in all HBV patients' },
                 { test: 'HDV RNA', finding: 'Positive', significance: 'Active replication' }
               ]
             },
+            differential: [
+              { disease: 'HBV coinfection', distinguishing: 'HDV RNA positive, Anti-HDV positive' },
+              { disease: 'Acute HBV flare', distinguishing: 'HDV RNA negative, Anti-HDV negative' }
+            ],
             therapy: {
               guidelines: ['EASL Clinical Practice Guidelines on hepatitis delta virus 2023'],
               empirical: {

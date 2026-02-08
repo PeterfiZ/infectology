@@ -237,6 +237,7 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Baktérium', name: '<i>Shigella (dysenteriae, flexneri, sonnei)</i>', gram: 'Gram-negatív', shape: 'pálca' },
             epidemiology: {
               incidence: 'Világszerte gyakori, fejlődő országokban endémiás',
+              seasonality: 'Nyár',
               risk_groups: ['Gyermekek (bölcsőde, óvoda)', 'Utazók', 'MSM'],
               transmission: 'Feko-orális (emberről emberre), nagyon alacsony fertőző dózis (10-100 baktérium)!'
             },
@@ -601,7 +602,7 @@ Object.assign(window.diseases, {
                 'CDC – Giardiasis: https://www.cdc.gov/parasites/giardia/index.html'
               ]
             },
-            prognosis: { mortality: 'Kiváló, de krónikussá válhat kezelés nélkül', prognostic_scores: [], factors: 'IgA hiány, reinfekció' }
+            prognosis: { mortality: 'Jó prognózis: alacsony mortalitás, de krónikussá válhat kezelés nélkül', prognostic_scores: [], factors: 'IgA hiány, reinfekció' }
           },
           {
             id: 'amoebiasis',
@@ -1418,6 +1419,8 @@ Object.assign(window.diseases, {
             pathogen: { type: 'Vírus', name: '<i>Hepatitis D vírus</i> (HDV)', gram: 'ssRNS (defektív)', shape: 'HBsAg burokban' },
             epidemiology: {
               incidence: 'HBV fertőzöttek 5%-a (kb. 15-20 millió)',
+              seasonality: 'Nincs',
+              risk_groups: ['HBV fertőzöttek', 'IV droghasználók', 'Szexuális partnerek', 'Eü. dolgozók'],
               transmission: 'Parenterális, szexuális (mint HBV). Csak HBV jelenlétében fertőz!'
             },
             pathomechanism: {
@@ -1429,6 +1432,8 @@ Object.assign(window.diseases, {
               virulence_factors: ['Delta antigén (HDAg)']
             },
             clinical: {
+              incubation: '30-60 nap',
+              onset: 'Hirtelen',
               symptoms: [
                 { name: 'Súlyosbodás', description: 'Ismert HBV beteg állapotának hirtelen romlása (akut fellángolás).', severity: 'severe' },
                 { name: 'Dekompenzáció', description: 'Gyorsan kialakuló májelégtelenség, sárgaság, coagulopathia.', severity: 'severe' }
@@ -1436,11 +1441,18 @@ Object.assign(window.diseases, {
               complications: ['Fulmináns hepatitis', 'Gyors progresszió cirrhosisba (legagresszívebb vírushepatitis)']
             },
             diagnostics: {
+              laboratory: [
+                { test: 'ALT/AST', finding: 'emelkedett', interpretation: 'Akut fellángolás' }
+              ],
               microbiology: [
                 { test: 'Anti-HDV', finding: 'Pozitív', significance: 'Szűrés minden HBV betegnél' },
                 { test: 'HDV RNS', finding: 'Pozitív', significance: 'Aktív replikáció' }
               ]
             },
+            differential: [
+              { disease: 'HBV koinfekció', distinguishing: 'HDV RNS pozitív, Anti-HDV pozitív' },
+              { disease: 'Akut HBV fellángolás', distinguishing: 'HDV RNS negatív, Anti-HDV negatív' }
+            ],
             therapy: {
               guidelines: ['EASL Clinical Practice Guidelines on hepatitis delta virus 2023'],
               empirical: {
@@ -1603,7 +1615,7 @@ Object.assign(window.diseases, {
               incubation: '-',
               onset: 'Tünetmentes',
               symptoms: [
-                { name: 'Tünetmentes', description: 'Komkommenzális vírusnak tekinthető', severity: 'mild' }
+                { name: 'Tünetmentes', description: 'Kommenzális vírusnak tekinthető', severity: 'mild' }
               ],
               physical_exam: ['Negatív'],
               complications: ['Pathogenitása nem bizonyított', 'Immunszuppresszió mértékének jelzője lehet']
@@ -1718,7 +1730,7 @@ Object.assign(window.diseases, {
                 'Láz általában NINCS (ha van, pyelonephritis gyanú!)',
                 'Vesetájék nem érzékeny',
                 'Láz hiánya (fontos differenciáldiagnosztikai jel)',
-                'Vesetájék nem érzékeny (kizárja a pyelonephritist)',
+                'Vesetájék nem érzékeny (pyelonephritis kizárása)',
                 'Hüvelyi folyás hiánya (növeli a cystitis valószínűségét)'
               ],
               complications: ['Ascendáló pyelonephritis', 'Recidív cystitis']
@@ -1793,7 +1805,6 @@ Object.assign(window.diseases, {
                 { name: 'Alsó húgyúti tünetek', description: 'Dysuria, pollakisuria gyakran megelőzi a lázat, de az esetek 30-50%-ában hiányozhatnak is.', severity: 'mild' }
               ],
               physical_exam: [
-                'Vesetájék ütögetési érzékenysége (costovertebralis szöglet)',
                 'Costovertebralis szöglet (vesetáj) ütögetési érzékenysége (Giordano-jel)',
                 'Láz, tachycardia',
                 'Hasi érzékenység (ritkábban)'

@@ -4,7 +4,6 @@ Object.assign(window.diseases, {
         icon: window.diseaseMetadata.cns_infections.icon,
         color: window.diseaseMetadata.cns_infections.color,
         diseases: [
-          { isHeader: true, title: 'Diagnosztikai Táblázatok', color: '#6b7280' },
           {
             id: 'csf_differential',
             name: 'Liquor leletek differenciáldiagnosztikája',
@@ -23,8 +22,7 @@ Object.assign(window.diseases, {
               ]
             }
           },
-          { isHeader: true, title: 'Gennyes (Purulens) Meningitisek', color: '#ef4444' },
-          {
+             {
             id: 'bacterial_meningitis',
             name: 'Bakteriális meningitis (Empirikus)',
             pathogen: { type: 'Baktérium', name: '<i>N. meningitidis, S. pneumoniae, L. monocytogenes</i>', gram: 'Vegyes', shape: 'Kórokozó függő' },
@@ -240,8 +238,7 @@ Object.assign(window.diseases, {
             },
             prognosis: { mortality: '20-30%', prognostic_scores: [], factors: 'Életkor, immunstátusz' }
           },
-          { isHeader: true, title: 'Aszeptikus Meningitisek', color: '#3b82f6' },
-          {
+           {
             id: 'aseptic_meningitis',
             name: 'Aszeptikus (Vírusos) Meningitis',
             pathogen: { type: 'Vírus', name: 'Enterovírusok (<i>Coxsackie, Echo</i>), <i>HSV-2, VZV</i>', gram: 'RNS/DNS', shape: '-' },
@@ -283,7 +280,6 @@ Object.assign(window.diseases, {
             },
             prognosis: { mortality: 'Kiváló, spontán gyógyul', prognostic_scores: [], factors: 'Nincs' }
           },
-          { isHeader: true, title: 'Encephalitisek', color: '#8b5cf6' },
           {
             id: 'viral_encephalitis',
             name: 'Vírusos encephalitis',
@@ -414,49 +410,7 @@ Object.assign(window.diseases, {
             },
             prognosis: { mortality: 'Kezeletlen >70%, kezelt 20-30%', prognostic_scores: [], factors: 'Életkor, immunstátusz, kezelés ideje' }
           },
-          {
-            id: 'aseptic_meningitis',
-            name: 'Aszeptikus (Vírusos) Meningitis',
-            pathogen: { type: 'Vírus', name: 'Enterovírusok (<i>Coxsackie, Echo</i>), <i>HSV-2, VZV</i>', gram: 'RNS/DNS', shape: '-' },
-            epidemiology: {
-              incidence: 'Leggyakoribb meningitis forma',
-              risk_groups: ['Gyermekek', 'Fiatal felnőttek'],
-              seasonality: 'Nyár-ősz (Enterovírus)',
-              transmission: 'Feko-orális (Entero), szexuális (HSV-2)'
-            },
-            pathomechanism: {
-              steps: [
-                'A vírus (pl. Enterovírus) a bélrendszerből vagy a légutakból a véráramba jut (viremia).',
-                'A vér-agy gáton átjutva megfertőzi az agyhártyákat (meninges) és a choroid plexust.',
-                'Gyulladásos választ vált ki (főleg limfocitás), de a bakteriális fertőzéssel ellentétben nem képződik gennyes exsudatum, és az agyállomány általában nem érintett (ezért a tudat tiszta marad).',
-                'A folyamat általában önlimitáló, a szervezet immunrendszere legyőzi a fertőzést.'
-              ],
-              virulence_factors: ['-']
-            },
-            clinical: {
-              incubation: '3-7 nap',
-              onset: 'Hirtelen',
-              symptoms: [
-                { name: 'Meningealis szindróma', description: 'Fejfájás (frontális/retroorbitális), láz, fénykerülés (photophobia) és tarkókötöttség.', severity: 'moderate' },
-                { name: 'Tiszta tudat', description: 'A legfontosabb differenciáldiagnosztikai jel: a beteg éber, orientált, nincs fokális neurológiai kiesése (ellentétben az encephalitisszel vagy a bakteriális meningitisszel).', severity: 'mild' },
-                { name: 'Szisztémás tünetek', description: 'Enterovírusnál kiütés, torokfájás, hasmenés; HSV-2-nél genitális léziók kísérhetik.', severity: 'mild' }
-              ],
-              physical_exam: ['Meningealis izgalmi jelek (enyhébbek)', 'Tudat tiszta (különbség encephalitis-től!)'],
-              complications: ['Ritka (meningoencephalitis)']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'Liquor', finding: 'Lymphocytás pleocytosis (tíz-száz), normál glükóz, enyhén emelkedett fehérje', interpretation: 'Vírusos kép' }],
-              microbiology: [{ test: 'Liquor PCR', finding: 'Enterovírus/HSV/VZV', significance: 'Diagnosztikus' }]
-            },
-            therapy: {
-              empirical: { outpatient: [{ drug: 'Szupportív', dose: '-', duration: '-', note: 'Fájdalomcsillapítás, pihenés' }] },
-              targeted: 'HSV-2/VZV esetén Acyclovir megfontolandó (főleg immunszupprimáltaknál). Enterovírus: tüneti.',
-              supportive: [],
-              prevention: ['Higiénia']
-            },
-            prognosis: { mortality: 'Kiváló, spontán gyógyul', prognostic_scores: [], factors: 'Nincs' }
-          },
-          {
+                   {
             id: 'tbe',
             name: 'Kullancs-encephalitis (TBE)',
             pathogen: { type: 'Vírus', name: '<i>Tick-Borne Encephalitis Virus</i>', gram: 'RNS, Flaviviridae', shape: 'gömb' },
@@ -497,130 +451,6 @@ Object.assign(window.diseases, {
               prevention: ['Védőoltás (FSME-Immun, Encepur)', 'Kullancsriasztó']
             },
             prognosis: { mortality: '1-2% (európai altípus)', prognostic_scores: [], factors: 'Altípus, kezelés ideje' }
-          },
-          {
-            id: 'meningococcal_meningitis',
-            name: 'Meningococcus Meningitis',
-            pathogen: { type: 'Baktérium', name: '<i>Neisseria meningitidis</i>', gram: 'Gram-negatív', shape: 'diplococcus' },
-            epidemiology: {
-              incidence: 'Járványos lehet',
-              risk_groups: ['Csecsemők', 'Kamaszok', 'Zárt közösségek (kollégium)', 'Asplenia'],
-              seasonality: 'Tél-tavasz',
-              transmission: 'Cseppfertőzés (szoros kontakt)'
-            },
-            pathomechanism: {
-              steps: [
-                'A baktérium a nasopharynxban kolonizálódik, majd a véráramba jut.',
-                'A vérben gyorsan szaporodva masszív mennyiségű endotoxint (LOS) bocsát ki (meningococcaemia).',
-                'Az endotoxin szisztémás gyulladást, vaszkulitiszt és disszeminált intravaszkuláris koagulációt (DIC) indít el.',
-                'Ez a kiserek elzáródásához (bőrneukrózis, mellékvese vérzés - Waterhouse-Friderichsen szindróma) és szeptikus shockhoz vezet, gyakran még a meningitis kialakulása előtt.'
-              ],
-              virulence_factors: ['Tok (A,B,C,W,Y)', 'LOS (Lipooligoszacharid)', 'IgA proteáz']
-            },
-            clinical: {
-              incubation: '1-10 nap',
-              onset: 'Hiperakut',
-              symptoms: [
-                { name: 'Hiperakut kezdet', description: 'A beteg állapota órák alatt drámaian romlik. Láz, hányás, fejfájás az első jelek.', severity: 'severe' },
-                { name: 'Hemorrhagiás kiütés', description: 'Kezdetben nyomásra halványuló makulák, majd gyorsan kialakuló petechiák és purpurák, amelyek üvegpohárral nyomva NEM halványulnak el (non-blanching rash). Ez a meningococcaemia jele.', severity: 'severe' },
-                { name: 'Szeptikus shock', description: 'Hideg végtagok, cianózis, alacsony vérnyomás, szapora pulzus, anuria.', severity: 'severe' }
-              ],
-              physical_exam: ['Meningealis jelek', 'Purpurák', 'Shock jelei'],
-              complications: ['Végtag nekrózis/amputáció', 'Süketség', 'Halál (órák alatt)']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'Liquor', finding: 'Gennyes', interpretation: '-' }, { test: 'PCR', finding: 'Pozitív', significance: 'Gyors' }],
-              microbiology: [{ test: 'Gram festés', finding: 'Gram-negatív diplococcusok', significance: 'Gyors' }]
-            },
-            therapy: {
-              empirical: { inpatient: [{ drug: 'Ceftriaxon', dose: '2g IV 12 óránként', duration: '7 nap', note: 'NICE NG240 ajánlás' }] },
-              targeted: 'Ceftriaxon 7 napig. Kontaktoknak profilaxis: Ciprofloxacin (egyszeri 500mg PO) vagy Rifampicin.',
-              supportive: [],
-              prevention: ['Vakcináció (MenACWY, MenB)']
-            },
-            prognosis: { mortality: '10-15% kezeléssel is', prognostic_scores: [], factors: 'Életkor, komorbiditás, kezelés ideje' }
-          },
-          {
-            id: 'pneumococcal_meningitis',
-            name: 'Pneumococcus Meningitis',
-            pathogen: { type: 'Baktérium', name: '<i>Streptococcus pneumoniae</i>', gram: 'Gram-pozitív', shape: 'diplococcus' },
-            epidemiology: {
-              incidence: 'Leggyakoribb felnőtt meningitis',
-              risk_groups: ['Idősek', 'Alkoholisták', 'Splenectomia', 'Otitis/Sinusitis/Pneumonia', 'Liquorcsorgás'],
-              seasonality: 'Tél',
-              transmission: 'Endogén terjedés vagy cseppfertőzés'
-            },
-            pathomechanism: {
-              steps: [
-                'A fertőzés gyakran egy szomszédos fókuszból (otitis media, sinusitis, mastoiditis) terjed át az agyhártyákra, vagy tüdőgyulladást kísérő bakterémia útján jut oda.',
-                'A Pneumococcus tokja gátolja a fagocitózist, a pneumolysin toxin pedig közvetlenül károsítja a sejteket és serkenti a gyulladást.',
-                'Ez a kórokozó okozza a legsúlyosabb gennyes meningitist, gyakori kómával és maradandó károsodással.'
-              ],
-              virulence_factors: ['Tok', 'Pneumolysin']
-            },
-            clinical: {
-              incubation: 'Rövid',
-              onset: 'Akut',
-              symptoms: [
-                { name: 'Súlyos meningitis', description: 'Gyorsan kialakuló tudatzavar, kóma és görcsrohamok jellemzik. A mortalitás és a maradványtünetek aránya ennél a típusnál a legmagasabb.', severity: 'severe' },
-                { name: 'Hajlamosító betegség jelei', description: 'Gyakran található egyidejűleg tüdőgyulladás, középfülgyulladás vagy arcüreggyulladás.', severity: 'moderate' }
-              ],
-              physical_exam: ['Meningealis jelek', 'Otitis media jelei', 'Tudatzavar'],
-              complications: ['Süketség', 'Hidrocephalus', 'Agytályog']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'Liquor', finding: 'Gennyes, nagyon magas fehérje, alacsony cukor', interpretation: '-' }],
-              microbiology: [{ test: 'Gram festés', finding: 'Gram-pozitív diplococcusok', significance: '-' }]
-            },
-            therapy: {
-              empirical: { inpatient: [{ drug: 'Ceftriaxon', dose: '2g IV 12 óránként', duration: '14 nap', note: 'NICE NG240 ajánlás' }, { drug: 'Dexamethason', dose: '10mg IV 6 óránként', duration: '4 nap', note: 'Folytatandó, ha Pneumococcus igazolódik!' }] },
-              targeted: 'Ceftriaxon 14 napig. Ha rezisztencia igazolt: + Vancomycin/Rifampicin.',
-              supportive: [],
-              prevention: ['Pneumococcus oltás (PCV, PPSV)']
-            },
-            prognosis: { mortality: '20-30%, magas morbiditás', prognostic_scores: [], factors: 'Életkor, immunstátusz' }
-          },
-          {
-            id: 'listeria_meningitis',
-            name: 'Listeria Meningitis',
-            pathogen: { type: 'Baktérium', name: '<i>Listeria monocytogenes</i>', gram: 'Gram-pozitív', shape: 'pálca' },
-            epidemiology: {
-              incidence: 'Ritka, de veszélyes',
-              risk_groups: ['Újszülöttek', 'Idősek (>50 év)', 'Terhesek', 'Immunszupprimáltak (transzplantált, alkoholista)'],
-              seasonality: 'Nincs',
-              transmission: 'Élelmiszer (lágy sajt, felvágott)'
-            },
-            pathomechanism: {
-              steps: [
-                'A baktérium szennyezett élelmiszerrel jut be, áthatol a bélfalon, és a véráramba kerül.',
-                'Különös tropizmusa van az agytörzs (rhombencephalon) és az agyhártyák iránt.',
-                'Intracelluláris kórokozóként képes a sejtről sejtre terjedni, elkerülve az antitesteket. Ezért fontos a celluláris immunitás (ami csecsemőkben, idősekben, terhesekben gyengébb).',
-                'Mikrotályogokat és granulómákat képez az agytörzsben.'
-              ],
-              virulence_factors: ['Intracelluláris túlélés', 'Listeriolysin O']
-            },
-            clinical: {
-              incubation: '1-4 hét',
-              onset: 'Szubakut',
-              symptoms: [
-                { name: 'Szubakut lefolyás', description: 'A tünetek lassabban, napok-hetek alatt alakulhatnak ki, nem olyan viharos, mint a többi bakteriális meningitis.', severity: 'moderate' },
-                { name: 'Rhombencephalitis', description: 'Agytörzsi érintettség jelei: agyideg bénulások (pl. arcizom gyengeség, nyelési zavar), ataxia, nystagmus és légzészavar.', severity: 'severe' },
-                { name: 'Tünetek hiánya', description: 'A tarkókötöttség gyakran hiányzik, csak láz és zavartság észlelhető.', severity: 'severe' }
-              ],
-              physical_exam: ['Meningealis jelek (lehetnek hiányosak)', 'Fokális jelek'],
-              complications: ['Agytályog', 'Hydrocephalus']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'Liquor', finding: 'Lehet lymphocytás is! (nem mindig PMN)', interpretation: 'Megtévesztő' }],
-              microbiology: [{ test: 'Gram festés', finding: 'Gyakran negatív vagy Gram+ pálcák (diphtheroidnak nézhető)', significance: '-' }]
-            },
-            therapy: {
-              empirical: { inpatient: [{ drug: 'Amoxicillin / Ampicillin', dose: '2g IV 4 óránként', duration: '21 nap', note: 'NICE NG240 ajánlás. Cefalosporinok HATÁSTALANOK!' }, { drug: '+ Gentamicin', dose: '5mg/kg IV naponta 1x', duration: 'Első 7 nap', note: 'Szinergista hatás' }] },
-              targeted: 'Amoxicillin/Ampicillin (21 nap) + Gentamicin (első 7 nap). Penicillin allergia esetén: Cotrimoxazol (Trimethoprim/Sulfamethoxazol).',
-              supportive: [],
-              prevention: ['Élelmiszerhigiénia rizikócsoportban']
-            },
-            prognosis: { mortality: '20-30%', prognostic_scores: [], factors: 'Életkor, immunstátusz' }
           },
           {
             id: 'cryptococcal_meningitis',
@@ -848,55 +678,7 @@ Object.assign(window.diseases, {
               prognostic_scores: ['MRC stádiumbeosztás'],
               factors: 'Kezelés késlekedése, tudatzavar mértéke, életkor'
             }
-          },
-          {
-            id: 'cryptococcal_meningitis',
-            name: 'Cryptococcus Meningitis',
-            pathogen: { type: 'Gomba', name: '<i>Cryptococcus neoformans</i>', gram: 'Sarjadzó gomba (tokos)', shape: 'kerek' },
-            epidemiology: {
-              incidence: 'HIV/AIDS betegekben leggyakoribb gombás meningitis',
-              risk_groups: ['HIV (CD4 <100)', 'Transzplantáltak', 'Szteroid kezelés'],
-              seasonality: 'Nincs',
-              transmission: 'Inhaláció (galambürülék pora) -> tüdő -> hematogén szórás'
-            },
-            pathomechanism: {
-              steps: [
-                'A gomba belégzéssel jut a tüdőbe, ahol primer fertőzést okoz (gyakran tünetmentes).',
-                'Immunszuppresszió (pl. AIDS) esetén a gomba a vérárammal szóródik és eljut az agyba.',
-                'A vastag poliszacharid tokja megvédi a fagocitózistól.',
-                'A gomba az arachnoidea bolyhokban felhalmozódva gátolja a liquor felszívódását, ami extrém magas koponyaűri nyomáshoz vezet, gyulladásos sejtek (genny) jelenléte nélkül.'
-              ],
-              virulence_factors: ['Poliszacharid tok', 'Melanin termelés']
-            },
-            clinical: {
-              incubation: 'Ismeretlen (reaktiváció)',
-              onset: 'Szubakut/Krónikus (hetek)',
-              symptoms: [
-                { name: 'Lassú progresszió', description: 'A tünetek hetek alatt alakulnak ki. Vezető tünet a fokozódó fejfájás és a láz.', severity: 'moderate' },
-                { name: 'Magas ICP tünetei', description: 'A gátolt liquor felszívódás miatt: látászavar (kettőslátás, homályos látás), hányinger, tudatzavar.', severity: 'severe' },
-                { name: 'Meningealis jelek hiánya', description: 'Mivel a gyulladásos válasz gyenge (kevés fvs), a tarkókötöttség gyakran hiányzik!', severity: 'severe' }
-              ],
-              physical_exam: ['Meningealis jelek gyakran hiányoznak!', 'Papilloedema (magas ICP)', 'Bőrtünetek (molluscum-szerű)'],
-              complications: ['Magas koponyaűri nyomás (vakság, beékelődés)', 'Cryptococcoma', 'IRIS (terápia indításkor)']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'CD4', finding: '<100/µL', interpretation: 'Rizikó' }],
-              imaging: [{ modality: 'CT/MRI', finding: 'Gyakran normál, vagy tágult perivascularis terek, cryptococcoma', significance: 'Kizárás' }],
-              microbiology: [
-                { test: 'Liquor CrAg (antigén)', finding: 'Pozitív', significance: 'Gold standard (vérből is!)' },
-                { test: 'Tus (India ink) festés', finding: 'Tokos élesztőgombák', significance: 'Gyors, de kevésbé érzékeny' },
-                { test: 'Liquor tenyésztés', finding: 'C. neoformans', significance: 'Diagnosztikus' },
-                { test: 'Liquor nyomás', finding: 'Gyakran extrém magas (>25 vízcm)', significance: 'Terápiás csapolás kell' }
-              ]
-            },
-            therapy: {
-              empirical: { inpatient: [{ drug: 'Amphotericin B + Flucytosine', dose: 'IV + PO', duration: '2 hét (indukció)', note: 'Gold standard' }] },
-              targeted: 'Indukció (AmB+5FC) -> Konszolidáció (Fluconazol 400mg 8 hét) -> Fenntartó (Fluconazol 200mg 1 évig/CD4>200).',
-              supportive: ['Ismételt LP a nyomás csökkentésére (létfontosságú!)'],
-              prevention: ['Fluconazol profilaxis (ha CrAg pozitív vérben)', 'ART indítása (de óvatosan IRIS miatt)']
-            },
-            prognosis: { mortality: 'Kezeléssel 10-30%, kezeletlenül 100%', prognostic_scores: [], factors: 'Kezelés ideje, immunstátusz' }
           }
-                   ]
-                 }
-           });
+        ]
+     }
+           });  

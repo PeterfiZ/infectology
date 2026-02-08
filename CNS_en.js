@@ -4,7 +4,6 @@ Object.assign(window.diseases, {
         icon: '🧠',
         color: '#0891b2',
         diseases: [
-          { isHeader: true, title: 'Diagnostic Tables', color: '#6b7280' },
           {
             id: 'csf_differential',
             name: 'Differential Diagnosis of CSF Findings',
@@ -23,7 +22,6 @@ Object.assign(window.diseases, {
               ]
             }
           },
-          { isHeader: true, title: 'Purulent Meningitis', color: '#ef4444' },
           {
             id: 'bacterial_meningitis',
             name: 'Bacterial Meningitis (Empiric)',
@@ -240,7 +238,6 @@ Object.assign(window.diseases, {
             },
             prognosis: { mortality: '20-30%', prognostic_scores: [], factors: 'Age, immune status' }
           },
-          { isHeader: true, title: 'Aseptic Meningitis', color: '#3b82f6' },
           {
             id: 'aseptic_meningitis',
             name: 'Aseptic (Viral) Meningitis',
@@ -283,7 +280,6 @@ Object.assign(window.diseases, {
             },
             prognosis: { mortality: 'Excellent, spontaneous recovery', prognostic_scores: [], factors: 'None' }
           },
-          { isHeader: true, title: 'Encephalitis', color: '#8b5cf6' },
           {
             id: 'viral_encephalitis',
             name: 'Viral Encephalitis',
@@ -415,48 +411,6 @@ Object.assign(window.diseases, {
             prognosis: { mortality: 'Untreated >70%, treated 20-30%', prognostic_scores: [], factors: 'Age, Immune status, Time to treatment' }
           },
           {
-            id: 'aseptic_meningitis',
-            name: 'Aseptic (Viral) Meningitis',
-            pathogen: { type: 'Virus', name: 'Enteroviruses (<i>Coxsackie, Echo</i>), <i>HSV-2, VZV</i>', gram: 'RNA/DNA', shape: '-' },
-            epidemiology: {
-              incidence: 'Most common form of meningitis',
-              risk_groups: ['Children', 'Young adults'],
-              seasonality: 'Summer-Autumn (Enterovirus)',
-              transmission: 'Fecal-oral (Entero), Sexual (HSV-2)'
-            },
-            pathomechanism: {
-              steps: [
-                'The virus (e.g., Enterovirus) enters the bloodstream from the gut or respiratory tract (viremia).',
-                'It crosses the blood-brain barrier to infect the meninges and choroid plexus.',
-                'It triggers an inflammatory response (mainly lymphocytic), but unlike bacterial infection, no purulent exudate forms, and the brain parenchyma is usually spared (hence clear consciousness).',
-                'The process is usually self-limiting; the immune system clears the infection.'
-              ],
-              virulence_factors: ['-']
-            },
-            clinical: {
-              incubation: '3-7 days',
-              onset: 'Sudden',
-              symptoms: [
-                { name: 'Meningeal Syndrome', description: 'Headache (frontal/retro-orbital), fever, photophobia, and nuchal rigidity.', severity: 'moderate' },
-                { name: 'Clear Consciousness', description: 'The most important differential sign: the patient is alert, oriented, with no focal neurological deficits (unlike encephalitis or bacterial meningitis).', severity: 'mild' },
-                { name: 'Systemic Symptoms', description: 'Rash, sore throat, diarrhea may accompany Enterovirus; genital lesions with HSV-2.', severity: 'mild' }
-              ],
-              physical_exam: ['Meningeal signs (milder)', 'Consciousness clear (difference from encephalitis!)'],
-              complications: ['Rare (Meningoencephalitis)']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'CSF', finding: 'Lymphocytic pleocytosis (tens-hundreds), normal glucose, slightly elevated protein', interpretation: 'Viral profile' }],
-              microbiology: [{ test: 'CSF PCR', finding: 'Enterovirus/HSV/VZV', significance: 'Diagnostic' }]
-            },
-            therapy: {
-              empirical: { outpatient: [{ drug: 'Supportive', dose: '-', duration: '-', note: 'Pain relief, Rest' }] },
-              targeted: 'Consider Acyclovir for HSV-2/VZV (especially in immunocompromised). Enterovirus: symptomatic.',
-              supportive: [],
-              prevention: ['Hygiene']
-            },
-            prognosis: { mortality: 'Excellent, spontaneous recovery', prognostic_scores: [], factors: 'None' }
-          },
-          {
             id: 'tbe',
             name: 'Tick-Borne Encephalitis (TBE)',
             pathogen: { type: 'Virus', name: '<i>Tick-Borne Encephalitis Virus</i>', gram: 'RNA, Flaviviridae', shape: 'spherical' },
@@ -497,130 +451,6 @@ Object.assign(window.diseases, {
               prevention: ['Vaccination (FSME-Immun, Encepur)', 'Tick protection']
             },
             prognosis: { mortality: '1-2% (European subtype)', prognostic_scores: [], factors: 'Subtype, time of treatment' }
-          },
-          {
-            id: 'meningococcal_meningitis',
-            name: 'Meningococcal Meningitis',
-            pathogen: { type: 'Bacterium', name: '<i>Neisseria meningitidis</i>', gram: 'Gram-negative', shape: 'diplococcus' },
-            epidemiology: {
-              incidence: 'Can be epidemic',
-              risk_groups: ['Infants', 'Adolescents', 'Closed communities (dorms)', 'Asplenia'],
-              seasonality: 'Winter-Spring',
-              transmission: 'Droplet (close contact)'
-            },
-            pathomechanism: {
-              steps: [
-                'The bacterium colonizes the nasopharynx and enters the bloodstream.',
-                'Rapid replication in blood releases massive amounts of endotoxin (LOS) (meningococcemia).',
-                'Endotoxin triggers systemic inflammation, vasculitis, and disseminated intravascular coagulation (DIC).',
-                'This leads to small vessel occlusion (skin necrosis, adrenal hemorrhage - Waterhouse-Friderichsen syndrome) and septic shock, often before meningitis develops.'
-              ],
-              virulence_factors: ['Capsule (A,B,C,W,Y)', 'LOS (Lipooligosaccharide)', 'IgA protease']
-            },
-            clinical: {
-              incubation: '1-10 days',
-              onset: 'Hyperacute',
-              symptoms: [
-                { name: 'Hyperacute Onset', description: 'Patient condition deteriorates dramatically within hours. Fever, vomiting, headache are early signs.', severity: 'severe' },
-                { name: 'Hemorrhagic Rash', description: 'Initially blanching macules, rapidly evolving into petechiae and purpura that DO NOT fade under pressure (non-blanching rash). Sign of meningococcemia.', severity: 'severe' },
-                { name: 'Septic Shock', description: 'Cold extremities, cyanosis, low blood pressure, rapid pulse, anuria.', severity: 'severe' }
-              ],
-              physical_exam: ['Meningeal signs', 'Purpura', 'Signs of shock'],
-              complications: ['Limb necrosis/amputation', 'Deafness', 'Death (within hours)']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'CSF', finding: 'Purulent', interpretation: '-' }, { test: 'PCR', finding: 'Positive', significance: 'Rapid' }],
-              microbiology: [{ test: 'Gram stain', finding: 'Gram-negative diplococci', significance: 'Rapid' }]
-            },
-            therapy: {
-              empirical: { inpatient: [{ drug: 'Ceftriaxone', dose: '2g IV every 12 hours', duration: '7 days', note: 'NICE NG240 recommendation' }] },
-              targeted: 'Ceftriaxone for 7 days. Prophylaxis for contacts: Ciprofloxacin (single 500mg PO) or Rifampicin.',
-              supportive: [],
-              prevention: ['Vaccination (MenACWY, MenB)']
-            },
-            prognosis: { mortality: '10-15% even with treatment', prognostic_scores: [], factors: 'Age, comorbidity, time to treatment' }
-          },
-          {
-            id: 'pneumococcal_meningitis',
-            name: 'Pneumococcal Meningitis',
-            pathogen: { type: 'Bacterium', name: '<i>Streptococcus pneumoniae</i>', gram: 'Gram-positive', shape: 'diplococcus' },
-            epidemiology: {
-              incidence: 'Most common adult meningitis',
-              risk_groups: ['Elderly', 'Alcoholics', 'Splenectomy', 'Otitis/Sinusitis/Pneumonia', 'CSF leak'],
-              seasonality: 'Winter',
-              transmission: 'Endogenous spread or droplet'
-            },
-            pathomechanism: {
-              steps: [
-                'Infection often spreads to meninges from an adjacent focus (otitis media, sinusitis, mastoiditis) or via bacteremia accompanying pneumonia.',
-                'The pneumococcal capsule inhibits phagocytosis, and pneumolysin toxin directly damages cells and stimulates inflammation.',
-                'This pathogen causes the most severe purulent meningitis, with frequent coma and permanent sequelae.'
-              ],
-              virulence_factors: ['Capsule', 'Pneumolysin']
-            },
-            clinical: {
-              incubation: 'Short',
-              onset: 'Acute',
-              symptoms: [
-                { name: 'Severe Meningitis', description: 'Characterized by rapid onset of altered consciousness, coma, and seizures. Mortality and sequelae rates are highest in this type.', severity: 'severe' },
-                { name: 'Predisposing Signs', description: 'Concurrent pneumonia, otitis media, or sinusitis is often found.', severity: 'moderate' }
-              ],
-              physical_exam: ['Meningeal signs', 'Signs of otitis media', 'Altered mental status'],
-              complications: ['Deafness', 'Hydrocephalus', 'Brain abscess']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'CSF', finding: 'Purulent, very high protein, low sugar', interpretation: '-' }],
-              microbiology: [{ test: 'Gram stain', finding: 'Gram-positive diplococci', significance: '-' }]
-            },
-            therapy: {
-              empirical: { inpatient: [{ drug: 'Ceftriaxone', dose: '2g IV every 12 hours', duration: '14 days', note: 'NICE NG240 recommendation' }, { drug: 'Dexamethasone', dose: '10mg IV every 6 hours', duration: '4 days', note: 'Continue if Pneumococcus is confirmed!' }] },
-              targeted: 'Ceftriaxone for 14 days. If resistance confirmed: + Vancomycin/Rifampicin.',
-              supportive: [],
-              prevention: ['Pneumococcal vaccine (PCV, PPSV)']
-            },
-            prognosis: { mortality: '20-30%, high morbidity', prognostic_scores: [], factors: 'Age, immune status' }
-          },
-          {
-            id: 'listeria_meningitis',
-            name: 'Listeria Meningitis',
-            pathogen: { type: 'Bacterium', name: '<i>Listeria monocytogenes</i>', gram: 'Gram-positive', shape: 'rod' },
-            epidemiology: {
-              incidence: 'Rare but dangerous',
-              risk_groups: ['Neonates', 'Elderly (>50 years)', 'Pregnant women', 'Immunocompromised (transplant, alcoholic)'],
-              seasonality: 'None',
-              transmission: 'Food (soft cheese, cold cuts)'
-            },
-            pathomechanism: {
-              steps: [
-                'Bacteria enter via contaminated food, penetrate the gut wall, and enter the bloodstream.',
-                'It has a specific tropism for the brainstem (rhombencephalon) and meninges.',
-                'As an intracellular pathogen, it spreads cell-to-cell, evading antibodies. Cellular immunity is crucial (which is weaker in infants, elderly, pregnant).',
-                'Forms microabscesses and granulomas in the brainstem.'
-              ],
-              virulence_factors: ['Intracellular survival', 'Listeriolysin O']
-            },
-            clinical: {
-              incubation: '1-4 weeks',
-              onset: 'Subacute',
-              symptoms: [
-                { name: 'Subacute Course', description: 'Symptoms may develop more slowly over days to weeks, not as stormy as other bacterial meningitides.', severity: 'moderate' },
-                { name: 'Rhombencephalitis', description: 'Signs of brainstem involvement: cranial nerve palsies (e.g., facial weakness, swallowing difficulty), ataxia, nystagmus, and respiratory distress.', severity: 'severe' },
-                { name: 'Lack of Signs', description: 'Nuchal rigidity is often absent; only fever and confusion may be noted.', severity: 'severe' }
-              ],
-              physical_exam: ['Meningeal signs (may be absent)', 'Focal signs'],
-              complications: ['Brain abscess', 'Hydrocephalus']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'CSF', finding: 'Can be lymphocytic! (not always PMN)', interpretation: 'Misleading' }],
-              microbiology: [{ test: 'Gram stain', finding: 'Often negative or Gram+ rods (can be mistaken for diphtheroids)', significance: '-' }]
-            },
-            therapy: {
-              empirical: { inpatient: [{ drug: 'Amoxicillin / Ampicillin', dose: '2g IV every 4 hours', duration: '21 days', note: 'NICE NG240 recommendation. Cephalosporins are INEFFECTIVE!' }, { drug: '+ Gentamicin', dose: '5mg/kg IV once daily', duration: 'First 7 days', note: 'Synergistic effect' }] },
-              targeted: 'Amoxicillin/Ampicillin (21 days) + Gentamicin (first 7 days). In penicillin allergy: Cotrimoxazole (Trimethoprim/Sulfamethoxazole).',
-              supportive: [],
-              prevention: ['Food hygiene in risk groups']
-            },
-            prognosis: { mortality: '20-30%', prognostic_scores: [], factors: 'Age, immune status' }
           },
           {
             id: 'cryptococcal_meningitis',
@@ -714,7 +544,7 @@ Object.assign(window.diseases, {
             },
             prognosis: { mortality: '>97% (almost always fatal)', prognostic_scores: [], factors: 'Availability of treatment' }
           },
-       {
+          {
             id: 'brain_abscess',
             name: 'Brain Abscess',
             pathogen: { type: 'Bacterium', name: '<i>Streptococcus</i> spp., <i>Staphylococcus aureus</i>, Anaerobes', gram: 'Mixed', shape: 'Mixed' },
@@ -848,55 +678,7 @@ Object.assign(window.diseases, {
               prognostic_scores: ['MRC staging'],
               factors: 'Delay in treatment, level of consciousness, age'
             }
-          },
-          {
-            id: 'cryptococcal_meningitis',
-            name: 'Cryptococcal Meningitis',
-            pathogen: { type: 'Fungus', name: '<i>Cryptococcus neoformans</i>', gram: 'Yeast (encapsulated)', shape: 'round' },
-            epidemiology: {
-              incidence: 'Most common fungal meningitis in HIV/AIDS patients',
-              risk_groups: ['HIV (CD4 <100)', 'Transplant recipients', 'Steroid treatment'],
-              seasonality: 'None',
-              transmission: 'Inhalation (pigeon dropping dust) -> lung -> hematogenous spread'
-            },
-            pathomechanism: {
-              steps: [
-                'Fungus enters lungs via inhalation, causing primary infection (often asymptomatic).',
-                'In immunosuppression (e.g., AIDS), it disseminates via blood to the brain.',
-                'Its thick polysaccharide capsule protects it from phagocytosis.',
-                'Accumulation in arachnoid villi blocks CSF absorption, leading to extremely high intracranial pressure without purulent inflammation.'
-              ],
-              virulence_factors: ['Polysaccharide capsule', 'Melanin production']
-            },
-            clinical: {
-              incubation: 'Unknown (reactivation)',
-              onset: 'Subacute/Chronic (weeks)',
-              symptoms: [
-                { name: 'Slow Progression', description: 'Symptoms develop over weeks. Leading symptoms are worsening headache and fever.', severity: 'moderate' },
-                { name: 'High ICP Symptoms', description: 'Due to blocked CSF absorption: visual disturbances (diplopia, blurriness), nausea, altered mental status.', severity: 'severe' },
-                { name: 'Absence of Meningeal Signs', description: 'Since inflammatory response is weak (few WBCs), nuchal rigidity is often absent!', severity: 'severe' }
-              ],
-              physical_exam: ['Meningeal signs often absent!', 'Papilledema (high ICP)', 'Skin symptoms (molluscum-like)'],
-              complications: ['High intracranial pressure (blindness, herniation)', 'Cryptococcoma', 'IRIS (at therapy start)']
-            },
-            diagnostics: {
-              laboratory: [{ test: 'CD4', finding: '<100/µL', interpretation: 'Risk' }],
-              imaging: [{ modality: 'CT/MRI', finding: 'Often normal, or dilated perivascular spaces, cryptococcoma', significance: 'Exclusion' }],
-              microbiology: [
-                { test: 'CSF CrAg (antigen)', finding: 'Positive', significance: 'Gold standard (also from blood!)' },
-                { test: 'India ink stain', finding: 'Encapsulated yeasts', significance: 'Rapid, but less sensitive' },
-                { test: 'CSF culture', finding: 'C. neoformans', significance: 'Diagnostic' },
-                { test: 'CSF pressure', finding: 'Often extremely high (>25 cmH2O)', significance: 'Therapeutic tap required' }
-              ]
-            },
-            therapy: {
-              empirical: { inpatient: [{ drug: 'Amphotericin B + Flucytosine', dose: 'IV + PO', duration: '2 weeks (induction)', note: 'Gold standard' }] },
-              targeted: 'Induction (AmB+5FC) -> Consolidation (Fluconazole 400mg 8 weeks) -> Maintenance (Fluconazole 200mg 1 year/CD4>200).',
-              supportive: ['Repeated LP to lower pressure (vital!)'],
-              prevention: ['Fluconazole prophylaxis (if blood CrAg positive)', 'Start ART (but carefully due to IRIS)']
-            },
-            prognosis: { mortality: 'With treatment 10-30%, untreated 100%', prognostic_scores: [], factors: 'Time of treatment, immune status' }
           }
-                   ]
-                 }
-           });
+        ]
+     }
+});

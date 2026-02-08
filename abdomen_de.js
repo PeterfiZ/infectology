@@ -1386,12 +1386,14 @@ Object.assign(window.diseases, {
               factors: 'Fibrosestadium, Koinfektion (HIV/HBV), Alkohol'
             }
           },
-          {
+           {
             id: 'hdv',
             name: 'Hepatitis D',
             pathogen: { type: 'Virus', name: '<i>Hepatitis-D-Virus</i> (HDV)', gram: 'ssRNA (defekt)', shape: 'in HBsAg gehüllt' },
             epidemiology: {
               incidence: '5% der HBV-Infizierten (ca. 15-20 Millionen)',
+              seasonality: 'Keine',
+              risk_groups: ['HBV-Infizierte', 'i.v.-Drogenkonsumenten', 'Sexualpartner', 'Gesundheitspersonal'],
               transmission: 'Parenteral, sexuell (wie HBV). Infiziert nur in Anwesenheit von HBV!'
             },
             pathomechanism: {
@@ -1403,6 +1405,8 @@ Object.assign(window.diseases, {
               virulence_factors: ['Delta-Antigen (HDAg)']
             },
             clinical: {
+              incubation: '30-60 Tage',
+              onset: 'Plötzlich',
               symptoms: [
                 { name: 'Verschlechterung', description: 'Plötzliche Verschlechterung des Zustands eines bekannten HBV-Patienten (akuter Schub).', severity: 'severe' },
                 { name: 'Dekompensation', description: 'Schnell fortschreitendes Leberversagen, Gelbsucht, Koagulopathie.', severity: 'severe' }
@@ -1410,11 +1414,18 @@ Object.assign(window.diseases, {
               complications: ['Fulminante Hepatitis', 'Schnelle Progression zur Zirrhose (aggressivste Virushepatitis)']
             },
             diagnostics: {
+              laboratory: [
+                { test: 'ALT/AST', finding: 'erhöht', interpretation: 'Akuter Schub' }
+              ],
               microbiology: [
                 { test: 'Anti-HDV', finding: 'Positiv', significance: 'Screening bei allen HBV-Patienten' },
                 { test: 'HDV-RNA', finding: 'Positiv', significance: 'Aktive Replikation' }
               ]
             },
+            differential: [
+              { disease: 'HBV-Koinfektion', distinguishing: 'HDV-RNA positiv, Anti-HDV positiv' },
+              { disease: 'Akuter HBV-Schub', distinguishing: 'HDV-RNA negativ, Anti-HDV negativ' }
+            ],
             therapy: {
               guidelines: ['EASL Clinical Practice Guidelines on hepatitis delta virus 2023'],
               empirical: {

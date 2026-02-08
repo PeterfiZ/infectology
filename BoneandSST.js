@@ -142,7 +142,7 @@ Object.assign(window.diseases, {
               laboratory: [
                 { test: 'Vérkép', finding: 'Leukocytosis', interpretation: 'Gyulladás' },
                 { test: 'CRP', finding: 'Emelkedett', interpretation: 'Akut fázis' },
-                { test: 'Hemokultúra', finding: 'Ritka pozitív', interpretation: 'Szisztémás fertőzésnél' }
+                { test: 'Hemokultúra', finding: 'Ritkán pozitív', interpretation: 'Szisztémás fertőzésnél' }
               ],
               imaging: [
                 { modality: 'Nincs szükség', finding: '-', significance: 'Klinikai diagnózis' }
@@ -162,10 +162,12 @@ Object.assign(window.diseases, {
               empirical: {
                 outpatient: [
                   { drug: 'Penicillin V', dose: '4x500mg PO', duration: '10-14 nap', note: 'Első választás' },
-                  { drug: 'Amoxicillin', dose: '3x500mg PO', duration: '10-14 nap', note: 'Alternatíva' }
+                  { drug: 'Amoxicillin', dose: '3x500mg PO', duration: '10-14 nap', note: 'Alternatíva' },
+                  { drug: 'Clindamycin', dose: '3x300mg PO', duration: '10-14 nap', note: 'Penicillin allergia esetén, 30%-os rezisztencia előfordulás' }
                 ],
                 inpatient: [
                   { drug: 'Penicillin G', dose: '4x4-6 millió IU IV', duration: '7-10 nap', note: 'Súlyos esetben' },
+                  { drug: 'Cefazolin', dose: '3x1g IV', duration: '7-10 nap', note: 'Alternatíva' },
                   { drug: 'Ceftriaxon', dose: '1x2g IV', duration: '7-10 nap', note: 'Penicillin allergia esetén' }
                 ],
                 icu: [
@@ -245,8 +247,8 @@ Object.assign(window.diseases, {
             differential: [
               { disease: 'Erysipelas', distinguishing: 'Felszínes, éles határok, emelkedett plakk' },
               { disease: 'Abscessus', distinguishing: 'Fluktuáló duzzanat, punctio' },
-              { disease: 'DVT', distinguishing: 'Nem erythema, Doppler UH' },
-              { disease: 'Gout', distinguishing: 'Monoarthritis, hyperuricemia' }
+              { disease: 'Mélyvénás thrombosis', distinguishing: 'Nem erythema, Doppler UH' },
+              { disease: 'Köszvény', distinguishing: 'Monoarthritis, hyperuricemia' }
             ],
             therapy: {
               empirical: {
@@ -255,6 +257,8 @@ Object.assign(window.diseases, {
                   { drug: 'Cephalexin', dose: '4x500mg PO', duration: '7-10 nap', note: 'Alternatíva' }
                 ],
                 inpatient: [
+                  { drug: 'Amoxicillin/Clavulanate', dose: '3x500mg PO', duration: '7-10 nap', note: 'Alternatíva' },
+                  { drug: 'Cefazolin', dose: '3x1g IV', duration: '7-10 nap', note: 'Alternatíva' },
                   { drug: 'Ceftriaxon', dose: '1x2g IV', duration: '7-10 nap', note: 'Súlyos esetben' },
                   { drug: '+ Vancomycin', dose: '2x15-20mg/kg IV', duration: '', note: 'MRSA gyanú' }
                 ],

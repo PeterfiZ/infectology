@@ -1,8 +1,8 @@
 Object.assign(window.diseases, {
      skin_soft_tissue: {
         name: 'Skin and Soft Tissue Infections',
-        icon: window.diseaseMetadata.skin_soft_tissue.icon,
-        color: window.diseaseMetadata.skin_soft_tissue.color,
+        icon: '🩹',
+        color: '#e11d48',
         diseases: [
           {
             id: 'necrotizing_fasciitis',
@@ -145,10 +145,11 @@ Object.assign(window.diseases, {
                 { test: 'Blood culture', finding: 'Rarely positive', interpretation: 'In systemic infection' }
               ],
               imaging: [
-                { modality: 'Not routinely needed', finding: '-', significance: 'Diagnosis is clinical. Ultrasound can rule out deeper abscess.' }
+                { modality: 'Not routinely needed', finding: '-', significance: 'Clinical diagnosis' }
               ],
               microbiology: [
-                { test: 'Blood culture', finding: 'Rarely positive (<5%)', significance: 'Should be taken in severe/systemic cases' }
+                { test: 'Skin swab culture', finding: 'Streptococcus pyogenes', significance: 'Confirmation' },
+                { test: 'ASO titer', finding: 'Elevated', interpretation: 'Retrospective' }
               ]
             }, 
             differential: [
@@ -160,12 +161,14 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Penicillin V', dose: '500 mg PO 4 times daily', duration: '10-14 days', note: 'First choice' },
-                  { drug: 'Amoxicillin', dose: '500 mg PO 3 times daily', duration: '10-14 days', note: 'Alternative' }
+                  { drug: 'Penicillin V', dose: '4x500 mg PO', duration: '10-14 days', note: 'First choice' },
+                  { drug: 'Amoxicillin', dose: '3x500 mg PO', duration: '10-14 days', note: 'Alternative' },
+                  { drug: 'Clindamycin', dose: '3x300 mg PO', duration: '10-14 days', note: 'In case of penicillin allergy, 30% resistance rate' }
                 ],
                 inpatient: [
-                  { drug: 'Penicillin G', dose: '4-6 million IU IV 4 times daily', duration: '7-10 days', note: 'In severe cases' },
-                  { drug: 'Ceftriaxone', dose: '2 g IV once daily', duration: '7-10 days', note: 'In case of penicillin allergy' }
+                  { drug: 'Penicillin G', dose: '4x4-6 million IU IV', duration: '7-10 days', note: 'In severe cases' },
+                  { drug: 'Cefazolin', dose: '3x1g IV', duration: '7-10 days', note: 'Alternative' },
+                  { drug: 'Ceftriaxone', dose: '1x2 g IV', duration: '7-10 days', note: 'In case of penicillin allergy' }
                 ],
                 icu: [
                   { drug: 'Broad-spectrum antibiotics', dose: 'IV', duration: '', note: 'In complicated cases' }
@@ -237,7 +240,8 @@ Object.assign(window.diseases, {
                 { modality: 'CT/MRI', finding: 'Deeper spread', significance: 'In complicated cases' }
               ],
               microbiology: [
-                { test: 'Blood culture', finding: 'Rarely positive (<5-10%)', significance: 'Recommended in severe cases, immunosuppression, or systemic toxicity' }
+                { test: 'Skin aspirate/culture', finding: 'Pathogen identification', significance: 'If possible' },
+                { test: 'Wound exudate', finding: 'Often contaminated', significance: 'Not reliable' }
               ]
             }, 
             differential: [
@@ -249,15 +253,17 @@ Object.assign(window.diseases, {
             therapy: {
               empirical: {
                 outpatient: [
-                  { drug: 'Amoxicillin/Clavulanate', dose: '875/125 mg PO twice daily', duration: '7-10 days', note: 'First choice' },
-                  { drug: 'Cephalexin', dose: '500 mg PO 4 times daily', duration: '7-10 days', note: 'Alternative' }
+                  { drug: 'Amoxicillin/Clavulanate', dose: '3x875/125 mg PO', duration: '7-10 days', note: 'First choice' },
+                  { drug: 'Cephalexin', dose: '4x500 mg PO', duration: '7-10 days', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Ceftriaxone', dose: '2 g IV once daily', duration: '7-10 days', note: 'In severe cases' },
-                  { drug: '+ Vancomycin', dose: '15-20 mg/kg IV every 12 hours', duration: '', note: 'If MRSA is suspected' }
+                  { drug: 'Amoxicillin/Clavulanate', dose: '3x500 mg PO', duration: '7-10 days', note: 'Alternative' },
+                  { drug: 'Cefazolin', dose: '3x1g IV', duration: '7-10 days', note: 'Alternative' },
+                  { drug: 'Ceftriaxone', dose: '1x2 g IV', duration: '7-10 days', note: 'In severe cases' },
+                  { drug: '+ Vancomycin', dose: '2x15-20 mg/kg IV', duration: '', note: 'If MRSA is suspected' }
                 ],
                 icu: [
-                  { drug: 'Piperacillin/Tazobactam', dose: '4.5 g IV 3 times daily', duration: '', note: 'Broad spectrum' }
+                  { drug: 'Piperacillin/Tazobactam', dose: '3x4.5 g IV', duration: '', note: 'Broad spectrum' }
                 ]
               },
               targeted: 'Streptococcus: Penicillin; Staphylococcus: Flucloxacillin; MRSA: Vancomycin',
@@ -281,14 +287,7 @@ Object.assign(window.diseases, {
               prognostic_scores: ['None'],
               factors: 'Delayed treatment, comorbidities'
             }
-          }
-        ]
-      },
-      bone_joint: {
-        name: 'Bone and Joint Infections',
-        icon: window.diseaseMetadata.bone_joint.icon,
-        color: window.diseaseMetadata.bone_joint.color,
-        diseases: [
+          },
           {
             id: 'osteomyelitis',
             name: 'Osteomyelitis',
@@ -378,7 +377,7 @@ Object.assign(window.diseases, {
               mortality: 'Low, but morbidity is high (chronicity)',
               prognostic_scores: ['Cierny-Mader classification'],
               factors: 'Blood supply, presence of implant, surgical radicality'
-            }
+            },
           },
           {
             id: 'septic_arthritis',
