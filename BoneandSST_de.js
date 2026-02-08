@@ -149,7 +149,7 @@ Object.assign(window.diseases, {
               ],
               microbiology: [
                 { test: 'Hautabstrichkultur', finding: 'Streptococcus pyogenes', significance: 'Bestätigung' },
-                { test: 'ASO-Titer', finding: 'Erhöht', interpretation: 'Retrospektiv' }
+                { test: 'ASO-Titer', finding: 'Erhöht', significance: 'Retrospektiv' }
               ]
             },
             differential: [

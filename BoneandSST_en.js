@@ -31,7 +31,7 @@ Object.assign(window.diseases, {
                 { name: 'Late Signs', description: 'The skin turns dark purple or black, blisters (bullae) appear, and gas (crepitus) can be felt in the subcutaneous tissues. Pain may subside due to nerve death, which is a poor prognostic sign. Septic shock develops rapidly.', severity: 'severe' }
               ],
               physical_exam: [
-                'Pain disproportionately SEVERE to findings (early sign!)',
+                'Pain disproportionately severe compared with physical findings (early sign!)',
                 'Tense, "woody" edema extending beyond erythema',
                 'Skin: erythema → violaceous/grey → bullae → necrosis',
                 'Anesthesia in the area (nerve damage)',
@@ -77,7 +77,7 @@ Object.assign(window.diseases, {
                 icu: [
                   { drug: 'Meropenem', dose: '3x1g IV', duration: '', note: 'Alternative (Type I)' },
                   { drug: '+ Vancomycin + Clindamycin', dose: '', duration: '', note: 'Standard triple therapy' },
-                  { drug: 'IVIG', dose: '1g/kg day 1, then 0.5g/kg', duration: '3 days', note: 'Consider in Strep toxic shock syndrome' }
+                  { drug: 'IVIG', dose: '1g/kg day 1, then 0.5g/kg', duration: '3 days', note: 'may be considered as adjunctive therapy in streptococcal toxic shock syndrome (limited evidence)' }
                 ]
               },
               targeted: 'Based on culture. Type I: broad spectrum. Type II (GAS): Penicillin G + Clindamycin. Type III (Vibrio): Doxycycline + Ceftriaxone.',
@@ -149,7 +149,7 @@ Object.assign(window.diseases, {
               ],
               microbiology: [
                 { test: 'Skin swab culture', finding: 'Streptococcus pyogenes', significance: 'Confirmation' },
-                { test: 'ASO titer', finding: 'Elevated', interpretation: 'Retrospective' }
+                { test: 'ASO titer', finding: 'Elevated', significance: 'May be elevated but has limited diagnostic value in acute infection, retrospective' }
               ]
             }, 
             differential: [
@@ -257,7 +257,7 @@ Object.assign(window.diseases, {
                   { drug: 'Cephalexin', dose: '4x500 mg PO', duration: '7-10 days', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Amoxicillin/Clavulanate', dose: '3x500 mg PO', duration: '7-10 days', note: 'Alternative' },
+                  { drug: 'Amoxicillin/Clavulanate', dose: '875/125 mg PO TID mg PO', duration: '7-10 days', note: 'Alternative' },
                   { drug: 'Cefazolin', dose: '3x1g IV', duration: '7-10 days', note: 'Alternative' },
                   { drug: 'Ceftriaxone', dose: '1x2 g IV', duration: '7-10 days', note: 'In severe cases' },
                   { drug: '+ Vancomycin', dose: '2x15-20 mg/kg IV', duration: '', note: 'If MRSA is suspected' }
@@ -267,7 +267,7 @@ Object.assign(window.diseases, {
                 ]
               },
               targeted: 'Streptococcus: Penicillin; Staphylococcus: Flucloxacillin; MRSA: Vancomycin',
-              supportive: ['Rest', 'Elevated limb', 'Analgesics', 'Topical antibiotics are not effective'],
+              supportive: ['Rest', 'Elevated limb', 'Analgesics', 'Topical antibiotics are not recommended for uncomplicated cellulitis'],
               prevention: ['Prevention of skin injuries', 'Hygiene', 'Diabetes control']
             },
             guidelines: {
@@ -356,7 +356,7 @@ Object.assign(window.diseases, {
                 ]
               },
               targeted: 'Based on bone biopsy! S. aureus: Cefazolin/Flucloxacillin. MRSA: Vancomycin. Implant-associated: Rifampicin adjunct (biofilm).',
-              supportive: ['Surgical debridement (removal of necrotic bone) - CRITICAL!', 'Implant removal (if possible)', 'Early oral switch possible (OVIVA study)'],
+              supportive: ['Surgical debridement (removal of necrotic bone) - CRITICAL!', 'Implant removal (if possible)', 'After initial IV therapy, an early switch to highly bioavailable oral agents is non-inferior (OVIVA trial)'],
               prevention: ['Immediate care of open fractures', 'Surgical sterility', 'Diabetic foot care']
             },
             guidelines: {
@@ -462,7 +462,7 @@ Object.assign(window.diseases, {
                 'All septic arthritis cases require immediate antibiotics and drainage.'
               ],
               first_line: [
-                'Immediate joint drainage (needle or surgical) + empiric IV antibiotics (Vancomycin + Ceftriaxone).',
+                'Immediate joint drainage (needle or surgical) + empiric IV antibiotics (Vancomycin + Ceftriaxone), Empiric therapy should be guided by age, risk factors, and local resistance.',
                 'Based on OVIVA trial, early oral switch may be safe in stable patients.'
               ]
             },

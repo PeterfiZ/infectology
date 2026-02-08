@@ -24,6 +24,27 @@ const AVAILABLE_LANGUAGES = {
     'de': 'Deutsch'
 };
 
+const CATEGORY_ORDER = [
+    'cns_infections',
+    'upper_respiratory',
+    'viral_respiratory',
+    'bacterial_respiratory',
+    'cardiovascular',
+    'gastrointestinal',
+    'viral_hepatitis',
+    'urinary_tract',
+    'sexually_transmitted',
+    'zoonotic',
+    'parasitic',
+    'skin_soft_tissue',
+    'bone_joint',
+    'childhood',
+    'sepsis_systemic',
+    'fungal',
+    'tropical',
+    'emerging'
+];
+
 // State
 let currentLang = localStorage.getItem('infectologia_lang') || 'hu';
 let currentCategory = null;
@@ -168,7 +189,17 @@ function renderHome() {
     const grid = document.createElement('div');
     grid.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in';
 
-    Object.entries(window.diseases).forEach(([key, category]) => {
+    const sortedEntries = Object.entries(window.diseases).sort((a, b) => {
+        const indexA = CATEGORY_ORDER.indexOf(a[0]);
+        const indexB = CATEGORY_ORDER.indexOf(b[0]);
+        
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+        return 0;
+    });
+
+    sortedEntries.forEach(([key, category]) => {
         const card = document.createElement('div');
         card.className = 'bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer border-l-4 transform hover:-translate-y-1';
         card.style.borderLeftColor = category.color || '#3b82f6';

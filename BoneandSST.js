@@ -149,7 +149,7 @@ Object.assign(window.diseases, {
               ],
               microbiology: [
                 { test: 'Bőrkaparék tenyésztés', finding: 'Streptococcus pyogenes', significance: 'Megerősítés' },
-                { test: 'ASO titer', finding: 'Emelkedett', interpretation: 'Retrospektív' }
+                { test: 'ASO titer', finding: 'Emelkedett', significance: 'Retrospektív' }
               ]
             },
             differential: [
