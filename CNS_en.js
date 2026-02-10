@@ -145,7 +145,7 @@ Object.assign(window.diseases, {
               complications: ['Limb necrosis/amputation', 'Deafness', 'Death (within hours)']
             },
             diagnostics: {
-              laboratory: [{ test: 'CSF', finding: 'Purulent', interpretation: '-' }, { test: 'PCR', finding: 'Positive', significance: 'Rapid' }],
+              laboratory: [{ test: 'CSF', finding: 'Purulent', interpretation: '-' }, { test: 'PCR', finding: 'Positive', interpretation: 'Rapid' }],
               microbiology: [{ test: 'Gram stain', finding: 'Gram-negative diplococci', significance: 'Rapid' }]
             },
             therapy: {
@@ -579,7 +579,7 @@ Object.assign(window.diseases, {
               laboratory: [
                 { test: 'CBC', finding: 'Leukocytosis (in 60%)', interpretation: 'Unreliable' },
                 { test: 'CRP', finding: 'Elevated', interpretation: 'Inflammation' },
-                { test: 'Blood culture', finding: 'Positive', significance: 'Important in hematogenous origin' }
+                { test: 'Blood culture', finding: 'Positive', interpretation: 'Important in hematogenous origin' }
               ],
               imaging: [
                 { modality: 'Head CT/MRI', finding: 'Ring enhancement, perifocal edema', significance: 'Gold standard (MRI is more sensitive)' }

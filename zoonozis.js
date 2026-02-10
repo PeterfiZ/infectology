@@ -251,7 +251,7 @@ Object.assign(window.diseases, {
                   { drug: 'Ceftriaxon', dose: '1x2 g IV', duration: '14-28 nap', note: 'Súlyos neuroborreliosis (pl. encephalitis), carditis (magas fokú blokk), refrakter arthritis' }
                 ]
               },
-              targeted: 'Korai lokalizált (EM): Doxycyclin 10 nap. Neuroborreliosis (Bannwarth): Doxycyclin PO (ugyanolyan hatékony mint IV Ceftriaxon!) 14 nap. Arthritis: Doxycyclin 28 nap.',
+              targeted: 'Korai lokalizált (EM): Doxycyclin 10 nap. Neuroborreliosis (Bannwarth): Doxycyclin PO (ugyanolyan hatékony mint IV Ceftriaxon!) 14 nap. Arthritis: Doxycyclin 28 nap. Poszt-Lyme szindróma: Tartós antibiotikum kezelés NEM javasolt (hatástalan). Tüneti kezelés.',
               supportive: ['Tüneti kezelés', 'Fizioterápia'],
               prevention: ['Kullancs mielőbbi eltávolítása', 'Védőruházat', 'Profilaktikus antibiotikum csípés után NEM javasolt (magyar irányelv)']
             },

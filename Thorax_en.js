@@ -58,6 +58,23 @@ Object.assign(window.diseases, {
                 { test: 'PCR', finding: 'lytA gene detection', significance: 'Most sensitive method' }
               ]
             },
+            calculators: [
+              {
+                name: 'CURB-65 Score - Pneumonia Severity',
+                items: [
+                  { label: 'Confusion', points: 1 },
+                  { label: 'Urea > 7 mmol/L', points: 1 },
+                  { label: 'Respiratory rate ≥ 30/min', points: 1 },
+                  { label: 'Blood pressure (SBP < 90 or DBP ≤ 60 mmHg)', points: 1 },
+                  { label: 'Age ≥ 65 years', points: 1 }
+                ],
+                interpretation: [
+                  { min: 0, max: 1, text: 'Low risk (mortality <3%). Consider home treatment.' },
+                  { min: 2, max: 2, text: 'Moderate risk (mortality 9%). Hospital admission recommended.' },
+                  { min: 3, max: 5, text: 'High risk (mortality 15-40%). Urgent hospital/ICU admission.' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Legionella pneumonia', distinguishing: 'Hyponatremia, GI symptoms, atypical X-ray' },
               { disease: 'Klebsiella pneumonia', distinguishing: 'Alcoholics, currant jelly sputum, upper lobe' },
@@ -283,6 +300,23 @@ Object.assign(window.diseases, {
                 { test: 'Serology', finding: '4x titer rise', significance: 'Retrospective diagnosis' }
               ]
             },
+            calculators: [
+              {
+                name: 'CURB-65 Score - Pneumonia Severity',
+                items: [
+                  { label: 'Confusion', points: 1 },
+                  { label: 'Urea > 7 mmol/L', points: 1 },
+                  { label: 'Respiratory rate ≥ 30/min', points: 1 },
+                  { label: 'Blood pressure (SBP < 90 or DBP ≤ 60 mmHg)', points: 1 },
+                  { label: 'Age ≥ 65 years', points: 1 }
+                ],
+                interpretation: [
+                  { min: 0, max: 1, text: 'Low risk (mortality <3%). Consider home treatment.' },
+                  { min: 2, max: 2, text: 'Moderate risk (mortality 9%). Hospital admission recommended.' },
+                  { min: 3, max: 5, text: 'High risk (mortality 15-40%). Urgent hospital/ICU admission.' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Pneumococcal pneumonia', distinguishing: 'Productive cough, no GI/neuro symptoms, normal Na' },
               { disease: 'Mycoplasma pneumonia', distinguishing: 'Younger patients, slower progression, cold agglutinins' },
@@ -1264,24 +1298,24 @@ Object.assign(window.diseases, {
                 { test: 'Throat swab culture', finding: 'GAS', significance: 'Confirmation' }
               ]
             },
-              calculators: [
-                {
-                  name: 'Centor Score (McIsaac) - Strep A Probability',
-                  items: [
-                    { label: 'Fever > 38°C', points: 1 },
-                    { label: 'Absence of cough', points: 1 },
-                    { label: 'Tender anterior cervical adenopathy', points: 1 },
-                    { label: 'Tonsillar swelling or exudate', points: 1 },
-                    { label: 'Age 3-14 years', points: 1 },
-                    { label: 'Age ≥ 45 years', points: -1 }
-                  ],
-                  interpretation: [
-                    { min: -1, max: 1, text: 'Low risk (<10%). No antibiotic needed.' },
-                    { min: 2, max: 3, text: 'Intermediate risk (15-30%). Culture or rapid test recommended.' },
-                    { min: 4, max: 5, text: 'High risk (>50%). Empiric antibiotics or testing.' }
-                  ]
-                }
-              ],
+            calculators: [
+              {
+                name: 'Centor Score (McIsaac) - Strep A Probability',
+                items: [
+                  { label: 'Fever > 38°C', points: 1 },
+                  { label: 'Absence of cough', points: 1 },
+                  { label: 'Tender anterior cervical adenopathy', points: 1 },
+                  { label: 'Tonsillar swelling or exudate', points: 1 },
+                  { label: 'Age 3-14 years', points: 1 },
+                  { label: 'Age ≥ 45 years', points: -1 }
+                ],
+                interpretation: [
+                  { min: -1, max: 1, text: 'Low risk (<10%). No antibiotic needed.' },
+                  { min: 2, max: 3, text: 'Intermediate risk (15-30%). Culture or rapid test recommended.' },
+                  { min: 4, max: 5, text: 'High risk (>50%). Empiric antibiotics or testing.' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Viral pharyngitis', distinguishing: 'Mild symptoms, no exudate' },
               { disease: 'Mononucleosis', distinguishing: 'Lymphocytosis, hepatosplenomegaly' }
@@ -1305,7 +1339,7 @@ Object.assign(window.diseases, {
             },
             prognosis: {
               mortality: 'Low',
-              prognostic_scores: ['None'],
+              prognostic_scores: ['Centor Score (McIsaac)'],
               factors: 'Late treatment'
             }
           },

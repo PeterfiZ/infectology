@@ -189,6 +189,24 @@ Object.assign(window.diseases, {
           microbiology: [
             { test: 'Torokváladék tenyésztés', finding: 'Strep. pyogenes', significance: 'Gold standard' },
             { test: 'Gyorsteszt (Strep A)', finding: 'Pozitív', significance: 'Gyors' }
+          ],
+          calculators: [
+            {
+              name: 'Centor Score (McIsaac) - Strep A valószínűség',
+              items: [
+                { label: 'Láz > 38°C', points: 1 },
+                { label: 'Köhögés hiánya', points: 1 },
+                { label: 'Érzékeny elülső nyaki nyirokcsomók', points: 1 },
+                { label: 'Tonsilla duzzanat vagy exsudatum', points: 1 },
+                { label: 'Életkor 3-14 év', points: 1 },
+                { label: 'Életkor ≥ 45 év', points: -1 }
+              ],
+              interpretation: [
+                { min: -1, max: 1, text: 'Alacsony kockázat (<10%). Antibiotikum nem javasolt.' },
+                { min: 2, max: 3, text: 'Közepes kockázat (15-30%). Tenyésztés vagy gyorsteszt javasolt. Pozitív esetben AB.' },
+                { min: 4, max: 5, text: 'Magas kockázat (>50%). Empirikus antibiotikum adható vagy tesztelés.' }
+              ]
+            }
           ]
         },
         therapy: {
@@ -211,7 +229,7 @@ Object.assign(window.diseases, {
           ],
           first_line: ['Penicillin V 10 napig. Allergia esetén makrolid.']
         },
-        prognosis: { mortality: 'Kezeléssel kiváló' }
+        prognosis: { mortality: 'Kezeléssel kiváló', prognostic_scores: ['Centor Score (McIsaac)'] }
       },
       {
         id: 'mononucleosis',

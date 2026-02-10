@@ -79,6 +79,27 @@ Object.assign(window.diseases, {
                 { test: 'Sigmoidoscopia', finding: 'Pseudomembránok', significance: 'Nem rutinszerű, diagnosztikus' }
               ]
             },
+            calculators: [
+              {
+                name: 'ATLAS Score - C. difficile kimenetel',
+                items: [
+                  { label: 'Életkor 60-79 év', points: 1 },
+                  { label: 'Életkor ≥ 80 év', points: 2 },
+                  { label: 'Szisztémás antibiotikum kezelés a CDI terápia alatt', points: 2 },
+                  { label: 'Fehérvérsejt 16-25 G/L', points: 1 },
+                  { label: 'Fehérvérsejt > 25 G/L', points: 2 },
+                  { label: 'Albumin 26-35 g/L', points: 1 },
+                  { label: 'Albumin ≤ 25 g/L', points: 2 },
+                  { label: 'Kreatinin 121-179 µmol/L', points: 1 },
+                  { label: 'Kreatinin ≥ 180 µmol/L', points: 2 }
+                ],
+                interpretation: [
+                  { min: 0, max: 2, text: '0-2 pont: Alacsony rizikó. 30 napos halálozás 0-5%.' },
+                  { min: 3, max: 5, text: '3-5 pont: Közepes rizikó. 30 napos halálozás 10-20%.' },
+                  { min: 6, max: 10, text: '6-10 pont: Magas rizikó. 30 napos halálozás >30%.' }
+                ]
+              }
+            ],
             therapy: {
               empirical: {
                 outpatient: [

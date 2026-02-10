@@ -58,6 +58,23 @@ Object.assign(window.diseases, {
                 { test: 'PCR', finding: 'lytA gén kimutatás', significance: 'Legérzékenyebb módszer' }
               ]
             },
+            calculators: [
+              {
+                name: 'CURB-65 Score - Pneumonia súlyosság',
+                items: [
+                  { label: 'Zavartság (Confusion)', points: 1 },
+                  { label: 'Urea > 7 mmol/L', points: 1 },
+                  { label: 'Légzésszám ≥ 30/perc', points: 1 },
+                  { label: 'Vérnyomás (Szisztolés < 90 vagy Diasztolés ≤ 60 Hgmm)', points: 1 },
+                  { label: 'Életkor ≥ 65 év', points: 1 }
+                ],
+                interpretation: [
+                  { min: 0, max: 1, text: 'Alacsony rizikó (halálozás <3%). Otthoni kezelés megfontolható.' },
+                  { min: 2, max: 2, text: 'Közepes rizikó (halálozás 9%). Kórházi felvétel javasolt.' },
+                  { min: 3, max: 5, text: 'Magas rizikó (halálozás 15-40%). Sürgős kórházi/intenzív osztályos kezelés.' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Legionella pneumonia', distinguishing: 'Hiponatrémia, GI tünetek, atípusos rtg kép' },
               { disease: 'Klebsiella pneumonia', distinguishing: 'Alkoholisták, currant jelly köpet, felső lebeny' },
@@ -283,6 +300,23 @@ Object.assign(window.diseases, {
                 { test: 'Szerológia', finding: '4x titeremelkedés', significance: 'Retrospektív diagnózis' }
               ]
             },
+            calculators: [
+              {
+                name: 'CURB-65 Score - Pneumonia súlyosság',
+                items: [
+                  { label: 'Zavartság (Confusion)', points: 1 },
+                  { label: 'Urea > 7 mmol/L', points: 1 },
+                  { label: 'Légzésszám ≥ 30/perc', points: 1 },
+                  { label: 'Vérnyomás (Szisztolés < 90 vagy Diasztolés ≤ 60 Hgmm)', points: 1 },
+                  { label: 'Életkor ≥ 65 év', points: 1 }
+                ],
+                interpretation: [
+                  { min: 0, max: 1, text: 'Alacsony rizikó (halálozás <3%). Otthoni kezelés megfontolható.' },
+                  { min: 2, max: 2, text: 'Közepes rizikó (halálozás 9%). Kórházi felvétel javasolt.' },
+                  { min: 3, max: 5, text: 'Magas rizikó (halálozás 15-40%). Sürgős kórházi/intenzív osztályos kezelés.' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Pneumococcus pneumonia', distinguishing: 'Produktív köpet, nincs GI/neurológiai tünet, normál Na' },
               { disease: 'Mycoplasma pneumonia', distinguishing: 'Fiatalabbak, lassabb progresszió, hideg agglutinin' },
@@ -1312,7 +1346,7 @@ Object.assign(window.diseases, {
             },
             prognosis: {
               mortality: 'Alacsony',
-              prognostic_scores: ['Nincs'],
+              prognostic_scores: ['Centor Score (McIsaac)'],
               factors: 'Késői kezelés'
             }
           },

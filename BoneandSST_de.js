@@ -58,6 +58,26 @@ Object.assign(window.diseases, {
                 { test: 'Finger-Test', finding: 'Faszie leicht lösbar, keine Blutung, "Spülwasser"-Eiter', significance: 'Bedside-Diagnose' }
               ]
             },
+            calculators: [
+              {
+                name: 'LRINEC-Score - Risiko für nekrotisierende Fasziitis',
+                items: [
+                  { label: 'CRP ≥ 150 mg/L', points: 4 },
+                  { label: 'Leukozyten 15-25 G/L', points: 1 },
+                  { label: 'Leukozyten > 25 G/L', points: 2 },
+                  { label: 'Hämoglobin < 13.5 g/dL', points: 1 },
+                  { label: 'Hämoglobin < 11 g/dL', points: 2 },
+                  { label: 'Natrium < 135 mmol/L', points: 2 },
+                  { label: 'Kreatinin > 141 µmol/L', points: 2 },
+                  { label: 'Glukose > 10 mmol/L', points: 1 }
+                ],
+                interpretation: [
+                  { min: 0, max: 5, text: 'Niedriges Risiko (<50%). Überwachung.' },
+                  { min: 6, max: 7, text: 'Mittleres Risiko (50-75%). Enge Beobachtung, chirurgisches Konsil.' },
+                  { min: 8, max: 13, text: 'Hohes Risiko (>75%). Sofortige chirurgische Exploration!' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Zellulitis', distinguishing: 'Kein unverhältnismäßiger Schmerz, keine systemische Toxizität, langsamer' },
               { disease: 'Pyomyositis', distinguishing: 'Muskelabszess, lokalisierter, MRT hilft' },

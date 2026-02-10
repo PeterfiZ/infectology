@@ -57,6 +57,24 @@ Object.assign(window.diseases, {
               microbiology: [
                 { test: 'Blutkultur', finding: 'Erregeridentifikation', significance: 'Basis für gezielte Therapie' },
                 { test: 'Andere Kulturen', finding: 'Urin, Sputum, Wunde, Liquor', significance: 'Fokusabhängig' }
+              ],
+              scores: [
+                'SOFA-Score (≥2 Punkte Änderung gegenüber dem Ausgangswert definiert Sepsis)',
+                'qSOFA (Screening): Atemfrequenz ≥22/min, Bewusstseinsstörung (GCS<15), Systolischer RR ≤100 mmHg'
+              ],
+              calculators: [
+                {
+                  name: 'qSOFA (quick SOFA) - Sepsis-Screening',
+                  items: [
+                    { label: 'Atemfrequenz ≥ 22/min', points: 1 },
+                    { label: 'Bewusstseinsstörung (GCS < 15)', points: 1 },
+                    { label: 'Systolischer RR ≤ 100 mmHg', points: 1 }
+                  ],
+                  interpretation: [
+                    { min: 0, max: 1, text: 'Niedriges Risiko. Überwachung, ggf. Neubewertung.' },
+                    { min: 2, max: 3, text: 'Hohes Risiko für schlechten Ausgang. Sepsis-Verdacht, SOFA-Score erheben.' }
+                  ]
+                }
               ]
             },
             differential: [
@@ -68,15 +86,25 @@ Object.assign(window.diseases, {
             therapy: {
               guidelines: ['Surviving Sepsis Campaign 2021'],
               empirical: {
-                initial_management: [
-                  { drug: 'Antibiotika', dose: 'Breitspektrum i.v.', duration: 'Innerhalb 1 Stunde!', note: 'Nach Abnahme von Blutkulturen. Fokusabhängige Wahl (z.B. Pip/Tazo, Meropenem).' },
-                  { drug: 'Volumensubstitution', dose: '30 ml/kg Kristalloid', duration: 'In den ersten 3 Stunden', note: 'Bei Hypotonie oder Laktat ≥4 mmol/L.' }
-                ],
-                icu: [
-                  { drug: 'Noradrenalin', dose: 'MAP >65 mmHg halten', duration: 'Kontinuierlich', note: 'Vasopressor der ersten Wahl.' },
-                  { drug: 'Vasopressin', dose: 'max 0.03 U/min', duration: 'Kontinuierlich', note: 'Kann zu Noradrenalin hinzugefügt werden, um Dosis zu reduzieren oder bei hoher Dosis.' },
-                  { drug: 'Hydrocortison', dose: '200mg/Tag (z.B. 50mg alle 6h)', duration: 'Kontinuierlich', note: 'Wenn Vasopressorenbedarf besteht (refraktärer Schock).' }
-                ]
+                sepsis_six: {
+                  title: 'Sepsis Six Bündel (Innerhalb 1 Stunde!)',
+                  drugs: [
+                    { drug: '1. Sauerstoffgabe', dose: 'Ziel SpO2 >94%', duration: 'Sofort', note: 'High-Flow wenn nötig.' },
+                    { drug: '2. Blutkulturen abnehmen', dose: '2 Sets', duration: 'Vor AB', note: 'Peripher (und aus Katheter falls vorhanden).' },
+                    { drug: '3. i.v. Antibiotika', dose: 'Breitspektrum', duration: 'Innerhalb 1 Std.', note: 'Fokusabhängig (z.B. Pip/Tazo, Meropenem).' },
+                    { drug: '4. Flüssigkeitsgabe', dose: '30 ml/kg Kristalloid', duration: 'Bolus', note: 'Bei Hypotonie oder Laktat ≥4 mmol/L.' },
+                    { drug: '5. Laktat messen', dose: 'Blut', duration: 'Seriell', note: 'Überwachung der Gewebeperfusion.' },
+                    { drug: '6. Urinausscheidung', dose: 'Überwachung', duration: 'Stündlich', note: 'Nierenfunktion und Flüssigkeitsbilanz.' }
+                  ]
+                },
+                icu: {
+                  title: 'Intensivmedizinische Behandlung',
+                  drugs: [
+                    { drug: 'Noradrenalin', dose: 'MAP >65 mmHg halten', duration: 'Kontinuierlich', note: 'Vasopressor der ersten Wahl.' },
+                    { drug: 'Vasopressin', dose: 'max 0.03 U/min', duration: 'Kontinuierlich', note: 'Zusätzlich zu Noradrenalin.' },
+                    { drug: 'Hydrocortison', dose: '200mg/Tag', duration: 'Kontinuierlich', note: 'Bei refraktärem Schock.' }
+                  ]
+                }
               },
               targeted: 'Deeskalation basierend auf Antibiogramm (PCT kann Entscheidung unterstützen). Fokussanierung (Abszessdrainage, Entfernung von nekrotischem Gewebe) ist unerlässlich.',
               supportive: ['Überwachung der Laktat-Clearance', 'Beatmung (ARDS-Protokoll)', 'Nierenersatztherapie (CRRT)', 'Blutzuckerkontrolle', 'Thromboseprophylaxe', 'Stressulkusprophylaxe'],

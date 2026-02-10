@@ -60,6 +60,23 @@ Object.assign(window.diseases, {
                 { test: 'PCR', finding: 'lytA-Gen-Nachweis', significance: 'Empfindlichste Methode' }
               ]
             },
+            calculators: [
+              {
+                name: 'CURB-65 Score - Pneumonie-Schweregrad',
+                items: [
+                  { label: 'Verwirrtheit (Confusion)', points: 1 },
+                  { label: 'Harnstoff > 7 mmol/l', points: 1 },
+                  { label: 'Atemfrequenz ≥ 30/min', points: 1 },
+                  { label: 'Blutdruck (Syst < 90 oder Diast ≤ 60 mmHg)', points: 1 },
+                  { label: 'Alter ≥ 65 Jahre', points: 1 }
+                ],
+                interpretation: [
+                  { min: 0, max: 1, text: 'Niedriges Risiko (Mortalität <3%). Ambulante Behandlung erwägen.' },
+                  { min: 2, max: 2, text: 'Mittleres Risiko (Mortalität 9%). Krankenhausaufnahme empfohlen.' },
+                  { min: 3, max: 5, text: 'Hohes Risiko (Mortalität 15-40%). Dringende Krankenhaus-/Intensivbehandlung.' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Legionellen-Pneumonie', distinguishing: 'Hyponatriämie, GI-Symptome, atypisches Röntgenbild' },
               { disease: 'Klebsiella-Pneumonie', distinguishing: 'Alkoholkranke, Johannisbeergelee-Sputum, Oberlappen' },
@@ -285,6 +302,23 @@ Object.assign(window.diseases, {
                 { test: 'Serologie', finding: '4-facher Titeranstieg', significance: 'Retrospektive Diagnose' }
               ]
             },
+            calculators: [
+              {
+                name: 'CURB-65 Score - Pneumonie-Schweregrad',
+                items: [
+                  { label: 'Verwirrtheit (Confusion)', points: 1 },
+                  { label: 'Harnstoff > 7 mmol/l', points: 1 },
+                  { label: 'Atemfrequenz ≥ 30/min', points: 1 },
+                  { label: 'Blutdruck (Syst < 90 oder Diast ≤ 60 mmHg)', points: 1 },
+                  { label: 'Alter ≥ 65 Jahre', points: 1 }
+                ],
+                interpretation: [
+                  { min: 0, max: 1, text: 'Niedriges Risiko (Mortalität <3%). Ambulante Behandlung erwägen.' },
+                  { min: 2, max: 2, text: 'Mittleres Risiko (Mortalität 9%). Krankenhausaufnahme empfohlen.' },
+                  { min: 3, max: 5, text: 'Hohes Risiko (Mortalität 15-40%). Dringende Krankenhaus-/Intensivbehandlung.' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Pneumokokken-Pneumonie', distinguishing: 'Produktiver Husten, keine GI/Neuro-Symptome, normales Na' },
               { disease: 'Mykoplasmen-Pneumonie', distinguishing: 'Jüngere, langsamere Progression, Kälteagglutinine' },
@@ -1272,24 +1306,6 @@ Object.assign(window.diseases, {
                 { test: 'Rachenabstrichkultur', finding: 'GAS', significance: 'Bestätigung' }
               ]
             },
-             calculators: [
-              {
-                name: 'Centor-Score (McIsaac) - Strep A Wahrscheinlichkeit',
-                items: [
-                  { label: 'Fieber > 38°C', points: 1 },
-                  { label: 'Kein Husten', points: 1 },
-                  { label: 'Druckschmerzhafte vordere Halslymphknoten', points: 1 },
-                  { label: 'Tonsillenschwellung oder Exsudat', points: 1 },
-                  { label: 'Alter 3-14 Jahre', points: 1 },
-                  { label: 'Alter ≥ 45 Jahre', points: -1 }
-                ],
-                interpretation: [
-                  { min: -1, max: 1, text: 'Niedriges Risiko (<10%). Kein Antibiotikum erforderlich.' },
-                  { min: 2, max: 3, text: 'Mittleres Risiko (15-30%). Kultur oder Schnelltest empfohlen.' },
-                  { min: 4, max: 5, text: 'Hohes Risiko (>50%). Empirische Antibiotika oder Testung.' }
-                ]
-              }
-            ],
             differential: [
               { disease: 'Virale Pharyngitis', distinguishing: 'Milde Symptome, kein Exsudat' },
               { disease: 'Mononukleose', distinguishing: 'Lymphozytose, Hepatosplenomegalie' }
@@ -1313,7 +1329,7 @@ Object.assign(window.diseases, {
             },
             prognosis: {
               mortality: 'Niedrig',
-              prognostic_scores: ['Keine'],
+              prognostic_scores: ['Centor-Score (McIsaac)'],
               factors: 'Späte Behandlung'
             }
           },

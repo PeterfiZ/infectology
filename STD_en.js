@@ -165,11 +165,31 @@ Object.assign(window.diseases, {
             therapy: {
               guidelines: ['EACS Guidelines Version 12.0 (2023)'],
               empirical: {
-                outpatient: [
-                  { drug: 'Bictegravir / Tenofovir alafenamide (TAF) / Emtricitabine (FTC)', dose: '1 tab (50/25/200mg) PO 1x', duration: 'Lifelong', note: 'Preferred first-line (STR). Does not require HLA testing.' },
-                  { drug: 'Dolutegravir + Tenofovir (TDF/TAF) + Emtricitabine (FTC) / Lamivudine (3TC)', dose: 'Combination', duration: 'Lifelong', note: 'Preferred first-line.' },
-                  { drug: 'Dolutegravir / Lamivudine (3TC)', dose: '1 tab (50/300mg) PO 1x', duration: 'Lifelong', note: 'Dual therapy (if VL <500,000, no HBV, CD4 >200).' }
-                ]
+                drug_classes: {
+                  title: 'Antiretroviral Drug Classes',
+                  drugs: [
+                    { drug: 'NRTI (Nucleoside/Nucleotide RT Inhibitors)', dose: '-', duration: '-', note: 'e.g., Tenofovir (TDF/TAF), Emtricitabine (FTC), Lamivudine (3TC), Abacavir (ABC)' },
+                    { drug: 'INSTI (Integrase Inhibitors)', dose: '-', duration: '-', note: 'e.g., Bictegravir (BIC), Dolutegravir (DTG), Raltegravir (RAL)' },
+                    { drug: 'NNRTI (Non-Nucleoside RT Inhibitors)', dose: '-', duration: '-', note: 'e.g., Doravirine (DOR), Rilpivirine (RPV), Efavirenz (EFV)' },
+                    { drug: 'PI (Protease Inhibitors)', dose: '-', duration: '-', note: 'e.g., Darunavir (DRV), Atazanavir (ATV) - with a booster (ritonavir/cobicistat)' }
+                  ]
+                },
+                combinations: {
+                  title: 'Recommended Combinations',
+                  drugs: [
+                    { drug: '2 NRTI + 1 INSTI', dose: '-', duration: '-', note: 'Standard first-line (e.g., TAF/FTC + Bictegravir)' },
+                    { drug: '1 NRTI + 1 INSTI', dose: '-', duration: '-', note: 'Dual therapy (e.g., 3TC + Dolutegravir) - under certain conditions' },
+                    { drug: '2 NRTI + 1 NNRTI or 1 PI', dose: '-', duration: '-', note: 'Alternatives' }
+                  ]
+                },
+                regimens: {
+                  title: 'Specific Recommended Regimens (EACS)',
+                  drugs: [
+                    { drug: 'Bictegravir / Tenofovir alafenamide (TAF) / Emtricitabine (FTC)', dose: '1 tab (50/25/200mg) PO 1x', duration: 'Lifelong', note: 'Preferred first-line (STR). Does not require HLA testing.' },
+                    { drug: 'Dolutegravir + Tenofovir (TDF/TAF) + Emtricitabine (FTC) / Lamivudine (3TC)', dose: 'Combination', duration: 'Lifelong', note: 'Preferred first-line.' },
+                    { drug: 'Dolutegravir / Lamivudine (3TC)', dose: '1 tab (50/300mg) PO 1x', duration: 'Lifelong', note: 'Dual therapy (if VL <500,000, no HBV, CD4 >200).' }
+                  ]
+                }
               },
               targeted: 'Immediate ART start (Rapid initiation) is recommended. Goal: undetectable viral load (<50 cp/mL).',
               supportive: ['Opportunistic prophylaxis (PCP: TMP/SMX if CD4<200; Toxoplasma: TMP/SMX if CD4<100 and IgG+)', 'Vaccinations (Pneumococcus, Influenza, HBV, HAV, HPV, Meningococcus, VZV - live vaccine contraindicated if CD4<200)'],
@@ -204,6 +224,209 @@ Object.assign(window.diseases, {
               prognostic_scores: ['CD4 count', 'Viral load'],
               factors: 'Adherence, early diagnosis'
             }
+          },
+          {
+            id: 'gonorrhea',
+            name: 'Gonorrhea',
+            pathogen: { type: 'Bacterium', name: '<i>Neisseria gonorrhoeae</i>', gram: 'Gram-negative', shape: 'diplococcus (intracellular)' },
+            epidemiology: {
+              incidence: 'Common, increasing resistance',
+              risk_groups: ['Young adults', 'MSM', 'New sexual partner'],
+              seasonality: 'None',
+              transmission: 'Sexual, perinatal'
+            },
+            pathomechanism: {
+              steps: [
+                'Adhesion: Bacteria attach to mucosal epithelial cells (urethra, cervix, rectum, pharynx) using pili.',
+                'Invasion: Penetrate cells and subepithelial space.',
+                'Inflammation: LOS (lipooligosaccharide) and other virulence factors trigger a strong neutrophil response (purulent discharge).'
+              ],
+              virulence_factors: ['Pili', 'Opa proteins', 'IgA protease', 'LOS']
+            },
+            clinical: {
+              incubation: '2-7 days',
+              onset: 'Acute',
+              symptoms: [
+                { name: 'Men', description: 'Urethritis: profuse, yellow-green purulent discharge, dysuria. (90% symptomatic)', severity: 'moderate' },
+                { name: 'Women', description: 'Cervicitis: often asymptomatic or mild (50%). Vaginal discharge, dysuria, lower abdominal pain.', severity: 'mild' },
+                { name: 'Extragenital', description: 'Pharyngitis (often asymptomatic), Proctitis (pain, discharge), Conjunctivitis (neonates).', severity: 'moderate' }
+              ],
+              physical_exam: ['Purulent urethral/cervical discharge', 'Bartholin gland abscess', 'Fever (in DGI)'],
+              complications: ['Pelvic Inflammatory Disease (PID)', 'Infertility', 'Epididymitis', 'Disseminated Gonococcal Infection (DGI): arthritis, dermatitis']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'CBC', finding: 'Normal', interpretation: 'In local infection' }],
+              microbiology: [
+                { test: 'NAAT (PCR)', finding: 'Positive', significance: 'Gold standard (urine, swab)' },
+                { test: 'Culture', finding: 'N. gonorrhoeae', significance: 'MANDATORY for resistance testing in treatment failure!' },
+                { test: 'Microscopy', finding: 'Intracellular Gram-negative diplococci', significance: 'Diagnostic in men, less sensitive in women' }
+              ]
+            },
+            therapy: {
+              guidelines: ['IUSTI 2020 / CDC 2021'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Ceftriaxone', dose: '1g IM single dose', duration: 'Stat', note: 'First choice. Dose increased due to resistance (previously 250-500mg).' },
+                  { drug: 'Alternative (Resistance/Allergy)', dose: '-', duration: '-', note: 'Gentamicin 240mg IM + Azithromycin 2g PO. Cefixime 800mg PO (only if no other option, resistance risk!).' }
+                ]
+              },
+              targeted: 'Based on culture. Increasing Ceftriaxone resistance (esp. Asia) is a concern. Dual therapy (e.g., +Azithromycin) is not always routinely recommended anymore, only in specific cases.',
+              supportive: ['Partner treatment', 'Sexual abstinence for 7 days'],
+              prevention: ['Condoms', 'Screening']
+            },
+            prognosis: { mortality: 'Very low', prognostic_scores: [], factors: 'Complications (PID, DGI)' }
+          },
+          {
+            id: 'chlamydia',
+            name: 'Chlamydia Infection',
+            pathogen: { type: 'Bacterium', name: '<i>Chlamydia trachomatis</i> (serovars D-K)', gram: 'Gram-negative (intracellular)', shape: 'coccoid' },
+            epidemiology: {
+              incidence: 'Most common bacterial STI worldwide',
+              risk_groups: ['Young sexually active adults (<25 years)', 'New/multiple partners'],
+              seasonality: 'None',
+              transmission: 'Sexual, perinatal'
+            },
+            pathomechanism: {
+              steps: [
+                'Infectious elementary bodies (EB) enter columnar epithelial cells (cervix, urethra, rectum).',
+                'Inside the cell, they transform into reticulate bodies (RB) and replicate.',
+                'After cell lysis, new EBs are released to infect more cells.',
+                'Chronic inflammation leads to scarring, which is the basis for complications (e.g., infertility).'
+              ],
+              virulence_factors: ['Intracellular survival', 'Heat shock proteins (HSP)']
+            },
+            clinical: {
+              incubation: '1-3 weeks',
+              onset: 'Slow/Asymptomatic',
+              symptoms: [
+                { name: 'Asymptomatic ("Silent")', description: '70-80% of women and 50% of men are asymptomatic, facilitating spread and late complications.', severity: 'mild' },
+                { name: 'Women', description: 'Cervicitis: mucopurulent discharge, contact bleeding, dysuria. Lower abdominal pain (may indicate PID).', severity: 'moderate' },
+                { name: 'Men', description: 'Urethritis: dysuria, watery/glassy discharge (less purulent than gonorrhea).', severity: 'moderate' }
+              ],
+              physical_exam: ['Mucopurulent cervicitis', 'Adnexal tenderness (PID)', 'Urethral discharge'],
+              complications: ['Pelvic Inflammatory Disease (PID)', 'Infertility (tubal factor)', 'Ectopic pregnancy', 'Fitz-Hugh-Curtis syndrome (perihepatitis)', 'Reactive arthritis (Reiter\'s syndrome)', 'Neonatal conjunctivitis/pneumonia']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'CBC', finding: 'Normal', interpretation: 'Local infection' }],
+              microbiology: [
+                { test: 'NAAT (PCR)', finding: 'Positive', significance: 'Gold standard (urine, vaginal/cervical/urethral swab)' },
+                { test: 'Culture', finding: 'Difficult', significance: 'Only in special labs (cell culture)' }
+              ]
+            },
+            therapy: {
+              guidelines: ['CDC 2021 / IUSTI'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Doxycycline', dose: '100mg BID PO', duration: '7 days', note: 'First choice (better for rectal infection too).' },
+                  { drug: 'Azithromycin', dose: '1g PO', duration: 'Single dose', note: 'Alternative (e.g., in pregnancy or if compliance is an issue).' }
+                ]
+              },
+              targeted: 'Doxycycline preferred. Azithromycin in pregnancy. Partner treatment is mandatory!',
+              supportive: ['Sexual abstinence for 7 days', 'Partner notification'],
+              prevention: ['Condoms', 'Annual screening for women <25 years']
+            },
+            prognosis: { mortality: 'Very low', prognostic_scores: [], factors: 'Infertility risk increases with recurrent infections' }
+          },
+          {
+            id: 'genital_herpes',
+            name: 'Genital Herpes',
+            pathogen: { type: 'Virus', name: '<i>Herpes Simplex Virus</i> (mainly HSV-2, less commonly HSV-1)', gram: 'dsDNA', shape: 'spherical' },
+            epidemiology: {
+              incidence: 'Common, lifelong infection',
+              risk_groups: ['Sexually active adults', 'Multiple partners'],
+              seasonality: 'None',
+              transmission: 'Sexual contact (including asymptomatic shedding)'
+            },
+            pathomechanism: {
+              steps: [
+                'Virus enters through micro-abrasions in mucosa or skin.',
+                'Replicates in epithelial cells (lytic infection), then travels along sensory nerves to sacral ganglia.',
+                'Establishes latent infection. Upon reactivation (stress, immunosuppression), virus travels back to skin causing symptoms.'
+              ],
+              virulence_factors: ['Latency', 'Immune evasion']
+            },
+            clinical: {
+              incubation: '2-12 days',
+              onset: 'Sudden (primary) or prodrome (recurrent)',
+              symptoms: [
+                { name: 'Primary Infection', description: 'Severe symptoms: extensive, painful vesicles and ulcers on genitals. Often accompanied by fever, malaise, painful inguinal lymphadenopathy, and dysuria. Healing: 2-4 weeks.', severity: 'severe' },
+                { name: 'Recurrent Infection', description: 'Milder course. Often preceded by prodromal symptoms (burning, tingling). Fewer lesions, no systemic symptoms. Healing: 5-10 days.', severity: 'mild' }
+              ],
+              physical_exam: ['Grouped vesicles/ulcers', 'Inguinal lymphadenopathy (primary)', 'Cervicitis/Proctitis'],
+              complications: ['Aseptic meningitis', 'Urinary retention (autonomic dysfunction)', 'Neonatal herpes (in pregnancy!)', 'Increased risk of HIV transmission']
+            },
+            diagnostics: {
+              laboratory: [{ test: '-', finding: '-', interpretation: '-' }],
+              microbiology: [
+                { test: 'PCR', finding: 'HSV DNA', significance: 'Gold standard (most sensitive)' },
+                { test: 'Culture', finding: 'HSV', significance: 'Only from fresh vesicles' },
+                { test: 'Type-specific serology', finding: 'IgG', significance: 'Differentiation HSV-1 vs HSV-2 (not for acute diagnosis)' }
+              ]
+            },
+            therapy: {
+              guidelines: ['IUSTI / CDC'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Acyclovir', dose: '400mg TID PO', duration: '7-10 days (primary), 5 days (recurrent)', note: 'Or 200mg 5x/day.' },
+                  { drug: 'Valacyclovir', dose: '500-1000mg BID PO', duration: '7-10 days (primary), 3 days (recurrent)', note: 'Better bioavailability.' }
+                ]
+              },
+              targeted: 'Suppressive therapy (daily Acyclovir/Valacyclovir) recommended for frequent recurrences (>6/year).',
+              supportive: ['Analgesics', 'Saline sitz baths'],
+              prevention: ['Condoms (do not provide full protection)', 'Abstinence during prodrome/symptoms', 'Suppressive therapy (reduces transmission)']
+            },
+            prognosis: { mortality: 'Very low', prognostic_scores: [], factors: 'Psychological burden of recurrences' }
+          },
+          {
+            id: 'trichomoniasis',
+            name: 'Trichomoniasis',
+            pathogen: { type: 'Protozoan', name: '<i>Trichomonas vaginalis</i>', gram: '-', shape: 'pear-shaped, flagellated' },
+            epidemiology: {
+              incidence: 'Most common non-viral STI',
+              risk_groups: ['Sexually active women', 'Multiple partners'],
+              seasonality: 'None',
+              transmission: 'Sexual contact'
+            },
+            pathomechanism: {
+              steps: [
+                'The protozoan adheres to squamous epithelial cells of the vagina and urethra.',
+                'Damages epithelium via direct cytotoxicity and inflammatory response.',
+                'Alters vaginal flora (pH elevation).'
+              ],
+              virulence_factors: ['Adhesins', 'Cysteine proteases']
+            },
+            clinical: {
+              incubation: '4-28 days',
+              onset: 'Gradual',
+              symptoms: [
+                { name: 'Women', description: 'Profuse, frothy, yellow-green, foul-smelling discharge. Vulvovaginal itching, dysuria, dyspareunia. "Strawberry cervix" (colpitis macularis) on examination.', severity: 'moderate' },
+                { name: 'Men', description: 'Often asymptomatic. Can cause urethritis (discharge, dysuria), prostatitis.', severity: 'mild' }
+              ],
+              physical_exam: ['Frothy discharge', 'Strawberry cervix (punctate hemorrhages)', 'pH > 4.5'],
+              complications: ['Preterm delivery', 'Low birth weight', 'Increased risk of HIV transmission', 'PID']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Vaginal pH', finding: '> 4.5', interpretation: 'Bacterial vaginosis or Trichomonas' }],
+              microbiology: [
+                { test: 'Wet mount', finding: 'Motile flagellated protozoa', significance: 'Rapid, but low sensitivity (60-70%)' },
+                { test: 'NAAT (PCR)', finding: 'Positive', significance: 'Gold standard (most sensitive)' },
+                { test: 'Culture', finding: 'Positive', significance: 'If NAAT not available' }
+              ]
+            },
+            therapy: {
+              guidelines: ['CDC 2021 / IUSTI'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Metronidazole', dose: '2g PO single dose', duration: 'Single dose', note: 'First choice. Treat partner too!' },
+                  { drug: 'Tinidazole', dose: '2g PO single dose', duration: 'Single dose', note: 'Alternative' },
+                  { drug: 'Metronidazole', dose: '500mg BID PO', duration: '7 days', note: 'Alternative (e.g. in HIV positive)' }
+                ]
+              },
+              targeted: 'Metronidazole or Tinidazole. Alcohol consumption is forbidden during treatment (disulfiram-like effect)!',
+              supportive: ['Sexual abstinence until symptoms resolve and partner is treated'],
+              prevention: ['Condoms', 'Partner treatment']
+            },
+            prognosis: { mortality: 'Zero', prognostic_scores: [], factors: 'Reinfection common if partner untreated' }
           }
         ],
     } // End of sexually_transmitted

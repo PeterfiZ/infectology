@@ -58,6 +58,26 @@ Object.assign(window.diseases, {
                 { test: 'Finger test', finding: 'Fascia könnyen elemelhető, nincs vérzés, "mosogatólé" szerű váladék', significance: 'Bedside diagnózis' }
               ]
             },
+            calculators: [
+              {
+                name: 'LRINEC Score - Nekrotizáló fasciitis rizikó',
+                items: [
+                  { label: 'CRP ≥ 150 mg/L', points: 4 },
+                  { label: 'Fehérvérsejt 15-25 G/L', points: 1 },
+                  { label: 'Fehérvérsejt > 25 G/L', points: 2 },
+                  { label: 'Hemoglobin < 13.5 g/dL', points: 1 },
+                  { label: 'Hemoglobin < 11 g/dL', points: 2 },
+                  { label: 'Nátrium < 135 mmol/L', points: 2 },
+                  { label: 'Kreatinin > 141 µmol/L', points: 2 },
+                  { label: 'Glükóz > 10 mmol/L', points: 1 }
+                ],
+                interpretation: [
+                  { min: 0, max: 5, text: 'Alacsony kockázat (<50%). Monitorozás.' },
+                  { min: 6, max: 7, text: 'Közepes kockázat (50-75%). Szoros megfigyelés, sebészi konzílium.' },
+                  { min: 8, max: 13, text: 'Magas kockázat (>75%). Azonnali sebészi exploráció!' }
+                ]
+              }
+            ],
             differential: [
               { disease: 'Cellulitis', distinguishing: 'Nincs aránytalan fájdalom, nincs szisztémás toxicitás, lassabb' },
               { disease: 'Pyomyositis', distinguishing: 'Izom tályog, lokalizáltabb, MRI segít' },

@@ -165,11 +165,31 @@ Object.assign(window.diseases, {
             therapy: {
               guidelines: ['EACS-Leitlinien Version 12.0 (2023)'],
               empirical: {
-                outpatient: [
-                   { drug: 'Bictegravir / Tenofoviralafenamid (TAF) / Emtricitabin (FTC)', dose: '1 Tab (50/25/200mg) p.o. 1x/Tag', duration: 'Lebenslang', note: 'Bevorzugte Erstlinientherapie (STR). Erfordert keinen HLA-Test.' },
-                   { drug: 'Dolutegravir + Tenofovir (TDF/TAF) + Emtricitabin (FTC) / Lamivudin (3TC)', dose: 'Kombination', duration: 'Lebenslang', note: 'Bevorzugte Erstlinientherapie.' },
-                   { drug: 'Dolutegravir / Lamivudin (3TC)', dose: '1 Tab (50/300mg) p.o. 1x/Tag', duration: 'Lebenslang', note: 'Zweifachtherapie (wenn VL <500.000, kein HBV, CD4 >200).' }
-                ]
+                drug_classes: {
+                  title: 'Antiretrovirale Medikamentenklassen',
+                  drugs: [
+                    { drug: 'NRTI (Nukleosid-/Nukleotid-Reverse-Transkriptase-Inhibitoren)', dose: '-', duration: '-', note: 'z.B. Tenofovir (TDF/TAF), Emtricitabin (FTC), Lamivudin (3TC), Abacavir (ABC)' },
+                    { drug: 'INSTI (Integrase-Inhibitoren)', dose: '-', duration: '-', note: 'z.B. Bictegravir (BIC), Dolutegravir (DTG), Raltegravir (RAL)' },
+                    { drug: 'NNRTI (Nicht-Nukleosidische-Reverse-Transkriptase-Inhibitoren)', dose: '-', duration: '-', note: 'z.B. Doravirin (DOR), Rilpivirin (RPV), Efavirenz (EFV)' },
+                    { drug: 'PI (Protease-Inhibitoren)', dose: '-', duration: '-', note: 'z.B. Darunavir (DRV), Atazanavir (ATV) - mit Booster (Ritonavir/Cobicistat)' }
+                  ]
+                },
+                combinations: {
+                  title: 'Empfohlene Kombinationen',
+                  drugs: [
+                    { drug: '2 NRTI + 1 INSTI', dose: '-', duration: '-', note: 'Standard-Erstlinientherapie (z.B. TAF/FTC + Bictegravir)' },
+                    { drug: '1 NRTI + 1 INSTI', dose: '-', duration: '-', note: 'Zweifachtherapie (z.B. 3TC + Dolutegravir) - unter bestimmten Bedingungen' },
+                    { drug: '2 NRTI + 1 NNRTI oder 1 PI', dose: '-', duration: '-', note: 'Alternativen' }
+                  ]
+                },
+                regimens: {
+                  title: 'Spezifische empfohlene Regime (EACS)',
+                  drugs: [
+                    { drug: 'Bictegravir / Tenofoviralafenamid (TAF) / Emtricitabin (FTC)', dose: '1 Tab (50/25/200mg) p.o. 1x/Tag', duration: 'Lebenslang', note: 'Bevorzugte Erstlinientherapie (STR). Erfordert keinen HLA-Test.' },
+                    { drug: 'Dolutegravir + Tenofovir (TDF/TAF) + Emtricitabin (FTC) / Lamivudin (3TC)', dose: 'Kombination', duration: 'Lebenslang', note: 'Bevorzugte Erstlinientherapie.' },
+                    { drug: 'Dolutegravir / Lamivudin (3TC)', dose: '1 Tab (50/300mg) p.o. 1x/Tag', duration: 'Lebenslang', note: 'Zweifachtherapie (wenn VL <500.000, kein HBV, CD4 >200).' }
+                  ]
+                }
               },
               targeted: 'Sofortiger ART-Beginn (Rapid Initiation) empfohlen. Ziel: nicht nachweisbare Viruslast (<50 Kopien/ml).',
               supportive: ['Opportunistische Prophylaxe (PCP: TMP/SMX bei CD4<200; Toxoplasma: TMP/SMX bei CD4<100 und IgG+)', 'Impfungen (Pneumokokken, Influenza, HBV, HAV, HPV, Meningokokken, VZV - Lebendimpfstoff kontraindiziert bei CD4<200)'],
@@ -204,6 +224,209 @@ Object.assign(window.diseases, {
               prognostic_scores: ['CD4-Zellzahl', 'Viruslast'],
               factors: 'Adhärenz, Frühdiagnose'
             }
+          },
+          {
+            id: 'gonorrhea',
+            name: 'Gonorrhoe (Tripper)',
+            pathogen: { type: 'Bakterium', name: '<i>Neisseria gonorrhoeae</i>', gram: 'Gram-negativ', shape: 'Diplokokken (intrazellulär)' },
+            epidemiology: {
+              incidence: 'Häufig, zunehmende Resistenz',
+              risk_groups: ['Junge Erwachsene', 'MSM', 'Neuer Sexualpartner'],
+              seasonality: 'Keine',
+              transmission: 'Sexuell, perinatal'
+            },
+            pathomechanism: {
+              steps: [
+                'Adhäsion: Bakterien haften mit Pili an Schleimhautepithelzellen (Harnröhre, Zervix, Rektum, Pharynx).',
+                'Invasion: Eindringen in Zellen und subepithelialen Raum.',
+                'Entzündung: LOS (Lipooligosaccharid) und andere Virulenzfaktoren lösen eine starke Neutrophilenantwort aus (eitriger Ausfluss).'
+              ],
+              virulence_factors: ['Pili', 'Opa-Proteine', 'IgA-Protease', 'LOS']
+            },
+            clinical: {
+              incubation: '2-7 Tage',
+              onset: 'Akut',
+              symptoms: [
+                { name: 'Männer', description: 'Urethritis: reichlicher, gelb-grüner eitriger Ausfluss, Dysurie. (90% symptomatisch)', severity: 'moderate' },
+                { name: 'Frauen', description: 'Zervizitis: oft asymptomatisch oder mild (50%). Vaginaler Ausfluss, Dysurie, Unterbauchschmerzen.', severity: 'mild' },
+                { name: 'Extragenital', description: 'Pharyngitis (oft asymptomatisch), Proktitis (Schmerzen, Ausfluss), Konjunktivitis (Neugeborene).', severity: 'moderate' }
+              ],
+              physical_exam: ['Eitriger urethraler/zervikaler Ausfluss', 'Bartholin-Abszess', 'Fieber (bei DGI)'],
+              complications: ['Beckenentzündung (PID)', 'Unfruchtbarkeit', 'Epididymitis', 'Disseminierte Gonokokkeninfektion (DGI): Arthritis, Dermatitis']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Blutbild', finding: 'Normal', interpretation: 'Bei lokaler Infektion' }],
+              microbiology: [
+                { test: 'NAAT (PCR)', finding: 'Positiv', significance: 'Goldstandard (Urin, Abstrich)' },
+                { test: 'Kultur', finding: 'N. gonorrhoeae', significance: 'OBLIGATORISCH für Resistenztestung bei Therapieversagen!' },
+                { test: 'Mikroskopie', finding: 'Intrazelluläre Gram-negative Diplokokken', significance: 'Diagnostisch bei Männern, weniger sensitiv bei Frauen' }
+              ]
+            },
+            therapy: {
+              guidelines: ['IUSTI 2020 / CDC 2021'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Ceftriaxon', dose: '1g i.m. Einzeldosis', duration: 'Stat', note: 'Erste Wahl. Dosis erhöht wegen Resistenz (früher 250-500mg).' },
+                  { drug: 'Alternative (Resistenz/Allergie)', dose: '-', duration: '-', note: 'Gentamicin 240mg i.m. + Azithromycin 2g p.o. Cefixim 800mg p.o. (nur wenn keine andere Option, Resistenzrisiko!).' }
+                ]
+              },
+              targeted: 'Nach Kultur. Zunehmende Ceftriaxon-Resistenz (v.a. Asien) ist besorgniserregend. Dualtherapie (z.B. +Azithromycin) wird nicht mehr immer routinemäßig empfohlen.',
+              supportive: ['Partnerbehandlung', 'Sexuelle Abstinenz für 7 Tage'],
+              prevention: ['Kondome', 'Screening']
+            },
+            prognosis: { mortality: 'Sehr niedrig', prognostic_scores: [], factors: 'Komplikationen (PID, DGI)' }
+          },
+          {
+            id: 'chlamydia',
+            name: 'Chlamydien-Infektion',
+            pathogen: { type: 'Bakterium', name: '<i>Chlamydia trachomatis</i> (Serovare D-K)', gram: 'Gram-negativ (intrazellulär)', shape: 'kokkoid' },
+            epidemiology: {
+              incidence: 'Häufigste bakterielle STI weltweit',
+              risk_groups: ['Junge sexuell aktive Erwachsene (<25 Jahre)', 'Neue/mehrere Partner'],
+              seasonality: 'Keine',
+              transmission: 'Sexuell, perinatal'
+            },
+            pathomechanism: {
+              steps: [
+                'Infektiöse Elementarkörperchen (EB) dringen in Zylinderepithelzellen ein (Zervix, Urethra, Rektum).',
+                'In der Zelle wandeln sie sich in Retikularkörperchen (RB) um und vermehren sich.',
+                'Nach Zelllyse werden neue EBs freigesetzt, um weitere Zellen zu infizieren.',
+                'Chronische Entzündung führt zu Vernarbung, was die Grundlage für Komplikationen (z.B. Unfruchtbarkeit) ist.'
+              ],
+              virulence_factors: ['Intrazelluläres Überleben', 'Hitzeschockproteine (HSP)']
+            },
+            clinical: {
+              incubation: '1-3 Wochen',
+              onset: 'Langsam/Asymptomatisch',
+              symptoms: [
+                { name: 'Asymptomatisch ("Still")', description: '70-80% der Frauen und 50% der Männer sind asymptomatisch, was die Ausbreitung und Spätkomplikationen begünstigt.', severity: 'mild' },
+                { name: 'Frauen', description: 'Zervizitis: mukopurulenter Ausfluss, Kontaktblutung, Dysurie. Unterbauchschmerzen (kann auf PID hinweisen).', severity: 'moderate' },
+                { name: 'Männer', description: 'Urethritis: Brennen beim Wasserlassen, wässriger/glasiger Ausfluss (weniger eitrig als bei Gonorrhoe).', severity: 'moderate' }
+              ],
+              physical_exam: ['Mukopurulente Zervizitis', 'Adnex-Druckschmerz (PID)', 'Urethraler Ausfluss'],
+              complications: ['Beckenentzündung (PID)', 'Unfruchtbarkeit (tubar)', 'Eileiterschwangerschaft', 'Fitz-Hugh-Curtis-Syndrom (Perihepatitis)', 'Reaktive Arthritis (Reiter-Syndrom)', 'Neugeborenen-Konjunktivitis/Pneumonie']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Blutbild', finding: 'Normal', interpretation: 'Lokale Infektion' }],
+              microbiology: [
+                { test: 'NAAT (PCR)', finding: 'Positiv', significance: 'Goldstandard (Urin, Vaginal-/Zervikal-/Urethralabstrich)' },
+                { test: 'Kultur', finding: 'Schwierig', significance: 'Nur in Speziallabors (Zellkultur)' }
+              ]
+            },
+            therapy: {
+              guidelines: ['CDC 2021 / IUSTI'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Doxycyclin', dose: '100mg 2x/Tag p.o.', duration: '7 Tage', note: 'Erste Wahl (besser auch bei rektaler Infektion).' },
+                  { drug: 'Azithromycin', dose: '1g p.o.', duration: 'Einzeldosis', note: 'Alternative (z.B. in der Schwangerschaft oder bei Compliance-Problemen).' }
+                ]
+              },
+              targeted: 'Doxycyclin bevorzugt. Azithromycin in der Schwangerschaft. Partnerbehandlung ist obligatorisch!',
+              supportive: ['Sexuelle Abstinenz für 7 Tage', 'Partnerbenachrichtigung'],
+              prevention: ['Kondome', 'Jährliches Screening für Frauen <25 Jahre']
+            },
+            prognosis: { mortality: 'Sehr niedrig', prognostic_scores: [], factors: 'Unfruchtbarkeitsrisiko steigt mit wiederholten Infektionen' }
+          },
+          {
+            id: 'genital_herpes',
+            name: 'Herpes genitalis',
+            pathogen: { type: 'Virus', name: '<i>Herpes-Simplex-Virus</i> (meist HSV-2, seltener HSV-1)', gram: 'dsDNA', shape: 'kugelförmig' },
+            epidemiology: {
+              incidence: 'Häufig, lebenslange Infektion',
+              risk_groups: ['Sexuell aktive Erwachsene', 'Mehrere Partner'],
+              seasonality: 'Keine',
+              transmission: 'Sexueller Kontakt (auch asymptomatische Ausscheidung!)'
+            },
+            pathomechanism: {
+              steps: [
+                'Das Virus dringt durch Mikroläsionen in Schleimhaut oder Haut ein.',
+                'Vermehrung in Epithelzellen (lytische Infektion), dann Wanderung entlang sensorischer Nerven zu den Sakralganglien.',
+                'Etabliert dort eine latente Infektion. Bei Reaktivierung (Stress, Immunsuppression) wandert das Virus zurück zur Haut und verursacht Symptome.'
+              ],
+              virulence_factors: ['Latenz', 'Immunumgehung']
+            },
+            clinical: {
+              incubation: '2-12 Tage',
+              onset: 'Plötzlich (primär) oder Prodrom (rezidivierend)',
+              symptoms: [
+                { name: 'Primärinfektion', description: 'Schwere Symptome: ausgedehnte, schmerzhafte Bläschen und Geschwüre an den Genitalien. Oft begleitet von Fieber, Unwohlsein, schmerzhafter inguinaler Lymphadenopathie und Dysurie. Heilung: 2-4 Wochen.', severity: 'severe' },
+                { name: 'Rezidivierende Infektion', description: 'Milder Verlauf. Oft gehen Prodromalsymptome (Brennen, Kribbeln) voraus. Weniger Läsionen, keine systemischen Symptome. Heilung: 5-10 Tage.', severity: 'mild' }
+              ],
+              physical_exam: ['Gruppierte Vesikel/Ulzera', 'Inguinale Lymphadenopathie (primär)', 'Zervizitis/Proktitis'],
+              complications: ['Aseptische Meningitis', 'Harnverhalt (autonome Dysfunktion)', 'Neonataler Herpes (in der Schwangerschaft!)', 'Erhöhtes Risiko für HIV-Übertragung']
+            },
+            diagnostics: {
+              laboratory: [{ test: '-', finding: '-', interpretation: '-' }],
+              microbiology: [
+                { test: 'PCR', finding: 'HSV-DNA', significance: 'Goldstandard (am sensitivsten)' },
+                { test: 'Kultur', finding: 'HSV', significance: 'Nur aus frischen Bläschen' },
+                { test: 'Typspezifische Serologie', finding: 'IgG', significance: 'Unterscheidung HSV-1 vs HSV-2 (nicht für Akutdiagnose)' }
+              ]
+            },
+            therapy: {
+              guidelines: ['IUSTI / CDC'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Acyclovir', dose: '400mg 3x/Tag p.o.', duration: '7-10 Tage (primär), 5 Tage (rezidivierend)', note: 'Oder 200mg 5x/Tag.' },
+                  { drug: 'Valacyclovir', dose: '500-1000mg 2x/Tag p.o.', duration: '7-10 Tage (primär), 3 Tage (rezidivierend)', note: 'Bessere Bioverfügbarkeit.' }
+                ]
+              },
+              targeted: 'Suppressionstherapie (täglich Acyclovir/Valacyclovir) empfohlen bei häufigen Rezidiven (>6/Jahr).',
+              supportive: ['Schmerzmittel', 'Sitzbäder'],
+              prevention: ['Kondome (kein vollständiger Schutz)', 'Abstinenz bei Prodrom/Symptomen', 'Suppressionstherapie (reduziert Übertragung)']
+            },
+            prognosis: { mortality: 'Sehr niedrig', prognostic_scores: [], factors: 'Psychische Belastung durch Rezidive' }
+          },
+          {
+            id: 'trichomoniasis',
+            name: 'Trichomoniasis',
+            pathogen: { type: 'Protozoon', name: '<i>Trichomonas vaginalis</i>', gram: '-', shape: 'birnenförmig, begeißelt' },
+            epidemiology: {
+              incidence: 'Häufigste nicht-virale STI',
+              risk_groups: ['Sexuell aktive Frauen', 'Mehrere Partner'],
+              seasonality: 'Keine',
+              transmission: 'Sexueller Kontakt'
+            },
+            pathomechanism: {
+              steps: [
+                'Das Protozoon haftet an Plattenepithelzellen der Vagina und Harnröhre.',
+                'Schädigt das Epithel durch direkte Zytotoxizität und Entzündungsreaktion.',
+                'Verändert die Vaginalflora (pH-Anstieg).'
+              ],
+              virulence_factors: ['Adhäsine', 'Cystein-Proteasen']
+            },
+            clinical: {
+              incubation: '4-28 Tage',
+              onset: 'Schleichend',
+              symptoms: [
+                { name: 'Frauen', description: 'Reichlicher, schaumiger, gelb-grüner, übelriechender Ausfluss. Vulvovaginaler Juckreiz, Dysurie, Dyspareunie. "Erdbeer-Zervix" (Colpitis macularis) bei Untersuchung.', severity: 'moderate' },
+                { name: 'Männer', description: 'Oft asymptomatisch. Kann Urethritis (Ausfluss, Dysurie), Prostatitis verursachen.', severity: 'mild' }
+              ],
+              physical_exam: ['Schaumiger Ausfluss', 'Erdbeer-Zervix (punktförmige Blutungen)', 'pH > 4.5'],
+              complications: ['Frühgeburt', 'Niedriges Geburtsgewicht', 'Erhöhtes Risiko für HIV-Übertragung', 'PID']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Vaginal-pH', finding: '> 4.5', interpretation: 'Bakterielle Vaginose oder Trichomonas' }],
+              microbiology: [
+                { test: 'Nativpräparat', finding: 'Bewegliche begeißelte Protozoen', significance: 'Schnell, aber geringe Sensitivität (60-70%)' },
+                { test: 'NAAT (PCR)', finding: 'Positiv', significance: 'Goldstandard (am sensitivsten)' },
+                { test: 'Kultur', finding: 'Positiv', significance: 'Wenn NAAT nicht verfügbar' }
+              ]
+            },
+            therapy: {
+              guidelines: ['CDC 2021 / IUSTI'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Metronidazol', dose: '2g p.o. Einzeldosis', duration: 'Einzeldosis', note: 'Erste Wahl. Partner mitbehandeln!' },
+                  { drug: 'Tinidazol', dose: '2g p.o. Einzeldosis', duration: 'Einzeldosis', note: 'Alternative' },
+                  { drug: 'Metronidazol', dose: '500mg 2x/Tag p.o.', duration: '7 Tage', note: 'Alternative (z.B. bei HIV-Positiven)' }
+                ]
+              },
+              targeted: 'Metronidazol oder Tinidazol. Alkoholkonsum während der Behandlung verboten (Disulfiram-Effekt)!',
+              supportive: ['Sexuelle Abstinenz bis zum Abklingen der Symptome und Behandlung des Partners'],
+              prevention: ['Kondome', 'Partnerbehandlung']
+            },
+            prognosis: { mortality: 'Null', prognostic_scores: [], factors: 'Reinfektion häufig, wenn Partner unbehandelt' }
           }
         ]
 }, // End of sexually_transmitted

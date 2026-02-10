@@ -145,7 +145,7 @@ Object.assign(window.diseases, {
               complications: ['Végtag nekrózis/amputáció', 'Süketség', 'Halál (órák alatt)']
             },
             diagnostics: {
-              laboratory: [{ test: 'Liquor', finding: 'Gennyes', interpretation: '-' }, { test: 'PCR', finding: 'Pozitív', significance: 'Gyors' }],
+              laboratory: [{ test: 'Liquor', finding: 'Gennyes', interpretation: '-' }, { test: 'PCR', finding: 'Pozitív', interpretation: 'Gyors' }],
               microbiology: [{ test: 'Gram festés', finding: 'Gram-negatív diplococcusok', significance: 'Gyors' }]
             },
             therapy: {
@@ -579,7 +579,7 @@ Object.assign(window.diseases, {
               laboratory: [
                 { test: 'Vérkép', finding: 'Leukocytosis (60%-ban)', interpretation: 'Nem megbízható' },
                 { test: 'CRP', finding: 'Emelkedett', interpretation: 'Gyulladás' },
-                { test: 'Hemokultúra', finding: 'Pozitív', significance: 'Hematogén eredetnél fontos' }
+                { test: 'Hemokultúra', finding: 'Pozitív', interpretation: 'Hematogén eredetnél fontos' }
               ],
               imaging: [
                 { modality: 'Koponya CT/MRI', finding: 'Gyűrűszerű halmozás (ring enhancement), perifokális ödéma', significance: 'Gold standard (MRI érzékenyebb)' }

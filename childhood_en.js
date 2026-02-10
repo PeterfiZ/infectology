@@ -194,6 +194,24 @@ Object.assign(window.diseases, {
             { test: 'Rapid test (Strep A)', finding: 'Positive', significance: 'Rapid' }
           ]
         },
+        calculators: [
+          {
+            name: 'Centor Score (McIsaac) - Strep A Probability',
+            items: [
+              { label: 'Fever > 38°C', points: 1 },
+              { label: 'Absence of cough', points: 1 },
+              { label: 'Tender anterior cervical adenopathy', points: 1 },
+              { label: 'Tonsillar swelling or exudate', points: 1 },
+              { label: 'Age 3-14 years', points: 1 },
+              { label: 'Age ≥ 45 years', points: -1 }
+            ],
+            interpretation: [
+              { min: -1, max: 1, text: 'Low risk (<10%). No antibiotic needed.' },
+              { min: 2, max: 3, text: 'Intermediate risk (15-30%). Culture or rapid test recommended.' },
+              { min: 4, max: 5, text: 'High risk (>50%). Empiric antibiotics or testing.' }
+            ]
+          }
+        ],
         therapy: {
           empirical: {
             outpatient: [
@@ -214,7 +232,7 @@ Object.assign(window.diseases, {
           ],
           first_line: ['Penicillin V for 10 days. Macrolide in case of allergy.']
         },
-        prognosis: { mortality: 'Excellent with treatment' }
+        prognosis: { mortality: 'Excellent with treatment', prognostic_scores: ['Centor Score (McIsaac)'] }
       },
       {
         id: 'mononucleosis',

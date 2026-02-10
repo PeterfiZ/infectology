@@ -79,6 +79,27 @@ Object.assign(window.diseases, {
                 { test: 'Sigmoidoscopy', finding: 'Pseudomembranes', significance: 'Not routine, diagnostic' }
               ]
             },
+            calculators: [
+              {
+                name: 'ATLAS Score - C. difficile Outcome',
+                items: [
+                  { label: 'Age 60-79 years', points: 1 },
+                  { label: 'Age ≥ 80 years', points: 2 },
+                  { label: 'Systemic antibiotic treatment during CDI therapy', points: 2 },
+                  { label: 'WBC 16-25 G/L', points: 1 },
+                  { label: 'WBC > 25 G/L', points: 2 },
+                  { label: 'Albumin 26-35 g/L', points: 1 },
+                  { label: 'Albumin ≤ 25 g/L', points: 2 },
+                  { label: 'Creatinine 121-179 µmol/L', points: 1 },
+                  { label: 'Creatinine ≥ 180 µmol/L', points: 2 }
+                ],
+                interpretation: [
+                  { min: 0, max: 2, text: '0-2 points: Low risk. 30-day mortality 0-5%.' },
+                  { min: 3, max: 5, text: '3-5 points: Moderate risk. 30-day mortality 10-20%.' },
+                  { min: 6, max: 10, text: '6-10 points: High risk. 30-day mortality >30%.' }
+                ]
+              }
+            ],
             therapy: {
               empirical: {
                 outpatient: [

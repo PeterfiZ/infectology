@@ -191,6 +191,26 @@ Object.assign(window.diseases, {
             { test: 'Schnelltest (Strep A)', finding: 'Positiv', significance: 'Schnell' }
           ]
         },
+        calculators: [
+          {
+            name: 'Centor-Score (McIsaac) - Strep A Wahrscheinlichkeit',
+            items: [
+              { label: 'Fieber > 38°C', points: 1 },
+              { label: 'Kein Husten', points: 1 },
+              { label: 'Druckschmerzhafte vordere Halslymphknoten', points: 1 },
+              { label: 'Tonsillenschwellung oder Exsudat', points: 1 },
+              { label: 'Alter 3-14 Jahre', points: 1 },
+              { label: 'Alter ≥ 45 Jahre', points: -1 }
+            ],
+            interpretation: [
+              { min: -1, max: 1, text: 'Niedriges Risiko (<10%). Kein Antibiotikum erforderlich.' },
+              { min: 2, max: 3, text: 'Mittleres Risiko (15-30%). Kultur oder Schnelltest empfohlen.' },
+              { min: 4, max: 5, text: 'Hohes Risiko (>50%). Empirische Antibiotika oder Testung.' }
+            ]
+          }
+        ]
+      },
+      {
         therapy: {
           empirical: {
             outpatient: [
@@ -211,7 +231,7 @@ Object.assign(window.diseases, {
           ],
           first_line: ['Penicillin V für 10 Tage. Bei Allergie Makrolid.']
         },
-        prognosis: { mortality: 'Mit Behandlung ausgezeichnet' }
+        prognosis: { mortality: 'Mit Behandlung ausgezeichnet', prognostic_scores: ['Centor-Score (McIsaac)'] }
       },
       {
         id: 'mononucleosis',

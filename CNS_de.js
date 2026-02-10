@@ -145,7 +145,7 @@ Object.assign(window.diseases, {
               complications: ['Gliedmaßennekrose/Amputation', 'Taubheit', 'Tod (innerhalb von Stunden)']
             },
             diagnostics: {
-              laboratory: [{ test: 'Liquor', finding: 'Eitrig', interpretation: '-' }, { test: 'PCR', finding: 'Positiv', significance: 'Schnell' }],
+              laboratory: [{ test: 'Liquor', finding: 'Eitrig', interpretation: '-' }, { test: 'PCR', finding: 'Positiv', interpretation: 'Schnell' }],
               microbiology: [{ test: 'Gram-Färbung', finding: 'Gram-negative Diplokokken', significance: 'Schnell' }]
             },
             therapy: {
@@ -579,7 +579,7 @@ Object.assign(window.diseases, {
               laboratory: [
                 { test: 'Blutbild', finding: 'Leukozytose (in 60%)', interpretation: 'Unzuverlässig' },
                 { test: 'CRP', finding: 'Erhöht', interpretation: 'Entzündung' },
-                { test: 'Blutkultur', finding: 'Positiv', significance: 'Wichtig bei hämatogenem Ursprung' }
+                { test: 'Blutkultur', finding: 'Positiv', interpretation: 'Wichtig bei hämatogenem Ursprung' }
               ],
               imaging: [
                 { modality: 'Schädel-CT/MRT', finding: 'Ringförmige Anreicherung (Ring-Enhancement), perifokales Ödem', significance: 'Goldstandard (MRT ist sensitiver)' }

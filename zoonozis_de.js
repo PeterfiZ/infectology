@@ -251,7 +251,7 @@ Object.assign(window.diseases, {
                   { drug: 'Ceftriaxon', dose: '1x2 g i.v.', duration: '14-28 Tage', note: 'Schwere Neuroborreliose (z.B. Enzephalitis), Karditis (hochgradiger Block), refraktäre Arthritis' }
                 ]
               },
-              targeted: 'Frühe Lokalinfektion (EM): Doxycyclin 10 Tage. Neuroborreliose (Bannwarth): Doxycyclin p.o. (genauso wirksam wie i.v. Ceftriaxon!) 14 Tage. Arthritis: Doxycyclin 28 Tage.',
+              targeted: 'Frühe Lokalinfektion (EM): Doxycyclin 10 Tage. Neuroborreliose (Bannwarth): Doxycyclin p.o. (genauso wirksam wie i.v. Ceftriaxon!) 14 Tage. Arthritis: Doxycyclin 28 Tage. Post-Lyme-Syndrom: Langzeitantibiotika NICHT empfohlen (unwirksam). Symptomatische Behandlung.',
               supportive: ['Symptomatische Behandlung', 'Physiotherapie'],
               prevention: ['Frühzeitige Zeckenentfernung', 'Schutzkleidung', 'Antibiotikaprophylaxe nach Stich NICHT empfohlen (ungarische Leitlinie)']
             },

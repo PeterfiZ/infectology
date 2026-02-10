@@ -57,7 +57,27 @@ Object.assign(window.diseases, {
                 { test: 'Blood culture', finding: 'Positive (mainly Type II)', significance: 'Systemic spread' },
                 { test: 'Finger test', finding: 'Fascia easily separated, no bleeding, "dishwater" pus', significance: 'Bedside diagnosis' }
               ]
-            }, 
+            },
+            calculators: [
+              {
+                name: 'LRINEC Score - Necrotizing Fasciitis Risk',
+                items: [
+                  { label: 'CRP ≥ 150 mg/L', points: 4 },
+                  { label: 'WBC 15-25 G/L', points: 1 },
+                  { label: 'WBC > 25 G/L', points: 2 },
+                  { label: 'Hemoglobin < 13.5 g/dL', points: 1 },
+                  { label: 'Hemoglobin < 11 g/dL', points: 2 },
+                  { label: 'Sodium < 135 mmol/L', points: 2 },
+                  { label: 'Creatinine > 141 µmol/L', points: 2 },
+                  { label: 'Glucose > 10 mmol/L', points: 1 }
+                ],
+                interpretation: [
+                  { min: 0, max: 5, text: 'Low risk (<50%). Monitor.' },
+                  { min: 6, max: 7, text: 'Intermediate risk (50-75%). Close observation, surgical consult.' },
+                  { min: 8, max: 13, text: 'High risk (>75%). Immediate surgical exploration!' }
+                ]
+              }
+            ], 
             differential: [
               { disease: 'Cellulitis', distinguishing: 'No disproportionate pain, no systemic toxicity, slower' },
               { disease: 'Pyomyositis', distinguishing: 'Muscle abscess, more localized, MRI helps' },
@@ -257,7 +277,7 @@ Object.assign(window.diseases, {
                   { drug: 'Cephalexin', dose: '4x500 mg PO', duration: '7-10 days', note: 'Alternative' }
                 ],
                 inpatient: [
-                  { drug: 'Amoxicillin/Clavulanate', dose: '875/125 mg PO TID mg PO', duration: '7-10 days', note: 'Alternative' },
+                  { drug: 'Amoxicillin/Clavulanate', dose: '875/125 mg PO TID', duration: '7-10 days', note: 'Alternative' },
                   { drug: 'Cefazolin', dose: '3x1g IV', duration: '7-10 days', note: 'Alternative' },
                   { drug: 'Ceftriaxone', dose: '1x2 g IV', duration: '7-10 days', note: 'In severe cases' },
                   { drug: '+ Vancomycin', dose: '2x15-20 mg/kg IV', duration: '', note: 'If MRSA is suspected' }

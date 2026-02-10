@@ -165,11 +165,31 @@ Object.assign(window.diseases, {
             therapy: {
               guidelines: ['EACS Guidelines Version 12.0 (2023)'],
               empirical: {
-                outpatient: [
-                  { drug: 'Bictegravir / Tenofovir-alafenamid (TAF) / Emtricitabin (FTC)', dose: '1 tab (50/25/200mg) PO 1x', duration: 'Élethosszig', note: 'Preferált első vonal (STR). Nem igényel HLA tesztet.' },
-                  { drug: 'Dolutegravir + Tenofovir (TDF/TAF) + Emtricitabin (FTC) / Lamivudin (3TC)', dose: 'Kombináció', duration: 'Élethosszig', note: 'Preferált első vonal.' },
-                  { drug: 'Dolutegravir / Lamivudin (3TC)', dose: '1 tab (50/300mg) PO 1x', duration: 'Élethosszig', note: 'Kettős terápia (ha VL <500.000, nincs HBV, CD4 >200).' }
-                ]
+                drug_classes: {
+                  title: 'Antiretrovirális gyógyszercsoportok',
+                  drugs: [
+                    { drug: 'NRTI (Nukleozid/Nukleotid RT inhibitorok)', dose: '-', duration: '-', note: 'Pl. Tenofovir (TDF/TAF), Emtricitabin (FTC), Lamivudin (3TC), Abacavir (ABC)' },
+                    { drug: 'INSTI (Integráz inhibitorok)', dose: '-', duration: '-', note: 'Pl. Bictegravir (BIC), Dolutegravir (DTG), Raltegravir (RAL)' },
+                    { drug: 'NNRTI (Nem-nukleozid RT inhibitorok)', dose: '-', duration: '-', note: 'Pl. Doravirin (DOR), Rilpivirin (RPV), Efavirenz (EFV)' },
+                    { drug: 'PI (Proteáz inhibitorok)', dose: '-', duration: '-', note: 'Pl. Darunavir (DRV), Atazanavir (ATV) - boosterrel (ritonavir/cobicistat)' }
+                  ]
+                },
+                combinations: {
+                  title: 'Javasolt kombinációk',
+                  drugs: [
+                    { drug: '2 NRTI + 1 INSTI', dose: '-', duration: '-', note: 'Standard első vonal (pl. TAF/FTC + Bictegravir)' },
+                    { drug: '1 NRTI + 1 INSTI', dose: '-', duration: '-', note: 'Kettős terápia (pl. 3TC + Dolutegravir) - bizonyos feltételekkel' },
+                    { drug: '2 NRTI + 1 NNRTI vagy 1 PI', dose: '-', duration: '-', note: 'Alternatívák' }
+                  ]
+                },
+                regimens: {
+                  title: 'Konkrét ajánlott rezsimek (EACS)',
+                  drugs: [
+                    { drug: 'Bictegravir / Tenofovir-alafenamid (TAF) / Emtricitabin (FTC)', dose: '1 tab (50/25/200mg) PO 1x', duration: 'Élethosszig', note: 'Preferált első vonal (STR). Nem igényel HLA tesztet.' },
+                    { drug: 'Dolutegravir + Tenofovir (TDF/TAF) + Emtricitabin (FTC) / Lamivudin (3TC)', dose: 'Kombináció', duration: 'Élethosszig', note: 'Preferált első vonal.' },
+                    { drug: 'Dolutegravir / Lamivudin (3TC)', dose: '1 tab (50/300mg) PO 1x', duration: 'Élethosszig', note: 'Kettős terápia (ha VL <500.000, nincs HBV, CD4 >200).' }
+                  ]
+                }
               },
               targeted: 'Azonnali ART indítás (Rapid initiation) javasolt. Cél: undetectable viral load (<50 cp/mL).',
               supportive: ['Opportunista profilaxis (PCP: TMP/SMX ha CD4<200; Toxoplasma: TMP/SMX ha CD4<100 és IgG+)', 'Védőoltások (Pneumococcus, Influenza, HBV, HAV, HPV, Meningococcus, VZV - élő oltás kontraindikált ha CD4<200)'],
@@ -204,6 +224,209 @@ Object.assign(window.diseases, {
               prognostic_scores: ['CD4 szám', 'Viral load'],
               factors: 'Adherencia, korai diagnózis'
             }
+          },
+          {
+            id: 'gonorrhea',
+            name: 'Gonorrhea (Kankó)',
+            pathogen: { type: 'Baktérium', name: '<i>Neisseria gonorrhoeae</i>', gram: 'Gram-negatív', shape: 'diplococcus (intracelluláris)' },
+            epidemiology: {
+              incidence: 'Gyakori, növekvő rezisztencia',
+              risk_groups: ['Fiatal felnőttek', 'MSM', 'Új szexuális partner'],
+              seasonality: 'Nincs',
+              transmission: 'Szexuális, perinatális'
+            },
+            pathomechanism: {
+              steps: [
+                'Adhézió: A baktériumok a pili segítségével tapadnak a nyálkahártya hámsejtjeihez (urethra, cervix, rectum, pharynx).',
+                'Invázió: Behatolnak a sejtekbe és a subepithelialis térbe.',
+                'Gyulladás: A LOS (lipooligoszacharid) és más virulenciafaktorok erős neutrofil választ váltanak ki (gennyes váladék).'
+              ],
+              virulence_factors: ['Pili', 'Opa proteinek', 'IgA proteáz', 'LOS']
+            },
+            clinical: {
+              incubation: '2-7 nap',
+              onset: 'Akut',
+              symptoms: [
+                { name: 'Férfiak', description: 'Urethritis: bőséges, sárgás-zöldes gennyes folyás, dysuria. (90% tünetes)', severity: 'moderate' },
+                { name: 'Nők', description: 'Cervicitis: gyakran tünetszegény vagy tünetmentes (50%). Hüvelyi folyás, dysuria, alhasi fájdalom.', severity: 'mild' },
+                { name: 'Extragenitális', description: 'Pharyngitis (gyakran tünetmentes), Proctitis (fájdalom, folyás), Conjunctivitis (újszülöttek).', severity: 'moderate' }
+              ],
+              physical_exam: ['Gennyes urethralis/cervicalis váladék', 'Bartholin mirigy tályog', 'Láz (DGI esetén)'],
+              complications: ['Kismedencei gyulladás (PID)', 'Meddőség', 'Epididymitis', 'Disszeminált Gonococcus Infekció (DGI): arthritis, dermatitis']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Vérkép', finding: 'Normál', interpretation: 'Lokális fertőzésnél' }],
+              microbiology: [
+                { test: 'NAAT (PCR)', finding: 'Pozitív', significance: 'Gold standard (vizelet, törlet)' },
+                { test: 'Tenyésztés', finding: 'N. gonorrhoeae', significance: 'Rezisztencia vizsgálathoz KÖTELEZŐ terápia kudarc esetén!' },
+                { test: 'Mikroszkópia', finding: 'Intracelluláris Gram-negatív diplococcusok', significance: 'Férfiaknál diagnosztikus, nőknél nem elég érzékeny' }
+              ]
+            },
+            therapy: {
+              guidelines: ['IUSTI 2020 / CDC 2021'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Ceftriaxon', dose: '1g IM egyszeri', duration: 'Stat', note: 'Első választás. Dózis emelve a rezisztencia miatt (korábban 250-500mg volt).' },
+                  { drug: 'Alternatíva (Rezisztencia/Allergia)', dose: '-', duration: '-', note: 'Gentamicin 240mg IM + Azithromycin 2g PO. Cefixim 800mg PO (csak ha nincs más, rezisztencia veszély!).' }
+                ]
+              },
+              targeted: 'Tenyésztés alapján. Növekvő Ceftriaxon rezisztencia (főleg Ázsiában) aggodalomra ad okot. Kettős terápia (pl. +Azithromycin) rutinszerűen már nem mindig ajánlott, csak indokolt esetben.',
+              supportive: ['Partner kezelése (ping-pong effektus)', 'Szexuális absztinencia 7 napig'],
+              prevention: ['Óvszer', 'Szűrés']
+            },
+            prognosis: { mortality: 'Nagyon alacsony', prognostic_scores: [], factors: 'Szövődmények (PID, DGI)' }
+          },
+          {
+            id: 'chlamydia',
+            name: 'Chlamydia fertőzés',
+            pathogen: { type: 'Baktérium', name: '<i>Chlamydia trachomatis</i> (D-K szerotípusok)', gram: 'Gram-negatív (intracelluláris)', shape: 'kokkoid' },
+            epidemiology: {
+              incidence: 'Leggyakoribb bakteriális STD világszerte',
+              risk_groups: ['Fiatal szexuálisan aktív felnőttek (<25 év)', 'Új/több partner'],
+              seasonality: 'Nincs',
+              transmission: 'Szexuális, perinatális'
+            },
+            pathomechanism: {
+              steps: [
+                'A fertőző elemi testek (EB) bejutnak a hengerhámsejtekbe (cervix, urethra, rectum).',
+                'A sejten belül retikuláris testekké (RB) alakulnak és szaporodnak.',
+                'A sejtek lízise után az új EB-k kiszabadulnak és további sejteket fertőznek.',
+                'A krónikus gyulladás hegesedést okoz, ami a szövődmények (pl. meddőség) alapja.'
+              ],
+              virulence_factors: ['Intracelluláris túlélés', 'Hősokk proteinek (HSP)']
+            },
+            clinical: {
+              incubation: '1-3 hét',
+              onset: 'Lassú/Tünetmentes',
+              symptoms: [
+                { name: 'Tünetmentes ("Csendes")', description: 'A nők 70-80%-a és a férfiak 50%-a tünetmentes, ami elősegíti a terjedést és a késői szövődményeket.', severity: 'mild' },
+                { name: 'Nők', description: 'Cervicitis: mucopurulens folyás, kontakt vérzés, dysuria. Alhasi fájdalom (PID jele lehet).', severity: 'moderate' },
+                { name: 'Férfiak', description: 'Urethritis: vizelési csípés, híg/üveges folyás (kevésbé gennyes mint a gonorrhoea).', severity: 'moderate' }
+              ],
+              physical_exam: ['Mucopurulens cervicitis', 'Adnexalis érzékenység (PID)', 'Urethralis folyás'],
+              complications: ['Kismedencei gyulladás (PID)', 'Meddőség (tubaris eredetű)', 'Méhen kívüli terhesség', 'Fitz-Hugh-Curtis szindróma (perihepatitis)', 'Reaktív arthritis (Reiter-kór)', 'Újszülöttkori conjunctivitis/pneumonia']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Vérkép', finding: 'Normál', interpretation: 'Lokális fertőzés' }],
+              microbiology: [
+                { test: 'NAAT (PCR)', finding: 'Pozitív', significance: 'Gold standard (vizelet, hüvely/cervix/urethra törlet)' },
+                { test: 'Tenyésztés', finding: 'Nehéz', significance: 'Csak speciális laborban (sejttenyészet)' }
+              ]
+            },
+            therapy: {
+              guidelines: ['CDC 2021 / IUSTI'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Doxycyclin', dose: '2x100mg PO', duration: '7 nap', note: 'Első választás (jobb a rectalis fertőzésre is).' },
+                  { drug: 'Azithromycin', dose: '1g PO', duration: 'Egyszeri', note: 'Alternatíva (pl. terhességben, vagy ha a compliance kérdéses).' }
+                ]
+              },
+              targeted: 'Doxycyclin preferált. Terhességben Azithromycin. Partner kezelése kötelező!',
+              supportive: ['Szexuális absztinencia 7 napig', 'Partner értesítése'],
+              prevention: ['Óvszer', 'Éves szűrés <25 éves nőknek']
+            },
+            prognosis: { mortality: 'Nagyon alacsony', prognostic_scores: [], factors: 'Meddőség kockázata ismétlődő fertőzéseknél nő' }
+          },
+          {
+            id: 'genital_herpes',
+            name: 'Herpes genitalis',
+            pathogen: { type: 'Vírus', name: '<i>Herpes Simplex Vírus</i> (főleg HSV-2, ritkábban HSV-1)', gram: 'dsDNS', shape: 'gömb' },
+            epidemiology: {
+              incidence: 'Gyakori, élethosszig tartó fertőzés',
+              risk_groups: ['Szexuálisan aktív felnőttek', 'Több partner'],
+              seasonality: 'Nincs',
+              transmission: 'Szexuális kontaktus (tünetmentes ürítés is!)'
+            },
+            pathomechanism: {
+              steps: [
+                'A vírus a nyálkahártya vagy bőr mikrosérülésein keresztül jut be.',
+                'A hámsejtekben szaporodik (lítikus fertőzés), majd az érzőidegek mentén a szakrális ganglionokba vándorol.',
+                'Itt látens fertőzést alakít ki. Reaktivációkor (stressz, immunszuppresszió) a vírus visszavándorol a bőrre és tüneteket okoz.'
+              ],
+              virulence_factors: ['Latencia', 'Immunelkerülés']
+            },
+            clinical: {
+              incubation: '2-12 nap',
+              onset: 'Hirtelen (primer) vagy prodroma (rekurrens)',
+              symptoms: [
+                { name: 'Primer fertőzés', description: 'Súlyos tünetek: kiterjedt, fájdalmas hólyagok és fekélyek a genitáliákon. Gyakran kíséri láz, rossz közérzet, fájdalmas inguinalis nyirokcsomó-duzzanat és dysuria. Gyógyulás: 2-4 hét.', severity: 'severe' },
+                { name: 'Rekurrens fertőzés', description: 'Enyhébb lefolyás. Gyakran prodromális tünetek (égő, bizsergő érzés) előzik meg. Kevesebb lézió, nincs szisztémás tünet. Gyógyulás: 5-10 nap.', severity: 'mild' }
+              ],
+              physical_exam: ['Csoportos vezikulák/fekélyek', 'Inguinalis lymphadenopathia (primer)', 'Cervicitis/Proctitis'],
+              complications: ['Asepticus meningitis', 'Vizeletretenció (autonóm diszfunkció)', 'Neonatalis herpes (terhességben!)', 'HIV transzmisszió fokozott kockázata']
+            },
+            diagnostics: {
+              laboratory: [{ test: '-', finding: '-', interpretation: '-' }],
+              microbiology: [
+                { test: 'PCR', finding: 'HSV DNS', significance: 'Gold standard (legérzékenyebb)' },
+                { test: 'Tenyésztés', finding: 'HSV', significance: 'Csak friss hólyagból' },
+                { test: 'Típus-specifikus szerológia', finding: 'IgG', significance: 'HSV-1 vs HSV-2 elkülönítés (nem akut diagnózisra)' }
+              ]
+            },
+            therapy: {
+              guidelines: ['IUSTI / CDC'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Acyclovir', dose: '3x400mg PO', duration: '7-10 nap (primer), 5 nap (rekurrens)', note: 'Vagy 5x200mg.' },
+                  { drug: 'Valacyclovir', dose: '2x500-1000mg PO', duration: '7-10 nap (primer), 3 nap (rekurrens)', note: 'Jobb biohasznosulás.' }
+                ]
+              },
+              targeted: 'Szuppresszív terápia (napi Acyclovir/Valacyclovir) javasolt gyakori kiújulás (>6/év) esetén.',
+              supportive: ['Fájdalomcsillapítás', 'Sós ülőfürdő'],
+              prevention: ['Óvszer (nem nyújt teljes védelmet)', 'Absztinencia prodroma/tünetek alatt', 'Szuppresszív terápia (csökkenti az átvitelt)']
+            },
+            prognosis: { mortality: 'Nagyon alacsony', prognostic_scores: [], factors: 'Gyakori kiújulás pszichés teher' }
+          },
+          {
+            id: 'trichomoniasis',
+            name: 'Trichomoniasis',
+            pathogen: { type: 'Protozoon', name: '<i>Trichomonas vaginalis</i>', gram: '-', shape: 'körte alakú, ostoros' },
+            epidemiology: {
+              incidence: 'Leggyakoribb nem virális STD',
+              risk_groups: ['Szexuálisan aktív nők', 'Több partner'],
+              seasonality: 'Nincs',
+              transmission: 'Szexuális kontaktus'
+            },
+            pathomechanism: {
+              steps: [
+                'A protozoon a hüvely és a húgycső laphámsejtjeihez tapad.',
+                'Direkt citotoxikus hatással és gyulladásos válasz kiváltásával károsítja a hámot.',
+                'Megváltoztatja a hüvelyflórát (pH emelkedés).'
+              ],
+              virulence_factors: ['Adhezinek', 'Cisztein-proteázok']
+            },
+            clinical: {
+              incubation: '4-28 nap',
+              onset: 'Fokozatos',
+              symptoms: [
+                { name: 'Nők', description: 'Bőséges, habos, zöldes-sárgás, bűzös folyás. Vulvovaginalis viszketés, dysuria, dyspareunia. "Eper-cervix" (colpitis macularis) a vizsgálatkor.', severity: 'moderate' },
+                { name: 'Férfiak', description: 'Gyakran tünetmentes. Okozhat urethritist (folyás, dysuria), prostatitist.', severity: 'mild' }
+              ],
+              physical_exam: ['Habos folyás', 'Eper-cervix (pontszerű bevérzések)', 'pH > 4.5'],
+              complications: ['Koraszülés', 'Alacsony születési súly', 'HIV transzmisszió fokozott kockázata', 'PID']
+            },
+            diagnostics: {
+              laboratory: [{ test: 'Hüvely pH', finding: '> 4.5', interpretation: 'Bakteriális vaginosis vagy Trichomonas' }],
+              microbiology: [
+                { test: 'Nedves kenet (Wet mount)', finding: 'Mozgó ostoros protozoonok', significance: 'Gyors, de alacsony szenzitivitás (60-70%)' },
+                { test: 'NAAT (PCR)', finding: 'Pozitív', significance: 'Gold standard (legérzékenyebb)' },
+                { test: 'Tenyésztés', finding: 'Pozitív', significance: 'Ha NAAT nem elérhető' }
+              ]
+            },
+            therapy: {
+              guidelines: ['CDC 2021 / IUSTI'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Metronidazol', dose: '2g PO egyszeri', duration: 'Egyszeri', note: 'Első választás. Partner kezelése is!' },
+                  { drug: 'Tinidazol', dose: '2g PO egyszeri', duration: 'Egyszeri', note: 'Alternatíva' },
+                  { drug: 'Metronidazol', dose: '2x500mg PO', duration: '7 nap', note: 'Alternatíva (pl. HIV pozitívaknál)' }
+                ]
+              },
+              targeted: 'Metronidazol vagy Tinidazol. Alkohol fogyasztása tilos a kezelés alatt (diszulfirám hatás)!',
+              supportive: ['Szexuális absztinencia a tünetek megszűnéséig és a partner kezeléséig'],
+              prevention: ['Óvszer', 'Partner kezelése']
+            },
+            prognosis: { mortality: 'Nulla', prognostic_scores: [], factors: 'Reinfekció gyakori ha a partner kezeletlen' }
           }
         ]
     } // End of sexually_transmitted

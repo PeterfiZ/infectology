@@ -52,11 +52,28 @@ Object.assign(window.diseases, {
                 { test: 'Vérkép', finding: 'Leukocytosis vagy leukopenia', interpretation: 'Gyulladás' }
               ],
               imaging: [
-                { modality: 'CT/Rtg/UH', finding: 'Fókusz keresés', significance: 'Forrás kontroll miatt kulcsfontosságú' }
+                { modality: 'CT/Rtg/UH', finding: 'Góckeresés', significance: 'Forrás kontroll miatt kulcsfontosságú' }
               ],
               microbiology: [
                 { test: 'Hemokultúra', finding: 'Kórokozó azonosítás', significance: 'Célzott terápia alapja' },
-                { test: 'Egyéb tenyésztés', finding: 'Vizelet, köpet, seb, liquor', significance: 'Fókusz függő' }
+                { test: 'Egyéb tenyésztés', finding: 'Vizelet, köpet, seb, liquor', significance: 'Góc függő' }
+              ],
+              scores: [
+                'SOFA score (≥2 pont változás a baseline-hoz képest a szepszis definíciója)'
+              ],
+              calculators: [
+                {
+                  name: 'qSOFA (quick SOFA) - Szepszis szűrés',
+                  items: [
+                    { label: 'Légzésszám ≥ 22/perc', points: 1 },
+                    { label: 'Megváltozott tudatállapot (GCS < 15)', points: 1 },
+                    { label: 'Szisztolés vérnyomás ≤ 100 Hgmm', points: 1 }
+                  ],
+                  interpretation: [
+                    { min: 0, max: 1, text: 'Alacsony kockázat. Monitorozás, szükség esetén újraértékelés.' },
+                    { min: 2, max: 3, text: 'Magas kockázat a rossz kimenetelre. Szepszis gyanúja megerősítendő, SOFA pontszám felmérése javasolt.' }
+                  ]
+                }
               ]
             },
             differential: [
@@ -68,15 +85,25 @@ Object.assign(window.diseases, {
             therapy: {
               guidelines: ['Surviving Sepsis Campaign 2021'],
               empirical: {
-                initial_management: [
-                  { drug: 'Antibiotikumok', dose: 'Széles spektrumú IV', duration: '1 órán belül!', note: 'Hemokultúra levétele után. Fókuszfüggő választás (pl. Pip/Tazo, Meropenem).' },
-                  { drug: 'Volumenpótlás', dose: '30 ml/kg krisztalloid', duration: 'Első 3 órában', note: 'Hypotonia vagy laktát ≥4 mmol/L esetén.' }
-                ],
-                icu: [
-                  { drug: 'Noradrenalin', dose: 'MAP >65 Hgmm tartása', duration: 'Folyamatos', note: 'Első választású vazopresszor.' },
-                  { drug: 'Vazopresszin', dose: 'max 0.03 U/perc', duration: 'Folyamatos', note: 'Noradrenalin mellé adható a dózis csökkentésére vagy ha a dózis magas.' },
-                  { drug: 'Hidrokortizon', dose: '200mg/nap (pl. 50mg 6 óránként)', duration: 'Folyamatos', note: 'Ha a vazopresszor igény perzisztál (refrakter shock).' }
-                ]
+                sepsis_six: {
+                  title: 'Sepsis Six Csomag (Az első órán belül!)',
+                  drugs: [
+                    { drug: '1. Oxigén adása', dose: 'Cél SpO2 >94%', duration: 'Azonnal', note: 'Magas áramlású oxigén, ha szükséges.' },
+                    { drug: '2. Hemokultúra levétele', dose: '2 szett', duration: 'AB előtt', note: 'Perifériás vénából (és kanülből ha van).' },
+                    { drug: '3. IV Antibiotikum', dose: 'Széles spektrum', duration: '1 órán belül', note: 'Fókuszfüggő (pl. Pip/Tazo, Meropenem).' },
+                    { drug: '4. Folyadékpótlás', dose: '30 ml/kg krisztalloid', duration: 'Bólusban', note: 'Hypotonia vagy Laktát ≥4 mmol/L esetén. Kiegyensúlyozott krisztalloid (pl. Ringer) preferált. Albumin adható nagy volumen esetén. HES/zselatin kerülendő!' },
+                    { drug: '5. Laktát mérése', dose: 'Vérből', duration: 'Sorozatosan', note: 'Szöveti perfúzió monitorozása.' },
+                    { drug: '6. Vizeletkibocsátás', dose: 'Monitorozás', duration: 'Óránként', note: 'Vesefunkció és folyadékegyensúly követése.' }
+                  ]
+                },
+                icu: {
+                  title: 'Intenzív terápiás kezelés',
+                  drugs: [
+                    { drug: 'Noradrenalin', dose: 'MAP >65 Hgmm tartása', duration: 'Folyamatos', note: 'Első választású vazopresszor.' },
+                    { drug: 'Vazopresszin', dose: 'max 0.03 U/perc', duration: 'Folyamatos', note: 'Noradrenalin mellé adható.' },
+                    { drug: 'Hidrokortizon', dose: '200mg/nap', duration: 'Folyamatos', note: 'Refrakter shock esetén.' }
+                  ]
+                }
               },
               targeted: 'Antibiogram alapján de-eszkaláció (PCT segíthet a döntésben). Forráskontroll (tályogdrenázs, nekrotikus szövet eltávolítása) elengedhetetlen.',
               supportive: ['Laktát-clearance követése', 'Lélegeztetés (ARDS protokoll)', 'Vesepótló kezelés (CRRT)', 'Vércukorkontroll', 'Trombózisprofilaxis', 'Stresszfekély-profilaxis'],
@@ -84,7 +111,7 @@ Object.assign(window.diseases, {
             },
             prognosis: {
               mortality: 'Szepszis: 10-20%, Szeptikus shock: 40-60%',
-              prognostic_scores: ['SOFA score (≥2 pont változás)', 'qSOFA (szűrés)', 'APACHE II'],
+              prognostic_scores: ['SOFA score (≥2 ≥2 pont változás a baseline-hoz képest)', 'qSOFA (szűrés): RR ≥22/perc, Tudatzavar (GCS<15', 'APACHE II'],
               factors: 'Életkor, komorbiditás, laktát szint, shock időtartama, forrás kontroll sikere'
             }
           },

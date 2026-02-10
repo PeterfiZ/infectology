@@ -57,6 +57,24 @@ Object.assign(window.diseases, {
               microbiology: [
                 { test: 'Blood culture', finding: 'Pathogen identification', significance: 'Basis for targeted therapy' },
                 { test: 'Other cultures', finding: 'Urine, sputum, wound, CSF', significance: 'Source dependent' }
+              ],
+              scores: [
+                'SOFA score (≥2 points change from baseline defines sepsis)',
+                'qSOFA (screening): Respiratory rate ≥22/min, Altered mentation (GCS<15), Systolic BP ≤100 mmHg'
+              ],
+              calculators: [
+                {
+                  name: 'qSOFA (quick SOFA) - Sepsis Screening',
+                  items: [
+                    { label: 'Respiratory rate ≥ 22/min', points: 1 },
+                    { label: 'Altered mentation (GCS < 15)', points: 1 },
+                    { label: 'Systolic BP ≤ 100 mmHg', points: 1 }
+                  ],
+                  interpretation: [
+                    { min: 0, max: 1, text: 'Low risk. Monitor, reassess if necessary.' },
+                    { min: 2, max: 3, text: 'High risk for poor outcome. Sepsis suspected, assess SOFA score.' }
+                  ]
+                }
               ]
             },
             differential: [
@@ -68,15 +86,25 @@ Object.assign(window.diseases, {
             therapy: {
               guidelines: ['Surviving Sepsis Campaign 2021'],
               empirical: {
-                initial_management: [
-                  { drug: 'Antibiotics', dose: 'Broad-spectrum IV', duration: 'Within 1 hour!', note: 'After taking blood cultures. Source-dependent choice (e.g., Pip/Tazo, Meropenem).' },
-                  { drug: 'Fluid resuscitation', dose: '30 ml/kg crystalloid', duration: 'In first 3 hours', note: 'If hypotension or lactate ≥4 mmol/L.' }
-                ],
-                icu: [
-                  { drug: 'Norepinephrine', dose: 'Maintain MAP >65 mmHg', duration: 'Continuous', note: 'First choice vasopressor.' },
-                  { drug: 'Vasopressin', dose: 'max 0.03 U/min', duration: 'Continuous', note: 'Can be added to norepinephrine to reduce dose or if dose is high.' },
-                  { drug: 'Hydrocortisone', dose: '200mg/day (e.g., 50mg q6h)', duration: 'Continuous', note: 'If vasopressor requirement persists (refractory shock).' }
-                ]
+                sepsis_six: {
+                  title: 'Sepsis Six Bundle (Within 1 Hour!)',
+                  drugs: [
+                    { drug: '1. Give Oxygen', dose: 'Target SpO2 >94%', duration: 'Immediate', note: 'High flow if necessary.' },
+                    { drug: '2. Take Blood Cultures', dose: '2 sets', duration: 'Before AB', note: 'Peripheral (and from line if present).' },
+                    { drug: '3. Give IV Antibiotics', dose: 'Broad spectrum', duration: 'Within 1 hour', note: 'Source dependent (e.g., Pip/Tazo, Meropenem).' },
+                    { drug: '4. Give IV Fluids', dose: '30 ml/kg crystalloid', duration: 'Bolus', note: 'If hypotension or lactate ≥4 mmol/L. Balanced crystalloids preferred. Consider albumin for large volumes. Avoid HES/gelatins!' },
+                    { drug: '5. Measure Lactate', dose: 'Blood', duration: 'Serial', note: 'Monitor tissue perfusion.' },
+                    { drug: '6. Monitor Urine Output', dose: 'Hourly', duration: 'Continuous', note: 'Assess renal function and fluid balance.' }
+                  ]
+                },
+                icu: {
+                  title: 'Intensive Care Management',
+                  drugs: [
+                    { drug: 'Norepinephrine', dose: 'Maintain MAP >65 mmHg', duration: 'Continuous', note: 'First choice vasopressor.' },
+                    { drug: 'Vasopressin', dose: 'max 0.03 U/min', duration: 'Continuous', note: 'Adjunct to norepinephrine.' },
+                    { drug: 'Hydrocortisone', dose: '200mg/day', duration: 'Continuous', note: 'For refractory shock.' }
+                  ]
+                }
               },
               targeted: 'De-escalation based on antibiogram (PCT can help decision). Source control (abscess drainage, necrotic tissue removal) is essential.',
               supportive: ['Lactate clearance monitoring', 'Ventilation (ARDS protocol)', 'Renal replacement therapy (CRRT)', 'Blood glucose control', 'Thrombosis prophylaxis', 'Stress ulcer prophylaxis'],

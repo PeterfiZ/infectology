@@ -251,7 +251,7 @@ Object.assign(window.diseases, {
                   { drug: 'Ceftriaxone', dose: '2 g QD IV', duration: '14-28 days', note: 'Severe neuroborreliosis (e.g., encephalitis), carditis (high-grade block), refractory arthritis' }
                 ]
               },
-              targeted: 'Early localized (EM): Doxycycline 10 days. Neuroborreliosis (Bannwarth): Doxycycline PO (as effective as IV Ceftriaxone!) 14 days. Arthritis: Doxycycline 28 days.',
+              targeted: 'Early localized (EM): Doxycycline 10 days. Neuroborreliosis (Bannwarth): Doxycycline PO (as effective as IV Ceftriaxone!) 14 days. Arthritis: Doxycycline 28 days. Post-Lyme Disease Syndrome: Prolonged antibiotics are NOT recommended (ineffective). Symptomatic treatment.',
               supportive: ['Symptomatic treatment', 'Physiotherapy'],
               prevention: ['Prompt tick removal', 'Protective clothing', 'Prophylactic antibiotics after a bite are NOT recommended (Hungarian guideline)']
             },
