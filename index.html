@@ -596,7 +596,6 @@
     // State
     let selectedCategory = null;
     let selectedDisease = null;
-    let activeTab = 'epidemiology';
     let isSidebarCollapsed = false;
 
     // DOM Elements
@@ -1498,14 +1497,7 @@
     // Select disease
     window.selectDisease = function(diseaseId) {
       selectedDisease = diseaseId;
-      activeTab = 'epidemiology';
       renderDiseaseList();
-      renderDiseaseDetail();
-    };
-
-    // Change tab
-    window.changeTab = function(tab) {
-      activeTab = tab;
       renderDiseaseDetail();
     };
 
@@ -1603,18 +1595,10 @@
       }
 
       const t = translations[currentLanguage];
-      const tabs = [
-        { id: 'epidemiology', label: t.tabs.epidemiology, icon: '📊' },
-        { id: 'pathomechanism', label: t.tabs.pathomechanism, icon: '🔬' },
-        { id: 'clinical', label: t.tabs.clinical, icon: '🩺' },
-        { id: 'diagnostics', label: t.tabs.diagnostics, icon: '🧪' },
-        { id: 'differential', label: t.tabs.differential, icon: '⚖️' },
-        { id: 'therapy', label: t.tabs.therapy, icon: '💊' },
-        { id: 'prognosis', label: t.tabs.prognosis, icon: '📈' }
-      ];
-
+      const sections = ['epidemiology', 'pathomechanism', 'clinical', 'diagnostics', 'differential', 'therapy', 'prognosis'];
+      
       if (disease.gallery && disease.gallery.length > 0) {
-        tabs.push({ id: 'gallery', label: t.tabs.gallery, icon: '🖼️' });
+        sections.push('gallery');
       }
 
       diseaseContent.innerHTML = `
@@ -1642,31 +1626,18 @@
             </div>
           </div>
 
-          <!-- Tabs -->
-          <div class="border-b border-slate-200 bg-white sticky top-0 z-10">
-            <div class="flex overflow-x-auto px-4 gap-1">
-              ${tabs.map(tab => `
-                <button onclick="changeTab('${tab.id}')" 
-                  class="tab-btn flex items-center gap-2 px-4 py-3 text-sm whitespace-nowrap transition-all ${activeTab === tab.id ? 'active text-emerald-600 border-emerald-600' : 'text-slate-500 hover:text-slate-700 border-transparent'}" style="border-bottom-width: 3px;">
-                  <span>${tab.icon}</span>
-                  <span>${tab.label}</span>
-                </button>
-              `).join('')}
-            </div>
-          </div>
-
           <!-- Content -->
-          <div class="p-6">
-            ${renderTabContent(disease)}
+          <div class="p-6 space-y-12">
+            ${sections.map(section => renderSectionContent(disease, section)).join('')}
           </div>
         </div>
       `;
     }
 
-    // Render tab content
-    function renderTabContent(disease) {
+    // Render section content
+    function renderSectionContent(disease, section) {
       const t = translations[currentLanguage];
-      switch(activeTab) {
+      switch(section) {
         case 'epidemiology':
           return `
             <div class="space-y-6">

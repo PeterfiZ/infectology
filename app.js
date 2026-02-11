@@ -724,68 +724,102 @@ function renderDiseaseDetails(d) {
         `;
     }
 
-    // Helper to render sections if they exist
-    const section = (title, content, icon = '') => content ? `
-        <div class="mb-5">
-            <h4 class="font-bold text-gray-700 mb-2 uppercase text-xs tracking-wider flex items-center gap-1">
+    // Helper to render a section card
+    const renderSection = (title, content, icon = '') => {
+        if (!content || content.trim() === '') return '';
+        return `
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+            <h3 class="font-bold text-gray-800 mb-3 text-lg border-b border-gray-200 pb-2 flex items-center gap-2">
                 ${icon} ${title}
-            </h4>
-            <div class="text-gray-600 leading-relaxed bg-white p-3 rounded border border-gray-100 shadow-sm">${content}</div>
-        </div>` : '';
-
-    const listSection = (title, items, icon = '') => (items && items.length) ? `
-        <div class="mb-5">
-            <h4 class="font-bold text-gray-700 mb-2 uppercase text-xs tracking-wider flex items-center gap-1">
-                ${icon} ${title}
-            </h4>
-            <ul class="list-disc list-inside text-gray-600 ml-1 space-y-1 bg-white p-3 rounded border border-gray-100 shadow-sm">
-                ${items.map(i => `<li class="pl-1"><span class="-ml-1">${i}</span></li>`).join('')}
-            </ul>
-        </div>` : '';
+            </h3>
+            <div class="text-gray-700 leading-relaxed space-y-3 text-sm">
+                ${content}
+            </div>
+        </div>`;
+    };
 
     // Pathogen
-    let pathogenHtml = '';
-    if (d.pathogen) {
-        pathogenHtml = `
-            <div class="flex flex-wrap items-center gap-2 mb-6 bg-blue-50 p-4 rounded-lg border border-blue-100">
-                <span class="text-blue-700 font-bold flex items-center gap-1">🦠 ${d.pathogen.type}:</span>
-                <span class="text-gray-900 font-medium text-lg">${d.pathogen.name}</span>
-                ${d.pathogen.gram ? `<span class="text-xs bg-white text-blue-600 px-2 py-1 rounded border border-blue-200 font-mono">${d.pathogen.gram}</span>` : ''}
-                ${d.pathogen.shape ? `<span class="text-xs bg-white text-gray-500 px-2 py-1 rounded border border-gray-200">${d.pathogen.shape}</span>` : ''}
-            </div>
-        `;
+    const pathogenHtml = d.pathogen ? `
+        <div class="flex flex-wrap items-center gap-2 mb-6 bg-blue-50 p-4 rounded-lg border border-blue-100">
+            <span class="text-blue-700 font-bold flex items-center gap-1">🦠 ${d.pathogen.type}:</span>
+            <span class="text-gray-900 font-medium text-lg">${d.pathogen.name}</span>
+            ${d.pathogen.gram ? `<span class="text-xs bg-white text-blue-600 px-2 py-1 rounded border border-blue-200 font-mono">${d.pathogen.gram}</span>` : ''}
+            ${d.pathogen.shape ? `<span class="text-xs bg-white text-gray-500 px-2 py-1 rounded border border-gray-200">${d.pathogen.shape}</span>` : ''}
+        </div>
+    ` : '';
+
+    // All sections combined
+    let allContent = '';
+
+    // Epidemiology
+    const epi = d.epidemiology;
+    if (epi) {
+        const epiContent = [
+            epi.incidence && `<div><strong>${getLabel('incidence')}:</strong> ${epi.incidence}</div>`,
+            epi.risk_groups && `<div><strong>${getLabel('risk_groups')}:</strong> ${epi.risk_groups.join(', ')}</div>`,
+            epi.seasonality && `<div><strong>${getLabel('seasonality')}:</strong> ${epi.seasonality}</div>`,
+            epi.transmission && `<div><strong>${getLabel('transmission')}:</strong> ${epi.transmission}</div>`
+        ].filter(Boolean).join('');
+        allContent += renderSection(getLabel('epidemiology'), epiContent, '🌍');
+    }
+
+    // Pathomechanism
+    const patho = d.pathomechanism;
+    if (patho) {
+        const pathoContent = [
+            patho.steps && `<div class="space-y-2">${patho.steps.map(s => `<p>${s}</p>`).join('')}</div>`,
+            patho.virulence_factors && `<div class="mt-3 pt-3 border-t border-gray-100"><strong>${getLabel('virulence_factors')}:</strong> ${patho.virulence_factors.join(', ')}</div>`
+        ].filter(Boolean).join('');
+        allContent += renderSection(getLabel('pathomechanism'), pathoContent, '⚙️');
+    }
+
+    // Clinical
+    const clin = d.clinical;
+    if (clin) {
+        const symptomsContent = clin.symptoms ? `
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                ${clin.symptoms.map(s => `
+                    <div class="bg-gray-50 p-3 rounded-lg border-l-4 shadow-sm ${s.severity === 'severe' ? 'border-red-500' : (s.severity === 'moderate' ? 'border-yellow-500' : 'border-green-500')}">
+                        <div class="font-bold text-gray-800">${s.name}</div>
+                        <div class="text-sm text-gray-600 mt-1">${s.description}</div>
+                    </div>
+                `).join('')}
+            </div>` : '';
+        const clinContent = [
+            clin.incubation && `<div><strong>${getLabel('incubation')}:</strong> ${clin.incubation}</div>`,
+            clin.onset && `<div><strong>${getLabel('onset')}:</strong> ${clin.onset}</div>`,
+            symptomsContent,
+            clin.physical_exam && `<div class="mt-3 pt-3 border-t border-gray-100"><strong>${getLabel('physical_exam')}:</strong><ul class="list-disc list-inside mt-1">${clin.physical_exam.map(i => `<li>${i}</li>`).join('')}</ul></div>`,
+            clin.complications && `<div class="mt-3 pt-3 border-t border-gray-100"><strong>${getLabel('complications')}:</strong><ul class="list-disc list-inside mt-1">${clin.complications.map(i => `<li>${i}</li>`).join('')}</ul></div>`
+        ].filter(Boolean).join('<div class="my-2"></div>');
+        allContent += renderSection(getLabel('clinical'), clinContent, '🤒');
+    }
+
+    // Diagnostics
+    const diag = d.diagnostics;
+    if (diag) {
+        const diagContent = [
+            diag.laboratory && `<div><strong>${getLabel('laboratory')}:</strong><ul class="list-disc list-inside mt-1">${diag.laboratory.map(l => `<li><span class="font-semibold">${l.test}:</span> ${l.finding} <span class="text-gray-500 text-xs">(${l.interpretation})</span></li>`).join('')}</ul></div>`,
+            diag.imaging && `<div><strong>${getLabel('imaging')}:</strong><ul class="list-disc list-inside mt-1">${diag.imaging.map(i => `<li><span class="font-semibold">${i.modality}:</span> ${i.finding} <span class="text-purple-600 text-xs">→ ${i.significance}</span></li>`).join('')}</ul></div>`,
+            diag.microbiology && `<div><strong>${getLabel('microbiology')}:</strong><ul class="list-disc list-inside mt-1">${diag.microbiology.map(m => `<li><span class="font-semibold">${m.test}:</span> ${m.finding} <span class="text-blue-600 text-xs">→ ${m.significance}</span></li>`).join('')}</ul></div>`,
+            diag.criteria && `<div><strong>${getLabel('criteria')}:</strong>${diag.criteria.map(c => `<div class="mt-2"><p class="font-semibold">${c.name}</p><ul class="list-disc list-inside ml-4">${c.items.map(i => `<li>${i}</li>`).join('')}</ul></div>`).join('')}</div>`,
+            diag.scores && `<div><strong>${getLabel('scores')}:</strong> ${diag.scores.join(', ')}</div>`,
+            (d.calculators || (diag && diag.calculators)) ? renderCalculators(d.calculators || diag.calculators) : ''
+        ].filter(Boolean).join('<div class="my-4 border-t border-dashed"></div>');
+        allContent += renderSection(getLabel('diagnostics'), diagContent, '🔬');
+    }
+
+    // Differential Diagnosis
+    const diff = d.differential;
+    if (diff) {
+        const diffContent = `<ul class="list-disc list-inside space-y-2">${diff.map(item => `<li><strong>${item.disease}:</strong> ${item.distinguishing}</li>`).join('')}</ul>`;
+        allContent += renderSection(getLabel('differential_diagnosis'), diffContent, '🤔');
     }
 
     // Symptoms
-    let symptomsHtml = '';
-    if (d.clinical && d.clinical.symptoms) {
-        symptomsHtml = `
-            <div class="mb-5">
-                <h4 class="font-bold text-gray-700 mb-2 uppercase text-xs tracking-wider flex items-center gap-1">
-                    🤒 ${getLabel('symptoms')}
-                </h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    ${d.clinical.symptoms.map(s => `
-                        <div class="bg-white p-3 rounded-lg border-l-4 shadow-sm ${s.severity === 'severe' ? 'border-red-500' : (s.severity === 'moderate' ? 'border-yellow-500' : 'border-green-500')}">
-                            <div class="font-bold text-gray-800">${s.name}</div>
-                            <div class="text-sm text-gray-600 mt-1">${s.description}</div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-    }
-
-    // Calculators
-    let calculatorsHtml = '';
-    const calculators = d.calculators || (d.diagnostics && d.diagnostics.calculators);
-    if (calculators) {
-        calculatorsHtml = renderCalculators(calculators);
-    }
-
     // Therapy
-    let therapyHtml = '';
-    if (d.therapy) {
+    const therapy = d.therapy;
+    if (therapy) {
         let empiricalHtml = '';
         if (d.therapy.empirical) {
             const renderDrugList = (list) => list.map(drug => `
@@ -804,7 +838,7 @@ function renderDiseaseDetails(d) {
                 </div>
             `).join('');
 
-            if (d.therapy.empirical.outpatient) {
+            if (d.therapy.empirical.outpatient && Array.isArray(d.therapy.empirical.outpatient)) {
                 empiricalHtml += `<div class="mb-4">
                     <div class="text-sm font-bold text-green-700 mb-2 flex items-center gap-1">🏠 Ambulant / Outpatient</div>
                     <div class="bg-white rounded-lg border border-gray-200 p-1">${renderDrugList(d.therapy.empirical.outpatient)}</div>
@@ -829,22 +863,18 @@ function renderDiseaseDetails(d) {
             }
         }
 
-        therapyHtml = `
-            <div class="mt-6 p-5 bg-green-50 rounded-xl border border-green-100 shadow-sm">
-                <h4 class="font-bold text-green-800 mb-4 flex items-center gap-2 text-lg border-b border-green-200 pb-2">
-                    💊 ${getLabel('therapy')}
-                </h4>
-                ${empiricalHtml}
-                ${section(getLabel('targeted'), d.therapy.targeted, '🎯')}
-                ${listSection(getLabel('supportive'), d.therapy.supportive, '❤️')}
-                ${listSection(getLabel('prevention'), d.therapy.prevention, '🛡️')}
-            </div>
-        `;
+        const therapyContent = [
+            empiricalHtml,
+            therapy.targeted && `<div><strong>${getLabel('targeted')}:</strong> ${therapy.targeted}</div>`,
+            therapy.supportive && `<div><strong>${getLabel('supportive')}:</strong><ul class="list-disc list-inside mt-1">${therapy.supportive.map(i => `<li>${i}</li>`).join('')}</ul></div>`,
+            therapy.prevention && `<div><strong>${getLabel('prevention')}:</strong><ul class="list-disc list-inside mt-1">${therapy.prevention.map(i => `<li>${i}</li>`).join('')}</ul></div>`
+        ].filter(Boolean).join('<div class="my-4 border-t border-dashed"></div>');
+        allContent += renderSection(getLabel('therapy'), therapyContent, '💊');
     }
 
     // Prognosis
-    let prognosisHtml = '';
-    if (d.prognosis) {
+    const prog = d.prognosis;
+    if (prog) {
         let scoresHtml = '';
         if (d.prognosis.prognostic_scores && d.prognosis.prognostic_scores.length && d.prognosis.prognostic_scores[0] !== 'Nincs' && d.prognosis.prognostic_scores[0] !== 'None' && d.prognosis.prognostic_scores[0] !== 'Keine') {
              scoresHtml = d.prognosis.prognostic_scores.map(score => {
@@ -854,59 +884,21 @@ function renderDiseaseDetails(d) {
                 }
                 return `<span>${score}</span>`;
              }).join(', ');
-             scoresHtml = `<div class="flex gap-2 flex-wrap items-center"><span class="font-semibold min-w-[100px]">${getLabel('prog_scores')}:</span> <div class="flex flex-wrap gap-2">${scoresHtml}</div></div>`;
+             scoresHtml = `<div class="flex gap-2 flex-wrap items-center"><strong>${getLabel('prog_scores')}:</strong> <div class="flex flex-wrap gap-2">${scoresHtml}</div></div>`;
         }
 
-        prognosisHtml = `
-            <div class="mt-6 mb-5">
-                <h4 class="font-bold text-gray-700 mb-2 uppercase text-xs tracking-wider flex items-center gap-1">
-                    🔮 ${getLabel('prognosis')}
-                </h4>
-                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-gray-700 space-y-2">
-                    ${d.prognosis.mortality ? `<div class="flex gap-2"><span class="font-semibold min-w-[100px]">${getLabel('mortality')}:</span> <span>${d.prognosis.mortality}</span></div>` : ''}
-                    ${scoresHtml}
-                    ${d.prognosis.factors ? `<div class="flex gap-2"><span class="font-semibold min-w-[100px]">${getLabel('factors')}:</span> <span>${d.prognosis.factors}</span></div>` : ''}
-                </div>
-            </div>
-        `;
+        const progContent = [
+            prog.mortality && `<div><strong>${getLabel('mortality')}:</strong> ${prog.mortality}</div>`,
+            scoresHtml,
+            prog.factors && `<div><strong>${getLabel('factors')}:</strong> ${prog.factors}</div>`
+        ].filter(Boolean).join('');
+        allContent += renderSection(getLabel('prognosis'), progContent, '🔮');
     }
 
     return `
         ${pathogenHtml}
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="space-y-2">
-                ${d.epidemiology ? section(getLabel('epidemiology'), d.epidemiology.incidence + '<br>' + d.epidemiology.transmission, '🌍') : ''}
-                ${d.clinical ? section(getLabel('incubation'), d.clinical.incubation, '⏳') : ''}
-                ${symptomsHtml}
-                ${d.clinical ? listSection(getLabel('complications'), d.clinical.complications, '⚠️') : ''}
-            </div>
-            <div class="space-y-2">
-                ${d.diagnostics ? listSection(getLabel('diagnostics'), 
-                    d.diagnostics.laboratory ? d.diagnostics.laboratory.map(l => `<span class="font-semibold">${l.test}:</span> ${l.finding} <span class="text-gray-400 text-xs">(${l.interpretation})</span>`) : [], '🧪'
-                ) : ''}
-                    ${d.diagnostics && d.diagnostics.imaging ? listSection(getLabel('imaging'), 
-                        d.diagnostics.imaging.map(i => `<span class="font-semibold">${i.modality}:</span> ${i.finding} <span class="text-purple-600 text-xs">→ ${i.significance}</span>`), '🖼️'
-                    ) : ''}
-                ${d.diagnostics && d.diagnostics.microbiology ? listSection(getLabel('microbiology'), 
-                    d.diagnostics.microbiology.map(m => `<span class="font-semibold">${m.test}:</span> ${m.finding} <span class="text-blue-600 text-xs">→ ${m.significance}</span>`), '🔬'
-                ) : ''}
-                ${d.diagnostics && d.diagnostics.scores ? (() => {
-                    const scoresContent = d.diagnostics.scores.map(score => {
-                        const key = Object.keys(scoreCalculators).find(k => score.includes(k));
-                        if (key) {
-                            return `<button onclick="openScoreCalculator('${key}')" class="text-left w-full hover:bg-blue-50 p-1 rounded transition-colors text-blue-600 hover:underline flex items-center gap-2"><span class="text-gray-600">•</span> ${score} <span class="text-xs bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded border border-blue-200">Kalkulátor</span></button>`;
-                        }
-                        return `<div class="p-1"><span class="text-gray-600 mr-2">•</span>${score}</div>`;
-                    }).join('');
-                    return `<div class="mb-5">
-                        <h4 class="font-bold text-gray-700 mb-2 uppercase text-xs tracking-wider flex items-center gap-1">📈 ${getLabel('scores')}</h4>
-                        <div class="text-gray-600 ml-1 space-y-1 bg-white p-3 rounded border border-gray-100 shadow-sm">${scoresContent}</div>
-                    </div>`;
-                })() : ''}
-                ${calculatorsHtml}
-                ${therapyHtml}
-                ${prognosisHtml}
-            </div>
+        <div class="space-y-4">
+            ${allContent}
         </div>
     `;
 }
@@ -1094,24 +1086,36 @@ function getLabel(key) {
     const labels = {
         hu: {
             entries: 'bejegyzés', back: 'Vissza', symptoms: 'Tünetek', therapy: 'Terápia', 
-            epidemiology: 'Epidemiológia', incubation: 'Inkubáció', complications: 'Szövődmények', scores: 'Pontrendszerek', laboratory: 'Laboratórium',
+            epidemiology: 'Epidemiológia', incubation: 'Inkubáció', complications: 'Szövődmények', scores: 'Pontrendszerek', laboratory: 'Labor',
             diagnostics: 'Diagnosztika', microbiology: 'Mikrobiológia', imaging: 'Képalkotó', targeted: 'Célzott', 
             supportive: 'Szupportív', prevention: 'Megelőzés', search_results: 'Keresési találatok', no_results: 'Nincs találat',
-            score: 'Pontszám', select_symptoms: 'Jelölje be a tüneteket...', prognosis: 'Prognózis', mortality: 'Halálozás', prog_scores: 'Diagnosztikai és prognosztikai score-ok', factors: 'Faktorok'
+            score: 'Pontszám', select_symptoms: 'Jelölje be a tüneteket...', prognosis: 'Prognózis', mortality: 'Halálozás', prog_scores: 'Prognosztikai score-ok', factors: 'Faktorok',
+            pathomechanism: 'Patomechanizmus', virulence_factors: 'Virulencia faktorok', physical_exam: 'Fizikális vizsgálat',
+            incidence: 'Incidencia', risk_groups: 'Rizikócsoportok', seasonality: 'Szezonalitás', transmission: 'Terjedés',
+            differential_diagnosis: 'Differenciáldiagnózis', gallery: 'Galéria', guidelines: 'Irányelvek', references: 'Források',
+            criteria: 'Kritériumok', onset: 'Kezdet', clinical: 'Klinikum'
         },
         en: {
             entries: 'entries', back: 'Back', symptoms: 'Symptoms', therapy: 'Therapy',
             epidemiology: 'Epidemiology', incubation: 'Incubation', complications: 'Complications', scores: 'Scoring Systems', laboratory: 'Laboratory',
             diagnostics: 'Diagnostics', microbiology: 'Microbiology', imaging: 'Imaging', targeted: 'Targeted',
             supportive: 'Supportive', prevention: 'Prevention', search_results: 'Search Results', no_results: 'No results found',
-            score: 'Score', select_symptoms: 'Select symptoms...', prognosis: 'Prognosis', mortality: 'Mortality', prog_scores: 'Diagnostic and Prognostic Scores', factors: 'Factors'
+            score: 'Score', select_symptoms: 'Select symptoms...', prognosis: 'Prognosis', mortality: 'Mortality', prog_scores: 'Prognostic Scores', factors: 'Factors',
+            pathomechanism: 'Pathomechanism', virulence_factors: 'Virulence Factors', physical_exam: 'Physical Exam',
+            incidence: 'Incidence', risk_groups: 'Risk Groups', seasonality: 'Seasonality', transmission: 'Transmission',
+            differential_diagnosis: 'Differential Diagnosis', gallery: 'Gallery', guidelines: 'Guidelines', references: 'References',
+            criteria: 'Criteria', onset: 'Onset', clinical: 'Clinical'
         },
         de: {
             entries: 'Einträge', back: 'Zurück', symptoms: 'Symptome', therapy: 'Therapie',
             epidemiology: 'Epidemiologie', incubation: 'Inkubation', complications: 'Komplikationen', scores: 'Punktesysteme', laboratory: 'Labor',
             diagnostics: 'Diagnostik', microbiology: 'Mikrobiologie', imaging: 'Bildgebung', targeted: 'Gezielt',
             supportive: 'Supportiv', prevention: 'Prävention', search_results: 'Suchergebnisse', no_results: 'Keine Ergebnisse',
-            score: 'Punktzahl', select_symptoms: 'Symptome auswählen...', prognosis: 'Prognose', mortality: 'Mortalität', prog_scores: 'Diagnostische und prognostische Scores', factors: 'Faktoren'
+            score: 'Punktzahl', select_symptoms: 'Symptome auswählen...', prognosis: 'Prognose', mortality: 'Mortalität', prog_scores: 'Prognostische Scores', factors: 'Faktoren',
+            pathomechanism: 'Pathomechanismus', virulence_factors: 'Virulenzfaktoren', physical_exam: 'Körperliche Untersuchung',
+            incidence: 'Inzidenz', risk_groups: 'Risikogruppen', seasonality: 'Saisonalität', transmission: 'Übertragung',
+            differential_diagnosis: 'Differentialdiagnose', gallery: 'Galerie', guidelines: 'Leitlinien', references: 'Quellen',
+            criteria: 'Kriterien', onset: 'Beginn', clinical: 'Klinik'
         }
     };
     return labels[currentLang][key] || key;
