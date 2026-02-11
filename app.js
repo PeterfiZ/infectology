@@ -407,6 +407,134 @@ const scoreCalculators = {
             if (score < 3) return { risk: 'Alacsony kockázat (<5%)', action: 'Profilaxis nem feltétlenül szükséges.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
             return { risk: 'Magas kockázat (>20%)', action: 'Empirikus antifungális terápia megfontolandó.', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
         }
+    },
+    'NEWS2': {
+      title: 'NEWS2 (National Early Warning Score)',
+      description: 'A beteg állapotának súlyosságának és a klinikai romlás kockázatának felmérése.',
+      items: [
+        { type: 'header', label: 'Légzésszám (/perc)' },
+        { type: 'radio', name: 'news_rr', label: '12-20', points: 0, checked: true },
+        { type: 'radio', name: 'news_rr', label: '9-11', points: 1 },
+        { type: 'radio', name: 'news_rr', label: '21-24', points: 2 },
+        { type: 'radio', name: 'news_rr', label: '≤8 vagy ≥25', points: 3 },
+        { type: 'header', label: 'Oxigén szaturáció (%)' },
+        { type: 'radio', name: 'news_spo2', label: '≥96', points: 0, checked: true },
+        { type: 'radio', name: 'news_spo2', label: '94-95', points: 1 },
+        { type: 'radio', name: 'news_spo2', label: '92-93', points: 2 },
+        { type: 'radio', name: 'news_spo2', label: '≤91', points: 3 },
+        { type: 'header', label: 'Levegő vagy Oxigén' },
+        { type: 'radio', name: 'news_o2', label: 'Levegő', points: 0, checked: true },
+        { type: 'radio', name: 'news_o2', label: 'Oxigén', points: 2 },
+        { type: 'header', label: 'Szisztolés vérnyomás (Hgmm)' },
+        { type: 'radio', name: 'news_sbp', label: '111-219', points: 0, checked: true },
+        { type: 'radio', name: 'news_sbp', label: '101-110', points: 1 },
+        { type: 'radio', name: 'news_sbp', label: '91-100', points: 2 },
+        { type: 'radio', name: 'news_sbp', label: '≤90 vagy ≥220', points: 3 },
+        { type: 'header', label: 'Pulzus (/perc)' },
+        { type: 'radio', name: 'news_hr', label: '51-90', points: 0, checked: true },
+        { type: 'radio', name: 'news_hr', label: '41-50 vagy 91-110', points: 1 },
+        { type: 'radio', name: 'news_hr', label: '111-130', points: 2 },
+        { type: 'radio', name: 'news_hr', label: '≤40 vagy ≥131', points: 3 },
+        { type: 'header', label: 'Tudatállapot' },
+        { type: 'radio', name: 'news_loc', label: 'Éber (Alert)', points: 0, checked: true },
+        { type: 'radio', name: 'news_loc', label: 'Zavart (CVPU)', points: 3 },
+        { type: 'header', label: 'Hőmérséklet (°C)' },
+        { type: 'radio', name: 'news_temp', label: '36.1-38.0', points: 0, checked: true },
+        { type: 'radio', name: 'news_temp', label: '35.1-36.0 vagy 38.1-39.0', points: 1 },
+        { type: 'radio', name: 'news_temp', label: '≥39.1', points: 2 },
+        { type: 'radio', name: 'news_temp', label: '≤35.0', points: 3 }
+      ],
+      interpret: (score) => {
+        if (score === 0) return { risk: 'Alacsony (0)', action: 'Monitorozás 12 óránként', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+        if (score <= 4) return { risk: 'Alacsony-Közepes (1-4)', action: 'Monitorozás 4-6 óránként', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-200' };
+        if (score <= 6) return { risk: 'Közepes (5-6)', action: 'Sürgős orvosi vizsgálat, óránkénti monitorozás', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' };
+        return { risk: 'Magas (≥7)', action: 'Sürgősségi/ITO ellátás, folyamatos monitorozás', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+      }
+    },
+    '4C Mortality Score': {
+      title: '4C Mortality Score (COVID-19)',
+      description: 'Kórházi halálozás kockázata COVID-19 betegeknél.',
+      items: [
+        { type: 'header', label: 'Életkor' },
+        { type: 'radio', name: '4c_age', label: '<50', points: 0, checked: true },
+        { type: 'radio', name: '4c_age', label: '50-59', points: 2 },
+        { type: 'radio', name: '4c_age', label: '60-69', points: 4 },
+        { type: 'radio', name: '4c_age', label: '70-79', points: 6 },
+        { type: 'radio', name: '4c_age', label: '≥80', points: 7 },
+        { type: 'header', label: 'Nem' },
+        { type: 'radio', name: '4c_sex', label: 'Nő', points: 0, checked: true },
+        { type: 'radio', name: '4c_sex', label: 'Férfi', points: 1 },
+        { type: 'header', label: 'Komorbiditások száma' },
+        { type: 'radio', name: '4c_comorb', label: '0', points: 0, checked: true },
+        { type: 'radio', name: '4c_comorb', label: '1', points: 1 },
+        { type: 'radio', name: '4c_comorb', label: '≥2', points: 2 },
+        { type: 'header', label: 'Légzésszám (/perc)' },
+        { type: 'radio', name: '4c_rr', label: '<20', points: 0, checked: true },
+        { type: 'radio', name: '4c_rr', label: '20-29', points: 1 },
+        { type: 'radio', name: '4c_rr', label: '≥30', points: 2 },
+        { type: 'header', label: 'SpO2 (levegőn)' },
+        { type: 'radio', name: '4c_spo2', label: '≥92%', points: 0, checked: true },
+        { type: 'radio', name: '4c_spo2', label: '<92%', points: 2 },
+        { type: 'header', label: 'GCS' },
+        { type: 'radio', name: '4c_gcs', label: '15', points: 0, checked: true },
+        { type: 'radio', name: '4c_gcs', label: '<15', points: 2 },
+        { type: 'header', label: 'Urea (mmol/L)' },
+        { type: 'radio', name: '4c_urea', label: '≤7', points: 0, checked: true },
+        { type: 'radio', name: '4c_urea', label: '7-14', points: 1 },
+        { type: 'radio', name: '4c_urea', label: '>14', points: 3 },
+        { type: 'header', label: 'CRP (mg/L)' },
+        { type: 'radio', name: '4c_crp', label: '<50', points: 0, checked: true },
+        { type: 'radio', name: '4c_crp', label: '50-99', points: 1 },
+        { type: 'radio', name: '4c_crp', label: '≥100', points: 2 }
+      ],
+      interpret: (score) => {
+        if (score <= 3) return { risk: 'Alacsony (0-3)', action: 'Mortalitás: 1%', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+        if (score <= 8) return { risk: 'Közepes (4-8)', action: 'Mortalitás: 8%', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-200' };
+        if (score <= 14) return { risk: 'Magas (9-14)', action: 'Mortalitás: 31%', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' };
+        return { risk: 'Nagyon magas (≥15)', action: 'Mortalitás: 62%', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+      }
+    },
+    'PAGE-B': {
+      title: 'PAGE-B Score (HBV)',
+      description: 'Hepatocellularis carcinoma (HCC) kockázata krónikus Hepatitis B betegeknél (NA kezelés alatt).',
+      items: [
+        { type: 'header', label: 'Életkor' },
+        { type: 'radio', name: 'pageb_age', label: '16-29', points: 0, checked: true },
+        { type: 'radio', name: 'pageb_age', label: '30-39', points: 2 },
+        { type: 'radio', name: 'pageb_age', label: '40-49', points: 4 },
+        { type: 'radio', name: 'pageb_age', label: '50-59', points: 6 },
+        { type: 'radio', name: 'pageb_age', label: '60-69', points: 8 },
+        { type: 'radio', name: 'pageb_age', label: '≥70', points: 10 },
+        { type: 'header', label: 'Nem' },
+        { type: 'radio', name: 'pageb_sex', label: 'Nő', points: 0, checked: true },
+        { type: 'radio', name: 'pageb_sex', label: 'Férfi', points: 6 },
+        { type: 'header', label: 'Thrombocyta szám (G/L)' },
+        { type: 'radio', name: 'pageb_plt', label: '≥200', points: 0, checked: true },
+        { type: 'radio', name: 'pageb_plt', label: '100-199', points: 1 },
+        { type: 'radio', name: 'pageb_plt', label: '<100', points: 2 }
+      ],
+      interpret: (score) => {
+        if (score <= 9) return { risk: 'Alacsony kockázat (0-9)', action: '5 éves HCC rizikó ~0%', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+        if (score <= 17) return { risk: 'Közepes kockázat (10-17)', action: '5 éves HCC rizikó ~3%', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-200' };
+        return { risk: 'Magas kockázat (≥18)', action: '5 éves HCC rizikó ~17%', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+      }
+    },
+    "King's College": {
+      title: "King's College Kritériumok (Nem-Paracetamol)",
+      description: 'Sürgősségi májtranszplantáció indikációja akut májelégtelenségben (nem paracetamol eredetű).',
+      items: [
+        { type: 'checkbox', label: 'INR > 6.5 (PT > 100s)', points: 3 },
+        { type: 'header', label: 'VAGY 3 az alábbi 5-ből (ha INR ≤ 6.5):' },
+        { type: 'checkbox', label: 'Életkor < 10 vagy > 40 év', points: 1 },
+        { type: 'checkbox', label: 'Etiológia: Non-A/Non-B hepatitis, gyógyszer, halothan', points: 1 },
+        { type: 'checkbox', label: 'Icterus és Encephalopathia között > 7 nap telt el', points: 1 },
+        { type: 'checkbox', label: 'Szérum Bilirubin > 300 µmol/L', points: 1 },
+        { type: 'checkbox', label: 'INR > 3.5 (PT > 50s)', points: 1 }
+      ],
+      interpret: (score) => {
+        if (score >= 3) return { risk: 'Kritériumok teljesültek', action: 'Sürgős májtranszplantáció listázás indokolt! (Mortalitás >80% transzplantáció nélkül)', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        return { risk: 'Kritériumok nem teljesültek', action: 'Szoros monitorozás intenzív osztályon.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+      }
     }
   };
 
@@ -956,7 +1084,7 @@ function toggleTable(id) {
     } else {
         content.classList.add('hidden');
         icon.style.transform = 'rotate(0deg)';
-    }
+}
 }
 
 function handleSearch(query) {
@@ -1148,16 +1276,6 @@ window.updateCalculator = function(id) {
     container.querySelector('.calc-score').textContent = score;
     container.querySelector('.calc-result').innerHTML = resultText;
 }
-
-function toggleDisease(id) {
-    const content = document.getElementById(`content-${id}`);
-    const icon = document.getElementById(`icon-${id}`);
-    if (!content || !icon) return;
-
-    content.classList.toggle('hidden');
-    icon.classList.toggle('rotate-180');
-}
-
 window.openScoreCalculator = function(scoreName) {
     const modal = document.getElementById('score-modal');
     const panel = document.getElementById('score-modal-panel');
@@ -1287,4 +1405,4 @@ function calculateScore(calc) {
       
       resultContainer.className = `rounded-xl p-4 text-center border transition-colors duration-300 ${interpretation.bg} ${interpretation.border}`;
     }
-};
+}

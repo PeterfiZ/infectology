@@ -3,6 +3,7 @@ const urlsToCache = [
   '/',
   'index.html',
   'print.html',
+  'scores.js',
   'metadata.js',
   // HU
   'Thorax.js',
