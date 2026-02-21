@@ -6,22 +6,22 @@ Object.assign(window.diseases, {
         tables: [
           {
             title: 'Differentialdiagnose von Magen-Darm-Infektionen',
-            headers: ['Krankheit', 'Erreger', 'Stuhlcharakteristik', 'Fieber', 'Hauptmerkmale / Komplikationen'],
+            headers: ['Krankheit', 'Erreger', 'Betroffener Abschnitt', 'Mechanismus', 'Stuhlmenge', 'Stuhlcharakteristik', 'Fieber', 'Hauptmerkmale / Komplikationen'],
             rows: [
-              ['C. difficile', 'C. difficile', 'Wässrig, grünlich, übelriechend', '+', 'AB-assoziiert, Pseudomembranen, toxisches Megakolon'],
-              ['Salmonella', 'Salmonella', 'Wässrig (selten blutig)', '++', 'Lebensmittelvergiftung, Reptilienkontakt, extraintestinale Komplikationen'],
-              ['Shigella', 'Shigella', 'Blutig-schleimig (Dysenterie)', '++', 'Tenesmen, niedrige Infektionsdosis, HUS'],
-              ['Campylobacter', 'Campylobacter', 'Wässrig/Blutig', '+', 'Pseudoappendizitis, GBS, Geflügel'],
-              ['E. coli (EHEC)', 'E. coli (STEC)', 'Blutig', '-', 'Fieberfrei, HUS, Rindfleisch'],
-              ['E. coli (ETEC)', 'E. coli (ETEC)', 'Wässrig', '-', 'Reisedurchfall'],
-              ['E. coli (EPEC)', 'E. coli (EPEC)', 'Wässrig/Schleimig', '+/-', 'Säuglingsdiarrhoe'],
-              ['E. coli (EIEC)', 'E. coli (EIEC)', 'Blutig-schleimig', '++', 'Dysenterie-artig, Fieber'],
-              ['Yersinia', 'Yersinia', 'Wässrig/Blutig', '+', 'Pseudoappendizitis, reaktive Arthritis, Schweinefleisch'],
-              ['Giardia', 'Giardia', 'Fettig, übelriechend', '-', 'Blähungen, Malabsorption, chronisch'],
-              ['Amoeba', 'E. histolytica', 'Blutig-schleimig', '+/-', 'Leberabszess, Reisen'],
-              ['Cryptosporidium', 'Cryptosporidium', 'Wässrig', '-', 'Persistierend bei Immunsupprimierten, Schwimmbäder'],
-              ['Virale GE', 'Rota/Noro', 'Wässrig', '-/+', 'Erbrechen dominiert (Noro), Wintersaison'],
-              ['Cholera', 'Vibrio cholerae', 'Reiswasserartig', '-', 'Massiver Flüssigkeitsverlust, Dehydratation']
+              ['C. difficile', 'C. difficile', 'Dickdarm', 'Toxin A/B (Entzündung)', 'Mittel/Groß', 'Wässrig, grünlich, übelriechend', '+', 'AB-assoziiert, Pseudomembranen, toxisches Megakolon'],
+              ['Salmonella', 'Salmonella', 'Dünn- und Dickdarm', 'Invasion + Enterotoxin', 'Mittel', 'Wässrig (selten blutig)', '++', 'Lebensmittelvergiftung, Reptilienkontakt, extraintestinale Komplikationen'],
+              ['Shigella', 'Shigella', 'Dickdarm', 'Invasion + Shiga-Toxin', 'Klein', 'Blutig-schleimig (Dysenterie)', '++', 'Tenesmen, niedrige Infektionsdosis, HUS'],
+              ['Campylobacter', 'Campylobacter', 'Dünn- und Dickdarm', 'Invasion + Toxin', 'Mittel', 'Wässrig/Blutig', '+', 'Pseudoappendizitis, GBS, Geflügel'],
+              ['E. coli (EHEC)', 'E. coli (STEC)', 'Dickdarm', 'Shiga-Toxin', 'Mittel', 'Blutig', '-', 'Fieberfrei, HUS, Rindfleisch'],
+              ['E. coli (ETEC)', 'E. coli (ETEC)', 'Dünndarm', 'Enterotoxin (sekretorisch)', 'Groß', 'Wässrig', '-', 'Reisedurchfall'],
+              ['E. coli (EPEC)', 'E. coli (EPEC)', 'Dünndarm', 'Malabsorption', 'Groß', 'Wässrig/Schleimig', '+/-', 'Säuglingsdiarrhoe'],
+              ['E. coli (EIEC)', 'E. coli (EIEC)', 'Dickdarm', 'Invasion', 'Klein', 'Blutig-schleimig', '++', 'Dysenterie-artig, Fieber'],
+              ['Yersinia', 'Yersinia', 'Dünn- und Dickdarm', 'Invasion', 'Mittel', 'Wässrig/Blutig', '+', 'Pseudoappendizitis, reaktive Arthritis, Schweinefleisch'],
+              ['Giardia', 'Giardia', 'Dünndarm', 'Malabsorption', 'Groß/Mittel', 'Fettig, übelriechend', '-', 'Blähungen, Malabsorption, chronisch'],
+              ['Amoeba', 'E. histolytica', 'Dickdarm', 'Invasion/Zytotoxin', 'Klein', 'Blutig-schleimig', '+/-', 'Leberabszess, Reisen'],
+              ['Cryptosporidium', 'Cryptosporidium', 'Dünndarm', 'Sekretorisch/Malabsorption', 'Groß', 'Wässrig', '-', 'Persistierend bei Immunsupprimierten, Schwimmbäder'],
+              ['Virale GE', 'Rota/Noro', 'Dünndarm', 'Malabsorption/Osmotisch', 'Groß', 'Wässrig', '-/+', 'Erbrechen dominiert (Noro), Wintersaison'],
+              ['Cholera', 'Vibrio cholerae', 'Dünndarm', 'Enterotoxin (sekretorisch)', 'Sehr groß', 'Reiswasserartig', '-', 'Massiver Flüssigkeitsverlust, Dehydratation']
             ]
           }
         ],
@@ -1085,6 +1085,25 @@ Object.assign(window.diseases, {
               ['+', '-', '+', '+', 'Akut infiziert'],
               ['+', '-', '+', '-', 'Chronisch infiziert'],
               ['-', '-', '+', '-', 'Möglich: 1. Ausgeheilte Infektion (niedriges Anti-HBs); 2. Falsch-positiv; 3. Okkulte HBV; 4. Fensterphase']
+            ]
+          },
+          {
+            title: 'Bedeutung der Hepatitis-Serologie-Marker',
+            headers: ['Marker', 'Virus', 'Bedeutung'],
+            rows: [
+              ['Anti-HAV IgM', 'HAV', 'Akute Infektion'],
+              ['Anti-HAV IgG', 'HAV', 'Immunität (Impfung oder durchgemacht)'],
+              ['HBsAg', 'HBV', 'Vorliegen einer Infektion (akut oder chronisch)'],
+              ['Anti-HBs', 'HBV', 'Immunität (Impfung oder Genesung)'],
+              ['Anti-HBc IgM', 'HBV', 'Akute Infektion (auch im Fenster)'],
+              ['Anti-HBc (Gesamt)', 'HBV', 'Frühere oder aktuelle Infektion'],
+              ['HBeAg', 'HBV', 'Hohe Replikation, Infektiosität'],
+              ['Anti-HBe', 'HBV', 'Geringere Replikation (Serokonversion)'],
+              ['HBV-DNA', 'HBV', 'Virusreplikationsrate'],
+              ['Anti-HCV', 'HCV', 'Exposition (nicht zwingend aktiv)'],
+              ['HCV-RNA', 'HCV', 'Aktive Infektion'],
+              ['Anti-HDV', 'HDV', 'HDV-Infektion (nur mit HBV)'],
+              ['Anti-HEV IgM', 'HEV', 'Akute Infektion']
             ]
           }
         ],

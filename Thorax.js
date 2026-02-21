@@ -3,6 +3,26 @@ Object.assign(window.diseases, {
         name: 'Bakteriális légúti fertőzések',
         icon: window.diseaseMetadata.bacterial_respiratory.icon,
         color: window.diseaseMetadata.bacterial_respiratory.color,
+              tables: [
+               {
+                   title: 'Típusos vs. Atípusos Pneumonia Differenciáldiagnosztika',
+                   headers: ['Jellemző', 'Típusos Pneumonia', 'Atípusos Pneumonia'],
+                   rows: [
+                     ['Kezdet', 'Hirtelen, drámai (hidegrázás)', 'Lassú, fokozatos (prodroma)'],
+                     ['Láz', 'Magas (>39°C)', 'Hőemelkedés vagy mérsékelt láz'],
+                     ['Mellkasi fájdalom', 'Pleurális, szúró (gyakori)', 'Retrosternális, égő (ritkább)'],
+                     ['Köhögés', 'Produktív', 'Száraz, improduktív, kínzó'],
+                     ['Köpet', 'Gennyes, rozsdabarna', 'Kevés, nyákos vagy hiányzik'],
+                     ['Mellkasi folyadék', 'Gyakori (parapneumoniás)', 'Ritka'],
+                     ['Radiológia', 'Lobaris/szegmentális konszolidáció, légtölcsér', 'Interstitialis, tejüvegszerű, diffúz, foltos'],
+                     ['Extrapulmonális tünetek', 'Ritkák (kivéve szeptikus szóródás)', 'Gyakoriak (fejfájás, myalgia, fül/torok, GI, kiütés)'],
+                     ['Labor (Fvs)', 'Leukocytosis, balra tolt', 'Normál vagy enyhe leukocytosis'],
+                     ['Labor (CRP/PCT)', 'Jelentősen emelkedett (PCT >0.5)', 'Mérsékelten emelkedett (PCT <0.25)'],
+                     ['Labor (Májenzimek)', 'Általában normál', 'Gyakran emelkedett (GOT, GPT)'],
+                     ['Kórokozók', '<i>S. pneumoniae, H. influenzae, M. catarrhalis, S. aureus, Klebsiella</i>', '<i>Mycoplasma, Chlamydia, Legionella, Coxiella</i>, Vírusok']
+                   ]
+                 }
+               ],
         diseases: [
           {
             id: 'bacterial_pneumonia',
@@ -123,7 +143,15 @@ Object.assign(window.diseases, {
                         { drug: '+ Antipseudomonas fluorokinolon vagy aminoglikozid', dose: 'pl. Ciprofloxacin, Amikacin', duration: '7 nap', note: '2. komponens (dupla G- fedezet, ha szükséges).' },
                         { drug: '+ MRSA fedezet', dose: 'Vancomycin vagy Linezolid', duration: '7 nap', note: '3. komponens (ha MRSA rizikó >10-20%).' }
                     ]
-                }
+                },
+                vap_stenotrophomonas: {
+                    title: 'VAP - Stenotrophomonas maltophilia (Célzott)',
+                    drugs: [
+                        { drug: 'Trimethoprim/Sulfamethoxazol (TMP-SMX)', dose: '15-20 mg/kg/nap (TMP) IV 3-4 részben', duration: '14 nap', note: 'Első választás. Magas dózis szükséges!' },
+                        { drug: 'Levofloxacin', dose: '750 mg IV 1x', duration: '14 nap', note: 'Alternatíva.' },
+                        { drug: 'Cefiderocol', dose: '2g IV 8 óránként', duration: '14 nap', note: 'Rezerv antibiotikum.' }
+                    ]
+                 }  
               },
               targeted: 'Penicillin érzékeny: Penicillin G 4x4 millió NE IV; Rezisztens: Ceftriaxon vagy Vancomycin',
               supportive: ['O2 terápia (SpO2 >92%)', 'Folyadékpótlás', 'Lázcsillapítás', 'Mellkasdrainage empyema esetén'],
@@ -868,8 +896,8 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               criteria: [
-                { name: 'Major kritériumok (ESC 2023)', items: ['Pozitív hemokultúra (típusos kórokozó: S. aureus, Enterococcus, Viridans strep, S. gallolyticus, HACEK) 2 külön mintából', 'Képalkotó pozitív lelet (Echo/CT/PET-CT): Vegetáció, tályog, pseudoaneurysma, fistula, perforáció, új dehiszcencia', 'Paravalvularis lézió CT-vel', 'Abnormális aktivitás műbillentyű körül (PET/CT vagy SPECT/CT)'] },
-                { name: 'Minor kritériumok', items: ['Prediszpozíció (szívhiba, műbillentyű, korábbi IE)', 'Láz >38°C', 'Vaszkuláris jelenségek (embólia, szeptikus infarctus, mycoticus aneurysma, Janeway, képalkotóval igazolt léziók)', 'Immunológiai jelenségek (Osler csomó, Roth folt, RF+, Glomerulonephritis)', 'Mikrobiológiai jel (pozitív tenyésztés ami nem major)'] },
+                { name: 'Major kritériumok (ESC 2023)', items: ['Pozitív hemokultúra (típusos kórokozó: S. aureus, Enterococcus, Viridans strep, S. gallolyticus, HACEK) 2 külön mintából', 'Képalkotó pozitív lelet (Echo/CT/PET-CT): Vegetáció, tályog, pseudoaneurysma, fistula, perforáció, új dehiszcencia', 'Paravalvularis lézió CT-vel', 'Abnormális aktivitás műbillentyű körül (PET/CT vagy SPECT/CT)', 'Pozitív Coxiella burnetii szerológia (Fázis I IgG titer >1:800)'] },
+                { name: 'Minor kritériumok', items: ['Prediszpozíció (szívhiba, műbillentyű, korábbi IE)', 'Láz >38°C', 'Vaszkuláris jelenségek (embólia, szeptikus infarktus, mycotikus aneurysma, Janeway, képalkotóval igazolt léziók)', 'Immunológiai jelenségek (Osler-csomó, Roth-folt, RF+, Glomerulonephritis)', 'Mikrobiológiai igazolás (pozitív tenyésztés, ami nem felel meg a major kritériumnak)'] },
                 { name: 'Diagnózis (Definitív)', items: ['2 Major', '1 Major + 3 Minor', '5 Minor'] }
               ],
               laboratory: [
@@ -879,7 +907,7 @@ Object.assign(window.diseases, {
               ],
               imaging: [
                 { modality: 'Echocardiographia (TTE/TEE)', finding: 'Vegetáció, tályog, dehiszcencia', significance: 'Elsődleges képalkotó' },
-                { modality: 'Szív CT / PET-CT', finding: 'Paravalvularis terjedés, embólia', significance: 'Kiegészítő (ESC 2023)' }
+                { modality: 'Szív CT / PET-CT'  , finding: 'Paravalvularis terjedés, embólia', significance: 'Kiegészítő (ESC 2023)' }
               ],
               microbiology: [
                 { test: 'Hemokultúra', finding: 'Kórokozó azonosítás', significance: 'Terápia alapja' },

@@ -6,22 +6,22 @@ Object.assign(window.diseases, {
         tables: [
           {
             title: 'Differential Diagnosis of Gastrointestinal Infections',
-            headers: ['Disease', 'Pathogen', 'Stool Characteristics', 'Fever', 'Key Features / Complications'],
+            headers: ['Disease', 'Pathogen', 'Affected Segment', 'Mechanism', 'Stool Volume', 'Stool Characteristics', 'Fever', 'Key Features / Complications'],
             rows: [
-              ['C. difficile', 'C. difficile', 'Watery, greenish, foul', '+', 'AB-associated, pseudomembrane, toxic megacolon'],
-              ['Salmonella', 'Salmonella', 'Watery (rarely bloody)', '++', 'Food poisoning, reptile contact, extraintestinal complications'],
-              ['Shigella', 'Shigella', 'Bloody-mucoid (dysentery)', '++', 'Tenesmus, low infectious dose, HUS'],
-              ['Campylobacter', 'Campylobacter', 'Watery/Bloody', '+', 'Pseudoappendicitis, GBS, poultry'],
-              ['E. coli (EHEC)', 'E. coli (STEC)', 'Bloody', '-', 'Afebrile, HUS, beef'],
-              ['E. coli (ETEC)', 'E. coli (ETEC)', 'Watery', '-', 'Traveler\'s diarrhea'],
-              ['E. coli (EPEC)', 'E. coli (EPEC)', 'Watery/Mucoid', '+/-', 'Infantile diarrhea'],
-              ['E. coli (EIEC)', 'E. coli (EIEC)', 'Bloody-mucoid', '++', 'Dysentery-like, fever'],
-              ['Yersinia', 'Yersinia', 'Watery/Bloody', '+', 'Pseudoappendicitis, reactive arthritis, pork'],
-              ['Giardia', 'Giardia', 'Greasy, foul-smelling', '-', 'Bloating, malabsorption, chronic'],
-              ['Amoeba', 'E. histolytica', 'Bloody-mucoid', '+/-', 'Liver abscess, travel'],
-              ['Cryptosporidium', 'Cryptosporidium', 'Watery', '-', 'Persistent in immunosuppressed, swimming pools'],
-              ['Viral GE', 'Rota/Noro', 'Watery', '-/+', 'Vomiting dominates (Noro), winter season'],
-              ['Cholera', 'Vibrio cholerae', 'Rice-water', '-', 'Massive fluid loss, dehydration']
+              ['C. difficile', 'C. difficile', 'Large intestine', 'Toxin A/B (inflammation)', 'Moderate/Large', 'Watery, greenish, foul', '+', 'AB-associated, pseudomembrane, toxic megacolon'],
+              ['Salmonella', 'Salmonella', 'Small & Large intestine', 'Invasion + Enterotoxin', 'Moderate', 'Watery (rarely bloody)', '++', 'Food poisoning, reptile contact, extraintestinal complications'],
+              ['Shigella', 'Shigella', 'Large intestine', 'Invasion + Shiga toxin', 'Small', 'Bloody-mucoid (dysentery)', '++', 'Tenesmus, low infectious dose, HUS'],
+              ['Campylobacter', 'Campylobacter', 'Small & Large intestine', 'Invasion + Toxin', 'Moderate', 'Watery/Bloody', '+', 'Pseudoappendicitis, GBS, poultry'],
+              ['E. coli (EHEC)', 'E. coli (STEC)', 'Large intestine', 'Shiga toxin', 'Moderate', 'Bloody', '-', 'Afebrile, HUS, beef'],
+              ['E. coli (ETEC)', 'E. coli (ETEC)', 'Small intestine', 'Enterotoxin (secretory)', 'Large', 'Watery', '-', 'Traveler\'s diarrhea'],
+              ['E. coli (EPEC)', 'E. coli (EPEC)', 'Small intestine', 'Malabsorption', 'Large', 'Watery/Mucoid', '+/-', 'Infantile diarrhea'],
+              ['E. coli (EIEC)', 'E. coli (EIEC)', 'Large intestine', 'Invasion', 'Small', 'Bloody-mucoid', '++', 'Dysentery-like, fever'],
+              ['Yersinia', 'Yersinia', 'Small & Large intestine', 'Invasion', 'Moderate', 'Watery/Bloody', '+', 'Pseudoappendicitis, reactive arthritis, pork'],
+              ['Giardia', 'Giardia', 'Small intestine', 'Malabsorption', 'Large/Moderate', 'Greasy, foul-smelling', '-', 'Bloating, malabsorption, chronic'],
+              ['Amoeba', 'E. histolytica', 'Large intestine', 'Invasion/Cytotoxin', 'Small', 'Bloody-mucoid', '+/-', 'Liver abscess, travel'],
+              ['Cryptosporidium', 'Cryptosporidium', 'Small intestine', 'Secretory/Malabsorption', 'Large', 'Watery', '-', 'Persistent in immunosuppressed, swimming pools'],
+              ['Viral GE', 'Rota/Noro', 'Small intestine', 'Malabsorption/Osmotic', 'Large', 'Watery', '-/+', 'Vomiting dominates (Noro), winter season'],
+              ['Cholera', 'Vibrio cholerae', 'Small intestine', 'Enterotoxin (secretory)', 'Very large', 'Rice-water', '-', 'Massive fluid loss, dehydration']
             ]
           }
         ],
@@ -1105,6 +1105,25 @@ Object.assign(window.diseases, {
               ['+', '-', '+', '+', 'Acutely infected'],
               ['+', '-', '+', '-', 'Chronically infected'],
               ['-', '-', '+', '-', 'Possible: 1. Resolved infection (low Anti-HBs); 2. False positive; 3. Occult HBV; 4. Window period']
+            ]
+          },
+          {
+            title: 'Meaning of Hepatitis Serological Markers',
+            headers: ['Marker', 'Virus', 'Meaning'],
+            rows: [
+              ['Anti-HAV IgM', 'HAV', 'Acute infection'],
+              ['Anti-HAV IgG', 'HAV', 'Immunity (vaccination or past infection)'],
+              ['HBsAg', 'HBV', 'Presence of infection (acute or chronic)'],
+              ['Anti-HBs', 'HBV', 'Immunity (vaccination or recovery)'],
+              ['Anti-HBc IgM', 'HBV', 'Acute infection (also in window period)'],
+              ['Anti-HBc (Total)', 'HBV', 'Past or current infection'],
+              ['HBeAg', 'HBV', 'High replication, infectivity'],
+              ['Anti-HBe', 'HBV', 'Lower replication (seroconversion)'],
+              ['HBV DNA', 'HBV', 'Viral replication level'],
+              ['Anti-HCV', 'HCV', 'Exposure (not necessarily active)'],
+              ['HCV RNA', 'HCV', 'Active infection'],
+              ['Anti-HDV', 'HDV', 'HDV infection (only with HBV)'],
+              ['Anti-HEV IgM', 'HEV', 'Acute infection']
             ]
           }
         ],

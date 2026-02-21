@@ -3,6 +3,26 @@ Object.assign(window.diseases, {
         name: 'Bacterial Respiratory Infections',
         icon: window.diseaseMetadata.bacterial_respiratory.icon,
         color: window.diseaseMetadata.bacterial_respiratory.color,
+               tables: [
+                 {
+                   title: 'Differential Diagnosis of Typical vs. Atypical Pneumonia',
+                   headers: ['Feature', 'Typical Pneumonia', 'Atypical Pneumonia'],
+                   rows: [
+                     ['Onset', 'Sudden, dramatic (chills)', 'Slow, gradual (prodrome)'],
+                     ['Fever', 'High (>39°C)', 'Low-grade or moderate fever'],
+                     ['Chest pain', 'Pleuritic, sharp (common)', 'Retrosternal, burning (less common)'],
+                     ['Cough', 'Productive', 'Dry, non-productive, hacking'],
+                     ['Sputum', 'Purulent, rust-colored', 'Scant, mucoid or absent'],
+                     ['Pleural effusion', 'Common (parapneumonic)', 'Rare'],
+                     ['Radiology', 'Lobar/segmental consolidation, air bronchogram', 'Interstitial, ground-glass, diffuse, patchy'],
+                     ['Extrapulmonary symptoms', 'Rare (except septic spread)', 'Common (headache, myalgia, ear/throat, GI, rash)'],
+                     ['Lab (WBC)', 'Leukocytosis, left shift', 'Normal or mild leukocytosis'],
+                     ['Lab (CRP/PCT)', 'Significantly elevated (PCT >0.5)', 'Moderately elevated (PCT <0.25)'],
+                     ['Lab (Liver enzymes)', 'Usually normal', 'Often elevated (AST, ALT)'],
+                     ['Pathogens', '<i>S. pneumoniae, H. influenzae, M. catarrhalis, S. aureus, Klebsiella</i>', '<i>Mycoplasma, Chlamydia, Legionella, Coxiella</i>, Viruses']
+                   ]
+                 }
+               ],
         diseases: [
           {
             id: 'bacterial_pneumonia',
@@ -122,6 +142,14 @@ Object.assign(window.diseases, {
                         { drug: 'Antipseudomonal beta-lactam', dose: 'e.g., Piperacillin/tazobactam, Cefepime, Meropenem', duration: '7 days', note: '1st component (Gram-negative coverage).' },
                         { drug: '+ Antipseudomonal fluoroquinolone or aminoglycoside', dose: 'e.g., Ciprofloxacin, Amikacin', duration: '7 days', note: '2nd component (double G- coverage if needed).' },
                         { drug: '+ MRSA coverage', dose: 'Vancomycin or Linezolid', duration: '7 days', note: '3rd component (if MRSA risk >10-20%).' }
+                    ]
+                     },
+                vap_stenotrophomonas: {
+                    title: 'VAP - Stenotrophomonas maltophilia (Targeted)',
+                    drugs: [
+                        { drug: 'Trimethoprim/Sulfamethoxazole (TMP-SMX)', dose: '15-20 mg/kg/day (TMP) IV in 3-4 div. doses', duration: '14 days', note: 'First choice. High dose required!' },
+                        { drug: 'Levofloxacin', dose: '750 mg IV daily', duration: '14 days', note: 'Alternative.' },
+                        { drug: 'Cefiderocol', dose: '2g IV q8h', duration: '14 days', note: 'Reserve antibiotic.' }
                     ]
                 }
               },
@@ -868,7 +896,7 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               criteria: [
-                { name: 'Major criteria (ESC 2023)', items: ['Positive blood culture (typical pathogen: S. aureus, Enterococcus, Viridans strep, S. gallolyticus, HACEK) from 2 separate samples', 'Positive imaging (Echo/CT/PET-CT): Vegetation, abscess, pseudoaneurysm, fistula, perforation, new dehiscence', 'Paravalvular lesion on CT', 'Abnormal activity around prosthetic valve (PET/CT or SPECT/CT)'] },
+                { name: 'Major criteria (ESC 2023)', items: ['Positive blood culture (typical pathogen: S. aureus, Enterococcus, Viridans strep, S. gallolyticus, HACEK) from 2 separate samples', 'Positive imaging (Echo/CT/PET-CT): Vegetation, abscess, pseudoaneurysma, fistula, perforation, new dehiscence', 'Paravalvular lesion on CT', 'Abnormal activity around prosthetic valve (PET/CT or SPECT/CT)', 'Positive Coxiella burnetii serology (Phase I IgG titer >1:800)'] },
                 { name: 'Minor criteria', items: ['Predisposition (heart defect, prosthetic valve, previous IE)', 'Fever >38°C', 'Vascular phenomena (embolism, septic infarct, mycotic aneurysm, Janeway, imaging-confirmed lesions)', 'Immunological phenomena (Osler\'s nodes, Roth spots, RF+, Glomerulonephritis)', 'Microbiological evidence (positive culture not meeting major criteria)'] },
                 { name: 'Diagnosis (Definite)', items: ['2 Major', '1 Major + 3 Minor', '5 Minor'] }
               ],
@@ -1424,54 +1452,9 @@ Object.assign(window.diseases, {
                 'Purulent inflammation in the middle ear',
                 'Possible eardrum perforation'
               ],
-              virulence_factors: ['Biofilm', 'Toxins']
-            },
-            clinical: {
-              incubation: 'After upper respiratory infection',
-              onset: 'Sudden',
-              symptoms: [
-                { name: 'Main Symptoms', description: 'Sudden onset of severe, throbbing ear pain, fever, and hearing loss.', severity: 'severe' },
-                { name: 'Signs in Infants', description: 'In infants, irritability, inconsolable crying, poor feeding, and pulling at the ear are characteristic.', severity: 'moderate' }
-              ],
-              physical_exam: [
-                'Eardrum hyperemia, bulging',
-                'Discharge if perforated',
-                'Tympanocentesis if needed'
-              ],
-              complications: ['Mastoiditis', 'Meningitis', 'Labyrinthitis']
-            },
-            diagnostics: {
-              imaging: [
-                { modality: 'Otoscopy', finding: 'Eardrum examination', significance: 'Diagnostic' }
-              ]
-            },
-            differential: [
-              { disease: 'Otitis externa', distinguishing: 'Pinna is affected' },
-              { disease: 'Pharyngitis', distinguishing: 'No ear pain' }
-            ],
-            therapy: {
-              empirical: {
-                outpatient: [
-                  { drug: 'Amoxicillin', dose: '3x40mg/kg PO', duration: '7-10 days', note: 'First choice' },
-                  { drug: 'Cefuroxime', dose: '2x250mg PO', duration: '7 days', note: 'Alternative' }
-                ],
-                inpatient: [
-                  { drug: 'IV antibiotics', dose: 'If complicated', duration: '', note: '' }
-                ],
-                icu: [
-                  { drug: 'Surgical drainage', dose: 'If abscess', duration: '', note: '' }
-                ]
-              },
-              targeted: 'Antibiotics',
-              supportive: ['Analgesics', 'Decongestants'],
-              prevention: ['Vaccines (Pneumococcus, Hib)']
-            },
-            prognosis: {
-              mortality: 'Low',
-              prognostic_scores: ['None'],
-              factors: 'Age, recurrence'
+              virulence_factors: ['Biofilm formation']
             }
           }
         ]
       }
-});          
+    });

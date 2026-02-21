@@ -3,25 +3,25 @@ Object.assign(window.diseases, {
         name: 'Gastrointestinális fertőzések',
         icon: window.diseaseMetadata.gastrointestinal.icon,
         color: window.diseaseMetadata.gastrointestinal.color,
-        tables: [
+       tables: [
           {
             title: 'Gastrointestinális fertőzések differenciáldiagnosztikája',
-            headers: ['Betegség', 'Kórokozó', 'Széklet jellege', 'Láz', 'Főbb jellemzők / Komplikációk'],
+            headers: ['Betegség', 'Kórokozó', 'Érintett szakasz', 'Mechanizmus', 'Széklet mennyisége', 'Széklet jellege', 'Láz', 'Főbb jellemzők / Komplikációk'],
             rows: [
-              ['C. difficile', 'C. difficile', 'Vizes, zöldes, bűzös', '+', 'AB-asszociált, pseudomembrán, toxikus megacolon'],
-              ['Salmonella', 'Salmonella', 'Vizes (ritkán véres)', '++', 'Ételmérgezés, hüllő kontakt, extraintesztinális szövődmények'],
-              ['Shigella', 'Shigella', 'Véres-nyákos (dysenteria)', '++', 'Tenesmus, alacsony fertőző dózis, HUS'],
-              ['Campylobacter', 'Campylobacter', 'Vizes/Véres', '+', 'Pseudoappendicitis, GBS, baromfi'],
-              ['E. coli (EHEC)', 'E. coli (STEC)', 'Véres', '-', 'Láz hiánya, HUS, marhahús'],
-              ['E. coli (ETEC)', 'E. coli (ETEC)', 'Vizes', '-', 'Utazók hasmenése'],
-              ['E. coli (EPEC)', 'E. coli (EPEC)', 'Vizes/Nyákos', '+/-', 'Csecsemőkori hasmenés'],
-              ['E. coli (EIEC)', 'E. coli (EIEC)', 'Véres-nyákos', '++', 'Dysenteria-szerű, láz'],
-              ['Yersinia', 'Yersinia', 'Vizes/Véres', '+', 'Pseudoappendicitis, reaktív arthritis, sertéshús'],
-              ['Giardia', 'Giardia', 'Zsíros, bűzös', '-', 'Puffadás, malabszorpció, krónikus'],
-              ['Amoeba', 'E. histolytica', 'Véres-nyákos', '+/-', 'Májtályog, utazás'],
-              ['Cryptosporidium', 'Cryptosporidium', 'Vizes', '-', 'Immunszupprimáltakban perzisztáló, uszoda'],
-              ['Vírusos GE', 'Rota/Noro', 'Vizes', '-/+', 'Hányás dominál (Noro), téli szezon'],
-              ['Cholera', 'Vibrio cholerae', 'Rizslé szerű', '-', 'Masszív folyadékvesztés, dehidráció']
+              ['C. difficile', 'C. difficile', 'Vastagbél', 'Toxin A/B (gyulladás)', 'Közepes/Nagy', 'Vizes, zöldes, bűzös', '+', 'AB-asszociált, pseudomembrán, toxikus megacolon'],
+              ['Salmonella', 'Salmonella', 'Vékony- és Vastagbél', 'Invázió + Enterotoxin', 'Közepes', 'Vizes (ritkán véres)', '++', 'Ételmérgezés, hüllő kontakt, extraintesztinális szövődmények'],
+              ['Shigella', 'Shigella', 'Vastagbél', 'Invázió + Shiga toxin', 'Kicsi', 'Véres-nyákos (dysenteria)', '++', 'Tenesmus, alacsony fertőző dózis, HUS'],
+              ['Campylobacter', 'Campylobacter', 'Vékony- és Vastagbél', 'Invázió + Toxin', 'Közepes', 'Vizes/Véres', '+', 'Pseudoappendicitis, GBS, baromfi'],
+              ['E. coli (EHEC)', 'E. coli (STEC)', 'Vastagbél', 'Shiga toxin', 'Közepes', 'Véres', '-', 'Láz hiánya, HUS, marhahús'],
+              ['E. coli (ETEC)', 'E. coli (ETEC)', 'Vékonybél', 'Enterotoxin (szekréciós)', 'Nagy', 'Vizes', '-', 'Utazók hasmenése'],
+              ['E. coli (EPEC)', 'E. coli (EPEC)', 'Vékonybél', 'Malabszorpció', 'Nagy', 'Vizes/Nyákos', '+/-', 'Csecsemőkori hasmenés'],
+              ['E. coli (EIEC)', 'E. coli (EIEC)', 'Vastagbél', 'Invázió', 'Kicsi', 'Véres-nyákos', '++', 'Dysenteria-szerű, láz'],
+              ['Yersinia', 'Yersinia', 'Vékony- és Vastagbél', 'Invázió', 'Közepes', 'Vizes/Véres', '+', 'Pseudoappendicitis, reaktív arthritis, sertéshús'],
+              ['Giardia', 'Giardia', 'Vékonybél', 'Malabszorpció', 'Nagy/Közepes', 'Zsíros, bűzös', '-', 'Puffadás, malabszorpció, krónikus'],
+              ['Amoeba', 'E. histolytica', 'Vastagbél', 'Invázió/Cytotoxin', 'Kicsi', 'Véres-nyákos', '+/-', 'Májtályog, utazás'],
+              ['Cryptosporidium', 'Cryptosporidium', 'Vékonybél', 'Szekréciós/Malabszorpció', 'Nagy', 'Vizes', '-', 'Immunszupprimáltakban perzisztáló, uszoda'],
+              ['Vírusos GE', 'Rota/Noro', 'Vékonybél', 'Malabszorpció/Osmotikus', 'Nagy', 'Vizes', '-/+', 'Hányás dominál (Noro), téli szezon'],
+              ['Cholera', 'Vibrio cholerae', 'Vékonybél', 'Enterotoxin (szekréciós)', 'Igen nagy', 'Rizslé szerű', '-', 'Masszív folyadékvesztés, dehidráció']
             ]
           }
         ],
@@ -1117,6 +1117,25 @@ Object.assign(window.diseases, {
               ['+', '-', '+', '+', 'Akut fertőzés'],
               ['+', '-', '+', '-', 'Krónikus fertőzés'],
               ['-', '-', '+', '-', 'Lehetséges: 1. Gyógyult fertőzés (alacsony Anti-HBs); 2. Álpozitív; 3. Okkult HBV; 4. Ablakperiódus']
+            ]
+          },
+          {
+            title: 'Hepatitis szerológiai markerek jelentése',
+            headers: ['Marker', 'Vírus', 'Jelentés'],
+            rows: [
+              ['Anti-HAV IgM', 'HAV', 'Akut fertőzés'],
+              ['Anti-HAV IgG', 'HAV', 'Védettség (oltás vagy átvészelés)'],
+              ['HBsAg', 'HBV', 'Fertőzés jelenléte (akut vagy krónikus)'],
+              ['Anti-HBs', 'HBV', 'Immunitás (oltás vagy gyógyulás)'],
+              ['Anti-HBc IgM', 'HBV', 'Akut fertőzés (ablakperiódusban is)'],
+              ['Anti-HBc (Total)', 'HBV', 'Korábbi vagy jelenlegi fertőzés'],
+              ['HBeAg', 'HBV', 'Magas replikáció, fertőzőképesség'],
+              ['Anti-HBe', 'HBV', 'Alacsonyabb replikáció (szerokonverzió)'],
+              ['HBV DNS', 'HBV', 'Vírusreplikáció mértéke'],
+              ['Anti-HCV', 'HCV', 'Expozíció (nem feltétlenül aktív)'],
+              ['HCV RNS', 'HCV', 'Aktív fertőzés'],
+              ['Anti-HDV', 'HDV', 'HDV fertőzés (csak HBV mellett)'],
+              ['Anti-HEV IgM', 'HEV', 'Akut fertőzés']
             ]
           }
         ],

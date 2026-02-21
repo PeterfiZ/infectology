@@ -5,6 +5,26 @@ Object.assign(window.diseases, {
         name: 'Bakterielle Atemwegsinfektionen',
         icon: window.diseaseMetadata.bacterial_respiratory.icon,
         color: window.diseaseMetadata.bacterial_respiratory.color,
+                tables: [
+          {
+            title: 'Differentialdiagnose der typischen vs. atypischen Pneumonie',
+            headers: ['Merkmal', 'Typische Pneumonie', 'Atypische Pneumonie'],
+            rows: [
+              ['Beginn', 'Plötzlich, dramatisch (Schüttelfrost)', 'Langsam, schleichend (Prodrom)'],
+              ['Fieber', 'Hoch (>39°C)', 'Leichtes oder mäßiges Fieber'],
+              ['Brustschmerzen', 'Pleuritisch, stechend (häufig)', 'Retrosternal, brennend (seltener)'],
+              ['Husten', 'Produktiv', 'Trocken, unproduktiv, quälend'],
+              ['Auswurf', 'Eitrig, rostbraun', 'Wenig, schleimig oder fehlend'],
+              ['Pleuraerguss', 'Häufig (parapneumonisch)', 'Selten'],
+              ['Radiologie', 'Lobär-/Segmentkonsolidierung, Aerogramm', 'Interstitiell, Milchglas, diffus, fleckig'],
+              ['Extrapulmonale Symptome', 'Selten (außer septische Streuung)', 'Häufig (Kopfschmerzen, Myalgie, Ohr/Hals, GI, Ausschlag)'],
+              ['Labor (Leukozyten)', 'Leukozytose, Linksverschiebung', 'Normal oder leichte Leukozytose'],
+              ['Labor (CRP/PCT)', 'Deutlich erhöht (PCT >0.5)', 'Mäßig erhöht (PCT <0.25)'],
+              ['Labor (Leberenzyme)', 'Meist normal', 'Oft erhöht (AST, ALT)'],
+              ['Erreger', '<i>S. pneumoniae, H. influenzae, M. catarrhalis, S. aureus, Klebsiella</i>', '<i>Mycoplasma, Chlamydia, Legionella, Coxiella</i>, Viren']
+            ]
+          }
+        ],
         diseases: [
           {
             id: 'bacterial_pneumonia',
@@ -124,6 +144,14 @@ Object.assign(window.diseases, {
                         { drug: 'Antipseudomonas Beta-Laktam', dose: 'z.B. Piperacillin/Tazobactam, Cefepim, Meropenem', duration: '7 Tage', note: '1. Komponente (Gram-negative Abdeckung).' },
                         { drug: '+ Antipseudomonas Fluorchinolon oder Aminoglykosid', dose: 'z.B. Ciprofloxacin, Amikacin', duration: '7 Tage', note: '2. Komponente (doppelte G- Abdeckung, falls erforderlich).' },
                         { drug: '+ MRSA-Abdeckung', dose: 'Vancomycin oder Linezolid', duration: '7 Tage', note: '3. Komponente (wenn MRSA-Risiko >10-20%).' }
+                    ]
+                },
+                vap_stenotrophomonas: {
+                    title: 'VAP - Stenotrophomonas maltophilia (Gezielt)',
+                    drugs: [
+                        { drug: 'Trimethoprim/Sulfamethoxazol (TMP-SMX)', dose: '15-20 mg/kg/Tag (TMP) i.v. in 3-4 Dosen', duration: '14 Tage', note: 'Erste Wahl. Hohe Dosis erforderlich!' },
+                        { drug: 'Levofloxacin', dose: '750 mg i.v. 1x/Tag', duration: '14 Tage', note: 'Alternative.' },
+                        { drug: 'Cefiderocol', dose: '2g i.v. alle 8h', duration: '14 Tage', note: 'Reserveantibiotikum.' }
                     ]
                 }
               },
@@ -870,7 +898,7 @@ Object.assign(window.diseases, {
             },
             diagnostics: {
               criteria: [
-                { name: 'Hauptkriterien (ESC 2023)', items: ['Positive Blutkultur (typischer Erreger: S. aureus, Enterococcus, Viridans-Streptokokken, S. gallolyticus, HACEK) aus 2 separaten Proben', 'Positiver Bildgebungsbefund (Echo/CT/PET-CT): Vegetation, Abszess, Pseudoaneurysma, Fistel, Perforation, neue Dehiszenz', 'Paravalvuläre Läsion im CT', 'Abnormale Aktivität um Klappenprothese (PET/CT oder SPECT/CT)'] },
+                { name: 'Hauptkriterien (ESC 2023)', items: ['Positive Blutkultur (typischer Erreger: S. aureus, Enterococcus, Viridans-Streptokokken, S. gallolyticus, HACEK) aus 2 separaten Proben', 'Positiver Bildgebungsbefund (Echo/CT/PET-CT): Vegetation, Abszess, Pseudoaneurysma, Fistel, Perforation, neue Dehiszenz', 'Paravalvuläre Läsion im CT', 'Abnormale Aktivität um Klappenprothese (PET/CT oder SPECT/CT)', 'Positive Coxiella burnetii Serologie (Phase I IgG Titer >1:800)'] },
                 { name: 'Nebenkriterien', items: ['Prädisposition (Herzfehler, Klappenprothese, frühere IE)', 'Fieber >38°C', 'Vaskuläre Phänomene (Embolie, septischer Infarkt, mykotisches Aneurysma, Janeway, bildgebend bestätigte Läsionen)', 'Immunologische Phänomene (Osler-Knötchen, Roth-Flecken, RF+, Glomerulonephritis)', 'Mikrobiologischer Nachweis (positive Kultur, die kein Hauptkriterium erfüllt)'] },
                 { name: 'Diagnose (Definitiv)', items: ['2 Haupt', '1 Haupt + 3 Neben', '5 Neben'] }
               ],
