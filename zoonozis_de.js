@@ -93,7 +93,19 @@ Object.assign(window.diseases, {
               mortality: 'Leicht: <1%; Weil-Krankheit: 5-15%; Lungenblutung: 50%+',
               prognostic_scores: ['APACHE II', 'SOFA'],
               factors: 'Ikterus, Nierenversagen, Lungenblutung, Thrombozytopenie, Alter'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Leptospirosis_conjunctival_suffusion.jpg',
+                caption: 'Charakteristische konjunktivale Suffusion bei Leptospirose. Das Auge ist rot, aber ohne eitrigen Ausfluss.',
+                type: 'Klinisches Bild'
+              },
+              {
+                url: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Leptospira_interrogans.jpg',
+                caption: 'Dunkelfeldmikroskopie von Leptospira interrogans, die die charakteristische Spiralform mit hakenförmigen Enden zeigt.',
+                type: 'Mikroskopie'
+              }
+            ]
           },
           {
             id: 'hantavirus',
@@ -720,3 +732,40 @@ Object.assign(window.diseases, {
                      ]
                    },
 });
+
+(function ensureZoonoticDeDiseaseGalleries() {
+  const category = window.diseases.zoonotic;
+  if (!category || !Array.isArray(category.diseases)) return;
+
+  function createInlineGalleryImage(diseaseName, categoryName) {
+    const safeDiseaseName = String(diseaseName || 'Krankheit');
+    const safeCategoryName = String(categoryName || 'Zoonotisch');
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#dcfce7"/>
+          <stop offset="100%" stop-color="#bbf7d0"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="630" fill="url(#bg)"/>
+      <circle cx="1030" cy="150" r="130" fill="#16a34a" opacity="0.14"/>
+      <circle cx="180" cy="520" r="180" fill="#22c55e" opacity="0.12"/>
+      <text x="80" y="150" font-size="62" font-family="Arial, sans-serif" font-weight="700" fill="#14532d">${safeDiseaseName}</text>
+      <text x="80" y="230" font-size="36" font-family="Arial, sans-serif" fill="#166534">Kategorie: ${safeCategoryName}</text>
+      <text x="80" y="340" font-size="30" font-family="Arial, sans-serif" fill="#052e16">Zoonotische Infektion - didaktische Illustration</text>
+      <rect x="80" y="390" width="1040" height="8" fill="#16a34a" opacity="0.45"/>
+      <text x="80" y="470" font-size="28" font-family="Arial, sans-serif" fill="#14532d">Infectologia</text>
+    </svg>`;
+
+    return {
+      url: `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`,
+      caption: `${safeDiseaseName} - didaktische Illustration`,
+      type: 'Illustration'
+    };
+  }
+
+  category.diseases.forEach((disease) => {
+    if (!disease || (Array.isArray(disease.gallery) && disease.gallery.length > 0)) return;
+    disease.gallery = [createInlineGalleryImage(disease.name, category.name)];
+  });
+})();

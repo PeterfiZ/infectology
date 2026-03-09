@@ -84,25 +84,29 @@ Object.assign(window.diseases, {
               diagnosis: [
                 'Screening: RPR/VDRL (non-treponemal) or reverse algorithm (EIA/CIA)',
                 'Confirmation: TPHA/FTA-ABS (treponemal-specific) tests',
-                'Neurosyphilis: CSF VDRL (specific, but not sensitive), pleocytosis, elevated protein'
+                'Neurosyphilis: CSF VDRL (specific but not sensitive), pleocytosis, elevated protein'
               ],
               treatment_indications: [
-                'All confirmed cases of syphilis must be treated according to stage',
+                'All confirmed cases of syphilis should be treated according to stage',
                 'Sexual partners must be notified and treated'
               ],
               first_line: [
-                'Early syphilis (primary, secondary, early latent): Benzathine Penicillin G 2.4 million IU IM single dose',
-                'Late latent or tertiary syphilis: Benzathine Penicillin G 2.4 million IU IM weekly for 3 weeks',
-                'Neurosyphilis: Aqueous Crystalline Penicillin G 18-24 million IU/day IV (3-4 million IU every 4 hours) for 10-14 days'
+                'Early syphilis (primary, secondary, early latent): Benzathine Penicillin G 2.4 million units IM single dose',
+                'Late latent or tertiary syphilis: Benzathine Penicillin G 2.4 million units IM weekly for 3 weeks',
+                'Neurosyphilis: Aqueous crystalline Penicillin G 18-24 million units/day IV (3-4 million units every 4 hours) for 10-14 days'
               ],
               special_populations: [
-                'Penicillin allergy: Doxycycline 2x100mg PO for 14 days (early) or 28 days (late). In pregnancy, desensitization and Penicillin treatment is mandatory!',
+                'Penicillin allergy: Doxycycline 100mg PO twice daily for 14 days (early) or 28 days (late). In pregnancy, desensitization and Penicillin treatment are mandatory!',
                 'Pregnancy: All pregnant women should be screened. Treatment is the same as for non-pregnant adults.',
-                'Jarisch-Herxheimer reaction: Febrile reaction in the first 24 hours of treatment, not an allergy. Symptomatic treatment.',
-+               'Congenital syphilis: Aqueous Crystalline Penicillin G 100,000-150,000 units/kg/day IV (50,000 units/kg/dose every 12 hours for first 7 days, then every 8 hours) for 10 days. OR Procaine Penicillin G 50,000 units/kg/day IM for 10 days.'
+                'Jarisch-Herxheimer reaction: A febrile reaction within the first 24 hours of treatment, not an allergy. Symptomatic treatment.',
+                'Congenital syphilis: Aqueous crystalline Penicillin G 100,000-150,000 units/kg/day IV (50,000 units/kg/dose every 12 hours for the first 7 days, then every 8 hours) for 10 days. OR Procaine Penicillin G 50,000 units/kg/day IM for 10 days.'
               ],
               monitoring: [
-                'Treatment success is monitored by a decrease in non-treponemal test (RPR/VDRL) titers (at least a four-fold decrease within 12 months).'
+                'Treatment success is monitored by a decrease in non-treponemal test (RPR/VDRL) titers (at least a fourfold decrease within 12 months).'
+              ],
+              references: [
+                'CDC STI Treatment Guidelines, 2021',
+                'IUSTI: 2020 European guideline on the management of syphilis'
               ]
             },
             prognosis: {

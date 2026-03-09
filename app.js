@@ -15,7 +15,8 @@ const DATA_MODULES = [
     'systemic',
     'tropical',
     'emerging',
-    'childhood'
+    'childhood',
+    'scores'
 ];
 
 const AVAILABLE_LANGUAGES = {
@@ -1006,7 +1007,7 @@ function renderDiseaseDetails(d) {
         let scoresHtml = '';
         if (d.prognosis.prognostic_scores && d.prognosis.prognostic_scores.length && d.prognosis.prognostic_scores[0] !== 'Nincs' && d.prognosis.prognostic_scores[0] !== 'None' && d.prognosis.prognostic_scores[0] !== 'Keine') {
              scoresHtml = d.prognosis.prognostic_scores.map(score => {
-                const key = Object.keys(scoreCalculators).find(k => score.includes(k));
+                const key = Object.keys(window.scoreCalculators || {}).find(k => score.includes(k));
                 if (key) {
                     return `<button onclick="openScoreCalculator('${key}')" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors border border-blue-200 cursor-pointer">${score}</button>`;
                 }
@@ -1021,6 +1022,36 @@ function renderDiseaseDetails(d) {
             prog.factors && `<div><strong>${getLabel('factors')}:</strong> ${prog.factors}</div>`
         ].filter(Boolean).join('');
         allContent += renderSection(getLabel('prognosis'), progContent, '🔮');
+    }
+    // References
+    const refs = d.references || (d.guidelines && d.guidelines.references) || (d.therapy && d.therapy.guidelines && d.therapy.guidelines.references);
+    if (refs && refs.length > 0) {
+        const refsContent = `<ul class="list-disc list-inside space-y-1 text-sm">${refs.map(r => {
+            if (typeof r === 'string') return `<li>${r}</li>`;
+            return `<li><a href="${r.url}" target="_blank" class="text-blue-600 hover:underline flex-inline items-center gap-1">🔗 ${r.text}</a></li>`;
+        }).join('')}</ul>`;
+        allContent += renderSection(getLabel('references'), refsContent, '📚');
+    }
+
+    // Gallery
+    const gallery = d.gallery;
+    if (gallery && gallery.length > 0) {
+        const galleryContent = `
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                ${gallery.map(image => `
+                    <div class="border rounded-lg overflow-hidden shadow-sm bg-white group">
+                        <a href="${image.url}" target="_blank" title="${getLabel('open_in_new_tab')}">
+                            <img src="${image.url}" alt="${image.caption}" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </a>
+                        <div class="p-3">
+                            <p class="font-semibold text-gray-600 text-xs uppercase tracking-wider">${image.type || ''}</p>
+                            <p class="text-gray-800 mt-1 text-sm">${image.caption}</p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        allContent += renderSection(getLabel('gallery'), galleryContent, '🖼️');
     }
 
     return `
@@ -1219,9 +1250,10 @@ function getLabel(key) {
             supportive: 'Szupportív', prevention: 'Megelőzés', search_results: 'Keresési találatok', no_results: 'Nincs találat',
             score: 'Pontszám', select_symptoms: 'Jelölje be a tüneteket...', prognosis: 'Prognózis', mortality: 'Halálozás', prog_scores: 'Prognosztikai score-ok', factors: 'Faktorok',
             pathomechanism: 'Patomechanizmus', virulence_factors: 'Virulencia faktorok', physical_exam: 'Fizikális vizsgálat',
-            incidence: 'Incidencia', risk_groups: 'Rizikócsoportok', seasonality: 'Szezonalitás', transmission: 'Terjedés',
-            differential_diagnosis: 'Differenciáldiagnózis', gallery: 'Galéria', guidelines: 'Irányelvek', references: 'Források',
-            criteria: 'Kritériumok', onset: 'Kezdet', clinical: 'Klinikum'
+            incidence: 'Incidencia', risk_groups: 'Rizikócsoportok', seasonality: 'Szezonalitás', transmission: 'Terjedés', 
+            differential_diagnosis: 'Differenciáldiagnózis', gallery: 'Galéria', guidelines: 'Irányelvek', references: 'Források', 
+            criteria: 'Kritériumok', onset: 'Kezdet', clinical: 'Klinikum',
+            open_in_new_tab: 'Megnyitás új lapon'
         },
         en: {
             entries: 'entries', back: 'Back', symptoms: 'Symptoms', therapy: 'Therapy',
@@ -1229,10 +1261,11 @@ function getLabel(key) {
             diagnostics: 'Diagnostics', microbiology: 'Microbiology', imaging: 'Imaging', targeted: 'Targeted',
             supportive: 'Supportive', prevention: 'Prevention', search_results: 'Search Results', no_results: 'No results found',
             score: 'Score', select_symptoms: 'Select symptoms...', prognosis: 'Prognosis', mortality: 'Mortality', prog_scores: 'Prognostic Scores', factors: 'Factors',
-            pathomechanism: 'Pathomechanism', virulence_factors: 'Virulence Factors', physical_exam: 'Physical Exam',
-            incidence: 'Incidence', risk_groups: 'Risk Groups', seasonality: 'Seasonality', transmission: 'Transmission',
-            differential_diagnosis: 'Differential Diagnosis', gallery: 'Gallery', guidelines: 'Guidelines', references: 'References',
-            criteria: 'Criteria', onset: 'Onset', clinical: 'Clinical'
+            pathomechanism: 'Pathomechanism', virulence_factors: 'Virulence Factors', physical_exam: 'Physical Exam', 
+            incidence: 'Incidence', risk_groups: 'Risk Groups', seasonality: 'Seasonality', transmission: 'Transmission', 
+            differential_diagnosis: 'Differential Diagnosis', gallery: 'Gallery', guidelines: 'Guidelines', references: 'References', 
+            criteria: 'Criteria', onset: 'Onset', clinical: 'Clinical',
+            open_in_new_tab: 'Open in new tab'
         },
         de: {
             entries: 'Einträge', back: 'Zurück', symptoms: 'Symptome', therapy: 'Therapie',
@@ -1240,10 +1273,11 @@ function getLabel(key) {
             diagnostics: 'Diagnostik', microbiology: 'Mikrobiologie', imaging: 'Bildgebung', targeted: 'Gezielt',
             supportive: 'Supportiv', prevention: 'Prävention', search_results: 'Suchergebnisse', no_results: 'Keine Ergebnisse',
             score: 'Punktzahl', select_symptoms: 'Symptome auswählen...', prognosis: 'Prognose', mortality: 'Mortalität', prog_scores: 'Prognostische Scores', factors: 'Faktoren',
-            pathomechanism: 'Pathomechanismus', virulence_factors: 'Virulenzfaktoren', physical_exam: 'Körperliche Untersuchung',
-            incidence: 'Inzidenz', risk_groups: 'Risikogruppen', seasonality: 'Saisonalität', transmission: 'Übertragung',
-            differential_diagnosis: 'Differentialdiagnose', gallery: 'Galerie', guidelines: 'Leitlinien', references: 'Quellen',
-            criteria: 'Kriterien', onset: 'Beginn', clinical: 'Klinik'
+            pathomechanism: 'Pathomechanismus', virulence_factors: 'Virulenzfaktoren', physical_exam: 'Körperliche Untersuchung', 
+            incidence: 'Inzidenz', risk_groups: 'Risikogruppen', seasonality: 'Saisonalität', transmission: 'Übertragung', 
+            differential_diagnosis: 'Differentialdiagnose', gallery: 'Galerie', guidelines: 'Leitlinien', references: 'Quellen', 
+            criteria: 'Kriterien', onset: 'Beginn', clinical: 'Klinik',
+            open_in_new_tab: 'In neuem Tab öffnen'
         }
     };
     return labels[currentLang][key] || key;
@@ -1282,8 +1316,8 @@ window.openScoreCalculator = function(scoreName) {
     const title = document.getElementById('score-modal-title');
     const content = document.getElementById('score-modal-content');
     
-    const key = Object.keys(scoreCalculators).find(k => scoreName.includes(k)) || scoreName;
-    const calc = scoreCalculators[key];
+    const key = Object.keys(window.scoreCalculators || {}).find(k => scoreName.includes(k)) || scoreName;
+    const calc = (window.scoreCalculators || {})[key];
     
     if (!calc) {
       alert(`A(z) ${scoreName} kalkulátor jelenleg nem elérhető ebben az alkalmazásban.`);

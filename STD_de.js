@@ -84,25 +84,29 @@ Object.assign(window.diseases, {
               diagnosis: [
                 'Screening: RPR/VDRL (nicht-treponemal) oder reverser Algorithmus (EIA/CIA)',
                 'Bestätigung: TPHA/FTA-ABS (treponema-spezifische) Tests',
-                'Neurosyphilis: Liquor-VDRL (spezifisch, aber nicht sensitiv), Pleozytose, erhöhtes Protein'
+                'Neurosyphilis: Liquor-VDRL (spezifisch, aber nicht sensitiv), Pleozytose, Proteinerhöhung'
               ],
               treatment_indications: [
-                'Alle bestätigten Syphilis-Fälle müssen je nach Stadium behandelt werden',
+                'Alle bestätigten Syphilis-Fälle müssen stadienabhängig behandelt werden',
                 'Sexualpartner müssen benachrichtigt und behandelt werden'
               ],
               first_line: [
-                'Frühsyphilis (primär, sekundär, frühe Latenz): Benzathin-Penicillin G 2,4 Mio. IE i.m. als Einzeldosis',
-                'Späte Latenz oder Tertiärsyphilis: Benzathin-Penicillin G 2,4 Mio. IE i.m. wöchentlich für 3 Wochen',
-                'Neurosyphilis: Wässriges kristallines Penicillin G 18-24 Mio. IE/Tag i.v. (3-4 Mio. IE alle 4 Stunden) für 10-14 Tage'
+                'Frühsyphilis (primär, sekundär, frühe Latenz): Benzathin-Penicillin G 2,4 Millionen IE i.m. als Einzeldosis',
+                'Späte Latenz oder Tertiärsyphilis: Benzathin-Penicillin G 2,4 Millionen IE i.m. wöchentlich für 3 Wochen',
+                'Neurosyphilis: Wässriges kristallines Penicillin G 18-24 Millionen IE/Tag i.v. (3-4 Millionen IE alle 4 Stunden) für 10-14 Tage'
               ],
               special_populations: [
-                'Penicillinallergie: Doxycyclin 2x100mg p.o. für 14 Tage (früh) oder 28 Tage (spät). In der Schwangerschaft ist eine Desensibilisierung und Penicillin-Behandlung obligatorisch!',
+                'Penicillinallergie: Doxycyclin 100mg p.o. zweimal täglich für 14 Tage (früh) oder 28 Tage (spät). In der Schwangerschaft sind Desensibilisierung und Penicillin-Behandlung obligatorisch!',
                 'Schwangerschaft: Alle schwangeren Frauen sollten gescreent werden. Die Behandlung ist die gleiche wie bei nicht-schwangeren Erwachsenen.',
-                'Jarisch-Herxheimer-Reaktion: Fieberhafte Reaktion in den ersten 24 Stunden der Behandlung, keine Allergie. Symptomatische Behandlung.',
-                'Kongenitale Syphilis: Wässriges kristallines Penicillin G 100.000-150.000 IE/kg/Tag i.v. (50.000 IE/kg/Dosis alle 12 Stunden in den ersten 7 Tagen, dann alle 8 Stunden) für 10 Tage. ODER Procain-Penicillin G 50.000 IE/kg/Tag i.m. für 10 Tage.'
+                'Jarisch-Herxheimer-Reaktion: Eine fieberhafte Reaktion innerhalb der ersten 24 Stunden nach Behandlungsbeginn, keine Allergie. Symptomatische Behandlung.',
+                'Angeborene Syphilis: Wässriges kristallines Penicillin G 100.000-150.000 IE/kg/Tag i.v. (50.000 IE/kg/Dosis alle 12 Stunden für die ersten 7 Tage, dann alle 8 Stunden) für 10 Tage. ODER Procain-Penicillin G 50.000 IE/kg/Tag i.m. für 10 Tage.'
               ],
               monitoring: [
-                'Der Behandlungserfolg wird durch einen Abfall der nicht-treponemalen Test-Titer (RPR/VDRL) überwacht (mindestens vierfacher Abfall innerhalb von 12 Monaten).'
+                'Der Behandlungserfolg wird durch einen Abfall der nicht-treponemalen Testtiter (RPR/VDRL) überwacht (mindestens vierfacher Abfall innerhalb von 12 Monaten).'
+              ],
+              references: [
+                'CDC STI Treatment Guidelines, 2021',
+                'IUSTI: 2020 European guideline on the management of syphilis'
               ]
             },
             prognosis: {

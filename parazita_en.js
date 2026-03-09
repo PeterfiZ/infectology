@@ -104,7 +104,14 @@ Object.assign(window.diseases, {
               mortality: 'Uncomplicated: <0.1%; Severe: 10-20% (treated)',
               prognostic_scores: ['Parasitemia level (>5-10%)'],
               factors: 'Delayed diagnosis, P. falciparum, age, pregnancy'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_life_cycle-en.svg',
+                caption: 'Malaria (Plasmodium) life cycle',
+                type: 'Life cycle diagram'
+              }
+            ]
           },
           {
             id: 'toxoplasmosis',
@@ -529,3 +536,63 @@ Object.assign(window.diseases, {
     ]
   }
 });
+
+(function ensureParasiticHelminthLifecycleGalleriesEn() {
+  const category = window.diseases && window.diseases.parasitic;
+  if (!category || !Array.isArray(category.diseases)) return;
+
+  const lifecycleGalleryByDiseaseId = {
+    ascariasis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ascaris_lumbricoides_life_cycle.png',
+        caption: 'Ascaris lumbricoides life cycle (CDC/DPDx)',
+        type: 'Life cycle diagram'
+      }
+    ],
+    taeniasis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Taenia_solium_Life_cycle_%2801%29.jpg',
+        caption: 'Taenia solium life cycle (CDC/DPDx)',
+        type: 'Life cycle diagram'
+      }
+    ],
+    echinococcosis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Echinococcus_gran_LifeCycle_lg.jpg',
+        caption: 'Echinococcus granulosus life cycle (CDC/DPDx)',
+        type: 'Life cycle diagram'
+      }
+    ],
+    enterobiasis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Enterobius_vermicularis_LifeCycle.gif',
+        caption: 'Enterobius vermicularis life cycle (CDC/DPDx)',
+        type: 'Life cycle diagram'
+      }
+    ],
+    trichinellosis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Trichinella_LifeCycle.gif',
+        caption: 'Trichinella spp. life cycle (CDC/DPDx)',
+        type: 'Life cycle diagram'
+      }
+    ],
+    toxocariasis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Toxocara_canis_LifeCycle.gif',
+        caption: 'Toxocara canis life cycle (CDC/DPDx)',
+        type: 'Life cycle diagram'
+      }
+    ]
+  };
+
+  category.diseases.forEach((disease) => {
+    if (!disease) return;
+    if (Array.isArray(disease.gallery) && disease.gallery.length > 0) return;
+
+    const gallery = lifecycleGalleryByDiseaseId[disease.id];
+    if (gallery) {
+      disease.gallery = gallery.map((image) => ({ ...image }));
+    }
+  });
+})();

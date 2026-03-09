@@ -151,7 +151,11 @@ Object.assign(window.diseases, {
               mortality: 'Insgesamt 5-10%, Fulminant 30-50%',
               prognostic_scores: ['ATLAS Score'],
               factors: 'Alter, Leukozytose, Albumin, Kreatinin, hypervirulenter Stamm, späte Behandlung'
-            }
+            },
+            references: [
+              { text: 'IDSA/SHEA 2021 C. difficile guideline', url: 'https://www.idsociety.org/practice-guideline/clostridioides-difficile/' },
+              { text: 'CDC C. difficile information', url: 'https://www.cdc.gov/cdiff/index.html' }
+            ]
           },
           {
             id: 'salmonellosis',
@@ -222,12 +226,12 @@ Object.assign(window.diseases, {
                 },
                 pediatric: 'Kinderdosen für Ceftriaxon und Fluorchinolone sind alters- und gewichtsabhängig; lokales pädiatrisches Protokoll konsultieren'
               },
-              references: [
-                'CDC – Salmonella: https://www.cdc.gov/salmonella/index.html',
-                'WHO – Non-typhoidal Salmonella overview: https://www.who.int/news-room/fact-sheets/detail/salmonella-(non-typhoidal)'
-              ]
             },
-            prognosis: { mortality: 'Niedrig (<1%), höher bei Sepsis', prognostic_scores: [], factors: 'Alter, Komorbidität' }
+            prognosis: { mortality: 'Niedrig (<1%), höher bei Sepsis', prognostic_scores: [], factors: 'Alter, Komorbidität' },
+            references: [
+              { text: 'CDC – Salmonella', url: 'https://www.cdc.gov/salmonella/index.html' },
+              { text: 'WHO – Non-typhoidal Salmonella overview', url: 'https://www.who.int/news-room/fact-sheets/detail/salmonella-(non-typhoidal)' }
+            ]
           },
           {
             id: 'shigellosis',
@@ -295,12 +299,12 @@ Object.assign(window.diseases, {
                 },
                 pediatric: 'Kinderdosen für Azithromycin und Ceftriaxon sind alters- und gewichtsabhängig; pädiatrisches Protokoll konsultieren'
               },
-              references: [
-                'CDC – Shigella: https://www.cdc.gov/shigella/index.html',
-                'WHO – Shigellosis factsheet: https://www.who.int/news-room/fact-sheets/detail/shigellosis'
-              ]
             },
-            prognosis: { mortality: 'Niedrig mit Behandlung, bei S. dysenteriae 1 in Epidemien bis zu 20%', prognostic_scores: [], factors: 'Alter, Komorbidität, Mangelernährung' }
+            prognosis: { mortality: 'Niedrig mit Behandlung, bei S. dysenteriae 1 in Epidemien bis zu 20%', prognostic_scores: [], factors: 'Alter, Komorbidität, Mangelernährung' },
+            references: [
+              { text: 'CDC – Shigella', url: 'https://www.cdc.gov/shigella/index.html' },
+              { text: 'WHO – Shigellosis factsheet', url: 'https://www.who.int/news-room/fact-sheets/detail/shigellosis' }
+            ]
           },
           {
             id: 'campylobacter',
@@ -367,12 +371,12 @@ Object.assign(window.diseases, {
                 },
                 pediatric: 'Kinderdosen für Makrolide sind alters- und gewichtsabhängig; lokales Protokoll anfordern'
               },
-              references: [
-                'CDC – Campylobacter: https://www.cdc.gov/campylobacter/index.html',
-                'ESCMID guidance on Campylobacter: https://www.escmid.org/'
-              ]
             },
-            prognosis: { mortality: 'Sehr niedrig (<0.1%)', prognostic_scores: [], factors: 'GBS-Komplikation kann schwerwiegend sein, reaktive Arthritis langwierig' }
+            prognosis: { mortality: 'Sehr niedrig (<0.1%)', prognostic_scores: [], factors: 'GBS-Komplikation kann schwerwiegend sein, reaktive Arthritis langwierig' },
+            references: [
+              { text: 'CDC – Campylobacter', url: 'https://www.cdc.gov/campylobacter/index.html' },
+              { text: 'ESCMID guidance on Campylobacter', url: 'https://www.escmid.org/' }
+            ]
           },
           {
             id: 'ecoli_enteritis',
@@ -446,12 +450,12 @@ Object.assign(window.diseases, {
                 },
                 pediatric: 'Rifaximin-Kinderdosen begrenzt; bei EHEC Antibiotika bei Kindern vermeiden'
               },
-              references: [
-                'CDC – E. coli (STEC): https://www.cdc.gov/ecoli/index.html',
-                'CDC – Traveler\'s Diarrhea & Rifaximin: https://www.cdc.gov/antibiotic-use/community/for-hcp/common-conditions/travelers-diarrhea.html'
-              ]
             },
-            prognosis: { mortality: 'ETEC/EPEC: niedrig; EHEC: bei HUS 3-5% Mortalität', prognostic_scores: [], factors: 'Alter (Kind/Alt), HUS-Entwicklung, Antibiotikaeinsatz (bei EHEC verschlechternd!)' }
+            prognosis: { mortality: 'ETEC/EPEC: niedrig; EHEC: bei HUS 3-5% Mortalität', prognostic_scores: [], factors: 'Alter (Kind/Alt), HUS-Entwicklung, Antibiotikaeinsatz (bei EHEC verschlechternd!)' },
+            references: [
+              { text: 'CDC – E. coli (STEC)', url: 'https://www.cdc.gov/ecoli/index.html' },
+              { text: 'CDC – Traveler\'s Diarrhea & Rifaximin', url: 'https://www.cdc.gov/antibiotic-use/community/for-hcp/common-conditions/travelers-diarrhea.html' }
+            ]
           },
           {
             id: 'yersiniosis',
@@ -517,11 +521,11 @@ Object.assign(window.diseases, {
                 },
                 pediatric: 'Bei Kindern meist symptomatische Behandlung; Antibiotika nur bei schwerer, systemischer Infektion (pädiatrisches Konsil)'
               },
-              references: [
-                'CDC – Yersinia enterocolitica: https://www.cdc.gov/yersinia/index.html'
-              ]
             },
-            prognosis: { mortality: 'Niedrig, bei Sepsis hoch (50%)', prognostic_scores: [], factors: 'Eisenüberladung, Immunsuppression, späte Diagnose' }
+            prognosis: { mortality: 'Niedrig, bei Sepsis hoch (50%)', prognostic_scores: [], factors: 'Eisenüberladung, Immunsuppression, späte Diagnose' },
+            references: [
+              { text: 'CDC – Yersinia enterocolitica', url: 'https://www.cdc.gov/yersinia/index.html' }
+            ]
           },
           {
             id: 'giardiasis',
@@ -592,11 +596,11 @@ Object.assign(window.diseases, {
                 pregnancy: 'In der Schwangerschaft: Paromomycin 500 mg p.o. 3x/Tag 7 Tage bevorzugt (Vermeidung von Metronidazol/Tinidazol im ersten Trimester)',
                 pediatric: 'Kinderdosen alters- und gewichtsabhängig; Tinidazol/Metronidazol-Kinderdosierung gemäß lokalem Protokoll'
               },
-              references: [
-                'CDC – Giardiasis: https://www.cdc.gov/parasites/giardia/index.html'
-              ]
             },
-            prognosis: { mortality: 'Hervorragend, kann aber ohne Behandlung chronisch werden', prognostic_scores: [], factors: 'IgA-Mangel, Reinfektion' }
+            prognosis: { mortality: 'Hervorragend, kann aber ohne Behandlung chronisch werden', prognostic_scores: [], factors: 'IgA-Mangel, Reinfektion' },
+            references: [
+              { text: 'CDC – Giardiasis', url: 'https://www.cdc.gov/parasites/giardia/index.html' }
+            ]
           },
           {
             id: 'amoebiasis',
@@ -670,12 +674,12 @@ Object.assign(window.diseases, {
                 pregnancy: 'In der Schwangerschaft Tinidazol/Metronidazol im ersten Trimester vermeiden; Paromomycin bevorzugt für Lumenbehandlung',
                 pediatric: 'Kinderdosis gemäß lokalem Protokoll; pädiatrisches Konsil empfohlen'
               },
-              references: [
-                'CDC – Amebiasis: https://www.cdc.gov/parasites/amebiasis/index.html',
-                'WHO – Amebiasis: https://www.who.int/health-topics/amebiasis'
-              ]
             },
-            prognosis: { mortality: 'Gut mit Behandlung (<1%), höher bei kompliziertem Abszess/Perforation', prognostic_scores: [], factors: 'Späte Diagnose, Abszessruptur' }
+            prognosis: { mortality: 'Gut mit Behandlung (<1%), höher bei kompliziertem Abszess/Perforation', prognostic_scores: [], factors: 'Späte Diagnose, Abszessruptur' },
+            references: [
+              { text: 'CDC – Amebiasis', url: 'https://www.cdc.gov/parasites/amebiasis/index.html' },
+              { text: 'WHO – Amebiasis', url: 'https://www.who.int/health-topics/amebiasis' }
+            ]
           },
           {
             id: 'cryptosporidiosis',
@@ -747,12 +751,12 @@ Object.assign(window.diseases, {
                   },
                   pediatric: 'Nitazoxanid-Kinderdosis nach Alter und Gewicht; lokales Protokoll anfordern'
                 },
-                references: [
-                  'CDC – Cryptosporidium: https://www.cdc.gov/parasites/crypto/index.html',
-                  'WHO – Cryptosporidiosis: https://www.who.int/news-room/fact-sheets/detail/cryptosporidiosis'
-                ]
               },
-            prognosis: { mortality: 'Immunkompetent: gut; AIDS: hohe Mortalität bei CD4<100', prognostic_scores: [], factors: 'Immunstatus-Wiederherstellung (ART)' }
+            prognosis: { mortality: 'Immunkompetent: gut; AIDS: hohe Mortalität bei CD4<100', prognostic_scores: [], factors: 'Immunstatus-Wiederherstellung (ART)' },
+            references: [
+              { text: 'CDC – Cryptosporidium', url: 'https://www.cdc.gov/parasites/crypto/index.html' },
+              { text: 'WHO – Cryptosporidiosis', url: 'https://www.who.int/news-room/fact-sheets/detail/cryptosporidiosis' }
+            ]
           },
           {
             id: 'viral_gastroenteritis',
@@ -818,12 +822,12 @@ Object.assign(window.diseases, {
                   rotavirus: 'Rotavirus-Impfstoff: gemäß lokalem Impfplan (z.B. Rotarix 2 Dosen, RotaTeq 3 Dosen – siehe Impfprotokoll)'
                 }
               },
-              references: [
-                'CDC – Norovirus: https://www.cdc.gov/norovirus/index.html',
-                'CDC – Rotavirus: https://www.cdc.gov/rotavirus/index.html'
-              ]
             },
-            prognosis: { mortality: 'In entwickelten Ländern sehr niedrig, Dehydratation ist die Hauptgefahr', prognostic_scores: [], factors: 'Alter (Säugling/Alt), Komorbidität' }
+            prognosis: { mortality: 'In entwickelten Ländern sehr niedrig, Dehydratation ist die Hauptgefahr', prognostic_scores: [], factors: 'Alter (Säugling/Alt), Komorbidität' },
+            references: [
+              { text: 'CDC – Norovirus', url: 'https://www.cdc.gov/norovirus/index.html' },
+              { text: 'CDC – Rotavirus', url: 'https://www.cdc.gov/rotavirus/index.html' }
+            ]
           },
           {
             id: 'cholera',
@@ -907,12 +911,12 @@ Object.assign(window.diseases, {
                 },
                 pediatric: 'Kinderdosen gewichtsabhängig; Azithromycin-Kinderdosis gemäß lokalem Leitfaden'
               },
-              references: [
-                'WHO – Cholera and acute diarrhoeal disease guidance: https://www.who.int/health-topics/diarrhoeal-diseases',
-                'CDC – Cholera: https://www.cdc.gov/cholera/index.html'
-              ]
             },
-            prognosis: { mortality: 'Mit Behandlung <1%, unbehandelt 50%', prognostic_scores: [], factors: 'Alter, Komorbidität' }
+            prognosis: { mortality: 'Mit Behandlung <1%, unbehandelt 50%', prognostic_scores: [], factors: 'Alter, Komorbidität' },
+            references: [
+              { text: 'WHO – Cholera and acute diarrhoeal disease guidance', url: 'https://www.who.int/health-topics/diarrhoeal-diseases' },
+              { text: 'CDC – Cholera', url: 'https://www.cdc.gov/cholera/index.html' }
+            ]
           },
           {
             id: 'travelers_diarrhea',
@@ -983,12 +987,12 @@ Object.assign(window.diseases, {
                 },
                 pediatric: 'Kinderdosen gewichts- und altersabhängig; lokales pädiatrisches Protokoll anfordern'
               },
-              references: [
-                'CDC – Traveler\'s Health: Traveler\'s Diarrhea: https://wwwnc.cdc.gov/travel/yellowbook/2024/infectious-diseases-related-to-travel/traveler-s-diarrhea',
-                'WHO – Management of diarrhoea: https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease'
-              ]
             },
-            prognosis: { mortality: 'Sehr niedrig', prognostic_scores: [], factors: 'Alter, Immunstatus' }
+            prognosis: { mortality: 'Sehr niedrig', prognostic_scores: [], factors: 'Alter, Immunstatus' },
+            references: [
+              { text: 'CDC – Traveler\'s Health: Traveler\'s Diarrhea', url: 'https://wwwnc.cdc.gov/travel/yellowbook/2024/infectious-diseases-related-to-travel/traveler-s-diarrhea' },
+              { text: 'WHO – Management of diarrhoea', url: 'https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease' }
+            ]
           },
           {
             id: 'dysentery_syndrome',
@@ -1055,7 +1059,11 @@ Object.assign(window.diseases, {
               supportive: ['ORS, kontinuierliche Überwachung bei schweren Fällen; Motilitätshemmer bei Dysenterie vermeiden'],
               prevention: ['Händehygiene, Lebensmittelhygiene; bei Ausbrüchen Kontaktisolierung und gesundheitsbehördliche Maßnahmen']
             },
-            prognosis: { mortality: 'Variabel, schwerer bei EHEC/S. dysenteriae 1', prognostic_scores: [], factors: 'Alter, Erregertyp' }
+            prognosis: { mortality: 'Variabel, schwerer bei EHEC/S. dysenteriae type 1', prognostic_scores: [], factors: 'Alter, Erregertyp' },
+            references: [
+              { text: 'WHO Dysentery (Shigellosis) Guidelines', url: 'https://www.who.int/health-topics/shigellosis' },
+              { text: 'CDC Shigella - Resources for Healthcare Professionals', url: 'https://www.cdc.gov/shigella/hcp/index.html' }
+            ]
           }
         ]
       },
@@ -1207,7 +1215,18 @@ Object.assign(window.diseases, {
               mortality: 'Niedrig (<0.1%), aber 1.8% über 50 Jahre',
               prognostic_scores: ['King\'s College Kriterien (fulminant)'],
               factors: 'Alter, zugrunde liegende Lebererkrankung'
-            }
+            },
+            references: [
+              'WHO. Hepatitis A fact sheet.',
+              'CDC Yellow Book: Hepatitis A.'
+            ],
+            gallery: [
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>0</text><text x='200' y='370' class='txt'>1 Mon</text><text x='350' y='370' class='txt'>3 Mon</text><text x='500' y='370' class='txt'>6 Mon</text><text x='650' y='370' class='txt'>1 J</text><text x='350' y='390' class='txt' text-anchor='middle'>Zeit nach Exposition</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,350 Q150,50 250,50 Q350,50 450,350' fill='none' stroke='purple' stroke-width='3' /><text x='200' y='40' class='txt' fill='purple'>Anti-HAV IgM</text><path d='M150,350 Q250,100 350,100 L750,100' fill='none' stroke='green' stroke-width='3' /><text x='600' y='90' class='txt' fill='green'>Anti-HAV IgG</text><path d='M50,350 Q100,200 150,200 Q200,200 220,350' fill='none' stroke='red' stroke-width='3' stroke-dasharray='5,5' /><text x='80' y='190' class='txt' fill='red'>Virus (Stuhl)</text><path d='M100,350 Q180,150 220,150 Q260,150 300,350' fill='none' stroke='orange' stroke-width='2' /><text x='180' y='140' class='txt' fill='orange'>ALT (Symptome)</text></svg>",
+                caption: 'Serologischer Verlauf der Hepatitis A',
+                type: 'Diagramm'
+              }
+            ]
           },
           {
             id: 'hbv',
@@ -1403,7 +1422,18 @@ Object.assign(window.diseases, {
             prognosis: {
               mortality: 'Hervorragend mit Behandlung (SVR = Heilung), schlechter bei Zirrhose',
               factors: 'Fibrosestadium, Koinfektion (HIV/HBV), Alkohol'
-            }
+            },
+            references: [
+              'EASL Recommendations on Treatment of Hepatitis C (2020 update).',
+              'WHO. Guidelines for the care and treatment of persons diagnosed with chronic hepatitis C virus infection.'
+            ],
+            gallery: [
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>0</text><text x='150' y='370' class='txt'>2 Mon</text><text x='250' y='370' class='txt'>6 Mon</text><text x='450' y='370' class='txt'>1 J</text><text x='650' y='370' class='txt'>Jahre...</text><text x='350' y='390' class='txt' text-anchor='middle'>Zeit nach Exposition</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,350 Q80,50 150,50 L750,50' fill='none' stroke='red' stroke-width='3' /><text x='600' y='40' class='txt' fill='red'>HCV RNA</text><path d='M100,350 Q200,100 300,100 L750,100' fill='none' stroke='blue' stroke-width='3' /><text x='600' y='90' class='txt' fill='blue'>Anti-HCV</text><path d='M100,350 Q150,150 200,250 T300,200 T400,250 T500,200 T600,250 T700,200' fill='none' stroke='orange' stroke-width='2' /><text x='600' y='190' class='txt' fill='orange'>ALT (Fluktuierend)</text></svg>",
+                caption: 'Serologischer Verlauf der chronischen Hepatitis C',
+                type: 'Diagramm'
+              }
+            ]
           },
            {
             id: 'hdv',
@@ -1467,7 +1497,18 @@ Object.assign(window.diseases, {
             prognosis: {
               mortality: 'Hoch, schnelle Zirrhoseprogression',
               factors: 'Superinfektion hat schlechtere Prognose'
-            }
+            },
+            references: [
+              'EASL Clinical Practice Guidelines on hepatitis delta virus (2023).',
+              'WHO. Hepatitis D resources and technical brief.'
+            ],
+            gallery: [
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>Chron. HBV</text><text x='300' y='370' class='txt'>HDV-Infektion</text><text x='600' y='370' class='txt'>Zeit</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,100 L750,100' fill='none' stroke='red' stroke-width='3' /><text x='100' y='90' class='txt' fill='red'>HBsAg (vorhanden)</text><path d='M250,350 Q300,50 400,50 L750,50' fill='none' stroke='purple' stroke-width='3' /><text x='450' y='40' class='txt' fill='purple'>HDV RNA / Anti-HDV IgM</text><path d='M300,350 Q400,120 500,120 L750,120' fill='none' stroke='blue' stroke-width='3' /><text x='600' y='110' class='txt' fill='blue'>Anti-HDV Gesamt</text><path d='M50,300 L250,300 Q300,150 350,250 T450,200 T550,250 T650,200' fill='none' stroke='orange' stroke-width='2' /><text x='500' y='190' class='txt' fill='orange'>ALT (Schub)</text></svg>",
+                caption: 'Serologie der Hepatitis-D-Superinfektion',
+                type: 'Diagramm'
+              }
+            ]
           },
           {
             id: 'hev',
@@ -1541,7 +1582,18 @@ Object.assign(window.diseases, {
               mortality: 'Allgemein niedrig; bei Schwangeren (Genotyp 1–2) Mortalität bis zu 20%',
               prognostic_scores: ['Keine'],
               factors: 'Schwangerschaft, Immunsuppression'
-            }
+            },
+            references: [
+              'EASL Clinical Practice Guidelines on hepatitis E virus infection.',
+              'WHO. Hepatitis E fact sheet.'
+            ],
+            gallery: [
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>0</text><text x='200' y='370' class='txt'>1 Mon</text><text x='350' y='370' class='txt'>3 Mon</text><text x='500' y='370' class='txt'>6 Mon</text><text x='650' y='370' class='txt'>1 J</text><text x='350' y='390' class='txt' text-anchor='middle'>Zeit nach Exposition</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,350 Q150,50 250,50 Q350,50 450,350' fill='none' stroke='purple' stroke-width='3' /><text x='200' y='40' class='txt' fill='purple'>Anti-HEV IgM</text><path d='M150,350 Q250,100 350,100 L750,100' fill='none' stroke='green' stroke-width='3' /><text x='600' y='90' class='txt' fill='green'>Anti-HEV IgG</text><path d='M50,350 Q100,200 150,200 Q200,200 220,350' fill='none' stroke='red' stroke-width='3' stroke-dasharray='5,5' /><text x='80' y='190' class='txt' fill='red'>HEV RNA (Stuhl)</text><path d='M100,350 Q180,150 220,150 Q260,150 300,350' fill='none' stroke='orange' stroke-width='2' /><text x='180' y='140' class='txt' fill='orange'>ALT</text></svg>",
+                caption: 'Serologischer Verlauf der Hepatitis E',
+                type: 'Diagramm'
+              }
+            ]
           },
           {
             id: 'hgv',
@@ -1587,7 +1639,11 @@ Object.assign(window.diseases, {
               mortality: 'Nicht pathogen für die Leber',
               prognostic_scores: [],
               factors: '-'
-            }
+            },
+            references: [
+              'Stapleton JT. GB Virus Type C/Hepatitis G Virus. Semin Liver Dis.',
+              'Viral hepatitis reviews discussing human pegivirus (HPgV/GBV-C).'
+            ]
           },
           {
             id: 'ttv',
@@ -2077,3 +2133,88 @@ Object.assign(window.diseases, {
         ]
       },
 });
+
+(function ensureAbdomenDeDiseaseGalleries() {
+  const categoryIds = ['gastrointestinal', 'viral_hepatitis', 'urinary_tract'];
+
+  function createInlineGalleryImage(diseaseName, categoryName) {
+    const safeDiseaseName = String(diseaseName || 'Krankheit');
+    const safeCategoryName = String(categoryName || 'Abdomen');
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#ecfccb"/>
+          <stop offset="100%" stop-color="#d9f99d"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="630" fill="url(#bg)"/>
+      <circle cx="1020" cy="150" r="130" fill="#65a30d" opacity="0.14"/>
+      <circle cx="180" cy="520" r="180" fill="#84cc16" opacity="0.12"/>
+      <text x="80" y="150" font-size="62" font-family="Arial, sans-serif" font-weight="700" fill="#365314">${safeDiseaseName}</text>
+      <text x="80" y="230" font-size="36" font-family="Arial, sans-serif" fill="#4d7c0f">Kategorie: ${safeCategoryName}</text>
+      <text x="80" y="340" font-size="30" font-family="Arial, sans-serif" fill="#1a2e05">Abdominelle Infektion - didaktische Illustration</text>
+      <rect x="80" y="390" width="1040" height="8" fill="#65a30d" opacity="0.45"/>
+      <text x="80" y="470" font-size="28" font-family="Arial, sans-serif" fill="#365314">Infectologia</text>
+    </svg>`;
+
+    return {
+      url: `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`,
+      caption: `${safeDiseaseName} - didaktische Illustration`,
+      type: 'Illustration'
+    };
+  }
+
+  const gastrointestinalDefaultMaps = [
+    {
+      url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Diarrheal_disease_death_rates,_World,_2020.svg',
+      caption: 'Weltkarte: Mortalitat bei Durchfallerkrankungen (2020)',
+      type: 'Epidemiologische Karte'
+    },
+    {
+      url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Diarrheal_disease_prevalence_rates,_World,_2020.svg',
+      caption: 'Weltkarte: Pravalenz von Durchfallerkrankungen (2020)',
+      type: 'Epidemiologische Karte'
+    }
+  ];
+
+  const epidemiologyMapGalleryByDiseaseId = {
+    cholera: [
+      {
+        url: 'https://cdn.who.int/media/images/default-source/cover-images/who-documents/thumbnail_cholera_34.tmb-479v.png?sfvrsn=fae3cc58_2',
+        caption: 'WHO-Cholera-Lagebild (21. Februar 2026) - betroffene Lander',
+        type: 'WHO Epidemiologische Karte'
+      },
+      {
+        url: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Distribution_of_the_cholera.PNG',
+        caption: 'Geographische Verbreitung der Cholera (endemische und epidemische Gebiete)',
+        type: 'Epidemiologische Karte'
+      }
+    ],
+    salmonellosis: [
+      {
+        url: 'https://upload.wikimedia.org/wikipedia/commons/8/87/CDC_salmonellosis_map.png',
+        caption: 'Epidemiologische Karte der Salmonellose (CDC)',
+        type: 'Epidemiologische Karte'
+      },
+      ...gastrointestinalDefaultMaps
+    ]
+  };
+
+  categoryIds.forEach((categoryId) => {
+    const category = window.diseases[categoryId];
+    if (!category || !Array.isArray(category.diseases)) return;
+
+    category.diseases.forEach((disease) => {
+      if (!disease || (Array.isArray(disease.gallery) && disease.gallery.length > 0)) return;
+      if (epidemiologyMapGalleryByDiseaseId[disease.id]) {
+        disease.gallery = epidemiologyMapGalleryByDiseaseId[disease.id].map((image) => ({ ...image }));
+        return;
+      }
+      if (categoryId === 'gastrointestinal') {
+        disease.gallery = gastrointestinalDefaultMaps.map((image) => ({ ...image }));
+        return;
+      }
+      disease.gallery = [createInlineGalleryImage(disease.name, category.name)];
+    });
+  });
+})();

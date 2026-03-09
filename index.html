@@ -122,7 +122,7 @@
         <p id="main-subtitle" class="text-emerald-100 text-sm mt-0.5">Orvostanhallgatók számára</p>
         <div class="text-emerald-200 text-xs mt-1">
          <p id="header-author">Írta és szerkesztette: Dr. Péterfi Zoltán</p>
-         <p id="header-version">Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.4</p>
+         <p id="header-version">Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.5.1</p>
         </div>
        </div>
       </div>
@@ -328,7 +328,7 @@
         const meta = {
             authorName: "Dr. Péterfi Zoltán",
             copyright: "© 2026 Dr. Péterfi Zoltán",
-            versionNum: "3.4.0"
+            versionNum: "3.5.1"
         };
 
         // Új ablak nyitása a nyomtatáshoz
@@ -633,7 +633,7 @@
         welcome_title: 'Üdvözöljük az Infektológia Tankönyvben',
         welcome_text: 'Válasszon egy betegségcsoportot a bal oldali menüből, majd egy konkrét betegséget a részletes klinikai információk megtekintéséhez.',
         header_author: 'Írta és szerkesztette: Dr. Péterfi Zoltán',
-        header_version: 'Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.4.0',
+        header_version: 'Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.5.1',
         feedback_btn: 'Visszajelzés',
         feedback_title: 'Visszajelzés',
         feedback_placeholder: 'Írja ide észrevételeit, javaslatait...',
@@ -689,6 +689,7 @@
         label_prognostic_scores: 'Diagnosztikai és prognosztikai score-ok',
         label_prognostic_factors: 'Prognosztikai faktorok',
         section_gallery: 'Kép Galéria',
+        section_references: 'Források',
         therapy_titles: {
             outpatient: 'Ambuláns kezelés',
             inpatient: 'Kórházi kezelés',
@@ -710,7 +711,7 @@
         welcome_title: 'Welcome to the Infectious Diseases Textbook',
         welcome_text: 'Select a disease category from the left menu, then a specific disease to view detailed clinical information.',
         header_author: 'Written and edited by: Dr. Zoltán Péterfi',
-        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.4.0',
+        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.5.1',
         feedback_btn: 'Feedback',
         feedback_title: 'Send Feedback',
         feedback_placeholder: 'Write your comments or suggestions here...',
@@ -766,6 +767,7 @@
         label_prognostic_scores: 'Diagnostic and Prognostic Scores',
         label_prognostic_factors: 'Prognostic Factors',
         section_gallery: 'Image Gallery',
+        section_references: 'References',
         therapy_titles: {
             outpatient: 'Outpatient Treatment',
             inpatient: 'Inpatient Treatment',
@@ -787,7 +789,7 @@
         welcome_title: 'Willkommen im Lehrbuch der Infektiologie',
         welcome_text: 'Wählen Sie eine Krankheitskategorie aus dem linken Menü und dann eine bestimmte Krankheit, um detaillierte klinische Informationen anzuzeigen.',
         header_author: 'Geschrieben und bearbeitet von: Dr. Zoltán Péterfi',
-        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.4.0',
+        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.5.1',
         feedback_btn: 'Feedback',
         feedback_title: 'Feedback senden',
         feedback_placeholder: 'Schreiben Sie hier Ihre Kommentare oder Vorschläge...',
@@ -843,6 +845,7 @@
         label_prognostic_scores: 'Diagnostik- und Prognose-Scores',
         label_prognostic_factors: 'Prognosefaktoren',
         section_gallery: 'Bildergalerie',
+        section_references: 'Quellen',
         therapy_titles: {
             outpatient: 'Ambulante Behandlung',
             inpatient: 'Stationäre Behandlung',
@@ -1617,6 +1620,11 @@
       const t = translations[currentLanguage];
       const sections = ['epidemiology', 'pathomechanism', 'clinical', 'diagnostics', 'differential', 'therapy', 'prognosis'];
       
+      const refs = disease.references || (disease.guidelines && disease.guidelines.references) || (disease.therapy && disease.therapy.guidelines && disease.therapy.guidelines.references);
+      if (refs && refs.length > 0) {
+        sections.push('references');
+      }
+
       if (disease.gallery && disease.gallery.length > 0) {
         sections.push('gallery');
       }
@@ -2081,6 +2089,33 @@
                   <p class="text-slate-600 text-base leading-relaxed">${disease.prognosis.factors}</p>
                 </div>
               </div>
+            </div>
+          `;
+
+        case 'references':
+          const refs = disease.references || (disease.guidelines && disease.guidelines.references) || (disease.therapy && disease.therapy.guidelines && disease.therapy.guidelines.references);
+          if (!refs || refs.length === 0) return '';
+
+          const refsContent = `<ul class="list-disc list-inside space-y-2 text-base">
+            ${refs.map(r => {
+              if (typeof r === 'string') {
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                const urlMatch = r.match(urlRegex);
+                if (urlMatch) {
+                    const url = urlMatch[0];
+                    const text = r.replace(url, '').trim().replace(/:$/, '');
+                    return `<li><a href="${url}" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline">${text || url}</a></li>`;
+                }
+                return `<li>${r}</li>`;
+              }
+              return `<li><a href="${r.url}" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline">${r.text}</a></li>`;
+            }).join('')}
+          </ul>`;
+
+          return `
+            <div class="space-y-4">
+              <div class="section-header"><h2 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span class="text-slate-500">📚</span> ${t.section_references}</h2></div>
+              <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm">${refsContent}</div>
             </div>
           `;
 

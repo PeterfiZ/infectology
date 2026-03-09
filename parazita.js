@@ -104,7 +104,14 @@ Object.assign(window.diseases, {
               mortality: 'Nem komplikált: <0.1%; Súlyos: 10-20% (kezelt)',
               prognostic_scores: ['Parazitaemia mértéke (>5-10%)'],
               factors: 'Késői diagnózis, P. falciparum, életkor, terhesség'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://www.cdc.gov/dpdx/malaria/modules/malaria_LifeCycle.gif?_=05237',
+                caption: 'Malaria (Plasmodium) életciklus ábra',
+                type: 'Életciklus ábra'
+              }
+            ]
           },
           {
             id: 'toxoplasmosis',
@@ -529,3 +536,63 @@ Object.assign(window.diseases, {
     ]
   }
 });
+
+(function ensureParasiticHelminthLifecycleGalleries() {
+  const category = window.diseases && window.diseases.parasitic;
+  if (!category || !Array.isArray(category.diseases)) return;
+
+  const lifecycleGalleryByDiseaseId = {
+    ascariasis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ascaris_lumbricoides_life_cycle.png',
+        caption: 'Ascaris lumbricoides eletciklus (CDC/DPDx)',
+        type: 'Eletciklus abra'
+      }
+    ],
+    taeniasis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Taenia_solium_Life_cycle_%2801%29.jpg',
+        caption: 'Taenia solium eletciklus (CDC/DPDx)',
+        type: 'Eletciklus abra'
+      }
+    ],
+    echinococcosis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Echinococcus_gran_LifeCycle_lg.jpg',
+        caption: 'Echinococcus granulosus eletciklus (CDC/DPDx)',
+        type: 'Eletciklus abra'
+      }
+    ],
+    enterobiasis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Enterobius_vermicularis_LifeCycle.gif',
+        caption: 'Enterobius vermicularis eletciklus (CDC/DPDx)',
+        type: 'Eletciklus abra'
+      }
+    ],
+    trichinellosis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Trichinella_LifeCycle.gif',
+        caption: 'Trichinella spp. eletciklus (CDC/DPDx)',
+        type: 'Eletciklus abra'
+      }
+    ],
+    toxocariasis: [
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Toxocara_canis_LifeCycle.gif',
+        caption: 'Toxocara canis eletciklus (CDC/DPDx)',
+        type: 'Eletciklus abra'
+      }
+    ]
+  };
+
+  category.diseases.forEach((disease) => {
+    if (!disease) return;
+    if (Array.isArray(disease.gallery) && disease.gallery.length > 0) return;
+
+    const gallery = lifecycleGalleryByDiseaseId[disease.id];
+    if (gallery) {
+      disease.gallery = gallery.map((image) => ({ ...image }));
+    }
+  });
+})();

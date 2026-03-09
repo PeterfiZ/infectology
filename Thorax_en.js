@@ -162,14 +162,18 @@ Object.assign(window.diseases, {
               prognostic_scores: ['CURB-65', 'PSI/PORT score'],
               factors: 'Age, comorbidity, bacteremia, multilobar involvement'
             },
+            references: [
+              { text: 'NICE NG138: Pneumonia (community-acquired): antimicrobial prescribing', url: 'https://www.nice.org.uk/guidance/ng138' },
+              { text: 'ATS/IDSA 2019 Clinical Practice Guideline for Community-Acquired Pneumonia', url: 'https://www.atsjournals.org/doi/full/10.1164/rccm.201908-1581ST' }
+            ],
             gallery: [
               {
-                url: 'https://via.placeholder.com/400x300.png/E2E8F0/64748B?text=XRAY',
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lobar_pneumonia.jpg',
                 caption: 'Right lower lobe consolidation on chest X-ray.',
                 type: 'X-ray'
               },
               {
-                url: 'https://via.placeholder.com/400x300.png/E2E8F0/64748B?text=Gram',
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Streptococcus_pneumoniae.jpg',
                 caption: 'Gram-positive, lancet-shaped diplococci in sputum smear.',
                 type: 'Microscopy'
               }
@@ -261,14 +265,18 @@ Object.assign(window.diseases, {
               prognostic_scores: ['No standard scores'],
               factors: 'HIV status, MDR, adherence, late diagnosis'
             },
+            references: [
+              { text: 'WHO Global Tuberculosis Report 2023', url: 'https://www.who.int/teams/global-tuberculosis-programme/tb-reports/global-tuberculosis-report-2023' },
+              { text: 'CDC Tuberculosis (TB) Guidelines', url: 'https://www.cdc.gov/tb/topic/treatment/index.htm' }
+            ],
             gallery: [
               {
-                url: 'https://via.placeholder.com/400x300.png/E2E8F0/64748B?text=XRAY',
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tuberculosis-x-ray-1.jpg',
                 caption: 'Right upper lobe cavity in post-primary tuberculosis.',
                 type: 'X-ray'
               },
               {
-                url: 'https://via.placeholder.com/400x300.png/E2E8F0/64748B?text=CT',
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tuberculosis-x-ray-1.jpg',
                 caption: 'Chest CT with "tree-in-bud" pattern, indicating active endobronchial spread.',
                 type: 'CT'
               }
@@ -375,7 +383,14 @@ Object.assign(window.diseases, {
               mortality: 'Overall 10-15%, immunocompromised 40%',
               prognostic_scores: ['CURB-65', 'PSI'],
               factors: 'Delayed diagnosis, inappropriate antibiotics, immunosuppression'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Legionella_pneumophila_01.jpg',
+                caption: 'Electron micrograph of Legionella pneumophila.',
+                type: 'Microscopy'
+              }
+            ]
           },
           {
             id: 'mycoplasma',
@@ -453,7 +468,14 @@ Object.assign(window.diseases, {
               mortality: 'Very low, usually self-limiting',
               prognostic_scores: ['PSI (rarely needed)'],
               factors: 'Extrapulmonary complications'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mycoplasma_pneumoniae.webp',
+                caption: 'Radiologic image associated with Mycoplasma pneumoniae infection.',
+                type: 'X-ray'
+              }
+            ]
           },
           {
             id: 'chlamydia_pneumoniae',
@@ -524,7 +546,14 @@ Object.assign(window.diseases, {
               mortality: 'Low',
               prognostic_scores: ['PSI'],
               factors: 'Old age, comorbidity'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chlamydophila_psittaci_FA_stain.jpg',
+                caption: 'Fluorescent stain of Chlamydophila/Chlamydia psittaci.',
+                type: 'Microscopy'
+              }
+            ]
           },
           {
             id: 'psittacosis',
@@ -598,7 +627,14 @@ Object.assign(window.diseases, {
               mortality: 'Treated <1%, untreated 10-20%',
               prognostic_scores: ['None'],
               factors: 'Late diagnosis'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chlamydophila_psittaci_FA_stain.jpg',
+                caption: 'Microscopic image of C. psittaci in psittacosis.',
+                type: 'Microscopy'
+              }
+            ]
           },
           {
             id: 'q_fever_resp',
@@ -673,7 +709,14 @@ Object.assign(window.diseases, {
               mortality: 'Acute <2%, Chronic (endocarditis) high if untreated',
               prognostic_scores: ['None'],
               factors: 'Valve defect, immunosuppression'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Coxiella_burnetii%2C_the_bacteria_that_causes_Q_Fever.jpg',
+                caption: 'Coxiella burnetii, the causative agent of Q fever.',
+                type: 'Microscopy'
+              }
+            ]
           }
         ]
       },
@@ -763,7 +806,14 @@ Object.assign(window.diseases, {
               mortality: 'Overall 0.1%, >65 years 1-2%, pandemic strain higher',
               prognostic_scores: ['None specific'],
               factors: 'Age, comorbidity, virus subtype, vaccination status'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Influenza_A_virus_particle.jpg',
+                caption: 'Influenza A virus particle (electron microscopy).',
+                type: 'Microscopy'
+              }
+            ]
           },
           {
             id: 'covid19',
@@ -849,7 +899,14 @@ Object.assign(window.diseases, {
               mortality: 'Omicron <1%, previously 2-5%, ICU 20-40%',
               prognostic_scores: ['4C Mortality Score', 'NEWS2'],
               factors: 'Age, comorbidity, lymphopenia, D-dimer, ferritin, vaccination status'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/SARS-CoV-2_without_background.png',
+                caption: 'SARS-CoV-2 virus model.',
+                type: 'Virology'
+              }
+            ]
           }
         ]
       },
@@ -972,7 +1029,14 @@ Object.assign(window.diseases, {
               mortality: 'In-hospital: 15-20%, 1-year: 30-40%',
               prognostic_scores: ['None specific'],
               factors: 'S. aureus, heart failure, old age, prosthetic valve'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Endocarditis_ultrasound.JPG',
+                caption: 'Echocardiographic image of endocarditis vegetation.',
+                type: 'Echocardiography'
+              }
+            ]
           },
           {
             id: 'myocarditis',
@@ -1052,7 +1116,14 @@ Object.assign(window.diseases, {
               mortality: 'Variable: often spontaneous recovery, high in fulminant cases. 50% progress to DCM.',
               prognostic_scores: ['None'],
               factors: 'Initial EF, QRS width, troponin level'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Histopathology_of_myocarditis_with_myocyte_necrosis.jpg',
+                caption: 'Histopathology of myocarditis with myocyte necrosis.',
+                type: 'Histology'
+              }
+            ]
           },
           {
             id: 'pericarditis',
@@ -1133,7 +1204,14 @@ Object.assign(window.diseases, {
               mortality: 'Low, life-threatening in tamponade',
               prognostic_scores: ['None'],
               factors: 'Recurrence is common, constrictive pericarditis is rare (<1% in idiopathic)'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Acute_Pericarditis_ECG.jpg',
+                caption: 'Typical ECG pattern in acute pericarditis.',
+                type: 'ECG'
+              }
+            ]
           }
         ]
       },
@@ -1212,7 +1290,14 @@ Object.assign(window.diseases, {
               mortality: 'Very low',
               prognostic_scores: ['None'],
               factors: 'Immune status'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Human_rhinovirus_14.jpg',
+                caption: 'Human rhinovirus on electron microscopy.',
+                type: 'Virology'
+              }
+            ]
           },
           {
             id: 'rsv_infection',
@@ -1285,7 +1370,14 @@ Object.assign(window.diseases, {
               mortality: 'Low, but higher risk in infants',
               prognostic_scores: ['None'],
               factors: 'Age, comorbidity'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Respiratory_syncytial_virus_01.jpg',
+                caption: 'Respiratory syncytial virus (RSV) micrograph.',
+                type: 'Virology'
+              }
+            ]
           },
           {
             id: 'tonsillitis',
@@ -1369,7 +1461,14 @@ Object.assign(window.diseases, {
               mortality: 'Low',
               prognostic_scores: ['Centor Score (McIsaac)'],
               factors: 'Late treatment'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tonsillitis.jpg',
+                caption: 'Clinical image of exudative tonsillitis.',
+                type: 'Clinical photo'
+              }
+            ]
           },
           {
             id: 'sinusitis',
@@ -1433,7 +1532,14 @@ Object.assign(window.diseases, {
               mortality: 'Low',
               prognostic_scores: ['None'],
               factors: 'Immune status'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sinusitis_01.jpg',
+                caption: 'Imaging example of sinusitis.',
+                type: 'Imaging'
+              }
+            ]
           },
           {
             id: 'otitis_media',
@@ -1453,7 +1559,14 @@ Object.assign(window.diseases, {
                 'Possible eardrum perforation'
               ],
               virulence_factors: ['Biofilm formation']
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Blausen_0871_TympanicMembrane_2.png',
+                caption: 'Typical tympanic membrane changes in otitis media.',
+                type: 'Otoscopy'
+              }
+            ]
           }
         ]
       }

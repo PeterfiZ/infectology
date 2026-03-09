@@ -1239,7 +1239,18 @@ Object.assign(window.diseases, {
               mortality: 'Alacsony (<0.1%), de 50 év felett 1.8%',
               prognostic_scores: ['King\'s College kritériumok (fulmináns)'],
               factors: 'Életkor, alap májbetegség'
-            }
+            },
+            references: [
+              'WHO. Hepatitis A fact sheet.',
+              'CDC Yellow Book: Hepatitis A.'
+            ],
+            gallery: [
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>0</text><text x='200' y='370' class='txt'>1 hó</text><text x='350' y='370' class='txt'>3 hó</text><text x='500' y='370' class='txt'>6 hó</text><text x='650' y='370' class='txt'>1 év</text><text x='350' y='390' class='txt' text-anchor='middle'>Idő a fertőzés után</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,350 Q150,50 250,50 Q350,50 450,350' fill='none' stroke='purple' stroke-width='3' /><text x='200' y='40' class='txt' fill='purple'>Anti-HAV IgM</text><path d='M150,350 Q250,100 350,100 L750,100' fill='none' stroke='green' stroke-width='3' /><text x='600' y='90' class='txt' fill='green'>Anti-HAV IgG</text><path d='M50,350 Q100,200 150,200 Q200,200 220,350' fill='none' stroke='red' stroke-width='3' stroke-dasharray='5,5' /><text x='80' y='190' class='txt' fill='red'>Vírus (széklet)</text><path d='M100,350 Q180,150 220,150 Q260,150 300,350' fill='none' stroke='orange' stroke-width='2' /><text x='180' y='140' class='txt' fill='orange'>ALT (Tünetek)</text></svg>",
+                caption: 'Hepatitis A szerológiai lefolyása',
+                type: 'Diagram'
+              }
+            ]
           },
           {
             id: 'hbv',
@@ -1451,7 +1462,18 @@ Object.assign(window.diseases, {
             prognosis: {
               mortality: 'Kezeléssel kiváló (SVR = gyógyulás), cirrhosis esetén rosszabb',
               factors: 'Fibrózis stádiuma, koinfekció (HIV/HBV), alkohol'
-            }
+            },
+            references: [
+              'EASL Recommendations on Treatment of Hepatitis C (2020 update).',
+              'WHO. Guidelines for the care and treatment of persons diagnosed with chronic hepatitis C virus infection.'
+            ],
+            gallery: [
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>0</text><text x='150' y='370' class='txt'>2 hó</text><text x='250' y='370' class='txt'>6 hó</text><text x='450' y='370' class='txt'>1 év</text><text x='650' y='370' class='txt'>Évek...</text><text x='350' y='390' class='txt' text-anchor='middle'>Idő a fertőzés után</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,350 Q80,50 150,50 L750,50' fill='none' stroke='red' stroke-width='3' /><text x='600' y='40' class='txt' fill='red'>HCV RNS</text><path d='M100,350 Q200,100 300,100 L750,100' fill='none' stroke='blue' stroke-width='3' /><text x='600' y='90' class='txt' fill='blue'>Anti-HCV</text><path d='M100,350 Q150,150 200,250 T300,200 T400,250 T500,200 T600,250 T700,200' fill='none' stroke='orange' stroke-width='2' /><text x='600' y='190' class='txt' fill='orange'>ALT (Hullámzó)</text></svg>",
+                caption: 'Krónikus Hepatitis C szerológiai lefolyása',
+                type: 'Diagram'
+              }
+            ]
           },
           {
             id: 'hdv',
@@ -1515,7 +1537,18 @@ Object.assign(window.diseases, {
             prognosis: {
               mortality: 'Magas, gyors cirrhosis progresszió',
               factors: 'Szuperinfekció rosszabb prognózisú'
-            }
+            },
+            references: [
+              'EASL Clinical Practice Guidelines on hepatitis delta virus (2023).',
+              'WHO. Hepatitis D resources and technical brief.'
+            ],
+            gallery: [
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>Krónikus HBV</text><text x='300' y='370' class='txt'>HDV Fertőzés</text><text x='600' y='370' class='txt'>Idő</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,100 L750,100' fill='none' stroke='red' stroke-width='3' /><text x='100' y='90' class='txt' fill='red'>HBsAg (Jelen van)</text><path d='M250,350 Q300,50 400,50 L750,50' fill='none' stroke='purple' stroke-width='3' /><text x='450' y='40' class='txt' fill='purple'>HDV RNS / Anti-HDV IgM</text><path d='M300,350 Q400,120 500,120 L750,120' fill='none' stroke='blue' stroke-width='3' /><text x='600' y='110' class='txt' fill='blue'>Anti-HDV Total</text><path d='M50,300 L250,300 Q300,150 350,250 T450,200 T550,250 T650,200' fill='none' stroke='orange' stroke-width='2' /><text x='500' y='190' class='txt' fill='orange'>ALT (Fellángolás)</text></svg>",
+                caption: 'Hepatitis D szuperinfekció szerológiája',
+                type: 'Diagram'
+              }
+            ]
           },
           {
             id: 'hev',
@@ -1589,7 +1622,18 @@ Object.assign(window.diseases, {
               mortality: 'Általában alacsony; terheseknél (genotípus 1–2) mortalitás akár 20%',
               prognostic_scores: ['Nincs'],
               factors: 'Terhesség, immunszuppresszió'
-            }
+            },
+            references: [
+              'EASL Clinical Practice Guidelines on hepatitis E virus infection.',
+              'WHO. Hepatitis E fact sheet.'
+            ],
+            gallery: [
+              {
+                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' style='background-color:white'><defs><style>.txt{font-family:sans-serif;font-size:14px;}.axis{stroke:black;stroke-width:2;}.grid{stroke:%23eee;stroke-width:1;}</style></defs><path class='grid' d='M50,50 H750 M50,150 H750 M50,250 H750 M50,350 H750' /><line class='axis' x1='50' y1='350' x2='750' y2='350' /><line class='axis' x1='50' y1='350' x2='50' y2='50' /><text x='50' y='370' class='txt'>0</text><text x='200' y='370' class='txt'>1 hó</text><text x='350' y='370' class='txt'>3 hó</text><text x='500' y='370' class='txt'>6 hó</text><text x='650' y='370' class='txt'>1 év</text><text x='350' y='390' class='txt' text-anchor='middle'>Idő a fertőzés után</text><text x='20' y='200' class='txt' transform='rotate(-90 20,200)' text-anchor='middle'>Titer</text><path d='M50,350 Q150,50 250,50 Q350,50 450,350' fill='none' stroke='purple' stroke-width='3' /><text x='200' y='40' class='txt' fill='purple'>Anti-HEV IgM</text><path d='M150,350 Q250,100 350,100 L750,100' fill='none' stroke='green' stroke-width='3' /><text x='600' y='90' class='txt' fill='green'>Anti-HEV IgG</text><path d='M50,350 Q100,200 150,200 Q200,200 220,350' fill='none' stroke='red' stroke-width='3' stroke-dasharray='5,5' /><text x='80' y='190' class='txt' fill='red'>HEV RNS (széklet)</text><path d='M100,350 Q180,150 220,150 Q260,150 300,350' fill='none' stroke='orange' stroke-width='2' /><text x='180' y='140' class='txt' fill='orange'>ALT</text></svg>",
+                caption: 'Hepatitis E szerológiai lefolyása',
+                type: 'Diagram'
+              }
+            ]
           },
           {
             id: 'hgv',
@@ -1635,7 +1679,11 @@ Object.assign(window.diseases, {
               mortality: 'Nem patogén a májra nézve',
               prognostic_scores: [],
               factors: '-'
-            }
+            },
+            references: [
+              'Stapleton JT. GB Virus Type C/Hepatitis G Virus. Semin Liver Dis.',
+              'Viral hepatitis reviews discussing human pegivirus (HPgV/GBV-C).'
+            ]
           },
           {
             id: 'ttv',
@@ -2130,3 +2178,88 @@ Object.assign(window.diseases, {
         ]
       },
 });
+
+(function ensureAbdomenDiseaseGalleries() {
+  const categoryIds = ['gastrointestinal', 'viral_hepatitis', 'urinary_tract'];
+
+  function createInlineGalleryImage(diseaseName, categoryName) {
+    const safeDiseaseName = String(diseaseName || 'Disease');
+    const safeCategoryName = String(categoryName || 'Abdomen');
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#fef3c7"/>
+          <stop offset="100%" stop-color="#fde68a"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="630" fill="url(#bg)"/>
+      <circle cx="1030" cy="140" r="140" fill="#f59e0b" opacity="0.12"/>
+      <circle cx="180" cy="520" r="180" fill="#f97316" opacity="0.1"/>
+      <text x="80" y="150" font-size="62" font-family="Arial, sans-serif" font-weight="700" fill="#7c2d12">${safeDiseaseName}</text>
+      <text x="80" y="230" font-size="36" font-family="Arial, sans-serif" fill="#9a3412">Kategoria: ${safeCategoryName}</text>
+      <text x="80" y="340" font-size="30" font-family="Arial, sans-serif" fill="#431407">Abdominalis fertozes - oktatasi abrazolo kep</text>
+      <rect x="80" y="390" width="1040" height="8" fill="#ea580c" opacity="0.4"/>
+      <text x="80" y="470" font-size="28" font-family="Arial, sans-serif" fill="#7c2d12">Infectologia</text>
+    </svg>`;
+
+    return {
+      url: `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`,
+      caption: `${safeDiseaseName} - szemlelteto abra`,
+      type: 'Illusztracio'
+    };
+  }
+
+  const gastrointestinalDefaultMaps = [
+    {
+      url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Diarrheal_disease_death_rates,_World,_2020.svg',
+      caption: 'Vilagtérkép: diarrhoeas betegsegek halalozasi rátaja (2020)',
+      type: 'Epidemiologiai terkep'
+    },
+    {
+      url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Diarrheal_disease_prevalence_rates,_World,_2020.svg',
+      caption: 'Vilagtérkép: diarrhoeas betegsegek prevalenciaja (2020)',
+      type: 'Epidemiologiai terkep'
+    }
+  ];
+
+  const epidemiologyMapGalleryByDiseaseId = {
+    cholera: [
+      {
+        url: 'https://cdn.who.int/media/images/default-source/cover-images/who-documents/thumbnail_cholera_34.tmb-479v.png?sfvrsn=fae3cc58_2',
+        caption: 'WHO kolera helyzetkep (2026. február 21.) - globalis erintett orszagok',
+        type: 'WHO epidemiologiai terkep'
+      },
+      {
+        url: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Distribution_of_the_cholera.PNG',
+        caption: 'Kolera földrajzi elterjedese (endemias/epidemias teruletek)',
+        type: 'Epidemiologiai terkep'
+      }
+    ],
+    salmonellosis: [
+      {
+        url: 'https://upload.wikimedia.org/wikipedia/commons/8/87/CDC_salmonellosis_map.png',
+        caption: 'Salmonellosis epidemiologiai terkepe (CDC)',
+        type: 'Epidemiologiai terkep'
+      },
+      ...gastrointestinalDefaultMaps
+    ]
+  };
+
+  categoryIds.forEach((categoryId) => {
+    const category = window.diseases[categoryId];
+    if (!category || !Array.isArray(category.diseases)) return;
+
+    category.diseases.forEach((disease) => {
+      if (!disease || (Array.isArray(disease.gallery) && disease.gallery.length > 0)) return;
+      if (epidemiologyMapGalleryByDiseaseId[disease.id]) {
+        disease.gallery = epidemiologyMapGalleryByDiseaseId[disease.id].map((image) => ({ ...image }));
+        return;
+      }
+      if (categoryId === 'gastrointestinal') {
+        disease.gallery = gastrointestinalDefaultMaps.map((image) => ({ ...image }));
+        return;
+      }
+      disease.gallery = [createInlineGalleryImage(disease.name, category.name)];
+    });
+  });
+})();

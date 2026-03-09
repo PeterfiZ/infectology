@@ -156,20 +156,24 @@ Object.assign(window.diseases, {
               targeted: 'Penicillin érzékeny: Penicillin G 4x4 millió NE IV; Rezisztens: Ceftriaxon vagy Vancomycin',
               supportive: ['O2 terápia (SpO2 >92%)', 'Folyadékpótlás', 'Lázcsillapítás', 'Mellkasdrainage empyema esetén'],
               prevention: ['PPSV23 (23-valens poliszacharid)', 'PCV13/15/20 (konjugált)', 'Influenza oltás']
-            },
+            },  
             prognosis: {
               mortality: 'CAP: 5-15%, ICU: 20-50%',
               prognostic_scores: ['CURB-65', 'PSI/PORT score'],
               factors: 'Életkor, komorbiditás, bakteremia, multilobaris érintettség'
             },
+              references: [
+              { text: 'NICE NG138: Pneumonia (community-acquired): antimicrobial prescribing', url: 'https://www.nice.org.uk/guidance/ng138' },
+              { text: 'ATS/IDSA 2019 Clinical Practice Guideline for Community-Acquired Pneumonia', url: 'https://www.atsjournals.org/doi/full/10.1164/rccm.201908-1581ST' }
+            ],
             gallery: [
               {
-                url: 'https://via.placeholder.com/400x300.png/E2E8F0/64748B?text=RTG',
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lobar_pneumonia.jpg',
                 caption: 'Jobb alsó lebeny konszolidációja mellkas röntgenen.',
                 type: 'Röntgen'
               },
               {
-                url: 'https://via.placeholder.com/400x300.png/E2E8F0/64748B?text=Gram',
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Streptococcus_pneumoniae.jpg',
                 caption: 'Gram-pozitív, lándzsa alakú diplococcusok köpetkenetben.',
                 type: 'Mikroszkópia'
               }
@@ -261,14 +265,18 @@ Object.assign(window.diseases, {
               prognostic_scores: ['Nincsenek standard score-ok'],
               factors: 'HIV státusz, MDR, adherencia, késői diagnózis'
             },
+            references: [
+              { text: 'WHO Global Tuberculosis Report 2023', url: 'https://www.who.int/teams/global-tuberculosis-programme/tb-reports/global-tuberculosis-report-2023' },
+              { text: 'CDC Tuberculosis (TB) Guidelines', url: 'https://www.cdc.gov/tb/topic/treatment/index.htm' }
+            ],
             gallery: [
               {
-                url: 'https://via.placeholder.com/400x300.png/E2E8F0/64748B?text=RTG',
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tuberculosis-x-ray-1.jpg',
                 caption: 'Jobb felső lebenyi caverna poszt-primer tuberkulózisban.',
                 type: 'Röntgen'
               },
               {
-                url: 'https://via.placeholder.com/400x300.png/E2E8F0/64748B?text=CT',
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tuberculosis-x-ray-1.jpg',
                 caption: 'Mellkas CT "tree-in-bud" mintázattal, ami aktív endobronchialis terjedésre utal.',
                 type: 'CT'
               }
@@ -375,7 +383,17 @@ Object.assign(window.diseases, {
               mortality: 'Összességében 10-15%, immunszupprimáltak 40%',
               prognostic_scores: ['CURB-65', 'PSI'],
               factors: 'Késői diagnózis, nem megfelelő antibiotikum, immunszuppresszió'
-            }
+            },
+            references: [
+              { text: 'CDC Legionella (Legionnaires\' Disease and Pontiac Fever)', url: 'https://www.cdc.gov/legionella/clinicians/index.html' }
+            ],
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Legionella_pneumophila_01.jpg',
+                caption: 'Legionella pneumophila elektronmikroszkópos képe.',
+                type: 'Mikroszkópia'
+              }
+            ]
           },
           {
             id: 'mycoplasma',
@@ -453,7 +471,17 @@ Object.assign(window.diseases, {
               mortality: 'Nagyon alacsony, általában magától gyógyul',
               prognostic_scores: ['PSI (ritkán szükséges)'],
               factors: 'Extrapulmonalis szövődmények'
-            }
+            },
+            references: [
+              { text: 'CDC Mycoplasma pneumoniae Infections', url: 'https://www.cdc.gov/pneumonia/atypical/mycoplasma/hcp/index.html' }
+            ],
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mycoplasma_pneumoniae.webp',
+                caption: 'Mycoplasma pneumoniae-hez társuló radiológiai kép.',
+                type: 'Röntgen'
+              }
+            ]
           },
           {
             id: 'chlamydia_pneumoniae',
@@ -524,7 +552,14 @@ Object.assign(window.diseases, {
               mortality: 'Alacsony',
               prognostic_scores: ['PSI'],
               factors: 'Idős kor, komorbiditás'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chlamydophila_psittaci_FA_stain.jpg',
+                caption: 'Chlamydophila/Chlamydia psittaci fluoreszcens festés.',
+                type: 'Mikroszkópia'
+              }
+            ]
           },
           {
             id: 'psittacosis',
@@ -598,7 +633,14 @@ Object.assign(window.diseases, {
               mortality: 'Kezelt <1%, kezeletlen 10-20%',
               prognostic_scores: ['Nincs'],
               factors: 'Késői diagnózis'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chlamydophila_psittaci_FA_stain.jpg',
+                caption: 'Psittacosis kórokozója (C. psittaci) fluoreszcens mikroszkópos képen.',
+                type: 'Mikroszkópia'
+              }
+            ]
           },
           {
             id: 'q_fever_resp',
@@ -673,7 +715,14 @@ Object.assign(window.diseases, {
               mortality: 'Akut <2%, Krónikus (endocarditis) magas kezeletlenül',
               prognostic_scores: ['Nincs'],
               factors: 'Billentyűhiba, immunszuppresszió'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Coxiella_burnetii%2C_the_bacteria_that_causes_Q_Fever.jpg',
+                caption: 'Coxiella burnetii, a Q-láz kórokozója.',
+                type: 'Mikroszkópia'
+              }
+            ]
           }
         ]
       },
@@ -763,7 +812,14 @@ Object.assign(window.diseases, {
               mortality: 'Összességében 0.1%, 65+ éveseknél 1-2%, pandémiás törzs magasabb',
               prognostic_scores: ['Nincs specifikus'],
               factors: 'Életkor, komorbiditás, vírus szubtípus, oltási státusz'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Influenza_A_virus_particle.jpg',
+                caption: 'Influenza A vírus részecske (elektronmikroszkópia).',
+                type: 'Mikroszkópia'
+              }
+            ]
           },
           {
             id: 'covid19',
@@ -849,7 +905,14 @@ Object.assign(window.diseases, {
               mortality: 'Omikron <1%, korábban 2-5%, ICU 20-40%',
               prognostic_scores: ['4C Mortality Score', 'NEWS2'],
               factors: 'Életkor, komorbiditás, lymphopenia, D-dimer, ferritin, oltási státusz'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/SARS-CoV-2_without_background.png',
+                caption: 'SARS-CoV-2 vírusmodell.',
+                type: 'Virológia'
+              }
+            ]
           }
         ]
       },
@@ -977,7 +1040,14 @@ Object.assign(window.diseases, {
               mortality: 'Kórházi: 15-20%, 1 éves: 30-40%',
               prognostic_scores: ['Nincs specifikus'],
               factors: 'S. aureus, szívelégtelenség, idős kor, műbillentyű'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Endocarditis_ultrasound.JPG',
+                caption: 'Endocarditis vegetáció echokardiográfiás képe.',
+                type: 'Echokardiográfia'
+              }
+            ]
           },
           {
             id: 'myocarditis',
@@ -1057,7 +1127,14 @@ Object.assign(window.diseases, {
               mortality: 'Változó: sokszor spontán gyógyul, fulmináns esetben magas. 50% DCM-be megy át.',
               prognostic_scores: ['Nincs'],
               factors: 'Kezdeti EF, QRS szélesség, troponin szint'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Histopathology_of_myocarditis_with_myocyte_necrosis.jpg',
+                caption: 'Myocarditis szövettani kép myocyta-nekrózissal.',
+                type: 'Hisztológia'
+              }
+            ]
           },
           {
             id: 'pericarditis',
@@ -1138,7 +1215,14 @@ Object.assign(window.diseases, {
               mortality: 'Alacsony, tamponád esetén életveszélyes',
               prognostic_scores: ['Nincs'],
               factors: 'Recidíva gyakori, konstriktív pericarditis ritka (<1% idiopathiásnál)'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Acute_Pericarditis_ECG.jpg',
+                caption: 'Akut pericarditis jellegzetes EKG-képe.',
+                type: 'EKG'
+              }
+            ]
           }
         ]
       },
@@ -1217,7 +1301,14 @@ Object.assign(window.diseases, {
               mortality: 'Nagyon alacsony',
               prognostic_scores: ['Nincs'],
               factors: 'Immunstátusz'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Human_rhinovirus_14.jpg',
+                caption: 'Humán rhinovírus elektronmikroszkópos felvételen.',
+                type: 'Virológia'
+              }
+            ]
           },
           {
             id: 'rsv_infection',
@@ -1290,7 +1381,14 @@ Object.assign(window.diseases, {
               mortality: 'Alacsony, de csecsemőkön magasabb rizikó',
               prognostic_scores: ['Nincs'],
               factors: 'Kor, komorbiditás'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Respiratory_syncytial_virus_01.jpg',
+                caption: 'Respiratory syncytial vírus (RSV) mikroszkópos képe.',
+                type: 'Virológia'
+              }
+            ]
           },
           {
             id: 'tonsillitis',
@@ -1376,7 +1474,14 @@ Object.assign(window.diseases, {
               mortality: 'Alacsony',
               prognostic_scores: ['Centor Score (McIsaac)'],
               factors: 'Késői kezelés'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tonsillitis.jpg',
+                caption: 'Exsudatív tonsillitis klinikai képe.',
+                type: 'Klinikai fotó'
+              }
+            ]
           },
           {
             id: 'sinusitis',
@@ -1440,7 +1545,14 @@ Object.assign(window.diseases, {
               mortality: 'Alacsony',
               prognostic_scores: ['Nincs'],
               factors: 'Immunstátusz'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sinusitis_01.jpg',
+                caption: 'Sinusitis radiológiai ábrázolása.',
+                type: 'Képalkotás'
+              }
+            ]
           },
           {
             id: 'otitis_media',
@@ -1504,7 +1616,14 @@ Object.assign(window.diseases, {
               mortality: 'Alacsony',
               prognostic_scores: ['Nincs'],
               factors: 'Kor, ismétlődés'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Blausen_0871_TympanicMembrane_2.png',
+                caption: 'Otitis media esetén látható dobhártyaeltérés.',
+                type: 'Otoszkópia'
+              }
+            ]
           }
         ]
       }

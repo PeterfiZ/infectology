@@ -1,4 +1,4 @@
-const CACHE_NAME = 'infectologia-tankonyv-v2';
+const CACHE_NAME = 'infectologia-tankonyv-v3';
 const urlsToCache = [
   '/',
   'index.html',
@@ -29,6 +29,7 @@ const urlsToCache = [
   'tropical_en.js',
   'emerging_en.js',
   'childhood_en.js',
+  'scores_en.js',
   // DE
   'thorax_de.js',
   'abdomen_de.js',
@@ -41,6 +42,7 @@ const urlsToCache = [
   'tropical_de.js',
   'emerging_de.js',
   'childhood_de.js',
+  'scores_de.js',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/maskable_icon_x512.png'

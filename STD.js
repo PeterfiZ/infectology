@@ -80,7 +80,7 @@ Object.assign(window.diseases, {
               supportive: ['Jarisch-Herxheimer reakció figyelmeztetés', 'HIV tesztelés', 'Partner értesítés és kezelés', 'Szerológiai követés (3, 6, 12, 24 hónap)'],
               prevention: ['Óvszerhasználat', 'Partner értesítés', 'Rendszeres szűrés rizikócsoportokban', 'Várandós nők szűrése']
             },
-            guidelines: {
+                        guidelines: {
               diagnosis: [
                 'Szűrés: RPR/VDRL (nem-treponema) vagy reverz algoritmus (EIA/CIA)',
                 'Megerősítés: TPHA/FTA-ABS (treponema-specifikus) tesztekkel',
@@ -99,10 +99,14 @@ Object.assign(window.diseases, {
                 'Penicillin allergia: Doxycyclin 2x100mg PO 14 nap (korai) vagy 28 nap (késői). Terhességben deszenzitizálás és Penicillin adása kötelező!',
                 'Terhesség: Minden terhest szűrni kell. A kezelés megegyezik a nem terhes felnőttekével.',
                 'Jarisch-Herxheimer reakció: Lázas reakció a kezelés első 24 órájában, nem allergia. Tüneti kezelés.',
-+               'Congenitalis szifilisz: Kristályos Penicillin G 100,000-150,000 NE/kg/nap IV (50,000 NE/kg/dózis 12 óránként az első 7 napban, majd 8 óránként) 10 napig. VAGY Procain Penicillin G 50,000 NE/kg/nap IM 10 napig.'
+                'Congenitalis szifilisz: Kristályos Penicillin G 100,000-150,000 NE/kg/nap IV (50,000 NE/kg/dózis 12 óránként az első 7 napban, majd 8 óránként) 10 napig. VAGY Procain Penicillin G 50,000 NE/kg/nap IM 10 napig.'
               ],
               monitoring: [
                 'A kezelés sikerességét a nem-treponema tesztek (RPR/VDRL) titerének csökkenésével követjük (legalább négyszeres csökkenés 12 hónapon belül).'
+              ],
+              references: [
+                'CDC STI Treatment Guidelines, 2021',
+                'IUSTI: 2020 European guideline on the management of syphilis'
               ]
             },
             prognosis: {
