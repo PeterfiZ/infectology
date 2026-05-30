@@ -110,6 +110,26 @@ Object.assign(window.diseases, {
                 url: 'https://www.cdc.gov/dpdx/malaria/modules/malaria_LifeCycle.gif?_=05237',
                 caption: 'Malaria (Plasmodium) Lebenszyklus',
                 type: 'Lebenszyklus-Abbildung'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_falciparum_01.jpg',
+                caption: 'Plasmodium falciparum Ringformen im duennen Blutausstrich (Giemsa-Faerbung).',
+                type: 'Mikroskopie'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_falciparum_02.jpg',
+                caption: 'Plasmodium falciparum Gametozyt im duennen Blutausstrich.',
+                type: 'Mikroskopie'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_falciparum_schizont.jpg',
+                caption: 'Plasmodium falciparum Schizont im duennen Blutausstrich.',
+                type: 'Mikroskopie'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Malaria_thick_film.jpg',
+                caption: 'Dicker Tropfen mit verschiedenen Entwicklungsformen von Plasmodium falciparum.',
+                type: 'Mikroskopie'
               }
             ]
           },
@@ -203,7 +223,14 @@ Object.assign(window.diseases, {
               mortality: 'Immunkompetent: ausgezeichnet; AIDS/TE: ohne Behandlung tödlich, Rezidiv häufig',
               prognostic_scores: ['Keine'],
               factors: 'Immunstatus, früher Behandlungsbeginn'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Toxoplasmosis_MRI.jpg',
+                caption: 'MRT des Gehirns: Multiple ringförmig anreichernde Läsionen (zerebrale Toxoplasmose).',
+                type: 'MRT'
+              }
+            ]
           },
           {
             id: 'ascariasis',

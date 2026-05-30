@@ -107,9 +107,29 @@ Object.assign(window.diseases, {
             },
             gallery: [
               {
-                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_life_cycle-en.svg',
+                url: 'https://www.cdc.gov/dpdx/malaria/modules/malaria_LifeCycle.gif?_=05237',
                 caption: 'Malaria (Plasmodium) life cycle',
                 type: 'Life cycle diagram'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_falciparum_01.jpg',
+                caption: 'Plasmodium falciparum ring forms in a thin blood smear (Giemsa stain).',
+                type: 'Microscopy'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_falciparum_02.jpg',
+                caption: 'Plasmodium falciparum gametocyte in a thin blood smear.',
+                type: 'Microscopy'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_falciparum_schizont.jpg',
+                caption: 'Plasmodium falciparum schizont in a thin blood smear.',
+                type: 'Microscopy'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Malaria_thick_film.jpg',
+                caption: 'Thick blood smear showing various stages of Plasmodium falciparum.',
+                type: 'Microscopy'
               }
             ]
           },
@@ -203,7 +223,14 @@ Object.assign(window.diseases, {
               mortality: 'Immunocompetent: excellent; AIDS/TE: fatal without treatment, recurrence is common',
               prognostic_scores: ['None'],
               factors: 'Immune status, early start of treatment'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Toxoplasmosis_MRI.jpg',
+                caption: 'Brain MRI showing multiple ring-enhancing lesions (cerebral toxoplasmosis).',
+                type: 'MRI'
+              }
+            ]
           },
           {
             id: 'ascariasis',
@@ -596,3 +623,4 @@ Object.assign(window.diseases, {
     }
   });
 })();
+

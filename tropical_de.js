@@ -167,6 +167,65 @@ Object.assign(window.diseases, {
           prevention: ['Mückenschutz', 'Impfstoff (Ixchiq - FDA zugelassen)']
         },
         prognosis: { mortality: 'Sehr niedrig, aber Morbidität (chronische Schmerzen) hoch', prognostic_scores: [], factors: 'Alter, chronische Gelenkprobleme' }
+      },
+      {
+        id: 'typhus_abdominalis',
+        name: 'Typhus abdominalis',
+        pathogen: { type: 'Bakterium', name: '<i>Salmonella enterica</i> Serovar Typhi/Paratyphi', gram: 'Gramnegativer Stäbchen', shape: 'Stäbchen' },
+        epidemiology: {
+          incidence: 'Endemisch in Süd- und Südostasien, Afrika und Lateinamerika',
+          risk_groups: ['Reisende aus Endemiegebieten', 'Schlechte Hygiene', 'Kontaminiertes Trinkwasser/Lebensmittel'],
+          seasonality: 'Regenzeit',
+          transmission: 'Fäkal-orale Übertragung über kontaminiertes Wasser und Lebensmittel'
+        },
+        pathomechanism: {
+          steps: [
+            'Penetration: Das Bakterium gelangt nach Aufnahme kontaminierter Nahrung oder Flüssigkeiten aus dem Magen in den Dünndarm.',
+            'Invasion: Es dringt durch Peyer-Plaques in die Darmwand ein und wird von Makrophagen aufgenommen.',
+            'Ausbreitung: Infizierte Makrophagen verbreiten das Bakterium über das lymphatische System und das retikuloendotheliale System.',
+            'Bakteriämie: Das Bakterium gelangt in den Blutkreislauf, löst eine Endotoxinreaktion aus und führt zu Splenomegalie und Hepatomegalie.'
+          ],
+          virulence_factors: ['Vi-Kapsel', 'Typ-III-Sekretionssystem', 'LPS']
+        },
+        clinical: {
+          incubation: '8-14 Tage',
+          onset: 'Allmählich',
+          symptoms: [
+            { name: 'Fieber', description: 'Allmählich ansteigendes Fieber, Unwohlsein und Kopfschmerzen.', severity: 'moderate' },
+            { name: 'Abdominalschmerzen', description: 'Diffuse Bauchschmerzen, oft mit wechselnden Obstipation- und Diarrhöephasen.', severity: 'moderate' },
+            { name: 'Kopfschmerzen', description: 'Starke, drückende Kopfschmerzen und allgemeines Unwohlsein.', severity: 'moderate' },
+            { name: 'Relative Bradykardie', description: 'Puls ist im Verhältnis zur Körpertemperatur eher niedrig.', severity: 'moderate' }
+          ],
+          physical_exam: [
+            'Fieber',
+            'Hepatosplenomegalie',
+            'Rosa Flecken am Bauch (rose spots)',
+            'Druckschmerz im Abdomen',
+            'Relative Bradykardie'
+          ],
+          complications: ['Darmperforation', 'Schwere Blutungen', 'Enzephalopathie', 'Sepsis']
+        },
+        diagnostics: {
+          laboratory: [
+            { test: 'Blutbild', finding: 'Leukopenie, Thrombozytopenie', interpretation: 'Könnte typisch sein' },
+            { test: 'Nieren- und Leberwerte', finding: 'Leicht erhöht', interpretation: 'Systemische Infektion' }
+          ],
+          microbiology: [
+            { test: 'Blutkultur', finding: 'Salmonella Typhi/Paratyphi', significance: 'Goldstandard' },
+            { test: 'Stuhlkultur', finding: 'Salmonella', significance: 'Unterstützende Diagnose' }
+          ]
+        },
+        therapy: {
+          empirical: {
+            outpatient: [
+              { drug: 'Ceftriaxon', dose: '2 g i.v. einmal täglich', duration: '7-10 Tage', note: 'Bei schweren Verläufen stationäre Behandlung erforderlich' }
+            ]
+          },
+          targeted: 'Bei bekannter Resistenz kann Azithromycin oder Ciprofloxacin eingesetzt werden.',
+          supportive: ['Flüssigkeitszufuhr', 'Ausgleich von Elektrolyten'],
+          prevention: ['Trinkwasserhygiene', 'Lebensmittelsicherheit', 'Impfung (Ty21a, Vi-Polysaccharid)']
+        },
+        prognosis: { mortality: 'Mit Therapie <1%, unbehandelt 10-20%', prognostic_scores: [], factors: 'Behandlungsverzögerung, Resistenz, Alter' }
       }
     ]
   }

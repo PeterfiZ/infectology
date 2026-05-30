@@ -110,6 +110,26 @@ Object.assign(window.diseases, {
                 url: 'https://www.cdc.gov/dpdx/malaria/modules/malaria_LifeCycle.gif?_=05237',
                 caption: 'Malaria (Plasmodium) életciklus ábra',
                 type: 'Életciklus ábra'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_falciparum_01.jpg',
+                caption: 'Plasmodium falciparum gyűrű alakok vékonykenetben (Giemsa-festés).',
+                type: 'Mikroszkópia'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_falciparum_02.jpg',
+                caption: 'Plasmodium falciparum gametocyta vékonykenetben.',
+                type: 'Mikroszkópia'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasmodium_falciparum_schizont.jpg',
+                caption: 'Plasmodium falciparum schizonta vékonykenetben.',
+                type: 'Mikroszkópia'
+              },
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Malaria_thick_film.jpg',
+                caption: 'Vastagcsepp, amely a Plasmodium falciparum különböző fejlődési alakjait mutatja.',
+                type: 'Mikroszkópia'
               }
             ]
           },
@@ -203,7 +223,14 @@ Object.assign(window.diseases, {
               mortality: 'Immundompetens: kiváló; AIDS/TE: kezelés nélkül halálos, recidíva gyakori',
               prognostic_scores: ['Nincs'],
               factors: 'Immunstátusz, kezelés korai kezdése'
-            }
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Toxoplasmosis_MRI.jpg',
+                caption: 'Agyi MRI felvétel: Többszörös, gyűrűszerűen halmozó gócok (cerebrális toxoplasmosis).',
+                type: 'MRI'
+              }
+            ]
           },
           {
             id: 'ascariasis',

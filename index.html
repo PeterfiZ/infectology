@@ -122,7 +122,7 @@
         <p id="main-subtitle" class="text-emerald-100 text-sm mt-0.5">Orvostanhallgatók számára</p>
         <div class="text-emerald-200 text-xs mt-1">
          <p id="header-author">Írta és szerkesztette: Dr. Péterfi Zoltán</p>
-         <p id="header-version">Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.5.1</p>
+         <p id="header-version">Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.5.2</p>
         </div>
        </div>
       </div>
@@ -155,10 +155,10 @@
    </header>
    <!-- Main Content -->
    <div class="flex-1 flex overflow-hidden"><!-- Sidebar - Disease Categories -->
-    <aside id="sidebar" class="w-56 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out">
-     <div class="h-14 flex items-center justify-between px-4 border-b border-slate-100 overflow-hidden">
+    <aside id="sidebar" class="w-56 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out" onclick="handleSidebarClick(event)">
+     <div class="h-14 flex items-center justify-between px-4 border-b border-slate-100 overflow-hidden cursor-pointer" onclick="handleSidebarHeaderClick(event)">
       <h2 id="sidebar-title" class="font-semibold text-slate-700 text-sm uppercase tracking-wider whitespace-nowrap transition-all duration-300">Betegségcsoportok</h2>
-      <button onclick="toggleSidebar()" class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0" title="Oldalsáv váltása">
+      <button onclick="toggleSidebar()" class="w-10 h-10 p-2 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0" title="Oldalsáv váltása">
        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
      </div>
@@ -166,12 +166,12 @@
      </nav>
     </aside><!-- Disease List -->
     <div id="disease-list-panel" class="w-56 bg-slate-50 border-r border-slate-200 flex flex-col flex-shrink-0">
-     <div class="p-4 border-b border-slate-100 bg-white flex justify-between items-center">
+     <div class="p-4 border-b border-slate-100 bg-white flex justify-between items-center cursor-pointer" onclick="handleDiseaseListHeaderClick(event)">
       <div id="disease-list-header-content">
        <h2 id="category-title" class="font-semibold text-slate-800">Válasszon kategóriát</h2>
        <p id="disease-count" class="text-sm text-slate-500 mt-1"></p>
       </div>
-      <button onclick="toggleDiseaseList()" class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0" title="Betegséglista elrejtése/megjelenítése">
+      <button onclick="toggleDiseaseList()" class="w-10 h-10 p-2 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0" title="Betegséglista elrejtése/megjelenítése">
        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
       </button>
      </div>
@@ -328,7 +328,7 @@
         const meta = {
             authorName: "Dr. Péterfi Zoltán",
             copyright: "© 2026 Dr. Péterfi Zoltán",
-            versionNum: "3.5.1"
+            versionNum: "3.5.2"
         };
 
         // Új ablak nyitása a nyomtatáshoz
@@ -633,7 +633,7 @@
         welcome_title: 'Üdvözöljük az Infektológia Tankönyvben',
         welcome_text: 'Válasszon egy betegségcsoportot a bal oldali menüből, majd egy konkrét betegséget a részletes klinikai információk megtekintéséhez.',
         header_author: 'Írta és szerkesztette: Dr. Péterfi Zoltán',
-        header_version: 'Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.5.1',
+        header_version: 'Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.5.2',
         feedback_btn: 'Visszajelzés',
         feedback_title: 'Visszajelzés',
         feedback_placeholder: 'Írja ide észrevételeit, javaslatait...',
@@ -688,6 +688,7 @@
         label_mortality: 'Mortalitás',
         label_prognostic_scores: 'Diagnosztikai és prognosztikai score-ok',
         label_prognostic_factors: 'Prognosztikai faktorok',
+        label_results: 'találat',
         section_gallery: 'Kép Galéria',
         section_references: 'Források',
         therapy_titles: {
@@ -711,7 +712,7 @@
         welcome_title: 'Welcome to the Infectious Diseases Textbook',
         welcome_text: 'Select a disease category from the left menu, then a specific disease to view detailed clinical information.',
         header_author: 'Written and edited by: Dr. Zoltán Péterfi',
-        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.5.1',
+        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.5.2',
         feedback_btn: 'Feedback',
         feedback_title: 'Send Feedback',
         feedback_placeholder: 'Write your comments or suggestions here...',
@@ -766,6 +767,7 @@
         label_mortality: 'Mortality',
         label_prognostic_scores: 'Diagnostic and Prognostic Scores',
         label_prognostic_factors: 'Prognostic Factors',
+        label_results: 'results',
         section_gallery: 'Image Gallery',
         section_references: 'References',
         therapy_titles: {
@@ -789,7 +791,7 @@
         welcome_title: 'Willkommen im Lehrbuch der Infektiologie',
         welcome_text: 'Wählen Sie eine Krankheitskategorie aus dem linken Menü und dann eine bestimmte Krankheit, um detaillierte klinische Informationen anzuzeigen.',
         header_author: 'Geschrieben und bearbeitet von: Dr. Zoltán Péterfi',
-        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.5.1',
+        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.5.2',
         feedback_btn: 'Feedback',
         feedback_title: 'Feedback senden',
         feedback_placeholder: 'Schreiben Sie hier Ihre Kommentare oder Vorschläge...',
@@ -844,6 +846,7 @@
         label_mortality: 'Mortalität',
         label_prognostic_scores: 'Diagnostik- und Prognose-Scores',
         label_prognostic_factors: 'Prognosefaktoren',
+        label_results: 'Treffer',
         section_gallery: 'Bildergalerie',
         section_references: 'Quellen',
         therapy_titles: {
@@ -933,6 +936,12 @@
       try {
         await Promise.all(promises);
         normalizeDiseases();
+        // Debug: log loaded categories and total diseases
+        try {
+          const catCount = Object.keys(window.diseases || {}).length;
+          const totalDiseases = Object.values(window.diseases || {}).reduce((sum, c) => sum + ((c.diseases && c.diseases.length) || 0), 0);
+          console.log(`[loadLanguageFiles] Loaded language=${lang}, categories=${catCount}, totalDiseases=${totalDiseases}`);
+        } catch (e) { console.warn('Error computing loaded disease stats', e); }
         updateUIStrings(lang);
         renderCategories();
         // If a category/disease was selected, try to re-select it (if IDs match across languages)
@@ -1414,22 +1423,44 @@
       renderCategories();
     };
 
+    window.handleSidebarHeaderClick = function(event) {
+      if (event.target.closest('button')) return;
+      toggleSidebar();
+    };
+
+    window.handleSidebarClick = function(event) {
+      if (!isSidebarCollapsed) return;
+      if (event.target.closest('button')) return;
+      if (event.target.closest('.category-item')) return;
+      toggleSidebar();
+    };
+
+    window.handleDiseaseListHeaderClick = function(event) {
+      if (event.target.closest('button')) return;
+      toggleDiseaseList();
+    };
+
     window.toggleDiseaseList = function() {
       isDiseaseListCollapsed = !isDiseaseListCollapsed;
       const panel = document.getElementById('disease-list-panel');
       const list = document.getElementById('disease-list');
       const headerContent = document.getElementById('disease-list-header-content');
+      const headerContainer = headerContent.parentElement;
 
       if (isDiseaseListCollapsed) {
           panel.classList.remove('w-56');
           panel.classList.add('w-16');
           list.classList.add('hidden');
           headerContent.classList.add('hidden');
+          headerContainer.classList.remove('justify-between', 'p-4');
+          headerContainer.classList.add('justify-center', 'p-2');
       } else {
           panel.classList.remove('w-16');
           panel.classList.add('w-56');
           list.classList.remove('hidden');
           headerContent.classList.remove('hidden');
+          headerContainer.classList.remove('justify-center', 'p-2');
+          headerContainer.classList.add('justify-between', 'p-4');
       }
     }
 
@@ -2152,18 +2183,24 @@
     searchInput.addEventListener('input', (e) => {
       const t = translations[currentLanguage];
       const query = e.target.value.toLowerCase();
+      // Debug: log queries and language to console to help debugging DE search
+      try { console.log('[search] lang=', currentLanguage, 'query=', query); } catch (err) {}
       if (!query) {
         renderCategories();
         renderDiseaseList();
         return;
       }
 
-      // Search across all diseases
+      // Search across all diseases (defensive checks to avoid runtime errors on missing fields)
       const results = [];
-      Object.entries(diseases).forEach(([catKey, category]) => {
+      Object.entries(window.diseases).forEach(([catKey, category]) => {
+        if (!category.diseases) return;
         category.diseases.forEach(disease => {
-          if (disease.name.toLowerCase().includes(query) || 
-              disease.pathogen.name.toLowerCase().includes(query)) {
+          const name = disease && disease.name ? String(disease.name) : '';
+          const pathogenName = disease && disease.pathogen && disease.pathogen.name ? String(disease.pathogen.name) : '';
+          const nameMatch = name.toLowerCase().includes(query);
+          const pathogenMatch = pathogenName.toLowerCase().includes(query);
+          if (nameMatch || pathogenMatch) {
             results.push({ ...disease, categoryKey: catKey, categoryName: category.name });
           }
         });
@@ -2174,13 +2211,13 @@
         <button onclick="selectCategory('${disease.categoryKey}'); selectDisease('${disease.id}')" 
           class="disease-card w-full text-left p-3.5 rounded-xl border border-slate-100 bg-white shadow-sm hover:border-emerald-200 transition-all group">
           <h3 class="font-semibold text-slate-800 text-sm group-hover:text-emerald-700 transition-colors">${disease.name}</h3>
-          <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-600 transition-colors">${disease.pathogen.name}</p>
+          <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-600 transition-colors">${disease.pathogen ? disease.pathogen.name : ''}</p>
           <p class="text-xs text-emerald-600 mt-1">${disease.categoryName}</p>
         </button>
       `).join('') : `<p class="text-slate-500 text-sm text-center py-8">${t.no_results}</p>`;
       
       categoryTitle.textContent = t.search_results;
-      diseaseCount.textContent = `${results.length} találat`;
+      diseaseCount.textContent = `${results.length} ${t.label_results}`;
     });
 
     // Initialize
@@ -2205,7 +2242,8 @@
             delete category.tables;
         }
 
-        (category.diseases || []).forEach(d => {
+        category.diseases = category.diseases || [];
+        category.diseases.forEach(d => {
           d.epidemiology = d.epidemiology || {};
           d.pathomechanism = d.pathomechanism || {};
           d.clinical = d.clinical || {};

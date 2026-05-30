@@ -171,6 +171,65 @@ Object.assign(window.diseases, {
           prevention: ['Mosquito protection', 'Vaccine (Ixchiq - FDA approved)']
         },
         prognosis: { mortality: 'Very low, but morbidity (chronic pain) high', prognostic_scores: [], factors: 'Age, chronic joint problems' }
+      },
+      {
+        id: 'typhus_abdominalis',
+        name: 'Typhoid Fever (Typhus abdominalis)',
+        pathogen: { type: 'Bacterium', name: '<i>Salmonella enterica</i> serovar Typhi/Paratyphi', gram: 'Gram-negative rod', shape: 'rod' },
+        epidemiology: {
+          incidence: 'Endemic in South and Southeast Asia, Africa, and Latin America',
+          risk_groups: ['Travelers to endemic areas', 'Poor sanitation', 'Contaminated water/food'],
+          seasonality: 'Rainy season',
+          transmission: 'Fecal-oral via contaminated water and food'
+        },
+        pathomechanism: {
+          steps: [
+            'Entry: The bacteria enter through contaminated water or food and survive gastric acid to reach the small intestine.',
+            'Invasion: They penetrate Peyer’s patches and invade the intestinal wall, then enter macrophages.',
+            'Dissemination: Infected macrophages carry the bacteria to lymph nodes and the reticuloendothelial system.',
+            'Bacteremia: The pathogen enters the bloodstream, triggering endotoxemia, splenomegaly, and hepatomegaly.'
+          ],
+          virulence_factors: ['Vi capsule', 'Type III secretion system', 'LPS']
+        },
+        clinical: {
+          incubation: '8-14 days',
+          onset: 'Gradual',
+          symptoms: [
+            { name: 'Fever', description: 'Progressive fever with malaise and headache.', severity: 'moderate' },
+            { name: 'Abdominal Pain', description: 'Diffuse abdominal discomfort, with constipation or diarrhea.', severity: 'moderate' },
+            { name: 'Headache', description: 'Frontal headache and general malaise.', severity: 'moderate' },
+            { name: 'Relative Bradycardia', description: 'Pulse is lower than expected for the degree of fever.', severity: 'moderate' }
+          ],
+          physical_exam: [
+            'Fever',
+            'Hepatosplenomegaly',
+            'Rose spots on the abdomen',
+            'Abdominal tenderness',
+            'Relative bradycardia'
+          ],
+          complications: ['Intestinal perforation', 'Severe hemorrhage', 'Encephalopathy', 'Sepsis']
+        },
+        diagnostics: {
+          laboratory: [
+            { test: 'CBC', finding: 'Leukopenia, thrombocytopenia', interpretation: 'May be present' },
+            { test: 'Liver enzymes', finding: 'Mild elevation', interpretation: 'Systemic infection' }
+          ],
+          microbiology: [
+            { test: 'Blood culture', finding: 'Salmonella Typhi/Paratyphi', significance: 'Gold standard' },
+            { test: 'Stool culture', finding: 'Salmonella', significance: 'Supportive diagnosis' }
+          ]
+        },
+        therapy: {
+          empirical: {
+            outpatient: [
+              { drug: 'Ceftriaxone', dose: '2 g IV once daily', duration: '7-10 days', note: 'Severe cases require hospitalization' }
+            ]
+          },
+          targeted: 'If sensitivity is known, consider azithromycin or ciprofloxacin.',
+          supportive: ['Fluid replacement', 'Electrolyte correction'],
+          prevention: ['Safe water and hygiene', 'Food safety', 'Vaccine (Ty21a, Vi polysaccharide)']
+        },
+        prognosis: { mortality: 'With treatment <1%, untreated 10-20%', prognostic_scores: [], factors: 'Delay in treatment, resistance, age' }
       }
     ]
   }

@@ -167,6 +167,65 @@ Object.assign(window.diseases, {
           prevention: ['Szúnyogvédelem', 'Vakcina (Ixchiq - FDA approved)']
         },
         prognosis: { mortality: 'Nagyon alacsony, de morbiditás (krónikus fájdalom) magas', prognostic_scores: [], factors: 'Életkor, krónikus ízületi problémák' }
+      },
+      {
+        id: 'typhus_abdominalis',
+        name: 'Typhus abdominalis',
+        pathogen: { type: 'Baktérium', name: '<i>Salmonella enterica</i> serovar Typhi/Paratyphi', gram: 'Gram-negatív pálca', shape: 'pálca' },
+        epidemiology: {
+          incidence: 'Endémiás Dél- és Délkelet-Ázsiában, Afrikában és Latin-Amerikában',
+          risk_groups: ['Utazók endémiás területekről', 'Gyenge higiénia', 'Szennyezett ivóvíz/élelmiszer'],
+          seasonality: 'Esős évszak',
+          transmission: 'Szennyezett víz és élelmiszer orális felvétele'
+        },
+        pathomechanism: {
+          steps: [
+            'Behatolás: A baktérium a szennyezett víz vagy élelmiszer elfogyasztása után a gyomorból a vékonybélbe jut.',
+            'Invázió: A Peyer-plakkokon keresztül a bélfalba hatol, majd makrofágokba kerül.',
+            'Terjedés: A fertőzött makrofágok a nyirokcsomókon és a retikuloendoteliális rendszeren keresztül terjesztik a baktériumot.',
+            'Bakteriémia: A baktérium a véráramba jut, endotoxin-választ idéz elő, és splenomegalia, hepatomegalia alakul ki.'
+          ],
+          virulence_factors: ['Vi kapszula', 'Type III szekréciós rendszer', 'LPS']
+        },
+        clinical: {
+          incubation: '8-14 nap',
+          onset: 'Lassan emelkedő',
+          symptoms: [
+            { name: 'Láz', description: 'Fokozatosan emelkedő láz, rossz közérzet és fejfájás.', severity: 'moderate' },
+            { name: 'Hasi fájdalom', description: 'Diffuse hasi fájdalom, székrekedés vagy hasmenés váltakozhat.', severity: 'moderate' },
+            { name: 'Fejfájás', description: 'Homloktáji fejfájás és általános rossz közérzet.', severity: 'moderate' },
+            { name: 'Relatív bradycardia', description: 'A pulzus alacsonyabb, mint a láz mértéke alapján várható lenne.', severity: 'moderate' }
+          ],
+          physical_exam: [
+            'Láz',
+            'Hepatosplenomegalia',
+            'Rózsaszín foltok a hason (rose spot)',
+            'Hasi nyomásérzékenység',
+            'Relatív bradycardia'
+          ],
+          complications: ['Bélperforáció', 'Súlyos vérzés', 'Encephalopathia', 'Szepszis']
+        },
+        diagnostics: {
+          laboratory: [
+            { test: 'Vérkép', finding: 'Leukopenia, thrombocytopenia', interpretation: 'Jellemző lehet' },
+            { test: 'Vese- és májfunkció', finding: 'Enyhe emelkedés', interpretation: 'Szisztémás fertőzés' }
+          ],
+          microbiology: [
+            { test: 'Vérkultúra', finding: 'Salmonella Typhi/Paratyphi', significance: 'Gold standard' },
+            { test: 'Székletkultúra', finding: 'Salmonella', significance: 'Támogató diagnózis' }
+          ]
+        },
+        therapy: {
+          empirical: {
+            outpatient: [
+              { drug: 'Ceftriaxon', dose: '2 g i.v. naponta egyszer', duration: '7-10 nap', note: 'Súlyos esetekben kórházi kezelés szükséges' }
+            ]
+          },
+          targeted: 'Ha a rezisztencia ismert, azithromycin vagy ciprofloxacin is jöhet szóba.',
+          supportive: ['Folyadékpótlás', 'Elektrolit-egyensúly helyreállítása'],
+          prevention: ['Ivóvíz-higiénia', 'Élelmiszerbiztonság', 'Vakcina (Ty21a, Vi-poliszacharid)']
+        },
+        prognosis: { mortality: 'Kezeléssel <1%, kezeletlenül 10-20%', prognostic_scores: [], factors: 'Kezelés késedelme, rezisztencia, életkor' }
       }
     ]
   }
