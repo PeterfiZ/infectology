@@ -117,6 +117,179 @@ Object.assign(window.diseases, {
             }
           },
           {
+            id: 'fuo',
+            name: 'Fever of Unknown Origin (FUO)',
+            pathogen: { type: 'Syndrome', name: 'Infection, inflammation, malignancy, autoimmune/other causes', gram: 'Variable', shape: '-' },
+            epidemiology: {
+              incidence: 'About 5-15% of fever cases fall into FUO; common causes are infections, malignancy, and autoimmune/inflammatory disease.',
+              risk_groups: ['Older adults', 'Immunocompromised patients', 'Oncology patients', 'Patients with chronic inflammatory disease'],
+              seasonality: 'None',
+              transmission: 'Not contagious'
+            },
+            pathomechanism: {
+              steps: [
+                'FUO does not arise from a single pathogen or mechanism, but is a common clinical manifestation of several diseases.',
+                'Common causes include chronic infections, neoplastic processes, autoimmune/inflammatory conditions, and certain drugs or metabolic disorders.',
+                'Fever generation usually involves inflammatory mediators such as IL-1, IL-6, and TNF-α, as well as alterations in thermoregulation.',
+                'Diagnosis depends on identifying the underlying cause through a combination of history, examination, and targeted testing.'
+              ],
+              virulence_factors: ['There is no single pathogen virulence factor; the mechanism depends on the underlying disease']
+            },
+            clinical: {
+              incubation: 'No uniform incubation period',
+              onset: 'Prolonged, recurrent, or persistent fever for several weeks',
+              symptoms: [
+                { name: 'Fever', description: '>38.3°C, recurrent or persisting for at least 3 weeks', severity: 'severe' },
+                { name: 'Night sweats', description: 'Common, especially in infection and malignancy', severity: 'moderate' },
+                { name: 'Weight loss', description: 'May be present, especially in cancer or chronic disease', severity: 'moderate' },
+                { name: 'Fatigue', description: 'Exhaustion, weakness, reduced performance', severity: 'moderate' },
+                { name: 'Localized symptoms', description: 'Cough, abdominal pain, lymphadenopathy, joint pain, urinary symptoms', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Repeated temperature measurement and fever pattern',
+                'Weight, general condition, perfusion',
+                'Examination of lymph nodes, liver, spleen, joints, heart, and lungs',
+                'Search for skin findings and infection sources'
+              ],
+              complications: ['Delayed diagnosis', 'Serious underlying disease may be missed', 'Increased morbidity and mortality depending on the cause']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CBC, CRP, ESR', finding: 'Inflammatory signs', interpretation: 'Initial screening' },
+                { test: 'Chemistry, liver and kidney function', finding: 'Organ involvement', interpretation: 'Baseline assessment' },
+                { test: 'PCT', finding: 'May suggest bacterial infection', interpretation: 'Helps refine infection suspicion' },
+                { test: 'Autoimmune markers', finding: 'ANA, RF, anti-CCP, etc.', interpretation: 'Identify autoimmune/inflammatory causes' }
+              ],
+              imaging: [
+                { modality: 'CT/PET-CT, US, X-ray', finding: 'Sources, tumors, abscesses', significance: 'Key tool for source identification' }
+              ],
+              microbiology: [
+                { test: 'Blood culture, urine, sputum, stool, samples according to symptoms', finding: 'Infective sources', significance: 'Evidence of infectious causes' }
+              ],
+              scores: ['No single FUO scoring system'],
+              calculators: [
+                {
+                  name: 'FUO definition',
+                  items: [
+                    { label: 'Fever >38.3°C', points: 1 },
+                    { label: 'At least 3 weeks', points: 1 },
+                    { label: 'No diagnosis after the initial evaluation', points: 1 }
+                  ],
+                  interpretation: [
+                    { min: 0, max: 1, text: 'Not a complete FUO definition.' },
+                    { min: 2, max: 3, text: 'FUO suspected; detailed evaluation is indicated.' }
+                  ]
+                }
+              ]
+            },
+            differential: [
+              { disease: 'Infection', distinguishing: 'Culture, imaging, PCT, clinical focus' },
+              { disease: 'Oncologic disease', distinguishing: 'Weight loss, night sweats, PET-CT, tumor markers' },
+              { disease: 'Autoimmune/inflammatory disease', distinguishing: 'CRP/ESR, ANA/RF, joint/organ findings' },
+              { disease: 'Drug reaction / metabolic disease', distinguishing: 'New medication, eosinophilia, metabolic abnormalities' }
+            ],
+            therapy: {
+              guidelines: ['Therapy is cause-specific; FUO is not treated as a standalone disease.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'No routine empiric antibiotic therapy', dose: '-', duration: '-', note: 'Only if clearly indicated before the diagnosis is established.' }
+                ],
+                inpatient: [
+                  { drug: 'Empiric antimicrobial therapy', dose: 'As indicated', duration: 'Short term', note: 'Only for severe infection or strong clinical suspicion.' }
+                ],
+                icu: [
+                  { drug: 'Treatment of severe sepsis/shock', dose: 'Per current protocol', duration: 'Immediate', note: 'If fever is associated with sepsis.' }
+                ]
+              },
+              targeted: 'Cause-directed therapy: antimicrobial therapy for infection, oncology treatment for malignancy, and immunosuppressive therapy for autoimmune disease.',
+              supportive: ['Fluid resuscitation', 'Antipyretics', 'Regular monitoring', 'Symptomatic treatment'],
+              prevention: ['Early clarification of the cause of fever', 'Management of infection sources', 'Monitoring of immune status and risk factors']
+            },
+            prognosis: {
+              mortality: 'Outcome depends on the cause; delayed diagnosis and complex infection or malignancy may have worse outcomes.',
+              prognostic_scores: ['No single FUO scoring system'],
+              factors: 'Underlying disease, immune status, age, early initiation of evaluation'
+            }
+          },
+          {
+            id: 'pyomyositis',
+            name: 'Pyomyositis',
+            pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus</i> (most commonly), <i>Streptococcus pyogenes</i>, gram-negative organisms', gram: 'Gram-positive/negative', shape: 'coccus/bacillus' },
+            epidemiology: {
+              incidence: 'Less common in developed countries, but more frequent in tropical regions and in immunocompromised patients',
+              risk_groups: ['HIV/AIDS', 'Diabetes mellitus', 'Immunosuppression', 'IV drug users', 'Trauma or muscle injury', 'Neonates/children'],
+              seasonality: 'None',
+              transmission: 'Not directly transmitted; usually arises from skin infection/colonization or hematogenous spread'
+            },
+            pathomechanism: {
+              steps: [
+                'Bacteria enter muscle after tissue injury, skin infection, or hematogenous spread.',
+                'The local inflammatory response and bacterial growth lead to muscle fiber destruction, abscess formation, and tissue necrosis.',
+                'The process may progress to an abscess and later to systemic infection.',
+                'The most common pathogen is Staphylococcus aureus, but streptococci and gram-negative organisms can also occur.'
+              ],
+              virulence_factors: ['S. aureus biofilm/adhesins', 'Capsule', 'Exotoxins', 'Tissue invasion']
+            },
+            clinical: {
+              incubation: 'Variable',
+              onset: 'Slow or acute',
+              symptoms: [
+                { name: 'Muscle pain', description: 'Deep muscle pain without joint involvement, with swelling', severity: 'severe' },
+                { name: 'Fever', description: 'Moderate to high fever', severity: 'moderate' },
+                { name: 'Swelling and tenderness', description: 'The affected muscle is tender and swollen on exam', severity: 'moderate' },
+                { name: 'Fatigue', description: 'General malaise', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Tenderness and swelling in the affected muscle',
+                'Fever, tachycardia',
+                'If an abscess forms: a well-demarcated, fluctuant mass',
+                'Occasionally surrounding muscle or skin is also involved'
+              ],
+              complications: ['Muscle abscess', 'Septic thromboembolism', 'Sepsis', 'Pelvic or other abscesses', 'Chronic infection']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CBC, CRP', finding: 'Inflammatory signs', interpretation: 'Baseline assessment' },
+                { test: 'Blood culture', finding: 'May be positive', interpretation: 'Detection of bacteremia' },
+                { test: 'CK', finding: 'May be elevated', interpretation: 'Muscle involvement' }
+              ],
+              imaging: [
+                { modality: 'US / CT / MRI', finding: 'Muscle edema, abscess, inflammation', significance: 'Most important imaging modality' }
+              ],
+              microbiology: [
+                { test: 'Culture', finding: 'Drainage/aspirate if possible', significance: 'Pathogen and resistance' }
+              ]
+            },
+            differential: [
+              { disease: 'Muscle strain / hematoma', distinguishing: 'Not infectious, no inflammation' },
+              { disease: 'Cellulitis', distinguishing: 'More superficial and less localized' },
+              { disease: 'Osteomyelitis', distinguishing: 'Bone involvement, positive bone imaging' },
+              { disease: 'DVT', distinguishing: 'Venous thrombosis, no abscess' }
+            ],
+            therapy: {
+              guidelines: ['Severe or abscess-forming disease requires rapid antibiotic and surgical treatment.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'None', dose: '-', duration: '-', note: 'Hospital treatment is needed for severe or abscess-forming disease.' }
+                ],
+                inpatient: [
+                  { drug: 'Anti-staphylococcal IV therapy', dose: 'Nafcillin/Cefazolin or Vancomycin', duration: '7-14 days', note: 'Vancomycin if MRSA is suspected.' }
+                ],
+                icu: [
+                  { drug: 'Severe sepsis/shock', dose: 'Per protocol', duration: 'Immediate', note: 'Intensive care and source control.' }
+                ]
+              },
+              targeted: 'Culture/aspiration-guided targeted antibiotics; drainage for abscess.',
+              supportive: ['Analgesia', 'Fluids', 'Monitoring', 'Surgical drainage'],
+              prevention: ['Treatment of skin infections', 'Protection of damaged skin', 'Management of immunosuppression']
+            },
+            prognosis: {
+              mortality: 'Usually low, but higher in immunocompromised or late-treated cases',
+              prognostic_scores: ['No single score'],
+              factors: 'Pathogen, immune status, delayed diagnosis, presence of abscess'
+            }
+          },
+          {
             id: 'toxic_shock',
             name: 'Toxic Shock Syndrome (TSS)',
             pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus, Streptococcus pyogenes</i>', gram: 'Gram-positive', shape: 'coccus' },
@@ -140,8 +313,8 @@ Object.assign(window.diseases, {
               onset: 'Sudden',
               symptoms: [
                 { name: 'High fever', description: '>38.9°C (sudden onset)', severity: 'severe' },
-                { name: 'Hypotension', description: 'Systolic BP <90 mmHg (adult), orthostatic dizziness', severity: 'severe' },
-                { name: 'Diffuse erythroderma', description: 'Sunburn-like rash (Staph: >90%, Strep: rarer)', severity: 'moderate' },
+                { name: 'Hypotension', description: 'Systolic BP <90 mmHg in adults, orthostatic dizziness', severity: 'severe' },
+                { name: 'Diffuse erythroderma', description: 'Sunburn-like rash (>90% in Staph TSS, rarer in Strep TSS)', severity: 'moderate' },
                 { name: 'Multisystem symptoms', description: 'GI (vomiting/diarrhea), Muscle pain (CK elevation), Mucosal hyperemia', severity: 'severe' },
                 { name: 'Desquamation', description: '1-2 weeks after onset (palms/soles)', severity: 'mild' }
               ],

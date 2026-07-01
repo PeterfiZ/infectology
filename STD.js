@@ -27,10 +27,10 @@ Object.assign(window.diseases, {
               incubation: 'Primer: 9-90 nap (átlag 21 nap)',
               onset: 'Fázis-függő',
               symptoms: [
-                { name: 'Primer: Chancre (Sánker)', description: 'A behatolás helyén (genitáliák, száj, végbél) kb. 3 héttel a fertőzés után kialakuló fájdalmatlan, kemény alapú, tiszta aljú fekély (ulcus durum). Regionális, fájdalmatlan nyirokcsomó-duzzanat kíséri. Kezelés nélkül is gyógyul, de a baktérium a szervezetben marad.', severity: 'moderate' },
-                { name: 'Szekunder: Bőr- és Nyálkahártya tünetek', description: 'A hematogén szóródás jele (6-8 héttel a sánker után). Generalizált, nem viszkető, rézvörös kiütések (roseola syphilitica), amelyek jellegzetesen a tenyereket és talpakat is érintik. A hajlatokban lapos, nedvedző, erősen fertőző papulák (condyloma lata) jelenhetnek meg.', severity: 'moderate' },
-                { name: 'Szekunder: Szisztémás tünetek', description: 'Láz, rossz közérzet, generalizált nyirokcsomó-duzzanat ("micropolyadenopathia"), foltos hajhullás ("moly-rágta" alopecia) és nyálkahártya fekélyek (mucous patches).', severity: 'mild' },
-                { name: 'Tercier: Késői szövődmények', description: 'Évekkel-évtizedekkel később alakul ki. Gumma (bőr, csont, máj destruktív granulómái), kardiovaszkuláris szifilisz (aortitis, aorta aneurysma) és neuroszifilisz (tabes dorsalis, progresszív paralízis/demencia).', severity: 'severe' }
+                { name: 'Primer: Chancre (Sánker)', description: 'Fájdalmatlan, kemény alapú, tiszta aljú fekély (ulcus durum) a behatolási kapunál (genitáliák, száj, anus). Jellegzetes a kísérő "indolens" (fájdalmatlan), porckemény nyirokcsomó-duzzanat.', severity: 'moderate' },
+                { name: 'Szekunder: Disszemináció', description: '6-8 héttel a sánker után. Generalizált, nem viszkető, rézvörös makulák (tenyéren/talpon is!), nedvedző, lapos szemölcsök (condyloma lata), porcelánfehér nyálkahártya-foltok (plaque opalina) és "moly-rágta" alopecia.', severity: 'moderate' },
+                { name: 'Szekunder: Szisztémás jelek', description: 'Láz, torokfájás, generalizált nyirokcsomó-duzzanat ("mikropolyadenopathia"), hepatitis vagy periostitis is előfordulhat.', severity: 'mild' },
+                { name: 'Tercier: Destrukció', description: 'Évek múlva: Gumma (destruktív granulómák bőrben, csontban), aortitis (aneurysma), és Neuroszifilisz (tabes dorsalis - ataxia, villámcsapásszerű fájdalom; progresszív paralízis - demencia).', severity: 'severe' }
               ],
               physical_exam: [
                 'Primer: fájdalmatlan genitalis/extragenitalis fekély + inguinalis lymphadenopathia',
@@ -251,8 +251,8 @@ Object.assign(window.diseases, {
               incubation: '2-7 nap',
               onset: 'Akut',
               symptoms: [
-                { name: 'Férfiak', description: 'Urethritis: bőséges, sárgás-zöldes gennyes folyás, dysuria. (90% tünetes)', severity: 'moderate' },
-                { name: 'Nők', description: 'Cervicitis: gyakran tünetszegény vagy tünetmentes (50%). Hüvelyi folyás, dysuria, alhasi fájdalom.', severity: 'mild' },
+                { name: 'Férfiak', description: 'Akut urethritis: hirtelen fellépő, bőséges, sárgás-zöldes, krémszerű gennyes folyás ("bon-bon") és kínzó vizelési fájdalom. Gyakori a herék feszítő fájdalma.', severity: 'moderate' },
+                { name: 'Nők', description: 'Gyakran tünetszegény cervicitis (50%). Gennyes hüvelyi folyás, dysuria, fájdalmas Bartholin-mirigy gyulladás. Ascendálva kismedencei gyulladást (PID) okoz.', severity: 'moderate' },
                 { name: 'Extragenitális', description: 'Pharyngitis (gyakran tünetmentes), Proctitis (fájdalom, folyás), Conjunctivitis (újszülöttek).', severity: 'moderate' }
               ],
               physical_exam: ['Gennyes urethralis/cervicalis váladék', 'Bartholin mirigy tályog', 'Láz (DGI esetén)'],
@@ -304,8 +304,8 @@ Object.assign(window.diseases, {
               onset: 'Lassú/Tünetmentes',
               symptoms: [
                 { name: 'Tünetmentes ("Csendes")', description: 'A nők 70-80%-a és a férfiak 50%-a tünetmentes, ami elősegíti a terjedést és a késői szövődményeket.', severity: 'mild' },
-                { name: 'Nők', description: 'Cervicitis: mucopurulens folyás, kontakt vérzés, dysuria. Alhasi fájdalom (PID jele lehet).', severity: 'moderate' },
-                { name: 'Férfiak', description: 'Urethritis: vizelési csípés, híg/üveges folyás (kevésbé gennyes mint a gonorrhoea).', severity: 'moderate' }
+                { name: 'Nők', description: 'Mucopurulens cervicitis: nyákos-gennyes folyás, kontakt vérzés (pl. szex után), dysuria. Szövődmény: PID, Fitz-Hugh-Curtis szindróma (perihepatitis).', severity: 'moderate' },
+                { name: 'Férfiak', description: 'Urethritis: enyhe vizelési csípés, reggeli "csepp" (híg, üveges váladék). Kevésbé drámai, mint a kankó, ezért későn fordulnak orvoshoz.', severity: 'moderate' }
               ],
               physical_exam: ['Mucopurulens cervicitis', 'Adnexalis érzékenység (PID)', 'Urethralis folyás'],
               complications: ['Kismedencei gyulladás (PID)', 'Meddőség (tubaris eredetű)', 'Méhen kívüli terhesség', 'Fitz-Hugh-Curtis szindróma (perihepatitis)', 'Reaktív arthritis (Reiter-kór)', 'Újszülöttkori conjunctivitis/pneumonia']
@@ -353,8 +353,8 @@ Object.assign(window.diseases, {
               incubation: '2-12 nap',
               onset: 'Hirtelen (primer) vagy prodroma (rekurrens)',
               symptoms: [
-                { name: 'Primer fertőzés', description: 'Súlyos tünetek: kiterjedt, fájdalmas hólyagok és fekélyek a genitáliákon. Gyakran kíséri láz, rossz közérzet, fájdalmas inguinalis nyirokcsomó-duzzanat és dysuria. Gyógyulás: 2-4 hét.', severity: 'severe' },
-                { name: 'Rekurrens fertőzés', description: 'Enyhébb lefolyás. Gyakran prodromális tünetek (égő, bizsergő érzés) előzik meg. Kevesebb lézió, nincs szisztémás tünet. Gyógyulás: 5-10 nap.', severity: 'mild' }
+                { name: 'Primer fertőzés', description: 'Súlyos tünetek: erythemás alapon csoportos, fájdalmas hólyagok, majd fekélyek. Láz, elesettség, kínzó dysuria (vizeletretenció is lehet) és fájdalmas ágyéki nyirokcsomók kísérik.', severity: 'severe' },
+                { name: 'Rekurrens fertőzés', description: 'Enyhébb lefolyás. Prodromális bizsergés, égő érzés után néhány hólyag jelenik meg. Szisztémás tünet nincs. Gyógyulás: 5-10 nap.', severity: 'mild' }
               ],
               physical_exam: ['Csoportos vezikulák/fekélyek', 'Inguinalis lymphadenopathia (primer)', 'Cervicitis/Proctitis'],
               complications: ['Asepticus meningitis', 'Vizeletretenció (autonóm diszfunkció)', 'Neonatalis herpes (terhességben!)', 'HIV transzmisszió fokozott kockázata']
@@ -403,8 +403,8 @@ Object.assign(window.diseases, {
               incubation: '4-28 nap',
               onset: 'Fokozatos',
               symptoms: [
-                { name: 'Nők', description: 'Bőséges, habos, zöldes-sárgás, bűzös folyás. Vulvovaginalis viszketés, dysuria, dyspareunia. "Eper-cervix" (colpitis macularis) a vizsgálatkor.', severity: 'moderate' },
-                { name: 'Férfiak', description: 'Gyakran tünetmentes. Okozhat urethritist (folyás, dysuria), prostatitist.', severity: 'mild' }
+                { name: 'Nők', description: 'Bőséges, habos, sárgászöld, bűzös ("romlott hal") folyás. Intenzív vulvaris viszketés, dysuria. Vizsgálatkor "eper-cervix" (pontszerű bevérzések a méhnyakon). pH > 4.5.', severity: 'moderate' },
+                { name: 'Férfiak', description: 'Gyakran tünetmentes hordozók. Okozhat enyhe urethritist (reggeli híg folyás) vagy krónikus prostatitist.', severity: 'mild' }
               ],
               physical_exam: ['Habos folyás', 'Eper-cervix (pontszerű bevérzések)', 'pH > 4.5'],
               complications: ['Koraszülés', 'Alacsony születési súly', 'HIV transzmisszió fokozott kockázata', 'PID']

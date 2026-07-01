@@ -43,9 +43,8 @@ const urlsToCache = [
   'emerging_de.js',
   'childhood_de.js',
   'scores_de.js',
-  'icons/icon-192.png',
-  'icons/icon-512.png',
-  'icons/maskable_icon_x512.png'
+  'icons/icon-192.svg',
+  'icons/icon-512.svg'
   // A CDN-ről betöltött erőforrások (pl. betűtípusok) a böngésző által kerülnek gyorsítótárazásra.
   // A teljes offline élményhez ezeket helyben kellene tárolni.
 ];

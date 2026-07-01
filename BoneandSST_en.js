@@ -309,6 +309,384 @@ Object.assign(window.diseases, {
             }
           },
           {
+            id: 'impetigo',
+            name: 'Impetigo',
+            pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus</i> and/or <i>Streptococcus pyogenes</i>', gram: 'Gram-positive', shape: 'coccus' },
+            epidemiology: {
+              incidence: 'Common, especially in children',
+              risk_groups: ['Children', 'Community settings', 'Skin injuries', 'Close contact'],
+              seasonality: 'None',
+              transmission: 'Contact, direct or indirect'
+            },
+            pathomechanism: {
+              steps: [
+                'Pathogens enter through skin lesions or the superficial skin.',
+                'Bacteria multiply locally and spread superficially.',
+                'Inflammation and toxins lead to characteristic blisters and golden, “honey-colored” crusts.'
+              ],
+              virulence_factors: ['Exfoliative toxins', 'M protein', 'Coagulase', 'Panton-Valentine leukocidin (S. aureus)']
+            },
+            clinical: {
+              incubation: '1-3 days',
+              onset: 'Acute',
+              symptoms: [
+                { name: 'Erythematous, inflamed plaques', description: 'Blisters that rupture and are covered with golden, “honey-colored” crusts', severity: 'moderate' },
+                { name: 'Pruritus', description: 'Mild pain or itching in the area', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Red, superficial, inflamed skin lesion',
+                'Blisters and crust formation',
+                'Occasionally lymph node enlargement'
+              ],
+              complications: ['Extensive local infection', 'Glomerulonephritis (streptococcal)', 'Recurrence']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Clinical diagnosis', finding: 'Sufficient', interpretation: 'Typical presentation' }
+              ],
+              microbiology: [
+                { test: 'Wound swab/culture', finding: 'Pathogen identification', significance: 'In uncertain or severe cases' }
+              ]
+            },
+            differential: [
+              { disease: 'Herpes simplex', distinguishing: 'Vesicles, more painful, no honey crusts' },
+              { disease: 'Contact dermatitis', distinguishing: 'Pruritus, no blistering' },
+              { disease: 'Erysipelas', distinguishing: 'Deeper, sharp borders' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Topical mupirocin', dose: '2x/day', duration: '5-7 days', note: 'Localized, non-extensive form' },
+                  { drug: 'Retapamulin', dose: '2x/day', duration: '5 days', note: 'Alternative' }
+                ],
+                inpatient: [
+                  { drug: 'Cephalexin', dose: '4x500 mg PO', duration: '7-10 days', note: 'Extensive infection' },
+                  { drug: 'Amoxicillin/Clavulanate', dose: '3x875/125 mg PO', duration: '7-10 days', note: 'Alternative' }
+                ]
+              },
+              targeted: 'Targeted therapy according to S. aureus/GAS; systemic antibiotics in extensive cases.',
+              supportive: ['Skin cleaning', 'Hygiene and contact prevention', 'Separation of affected individuals'],
+              prevention: ['Hygiene rules', 'Treatment of skin injuries', 'Reduction of community contact']
+            },
+            guidelines: {
+              diagnosis: [
+                'Clinical diagnosis: the typical honey-colored crusts and superficial blisters are characteristic.'
+              ],
+              treatment_indications: [
+                'Topical treatment in small, non-extensive cases; systemic therapy in extensive or recurrent infection.'
+              ],
+              first_line: [
+                'Topical mupirocin or retapamulin; in extensive disease cephalexin or amoxicillin/clavulanate.'
+              ]
+            },
+            prognosis: {
+              mortality: 'Low',
+              prognostic_scores: ['None'],
+              factors: 'Extensive disease, immunosuppression, recurrence'
+            }
+          },
+          {
+            id: 'folliculitis',
+            name: 'Folliculitis',
+            pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus</i> (most common)', gram: 'Gram-positive', shape: 'coccus' },
+            epidemiology: {
+              incidence: 'Common, especially in warm, sweaty environments',
+              risk_groups: ['Sweaty work', 'Tight clothing', 'Skin injuries', 'Diabetes', 'Immunosuppression'],
+              seasonality: 'None',
+              transmission: 'Direct contact or auto-inoculation'
+            },
+            pathomechanism: {
+              steps: [
+                'In the hair follicle region, the pathogen invades and causes local inflammation.',
+                'Inflammation leads to papules and pustules around the hair follicle.',
+                'More severe forms may lead to deeper infection (furunculus, carbunculus).'
+              ],
+              virulence_factors: ['Coagulase', 'Exotoxins', 'Biofilm']
+            },
+            clinical: {
+              incubation: '1-3 days',
+              onset: 'Acute',
+              symptoms: [
+                { name: 'Papules/pustules', description: 'Localized, painful or itchy papules/pustules around the hair follicle', severity: 'mild' },
+                { name: 'Erythema and tenderness', description: 'Inflammatory reaction around the skin', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Papules/pustules around the hair follicle',
+                'Pain or itching',
+                'In severe cases an abscess may develop'
+              ],
+              complications: ['Furunculus', 'Carbunculus', 'Abscessing folliculitis', 'Extensive local infection']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Clinical diagnosis', finding: 'Sufficient', interpretation: 'Typical presentation' }
+              ],
+              microbiology: [
+                { test: 'Pus or tissue sample', finding: 'Pathogen identification', significance: 'In severe or refractory cases' }
+              ]
+            },
+            differential: [
+              { disease: 'Impetigo', distinguishing: 'Much more superficial blistering and crusting' },
+              { disease: 'Herpes simplex', distinguishing: 'Vesicles, severe pain' },
+              { disease: 'Erysipelas', distinguishing: 'Superficial inflammation, no follicular focus' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Topical mupirocin', dose: '2x/day', duration: '5-7 days', note: 'Mild infection' },
+                  { drug: 'Clindamycin', dose: '2x/day', duration: '5-7 days', note: 'Topical' }
+                ],
+                inpatient: [
+                  { drug: 'Cephalexin', dose: '4x500 mg PO', duration: '7-10 days', note: 'More severe or extensive' }
+                ]
+              },
+              targeted: 'Targeted anti-staphylococcal therapy in S. aureus; culture in refractory cases.',
+              supportive: ['Avoid irritating substances', 'Skin cleaning', 'Avoid tight clothing'],
+              prevention: ['Hygiene', 'Avoid contaminated objects', 'Clean environment and clothing']
+            },
+            guidelines: {
+              diagnosis: [
+                'Based on clinical appearance.'
+              ],
+              treatment_indications: [
+                'Topical therapy in milder forms; systemic therapy in extensive or recurrent cases.'
+              ],
+              first_line: [
+                'Topical mupirocin or clindamycin; if needed cephalexin.'
+              ]
+            },
+            prognosis: {
+              mortality: 'Low',
+              prognostic_scores: ['None'],
+              factors: 'More severe forms, diabetes, immunosuppression'
+            }
+          },
+          {
+            id: 'diabetic_foot',
+            name: 'Diabetic foot (infection/ulcer)',
+            pathogen: { type: 'Polymicrobial', name: 'Staphylococcus aureus, Streptococcus spp., gram-negative organisms, anaerobes', gram: 'Mixed', shape: 'Variable' },
+            epidemiology: {
+              incidence: 'A common cause of hospitalization and amputation in diabetic patients',
+              risk_groups: ['Diabetes mellitus', 'Neuropathy', 'Peripheral arterial disease', 'Prior ulcer/injury', 'Foot deformity', 'Immunosuppression'],
+              seasonality: 'None',
+              transmission: 'Not contagious, but develops through skin injury, deformity, and inflammation'
+            },
+            pathomechanism: {
+              steps: [
+                'Neuropathy reduces protective reflexes and sensation so minor injuries may go unnoticed.',
+                'Peripheral arterial disease and high glucose levels impair healing and immune function.',
+                'After skin and soft-tissue injury, bacteria colonize and establish infection, often as polymicrobial infection.',
+                'The process can progress to abscess, osteomyelitis, and amputation.'
+              ],
+              virulence_factors: ['Biofilm formation', 'Adhesins', 'Toxins', 'Polymicrobial community']
+            },
+            clinical: {
+              incubation: 'Variable',
+              onset: 'Slow or acute',
+              symptoms: [
+                { name: 'Foot pain or sensory loss', description: 'Pain may be absent or sensation reduced because of neuropathy', severity: 'severe' },
+                { name: 'Swelling and erythema', description: 'Signs of infection, particularly if the skin is injured', severity: 'moderate' },
+                { name: 'Drainage/odor', description: 'Purulent discharge or unpleasant odor', severity: 'moderate' },
+                { name: 'Fever', description: 'May occur in more severe infection', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Wound/ulcer, drainage, swelling',
+                'Pedal pulses, ABI',
+                'Assess protective sensation and neuropathy',
+                'Probe-to-bone test when osteomyelitis is suspected'
+              ],
+              complications: ['Osteomyelitis', 'Septic shock', 'Amputation', 'Chronic wounds', 'Death']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CBC, CRP, creatinine', finding: 'Inflammation, organ involvement', interpretation: 'Baseline assessment' },
+                { test: 'Blood culture', finding: 'May be positive in severe disease', interpretation: 'When sepsis is suspected' }
+              ],
+              imaging: [
+                { modality: 'US / CT / MRI', finding: 'Abscess, bone involvement, vascular disease', significance: 'Deep infection or osteomyelitis' }
+              ],
+              microbiology: [
+                { test: 'Wound swab/biopsy', finding: 'Pathogen identification', significance: 'Targeted antibiotic therapy' }
+              ],
+              scores: ['IDSA/PEDIS severity classification']
+            },
+            differential: [
+              { disease: 'Cellulitis', distinguishing: 'No open wound or deeper structure' },
+              { disease: 'Osteomyelitis', distinguishing: 'Bone involvement, imaging/biopsy' },
+              { disease: 'Peripheral arterial disease', distinguishing: 'Absent pulse, ABI, not primarily infection' }
+            ],
+            therapy: {
+              guidelines: ['IWGDF 2023: off-loading, surgical debridement, good perfusion, glucose control, and targeted antibiotics.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Amoxicillin/clavulanate', dose: 'PO', duration: '7-14 days', note: 'Mild infection' }
+                ],
+                inpatient: [
+                  { drug: 'Amoxicillin/clavulanate', dose: 'IV/PO', duration: '7-14 days', note: 'Moderate infection' },
+                  { drug: 'Piperacillin/tazobactam', dose: 'IV', duration: '7-14 days', note: 'Severe or ischemic infection' },
+                  { drug: '+ Vancomycin', dose: 'IV', duration: '', note: 'If MRSA is suspected' }
+                ],
+                icu: [
+                  { drug: 'Meropenem/Vancomycin', dose: 'IV', duration: '', note: 'Severe sepsis, critical condition' }
+                ]
+              },
+              targeted: 'Guided by culture; abscess/necrotic tissue requires surgical debridement and source control.',
+              supportive: ['Off-loading', 'Vascular assessment and revascularization', 'Glucose control', 'Wound care and dressings', 'Physiotherapy'],
+              prevention: ['Foot care', 'Proper shoes and daily inspection', 'Diabetes control', 'Early wound treatment']
+            },
+            prognosis: {
+              mortality: 'Higher if osteomyelitis or sepsis develops',
+              prognostic_scores: ['PEDIS/IDSA'],
+              factors: 'Ischemia, neuropathy, delayed treatment, prior amputation'
+            }
+          },
+          {
+            id: 'chronic_ulcer',
+            name: 'Chronic ulcer (venous/arterial)',
+            pathogen: { type: 'Indirect', name: 'Colonization, secondary infection', gram: 'Variable', shape: '-' },
+            epidemiology: {
+              incidence: 'Chronic leg and foot ulcers are common consequences of impaired perfusion',
+              risk_groups: ['Older adults', 'Venous insufficiency', 'Peripheral arterial disease', 'Diabetes', 'Mobility limitations', 'Obesity'],
+              seasonality: 'None',
+              transmission: 'Not contagious, but secondary infections can occur'
+            },
+            pathomechanism: {
+              steps: [
+                'Chronic edema, venous hypertension, or narrowed arteries reduce tissue oxygenation and healing.',
+                'Poor perfusion, chronic inflammation, and local trauma slow wound regeneration.',
+                'Colonization of the wound surface and secondary infection further impair healing.',
+                'The process persists if the underlying cause is not treated.'
+              ],
+              virulence_factors: ['Colonizing microorganisms', 'Biofilm', 'Chronic inflammation']
+            },
+            clinical: {
+              incubation: 'Months',
+              onset: 'Slow',
+              symptoms: [
+                { name: 'Leg ulcer', description: 'Open, poorly healing, often exudative and painful wound', severity: 'moderate' },
+                { name: 'Pain', description: 'Variable: usually less with venous ulcers, worse with arterial disease', severity: 'moderate' },
+                { name: 'Edema', description: 'Common in venous ulcer disease', severity: 'moderate' },
+                { name: 'Color and tissue change', description: 'Pigmentation, skin atrophy, necrosis', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Size, depth, and tissue status of the ulcer',
+                'Venous/arterial signs: edema, pigmentation, pulses, ABI',
+                'Signs of infection: erythema, purulence, foul odor',
+                'Condition of foot and lower leg'
+              ],
+              complications: ['Chronic infection', 'Expanding wound area', 'Osteomyelitis', 'Amputation', 'Reduced quality of life']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CRP, CBC', finding: 'Elevated in infection', interpretation: 'Monitor inflammation and infection' }
+              ],
+              imaging: [
+                { modality: 'ABI, Doppler ultrasound, CT angiography', finding: 'Perfusion disorder', significance: 'Assess arteries/veins' }
+              ],
+              microbiology: [
+                { test: 'Wound swab', finding: 'Colonization/infection', significance: 'Antibiotic decision' }
+              ]
+            },
+            differential: [
+              { disease: 'Diabetic foot infection', distinguishing: 'Neuropathy and diabetes present' },
+              { disease: 'Pressure injury', distinguishing: 'Pressure and shear forces dominate' },
+              { disease: 'Vascular ulcer', distinguishing: 'Arterial/venous perfusion abnormalities' }
+            ],
+            therapy: {
+              guidelines: ['EWMA/ICG guidance: compression, off-loading, wound management, infection treatment, and addressing the cause.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'No routine antibiotic treatment without infection', dose: '-', duration: '-', note: 'Only if infection is present' }
+                ],
+                inpatient: [
+                  { drug: 'Amoxicillin/clavulanate', dose: 'PO/IV', duration: '7-14 days', note: 'Localized infection' },
+                  { drug: 'Piperacillin/tazobactam', dose: 'IV', duration: '', note: 'Severe infection' }
+                ]
+              },
+              targeted: 'Cause-directed management: compression, perfusion improvement, wound care, debridement, and surgery when necessary.',
+              supportive: ['Compression therapy', 'Surgical or enzymatic debridement', 'Moisture balance and dressings', 'Fluid and nutritional support'],
+              prevention: ['Mobility, compression, foot care', 'Improve perfusion', 'Early infection treatment']
+            },
+            prognosis: {
+              mortality: 'Not directly high, but significant morbidity due to chronic nature and comorbidity',
+              prognostic_scores: ['No single score'],
+              factors: 'Perfusion, comorbidities, infection, load, and adherence'
+            }
+          },
+          {
+            id: 'decubitus',
+            name: 'Pressure injury (decubitus)',
+            pathogen: { type: 'Secondary', name: 'Colonization, polymicrobial infection', gram: 'Variable', shape: '-' },
+            epidemiology: {
+              incidence: 'Common in immobilized, severely ill patients and prolonged hospitalization',
+              risk_groups: ['Mobility-impaired', 'Older adults', 'Severely ill patients', 'Incontinence', 'Malnutrition', 'Neurologic patients'],
+              seasonality: 'None',
+              transmission: 'Not contagious, but infection may be secondary'
+            },
+            pathomechanism: {
+              steps: [
+                'Pressure and shear reduce capillary perfusion in skin and soft tissue.',
+                'Repeated ischemia and reperfusion damage tissue and delay healing.',
+                'Moisture, skin irritation, and nutritional status further impair repair.',
+                'Colonization and infection can spread to deeper tissue.'
+              ],
+              virulence_factors: ['Bacterial colonization', 'Biofilm', 'Severe localized ischemia']
+            },
+            clinical: {
+              incubation: 'Develops over time',
+              onset: 'Slow',
+              symptoms: [
+                { name: 'Erythema and pain', description: 'Non-blanching erythema and tenderness', severity: 'moderate' },
+                { name: 'Ulcer', description: 'Damage to skin or soft tissue that may deepen by stage', severity: 'moderate' },
+                { name: 'Depth of injury', description: 'Can range from superficial to bone', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Staging: I-IV or deep tissue injury',
+                'Localisation based on pressure and shear',
+                'Wound drainage, tissue necrosis, signs of infection',
+                'General condition and nutritional status'
+              ],
+              complications: ['Septic shock', 'Osteomyelitis', 'Poor healing', 'Amputation', 'Death']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CBC, CRP', finding: 'Elevated in infection', interpretation: 'Severe infection/inflammation' }
+              ],
+              imaging: [
+                { modality: 'US/CT/MRI', finding: 'Deep tissue involvement', significance: 'Deep pressure injury or osteomyelitis' }
+              ],
+              microbiology: [
+                { test: 'Wound swab', finding: 'Colonization/infection', significance: 'Antibiotic decision' }
+              ],
+              scores: ['NPIAP/EPUAP staging']
+            },
+            differential: [
+              { disease: 'Venous/arterial ulcer', distinguishing: 'Pressure and mobility factors dominate' },
+              { disease: 'Diabetic foot', distinguishing: 'Neuropathy and diabetes present' },
+              { disease: 'Infectious skin lesion', distinguishing: 'No pressure-related origin' }
+            ],
+            therapy: {
+              guidelines: ['NPIAP/EPUAP/PPPIA guidance: pressure reduction, regular repositioning, nutrition, moisture control, debridement, and infection treatment.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'No routine antibiotics without infection', dose: '-', duration: '-', note: 'Only if infection is present' }
+                ],
+                inpatient: [
+                  { drug: 'Amoxicillin/clavulanate', dose: 'PO/IV', duration: '7-10 days', note: 'Localized, non-deep infection' },
+                  { drug: 'Piperacillin/tazobactam', dose: 'IV', duration: '', note: 'Deep or severe infection' }
+                ]
+              },
+              targeted: 'Based on the stage and infection: pressure relief, debridement, dressings, nutrition, and surgery if needed.',
+              supportive: ['Regular repositioning (every 2-4 hours)', 'Pressure-relieving surfaces', 'Hygiene and skin care', 'Nutritional support', 'Surgical or enzymatic debridement'],
+              prevention: ['Mobilization, positioning, mattresses and cushions', 'Incontinence management', 'Nutrition']
+            },
+            prognosis: {
+              mortality: 'Higher if it is deep and infected',
+              prognostic_scores: ['NPIAP stage'],
+              factors: 'Mobility, nutrition, systemic disease, infection, and surgical care'
+            }
+          },
+          {
             id: 'osteomyelitis',
             name: 'Osteomyelitis',
             pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus</i> (most common)', gram: 'Gram-positive', shape: 'coccus' },

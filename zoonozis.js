@@ -110,16 +110,16 @@ Object.assign(window.diseases, {
           {
             id: 'hantavirus',
             name: 'Hantavírus fertőzés',
-            pathogen: { type: 'Vírus', name: '<i>Hantavírus</i> (több szerotípus)', gram: 'Negatív-szálú RNS vírus, Bunyaviridae', shape: 'szferikus' },
+            pathogen: { type: 'Vírus', name: '<i>Hantavírus</i> (HFRS: Hantaan, Puumala, Dobrava, Seoul; HPS: Sin Nombre, <b style="color: #ef4444">ANDES</b>, Bayou)', gram: 'Negatív-szálú RNS vírus, Bunyaviridae', shape: 'szferikus' },
             epidemiology: {
               incidence: 'Európa: HFRS 10,000+ eset/év; USA: HPS <50 eset/év',
               risk_groups: ['Mezőgazdasági munkások', 'Erdészek', 'Katonák', 'Kempingezők/túrázók', 'Rágcsálókkal kontakt munka', 'Rosszul szellőzött épületek takarítása'],
               seasonality: 'Tavasz-ősz (rágcsáló populáció csúcs)',
-              transmission: 'Aeroszol (rágcsáló ürülék/vizelet/nyál). NEM embertől emberig!'
+              transmission: 'Aeroszol (rágcsáló ürülék/vizelet/nyál). Általában NEM embertől emberig (kivéve az Andes vírust)!'
             },
             pathomechanism: {
               steps: [
-                'A fertőzés rágcsálók (pl. erdei pocok) beszáradt vizeletével, ürülékével vagy nyálával szennyezett por belélegzésével (aeroszol) történik. Emberről emberre nem terjed.',
+                'A fertőzés rágcsálók (pl. erdei pocok) beszáradt vizeletével, ürülékével vagy nyálával szennyezett por belélegzésével (aeroszol) történik. Emberről emberre általában nem terjed (kivéve az Andes vírust).',
                 'A vírus a tüdőn keresztül bejutva a véráramba kerül, és célzottan az erek belső felszínét borító endothel sejteket fertőzi meg, anélkül, hogy direkt sejthalált okozna.',
                 'A fő károsodást a szervezet túlzott immunválasza okozza. Az aktivált T-sejtek és citokinek (TNF-alfa) az endothel sejtek közötti kapcsolatokat meglazítják, ami kapilláris szivárgáshoz (capillary leak) vezet.',
                 'HFRS (Hemorrhagic Fever with Renal Syndrome): A kapillárisszivárgás elsősorban a vesében jelentkezik, ami akut veseelégtelenséghez, proteinuriához és vérzésekhez vezet.',
@@ -131,9 +131,8 @@ Object.assign(window.diseases, {
               incubation: '1-8 hét (átlag 2-4 hét)',
               onset: 'Hirtelen',
               symptoms: [
-                { name: 'Prodromális fázis (3-5 nap)', description: 'Hirtelen kezdődő, magas láz, hidegrázás, erős fejfájás és izomfájdalom (főleg hát és comb). Gyakori az arcpír (facial flush) és a conjunctiva belövelltsége.', severity: 'severe' },
-                { name: 'HFRS (Veseérintettségű forma)', description: 'A lázas fázist hypotonia, majd oliguria/anuria követi. Jellemző a súlyos vesetáji fájdalom, a masszív proteinuria és a thrombocytopenia. A felépülés fázisában polyuria jelentkezik.', severity: 'severe' },
-                { name: 'HPS (Tüdőérintettségű forma)', description: 'A prodromális fázis után gyorsan progrediáló köhögés és légszomj alakul ki, ami órák alatt súlyos, nem-kardiogén tüdőödémába és kardiogén shockba torkollik. Magas mortalitású forma.', severity: 'severe' }
+                { name: 'Renalis forma (Óvilági - HFRS)', description: '<b>Etiológia:</b> Hantaan, Puumala, Dobrava-Belgrad, Seoul vírusok.<br><b>Stádiumok:</b> 1. Febrile (láz, facial flush, conjunctivitis), 2. Hypotensive (shock), 3. Oliguric (akut veseelégtelenség, proteinuria, vérzések), 4. Diuretic (polyuria), 5. Convalescent.', severity: 'severe' },
+                { name: 'Pulmonalis forma (Újvilági - HPS)', description: '<b>Etiológia:</b> Sin Nombre, <b style="color: #ef4444">ANDES</b> (ember-ember terjedés!), Bayou, Black Creek Canal vírusok.<br><b>Stádiumok:</b> 1. Prodromális (láz, myalgia, fejfájás), 2. Cardiopulmonalis (hirtelen nem-kardiogén tüdőödéma, hypoxia, shock), 3. Diuretic, 4. Convalescent.', severity: 'severe' }
               ],
               physical_exam: [
                 'Magas láz',
@@ -178,7 +177,7 @@ Object.assign(window.diseases, {
                 ],
                 inpatient: [
                   { drug: 'Ribavirin', dose: '33mg/kg IV loading, majd 16mg/kg 6 óránként', duration: '4 nap, majd 8mg/kg 8 óránként 3 nap', note: 'HFRS-ben hatékony, korai fázisban (<5 nap)' },
-                  { drug: 'Folyadékpótlás', dose: 'Óvatos! Kapilláris leak miatt', duration: '', note: 'Monitorizálás' }
+                  { drug: 'Folyadékpótlás', dose: 'HFRS: MAP tartása; HPS: restriktív!', duration: '', note: 'HPS-ben az agresszív folyadékpótlás végzetes lehet a tüdőödéma súlyosbodása miatt.' }
                 ],
                 icu: [
                   { drug: 'Dialízis', dose: 'Veseelégtelenség', duration: '', note: 'HFRS' },
@@ -199,7 +198,7 @@ Object.assign(window.diseases, {
           {
             id: 'lyme',
             name: 'Lyme-kór (Borreliosis)',
-            pathogen: { type: 'Spirochaeta', name: '<i>Borrelia burgdorferi sensu lato</i>', gram: 'Gram-negatív', shape: 'spirális' },
+            pathogen: { type: 'Spirochaeta', name: '<i>Borrelia burgdorferi sensu lato</i> (B. afzelii, B. garinii, B. burgdorferi ss.)', gram: 'Gram-negatív', shape: 'spirális' },
             epidemiology: {
               incidence: 'USA: 476,000 eset/év; Európa: 232,000 eset/év; Magyarországon gyakori, endemikus',
               risk_groups: ['Erdei területek látogatói', 'Kirándulók, kempingezők', 'Erdészek, vadászok', 'Kertészek', 'Gyerekek'],
@@ -220,9 +219,9 @@ Object.assign(window.diseases, {
               incubation: 'EM: 3-30 nap (átlag 7-14 nap)',
               onset: 'Stádiumos',
               symptoms: [
-                { name: 'Korai lokalizált stádium (Erythema migrans)', description: 'A csípés helyén kialakuló, fájdalmatlan, lassan növekvő (>5 cm), gyakran céltábla-szerű (de lehet homogén is) bőrpír. Ez a leggyakoribb tünet, klinikai diagnózist tesz lehetővé. Általános influenzaszerű tünetek (láz, fejfájás, izomfájdalom) kísérhetik.', severity: 'moderate' },
-                { name: 'Korai disszeminált stádium (Szervek)', description: 'A baktérium szóródása után hetekkel-hónapokkal jelentkezik. Idegrendszer: Bannwarth-szindróma (éjszakai radiculáris fájdalom, facialis paresis, meningitis). Szív: Lyme-carditis (AV-blokk, ritmuszavar). Bőr: Lymphocytoma (kékes-vörös csomó).', severity: 'severe' },
-                { name: 'Késői stádium (Krónikus)', description: 'Hónapokkal-évekkel később. Lyme-arthritis: nagy ízületek (főleg térd) intermittáló duzzanata és fájdalma. Bőr: Acrodermatitis chronica atrophicans (ACA) - a végtagok feszítő felszínének livide elszíneződése és sorvadása.', severity: 'moderate' }
+                { name: 'Korai lokalizált stádium (Erythema migrans)', description: '<b>Erythema migrans:</b> Fájdalmatlan, nem viszkető, lassan terjedő (>5 cm) bőrpír a csípés helyén, gyakran céltábla alakú (kokárda). Általában 1-4 hétig észlelhető, kezelés nélkül hetek alatt spontán gyógyul.', severity: 'moderate' },
+                { name: 'Korai disszeminált stádium (Szervek)', description: 'A szóródás után hetekkel-hónapokkal jelentkezik. <b>Neuroborreliosis:</b> Bannwarth-szindróma (kínzó gyöki fájdalom, perifériás bénulás - pl. arcidegbénulás, meningitis). <b>Carditis:</b> AV-blokk (I-III. fokú). <b>Bőr:</b> Borrelia-lymphocytoma (kékes-vörös csomó). Ezek hetekig-hónapokig állhatnak fenn.', severity: 'severe' },
+                { name: 'Késői stádium (Krónikus)', description: 'Hónapokkal-évekkel később. <b>Lyme-arthritis:</b> nagy ízületek (térd) intermittáló, hetekig tartó duzzanata és fájdalma, évekig visszatérhet. <b>Bőr:</b> Acrodermatitis chronica atrophicans (ACA) - livid elszíneződés, majd pergamenszerű bőrsorvadás, ami évekig-évtizedekig fennmarad.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Erythema migrans: >5 cm átmérőjű, terjedő erythema',
@@ -704,7 +703,10 @@ Object.assign(window.diseases, {
                 symptoms: [
                   { name: 'Unduláló láz', description: 'Hullámzó lefolyású lázmenet (reggel alacsony, délután magas), profúz, penészszagú izzadással.', severity: 'moderate' },
                   { name: 'Mozgásszervi tünetek', description: 'Ízületi fájdalom (arthralgia), hátfájás (sacroiliitis), izomfájdalom.', severity: 'moderate' },
-                  { name: 'Általános tünetek', description: 'Fáradékonyság, fejfájás, depresszió, fogyás.', severity: 'mild' }
+                  { name: 'Általános tünetek', description: 'Fáradékonyság, fejfájás, depresszió, fogyás.', severity: 'mild' },
+                  { name: 'Osteoarticularis forma', description: 'A leggyakoribb szövődmény. <b>Spondylodiscitis</b>: csigolya érintettség, heves háti fájdalom, mozgáskorlátozottság. Gyakori még a sacroiliitis.', severity: 'severe' },
+                  { name: 'Endocarditis', description: 'A mortalitás vezető oka (<2%). Leggyakrabban az aorta-billentyűt érinti, gyors billentyűdestrukcióhoz és embolizációhoz vezethet.', severity: 'severe' },
+                  { name: 'Urogenitális érintettség', description: '<b>Epididymo-orchitis</b>: fájdalmas here- és mellékhere-duzzanat, többnyire egyoldali.', severity: 'moderate' }
                 ],
                 physical_exam: ['Hepatomegalia', 'Splenomegalia', 'Lymphadenopathia', 'Gerinc ütögetési érzékenység'],
                 complications: ['Osteomyelitis (csigolya)', 'Endocarditis', 'Neurobrucellosis', 'Epididymo-orchitis']
@@ -724,7 +726,7 @@ Object.assign(window.diseases, {
               ],
               therapy: {
                 empirical: { outpatient: [{ drug: 'Doxycyclin + Rifampicin', dose: '2x100mg + 600-900mg PO', duration: '6 hét', note: 'Standard terápia' }] },
-                  targeted: 'Doxycyclin + Rifampicin (6 hét). Alternatíva: Doxycyclin + Streptomycin (2-3 hét). Neurobrucellosis/Endocarditis: Doxy + Rif + Ceftriaxon/Cotrimoxazol (hónapokig).',
+                  targeted: 'Doxycyclin + Rifampicin (6 hét). Alternatíva: Doxycyclin + Streptomycin (2-3 hét). <b>Neurobrucellosis:</b> Ceftriaxon + Doxycyclin + Rifampicin (3-6 hónap). <b>Endocarditis:</b> Doxycyclin + Rifampicin + Gentamicin (legalább 6-12 hét) + sebészi konzílium.',
                   supportive: ['Tüneti kezelés'],
                   prevention: ['Tej pasztőrözése', 'Védőfelszerelés állatoknál', 'Vakcina (állatoknak)']
                 },

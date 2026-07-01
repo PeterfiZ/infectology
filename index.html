@@ -1,47 +1,58 @@
 <!doctype html>
 <html lang="hu" class="h-full">
- <head>
+
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V736T6GJ8N"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-V736T6GJ8N');
   </script>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#065f46">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
   <title>Infektológia Tankönyv</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- <script src="_sdk/element_sdk.js"></script> -->
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet">
   <style>
     body {
       box-sizing: border-box;
     }
-    .font-serif-book { font-family: 'Crimson Pro', Georgia, serif; }
-    .font-sans-book { font-family: 'Source Sans 3', system-ui, sans-serif; }
-    
+
+    .font-serif-book {
+      font-family: 'Crimson Pro', Georgia, serif;
+    }
+
+    .font-sans-book {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+    }
+
     .disease-card {
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     .disease-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
-    
+
     .tab-btn.active {
       border-bottom: 3px solid currentColor;
       font-weight: 600;
     }
-    
+
     .section-header {
       position: relative;
       padding-left: 16px;
     }
+
     .section-header::before {
       content: '';
       position: absolute;
@@ -51,11 +62,11 @@
       width: 4px;
       border-radius: 2px;
     }
-    
+
     .info-card {
       border-left: 4px solid;
     }
-    
+
     .pathogen-badge {
       display: inline-flex;
       align-items: center;
@@ -65,169 +76,268 @@
       font-size: 0.85rem;
       font-weight: 500;
     }
-    
+
     .scroll-area {
       scrollbar-width: thin;
     }
+
     .scroll-area::-webkit-scrollbar {
       width: 6px;
     }
+
     .scroll-area::-webkit-scrollbar-track {
-      background: rgba(0,0,0,0.05);
+      background: rgba(0, 0, 0, 0.05);
       border-radius: 3px;
     }
+
     .scroll-area::-webkit-scrollbar-thumb {
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
       border-radius: 3px;
     }
-    
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     .animate-fade-in {
       animation: fadeIn 0.4s ease forwards;
     }
-    
+
     .category-pill {
       transition: all 0.2s ease;
     }
+
     .category-pill:hover {
       transform: scale(1.02);
     }
+
     .category-pill.active {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
-    
+
     .category-item.dragging {
       opacity: 0.5;
       cursor: grabbing;
     }
   </style>
-  <style>@view-transition { navigation: auto; }</style>
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
   <!-- <script src="_sdk/data_sdk.js" type="text/javascript"></script> -->
- </head>
- <body class="h-full font-sans-book bg-slate-50 text-slate-800">
-  <div id="app" class="h-full w-full flex flex-col overflow-hidden"><!-- Header -->
-   <header class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-700 text-white px-6 py-5 shadow-lg flex-shrink-0">
-    <div class="max-w-7xl mx-auto">
-     <div class="flex items-center justify-between">
-      <div class="flex items-center gap-4">
-       <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur">
-        <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" /> <path d="M12 6v6l4 2" /> <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3" /> <path d="M8 8l1.5 1.5M16 8l-1.5 1.5M8 16l1.5-1.5M16 16l-1.5-1.5" />
-        </svg>
-       </div>
-       <div>
-        <h1 id="main-title" class="font-serif-book text-2xl font-bold tracking-tight">Infektológia Tankönyv</h1>
-        <p id="main-subtitle" class="text-emerald-100 text-sm mt-0.5">Orvostanhallgatók számára</p>
-        <div class="text-emerald-200 text-xs mt-1">
-         <p id="header-author">Írta és szerkesztette: Dr. Péterfi Zoltán</p>
-         <p id="header-version">Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.5.2</p>
+</head>
+
+<body class="h-full font-sans-book bg-slate-50 text-slate-800">
+  <div id="app" class="h-full w-full flex flex-col overflow-visible"><!-- Header -->
+    <header
+      class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-700 text-white px-6 py-5 shadow-lg flex-shrink-0">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur">
+              <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+                <path d="M12 6v6l4 2" />
+                <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3" />
+                <path d="M8 8l1.5 1.5M16 8l-1.5 1.5M8 16l1.5-1.5M16 16l-1.5-1.5" />
+              </svg>
+            </div>
+            <div>
+              <h1 id="main-title" class="font-serif-book text-2xl font-bold tracking-tight">Infektológia Tankönyv</h1>
+              <p id="main-subtitle" class="text-emerald-100 text-sm mt-0.5">Orvostanhallgatók számára</p>
+              <div class="text-emerald-200 text-xs mt-1">
+                <p id="header-author">Írta és szerkesztette: Dr. Péterfi Zoltán</p>
+                <p id="header-institute">Pécsi Tudományegyetem</p>
+                <p id="header-version">Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 4.0.0</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 ml-4">
+            <button onclick="changeLanguage('hu')"
+              class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-colors group" title="Magyar">
+              <img src="https://flagcdn.com/w40/hu.png" alt="HU"
+                class="w-6 h-4 rounded-sm shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
+            </button>
+            <button onclick="changeLanguage('en')"
+              class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-colors group" title="English">
+              <img src="https://flagcdn.com/w40/gb.png" alt="EN"
+                class="w-6 h-4 rounded-sm shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
+            </button>
+            <button onclick="changeLanguage('de')"
+              class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-colors group" title="Deutsch">
+              <img src="https://flagcdn.com/w40/de.png" alt="DE"
+                class="w-6 h-4 rounded-sm shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
+            </button>
+          </div>
+          <div class="flex items-center gap-4">
+            <button onclick="openFeedbackModal()" id="feedback-btn"
+              class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2"
+              title="Visszajelzés küldése">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                </path>
+              </svg>
+              <span id="feedback-btn-text">Visszajelzés</span>
+            </button>
+            <button onclick="exportPDF()" id="export-pdf-btn"
+              class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2"
+              title="A teljes tartalom nyomtatása/mentése PDF-be">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z">
+                </path>
+              </svg>
+              <span>Export PDF</span>
+            </button>
+            <button onclick="downloadOffline()" id="offline-btn"
+              class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2"
+              title="Offline elérhetőség">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h16V4M4 20h16v-5H4v5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 12v6m-3-3l3 3 3-3" />
+              </svg>
+              <span>Offline</span>
+            </button>
+            <div class="relative"><input type="text" id="search-input" placeholder="Keresés betegségek között..."
+                class="w-64 px-4 py-2 pl-10 rounded-lg bg-white/15 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/25 focus:border-white/40 transition-all text-sm">
+              <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-white/60" fill="none"
+                stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+          </div>
         </div>
-       </div>
       </div>
-      <div class="flex items-center gap-2 ml-4">
-        <button onclick="changeLanguage('hu')" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-colors group" title="Magyar">
-          <img src="https://flagcdn.com/w40/hu.png" alt="HU" class="w-6 h-4 rounded-sm shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
-        </button>
-        <button onclick="changeLanguage('en')" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-colors group" title="English">
-          <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="w-6 h-4 rounded-sm shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
-        </button>
-        <button onclick="changeLanguage('de')" class="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 transition-colors group" title="Deutsch">
-          <img src="https://flagcdn.com/w40/de.png" alt="DE" class="w-6 h-4 rounded-sm shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
-        </button>
-      </div>
-      <div class="flex items-center gap-4">
-       <button onclick="openFeedbackModal()" id="feedback-btn" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2" title="Visszajelzés küldése">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-        <span id="feedback-btn-text">Visszajelzés</span>
-       </button>
-       <button onclick="exportPDF()" id="export-pdf-btn" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white text-sm hover:bg-white/25 transition-colors flex items-center gap-2" title="A teljes tartalom nyomtatása/mentése PDF-be">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-        <span>Export PDF</span>
-       </button>
-       <div class="relative"><input type="text" id="search-input" placeholder="Keresés betegségek között..." class="w-64 px-4 py-2 pl-10 rounded-lg bg-white/15 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/25 focus:border-white/40 transition-all text-sm">
-        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-white/60" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-       </div>
-      </div>
-     </div>
+    </header>
+    <!-- Main Content -->
+    <div class="flex-1 flex overflow-hidden"><!-- Sidebar - Disease Categories -->
+      <aside id="sidebar"
+        class="w-56 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out"
+        onclick="handleSidebarClick(event)">
+        <div
+          class="h-14 flex items-center justify-between px-4 border-b border-slate-100 overflow-hidden cursor-pointer"
+          onclick="handleSidebarHeaderClick(event)">
+          <h2 id="sidebar-title"
+            class="font-semibold text-slate-700 text-sm uppercase tracking-wider whitespace-nowrap transition-all duration-300">
+            Betegségcsoportok</h2>
+          <button onclick="toggleSidebar()"
+            class="w-10 h-10 p-2 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0"
+            title="Oldalsáv váltása">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+        <nav id="category-nav" class="flex-1 overflow-y-auto scroll-area p-3 space-y-2">
+          <!-- Categories rendered by JS -->
+        </nav>
+      </aside><!-- Disease List -->
+      <div id="disease-list-panel" class="w-56 bg-slate-50 border-r border-slate-200 flex flex-col flex-shrink-0">
+        <div class="p-4 border-b border-slate-100 bg-white flex justify-between items-center cursor-pointer"
+          onclick="handleDiseaseListHeaderClick(event)">
+          <div id="disease-list-header-content">
+            <h2 id="category-title" class="font-semibold text-slate-800">Válasszon kategóriát</h2>
+            <p id="disease-count" class="text-sm text-slate-500 mt-1"></p>
+          </div>
+          <button onclick="toggleDiseaseList()"
+            class="w-10 h-10 p-2 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0"
+            title="Betegséglista elrejtése/megjelenítése">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="disease-list" class="flex-1 overflow-y-auto scroll-area p-3 space-y-2"><!-- Diseases rendered by JS -->
+        </div>
+      </div><!-- Disease Detail -->
+      <main id="disease-detail" class="flex-1 overflow-y-auto scroll-area bg-white">
+        <div id="welcome-screen" class="h-full flex items-center justify-center">
+          <div class="text-center max-w-md px-6">
+            <div
+              class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center">
+              <svg class="w-12 h-12 text-emerald-600" viewbox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <path d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h2 class="font-serif-book text-2xl font-bold text-slate-800 mb-3">Üdvözöljük az Infektológia Tankönyvben
+            </h2>
+            <p class="text-slate-600 leading-relaxed">Válasszon egy betegségcsoportot a bal oldali menüből, majd egy
+              konkrét betegséget a részletes klinikai információk megtekintéséhez.</p>
+          </div>
+        </div>
+        <div id="disease-content" class="hidden"><!-- Disease details rendered by JS -->
+        </div>
+      </main>
     </div>
-   </header>
-   <!-- Main Content -->
-   <div class="flex-1 flex overflow-hidden"><!-- Sidebar - Disease Categories -->
-    <aside id="sidebar" class="w-56 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out" onclick="handleSidebarClick(event)">
-     <div class="h-14 flex items-center justify-between px-4 border-b border-slate-100 overflow-hidden cursor-pointer" onclick="handleSidebarHeaderClick(event)">
-      <h2 id="sidebar-title" class="font-semibold text-slate-700 text-sm uppercase tracking-wider whitespace-nowrap transition-all duration-300">Betegségcsoportok</h2>
-      <button onclick="toggleSidebar()" class="w-10 h-10 p-2 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0" title="Oldalsáv váltása">
-       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-      </button>
-     </div>
-     <nav id="category-nav" class="flex-1 overflow-y-auto scroll-area p-3 space-y-2"><!-- Categories rendered by JS -->
-     </nav>
-    </aside><!-- Disease List -->
-    <div id="disease-list-panel" class="w-56 bg-slate-50 border-r border-slate-200 flex flex-col flex-shrink-0">
-     <div class="p-4 border-b border-slate-100 bg-white flex justify-between items-center cursor-pointer" onclick="handleDiseaseListHeaderClick(event)">
-      <div id="disease-list-header-content">
-       <h2 id="category-title" class="font-semibold text-slate-800">Válasszon kategóriát</h2>
-       <p id="disease-count" class="text-sm text-slate-500 mt-1"></p>
-      </div>
-      <button onclick="toggleDiseaseList()" class="w-10 h-10 p-2 rounded-lg hover:bg-slate-100 text-slate-500 transition-colors flex-shrink-0" title="Betegséglista elrejtése/megjelenítése">
-       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-      </button>
-     </div>
-     <div id="disease-list" class="flex-1 overflow-y-auto scroll-area p-3 space-y-2"><!-- Diseases rendered by JS -->
-     </div>
-    </div><!-- Disease Detail -->
-    <main id="disease-detail" class="flex-1 overflow-y-auto scroll-area bg-white">
-     <div id="welcome-screen" class="h-full flex items-center justify-center">
-      <div class="text-center max-w-md px-6">
-       <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center">
-        <svg class="w-12 h-12 text-emerald-600" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-       </div>
-       <h2 class="font-serif-book text-2xl font-bold text-slate-800 mb-3">Üdvözöljük az Infektológia Tankönyvben</h2>
-       <p class="text-slate-600 leading-relaxed">Válasszon egy betegségcsoportot a bal oldali menüből, majd egy konkrét betegséget a részletes klinikai információk megtekintéséhez.</p>
-      </div>
-     </div>
-     <div id="disease-content" class="hidden"><!-- Disease details rendered by JS -->
-     </div>
-    </main>
-   </div>
   </div>
 
   <!-- Score Calculator Modal -->
-  <div id="score-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden flex flex-col max-h-[90vh] transform scale-95 transition-transform duration-300" id="score-modal-panel">
+  <div id="score-modal"
+    class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300"
+    aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div
+      class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden flex flex-col max-h-[90vh] transform scale-95 transition-transform duration-300"
+      id="score-modal-panel">
       <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
         <h3 id="score-modal-title" class="font-semibold text-slate-800">Score Kalkulátor</h3>
-        <button onclick="closeScoreModal()" class="text-slate-400 hover:text-slate-600 transition-colors p-1 rounded-full hover:bg-slate-200">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        <button onclick="closeScoreModal()"
+          class="text-slate-400 hover:text-slate-600 transition-colors p-1 rounded-full hover:bg-slate-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
       <div id="score-modal-content" class="p-6 overflow-y-auto">
         <!-- Dynamic content -->
       </div>
       <div class="p-4 border-t border-slate-100 bg-slate-50 flex justify-end">
-        <button onclick="closeScoreModal()" class="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors font-medium">Bezárás</button>
+        <button onclick="closeScoreModal()"
+          class="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors font-medium">Bezárás</button>
       </div>
     </div>
   </div>
 
   <!-- Feedback Modal -->
-  <div id="feedback-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300" id="feedback-modal-panel">
+  <div id="feedback-modal"
+    class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300"
+    aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div
+      class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300"
+      id="feedback-modal-panel">
       <div class="p-4 border-b border-slate-700 flex justify-between items-center bg-slate-800">
         <h3 id="feedback-modal-title" class="font-bold text-lg text-white">Visszajelzés</h3>
-        <button onclick="closeFeedbackModal()" class="text-slate-400 hover:text-white transition-colors p-1 rounded-full hover:bg-slate-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        <button onclick="closeFeedbackModal()"
+          class="text-slate-400 hover:text-white transition-colors p-1 rounded-full hover:bg-slate-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
-      <div class="flex-1 relative h-[80vh] bg-slate-50 flex flex-col items-center justify-center" id="feedback-container">
-        <button onclick="loadFeedbackForm()" class="flex flex-col items-center gap-4 group p-8 rounded-xl hover:bg-slate-100 transition-colors">
-            <div class="w-20 h-20 bg-white rounded-2xl shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-slate-200">
-                <svg class="w-10 h-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-            </div>
-            <span class="text-slate-600 font-medium text-lg group-hover:text-teal-700 transition-colors">Űrlap betöltése</span>
+      <div class="flex-1 relative h-[80vh] bg-slate-50 flex flex-col items-center justify-center"
+        id="feedback-container">
+        <button onclick="loadFeedbackForm()"
+          class="flex flex-col items-center gap-4 group p-8 rounded-xl hover:bg-slate-100 transition-colors">
+          <div
+            class="w-20 h-20 bg-white rounded-2xl shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-slate-200">
+            <svg class="w-10 h-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <span class="text-slate-600 font-medium text-lg group-hover:text-teal-700 transition-colors">Űrlap
+            betöltése</span>
         </button>
       </div>
     </div>
@@ -236,25 +346,25 @@
   <script>
     // Globális tároló inicializálása
     window.diseases = {};
-    
+
     // Fallback metadata inicializálása (ha a metadata.js nem töltődne be)
     window.diseaseMetadata = {
-        gastrointestinal: { icon: '🦠', color: '#ca8a04' },
-        viral_hepatitis: { icon: '🧬', color: '#eab308' },
-        urinary_tract: { icon: '🚽', color: '#3b82f6' },
-        bacterial_respiratory: { icon: '🫁', color: '#3b82f6' },
-        viral_respiratory: { icon: '🦠', color: '#6366f1' },
-        cardiovascular: { icon: '❤️', color: '#ef4444' },
-        upper_respiratory: { icon: '👃', color: '#14b8a6' },
-        skin_soft_tissue: { icon: '🩹', color: '#e11d48' },
-        bone_joint: { icon: '🦴', color: '#57534e' },
-        cns_infections: { icon: '🧠', color: '#0891b2' },
-        sexually_transmitted: { icon: '🔬', color: '#7c3aed' },
-        zoonotic: { icon: '🐾', color: '#059669' },
-        tropical: { icon: '🌴', color: '#f97316' },
-        childhood: { icon: '🧸', color: '#f472b6' },
-        sepsis_systemic: { icon: '⚡', color: '#7f1d1d' },
-        fungal: { icon: '🍄', color: '#d97706' }
+      gastrointestinal: { icon: '🦠', color: '#ca8a04' },
+      viral_hepatitis: { icon: '🧬', color: '#eab308' },
+      urinary_tract: { icon: '🚽', color: '#3b82f6' },
+      bacterial_respiratory: { icon: '🫁', color: '#3b82f6' },
+      viral_respiratory: { icon: '🦠', color: '#6366f1' },
+      cardiovascular: { icon: '❤️', color: '#ef4444' },
+      upper_respiratory: { icon: '👃', color: '#14b8a6' },
+      skin_soft_tissue: { icon: '🩹', color: '#e11d48' },
+      bone_joint: { icon: '🦴', color: '#57534e' },
+      cns_infections: { icon: '🧠', color: '#0891b2' },
+      sexually_transmitted: { icon: '🔬', color: '#7c3aed' },
+      zoonotic: { icon: '🐾', color: '#059669' },
+      tropical: { icon: '🌴', color: '#f97316' },
+      childhood: { icon: '🧸', color: '#f472b6' },
+      sepsis_systemic: { icon: '⚡', color: '#7f1d1d' },
+      fungal: { icon: '🍄', color: '#d97706' }
     };
   </script>
 
@@ -267,78 +377,78 @@
      * Tartalmazza a szerzőt, copyrightot és verziószámot.
      */
     function exportPDF() {
-        // Ellenőrizzük, hogy az adatbázis betöltődött-e
-        if (!window.diseases) {
-            alert('Az adatbázis nem elérhető.');
-            return;
+      // Ellenőrizzük, hogy az adatbázis betöltődött-e
+      if (!window.diseases) {
+        alert('Az adatbázis nem elérhető.');
+        return;
+      }
+
+      // Nyelv detektálása a betöltött adatok alapján
+      let lang = 'hu';
+      if (typeof currentLanguage !== 'undefined') {
+        lang = currentLanguage;
+      } else {
+        const testName = window.diseases.bacterial_respiratory?.name || '';
+        if (testName.includes('Respiratory')) lang = 'en';
+        else if (testName.includes('Atemweg')) lang = 'de';
+      }
+
+      // Szövegek a nyelv függvényében
+      const texts = {
+        hu: {
+          title: "Infectologia Tankönyv", author: "Szerző", date: "Dátum", version: "Verzió",
+          pathogen: "Kórokozó",
+          epidemiology: "Epidemiológia", incidence: "Incidencia", seasonality: "Szezonalitás", transmission: "Transzmisszió", risk_groups: "Rizikócsoportok",
+          pathomechanism: "Pathomechanizmus", steps: "Lépések", virulence: "Virulencia faktorok",
+          clinical: "Klinikum", incubation: "Inkubáció", onset: "Kezdet", symptoms: "Tünetek", physical: "Fizikális vizsgálat", complications: "Komplikációk",
+          diagnostics: "Diagnosztika", laboratory: "Labor", imaging: "Képalkotó", microbiology: "Mikrobiológia", criteria: "Kritériumok",
+          differential: "Differenciáldiagnózis",
+          therapy: "Terápia", empirical: "Empirikus", targeted: "Célzott", supportive: "Szupportív", prevention: "Prevenció", guidelines: "Irányelvek", drug: "Gyógyszer", dose: "Dózis", note: "Megjegyzés",
+          prognosis: "Prognózis", mortality: "Mortalitás", factors: "Faktorok", scores: "Score-ok",
+          table_test: "Vizsgálat", table_finding: "Eredmény", table_interpretation: "Értelmezés"
+        },
+        en: {
+          title: "Infectious Diseases Textbook", author: "Author", date: "Date", version: "Version",
+          pathogen: "Pathogen",
+          epidemiology: "Epidemiology", incidence: "Incidence", seasonality: "Seasonality", transmission: "Transmission", risk_groups: "Risk Groups",
+          pathomechanism: "Pathomechanism", steps: "Steps", virulence: "Virulence Factors",
+          clinical: "Clinical Features", incubation: "Incubation", onset: "Onset", symptoms: "Symptoms", physical: "Physical Exam", complications: "Complications",
+          diagnostics: "Diagnostics", laboratory: "Laboratory", imaging: "Imaging", microbiology: "Microbiology", criteria: "Criteria",
+          differential: "Differential Diagnosis",
+          therapy: "Therapy", empirical: "Empirical", targeted: "Targeted", supportive: "Supportive", prevention: "Prevention", guidelines: "Guidelines", drug: "Drug", dose: "Dose", note: "Note",
+          prognosis: "Prognosis", mortality: "Mortality", factors: "Factors", scores: "Scores",
+          table_test: "Test", table_finding: "Finding", table_interpretation: "Interpretation"
+        },
+        de: {
+          title: "Lehrbuch der Infektiologie", author: "Autor", date: "Datum", version: "Version",
+          pathogen: "Erreger",
+          epidemiology: "Epidemiologie", incidence: "Inzidenz", seasonality: "Saisonalität", transmission: "Übertragung", risk_groups: "Risikogruppen",
+          pathomechanism: "Pathomechanismus", steps: "Schritte", virulence: "Virulenzfaktoren",
+          clinical: "Klinik", incubation: "Inkubation", onset: "Beginn", symptoms: "Symptome", physical: "Körperliche Untersuchung", complications: "Komplikationen",
+          diagnostics: "Diagnostik", laboratory: "Labor", imaging: "Bildgebung", microbiology: "Mikrobiologie", criteria: "Kriterien",
+          differential: "Differentialdiagnose",
+          therapy: "Therapie", empirical: "Empirisch", targeted: "Gezielt", supportive: "Supportiv", prevention: "Prävention", guidelines: "Leitlinien", drug: "Medikament", dose: "Dosis", note: "Hinweis",
+          prognosis: "Prognose", mortality: "Mortalität", factors: "Faktoren", scores: "Scores",
+          table_test: "Test", table_finding: "Befund", table_interpretation: "Interpretation"
         }
+      };
+      const t = texts[lang] || texts.hu;
 
-        // Nyelv detektálása a betöltött adatok alapján
-        let lang = 'hu';
-        if (typeof currentLanguage !== 'undefined') {
-            lang = currentLanguage;
-        } else {
-            const testName = window.diseases.bacterial_respiratory?.name || '';
-            if (testName.includes('Respiratory')) lang = 'en';
-            else if (testName.includes('Atemweg')) lang = 'de';
-        }
+      // Metadata
+      const meta = {
+        authorName: "Dr. Péterfi Zoltán",
+        copyright: "© 2026 Dr. Péterfi Zoltán",
+        versionNum: "4.0.0"
+      };
 
-        // Szövegek a nyelv függvényében
-        const texts = {
-            hu: { 
-                title: "Infectologia Tankönyv", author: "Szerző", date: "Dátum", version: "Verzió", 
-                pathogen: "Kórokozó", 
-                epidemiology: "Epidemiológia", incidence: "Incidencia", seasonality: "Szezonalitás", transmission: "Transzmisszió", risk_groups: "Rizikócsoportok",
-                pathomechanism: "Pathomechanizmus", steps: "Lépések", virulence: "Virulencia faktorok",
-                clinical: "Klinikum", incubation: "Inkubáció", onset: "Kezdet", symptoms: "Tünetek", physical: "Fizikális vizsgálat", complications: "Komplikációk",
-                diagnostics: "Diagnosztika", laboratory: "Labor", imaging: "Képalkotó", microbiology: "Mikrobiológia", criteria: "Kritériumok",
-                differential: "Differenciáldiagnózis",
-                therapy: "Terápia", empirical: "Empirikus", targeted: "Célzott", supportive: "Szupportív", prevention: "Prevenció", guidelines: "Irányelvek", drug: "Gyógyszer", dose: "Dózis", note: "Megjegyzés",
-                prognosis: "Prognózis", mortality: "Mortalitás", factors: "Faktorok", scores: "Score-ok",
-                table_test: "Vizsgálat", table_finding: "Eredmény", table_interpretation: "Értelmezés"
-            },
-            en: { 
-                title: "Infectious Diseases Textbook", author: "Author", date: "Date", version: "Version", 
-                pathogen: "Pathogen", 
-                epidemiology: "Epidemiology", incidence: "Incidence", seasonality: "Seasonality", transmission: "Transmission", risk_groups: "Risk Groups",
-                pathomechanism: "Pathomechanism", steps: "Steps", virulence: "Virulence Factors",
-                clinical: "Clinical Features", incubation: "Incubation", onset: "Onset", symptoms: "Symptoms", physical: "Physical Exam", complications: "Complications",
-                diagnostics: "Diagnostics", laboratory: "Laboratory", imaging: "Imaging", microbiology: "Microbiology", criteria: "Criteria",
-                differential: "Differential Diagnosis",
-                therapy: "Therapy", empirical: "Empirical", targeted: "Targeted", supportive: "Supportive", prevention: "Prevention", guidelines: "Guidelines", drug: "Drug", dose: "Dose", note: "Note",
-                prognosis: "Prognosis", mortality: "Mortality", factors: "Factors", scores: "Scores",
-                table_test: "Test", table_finding: "Finding", table_interpretation: "Interpretation"
-            },
-            de: { 
-                title: "Lehrbuch der Infektiologie", author: "Autor", date: "Datum", version: "Version", 
-                pathogen: "Erreger", 
-                epidemiology: "Epidemiologie", incidence: "Inzidenz", seasonality: "Saisonalität", transmission: "Übertragung", risk_groups: "Risikogruppen",
-                pathomechanism: "Pathomechanismus", steps: "Schritte", virulence: "Virulenzfaktoren",
-                clinical: "Klinik", incubation: "Inkubation", onset: "Beginn", symptoms: "Symptome", physical: "Körperliche Untersuchung", complications: "Komplikationen",
-                diagnostics: "Diagnostik", laboratory: "Labor", imaging: "Bildgebung", microbiology: "Mikrobiologie", criteria: "Kriterien",
-                differential: "Differentialdiagnose",
-                therapy: "Therapie", empirical: "Empirisch", targeted: "Gezielt", supportive: "Supportiv", prevention: "Prävention", guidelines: "Leitlinien", drug: "Medikament", dose: "Dosis", note: "Hinweis",
-                prognosis: "Prognose", mortality: "Mortalität", factors: "Faktoren", scores: "Scores",
-                table_test: "Test", table_finding: "Befund", table_interpretation: "Interpretation"
-            }
-        };
-        const t = texts[lang] || texts.hu;
+      // Új ablak nyitása a nyomtatáshoz
+      const printWindow = window.open('', '_blank');
+      if (!printWindow) {
+        alert('A felugró ablakok tiltva vannak. Kérlek engedélyezd őket az exporthoz.');
+        return;
+      }
 
-        // Metadata
-        const meta = {
-            authorName: "Dr. Péterfi Zoltán",
-            copyright: "© 2026 Dr. Péterfi Zoltán",
-            versionNum: "3.5.2"
-        };
-
-        // Új ablak nyitása a nyomtatáshoz
-        const printWindow = window.open('', '_blank');
-        if (!printWindow) {
-            alert('A felugró ablakok tiltva vannak. Kérlek engedélyezd őket az exporthoz.');
-            return;
-        }
-        
-        let htmlContent = `
+      let htmlContent = `
             <!DOCTYPE html>
             <html>
             <head>
@@ -390,189 +500,189 @@
                 </div>
         `;
 
-        // Helper functions
-        const renderList = (items) => {
-            if (!items || items.length === 0) return '';
-            return `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
-        };
+      // Helper functions
+      const renderList = (items) => {
+        if (!items || items.length === 0) return '';
+        return `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+      };
 
-        // Adatok iterálása (Kategóriák -> Betegségek)
-        for (const [catKey, category] of Object.entries(window.diseases)) {
-            htmlContent += `
+      // Adatok iterálása (Kategóriák -> Betegségek)
+      for (const [catKey, category] of Object.entries(window.diseases)) {
+        htmlContent += `
                 <div class="category">
                     <div class="category-header">
                         <h2 class="category-title" style="color: ${category.color || '#2c3e50'}">${category.icon || ''} ${category.name}</h2>
                     </div>
             `;
 
-            if (category.diseases) {
-                category.diseases.forEach(disease => {
-                    htmlContent += `<div class="disease"><h3>${disease.name}</h3>`;
+        if (category.diseases) {
+          category.diseases.forEach(disease => {
+            htmlContent += `<div class="disease"><h3>${disease.name}</h3>`;
 
-                    // Kórokozó
-                    if (disease.pathogen) {
-                        htmlContent += `<div class="section"><span class="label">${t.pathogen}:</span> ${disease.pathogen.type} - ${disease.pathogen.name} ${disease.pathogen.gram ? `(${disease.pathogen.gram})` : ''}</div>`;
-                    }
-
-                    // Epidemiológia
-                    if (disease.epidemiology) {
-                        htmlContent += `<div class="section"><span class="label">${t.epidemiology}:</span>`;
-                        if (disease.epidemiology.incidence) htmlContent += `<div>- ${t.incidence}: ${disease.epidemiology.incidence}</div>`;
-                        if (disease.epidemiology.seasonality) htmlContent += `<div>- ${t.seasonality}: ${disease.epidemiology.seasonality}</div>`;
-                        if (disease.epidemiology.transmission) htmlContent += `<div>- ${t.transmission}: ${disease.epidemiology.transmission}</div>`;
-                        if (disease.epidemiology.risk_groups && disease.epidemiology.risk_groups.length > 0) {
-                            htmlContent += `<div>- ${t.risk_groups}: ${disease.epidemiology.risk_groups.join(', ')}</div>`;
-                        }
-                        htmlContent += `</div>`;
-                    }
-
-                    // Pathomechanizmus
-                    if (disease.pathomechanism) {
-                        htmlContent += `<div class="section"><span class="label">${t.pathomechanism}:</span>`;
-                        if (disease.pathomechanism.steps && disease.pathomechanism.steps.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.steps}:</div>${renderList(disease.pathomechanism.steps)}`;
-                        }
-                        if (disease.pathomechanism.virulence_factors && disease.pathomechanism.virulence_factors.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.virulence}:</div>${renderList(disease.pathomechanism.virulence_factors)}`;
-                        }
-                        htmlContent += `</div>`;
-                    }
-
-                    // Klinikum
-                    if (disease.clinical) {
-                        htmlContent += `<div class="section"><span class="label">${t.clinical}:</span>`;
-                        if (disease.clinical.incubation) htmlContent += `<div>- ${t.incubation}: ${disease.clinical.incubation}</div>`;
-                        if (disease.clinical.onset) htmlContent += `<div>- ${t.onset}: ${disease.clinical.onset}</div>`;
-                        
-                        if (disease.clinical.symptoms && disease.clinical.symptoms.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.symptoms}:</div><ul>`;
-                            disease.clinical.symptoms.forEach(s => {
-                                htmlContent += `<li><strong>${s.name}:</strong> ${s.description}</li>`;
-                            });
-                            htmlContent += `</ul>`;
-                        }
-                        
-                        if (disease.clinical.physical_exam && disease.clinical.physical_exam.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.physical}:</div>${renderList(disease.clinical.physical_exam)}`;
-                        }
-                        if (disease.clinical.complications && disease.clinical.complications.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.complications}:</div>${renderList(disease.clinical.complications)}`;
-                        }
-                        htmlContent += `</div>`;
-                    }
-
-                    // Diagnosztika
-                    if (disease.diagnostics) {
-                        htmlContent += `<div class="section"><span class="label">${t.diagnostics}:</span>`;
-                        
-                        if (disease.diagnostics.criteria && disease.diagnostics.criteria.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.criteria}:</div>`;
-                            disease.diagnostics.criteria.forEach(c => {
-                                htmlContent += `<div><strong>${c.name}:</strong> ${c.items.join(', ')}</div>`;
-                            });
-                        }
-
-                        if (disease.diagnostics.laboratory && disease.diagnostics.laboratory.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.laboratory}:</div>`;
-                            htmlContent += `<table><tr><th>${t.table_test || 'Vizsgálat'}</th><th>${t.table_finding || 'Eredmény'}</th><th>${t.table_interpretation || 'Értelmezés'}</th></tr>`;
-                            disease.diagnostics.laboratory.forEach(l => {
-                                htmlContent += `<tr><td>${l.test}</td><td>${l.finding}</td><td>${l.interpretation}</td></tr>`;
-                            });
-                            htmlContent += `</table>`;
-                        }
-
-                        if (disease.diagnostics.imaging && disease.diagnostics.imaging.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.imaging}:</div><ul>`;
-                            disease.diagnostics.imaging.forEach(img => {
-                                htmlContent += `<li><strong>${img.modality}:</strong> ${img.finding} <em>(${img.significance})</em></li>`;
-                            });
-                            htmlContent += `</ul>`;
-                        }
-
-                        if (disease.diagnostics.microbiology && disease.diagnostics.microbiology.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.microbiology}:</div><ul>`;
-                            disease.diagnostics.microbiology.forEach(m => {
-                                htmlContent += `<li><strong>${m.test}:</strong> ${m.finding} <em>(${m.significance})</em></li>`;
-                            });
-                            htmlContent += `</ul>`;
-                        }
-                        htmlContent += `</div>`;
-                    }
-
-                    // Differenciáldiagnózis
-                    const diffList = disease.differential || disease.diagnostics?.differential || [];
-                    if (diffList.length > 0) {
-                        htmlContent += `<div class="section"><span class="label">${t.differential}:</span><ul>`;
-                        diffList.forEach(d => {
-                            htmlContent += `<li><strong>${d.disease}:</strong> ${d.distinguishing}</li>`;
-                        });
-                        htmlContent += `</ul></div>`;
-                    }
-
-                    // Terápia táblázatos megjelenítése
-                    if (disease.therapy) {
-                        htmlContent += `<div class="section"><span class="label">${t.therapy}:</span>`;
-                        
-                        if (disease.therapy.guidelines && disease.therapy.guidelines.length > 0) {
-                            htmlContent += `<div><strong>${t.guidelines}:</strong> ${disease.therapy.guidelines.join(', ')}</div>`;
-                        }
-
-                        if (disease.therapy.empirical) {
-                            const empirical = disease.therapy.empirical;
-                        
-                        // Helper a gyógyszerek táblázatos megjelenítéséhez
-                        const renderDrugsTable = (drugs) => {
-                            if (!drugs || !Array.isArray(drugs)) return '';
-                            let rows = drugs.map(d => `<tr><td style="width:30%"><strong>${d.drug}</strong></td><td style="width:25%">${d.dose}</td><td>${d.note || ''}</td></tr>`).join('');
-                            return `<table><tr><th>${t.drug}</th><th>${t.dose}</th><th>${t.note}</th></tr>${rows}</table>`;
-                        };
-
-                        // Kezeljük a különböző adatstruktúrákat (tömb vagy objektum kulcsokkal)
-                        if (!Array.isArray(empirical)) {
-                            for (const [key, value] of Object.entries(empirical)) {
-                                let title = key;
-                                let drugs = [];
-                                
-                                // Ha a value egy tömb (pl. outpatient: [...])
-                                if (Array.isArray(value)) {
-                                    // Cím formázása (pl. outpatient -> Outpatient)
-                                    title = key.charAt(0).toUpperCase() + key.slice(1);
-                                    drugs = value;
-                                } 
-                                // Ha a value egy objektum (pl. cap_outpatient: { title: '...', drugs: [...] })
-                                else if (value.title && value.drugs) {
-                                    title = value.title;
-                                    drugs = value.drugs;
-                                }
-                                
-                                if (drugs.length > 0) {
-                                    htmlContent += `<div class="section"><span class="label">${title}:</span>${renderDrugsTable(drugs)}</div>`;
-                                }
-                            }
-                        }
-                    }
-
-                        if (disease.therapy.targeted) {
-                            htmlContent += `<div class="sub-label">${t.targeted}:</div><div>${disease.therapy.targeted}</div>`;
-                        }
-
-                        if (disease.therapy.supportive && disease.therapy.supportive.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.supportive}:</div>${renderList(disease.therapy.supportive)}`;
-                        }
-
-                        if (disease.therapy.prevention && disease.therapy.prevention.length > 0) {
-                            htmlContent += `<div class="sub-label">${t.prevention}:</div>${renderList(disease.therapy.prevention)}`;
-                        }
-                        htmlContent += `</div>`;
-                    }
-                    
-                    htmlContent += `</div>`; // End disease
-                });
+            // Kórokozó
+            if (disease.pathogen) {
+              htmlContent += `<div class="section"><span class="label">${t.pathogen}:</span> ${disease.pathogen.type} - ${disease.pathogen.name} ${disease.pathogen.gram ? `(${disease.pathogen.gram})` : ''}</div>`;
             }
-            htmlContent += `</div>`; // End category
-        }
 
-        htmlContent += `
+            // Epidemiológia
+            if (disease.epidemiology) {
+              htmlContent += `<div class="section"><span class="label">${t.epidemiology}:</span>`;
+              if (disease.epidemiology.incidence) htmlContent += `<div>- ${t.incidence}: ${disease.epidemiology.incidence}</div>`;
+              if (disease.epidemiology.seasonality) htmlContent += `<div>- ${t.seasonality}: ${disease.epidemiology.seasonality}</div>`;
+              if (disease.epidemiology.transmission) htmlContent += `<div>- ${t.transmission}: ${disease.epidemiology.transmission}</div>`;
+              if (disease.epidemiology.risk_groups && disease.epidemiology.risk_groups.length > 0) {
+                htmlContent += `<div>- ${t.risk_groups}: ${disease.epidemiology.risk_groups.join(', ')}</div>`;
+              }
+              htmlContent += `</div>`;
+            }
+
+            // Pathomechanizmus
+            if (disease.pathomechanism) {
+              htmlContent += `<div class="section"><span class="label">${t.pathomechanism}:</span>`;
+              if (disease.pathomechanism.steps && disease.pathomechanism.steps.length > 0) {
+                htmlContent += `<div class="sub-label">${t.steps}:</div>${renderList(disease.pathomechanism.steps)}`;
+              }
+              if (disease.pathomechanism.virulence_factors && disease.pathomechanism.virulence_factors.length > 0) {
+                htmlContent += `<div class="sub-label">${t.virulence}:</div>${renderList(disease.pathomechanism.virulence_factors)}`;
+              }
+              htmlContent += `</div>`;
+            }
+
+            // Klinikum
+            if (disease.clinical) {
+              htmlContent += `<div class="section"><span class="label">${t.clinical}:</span>`;
+              if (disease.clinical.incubation) htmlContent += `<div>- ${t.incubation}: ${disease.clinical.incubation}</div>`;
+              if (disease.clinical.onset) htmlContent += `<div>- ${t.onset}: ${disease.clinical.onset}</div>`;
+
+              if (disease.clinical.symptoms && disease.clinical.symptoms.length > 0) {
+                htmlContent += `<div class="sub-label">${t.symptoms}:</div><ul>`;
+                disease.clinical.symptoms.forEach(s => {
+                  htmlContent += `<li><strong>${s.name}:</strong> ${s.description}</li>`;
+                });
+                htmlContent += `</ul>`;
+              }
+
+              if (disease.clinical.physical_exam && disease.clinical.physical_exam.length > 0) {
+                htmlContent += `<div class="sub-label">${t.physical}:</div>${renderList(disease.clinical.physical_exam)}`;
+              }
+              if (disease.clinical.complications && disease.clinical.complications.length > 0) {
+                htmlContent += `<div class="sub-label">${t.complications}:</div>${renderList(disease.clinical.complications)}`;
+              }
+              htmlContent += `</div>`;
+            }
+
+            // Diagnosztika
+            if (disease.diagnostics) {
+              htmlContent += `<div class="section"><span class="label">${t.diagnostics}:</span>`;
+
+              if (disease.diagnostics.criteria && disease.diagnostics.criteria.length > 0) {
+                htmlContent += `<div class="sub-label">${t.criteria}:</div>`;
+                disease.diagnostics.criteria.forEach(c => {
+                  htmlContent += `<div><strong>${c.name}:</strong> ${c.items.join(', ')}</div>`;
+                });
+              }
+
+              if (disease.diagnostics.laboratory && disease.diagnostics.laboratory.length > 0) {
+                htmlContent += `<div class="sub-label">${t.laboratory}:</div>`;
+                htmlContent += `<table><tr><th>${t.table_test || 'Vizsgálat'}</th><th>${t.table_finding || 'Eredmény'}</th><th>${t.table_interpretation || 'Értelmezés'}</th></tr>`;
+                disease.diagnostics.laboratory.forEach(l => {
+                  htmlContent += `<tr><td>${l.test}</td><td>${l.finding}</td><td>${l.interpretation}</td></tr>`;
+                });
+                htmlContent += `</table>`;
+              }
+
+              if (disease.diagnostics.imaging && disease.diagnostics.imaging.length > 0) {
+                htmlContent += `<div class="sub-label">${t.imaging}:</div><ul>`;
+                disease.diagnostics.imaging.forEach(img => {
+                  htmlContent += `<li><strong>${img.modality}:</strong> ${img.finding} <em>(${img.significance})</em></li>`;
+                });
+                htmlContent += `</ul>`;
+              }
+
+              if (disease.diagnostics.microbiology && disease.diagnostics.microbiology.length > 0) {
+                htmlContent += `<div class="sub-label">${t.microbiology}:</div><ul>`;
+                disease.diagnostics.microbiology.forEach(m => {
+                  htmlContent += `<li><strong>${m.test}:</strong> ${m.finding} <em>(${m.significance})</em></li>`;
+                });
+                htmlContent += `</ul>`;
+              }
+              htmlContent += `</div>`;
+            }
+
+            // Differenciáldiagnózis
+            const diffList = disease.differential || disease.diagnostics?.differential || [];
+            if (diffList.length > 0) {
+              htmlContent += `<div class="section"><span class="label">${t.differential}:</span><ul>`;
+              diffList.forEach(d => {
+                htmlContent += `<li><strong>${d.disease}:</strong> ${d.distinguishing}</li>`;
+              });
+              htmlContent += `</ul></div>`;
+            }
+
+            // Terápia táblázatos megjelenítése
+            if (disease.therapy) {
+              htmlContent += `<div class="section"><span class="label">${t.therapy}:</span>`;
+
+              if (disease.therapy.guidelines && disease.therapy.guidelines.length > 0) {
+                htmlContent += `<div><strong>${t.guidelines}:</strong> ${disease.therapy.guidelines.join(', ')}</div>`;
+              }
+
+              if (disease.therapy.empirical) {
+                const empirical = disease.therapy.empirical;
+
+                // Helper a gyógyszerek táblázatos megjelenítéséhez
+                const renderDrugsTable = (drugs) => {
+                  if (!drugs || !Array.isArray(drugs)) return '';
+                  let rows = drugs.map(d => `<tr><td style="width:30%"><strong>${d.drug}</strong></td><td style="width:25%">${d.dose}</td><td>${d.note || ''}</td></tr>`).join('');
+                  return `<table><tr><th>${t.drug}</th><th>${t.dose}</th><th>${t.note}</th></tr>${rows}</table>`;
+                };
+
+                // Kezeljük a különböző adatstruktúrákat (tömb vagy objektum kulcsokkal)
+                if (!Array.isArray(empirical)) {
+                  for (const [key, value] of Object.entries(empirical)) {
+                    let title = key;
+                    let drugs = [];
+
+                    // Ha a value egy tömb (pl. outpatient: [...])
+                    if (Array.isArray(value)) {
+                      // Cím formázása (pl. outpatient -> Outpatient)
+                      title = key.charAt(0).toUpperCase() + key.slice(1);
+                      drugs = value;
+                    }
+                    // Ha a value egy objektum (pl. cap_outpatient: { title: '...', drugs: [...] })
+                    else if (value.title && value.drugs) {
+                      title = value.title;
+                      drugs = value.drugs;
+                    }
+
+                    if (drugs.length > 0) {
+                      htmlContent += `<div class="section"><span class="label">${title}:</span>${renderDrugsTable(drugs)}</div>`;
+                    }
+                  }
+                }
+              }
+
+              if (disease.therapy.targeted) {
+                htmlContent += `<div class="sub-label">${t.targeted}:</div><div>${disease.therapy.targeted}</div>`;
+              }
+
+              if (disease.therapy.supportive && disease.therapy.supportive.length > 0) {
+                htmlContent += `<div class="sub-label">${t.supportive}:</div>${renderList(disease.therapy.supportive)}`;
+              }
+
+              if (disease.therapy.prevention && disease.therapy.prevention.length > 0) {
+                htmlContent += `<div class="sub-label">${t.prevention}:</div>${renderList(disease.therapy.prevention)}`;
+              }
+              htmlContent += `</div>`;
+            }
+
+            htmlContent += `</div>`; // End disease
+          });
+        }
+        htmlContent += `</div>`; // End category
+      }
+
+      htmlContent += `
             <div class="footer">Generálva / Generated: ${new Date().toLocaleString()}</div>
             <script>
                 window.onload = function() { 
@@ -583,8 +693,8 @@
             </body></html>
         `;
 
-        printWindow.document.write(htmlContent);
-        printWindow.document.close();
+      printWindow.document.write(htmlContent);
+      printWindow.document.close();
     }
 
     const defaultConfig = {
@@ -633,7 +743,7 @@
         welcome_title: 'Üdvözöljük az Infektológia Tankönyvben',
         welcome_text: 'Válasszon egy betegségcsoportot a bal oldali menüből, majd egy konkrét betegséget a részletes klinikai információk megtekintéséhez.',
         header_author: 'Írta és szerkesztette: Dr. Péterfi Zoltán',
-        header_version: 'Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 3.5.2',
+        header_version: 'Copyright: 2026. Dr. Péterfi Zoltán | Verzió: 4.0.0',
         feedback_btn: 'Visszajelzés',
         feedback_title: 'Visszajelzés',
         feedback_placeholder: 'Írja ide észrevételeit, javaslatait...',
@@ -673,6 +783,16 @@
         table_finding: 'Eredmény',
         table_interpretation: 'Értelmezés',
         no_lab_tests: 'Nincs specifikus laboratóriumi vizsgálat.',
+        notes_panel_title: 'Hallgatói jegyzetek',
+        notes_panel_description: 'Itt írhatja fel jegyzeteit. Használja az export/import funkciót a mentéshez.',
+        notes_toggle_hide: 'Elrejtés',
+        notes_toggle_show: 'Megjelenítés',
+        notes_export: 'Exportálás',
+        notes_import: 'Importálás',
+        notes_save: 'Mentés',
+        notes_clear: 'Törlés',
+        notes_title_placeholder: 'Jegyzet címe',
+        notes_content_placeholder: 'Írja ide a jegyzetet...',
         section_imaging: 'Képalkotó vizsgálatok',
         no_imaging: 'Nincs specifikus képalkotó vizsgálat.',
         section_microbiology: 'Mikrobiológiai diagnosztika',
@@ -692,15 +812,15 @@
         section_gallery: 'Kép Galéria',
         section_references: 'Források',
         therapy_titles: {
-            outpatient: 'Ambuláns kezelés',
-            inpatient: 'Kórházi kezelés',
-            icu: 'Intenzív osztályos kezelés',
-            cap_outpatient: 'CAP - Ambuláns kezelés',
-            cap_inpatient: 'CAP - Kórházi kezelés',
-            cap_icu: 'CAP - Intenzív osztályos kezelés',
-            hap_early: 'Nozokomiális pneumonia - Korai',
-            hap_late_vap: 'Nozokomiális (késői) / VAP',
-            default: 'Terápia'
+          outpatient: 'Ambuláns kezelés',
+          inpatient: 'Kórházi kezelés',
+          icu: 'Intenzív osztályos kezelés',
+          cap_outpatient: 'CAP - Ambuláns kezelés',
+          cap_inpatient: 'CAP - Kórházi kezelés',
+          cap_icu: 'CAP - Intenzív osztályos kezelés',
+          hap_early: 'Nozokomiális pneumonia - Korai',
+          hap_late_vap: 'Nozokomiális (késői) / VAP',
+          default: 'Terápia'
         }
       },
       en: {
@@ -712,7 +832,7 @@
         welcome_title: 'Welcome to the Infectious Diseases Textbook',
         welcome_text: 'Select a disease category from the left menu, then a specific disease to view detailed clinical information.',
         header_author: 'Written and edited by: Dr. Zoltán Péterfi',
-        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.5.2',
+        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 4.0.0',
         feedback_btn: 'Feedback',
         feedback_title: 'Send Feedback',
         feedback_placeholder: 'Write your comments or suggestions here...',
@@ -752,6 +872,16 @@
         table_finding: 'Finding',
         table_interpretation: 'Interpretation',
         no_lab_tests: 'No specific laboratory tests.',
+        notes_panel_title: 'Student Notes',
+        notes_panel_description: 'Write your notes here. Use export/import to save them.',
+        notes_toggle_hide: 'Hide',
+        notes_toggle_show: 'Show',
+        notes_export: 'Export',
+        notes_import: 'Import',
+        notes_save: 'Save',
+        notes_clear: 'Clear',
+        notes_title_placeholder: 'Note title',
+        notes_content_placeholder: 'Write your note here...',
         section_imaging: 'Imaging Studies',
         no_imaging: 'No specific imaging studies.',
         section_microbiology: 'Microbiological Diagnostics',
@@ -771,15 +901,15 @@
         section_gallery: 'Image Gallery',
         section_references: 'References',
         therapy_titles: {
-            outpatient: 'Outpatient Treatment',
-            inpatient: 'Inpatient Treatment',
-            icu: 'Intensive Care',
-            cap_outpatient: 'CAP - Outpatient',
-            cap_inpatient: 'CAP - Inpatient',
-            cap_icu: 'CAP - ICU',
-            hap_early: 'HAP - Early',
-            hap_late_vap: 'HAP - Late / VAP',
-            default: 'Therapy'
+          outpatient: 'Outpatient Treatment',
+          inpatient: 'Inpatient Treatment',
+          icu: 'Intensive Care',
+          cap_outpatient: 'CAP - Outpatient',
+          cap_inpatient: 'CAP - Inpatient',
+          cap_icu: 'CAP - ICU',
+          hap_early: 'HAP - Early',
+          hap_late_vap: 'HAP - Late / VAP',
+          default: 'Therapy'
         }
       },
       de: {
@@ -791,7 +921,7 @@
         welcome_title: 'Willkommen im Lehrbuch der Infektiologie',
         welcome_text: 'Wählen Sie eine Krankheitskategorie aus dem linken Menü und dann eine bestimmte Krankheit, um detaillierte klinische Informationen anzuzeigen.',
         header_author: 'Geschrieben und bearbeitet von: Dr. Zoltán Péterfi',
-        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 3.5.2',
+        header_version: 'Copyright: 2026. Dr. Zoltán Péterfi | Version: 4.0.0',
         feedback_btn: 'Feedback',
         feedback_title: 'Feedback senden',
         feedback_placeholder: 'Schreiben Sie hier Ihre Kommentare oder Vorschläge...',
@@ -831,6 +961,16 @@
         table_finding: 'Befund',
         table_interpretation: 'Interpretation',
         no_lab_tests: 'Keine spezifischen Laboruntersuchungen.',
+        notes_panel_title: 'Studentenotizen',
+        notes_panel_description: 'Schreiben Sie hier Ihre Notizen. Verwenden Sie Export/Import zum Speichern.',
+        notes_toggle_hide: 'Ausblenden',
+        notes_toggle_show: 'Anzeigen',
+        notes_export: 'Exportieren',
+        notes_import: 'Importieren',
+        notes_save: 'Speichern',
+        notes_clear: 'Löschen',
+        notes_title_placeholder: 'Notiztitel',
+        notes_content_placeholder: 'Schreiben Sie hier Ihre Notiz...',
         section_imaging: 'Bildgebende Verfahren',
         no_imaging: 'Keine spezifischen bildgebenden Verfahren.',
         section_microbiology: 'Mikrobiologische Diagnostik',
@@ -850,15 +990,15 @@
         section_gallery: 'Bildergalerie',
         section_references: 'Quellen',
         therapy_titles: {
-            outpatient: 'Ambulante Behandlung',
-            inpatient: 'Stationäre Behandlung',
-            icu: 'Intensivbehandlung',
-            cap_outpatient: 'CAP - Ambulant',
-            cap_inpatient: 'CAP - Stationär',
-            cap_icu: 'CAP - Intensivstation',
-            hap_early: 'HAP - Früh',
-            hap_late_vap: 'HAP - Spät / VAP',
-            default: 'Therapie'
+          outpatient: 'Ambulante Behandlung',
+          inpatient: 'Stationäre Behandlung',
+          icu: 'Intensivbehandlung',
+          cap_outpatient: 'CAP - Ambulant',
+          cap_inpatient: 'CAP - Stationär',
+          cap_icu: 'CAP - Intensivstation',
+          hap_early: 'HAP - Früh',
+          hap_late_vap: 'HAP - Spät / VAP',
+          default: 'Therapie'
         }
       }
     };
@@ -869,20 +1009,20 @@
       document.getElementById('main-subtitle').textContent = t.subtitle;
       document.getElementById('sidebar-title').textContent = t.sidebar_title;
       document.getElementById('search-input').placeholder = t.search_placeholder;
-      
+
       document.getElementById('header-author').textContent = t.header_author;
       document.getElementById('header-version').textContent = t.header_version;
       document.getElementById('feedback-btn-text').textContent = t.feedback_btn;
       document.getElementById('feedback-btn').title = t.feedback_title;
-      
+
       const fbTitle = document.getElementById('feedback-modal-title');
-      if(fbTitle) fbTitle.textContent = t.feedback_title;
+      if (fbTitle) fbTitle.textContent = t.feedback_title;
       const fbPlace = document.getElementById('feedback-text');
-      if(fbPlace) fbPlace.placeholder = t.feedback_placeholder;
+      if (fbPlace) fbPlace.placeholder = t.feedback_placeholder;
       const fbCancel = document.getElementById('feedback-cancel-btn');
-      if(fbCancel) fbCancel.textContent = t.feedback_cancel;
+      if (fbCancel) fbCancel.textContent = t.feedback_cancel;
       const fbSend = document.getElementById('feedback-submit-btn');
-      if(fbSend) fbSend.textContent = t.feedback_send;
+      if (fbSend) fbSend.textContent = t.feedback_send;
 
       // Update welcome screen if visible
       const welcomeTitle = document.querySelector('#welcome-screen h2');
@@ -892,34 +1032,34 @@
 
       // Update category title if no disease selected or just category selected
       if (!selectedDisease) {
-         const catTitle = document.getElementById('category-title');
-         if (!selectedCategory) {
-             catTitle.textContent = t.select_category;
-         } else if (window.diseases[selectedCategory]) {
-             // If category is selected, we keep the category name, but update the count text suffix if needed
-             // Actually renderDiseaseList handles the count text update
-         }
+        const catTitle = document.getElementById('category-title');
+        if (!selectedCategory) {
+          catTitle.textContent = t.select_category;
+        } else if (window.diseases[selectedCategory]) {
+          // If category is selected, we keep the category name, but update the count text suffix if needed
+          // Actually renderDiseaseList handles the count text update
+        }
       }
-      
+
       // Re-render lists to update texts like "No results" or disease counts
       if (selectedCategory) {
-          renderDiseaseList();
+        renderDiseaseList();
       } else {
-          // If no category selected, reset the list view text
-          document.getElementById('disease-list').innerHTML = `<p class="text-slate-500 text-sm text-center py-8">${t.select_category}</p>`;
-          document.getElementById('category-title').textContent = t.select_category;
+        // If no category selected, reset the list view text
+        document.getElementById('disease-list').innerHTML = `<p class="text-slate-500 text-sm text-center py-8">${t.select_category}</p>`;
+        document.getElementById('category-title').textContent = t.select_category;
       }
 
       // Re-render detail view to update tabs and section headers
       if (selectedDisease) {
-          renderDiseaseDetail();
+        renderDiseaseDetail();
       }
     }
 
     async function loadLanguageFiles(lang) {
       window.diseases = {}; // Clear existing data
       const files = languageFiles[lang];
-      
+
       const promises = files.map(file => {
         return new Promise((resolve, reject) => {
           const script = document.createElement('script');
@@ -946,25 +1086,25 @@
         renderCategories();
         // If a category/disease was selected, try to re-select it (if IDs match across languages)
         if (selectedCategory) {
-            if (window.diseases[selectedCategory]) {
-                renderDiseaseList();
-                if (selectedDisease) {
-                    const cat = window.diseases[selectedCategory];
-                    if (cat.diseases.find(d => d.id === selectedDisease)) {
-                        renderDiseaseDetail();
-                    } else {
-                        selectedDisease = null;
-                        diseaseContent.classList.add('hidden');
-                        welcomeScreen.classList.remove('hidden');
-                    }
-                }
-            } else {
-                selectedCategory = null;
+          if (window.diseases[selectedCategory]) {
+            renderDiseaseList();
+            if (selectedDisease) {
+              const cat = window.diseases[selectedCategory];
+              if (cat.diseases.find(d => d.id === selectedDisease)) {
+                renderDiseaseDetail();
+              } else {
                 selectedDisease = null;
-                diseaseList.innerHTML = ''; // Clear list if category not found
                 diseaseContent.classList.add('hidden');
                 welcomeScreen.classList.remove('hidden');
+              }
             }
+          } else {
+            selectedCategory = null;
+            selectedDisease = null;
+            diseaseList.innerHTML = ''; // Clear list if category not found
+            diseaseContent.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+          }
         }
       } catch (error) {
         console.error("Error loading language files:", error);
@@ -972,14 +1112,16 @@
       }
     }
 
-    window.changeLanguage = function(lang) {
-        if (currentLanguage === lang) return;
-        currentLanguage = lang;
-        loadLanguageFiles(lang);
+    window.changeLanguage = function (lang) {
+      if (currentLanguage === lang) return;
+      currentLanguage = lang;
+      loadLanguageFiles(lang);
     };
 
     // Score Calculators Data
-    const scoreCalculators = {
+    // Use a single global `window.scoreCalculators` to avoid redeclarations when multiple scripts load
+    window.scoreCalculators = window.scoreCalculators || {};
+    Object.assign(window.scoreCalculators, {
       'CURB-65': {
         title: 'CURB-65 Score (Pneumonia)',
         description: 'Közösségben szerzett tüdőgyulladás súlyosságának és a betegfelvétel szükségességének megítélésére.',
@@ -1132,7 +1274,7 @@
           { type: 'radio', name: 'ap_age', label: '≥ 75', points: 6 },
           { type: 'header', label: 'Krónikus Egészségi Állapot' },
           { type: 'checkbox', label: 'Súlyos szervelégtelenség (máj, szív, légző, vese) vagy immunszuppresszió', points: 5 },
-          { type: 'checkbox', label: 'Sürgősségi műtét után vagy nem műtéti beteg', points: 0 }, 
+          { type: 'checkbox', label: 'Sürgősségi műtét után vagy nem műtéti beteg', points: 0 },
           { type: 'header', label: 'Akut Fiziológiai Paraméterek (Legrosszabb érték az első 24 órában)' },
           { type: 'header', label: 'Hőmérséklet (°C)' },
           { type: 'radio', name: 'ap_temp', label: '36 - 38.4', points: 0, checked: true },
@@ -1178,7 +1320,7 @@
           { type: 'radio', name: 'ap_cr', label: '< 0.6 vagy 1.5 - 1.9', points: 2 },
           { type: 'radio', name: 'ap_cr', label: '2.0 - 3.4', points: 3 },
           { type: 'radio', name: 'ap_cr', label: '≥ 3.5', points: 4 },
-          { type: 'checkbox', label: 'Akut veseelégtelenség (Kreatinin pontszám duplázódik)', points: 0 }, 
+          { type: 'checkbox', label: 'Akut veseelégtelenség (Kreatinin pontszám duplázódik)', points: 0 },
           { type: 'header', label: 'Hematokrit (%)' },
           { type: 'radio', name: 'ap_hct', label: '30 - 45.9', points: 0, checked: true },
           { type: 'radio', name: 'ap_hct', label: 'Eltérés', points: 2 },
@@ -1188,7 +1330,7 @@
           { type: 'radio', name: 'ap_wbc', label: 'Eltérés', points: 2 },
           { type: 'radio', name: 'ap_wbc', label: 'Jelentős eltérés', points: 4 },
           { type: 'header', label: 'Glasgow Coma Scale (GCS)' },
-          { type: 'number', label: 'GCS pontszám (15 - GCS = pont)', points: -1, min: 3, max: 15, value: 15 } 
+          { type: 'number', label: 'GCS pontszám (15 - GCS = pont)', points: -1, min: 3, max: 15, value: 15 }
         ],
         interpret: (score) => {
           // APACHE II score calculation usually involves adding (15 - GCS) to the total. 
@@ -1204,33 +1346,33 @@
           return { risk: `APACHE II Score: ${score + 15}`, action: 'A mortalitás a pontszámmal korrelál (pl. 25 pont ~50% halálozás).', color: 'text-slate-800', bg: 'bg-slate-50', border: 'border-slate-200' };
         }
       }
-    };
+    });
 
     // Score calculator function
-    window.openScoreCalculator = function(scoreName) {
+    window.openScoreCalculator = function (scoreName) {
       const modal = document.getElementById('score-modal');
       const panel = document.getElementById('score-modal-panel');
       const title = document.getElementById('score-modal-title');
       const content = document.getElementById('score-modal-content');
-      
+
       // Normalize name (remove extra text if present in button)
       const calc = window.scoreCalculators[scoreName];
-      
+
       if (!calc) {
         alert(`A(z) ${scoreName} kalkulátor jelenleg nem elérhető ebben az alkalmazásban.`);
         return;
       }
-      
+
       title.textContent = calc.title;
-      
+
       let html = `<p class="text-sm text-slate-500 mb-4 italic">${calc.description}</p>`;
       html += `<div class="space-y-2 mb-6">`;
-      
+
       calc.items.forEach(item => {
         if (item.type === 'header') {
-            html += `<h4 class="font-semibold text-slate-700 mt-4 mb-2 text-sm uppercase tracking-wide border-b border-slate-100 pb-1">${item.label}</h4>`;
+          html += `<h4 class="font-semibold text-slate-700 mt-4 mb-2 text-sm uppercase tracking-wide border-b border-slate-100 pb-1">${item.label}</h4>`;
         } else if (item.type === 'number') {
-            html += `
+          html += `
               <div class="flex items-center justify-between p-3 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
                 <span class="text-slate-700 font-medium text-sm">${item.label}</span>
                 <input type="number" class="w-20 px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:border-emerald-500 score-input" 
@@ -1238,7 +1380,7 @@
               </div>
             `;
         } else if (item.type === 'radio') {
-            html += `
+          html += `
               <label class="flex items-start gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors select-none mb-1">
                 <div class="flex items-center h-5">
                   <input type="radio" name="${item.name}" class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 score-input" data-points="${item.points}" ${item.checked ? 'checked' : ''}>
@@ -1247,8 +1389,8 @@
               </label>
             `;
         } else {
-            // Default checkbox
-            html += `
+          // Default checkbox
+          html += `
               <label class="flex items-start gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors select-none">
                 <div class="flex items-center h-5">
                   <input type="checkbox" class="w-5 h-5 text-emerald-600 rounded focus:ring-emerald-500 border-gray-300 score-input" data-points="${item.points}">
@@ -1258,7 +1400,7 @@
             `;
         }
       });
-      
+
       html += `</div>`;
       html += `
         <div id="score-result-container" class="bg-slate-100 rounded-xl p-4 text-center border border-slate-200 transition-colors duration-300">
@@ -1268,15 +1410,15 @@
           <div class="text-sm text-slate-600 mt-1" id="score-action">-</div>
         </div>
       `;
-      
+
       content.innerHTML = html;
-      
+
       // Add event listeners
       const inputs = content.querySelectorAll('.score-input');
       inputs.forEach(input => {
         input.addEventListener('input', () => calculateScore(calc)); // Changed to 'input' for immediate number update
       });
-      
+
       // Show modal
       modal.classList.remove('hidden');
       // Small delay for transition
@@ -1285,28 +1427,28 @@
         panel.classList.remove('scale-95');
         panel.classList.add('scale-100');
       }, 10);
-      
+
       calculateScore(calc); // Initial calc
     };
 
-    window.closeScoreModal = function() {
+    window.closeScoreModal = function () {
       const modal = document.getElementById('score-modal');
       const panel = document.getElementById('score-modal-panel');
-      
+
       modal.classList.add('opacity-0');
       panel.classList.remove('scale-100');
       panel.classList.add('scale-95');
-      
+
       setTimeout(() => {
         modal.classList.add('hidden');
       }, 300);
     };
 
     // Feedback Modal Functions
-    window.openFeedbackModal = function() {
+    window.openFeedbackModal = function () {
       const modal = document.getElementById('feedback-modal');
       const panel = document.getElementById('feedback-modal-panel');
-      
+
       modal.classList.remove('hidden');
       setTimeout(() => {
         modal.classList.remove('opacity-0');
@@ -1315,20 +1457,20 @@
       }, 10);
     };
 
-    window.closeFeedbackModal = function() {
+    window.closeFeedbackModal = function () {
       const modal = document.getElementById('feedback-modal');
       const panel = document.getElementById('feedback-modal-panel');
-      
+
       modal.classList.add('opacity-0');
       panel.classList.remove('scale-100');
       panel.classList.add('scale-95');
-      
+
       setTimeout(() => {
         modal.classList.add('hidden');
       }, 300);
     };
 
-    window.loadFeedbackForm = function() {
+    window.loadFeedbackForm = function () {
       const container = document.getElementById('feedback-container');
       container.innerHTML = '<iframe src="https://forms.office.com/e/m0kHjuqGzQ?origin=lprLink&embed=true" class="w-full h-full border-0" allowfullscreen></iframe>';
     };
@@ -1336,7 +1478,7 @@
     function calculateScore(calc) {
       const container = document.getElementById('score-modal-content');
       let total = 0;
-      
+
       // Checkboxes
       container.querySelectorAll('input[type="checkbox"]').forEach(input => {
         if (input.checked) total += parseFloat(input.dataset.points || 0);
@@ -1353,25 +1495,25 @@
         const multiplier = parseFloat(input.dataset.points || 1);
         total += val * multiplier;
       });
-      
+
       const resultContainer = document.getElementById('score-result-container');
       const resultEl = document.getElementById('score-result');
       const interpEl = document.getElementById('score-interpretation');
       const actionEl = document.getElementById('score-action');
-      
+
       let displayScore = total;
       if (calc.title.includes('APACHE II')) {
-          displayScore = total + 15;
+        displayScore = total + 15;
       }
-      
+
       resultEl.textContent = displayScore;
-      
+
       if (calc.interpret) {
         const interpretation = calc.interpret(total);
         interpEl.textContent = interpretation.risk;
         interpEl.className = `font-bold text-lg ${interpretation.color}`;
         actionEl.textContent = interpretation.action;
-        
+
         // Update container style
         resultContainer.className = `rounded-xl p-4 text-center border transition-colors duration-300 ${interpretation.bg} ${interpretation.border}`;
       }
@@ -1394,7 +1536,7 @@
     }
 
     // Select category
-    window.selectCategory = function(categoryKey) {
+    window.selectCategory = function (categoryKey) {
       selectedCategory = categoryKey;
       selectedDisease = null;
 
@@ -1406,11 +1548,11 @@
     };
 
     // Toggle sidebar
-    window.toggleSidebar = function() {
+    window.toggleSidebar = function () {
       isSidebarCollapsed = !isSidebarCollapsed;
       const sidebar = document.getElementById('sidebar');
       const sidebarTitle = document.getElementById('sidebar-title');
-      
+
       if (isSidebarCollapsed) {
         sidebar.classList.remove('w-56');
         sidebar.classList.add('w-20');
@@ -1423,24 +1565,24 @@
       renderCategories();
     };
 
-    window.handleSidebarHeaderClick = function(event) {
+    window.handleSidebarHeaderClick = function (event) {
       if (event.target.closest('button')) return;
       toggleSidebar();
     };
 
-    window.handleSidebarClick = function(event) {
+    window.handleSidebarClick = function (event) {
       if (!isSidebarCollapsed) return;
       if (event.target.closest('button')) return;
       if (event.target.closest('.category-item')) return;
       toggleSidebar();
     };
 
-    window.handleDiseaseListHeaderClick = function(event) {
+    window.handleDiseaseListHeaderClick = function (event) {
       if (event.target.closest('button')) return;
       toggleDiseaseList();
     };
 
-    window.toggleDiseaseList = function() {
+    window.toggleDiseaseList = function () {
       isDiseaseListCollapsed = !isDiseaseListCollapsed;
       const panel = document.getElementById('disease-list-panel');
       const list = document.getElementById('disease-list');
@@ -1448,19 +1590,19 @@
       const headerContainer = headerContent.parentElement;
 
       if (isDiseaseListCollapsed) {
-          panel.classList.remove('w-56');
-          panel.classList.add('w-16');
-          list.classList.add('hidden');
-          headerContent.classList.add('hidden');
-          headerContainer.classList.remove('justify-between', 'p-4');
-          headerContainer.classList.add('justify-center', 'p-2');
+        panel.classList.remove('w-56');
+        panel.classList.add('w-16');
+        list.classList.add('hidden');
+        headerContent.classList.add('hidden');
+        headerContainer.classList.remove('justify-between', 'p-4');
+        headerContainer.classList.add('justify-center', 'p-2');
       } else {
-          panel.classList.remove('w-16');
-          panel.classList.add('w-56');
-          list.classList.remove('hidden');
-          headerContent.classList.remove('hidden');
-          headerContainer.classList.remove('justify-center', 'p-2');
-          headerContainer.classList.add('justify-between', 'p-4');
+        panel.classList.remove('w-16');
+        panel.classList.add('w-56');
+        list.classList.remove('hidden');
+        headerContent.classList.remove('hidden');
+        headerContainer.classList.remove('justify-center', 'p-2');
+        headerContainer.classList.add('justify-between', 'p-4');
       }
     }
 
@@ -1534,10 +1676,20 @@
           class="disease-card w-full text-left p-3.5 rounded-xl border transition-all group ${selectedDisease === disease.id ? 'border-emerald-500 bg-emerald-50 shadow-md ring-1 ring-emerald-500/20' : 'border-slate-100 bg-white shadow-sm hover:border-emerald-200'}">
           <div class="flex items-start gap-3.5">
             <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-sm transition-transform group-hover:scale-105" style="background: ${category.color}">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                <circle cx="12" cy="12" r="3"/>
-              </svg>
+              ${disease.didactics ? `
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              ` : disease.table ? `
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 3h18v18H3V3zM3 9h18M3 15h18M9 3v18M15 3v18"/>
+                </svg>
+              ` : `
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              `}
             </div>
             <div class="flex-1 min-w-0 py-0.5">
               <h3 class="font-semibold text-slate-800 text-sm leading-tight group-hover:text-emerald-700 transition-colors">${disease.name}</h3>
@@ -1549,7 +1701,7 @@
     }
 
     // Select disease
-    window.selectDisease = function(diseaseId) {
+    window.selectDisease = function (diseaseId) {
       selectedDisease = diseaseId;
       renderDiseaseList();
       renderDiseaseDetail();
@@ -1557,7 +1709,7 @@
 
     // Get severity dot color
     function getSeverityDotColor(severity) {
-      switch(severity) {
+      switch (severity) {
         case 'severe': return 'bg-red-500';
         case 'moderate': return 'bg-amber-500';
         case 'mild': return 'bg-green-500';
@@ -1613,9 +1765,136 @@
       welcomeScreen.classList.add('hidden');
       diseaseContent.classList.remove('hidden');
 
+      // Special case for didactics (educational summaries)
+      if (disease.didactics) {
+        const d = disease.didactics;
+        const labels = {
+          hu: {
+            title: 'Didaktika',
+            overview: 'Áttekintés',
+            lower: 'Alsó húgyúti fertőzés',
+            upper: 'Felső húgyúti fertőzés',
+            diagnostics: 'Diagnosztika',
+            red_flags: 'Vörös zászlók',
+            special_populations: 'Különleges betegcsoportok',
+            teaching_tip: 'Tanítási tipp'
+          },
+          en: {
+            title: 'Didactics',
+            overview: 'Overview',
+            lower: 'Lower Urinary Tract Infection',
+            upper: 'Upper Urinary Tract Infection',
+            diagnostics: 'Diagnostics',
+            red_flags: 'Red Flags',
+            special_populations: 'Special Populations',
+            teaching_tip: 'Teaching Tip'
+          },
+          de: {
+            title: 'Didaktik',
+            overview: 'Übersicht',
+            lower: 'Untere Harnwegsinfektion',
+            upper: 'Obere Harnwegsinfektion',
+            diagnostics: 'Diagnostik',
+            red_flags: 'Rote Flaggen',
+            special_populations: 'Spezielle Populationen',
+            teaching_tip: 'Lehrtipp'
+          }
+        };
+        const l = labels[currentLanguage] || labels.hu;
+        diseaseContent.innerHTML = `
+            <div class="animate-fade-in">
+              <div class="p-6 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
+                <div class="flex items-start gap-4">
+                  <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg" style="background: ${category.color}">
+                    <span class="text-3xl">${category.icon}</span>
+                  </div>
+                  <div class="flex-1">
+                    <h1 class="font-serif-book text-2xl font-bold text-slate-800">${disease.name}</h1>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="p-6 space-y-6">
+                <!-- Overview -->
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                  <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2">
+                    <span class="text-emerald-600">📖</span> ${l.overview}
+                  </h3>
+                  <p class="text-slate-700 leading-relaxed text-base">${Array.isArray(d.overview) ? d.overview.join(' ') : (d.overview || '')}</p>
+                </div>
+
+                <!-- Lower & Upper UTI Grid -->
+                <div class="grid gap-4 sm:grid-cols-2">
+                  ${d.lower ? `
+                    <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                      <h4 class="font-bold text-blue-900 mb-2 flex items-center gap-2">
+                        <span>⬇️</span> ${l.lower}
+                      </h4>
+                      <p class="text-slate-700 text-sm leading-relaxed">${Array.isArray(d.lower) ? d.lower.join(' ') : d.lower}</p>
+                    </div>
+                  ` : ''}
+                  ${d.upper ? `
+                    <div class="bg-red-50/50 p-5 rounded-xl border border-red-100 shadow-sm hover:shadow-md transition-shadow">
+                      <h4 class="font-bold text-red-900 mb-2 flex items-center gap-2">
+                        <span>⬆️</span> ${l.upper}
+                      </h4>
+                      <p class="text-slate-700 text-sm leading-relaxed">${Array.isArray(d.upper) ? d.upper.join(' ') : d.upper}</p>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Diagnostics & Red Flags -->
+                <div class="grid gap-4 sm:grid-cols-2">
+                  ${d.diagnostics ? `
+                    <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                      <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">🔬</span> ${l.diagnostics}
+                      </h4>
+                      <ul class="space-y-2 text-slate-700 text-sm">
+                        ${d.diagnostics.map(i => `<li class="flex items-start gap-2"><span class="text-indigo-400">•</span><span>${i}</span></li>`).join('')}
+                      </ul>
+                    </div>
+                  ` : ''}
+                  ${d.red_flags ? `
+                    <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                      <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <span class="text-rose-600">⚠️</span> ${l.red_flags}
+                      </h4>
+                      <ul class="space-y-2 text-slate-700 text-sm">
+                        ${d.red_flags.map(i => `<li class="flex items-start gap-2"><span class="text-rose-400">•</span><span>${i}</span></li>`).join('')}
+                      </ul>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Special Populations -->
+                ${d.special_populations ? `
+                  <div class="bg-amber-50/50 p-5 rounded-xl border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="font-bold text-amber-900 mb-2 flex items-center gap-2">
+                      <span>👥</span> ${l.special_populations}
+                    </h4>
+                    <p class="text-slate-700 text-sm leading-relaxed">${d.special_populations}</p>
+                  </div>
+                ` : ''}
+
+                <!-- Teaching Tip -->
+                ${d.teaching_tip ? `
+                  <div class="bg-emerald-50/50 p-5 rounded-xl border border-emerald-100 shadow-sm italic hover:shadow-md transition-shadow">
+                    <h4 class="font-bold text-emerald-900 not-italic mb-1 flex items-center gap-2">
+                      <span>💡</span> ${l.teaching_tip}
+                    </h4>
+                    <p class="text-slate-700 text-sm leading-relaxed">${Array.isArray(d.teaching_tip) ? d.teaching_tip.join(' ') : d.teaching_tip}</p>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+         `;
+        return;
+      }
+
       // Special case for table-only entries (like CSF differential)
       if (disease.table) {
-         diseaseContent.innerHTML = `
+        diseaseContent.innerHTML = `
             <div class="animate-fade-in">
               <div class="p-6 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
                 <div class="flex items-start gap-4">
@@ -1645,12 +1924,12 @@
               </div>
             </div>
          `;
-         return;
+        return;
       }
 
       const t = translations[currentLanguage];
       const sections = ['epidemiology', 'pathomechanism', 'clinical', 'diagnostics', 'differential', 'therapy', 'prognosis'];
-      
+
       const refs = disease.references || (disease.guidelines && disease.guidelines.references) || (disease.therapy && disease.therapy.guidelines && disease.therapy.guidelines.references);
       if (refs && refs.length > 0) {
         sections.push('references');
@@ -1696,7 +1975,7 @@
     // Render section content
     function renderSectionContent(disease, section) {
       const t = translations[currentLanguage];
-      switch(section) {
+      switch (section) {
         case 'epidemiology':
           return `
             <div class="space-y-4">
@@ -1980,45 +2259,45 @@
               </div>
               
               ${(() => {
-                const therapyGroupDetails = {
-                  cap_outpatient: { title: t.therapy_titles.cap_outpatient, icon: '🏠', color: 'green' },
-                  cap_inpatient: { title: t.therapy_titles.cap_inpatient, icon: '🏥', color: 'blue' },
-                  cap_icu: { title: t.therapy_titles.cap_icu, icon: '🚨', color: 'red' },
-                  hap_early: { title: t.therapy_titles.hap_early, icon: '🏢', color: 'amber' },
-                  hap_late_vap: { title: t.therapy_titles.hap_late_vap, icon: '🌬️', color: 'purple' },
-                  outpatient: { title: t.therapy_titles.outpatient, icon: '🏠', color: 'green' },
-                  inpatient: { title: t.therapy_titles.inpatient, icon: '🏥', color: 'blue' },
-                  icu: { title: t.therapy_titles.icu, icon: '🚨', color: 'red' }
-                };
+              const therapyGroupDetails = {
+                cap_outpatient: { title: t.therapy_titles.cap_outpatient, icon: '🏠', color: 'green' },
+                cap_inpatient: { title: t.therapy_titles.cap_inpatient, icon: '🏥', color: 'blue' },
+                cap_icu: { title: t.therapy_titles.cap_icu, icon: '🚨', color: 'red' },
+                hap_early: { title: t.therapy_titles.hap_early, icon: '🏢', color: 'amber' },
+                hap_late_vap: { title: t.therapy_titles.hap_late_vap, icon: '🌬️', color: 'purple' },
+                outpatient: { title: t.therapy_titles.outpatient, icon: '🏠', color: 'green' },
+                inpatient: { title: t.therapy_titles.inpatient, icon: '🏥', color: 'blue' },
+                icu: { title: t.therapy_titles.icu, icon: '🚨', color: 'red' }
+              };
 
-                const groupsToRender = [];
-                if (!disease.therapy.empirical) return '';
+              const groupsToRender = [];
+              if (!disease.therapy.empirical) return '';
 
-                Object.entries(disease.therapy.empirical).forEach(([key, value]) => {
-                    if (Array.isArray(value) && value.length > 0) {
-                        const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate', title: t.therapy_titles.default };
-                        groupsToRender.push({
-                            key: key,
-                            title: details.title,
-                            drugs: value,
-                            icon: details.icon,
-                            color: details.color
-                        });
-                    } else if (value && value.drugs && value.drugs.length > 0) {
-                        const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate' };
-                        groupsToRender.push({
-                            key: key,
-                            title: value.title || details.title || t.therapy_titles.default,
-                            drugs: value.drugs,
-                            icon: details.icon,
-                            color: details.color
-                        });
-                    }
-                });
+              Object.entries(disease.therapy.empirical).forEach(([key, value]) => {
+                if (Array.isArray(value) && value.length > 0) {
+                  const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate', title: t.therapy_titles.default };
+                  groupsToRender.push({
+                    key: key,
+                    title: details.title,
+                    drugs: value,
+                    icon: details.icon,
+                    color: details.color
+                  });
+                } else if (value && value.drugs && value.drugs.length > 0) {
+                  const details = therapyGroupDetails[key] || { icon: '💊', color: 'slate' };
+                  groupsToRender.push({
+                    key: key,
+                    title: value.title || details.title || t.therapy_titles.default,
+                    drugs: value.drugs,
+                    icon: details.icon,
+                    color: details.color
+                  });
+                }
+              });
 
-                return groupsToRender.map(group => {
-                  const colors = getTherapyColorClasses(group.color);
-                  return `
+              return groupsToRender.map(group => {
+                const colors = getTherapyColorClasses(group.color);
+                return `
                     <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm mb-4">
                       <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2 pb-2 border-b border-slate-100">
                         <span class="text-xl">${group.icon}</span> ${group.title}
@@ -2037,7 +2316,7 @@
                       </div>
                     </div>
                 `}).join('');
-              })()}
+            })()}
 
               <div class="grid gap-4 sm:grid-cols-2">
                 <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
@@ -2106,12 +2385,12 @@
                   <h3 class="font-semibold text-blue-800 mb-3">📋 ${t.label_prognostic_scores}</h3>
                   <div class="flex flex-wrap gap-2">
                     ${(disease.prognosis && disease.prognosis.prognostic_scores ? disease.prognosis.prognostic_scores : []).map(score => {
-                        const key = Object.keys(window.scoreCalculators).find(k => score.includes(k));
-                        if (key) {
-                            return `<button onclick="openScoreCalculator('${key}')" class="px-3 py-1.5 bg-white rounded-lg text-base text-blue-700 border border-blue-200 hover:bg-blue-50 transition-colors">${score}</button>`;
-                        }
-                        return `<span class="px-3 py-1.5 bg-slate-100 text-slate-600 rounded-lg text-base border border-slate-200">${score}</span>`;
-                    }).join('')}
+            const key = Object.keys(window.scoreCalculators).find(k => score.includes(k));
+            if (key) {
+              return `<button onclick="openScoreCalculator('${key}')" class="px-3 py-1.5 bg-white rounded-lg text-base text-blue-700 border border-blue-200 hover:bg-blue-50 transition-colors">${score}</button>`;
+            }
+            return `<span class="px-3 py-1.5 bg-slate-100 text-slate-600 rounded-lg text-base border border-slate-200">${score}</span>`;
+          }).join('')}
                   </div>
                 </div>
 
@@ -2129,18 +2408,18 @@
 
           const refsContent = `<ul class="list-disc list-inside space-y-2 text-base">
             ${refs.map(r => {
-              if (typeof r === 'string') {
-                const urlRegex = /(https?:\/\/[^\s]+)/g;
-                const urlMatch = r.match(urlRegex);
-                if (urlMatch) {
-                    const url = urlMatch[0];
-                    const text = r.replace(url, '').trim().replace(/:$/, '');
-                    return `<li><a href="${url}" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline">${text || url}</a></li>`;
-                }
-                return `<li>${r}</li>`;
+            if (typeof r === 'string') {
+              const urlRegex = /(https?:\/\/[^\s]+)/g;
+              const urlMatch = r.match(urlRegex);
+              if (urlMatch) {
+                const url = urlMatch[0];
+                const text = r.replace(url, '').trim().replace(/:$/, '');
+                return `<li><a href="${url}" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline">${text || url}</a></li>`;
               }
-              return `<li><a href="${r.url}" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline">${r.text}</a></li>`;
-            }).join('')}
+              return `<li>${r}</li>`;
+            }
+            return `<li><a href="${r.url}" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline">${r.text}</a></li>`;
+          }).join('')}
           </ul>`;
 
           return `
@@ -2184,7 +2463,7 @@
       const t = translations[currentLanguage];
       const query = e.target.value.toLowerCase();
       // Debug: log queries and language to console to help debugging DE search
-      try { console.log('[search] lang=', currentLanguage, 'query=', query); } catch (err) {}
+      try { console.log('[search] lang=', currentLanguage, 'query=', query); } catch (err) { }
       if (!query) {
         renderCategories();
         renderDiseaseList();
@@ -2215,7 +2494,7 @@
           <p class="text-xs text-emerald-600 mt-1">${disease.categoryName}</p>
         </button>
       `).join('') : `<p class="text-slate-500 text-sm text-center py-8">${t.no_results}</p>`;
-      
+
       categoryTitle.textContent = t.search_results;
       diseaseCount.textContent = `${results.length} ${t.label_results}`;
     });
@@ -2230,16 +2509,36 @@
     function normalizeDiseases() {
       if (!window.diseases) return;
       Object.entries(window.diseases).forEach(([catKey, category]) => {
+        // Prepend didactics if present
+        if (category.didactics) {
+          const didacticsId = `didactics-${catKey}`;
+          const exists = category.diseases && category.diseases.some(d => d.id === didacticsId);
+          if (!exists) {
+            const titleMap = {
+              hu: 'Didaktika / Áttekintés',
+              en: 'Didactics / Overview',
+              de: 'Didaktik / Übersicht'
+            };
+            const didacticsEntry = {
+              id: didacticsId,
+              name: titleMap[currentLanguage] || 'Didaktika',
+              didactics: category.didactics,
+              pathogen: null
+            };
+            category.diseases = [didacticsEntry, ...(category.diseases || [])];
+          }
+        }
+
         // Merge tables into diseases if present (e.g. Gastro, Hepatitis)
         if (category.tables && Array.isArray(category.tables)) {
-            const tableEntries = category.tables.map((table, index) => ({
-                id: `table-${catKey}-${index}`,
-                name: table.title,
-                table: table,
-                pathogen: null
-            }));
-            category.diseases = [...tableEntries, ...(category.diseases || [])];
-            delete category.tables;
+          const tableEntries = category.tables.map((table, index) => ({
+            id: `table-${catKey}-${index}`,
+            name: table.title,
+            table: table,
+            pathogen: null
+          }));
+          category.diseases = [...tableEntries, ...(category.diseases || [])];
+          delete category.tables;
         }
 
         category.diseases = category.diseases || [];
@@ -2277,10 +2576,10 @@
     // Config change handler
     async function onConfigChange(newConfig) {
       config = { ...defaultConfig, ...newConfig };
-      
+
       const titleEl = document.getElementById('main-title');
       const subtitleEl = document.getElementById('main-subtitle');
-      
+
       if (titleEl) titleEl.textContent = config.app_title || defaultConfig.app_title;
       if (subtitleEl) subtitleEl.textContent = config.subtitle || defaultConfig.subtitle;
     }
@@ -2304,28 +2603,32 @@
     }
 
     // Close modal on outside click
-    document.getElementById('score-modal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeScoreModal();
-        }
+    document.getElementById('score-modal').addEventListener('click', function (e) {
+      if (e.target === this) {
+        closeScoreModal();
+      }
     });
-    document.getElementById('feedback-modal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeFeedbackModal();
-        }
+    document.getElementById('feedback-modal').addEventListener('click', function (e) {
+      if (e.target === this) {
+        closeFeedbackModal();
+      }
     });
 
     init();
   </script>
   <script>
-    if ('serviceWorker' in navigator) {
+    // Guard direct ServiceWorker registration when running from file://
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:' || location.hostname === 'localhost')) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').then(registration => {
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, err => {
+        }).catch(err => {
           console.log('ServiceWorker registration failed: ', err);
         });
       });
+    } else {
+      console.warn('Skipping ServiceWorker registration due to unsupported origin at index.html:', location.protocol, location.hostname);
     }
   </script>
+
 </html>

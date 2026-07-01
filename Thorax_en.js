@@ -180,6 +180,91 @@ Object.assign(window.diseases, {
             ]
           },
           {
+            id: 'mediastinitis',
+            name: 'Mediastinitis',
+            pathogen: { type: 'Bacterium', name: 'Polymicrobial, often <i>Staphylococcus aureus</i>, streptococci, gram-negative organisms, anaerobes', gram: 'Mixed', shape: 'Variable' },
+            epidemiology: {
+              incidence: 'Rare but severe complication',
+              risk_groups: ['Postoperative patients', 'After endoscopic procedures', 'Oropharyngeal infections', 'Trauma', 'Odontogenic infections', 'Immunosuppression'],
+              seasonality: 'None',
+              transmission: 'Not directly contagious; spreads from adjacent tissues, surgery, or endoscopy'
+            },
+            pathomechanism: {
+              steps: [
+                'The mediastinum can become infected from adjacent tissues (e.g., throat, esophagus, tooth, chest wall), after endoscopy, surgery, or trauma.',
+                'Bacterial spread causes inflammation, tissue necrosis, and abscess formation in the mediastinum.',
+                'The process can lead to plastic inflammation, cell death, and a systemic inflammatory response that results in sepsis, shock, and multi-organ failure.'
+              ],
+              virulence_factors: ['Biofilm', 'Toxins', 'Polymicrobial community', 'Tissue necrosis']
+            },
+            clinical: {
+              incubation: 'Variable, often several days to weeks',
+              onset: 'Acute or subacute',
+              symptoms: [
+                { name: 'Chest pain', description: 'Main symptom, often severe and intense, sometimes with dysphagia', severity: 'severe' },
+                { name: 'Fever and malaise', description: 'Inflammatory condition with tachycardia and fever', severity: 'severe' },
+                { name: 'Dysphagia / hoarseness', description: 'If the esophagus, larynx, or surrounding mediastinal space is involved', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Fever, tachycardia, leukocytosis',
+                'Neck or supraclavicular swelling',
+                'Chest pain, dysphagia',
+                'In severe cases hypotension and sepsis signs'
+              ],
+              complications: ['Septic shock', 'Mediastinal abscess', 'Esophageal perforation', 'Aortic or major vessel involvement', 'Pulmonary or pleural complications', 'Death']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CBC, CRP, PCT', finding: 'Inflammation, often high PCT', interpretation: 'Severe inflammation/infection' },
+                { test: 'Blood culture', finding: 'May be positive', interpretation: 'Sepsis or hematogenous spread suspected' }
+              ],
+              imaging: [
+                { modality: 'CT chest/neck', finding: 'Mediastinal soft-tissue swelling, abscess, gas, fluid', significance: 'Most important imaging' },
+                { modality: 'Chest X-ray', finding: 'Mediastinal widening, sometimes pleural effusion', significance: 'First step, but less specific' }
+              ],
+              microbiology: [
+                { test: 'Surgical/bronchoscopic samples', finding: 'Culture and PCR', significance: 'Targeted therapy and resistance' }
+              ]
+            },
+            differential: [
+              { disease: 'Pneumonia', distinguishing: 'Pulmonary parenchymal focus, less mediastinal' },
+              { disease: 'Aortic dissection / mediastinal bleeding', distinguishing: 'Distinguishable with appropriate imaging' },
+              { disease: 'Pleuritis / empyema', distinguishing: 'Pleural and fluid focus, not primary mediastinal infection' }
+            ],
+            therapy: {
+              empirical: {
+                inpatient: [
+                  { drug: 'Piperacillin/tazobactam', dose: '4.5g IV q8h', duration: 'Hospital/IV', note: 'Broad spectrum, often first choice' },
+                  { drug: '+ Vancomycin', dose: '15-20 mg/kg IV q12h', duration: '', note: 'MRSA coverage' },
+                  { drug: '+ Clindamycin or Metronidazole', dose: '600mg IV q8h', duration: '', note: 'Anaerobic coverage' }
+                ],
+                icu: [
+                  { drug: 'Meropenem', dose: '1g IV q8h', duration: '', note: 'Severe, critical condition' },
+                  { drug: '+ Vancomycin', dose: '15-20 mg/kg IV q12h', duration: '', note: 'MRSA/G+ coverage' }
+                ]
+              },
+              targeted: 'Adjusted based on culture and susceptibility; source control and surgical drainage are decisive.',
+              supportive: ['Urgent surgical consultation', 'IV fluids', 'Vasopressors in severe sepsis', 'Nutrition', 'Respiratory support'],
+              prevention: ['Antibiotic prophylaxis before procedures', 'Hygienic surgical technique', 'Treatment of dental and throat infections']
+            },
+            guidelines: {
+              diagnosis: [
+                'CT chest/neck is the key examination; clinical suspicion and imaging together determine the diagnosis.'
+              ],
+              treatment_indications: [
+                'Any suspected mediastinitis requires urgent hospital care; surgical debridement/drainage is often necessary.'
+              ],
+              first_line: [
+                'Broad-spectrum IV antibiotics plus surgical source control.'
+              ]
+            },
+            prognosis: {
+              mortality: 'High, especially if diagnosed late or associated with sepsis',
+              prognostic_scores: ['No single score'],
+              factors: 'Late diagnosis, immunosuppression, severity of the underlying disease, vascular involvement'
+            }
+          },
+          {
             id: 'tuberculosis',
             name: 'Pulmonary Tuberculosis',
             pathogen: { type: 'Mycobacterium', name: '<i>Mycobacterium tuberculosis</i>', gram: 'Acid-fast (Ziehl-Neelsen+)', shape: 'rod' },
@@ -720,197 +805,7 @@ Object.assign(window.diseases, {
           }
         ]
       },
-      viral_respiratory: {
-        name: 'Viral Respiratory Infections',
-        icon: window.diseaseMetadata.viral_respiratory.icon,
-        color: window.diseaseMetadata.viral_respiratory.color,
-        diseases: [
-          {
-            id: 'influenza',
-            name: 'Influenza',
-            pathogen: { type: 'Virus', name: '<i>Influenza A/B/C virus</i>', gram: 'RNA virus, Orthomyxoviridae', shape: 'helical' },
-            epidemiology: {
-              incidence: 'Seasonal epidemic: 5-20% of population/year, pandemics: up to 50%',
-              risk_groups: ['Elderly (>65)', 'Children (<5)', 'Pregnant women', 'Patients with chronic diseases', 'Healthcare workers', 'Immunocompromised'],
-              seasonality: 'November-March (northern hemisphere)',
-              transmission: 'Droplet, contact (1-2 meters), fomites'
-            },
-            pathomechanism: {
-              steps: [
-                'The virus uses its hemagglutinin (HA) to bind to respiratory epithelial cells and enter them.',
-                'It replicates within the cell and then uses neuraminidase (NA) to be released and infect new cells.',
-                'The viral infection leads to the destruction of respiratory epithelial cells and damage to the cilia, impairing airway clearance.',
-                'The body\'s strong immune response (cytokine storm) causes systemic symptoms like fever and muscle pain.'
-              ],
-              virulence_factors: ['Hemagglutinin (H1-18)', 'Neuraminidase (N1-11)', 'NS1 protein (IFN antagonist)', 'PB1-F2 (pro-apoptotic)']
-            },
-            clinical: {
-              incubation: '1-4 days (average 2 days)',
-              onset: 'Sudden',
-              symptoms: [
-                { name: 'Sudden Onset', description: 'Begins with a high fever (>38°C), chills, severe headache, and muscle pain (myalgia).', severity: 'severe' },
-                { name: 'Respiratory Symptoms', description: 'A dry, hacking cough and sore throat are characteristic.', severity: 'moderate' },
-                { name: 'Constitutional Symptoms', description: 'Marked weakness, malaise (prostration), and loss of appetite.', severity: 'moderate' }
-              ],
-              physical_exam: [
-                'Febrile, ill-appearing',
-                'Conjunctivitis',
-                'Pharyngeal hyperemia',
-                'Clear lung auscultation (uncomplicated)',
-                'Tachycardia'
-              ],
-              complications: ['Primary influenza pneumonia', 'Secondary bacterial pneumonia', 'Myocarditis', 'Encephalitis', 'Reye\'s syndrome (aspirin!)', 'Myositis']
-            },
-            diagnostics: {
-              laboratory: [
-                { test: 'CBC', finding: 'Leukopenia or normal, lymphopenia', interpretation: 'Typical for viral infection' },
-                { test: 'CRP', finding: 'Moderately elevated', interpretation: 'Lower than in bacterial' },
-                { test: 'PCT', finding: 'Normal (<0.25)', interpretation: 'Exclusion of bacterial superinfection' }
-              ],
-              imaging: [
-                { modality: 'Chest X-ray', finding: 'Normal or interstitial pattern', significance: 'Exclusion of pneumonia' },
-                { modality: 'CT', finding: 'Ground-glass opacities', significance: 'Viral pneumonia' }
-              ],
-              microbiology: [
-                { test: 'Rapid antigen test (RAT)', finding: 'Influenza A/B', significance: 'Fast (15 min), low sensitivity (50-70%)' },
-                { test: 'RT-PCR', finding: 'Viral RNA detection', significance: 'Gold standard, subtyping' },
-                { test: 'Virus culture', finding: 'Isolation', significance: 'Epidemiological/surveillance' }
-              ]
-            },
-            differential: [
-              { disease: 'COVID-19', distinguishing: 'Loss of smell/taste, PCR' },
-              { disease: 'RSV infection', distinguishing: 'Children, elderly, bronchiolitis' },
-              { disease: 'Adenovirus infection', distinguishing: 'Conjunctivitis, pharyngitis, longer febrile period' },
-              { disease: 'Bacterial pneumonia', distinguishing: 'Productive sputum, localized findings, high PCT' }
-            ],
-            therapy: {
-              empirical: {
-                outpatient: [
-                  { drug: 'Oseltamivir', dose: '2x75mg PO', duration: '5 days', note: 'Within 48 hours of symptom onset!' },
-                  { drug: 'Baloxavir', dose: '1x40-80mg PO', duration: 'Single dose', note: '>80kg: 80mg' }
-                ],
-                inpatient: [
-                  { drug: 'Oseltamivir', dose: '2x75mg PO/NG', duration: '5-10 days', note: 'Longer in severe cases' },
-                  { drug: 'Peramivir', dose: '1x600mg IV', duration: 'Single or repeated', note: 'If PO not tolerated' }
-                ],
-                icu: [
-                  { drug: 'Oseltamivir', dose: '2x150mg PO/NG', duration: '10 days', note: 'Higher dose may be considered' },
-                  { drug: '+ Empiric AB', dose: 'CAP coverage', duration: '', note: 'Bacterial superinfection' }
-                ]
-              },
-              targeted: 'Neuraminidase inhibitors (oseltamivir, zanamivir, peramivir) or cap-dependent endonuclease inhibitor (baloxavir)',
-              supportive: ['Antipyretics (paracetamol!)', 'Fluid resuscitation', 'Oxygen', 'Ventilation for ARDS'],
-              prevention: ['Annual influenza vaccine', 'Hand hygiene', 'Patient isolation', 'Chemoprophylaxis (oseltamivir 1x75mg)']
-            },
-            prognosis: {
-              mortality: 'Overall 0.1%, >65 years 1-2%, pandemic strain higher',
-              prognostic_scores: ['None specific'],
-              factors: 'Age, comorbidity, virus subtype, vaccination status'
-            },
-            gallery: [
-              {
-                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Influenza_A_virus_particle.jpg',
-                caption: 'Influenza A virus particle (electron microscopy).',
-                type: 'Microscopy'
-              }
-            ]
-          },
-          {
-            id: 'covid19',
-            name: 'COVID-19',
-            pathogen: { type: 'Virus', name: '<i>SARS-CoV-2</i>', gram: 'RNA virus, Coronaviridae', shape: 'spherical, with spike proteins' },
-            epidemiology: {
-              incidence: 'Pandemic from 2020, becoming endemic',
-              risk_groups: ['Elderly (>65)', 'Patients with obesity (BMI>30)', 'Diabetes', 'Cardiovascular disease', 'Immunocompromised', 'Chronic lung disease'],
-              seasonality: 'Winter peak, but year-round',
-              transmission: 'Respiratory (aerosol + droplet), contact, fecal-oral rare'
-            },
-            pathomechanism: {
-              steps: [
-                'The virus uses its Spike (S) protein to bind to the ACE2 receptor on the surface of cells, which is found in many organs (lungs, heart, vessels, gut).',
-                'After entry, the virus replicates within the cell (viral phase).',
-                'In severe cases, an excessive immune response, the so-called cytokine storm, can develop in the second week of the disease.',
-                'This hyperinflammation leads to systemic endothelial damage, microthrombosis, and, in the lungs, acute respiratory distress syndrome (ARDS), which is the basis of the severe course.'
-              ],
-              virulence_factors: ['Spike protein', 'NSP1 (host shutdown)', 'ORF8 (immunomodulation)', 'Nucleocapsid']
-            },
-            clinical: {
-              incubation: '2-14 days (median 5 days, Omicron 3 days)',
-              onset: 'Variable',
-              symptoms: [
-                { name: 'Common Symptoms', description: 'Fever, dry cough, fatigue, and muscle pain (myalgia).', severity: 'moderate' },
-                { name: 'Characteristic Symptoms', description: 'Loss of smell and taste (anosmia, dysgeusia) can be an early, specific sign.', severity: 'mild' },
-                { name: 'Severe Symptoms', description: 'Shortness of breath (dyspnea), chest pain, and hypoxemia (low blood oxygen), which can lead to ARDS.', severity: 'severe' }
-              ],
-              physical_exam: [
-                'Fever, tachypnea',
-                'Decreased SpO2 (silent hypoxia!)',
-                'Bilateral crepitation',
-                'Tachycardia',
-                'No specific physical sign'
-              ],
-              complications: ['ARDS', 'Pulmonary embolism', 'Myocarditis', 'Acute kidney injury', 'Stroke', 'MIS-C (children)', 'Long COVID']
-            },
-            diagnostics: {
-              laboratory: [
-                { test: 'CBC', finding: 'Lymphopenia, normal/decreased platelets', interpretation: 'Marker of severity' },
-                { test: 'D-dimer', finding: 'Elevated', interpretation: 'Thrombotic risk, poor prognosis' },
-                { test: 'Ferritin', finding: 'Elevated', interpretation: 'Marker of cytokine storm' },
-                { test: 'CRP/IL-6', finding: 'Elevated', interpretation: 'Degree of inflammation' },
-                { test: 'LDH, troponin', finding: 'Elevated in severe cases', interpretation: 'Tissue damage' }
-              ],
-              imaging: [
-                { modality: 'Chest X-ray', finding: 'Bilateral peripheral infiltrates', significance: 'Less sensitive' },
-                { modality: 'Chest CT', finding: 'Ground-glass opacities, crazy paving, consolidation', significance: 'Characteristic pattern' }
-              ],
-              microbiology: [
-                { test: 'RT-PCR (nasopharynx/oropharynx)', finding: 'SARS-CoV-2 RNA', significance: 'Gold standard, Ct value' },
-                { test: 'Rapid antigen test', finding: 'Nucleocapsid protein', significance: 'Fast, indicates infectiousness' },
-                { test: 'Serology', finding: 'Anti-S, Anti-N IgG/IgM', significance: 'Past infection, vaccine efficacy' }
-              ]
-            },
-            differential: [
-              { disease: 'Influenza', distinguishing: 'Faster course, myalgia dominates, PCR' },
-              { disease: 'Bacterial pneumonia', distinguishing: 'High PCT, lobar infiltrate' },
-              { disease: 'Heart failure', distinguishing: 'Cardiac history, BNP, bilateral' },
-              { disease: 'Pulmonary embolism', distinguishing: 'D-dimer, CTPA' }
-            ],
-            therapy: {
-              empirical: {
-                outpatient: [
-                  { drug: 'Paxlovid (nirmatrelvir/ritonavir)', dose: '2x300/100mg PO', duration: '5 days', note: 'Early, high-risk, interactions!' },
-                  { drug: 'Molnupiravir', dose: '2x800mg PO', duration: '5 days', note: 'Alternative if Paxlovid is contraindicated' }
-                ],
-                inpatient: [
-                  { drug: 'Remdesivir', dose: '200mg IV D1, then 100mg/day', duration: '5 days (max 10)', note: 'If O2 is needed' },
-                  { drug: 'Dexamethasone', dose: '6mg/day IV/PO', duration: '10 days', note: 'Only with O2 need/ventilation!' }
-                ],
-                icu: [
-                  { drug: 'Dexamethasone', dose: '6-20mg/day', duration: '10 days', note: 'Cytokine storm' },
-                  { drug: 'Tocilizumab', dose: '8mg/kg IV single dose', duration: '', note: 'IL-6 inhibitor, rapidly deteriorating' },
-                  { drug: 'LMWH', dose: 'Therapeutic dose', duration: '', note: 'Thromboprophylaxis/therapy' }
-                ]
-              },
-              targeted: 'Antiviral (Paxlovid, Remdesivir) early; Immunomodulatory (steroid, tocilizumab) in hypoxic phase',
-              supportive: ['Oxygen (prone positioning!)', 'HFNC/NIV', 'Invasive ventilation', 'ECMO'],
-              prevention: ['mRNA vaccines (Pfizer, Moderna)', 'Hand hygiene', 'Mask wearing', 'Isolation']
-            },
-            prognosis: {
-              mortality: 'Omicron <1%, previously 2-5%, ICU 20-40%',
-              prognostic_scores: ['4C Mortality Score', 'NEWS2'],
-              factors: 'Age, comorbidity, lymphopenia, D-dimer, ferritin, vaccination status'
-            },
-            gallery: [
-              {
-                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/SARS-CoV-2_without_background.png',
-                caption: 'SARS-CoV-2 virus model.',
-                type: 'Virology'
-              }
-            ]
-          }
-        ]
-      },
-           cardiovascular: {
+      cardiovascular: {
         name: 'Cardiovascular Infections',
         icon: window.diseaseMetadata.cardiovascular.icon,
         color: window.diseaseMetadata.cardiovascular.color,
@@ -1035,6 +930,89 @@ Object.assign(window.diseases, {
                 url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Endocarditis_ultrasound.JPG',
                 caption: 'Echocardiographic image of endocarditis vegetation.',
                 type: 'Echocardiography'
+              }
+            ]
+          },
+          {
+            id: 'cied',
+            name: 'CIED infection (pacemaker/ICD/CRT)',
+            pathogen: { type: 'Bacterium', name: '<i>Staphylococcus aureus, coagulase-negative staphylococci (e.g. S. epidermidis), Cutibacterium acnes</i>', gram: 'Gram-positive', shape: 'coccus/rod' },
+            epidemiology: {
+              incidence: '~1-10/1000 implantations/year (institution-dependent)',
+              risk_groups: ['Implanted pacemaker/ICD/CRT', 'Previous infection', 'Diabetes', 'Immunosuppression', 'Skin infection, catheter', 'Poor tissue reaction in the pocket'],
+              seasonality: 'None',
+              transmission: 'Hematogenous/contiguous spread, contamination at implantation or later'
+            },
+            pathomechanism: {
+              steps: [
+                'A biofilm forms on the lead structures and the subcutaneous pocket surface.',
+                'The bacteria can invade the surrounding tissue and trigger an inflammatory reaction around the leads.',
+                'The infection can spread from the pocket to the leads, adjacent tissue, and occasionally to endocarditis.',
+                'Because of the biofilm, pathogens become resistant to bactericidal agents and surgical cleaning.'
+              ],
+              virulence_factors: ['Biofilm formation', 'Adhesion proteins', 'Toxins, superantigens']
+            },
+            clinical: {
+              incubation: 'Days to weeks',
+              onset: 'Acute or subacute',
+              symptoms: [
+                { name: 'Pocket infection', description: 'Erythema, swelling, pain, or drainage in the pacemaker/ICD pocket.', severity: 'moderate' },
+                { name: 'Systemic symptoms', description: 'Fever, chills, fatigue, weight loss, or septic status.', severity: 'severe' },
+                { name: 'Lead/endocardial symptoms', description: 'Infection involving the leads is often associated with lead failure, a new murmur, or migration of the leads.', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Pocket erythema, swelling, purulence',
+                'Fever',
+                'Septic status',
+                'New heart murmur or hemodynamic instability'
+              ],
+              complications: ['Septic emboli', 'Endocarditis', 'Poor healing, lead dysfunction', 'Sepsis']
+            },
+            diagnostics: {
+              criteria: [
+                { name: 'Clinical suspicion', items: ['Pocket infection, lead or generator infection', 'Fever, positive culture', 'Elevated CRP/ESR', 'Septic status'] },
+                { name: 'Laboratory', items: ['Blood cultures (at least 2 sets)', 'CRP/ESR', 'CBC'] },
+                { name: 'Imaging', items: ['Pocket ultrasound/CT/MRI', 'TTE/TEE if endocarditis is suspected', 'PET/CT if the spread is unclear'] }
+              ],
+              laboratory: [
+                { test: 'Blood culture', finding: 'Positive', interpretation: 'Identification of the pathogen is essential' },
+                { test: 'CRP/ESR', finding: 'Elevated', interpretation: 'Inflammation/infection' },
+                { test: 'CBC', finding: 'Leukocytosis', interpretation: 'Septic pattern' }
+              ],
+              imaging: [
+                { modality: 'Pocket ultrasound / CT', finding: 'Abscess, fluid, tissue inflammation', significance: 'Confirm local infection' },
+                { modality: 'TTE/TEE', finding: 'Vegetation, lead attachment, abscess', significance: 'Assess endocardial spread' }
+              ],
+              microbiology: [
+                { test: 'Aspiration / culture of removed device', finding: 'Pathogen isolated', significance: 'Basis for therapy and reimplantation' }
+              ]
+            },
+            differential: [
+              { disease: 'Skin infection / postoperative inflammation', distinguishing: 'No purulence, no pathogen, quicker healing' },
+              { disease: 'Endocarditis', distinguishing: 'Cardiac symptoms/vegetation, positive echocardiography' }
+            ],
+            therapy: {
+              guidelines: ['EHRA 2024 CIED infection guidelines', 'ESC 2023 infective endocarditis guideline'],
+              empirical: {
+                title: 'Empiric therapy',
+                drugs: [
+                  { drug: 'Vancomycin + Gentamicin + Rifampicin', dose: '30-60mg/kg + 3mg/kg + 900-1200mg IV/PO', duration: 'Induction treatment; definitive therapy after culture', note: 'If device infection is suspected, a combination is required because of the biofilm.' }
+                ]
+              },
+              targeted: 'Depending on the pathogen, therapy can be directed against staphylococci, Gram-negatives, or Cutibacterium. Complete device removal and pocket reconstruction are often necessary.',
+              supportive: ['Management of septic status', 'Planning lead removal/reimplantation', 'Antibiotic prophylaxis before procedures if necessary'],
+              prevention: ['Oral hygiene, treatment of skin infections', 'Asepsis during implantation procedures', 'Correction of risk factors']
+            },
+            prognosis: {
+              mortality: 'Higher in severe cases, especially with sepsis/endocarditis',
+              prognostic_scores: ['None specific'],
+              factors: 'S. aureus, late infection, diabetes, immunosuppression, lead failure'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pacemaker_implantation.jpg',
+                caption: 'Pacemaker implantation and leads.',
+                type: 'Imaging'
               }
             ]
           },
@@ -1300,6 +1278,161 @@ Object.assign(window.diseases, {
             ]
           },
           {
+            id: 'laryngitis',
+            name: 'Laryngitis',
+            pathogen: { type: 'Virus/bacteria', name: '<i>Rhinovirus, Parainfluenza, Adenovirus</i>; in bacterial cases <i>Streptococcus pyogenes, Streptococcus pneumoniae, Haemophilus influenzae</i>', gram: 'Virus/bacteria', shape: 'variable' },
+            epidemiology: {
+              incidence: 'Common, especially in cold seasons',
+              risk_groups: ['Children', 'Singers', 'Smokers', 'Immunocompromised'],
+              seasonality: 'Autumn-winter',
+              transmission: 'Droplet, contact'
+            },
+            pathomechanism: {
+              steps: [
+                'Viruses or bacteria trigger inflammation of the laryngeal mucosa.',
+                'The inflammation causes edema, which leads to voice changes.',
+                'In severe cases, edema of the subglottic region can cause airway narrowing and stridor.'
+              ],
+              virulence_factors: ['Local inflammation', 'Mucosal barrier injury', 'Toxins in bacterial cases']
+            },
+            clinical: {
+              incubation: '1-3 days',
+              onset: 'Gradual',
+              symptoms: [
+                { name: 'Voice disturbance', description: 'Hoarseness, altered voice, or complete loss of voice.', severity: 'moderate' },
+                { name: 'Throat and cough symptoms', description: 'Sore throat, dry cough, and upper airway symptoms.', severity: 'moderate' },
+                { name: 'Airway symptoms', description: 'In severe cases, stridor and dyspnea.', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Hoarseness',
+                'Hyperemia of the laryngeal mucosa',
+                'Stridor in severe disease',
+                'Fever may be present'
+              ],
+              complications: ['Chronic laryngitis', 'Airway narrowing', 'Secondary bacterial infection']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Throat culture', finding: 'If bacteria are present', interpretation: 'For bacterial etiology' }
+              ],
+              imaging: [
+                { modality: 'Not needed', finding: '-', interpretation: 'Clinical diagnosis' }
+              ],
+              microbiology: [
+                { test: 'PCR / culture', finding: 'Etiology', significance: 'If therapy adjustment is needed' }
+              ]
+            },
+            differential: [
+              { disease: 'Epiglottitis', distinguishing: 'Acute respiratory distress, significant swallowing difficulty' },
+              { disease: 'Airway allergy', distinguishing: 'Pruritus, urticaria, allergic history' },
+              { disease: 'Vocal overuse', distinguishing: 'No infection, normal temperature' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Supportive treatment', dose: '-', duration: '3-7 days', note: 'Rest, voice rest, humidified air' },
+                  { drug: 'Antibiotic', dose: 'Amoxicillin/clavulanate', duration: '5-7 days', note: 'If bacterial infection is suspected' }
+                ],
+                inpatient: [
+                  { drug: 'IV antibiotic', dose: 'Ampicillin/sulbactam or ceftriaxone', duration: '3-5 days', note: 'Severe disease or airway symptoms' }
+                ],
+                icu: [
+                  { drug: 'Airway protection', dose: '-', duration: '-', note: 'If stridor/obstruction is present' }
+                ]
+              },
+              targeted: 'Targeted antibiotic therapy based on culture if bacterial',
+              supportive: ['Rest', 'Voice rest', 'Fluid intake', 'Oxygen if needed'],
+              prevention: ['Hand hygiene', 'Smoking cessation', 'Treatment of infections']
+            },
+            prognosis: {
+              mortality: 'Very low',
+              prognostic_scores: ['None'],
+              factors: 'Age, smoking, recurrent infections'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Larynx.jpg',
+                caption: 'Inflammation of the laryngeal mucosa.',
+                type: 'Anatomy'
+              }
+            ]
+          },
+          {
+            id: 'epiglottitis',
+            name: 'Epiglottitis',
+            pathogen: { type: 'Bacterium', name: '<i>Haemophilus influenzae</i> type b (most common), <i>Streptococcus pyogenes, Streptococcus pneumoniae</i>', gram: 'Gram-negative/positive', shape: 'rod/coccus' },
+            epidemiology: {
+              incidence: 'Rare but life-threatening',
+              risk_groups: ['Children', 'Unvaccinated', 'Immunocompromised'],
+              seasonality: 'Year-round',
+              transmission: 'Droplet infection'
+            },
+            pathomechanism: {
+              steps: [
+                'The pathogen infects the pharyngeal mucosa and rapidly causes severe inflammation of the epiglottis.',
+                'The edema can lead to rapid closure of the upper airway.',
+                'The patient requires urgent care because of dyspnea, stridor, and swallowing difficulty.'
+              ],
+              virulence_factors: ['Capsule', 'Adhesins', 'Toxins']
+            },
+            clinical: {
+              incubation: 'Several hours to 1 day',
+              onset: 'Sudden',
+              symptoms: [
+                { name: 'Acute respiratory distress', description: 'Sudden shortness of breath, stridor, dysphagia, and drooling.', severity: 'severe' },
+                { name: 'Fever and constitutional symptoms', description: 'Fever, chills, and general malaise.', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Tripod position',
+                'Stridor',
+                'Dysphagia',
+                'Tachypnea'
+              ],
+              complications: ['Airway obstruction', 'Sepsis', 'Respiratory failure']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blood culture', finding: 'May be positive', interpretation: 'Severe bacterial infection' }
+              ],
+              imaging: [
+                { modality: 'Laryngoscopy / lateral neck X-ray', finding: 'Swelling of the epiglottis', significance: 'Diagnosis' }
+              ],
+              microbiology: [
+                { test: 'Throat / blood culture', finding: 'Pathogen', significance: 'Guide therapy' }
+              ]
+            },
+            differential: [
+              { disease: 'Laryngitis', distinguishing: 'Less severe, no significant airway narrowing' },
+              { disease: 'Peritonsillar abscess', distinguishing: 'Painful throat, displaced uvula, pharyngeal ulcer' },
+              { disease: 'Anaphylaxis', distinguishing: 'Urticaria, angioedema, bronchial obstruction' }
+            ],
+            therapy: {
+              empirical: {
+                inpatient: [
+                  { drug: 'Third-generation cephalosporin + vancomycin', dose: 'IV', duration: '7-10 days', note: 'Emergency hospital treatment' }
+                ],
+                icu: [
+                  { drug: 'Airway protection', dose: '-', duration: '-', note: 'In severe obstruction' }
+                ]
+              },
+              targeted: 'Targeted antibiotic therapy based on culture',
+              supportive: ['Urgent airway management', 'IV antibiotics', 'Oxygen'],
+              prevention: ['Hib vaccination', 'Hand hygiene']
+            },
+            prognosis: {
+              mortality: 'Low with appropriate treatment',
+              prognostic_scores: ['None'],
+              factors: 'Delayed treatment, childhood, immunodeficiency'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Epiglottis.jpg',
+                caption: 'Acute inflammation of the epiglottis.',
+                type: 'Anatomy'
+              }
+            ]
+          },
+          {
             id: 'rsv_infection',
             name: 'RSV Infection (Respiratory Syncytial Virus)',
             pathogen: { type: 'Virus', name: '<i>Human Respiratory Syncytial Virus</i> (HRSV)', gram: 'RNA virus, Pneumoviridae', shape: 'helical' },
@@ -1379,6 +1512,189 @@ Object.assign(window.diseases, {
               }
             ]
           },
+                    {
+            id: 'influenza',
+            name: 'Influenza',
+            pathogen: { type: 'Virus', name: '<i>Influenza A/B/C virus</i>', gram: 'RNA virus, Orthomyxoviridae', shape: 'helical' },
+            epidemiology: {
+              incidence: 'Seasonal epidemic: 5-20% of population/year, pandemics: up to 50%',
+              risk_groups: ['Elderly (>65)', 'Children (<5)', 'Pregnant women', 'Patients with chronic diseases', 'Healthcare workers', 'Immunocompromised'],
+              seasonality: 'November-March (northern hemisphere)',
+              transmission: 'Droplet, contact (1-2 meters), fomites'
+            },
+            pathomechanism: {
+              steps: [
+                'The virus uses its hemagglutinin (HA) to bind to respiratory epithelial cells and enter them.',
+                'It replicates within the cell and then uses neuraminidase (NA) to be released and infect new cells.',
+                'The viral infection leads to the destruction of respiratory epithelial cells and damage to the cilia, impairing airway clearance.',
+                'The body\'s strong immune response (cytokine storm) causes systemic symptoms like fever and muscle pain.'
+              ],
+              virulence_factors: ['Hemagglutinin (H1-18)', 'Neuraminidase (N1-11)', 'NS1 protein (IFN antagonist)', 'PB1-F2 (pro-apoptotic)']
+            },
+            clinical: {
+              incubation: '1-4 days (average 2 days)',
+              onset: 'Sudden',
+              symptoms: [
+                { name: 'Sudden Onset', description: 'Begins with a high fever (>38°C), chills, severe headache, and muscle pain (myalgia).', severity: 'severe' },
+                { name: 'Respiratory Symptoms', description: 'A dry, hacking cough and sore throat are characteristic.', severity: 'moderate' },
+                { name: 'Constitutional Symptoms', description: 'Marked weakness, malaise (prostration), and loss of appetite.', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Febrile, ill-appearing',
+                'Conjunctivitis',
+                'Pharyngeal hyperemia',
+                'Clear lung auscultation (uncomplicated)',
+                'Tachycardia'
+              ],
+              complications: ['Primary influenza pneumonia', 'Secondary bacterial pneumonia', 'Myocarditis', 'Encephalitis', 'Reye\'s syndrome (aspirin!)', 'Myositis']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CBC', finding: 'Leukopenia or normal, lymphopenia', interpretation: 'Typical for viral infection' },
+                { test: 'CRP', finding: 'Moderately elevated', interpretation: 'Lower than in bacterial' },
+                { test: 'PCT', finding: 'Normal (<0.25)', interpretation: 'Exclusion of bacterial superinfection' }
+              ],
+              imaging: [
+                { modality: 'Chest X-ray', finding: 'Normal or interstitial pattern', significance: 'Exclusion of pneumonia' },
+                { modality: 'CT', finding: 'Ground-glass opacities', significance: 'Viral pneumonia' }
+              ],
+              microbiology: [
+                { test: 'Rapid antigen test (RAT)', finding: 'Influenza A/B', significance: 'Fast (15 min), low sensitivity (50-70%)' },
+                { test: 'RT-PCR', finding: 'Viral RNA detection', significance: 'Gold standard, subtyping' },
+                { test: 'Virus culture', finding: 'Isolation', significance: 'Epidemiological/surveillance' }
+              ]
+            },
+            differential: [
+              { disease: 'COVID-19', distinguishing: 'Loss of smell/taste, PCR' },
+              { disease: 'RSV infection', distinguishing: 'Children, elderly, bronchiolitis' },
+              { disease: 'Adenovirus infection', distinguishing: 'Conjunctivitis, pharyngitis, longer febrile period' },
+              { disease: 'Bacterial pneumonia', distinguishing: 'Productive sputum, localized findings, high PCT' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Oseltamivir', dose: '2x75mg PO', duration: '5 days', note: 'Within 48 hours of symptom onset!' },
+                  { drug: 'Baloxavir', dose: '1x40-80mg PO', duration: 'Single dose', note: '>80kg: 80mg' }
+                ],
+                inpatient: [
+                  { drug: 'Oseltamivir', dose: '2x75mg PO/NG', duration: '5-10 days', note: 'Longer in severe cases' },
+                  { drug: 'Peramivir', dose: '1x600mg IV', duration: 'Single or repeated', note: 'If PO not tolerated' }
+                ],
+                icu: [
+                  { drug: 'Oseltamivir', dose: '2x150mg PO/NG', duration: '10 days', note: 'Higher dose may be considered' },
+                  { drug: '+ Empiric AB', dose: 'CAP coverage', duration: '', note: 'Bacterial superinfection' }
+                ]
+              },
+              targeted: 'Neuraminidase inhibitors (oseltamivir, zanamivir, peramivir) or cap-dependent endonuclease inhibitor (baloxavir)',
+              supportive: ['Antipyretics (paracetamol!)', 'Fluid resuscitation', 'Oxygen', 'Ventilation for ARDS'],
+              prevention: ['Annual influenza vaccine', 'Hand hygiene', 'Patient isolation', 'Chemoprophylaxis (oseltamivir 1x75mg)']
+            },
+            prognosis: {
+              mortality: 'Overall 0.1%, >65 years 1-2%, pandemic strain higher',
+              prognostic_scores: ['None specific'],
+              factors: 'Age, comorbidity, virus subtype, vaccination status'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Influenza_A_virus_particle.jpg',
+                caption: 'Influenza A virus particle (electron microscopy).',
+                type: 'Microscopy'
+              }
+            ]
+          },
+          {
+            id: 'covid19',
+            name: 'COVID-19',
+            pathogen: { type: 'Virus', name: '<i>SARS-CoV-2</i>', gram: 'RNA virus, Coronaviridae', shape: 'spherical, with spike proteins' },
+            epidemiology: {
+              incidence: 'Pandemic from 2020, becoming endemic',
+              risk_groups: ['Elderly (>65)', 'Patients with obesity (BMI>30)', 'Diabetes', 'Cardiovascular disease', 'Immunocompromised', 'Chronic lung disease'],
+              seasonality: 'Winter peak, but year-round',
+              transmission: 'Respiratory (aerosol + droplet), contact, fecal-oral rare'
+            },
+            pathomechanism: {
+              steps: [
+                'The virus uses its Spike (S) protein to bind to the ACE2 receptor on the surface of cells, which is found in many organs (lungs, heart, vessels, gut).',
+                'After entry, the virus replicates within the cell (viral phase).',
+                'In severe cases, an excessive immune response, the so-called cytokine storm, can develop in the second week of the disease.',
+                'This hyperinflammation leads to systemic endothelial damage, microthrombosis, and, in the lungs, acute respiratory distress syndrome (ARDS), which is the basis of the severe course.'
+              ],
+              virulence_factors: ['Spike protein', 'NSP1 (host shutdown)', 'ORF8 (immunomodulation)', 'Nucleocapsid']
+            },
+            clinical: {
+              incubation: '2-14 days (median 5 days, Omicron 3 days)',
+              onset: 'Variable',
+              symptoms: [
+                { name: 'Common Symptoms', description: 'Fever, dry cough, fatigue, and muscle pain (myalgia).', severity: 'moderate' },
+                { name: 'Characteristic Symptoms', description: 'Loss of smell and taste (anosmia, dysgeusia) can be an early, specific sign.', severity: 'mild' },
+                { name: 'Severe Symptoms', description: 'Shortness of breath (dyspnea), chest pain, and hypoxemia (low blood oxygen), which can lead to ARDS.', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Fever, tachypnea',
+                'Decreased SpO2 (silent hypoxia!)',
+                'Bilateral crepitation',
+                'Tachycardia',
+                'No specific physical sign'
+              ],
+              complications: ['ARDS', 'Pulmonary embolism', 'Myocarditis', 'Acute kidney injury', 'Stroke', 'MIS-C (children)', 'Long COVID']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CBC', finding: 'Lymphopenia, normal/decreased platelets', interpretation: 'Marker of severity' },
+                { test: 'D-dimer', finding: 'Elevated', interpretation: 'Thrombotic risk, poor prognosis' },
+                { test: 'Ferritin', finding: 'Elevated', interpretation: 'Marker of cytokine storm' },
+                { test: 'CRP/IL-6', finding: 'Elevated', interpretation: 'Degree of inflammation' },
+                { test: 'LDH, troponin', finding: 'Elevated in severe cases', interpretation: 'Tissue damage' }
+              ],
+              imaging: [
+                { modality: 'Chest X-ray', finding: 'Bilateral peripheral infiltrates', significance: 'Less sensitive' },
+                { modality: 'Chest CT', finding: 'Ground-glass opacities, crazy paving, consolidation', significance: 'Characteristic pattern' }
+              ],
+              microbiology: [
+                { test: 'RT-PCR (nasopharynx/oropharynx)', finding: 'SARS-CoV-2 RNA', significance: 'Gold standard, Ct value' },
+                { test: 'Rapid antigen test', finding: 'Nucleocapsid protein', significance: 'Fast, indicates infectiousness' },
+                { test: 'Serology', finding: 'Anti-S, Anti-N IgG/IgM', significance: 'Past infection, vaccine efficacy' }
+              ]
+            },
+            differential: [
+              { disease: 'Influenza', distinguishing: 'Faster course, myalgia dominates, PCR' },
+              { disease: 'Bacterial pneumonia', distinguishing: 'High PCT, lobar infiltrate' },
+              { disease: 'Heart failure', distinguishing: 'Cardiac history, BNP, bilateral' },
+              { disease: 'Pulmonary embolism', distinguishing: 'D-dimer, CTPA' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Paxlovid (nirmatrelvir/ritonavir)', dose: '2x300/100mg PO', duration: '5 days', note: 'Early, high-risk, interactions!' },
+                  { drug: 'Molnupiravir', dose: '2x800mg PO', duration: '5 days', note: 'Alternative if Paxlovid is contraindicated' }
+                ],
+                inpatient: [
+                  { drug: 'Remdesivir', dose: '200mg IV D1, then 100mg/day', duration: '5 days (max 10)', note: 'If O2 is needed' },
+                  { drug: 'Dexamethasone', dose: '6mg/day IV/PO', duration: '10 days', note: 'Only with O2 need/ventilation!' }
+                ],
+                icu: [
+                  { drug: 'Dexamethasone', dose: '6-20mg/day', duration: '10 days', note: 'Cytokine storm' },
+                  { drug: 'Tocilizumab', dose: '8mg/kg IV single dose', duration: '', note: 'IL-6 inhibitor, rapidly deteriorating' },
+                  { drug: 'LMWH', dose: 'Therapeutic dose', duration: '', note: 'Thromboprophylaxis/therapy' }
+                ]
+              },
+              targeted: 'Antiviral (Paxlovid, Remdesivir) early; Immunomodulatory (steroid, tocilizumab) in hypoxic phase',
+              supportive: ['Oxygen (prone positioning!)', 'HFNC/NIV', 'Invasive ventilation', 'ECMO'],
+              prevention: ['mRNA vaccines (Pfizer, Moderna)', 'Hand hygiene', 'Mask wearing', 'Isolation']
+            },
+            prognosis: {
+              mortality: 'Omicron <1%, previously 2-5%, ICU 20-40%',
+              prognostic_scores: ['4C Mortality Score', 'NEWS2'],
+              factors: 'Age, comorbidity, lymphopenia, D-dimer, ferritin, vaccination status'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/SARS-CoV-2_without_background.png',
+                caption: 'SARS-CoV-2 virus model.',
+                type: 'Virology'
+              }
+            ]
+      },
           {
             id: 'tonsillitis',
             name: 'Tonsillitis',

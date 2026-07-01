@@ -1,4 +1,5 @@
-window.scoreCalculators = {
+window.scoreCalculators = window.scoreCalculators || {};
+Object.assign(window.scoreCalculators, {
     'CURB-65': {
       title: 'CURB-65 Score (Pneumonia)',
       description: 'To assess the severity of community-acquired pneumonia and the need for hospitalization.',
@@ -488,4 +489,4 @@ window.scoreCalculators = {
             return { risk: 'High risk (>20%)', action: 'Consider empiric antifungal therapy.', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
         }
     }
-};
+});

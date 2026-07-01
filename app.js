@@ -47,270 +47,272 @@ const CATEGORY_ORDER = [
 ];
 
 // Score Calculators Data
-const scoreCalculators = {
+// Ensure a single global `window.scoreCalculators` object instead of redeclaring
+window.scoreCalculators = window.scoreCalculators || {};
+Object.assign(window.scoreCalculators, {
     'CURB-65': {
-      title: 'CURB-65 Score (Pneumonia)',
-      description: 'Közösségben szerzett tüdőgyulladás súlyosságának és a betegfelvétel szükségességének megítélésére.',
-      items: [
-        { id: 'c', label: 'Confusion (Zavartság)', points: 1 },
-        { id: 'u', label: 'Urea > 7 mmol/L (Se. karbamid)', points: 1 },
-        { id: 'r', label: 'Respiratory rate ≥ 30/perc (Légzésszám)', points: 1 },
-        { id: 'b', label: 'Blood pressure (Szisztolés < 90 vagy Diasztolés ≤ 60 Hgmm)', points: 1 },
-        { id: '65', label: 'Életkor ≥ 65 év', points: 1 }
-      ],
-      interpret: (score) => {
-        if (score <= 1) return { risk: 'Alacsony rizikó (0-1)', action: 'Otthoni kezelés megfontolható', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        if (score === 2) return { risk: 'Közepes rizikó (2)', action: 'Kórházi felvétel javasolt', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
-        return { risk: 'Magas rizikó (3-5)', action: 'Sürgős kórházi/ITO felvétel', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-      }
+        title: 'CURB-65 Score (Pneumonia)',
+        description: 'Közösségben szerzett tüdőgyulladás súlyosságának és a betegfelvétel szükségességének megítélésére.',
+        items: [
+            { id: 'c', label: 'Confusion (Zavartság)', points: 1 },
+            { id: 'u', label: 'Urea > 7 mmol/L (Se. karbamid)', points: 1 },
+            { id: 'r', label: 'Respiratory rate ≥ 30/perc (Légzésszám)', points: 1 },
+            { id: 'b', label: 'Blood pressure (Szisztolés < 90 vagy Diasztolés ≤ 60 Hgmm)', points: 1 },
+            { id: '65', label: 'Életkor ≥ 65 év', points: 1 }
+        ],
+        interpret: (score) => {
+            if (score <= 1) return { risk: 'Alacsony rizikó (0-1)', action: 'Otthoni kezelés megfontolható', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            if (score === 2) return { risk: 'Közepes rizikó (2)', action: 'Kórházi felvétel javasolt', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
+            return { risk: 'Magas rizikó (3-5)', action: 'Sürgős kórházi/ITO felvétel', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
     },
     'qSOFA': {
-      title: 'qSOFA Score (Sepsis)',
-      description: 'Gyors ágy melletti eszköz a szepszis gyanújának felvetésére (quick SOFA).',
-      items: [
-        { id: 'rr', label: 'Légzésszám ≥ 22/perc', points: 1 },
-        { id: 'ams', label: 'Megváltozott mentális státusz (GCS < 15)', points: 1 },
-        { id: 'sbp', label: 'Szisztolés vérnyomás ≤ 100 Hgmm', points: 1 }
-      ],
-      interpret: (score) => {
-        if (score < 2) return { risk: 'Alacsony valószínűség (<2)', action: 'Monitorozás, klinikai megítélés', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        return { risk: 'Magas rizikó (≥2)', action: 'Szepszis gyanúja, további kivizsgálás (SOFA)', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-      }
+        title: 'qSOFA Score (Sepsis)',
+        description: 'Gyors ágy melletti eszköz a szepszis gyanújának felvetésére (quick SOFA).',
+        items: [
+            { id: 'rr', label: 'Légzésszám ≥ 22/perc', points: 1 },
+            { id: 'ams', label: 'Megváltozott mentális státusz (GCS < 15)', points: 1 },
+            { id: 'sbp', label: 'Szisztolés vérnyomás ≤ 100 Hgmm', points: 1 }
+        ],
+        interpret: (score) => {
+            if (score < 2) return { risk: 'Alacsony valószínűség (<2)', action: 'Monitorozás, klinikai megítélés', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            return { risk: 'Magas rizikó (≥2)', action: 'Szepszis gyanúja, további kivizsgálás (SOFA)', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
     },
     'ATLAS': {
-      title: 'ATLAS Score (C. difficile)',
-      description: 'Clostridioides difficile fertőzés súlyosságának és a mortalitás kockázatának becslése.',
-      items: [
-        { type: 'header', label: 'Életkor' },
-        { type: 'radio', name: 'atlas_age', label: '< 60 év', points: 0, checked: true },
-        { type: 'radio', name: 'atlas_age', label: '60 - 79 év', points: 1 },
-        { type: 'radio', name: 'atlas_age', label: '≥ 80 év', points: 2 },
-        { type: 'header', label: 'Klinikum és Labor' },
-        { type: 'checkbox', label: 'Szisztémás antibiotikum kezelés a CDI terápia alatt', points: 1 },
-        { type: 'header', label: 'Leukocyta szám (G/L)' },
-        { type: 'radio', name: 'atlas_wbc', label: '< 16', points: 0, checked: true },
-        { type: 'radio', name: 'atlas_wbc', label: '16 - 25', points: 1 },
-        { type: 'radio', name: 'atlas_wbc', label: '> 25', points: 2 },
-        { type: 'header', label: 'Albumin (g/L)' },
-        { type: 'radio', name: 'atlas_alb', label: '> 35', points: 0, checked: true },
-        { type: 'radio', name: 'atlas_alb', label: '26 - 35', points: 1 },
-        { type: 'radio', name: 'atlas_alb', label: '≤ 25', points: 2 },
-        { type: 'header', label: 'Kreatinin (µmol/L)' },
-        { type: 'radio', name: 'atlas_crea', label: '≤ 120', points: 0, checked: true },
-        { type: 'radio', name: 'atlas_crea', label: '121 - 179', points: 1 },
-        { type: 'radio', name: 'atlas_crea', label: '≥ 180', points: 2 }
-      ],
-      interpret: (score) => {
-        if (score <= 2) return { risk: 'Enyhe (0-2 pont)', action: '0% mortalitás, >95% gyógyulás', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        if (score <= 5) return { risk: 'Közepes (3-5 pont)', action: 'Mortalitás növekszik', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
-        return { risk: 'Súlyos (6-7 pont)', action: 'Magas mortalitás, intenzív terápia mérlegelendő', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-      }
+        title: 'ATLAS Score (C. difficile)',
+        description: 'Clostridioides difficile fertőzés súlyosságának és a mortalitás kockázatának becslése.',
+        items: [
+            { type: 'header', label: 'Életkor' },
+            { type: 'radio', name: 'atlas_age', label: '< 60 év', points: 0, checked: true },
+            { type: 'radio', name: 'atlas_age', label: '60 - 79 év', points: 1 },
+            { type: 'radio', name: 'atlas_age', label: '≥ 80 év', points: 2 },
+            { type: 'header', label: 'Klinikum és Labor' },
+            { type: 'checkbox', label: 'Szisztémás antibiotikum kezelés a CDI terápia alatt', points: 1 },
+            { type: 'header', label: 'Leukocyta szám (G/L)' },
+            { type: 'radio', name: 'atlas_wbc', label: '< 16', points: 0, checked: true },
+            { type: 'radio', name: 'atlas_wbc', label: '16 - 25', points: 1 },
+            { type: 'radio', name: 'atlas_wbc', label: '> 25', points: 2 },
+            { type: 'header', label: 'Albumin (g/L)' },
+            { type: 'radio', name: 'atlas_alb', label: '> 35', points: 0, checked: true },
+            { type: 'radio', name: 'atlas_alb', label: '26 - 35', points: 1 },
+            { type: 'radio', name: 'atlas_alb', label: '≤ 25', points: 2 },
+            { type: 'header', label: 'Kreatinin (µmol/L)' },
+            { type: 'radio', name: 'atlas_crea', label: '≤ 120', points: 0, checked: true },
+            { type: 'radio', name: 'atlas_crea', label: '121 - 179', points: 1 },
+            { type: 'radio', name: 'atlas_crea', label: '≥ 180', points: 2 }
+        ],
+        interpret: (score) => {
+            if (score <= 2) return { risk: 'Enyhe (0-2 pont)', action: '0% mortalitás, >95% gyógyulás', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            if (score <= 5) return { risk: 'Közepes (3-5 pont)', action: 'Mortalitás növekszik', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
+            return { risk: 'Súlyos (6-7 pont)', action: 'Magas mortalitás, intenzív terápia mérlegelendő', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
     },
     'SOFA': {
-      title: 'SOFA Score (Sepsis)',
-      description: 'Szervelégtelenség mértékének megítélése (Sequential Organ Failure Assessment).',
-      items: [
-        { type: 'header', label: 'Légzés (PaO2/FiO2 Hgmm)' },
-        { type: 'radio', name: 'sofa_resp', label: '≥ 400', points: 0, checked: true },
-        { type: 'radio', name: 'sofa_resp', label: '< 400', points: 1 },
-        { type: 'radio', name: 'sofa_resp', label: '< 300', points: 2 },
-        { type: 'radio', name: 'sofa_resp', label: '< 200 (lélegeztetve)', points: 3 },
-        { type: 'radio', name: 'sofa_resp', label: '< 100 (lélegeztetve)', points: 4 },
-        { type: 'header', label: 'Véralvadás (Thrombocyta G/L)' },
-        { type: 'radio', name: 'sofa_plt', label: '≥ 150', points: 0, checked: true },
-        { type: 'radio', name: 'sofa_plt', label: '< 150', points: 1 },
-        { type: 'radio', name: 'sofa_plt', label: '< 100', points: 2 },
-        { type: 'radio', name: 'sofa_plt', label: '< 50', points: 3 },
-        { type: 'radio', name: 'sofa_plt', label: '< 20', points: 4 },
-        { type: 'header', label: 'Máj (Bilirubin µmol/L)' },
-        { type: 'radio', name: 'sofa_bili', label: '< 20', points: 0, checked: true },
-        { type: 'radio', name: 'sofa_bili', label: '20 - 32', points: 1 },
-        { type: 'radio', name: 'sofa_bili', label: '33 - 101', points: 2 },
-        { type: 'radio', name: 'sofa_bili', label: '102 - 204', points: 3 },
-        { type: 'radio', name: 'sofa_bili', label: '> 204', points: 4 },
-        { type: 'header', label: 'Keringés (MAP / Vazopresszorok)' },
-        { type: 'radio', name: 'sofa_cv', label: 'MAP ≥ 70 Hgmm', points: 0, checked: true },
-        { type: 'radio', name: 'sofa_cv', label: 'MAP < 70 Hgmm', points: 1 },
-        { type: 'radio', name: 'sofa_cv', label: 'Dopamin ≤ 5 vagy Dobutamin', points: 2 },
-        { type: 'radio', name: 'sofa_cv', label: 'Dopamin > 5 vagy Noradrenalin ≤ 0.1', points: 3 },
-        { type: 'radio', name: 'sofa_cv', label: 'Dopamin > 15 vagy Noradrenalin > 0.1', points: 4 },
-        { type: 'header', label: 'Központi idegrendszer (GCS)' },
-        { type: 'radio', name: 'sofa_gcs', label: '15', points: 0, checked: true },
-        { type: 'radio', name: 'sofa_gcs', label: '13 - 14', points: 1 },
-        { type: 'radio', name: 'sofa_gcs', label: '10 - 12', points: 2 },
-        { type: 'radio', name: 'sofa_gcs', label: '6 - 9', points: 3 },
-        { type: 'radio', name: 'sofa_gcs', label: '< 6', points: 4 },
-        { type: 'header', label: 'Vese (Kreatinin µmol/L)' },
-        { type: 'radio', name: 'sofa_ren', label: '< 110', points: 0, checked: true },
-        { type: 'radio', name: 'sofa_ren', label: '110 - 170', points: 1 },
-        { type: 'radio', name: 'sofa_ren', label: '171 - 299', points: 2 },
-        { type: 'radio', name: 'sofa_ren', label: '300 - 440 (vagy <500ml vizelet)', points: 3 },
-        { type: 'radio', name: 'sofa_ren', label: '> 440 (vagy <200ml vizelet)', points: 4 }
-      ],
-      interpret: (score) => {
-        return { risk: `Összpontszám: ${score}`, action: 'A pontszám növekedése romló prognózist jelez. Sepszis definíció: fertőzés + SOFA változás ≥2.', color: 'text-slate-800', bg: 'bg-slate-50', border: 'border-slate-200' };
-      }
+        title: 'SOFA Score (Sepsis)',
+        description: 'Szervelégtelenség mértékének megítélése (Sequential Organ Failure Assessment).',
+        items: [
+            { type: 'header', label: 'Légzés (PaO2/FiO2 Hgmm)' },
+            { type: 'radio', name: 'sofa_resp', label: '≥ 400', points: 0, checked: true },
+            { type: 'radio', name: 'sofa_resp', label: '< 400', points: 1 },
+            { type: 'radio', name: 'sofa_resp', label: '< 300', points: 2 },
+            { type: 'radio', name: 'sofa_resp', label: '< 200 (lélegeztetve)', points: 3 },
+            { type: 'radio', name: 'sofa_resp', label: '< 100 (lélegeztetve)', points: 4 },
+            { type: 'header', label: 'Véralvadás (Thrombocyta G/L)' },
+            { type: 'radio', name: 'sofa_plt', label: '≥ 150', points: 0, checked: true },
+            { type: 'radio', name: 'sofa_plt', label: '< 150', points: 1 },
+            { type: 'radio', name: 'sofa_plt', label: '< 100', points: 2 },
+            { type: 'radio', name: 'sofa_plt', label: '< 50', points: 3 },
+            { type: 'radio', name: 'sofa_plt', label: '< 20', points: 4 },
+            { type: 'header', label: 'Máj (Bilirubin µmol/L)' },
+            { type: 'radio', name: 'sofa_bili', label: '< 20', points: 0, checked: true },
+            { type: 'radio', name: 'sofa_bili', label: '20 - 32', points: 1 },
+            { type: 'radio', name: 'sofa_bili', label: '33 - 101', points: 2 },
+            { type: 'radio', name: 'sofa_bili', label: '102 - 204', points: 3 },
+            { type: 'radio', name: 'sofa_bili', label: '> 204', points: 4 },
+            { type: 'header', label: 'Keringés (MAP / Vazopresszorok)' },
+            { type: 'radio', name: 'sofa_cv', label: 'MAP ≥ 70 Hgmm', points: 0, checked: true },
+            { type: 'radio', name: 'sofa_cv', label: 'MAP < 70 Hgmm', points: 1 },
+            { type: 'radio', name: 'sofa_cv', label: 'Dopamin ≤ 5 vagy Dobutamin', points: 2 },
+            { type: 'radio', name: 'sofa_cv', label: 'Dopamin > 5 vagy Noradrenalin ≤ 0.1', points: 3 },
+            { type: 'radio', name: 'sofa_cv', label: 'Dopamin > 15 vagy Noradrenalin > 0.1', points: 4 },
+            { type: 'header', label: 'Központi idegrendszer (GCS)' },
+            { type: 'radio', name: 'sofa_gcs', label: '15', points: 0, checked: true },
+            { type: 'radio', name: 'sofa_gcs', label: '13 - 14', points: 1 },
+            { type: 'radio', name: 'sofa_gcs', label: '10 - 12', points: 2 },
+            { type: 'radio', name: 'sofa_gcs', label: '6 - 9', points: 3 },
+            { type: 'radio', name: 'sofa_gcs', label: '< 6', points: 4 },
+            { type: 'header', label: 'Vese (Kreatinin µmol/L)' },
+            { type: 'radio', name: 'sofa_ren', label: '< 110', points: 0, checked: true },
+            { type: 'radio', name: 'sofa_ren', label: '110 - 170', points: 1 },
+            { type: 'radio', name: 'sofa_ren', label: '171 - 299', points: 2 },
+            { type: 'radio', name: 'sofa_ren', label: '300 - 440 (vagy <500ml vizelet)', points: 3 },
+            { type: 'radio', name: 'sofa_ren', label: '> 440 (vagy <200ml vizelet)', points: 4 }
+        ],
+        interpret: (score) => {
+            return { risk: `Összpontszám: ${score}`, action: 'A pontszám növekedése romló prognózist jelez. Sepszis definíció: fertőzés + SOFA változás ≥2.', color: 'text-slate-800', bg: 'bg-slate-50', border: 'border-slate-200' };
+        }
     },
     'PORT': {
-      title: 'Pneumonia Severity Index (PSI/PORT)',
-      description: 'Közösségben szerzett tüdőgyulladás (CAP) rizikóbecslése.',
-      items: [
-        { type: 'header', label: 'Demográfia' },
-        { type: 'number', label: 'Életkor (év)', points: 1, min: 0, max: 120 },
-        { type: 'checkbox', label: 'Nőnemű beteg', points: -10 },
-        { type: 'checkbox', label: 'Otthonlakó / Intézeti gondozott', points: 10 },
-        { type: 'header', label: 'Társbetegségek' },
-        { type: 'checkbox', label: 'Daganatos betegség', points: 30 },
-        { type: 'checkbox', label: 'Májbetegség', points: 20 },
-        { type: 'checkbox', label: 'Szívelégtelenség (CHF)', points: 10 },
-        { type: 'checkbox', label: 'Cerebrovascularis betegség', points: 10 },
-        { type: 'checkbox', label: 'Vesebetegség', points: 10 },
-        { type: 'header', label: 'Fizikális vizsgálat' },
-        { type: 'checkbox', label: 'Megváltozott mentális státusz', points: 20 },
-        { type: 'checkbox', label: 'Légzésszám ≥ 30/perc', points: 20 },
-        { type: 'checkbox', label: 'Szisztolés RR < 90 Hgmm', points: 20 },
-        { type: 'checkbox', label: 'Testhőmérséklet < 35°C vagy > 40°C', points: 15 },
-        { type: 'checkbox', label: 'Pulzus ≥ 125/perc', points: 10 },
-        { type: 'header', label: 'Laboratóriumi és Képalkotó leletek' },
-        { type: 'checkbox', label: 'Artériás pH < 7.35', points: 30 },
-        { type: 'checkbox', label: 'BUN > 10.7 mmol/L (Urea > 30 mg/dL)', points: 20 },
-        { type: 'checkbox', label: 'Nátrium < 130 mmol/L', points: 20 },
-        { type: 'checkbox', label: 'Glükóz > 13.9 mmol/L', points: 10 },
-        { type: 'checkbox', label: 'Hematokrit < 30%', points: 10 },
-        { type: 'checkbox', label: 'PaO2 < 60 Hgmm (vagy SpO2 < 90%)', points: 10 },
-        { type: 'checkbox', label: 'Pleuralis folyadék', points: 10 }
-      ],
-      interpret: (score) => {
-        if (score <= 50) return { risk: 'I. Osztály (≤50)', action: 'Alacsony rizikó (0.1% mortalitás). Otthoni kezelés.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        if (score <= 70) return { risk: 'II. Osztály (51-70)', action: 'Alacsony rizikó (0.6% mortalitás). Otthoni kezelés.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        if (score <= 90) return { risk: 'III. Osztály (71-90)', action: 'Közepes rizikó (0.9-2.8%). Rövid kórházi megfigyelés vagy otthoni.', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
-        if (score <= 130) return { risk: 'IV. Osztály (91-130)', action: 'Magas rizikó (8-9%). Kórházi felvétel.', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' };
-        return { risk: 'V. Osztály (>130)', action: 'Nagyon magas rizikó (27-30%). Kórházi/ITO felvétel.', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-      }
+        title: 'Pneumonia Severity Index (PSI/PORT)',
+        description: 'Közösségben szerzett tüdőgyulladás (CAP) rizikóbecslése.',
+        items: [
+            { type: 'header', label: 'Demográfia' },
+            { type: 'number', label: 'Életkor (év)', points: 1, min: 0, max: 120 },
+            { type: 'checkbox', label: 'Nőnemű beteg', points: -10 },
+            { type: 'checkbox', label: 'Otthonlakó / Intézeti gondozott', points: 10 },
+            { type: 'header', label: 'Társbetegségek' },
+            { type: 'checkbox', label: 'Daganatos betegség', points: 30 },
+            { type: 'checkbox', label: 'Májbetegség', points: 20 },
+            { type: 'checkbox', label: 'Szívelégtelenség (CHF)', points: 10 },
+            { type: 'checkbox', label: 'Cerebrovascularis betegség', points: 10 },
+            { type: 'checkbox', label: 'Vesebetegség', points: 10 },
+            { type: 'header', label: 'Fizikális vizsgálat' },
+            { type: 'checkbox', label: 'Megváltozott mentális státusz', points: 20 },
+            { type: 'checkbox', label: 'Légzésszám ≥ 30/perc', points: 20 },
+            { type: 'checkbox', label: 'Szisztolés RR < 90 Hgmm', points: 20 },
+            { type: 'checkbox', label: 'Testhőmérséklet < 35°C vagy > 40°C', points: 15 },
+            { type: 'checkbox', label: 'Pulzus ≥ 125/perc', points: 10 },
+            { type: 'header', label: 'Laboratóriumi és Képalkotó leletek' },
+            { type: 'checkbox', label: 'Artériás pH < 7.35', points: 30 },
+            { type: 'checkbox', label: 'BUN > 10.7 mmol/L (Urea > 30 mg/dL)', points: 20 },
+            { type: 'checkbox', label: 'Nátrium < 130 mmol/L', points: 20 },
+            { type: 'checkbox', label: 'Glükóz > 13.9 mmol/L', points: 10 },
+            { type: 'checkbox', label: 'Hematokrit < 30%', points: 10 },
+            { type: 'checkbox', label: 'PaO2 < 60 Hgmm (vagy SpO2 < 90%)', points: 10 },
+            { type: 'checkbox', label: 'Pleuralis folyadék', points: 10 }
+        ],
+        interpret: (score) => {
+            if (score <= 50) return { risk: 'I. Osztály (≤50)', action: 'Alacsony rizikó (0.1% mortalitás). Otthoni kezelés.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            if (score <= 70) return { risk: 'II. Osztály (51-70)', action: 'Alacsony rizikó (0.6% mortalitás). Otthoni kezelés.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            if (score <= 90) return { risk: 'III. Osztály (71-90)', action: 'Közepes rizikó (0.9-2.8%). Rövid kórházi megfigyelés vagy otthoni.', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
+            if (score <= 130) return { risk: 'IV. Osztály (91-130)', action: 'Magas rizikó (8-9%). Kórházi felvétel.', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' };
+            return { risk: 'V. Osztály (>130)', action: 'Nagyon magas rizikó (27-30%). Kórházi/ITO felvétel.', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
     },
     'APACHE II': {
-      title: 'APACHE II Score',
-      description: 'Súlyossági pontrendszer intenzív osztályos betegeknél (Acute Physiology and Chronic Health Evaluation II).',
-      items: [
-        { type: 'header', label: 'Életkor' },
-        { type: 'radio', name: 'ap_age', label: '≤ 44', points: 0, checked: true },
-        { type: 'radio', name: 'ap_age', label: '45 - 54', points: 2 },
-        { type: 'radio', name: 'ap_age', label: '55 - 64', points: 3 },
-        { type: 'radio', name: 'ap_age', label: '65 - 74', points: 5 },
-        { type: 'radio', name: 'ap_age', label: '≥ 75', points: 6 },
-        { type: 'header', label: 'Krónikus Egészségi Állapot' },
-        { type: 'checkbox', label: 'Súlyos szervelégtelenség (máj, szív, légző, vese) vagy immunszuppresszió', points: 5 },
-        { type: 'checkbox', label: 'Sürgősségi műtét után vagy nem műtéti beteg', points: 0 }, 
-        { type: 'header', label: 'Akut Fiziológiai Paraméterek (Legrosszabb érték az első 24 órában)' },
-        { type: 'header', label: 'Hőmérséklet (°C)' },
-        { type: 'radio', name: 'ap_temp', label: '36 - 38.4', points: 0, checked: true },
-        { type: 'radio', name: 'ap_temp', label: '34 - 35.9 vagy 38.5 - 38.9', points: 1 },
-        { type: 'radio', name: 'ap_temp', label: '32 - 33.9', points: 2 },
-        { type: 'radio', name: 'ap_temp', label: '30 - 31.9 vagy 39 - 40.9', points: 3 },
-        { type: 'radio', name: 'ap_temp', label: '≤ 29.9 vagy ≥ 41', points: 4 },
-        { type: 'header', label: 'MAP (Középnyomás Hgmm)' },
-        { type: 'radio', name: 'ap_map', label: '70 - 109', points: 0, checked: true },
-        { type: 'radio', name: 'ap_map', label: '110 - 129 vagy 50 - 69', points: 2 },
-        { type: 'radio', name: 'ap_map', label: '130 - 159', points: 3 },
-        { type: 'radio', name: 'ap_map', label: '≥ 160 vagy ≤ 49', points: 4 },
-        { type: 'header', label: 'Pulzus (/perc)' },
-        { type: 'radio', name: 'ap_hr', label: '70 - 109', points: 0, checked: true },
-        { type: 'radio', name: 'ap_hr', label: '55 - 69 vagy 110 - 139', points: 2 },
-        { type: 'radio', name: 'ap_hr', label: '40 - 54 vagy 140 - 179', points: 3 },
-        { type: 'radio', name: 'ap_hr', label: '≤ 39 vagy ≥ 180', points: 4 },
-        { type: 'header', label: 'Légzésszám (/perc)' },
-        { type: 'radio', name: 'ap_rr', label: '12 - 24', points: 0, checked: true },
-        { type: 'radio', name: 'ap_rr', label: '10 - 11 vagy 25 - 34', points: 1 },
-        { type: 'radio', name: 'ap_rr', label: '6 - 9', points: 2 },
-        { type: 'radio', name: 'ap_rr', label: '35 - 49', points: 3 },
-        { type: 'radio', name: 'ap_rr', label: '≤ 5 vagy ≥ 50', points: 4 },
-        { type: 'header', label: 'Oxigenizáció (AaDO2 vagy PaO2)' },
-        { type: 'radio', name: 'ap_ox', label: 'Normál', points: 0, checked: true },
-        { type: 'radio', name: 'ap_ox', label: 'Enyhe romlás', points: 1 },
-        { type: 'radio', name: 'ap_ox', label: 'Közepes romlás', points: 3 },
-        { type: 'radio', name: 'ap_ox', label: 'Súlyos romlás', points: 4 },
-        { type: 'header', label: 'Artériás pH' },
-        { type: 'radio', name: 'ap_ph', label: '7.33 - 7.49', points: 0, checked: true },
-        { type: 'radio', name: 'ap_ph', label: 'Eltérés', points: 2 },
-        { type: 'radio', name: 'ap_ph', label: 'Jelentős eltérés (<7.15 vagy >7.7)', points: 4 },
-        { type: 'header', label: 'Szérum Nátrium (mmol/L)' },
-        { type: 'radio', name: 'ap_na', label: '130 - 149', points: 0, checked: true },
-        { type: 'radio', name: 'ap_na', label: 'Eltérés', points: 1 },
-        { type: 'radio', name: 'ap_na', label: 'Jelentős eltérés', points: 4 },
-        { type: 'header', label: 'Szérum Kálium (mmol/L)' },
-        { type: 'radio', name: 'ap_k', label: '3.5 - 5.4', points: 0, checked: true },
-        { type: 'radio', name: 'ap_k', label: 'Eltérés', points: 1 },
-        { type: 'radio', name: 'ap_k', label: 'Jelentős eltérés', points: 4 },
-        { type: 'header', label: 'Szérum Kreatinin (mg/dL)' },
-        { type: 'radio', name: 'ap_cr', label: '0.6 - 1.4', points: 0, checked: true },
-        { type: 'radio', name: 'ap_cr', label: '< 0.6 vagy 1.5 - 1.9', points: 2 },
-        { type: 'radio', name: 'ap_cr', label: '2.0 - 3.4', points: 3 },
-        { type: 'radio', name: 'ap_cr', label: '≥ 3.5', points: 4 },
-        { type: 'checkbox', label: 'Akut veseelégtelenség (Kreatinin pontszám duplázódik)', points: 0 }, 
-        { type: 'header', label: 'Hematokrit (%)' },
-        { type: 'radio', name: 'ap_hct', label: '30 - 45.9', points: 0, checked: true },
-        { type: 'radio', name: 'ap_hct', label: 'Eltérés', points: 2 },
-        { type: 'radio', name: 'ap_hct', label: 'Jelentős eltérés', points: 4 },
-        { type: 'header', label: 'Fehérvérsejt (G/L)' },
-        { type: 'radio', name: 'ap_wbc', label: '3 - 14.9', points: 0, checked: true },
-        { type: 'radio', name: 'ap_wbc', label: 'Eltérés', points: 2 },
-        { type: 'radio', name: 'ap_wbc', label: 'Jelentős eltérés', points: 4 },
-        { type: 'header', label: 'Glasgow Coma Scale (GCS)' },
-        { type: 'number', label: 'GCS pontszám (15 - GCS = pont)', points: -1, min: 3, max: 15, value: 15 } 
-      ],
-      interpret: (score) => {
-        return { risk: `APACHE II Score: ${score + 15}`, action: 'A mortalitás a pontszámmal korrelál (pl. 25 pont ~50% halálozás).', color: 'text-slate-800', bg: 'bg-slate-50', border: 'border-slate-200' };
-      }
+        title: 'APACHE II Score',
+        description: 'Súlyossági pontrendszer intenzív osztályos betegeknél (Acute Physiology and Chronic Health Evaluation II).',
+        items: [
+            { type: 'header', label: 'Életkor' },
+            { type: 'radio', name: 'ap_age', label: '≤ 44', points: 0, checked: true },
+            { type: 'radio', name: 'ap_age', label: '45 - 54', points: 2 },
+            { type: 'radio', name: 'ap_age', label: '55 - 64', points: 3 },
+            { type: 'radio', name: 'ap_age', label: '65 - 74', points: 5 },
+            { type: 'radio', name: 'ap_age', label: '≥ 75', points: 6 },
+            { type: 'header', label: 'Krónikus Egészségi Állapot' },
+            { type: 'checkbox', label: 'Súlyos szervelégtelenség (máj, szív, légző, vese) vagy immunszuppresszió', points: 5 },
+            { type: 'checkbox', label: 'Sürgősségi műtét után vagy nem műtéti beteg', points: 0 },
+            { type: 'header', label: 'Akut Fiziológiai Paraméterek (Legrosszabb érték az első 24 órában)' },
+            { type: 'header', label: 'Hőmérséklet (°C)' },
+            { type: 'radio', name: 'ap_temp', label: '36 - 38.4', points: 0, checked: true },
+            { type: 'radio', name: 'ap_temp', label: '34 - 35.9 vagy 38.5 - 38.9', points: 1 },
+            { type: 'radio', name: 'ap_temp', label: '32 - 33.9', points: 2 },
+            { type: 'radio', name: 'ap_temp', label: '30 - 31.9 vagy 39 - 40.9', points: 3 },
+            { type: 'radio', name: 'ap_temp', label: '≤ 29.9 vagy ≥ 41', points: 4 },
+            { type: 'header', label: 'MAP (Középnyomás Hgmm)' },
+            { type: 'radio', name: 'ap_map', label: '70 - 109', points: 0, checked: true },
+            { type: 'radio', name: 'ap_map', label: '110 - 129 vagy 50 - 69', points: 2 },
+            { type: 'radio', name: 'ap_map', label: '130 - 159', points: 3 },
+            { type: 'radio', name: 'ap_map', label: '≥ 160 vagy ≤ 49', points: 4 },
+            { type: 'header', label: 'Pulzus (/perc)' },
+            { type: 'radio', name: 'ap_hr', label: '70 - 109', points: 0, checked: true },
+            { type: 'radio', name: 'ap_hr', label: '55 - 69 vagy 110 - 139', points: 2 },
+            { type: 'radio', name: 'ap_hr', label: '40 - 54 vagy 140 - 179', points: 3 },
+            { type: 'radio', name: 'ap_hr', label: '≤ 39 vagy ≥ 180', points: 4 },
+            { type: 'header', label: 'Légzésszám (/perc)' },
+            { type: 'radio', name: 'ap_rr', label: '12 - 24', points: 0, checked: true },
+            { type: 'radio', name: 'ap_rr', label: '10 - 11 vagy 25 - 34', points: 1 },
+            { type: 'radio', name: 'ap_rr', label: '6 - 9', points: 2 },
+            { type: 'radio', name: 'ap_rr', label: '35 - 49', points: 3 },
+            { type: 'radio', name: 'ap_rr', label: '≤ 5 vagy ≥ 50', points: 4 },
+            { type: 'header', label: 'Oxigenizáció (AaDO2 vagy PaO2)' },
+            { type: 'radio', name: 'ap_ox', label: 'Normál', points: 0, checked: true },
+            { type: 'radio', name: 'ap_ox', label: 'Enyhe romlás', points: 1 },
+            { type: 'radio', name: 'ap_ox', label: 'Közepes romlás', points: 3 },
+            { type: 'radio', name: 'ap_ox', label: 'Súlyos romlás', points: 4 },
+            { type: 'header', label: 'Artériás pH' },
+            { type: 'radio', name: 'ap_ph', label: '7.33 - 7.49', points: 0, checked: true },
+            { type: 'radio', name: 'ap_ph', label: 'Eltérés', points: 2 },
+            { type: 'radio', name: 'ap_ph', label: 'Jelentős eltérés (<7.15 vagy >7.7)', points: 4 },
+            { type: 'header', label: 'Szérum Nátrium (mmol/L)' },
+            { type: 'radio', name: 'ap_na', label: '130 - 149', points: 0, checked: true },
+            { type: 'radio', name: 'ap_na', label: 'Eltérés', points: 1 },
+            { type: 'radio', name: 'ap_na', label: 'Jelentős eltérés', points: 4 },
+            { type: 'header', label: 'Szérum Kálium (mmol/L)' },
+            { type: 'radio', name: 'ap_k', label: '3.5 - 5.4', points: 0, checked: true },
+            { type: 'radio', name: 'ap_k', label: 'Eltérés', points: 1 },
+            { type: 'radio', name: 'ap_k', label: 'Jelentős eltérés', points: 4 },
+            { type: 'header', label: 'Szérum Kreatinin (mg/dL)' },
+            { type: 'radio', name: 'ap_cr', label: '0.6 - 1.4', points: 0, checked: true },
+            { type: 'radio', name: 'ap_cr', label: '< 0.6 vagy 1.5 - 1.9', points: 2 },
+            { type: 'radio', name: 'ap_cr', label: '2.0 - 3.4', points: 3 },
+            { type: 'radio', name: 'ap_cr', label: '≥ 3.5', points: 4 },
+            { type: 'checkbox', label: 'Akut veseelégtelenség (Kreatinin pontszám duplázódik)', points: 0 },
+            { type: 'header', label: 'Hematokrit (%)' },
+            { type: 'radio', name: 'ap_hct', label: '30 - 45.9', points: 0, checked: true },
+            { type: 'radio', name: 'ap_hct', label: 'Eltérés', points: 2 },
+            { type: 'radio', name: 'ap_hct', label: 'Jelentős eltérés', points: 4 },
+            { type: 'header', label: 'Fehérvérsejt (G/L)' },
+            { type: 'radio', name: 'ap_wbc', label: '3 - 14.9', points: 0, checked: true },
+            { type: 'radio', name: 'ap_wbc', label: 'Eltérés', points: 2 },
+            { type: 'radio', name: 'ap_wbc', label: 'Jelentős eltérés', points: 4 },
+            { type: 'header', label: 'Glasgow Coma Scale (GCS)' },
+            { type: 'number', label: 'GCS pontszám (15 - GCS = pont)', points: -1, min: 3, max: 15, value: 15 }
+        ],
+        interpret: (score) => {
+            return { risk: `APACHE II Score: ${score + 15}`, action: 'A mortalitás a pontszámmal korrelál (pl. 25 pont ~50% halálozás).', color: 'text-slate-800', bg: 'bg-slate-50', border: 'border-slate-200' };
+        }
     },
     'LRINEC': {
-      title: 'LRINEC Score (Necrotizing Fasciitis)',
-      description: 'Laboratóriumi kockázati indikátor nekrotizáló fasciitisre.',
-      items: [
-        { type: 'header', label: 'CRP (mg/L)' },
-        { type: 'radio', name: 'lrinec_crp', label: '< 150', points: 0, checked: true },
-        { type: 'radio', name: 'lrinec_crp', label: '≥ 150', points: 4 },
-        { type: 'header', label: 'Fehérvérsejt szám (G/L)' },
-        { type: 'radio', name: 'lrinec_wbc', label: '< 15', points: 0, checked: true },
-        { type: 'radio', name: 'lrinec_wbc', label: '15 - 25', points: 1 },
-        { type: 'radio', name: 'lrinec_wbc', label: '> 25', points: 2 },
-        { type: 'header', label: 'Hemoglobin (g/dL)' },
-        { type: 'radio', name: 'lrinec_hb', label: '> 13.5', points: 0, checked: true },
-        { type: 'radio', name: 'lrinec_hb', label: '11 - 13.5', points: 1 },
-        { type: 'radio', name: 'lrinec_hb', label: '< 11', points: 2 },
-        { type: 'header', label: 'Nátrium (mmol/L)' },
-        { type: 'radio', name: 'lrinec_na', label: '≥ 135', points: 0, checked: true },
-        { type: 'radio', name: 'lrinec_na', label: '< 135', points: 2 },
-        { type: 'header', label: 'Kreatinin (µmol/L)' },
-        { type: 'radio', name: 'lrinec_cre', label: '≤ 141', points: 0, checked: true },
-        { type: 'radio', name: 'lrinec_cre', label: '> 141', points: 2 },
-        { type: 'header', label: 'Glükóz (mmol/L)' },
-        { type: 'radio', name: 'lrinec_glu', label: '≤ 10', points: 0, checked: true },
-        { type: 'radio', name: 'lrinec_glu', label: '> 10', points: 1 }
-      ],
-      interpret: (score) => {
-        if (score <= 5) return { risk: 'Alacsony kockázat (<50%)', action: 'Monitorozás.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        if (score <= 7) return { risk: 'Közepes kockázat (50-75%)', action: 'Szoros megfigyelés, sebészi konzílium.', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
-        return { risk: 'Magas kockázat (>75%)', action: 'Azonnali sebészi exploráció!', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-      }
+        title: 'LRINEC Score (Necrotizing Fasciitis)',
+        description: 'Laboratóriumi kockázati indikátor nekrotizáló fasciitisre.',
+        items: [
+            { type: 'header', label: 'CRP (mg/L)' },
+            { type: 'radio', name: 'lrinec_crp', label: '< 150', points: 0, checked: true },
+            { type: 'radio', name: 'lrinec_crp', label: '≥ 150', points: 4 },
+            { type: 'header', label: 'Fehérvérsejt szám (G/L)' },
+            { type: 'radio', name: 'lrinec_wbc', label: '< 15', points: 0, checked: true },
+            { type: 'radio', name: 'lrinec_wbc', label: '15 - 25', points: 1 },
+            { type: 'radio', name: 'lrinec_wbc', label: '> 25', points: 2 },
+            { type: 'header', label: 'Hemoglobin (g/dL)' },
+            { type: 'radio', name: 'lrinec_hb', label: '> 13.5', points: 0, checked: true },
+            { type: 'radio', name: 'lrinec_hb', label: '11 - 13.5', points: 1 },
+            { type: 'radio', name: 'lrinec_hb', label: '< 11', points: 2 },
+            { type: 'header', label: 'Nátrium (mmol/L)' },
+            { type: 'radio', name: 'lrinec_na', label: '≥ 135', points: 0, checked: true },
+            { type: 'radio', name: 'lrinec_na', label: '< 135', points: 2 },
+            { type: 'header', label: 'Kreatinin (µmol/L)' },
+            { type: 'radio', name: 'lrinec_cre', label: '≤ 141', points: 0, checked: true },
+            { type: 'radio', name: 'lrinec_cre', label: '> 141', points: 2 },
+            { type: 'header', label: 'Glükóz (mmol/L)' },
+            { type: 'radio', name: 'lrinec_glu', label: '≤ 10', points: 0, checked: true },
+            { type: 'radio', name: 'lrinec_glu', label: '> 10', points: 1 }
+        ],
+        interpret: (score) => {
+            if (score <= 5) return { risk: 'Alacsony kockázat (<50%)', action: 'Monitorozás.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            if (score <= 7) return { risk: 'Közepes kockázat (50-75%)', action: 'Szoros megfigyelés, sebészi konzílium.', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
+            return { risk: 'Magas kockázat (>75%)', action: 'Azonnali sebészi exploráció!', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
     },
     'Centor': {
-      title: 'Centor Score (McIsaac) - Strep A',
-      description: 'Streptococcus pyogenes pharyngitis valószínűsége.',
-      items: [
-        { type: 'checkbox', label: 'Láz > 38°C', points: 1 },
-        { type: 'checkbox', label: 'Köhögés hiánya', points: 1 },
-        { type: 'checkbox', label: 'Érzékeny elülső nyaki nyirokcsomók', points: 1 },
-        { type: 'checkbox', label: 'Tonsilla duzzanat vagy exsudatum', points: 1 },
-        { type: 'header', label: 'Életkor' },
-        { type: 'radio', name: 'centor_age', label: '3 - 14 év', points: 1, checked: true },
-        { type: 'radio', name: 'centor_age', label: '15 - 44 év', points: 0 },
-        { type: 'radio', name: 'centor_age', label: '≥ 45 év', points: -1 }
-      ],
-      interpret: (score) => {
-        if (score <= 1) return { risk: 'Alacsony kockázat (<10%)', action: 'Antibiotikum nem javasolt.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        if (score <= 3) return { risk: 'Közepes kockázat (15-30%)', action: 'Tenyésztés vagy gyorsteszt javasolt. Pozitív esetben AB.', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
-        return { risk: 'Magas kockázat (>50%)', action: 'Empirikus antibiotikum adható vagy tesztelés.', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-      }
+        title: 'Centor Score (McIsaac) - Strep A',
+        description: 'Streptococcus pyogenes pharyngitis valószínűsége.',
+        items: [
+            { type: 'checkbox', label: 'Láz > 38°C', points: 1 },
+            { type: 'checkbox', label: 'Köhögés hiánya', points: 1 },
+            { type: 'checkbox', label: 'Érzékeny elülső nyaki nyirokcsomók', points: 1 },
+            { type: 'checkbox', label: 'Tonsilla duzzanat vagy exsudatum', points: 1 },
+            { type: 'header', label: 'Életkor' },
+            { type: 'radio', name: 'centor_age', label: '3 - 14 év', points: 1, checked: true },
+            { type: 'radio', name: 'centor_age', label: '15 - 44 év', points: 0 },
+            { type: 'radio', name: 'centor_age', label: '≥ 45 év', points: -1 }
+        ],
+        interpret: (score) => {
+            if (score <= 1) return { risk: 'Alacsony kockázat (<10%)', action: 'Antibiotikum nem javasolt.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            if (score <= 3) return { risk: 'Közepes kockázat (15-30%)', action: 'Tenyésztés vagy gyorsteszt javasolt. Pozitív esetben AB.', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
+            return { risk: 'Magas kockázat (>50%)', action: 'Empirikus antibiotikum adható vagy tesztelés.', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
     },
     'FGSI': {
         title: 'FGSI (Fournier\'s Gangrene Severity Index)',
@@ -410,134 +412,134 @@ const scoreCalculators = {
         }
     },
     'NEWS2': {
-      title: 'NEWS2 (National Early Warning Score)',
-      description: 'A beteg állapotának súlyosságának és a klinikai romlás kockázatának felmérése.',
-      items: [
-        { type: 'header', label: 'Légzésszám (/perc)' },
-        { type: 'radio', name: 'news_rr', label: '12-20', points: 0, checked: true },
-        { type: 'radio', name: 'news_rr', label: '9-11', points: 1 },
-        { type: 'radio', name: 'news_rr', label: '21-24', points: 2 },
-        { type: 'radio', name: 'news_rr', label: '≤8 vagy ≥25', points: 3 },
-        { type: 'header', label: 'Oxigén szaturáció (%)' },
-        { type: 'radio', name: 'news_spo2', label: '≥96', points: 0, checked: true },
-        { type: 'radio', name: 'news_spo2', label: '94-95', points: 1 },
-        { type: 'radio', name: 'news_spo2', label: '92-93', points: 2 },
-        { type: 'radio', name: 'news_spo2', label: '≤91', points: 3 },
-        { type: 'header', label: 'Levegő vagy Oxigén' },
-        { type: 'radio', name: 'news_o2', label: 'Levegő', points: 0, checked: true },
-        { type: 'radio', name: 'news_o2', label: 'Oxigén', points: 2 },
-        { type: 'header', label: 'Szisztolés vérnyomás (Hgmm)' },
-        { type: 'radio', name: 'news_sbp', label: '111-219', points: 0, checked: true },
-        { type: 'radio', name: 'news_sbp', label: '101-110', points: 1 },
-        { type: 'radio', name: 'news_sbp', label: '91-100', points: 2 },
-        { type: 'radio', name: 'news_sbp', label: '≤90 vagy ≥220', points: 3 },
-        { type: 'header', label: 'Pulzus (/perc)' },
-        { type: 'radio', name: 'news_hr', label: '51-90', points: 0, checked: true },
-        { type: 'radio', name: 'news_hr', label: '41-50 vagy 91-110', points: 1 },
-        { type: 'radio', name: 'news_hr', label: '111-130', points: 2 },
-        { type: 'radio', name: 'news_hr', label: '≤40 vagy ≥131', points: 3 },
-        { type: 'header', label: 'Tudatállapot' },
-        { type: 'radio', name: 'news_loc', label: 'Éber (Alert)', points: 0, checked: true },
-        { type: 'radio', name: 'news_loc', label: 'Zavart (CVPU)', points: 3 },
-        { type: 'header', label: 'Hőmérséklet (°C)' },
-        { type: 'radio', name: 'news_temp', label: '36.1-38.0', points: 0, checked: true },
-        { type: 'radio', name: 'news_temp', label: '35.1-36.0 vagy 38.1-39.0', points: 1 },
-        { type: 'radio', name: 'news_temp', label: '≥39.1', points: 2 },
-        { type: 'radio', name: 'news_temp', label: '≤35.0', points: 3 }
-      ],
-      interpret: (score) => {
-        if (score === 0) return { risk: 'Alacsony (0)', action: 'Monitorozás 12 óránként', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        if (score <= 4) return { risk: 'Alacsony-Közepes (1-4)', action: 'Monitorozás 4-6 óránként', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-200' };
-        if (score <= 6) return { risk: 'Közepes (5-6)', action: 'Sürgős orvosi vizsgálat, óránkénti monitorozás', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' };
-        return { risk: 'Magas (≥7)', action: 'Sürgősségi/ITO ellátás, folyamatos monitorozás', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-      }
+        title: 'NEWS2 (National Early Warning Score)',
+        description: 'A beteg állapotának súlyosságának és a klinikai romlás kockázatának felmérése.',
+        items: [
+            { type: 'header', label: 'Légzésszám (/perc)' },
+            { type: 'radio', name: 'news_rr', label: '12-20', points: 0, checked: true },
+            { type: 'radio', name: 'news_rr', label: '9-11', points: 1 },
+            { type: 'radio', name: 'news_rr', label: '21-24', points: 2 },
+            { type: 'radio', name: 'news_rr', label: '≤8 vagy ≥25', points: 3 },
+            { type: 'header', label: 'Oxigén szaturáció (%)' },
+            { type: 'radio', name: 'news_spo2', label: '≥96', points: 0, checked: true },
+            { type: 'radio', name: 'news_spo2', label: '94-95', points: 1 },
+            { type: 'radio', name: 'news_spo2', label: '92-93', points: 2 },
+            { type: 'radio', name: 'news_spo2', label: '≤91', points: 3 },
+            { type: 'header', label: 'Levegő vagy Oxigén' },
+            { type: 'radio', name: 'news_o2', label: 'Levegő', points: 0, checked: true },
+            { type: 'radio', name: 'news_o2', label: 'Oxigén', points: 2 },
+            { type: 'header', label: 'Szisztolés vérnyomás (Hgmm)' },
+            { type: 'radio', name: 'news_sbp', label: '111-219', points: 0, checked: true },
+            { type: 'radio', name: 'news_sbp', label: '101-110', points: 1 },
+            { type: 'radio', name: 'news_sbp', label: '91-100', points: 2 },
+            { type: 'radio', name: 'news_sbp', label: '≤90 vagy ≥220', points: 3 },
+            { type: 'header', label: 'Pulzus (/perc)' },
+            { type: 'radio', name: 'news_hr', label: '51-90', points: 0, checked: true },
+            { type: 'radio', name: 'news_hr', label: '41-50 vagy 91-110', points: 1 },
+            { type: 'radio', name: 'news_hr', label: '111-130', points: 2 },
+            { type: 'radio', name: 'news_hr', label: '≤40 vagy ≥131', points: 3 },
+            { type: 'header', label: 'Tudatállapot' },
+            { type: 'radio', name: 'news_loc', label: 'Éber (Alert)', points: 0, checked: true },
+            { type: 'radio', name: 'news_loc', label: 'Zavart (CVPU)', points: 3 },
+            { type: 'header', label: 'Hőmérséklet (°C)' },
+            { type: 'radio', name: 'news_temp', label: '36.1-38.0', points: 0, checked: true },
+            { type: 'radio', name: 'news_temp', label: '35.1-36.0 vagy 38.1-39.0', points: 1 },
+            { type: 'radio', name: 'news_temp', label: '≥39.1', points: 2 },
+            { type: 'radio', name: 'news_temp', label: '≤35.0', points: 3 }
+        ],
+        interpret: (score) => {
+            if (score === 0) return { risk: 'Alacsony (0)', action: 'Monitorozás 12 óránként', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            if (score <= 4) return { risk: 'Alacsony-Közepes (1-4)', action: 'Monitorozás 4-6 óránként', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-200' };
+            if (score <= 6) return { risk: 'Közepes (5-6)', action: 'Sürgős orvosi vizsgálat, óránkénti monitorozás', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' };
+            return { risk: 'Magas (≥7)', action: 'Sürgősségi/ITO ellátás, folyamatos monitorozás', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
     },
     '4C Mortality Score': {
-      title: '4C Mortality Score (COVID-19)',
-      description: 'Kórházi halálozás kockázata COVID-19 betegeknél.',
-      items: [
-        { type: 'header', label: 'Életkor' },
-        { type: 'radio', name: '4c_age', label: '<50', points: 0, checked: true },
-        { type: 'radio', name: '4c_age', label: '50-59', points: 2 },
-        { type: 'radio', name: '4c_age', label: '60-69', points: 4 },
-        { type: 'radio', name: '4c_age', label: '70-79', points: 6 },
-        { type: 'radio', name: '4c_age', label: '≥80', points: 7 },
-        { type: 'header', label: 'Nem' },
-        { type: 'radio', name: '4c_sex', label: 'Nő', points: 0, checked: true },
-        { type: 'radio', name: '4c_sex', label: 'Férfi', points: 1 },
-        { type: 'header', label: 'Komorbiditások száma' },
-        { type: 'radio', name: '4c_comorb', label: '0', points: 0, checked: true },
-        { type: 'radio', name: '4c_comorb', label: '1', points: 1 },
-        { type: 'radio', name: '4c_comorb', label: '≥2', points: 2 },
-        { type: 'header', label: 'Légzésszám (/perc)' },
-        { type: 'radio', name: '4c_rr', label: '<20', points: 0, checked: true },
-        { type: 'radio', name: '4c_rr', label: '20-29', points: 1 },
-        { type: 'radio', name: '4c_rr', label: '≥30', points: 2 },
-        { type: 'header', label: 'SpO2 (levegőn)' },
-        { type: 'radio', name: '4c_spo2', label: '≥92%', points: 0, checked: true },
-        { type: 'radio', name: '4c_spo2', label: '<92%', points: 2 },
-        { type: 'header', label: 'GCS' },
-        { type: 'radio', name: '4c_gcs', label: '15', points: 0, checked: true },
-        { type: 'radio', name: '4c_gcs', label: '<15', points: 2 },
-        { type: 'header', label: 'Urea (mmol/L)' },
-        { type: 'radio', name: '4c_urea', label: '≤7', points: 0, checked: true },
-        { type: 'radio', name: '4c_urea', label: '7-14', points: 1 },
-        { type: 'radio', name: '4c_urea', label: '>14', points: 3 },
-        { type: 'header', label: 'CRP (mg/L)' },
-        { type: 'radio', name: '4c_crp', label: '<50', points: 0, checked: true },
-        { type: 'radio', name: '4c_crp', label: '50-99', points: 1 },
-        { type: 'radio', name: '4c_crp', label: '≥100', points: 2 }
-      ],
-      interpret: (score) => {
-        if (score <= 3) return { risk: 'Alacsony (0-3)', action: 'Mortalitás: 1%', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        if (score <= 8) return { risk: 'Közepes (4-8)', action: 'Mortalitás: 8%', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-200' };
-        if (score <= 14) return { risk: 'Magas (9-14)', action: 'Mortalitás: 31%', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' };
-        return { risk: 'Nagyon magas (≥15)', action: 'Mortalitás: 62%', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-      }
+        title: '4C Mortality Score (COVID-19)',
+        description: 'Kórházi halálozás kockázata COVID-19 betegeknél.',
+        items: [
+            { type: 'header', label: 'Életkor' },
+            { type: 'radio', name: '4c_age', label: '<50', points: 0, checked: true },
+            { type: 'radio', name: '4c_age', label: '50-59', points: 2 },
+            { type: 'radio', name: '4c_age', label: '60-69', points: 4 },
+            { type: 'radio', name: '4c_age', label: '70-79', points: 6 },
+            { type: 'radio', name: '4c_age', label: '≥80', points: 7 },
+            { type: 'header', label: 'Nem' },
+            { type: 'radio', name: '4c_sex', label: 'Nő', points: 0, checked: true },
+            { type: 'radio', name: '4c_sex', label: 'Férfi', points: 1 },
+            { type: 'header', label: 'Komorbiditások száma' },
+            { type: 'radio', name: '4c_comorb', label: '0', points: 0, checked: true },
+            { type: 'radio', name: '4c_comorb', label: '1', points: 1 },
+            { type: 'radio', name: '4c_comorb', label: '≥2', points: 2 },
+            { type: 'header', label: 'Légzésszám (/perc)' },
+            { type: 'radio', name: '4c_rr', label: '<20', points: 0, checked: true },
+            { type: 'radio', name: '4c_rr', label: '20-29', points: 1 },
+            { type: 'radio', name: '4c_rr', label: '≥30', points: 2 },
+            { type: 'header', label: 'SpO2 (levegőn)' },
+            { type: 'radio', name: '4c_spo2', label: '≥92%', points: 0, checked: true },
+            { type: 'radio', name: '4c_spo2', label: '<92%', points: 2 },
+            { type: 'header', label: 'GCS' },
+            { type: 'radio', name: '4c_gcs', label: '15', points: 0, checked: true },
+            { type: 'radio', name: '4c_gcs', label: '<15', points: 2 },
+            { type: 'header', label: 'Urea (mmol/L)' },
+            { type: 'radio', name: '4c_urea', label: '≤7', points: 0, checked: true },
+            { type: 'radio', name: '4c_urea', label: '7-14', points: 1 },
+            { type: 'radio', name: '4c_urea', label: '>14', points: 3 },
+            { type: 'header', label: 'CRP (mg/L)' },
+            { type: 'radio', name: '4c_crp', label: '<50', points: 0, checked: true },
+            { type: 'radio', name: '4c_crp', label: '50-99', points: 1 },
+            { type: 'radio', name: '4c_crp', label: '≥100', points: 2 }
+        ],
+        interpret: (score) => {
+            if (score <= 3) return { risk: 'Alacsony (0-3)', action: 'Mortalitás: 1%', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            if (score <= 8) return { risk: 'Közepes (4-8)', action: 'Mortalitás: 8%', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-200' };
+            if (score <= 14) return { risk: 'Magas (9-14)', action: 'Mortalitás: 31%', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' };
+            return { risk: 'Nagyon magas (≥15)', action: 'Mortalitás: 62%', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
     },
     'PAGE-B': {
-      title: 'PAGE-B Score (HBV)',
-      description: 'Hepatocellularis carcinoma (HCC) kockázata krónikus Hepatitis B betegeknél (NA kezelés alatt).',
-      items: [
-        { type: 'header', label: 'Életkor' },
-        { type: 'radio', name: 'pageb_age', label: '16-29', points: 0, checked: true },
-        { type: 'radio', name: 'pageb_age', label: '30-39', points: 2 },
-        { type: 'radio', name: 'pageb_age', label: '40-49', points: 4 },
-        { type: 'radio', name: 'pageb_age', label: '50-59', points: 6 },
-        { type: 'radio', name: 'pageb_age', label: '60-69', points: 8 },
-        { type: 'radio', name: 'pageb_age', label: '≥70', points: 10 },
-        { type: 'header', label: 'Nem' },
-        { type: 'radio', name: 'pageb_sex', label: 'Nő', points: 0, checked: true },
-        { type: 'radio', name: 'pageb_sex', label: 'Férfi', points: 6 },
-        { type: 'header', label: 'Thrombocyta szám (G/L)' },
-        { type: 'radio', name: 'pageb_plt', label: '≥200', points: 0, checked: true },
-        { type: 'radio', name: 'pageb_plt', label: '100-199', points: 1 },
-        { type: 'radio', name: 'pageb_plt', label: '<100', points: 2 }
-      ],
-      interpret: (score) => {
-        if (score <= 9) return { risk: 'Alacsony kockázat (0-9)', action: '5 éves HCC rizikó ~0%', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-        if (score <= 17) return { risk: 'Közepes kockázat (10-17)', action: '5 éves HCC rizikó ~3%', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-200' };
-        return { risk: 'Magas kockázat (≥18)', action: '5 éves HCC rizikó ~17%', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-      }
+        title: 'PAGE-B Score (HBV)',
+        description: 'Hepatocellularis carcinoma (HCC) kockázata krónikus Hepatitis B betegeknél (NA kezelés alatt).',
+        items: [
+            { type: 'header', label: 'Életkor' },
+            { type: 'radio', name: 'pageb_age', label: '16-29', points: 0, checked: true },
+            { type: 'radio', name: 'pageb_age', label: '30-39', points: 2 },
+            { type: 'radio', name: 'pageb_age', label: '40-49', points: 4 },
+            { type: 'radio', name: 'pageb_age', label: '50-59', points: 6 },
+            { type: 'radio', name: 'pageb_age', label: '60-69', points: 8 },
+            { type: 'radio', name: 'pageb_age', label: '≥70', points: 10 },
+            { type: 'header', label: 'Nem' },
+            { type: 'radio', name: 'pageb_sex', label: 'Nő', points: 0, checked: true },
+            { type: 'radio', name: 'pageb_sex', label: 'Férfi', points: 6 },
+            { type: 'header', label: 'Thrombocyta szám (G/L)' },
+            { type: 'radio', name: 'pageb_plt', label: '≥200', points: 0, checked: true },
+            { type: 'radio', name: 'pageb_plt', label: '100-199', points: 1 },
+            { type: 'radio', name: 'pageb_plt', label: '<100', points: 2 }
+        ],
+        interpret: (score) => {
+            if (score <= 9) return { risk: 'Alacsony kockázat (0-9)', action: '5 éves HCC rizikó ~0%', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+            if (score <= 17) return { risk: 'Közepes kockázat (10-17)', action: '5 éves HCC rizikó ~3%', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-200' };
+            return { risk: 'Magas kockázat (≥18)', action: '5 éves HCC rizikó ~17%', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+        }
     },
     "King's College": {
-      title: "King's College Kritériumok (Nem-Paracetamol)",
-      description: 'Sürgősségi májtranszplantáció indikációja akut májelégtelenségben (nem paracetamol eredetű).',
-      items: [
-        { type: 'checkbox', label: 'INR > 6.5 (PT > 100s)', points: 3 },
-        { type: 'header', label: 'VAGY 3 az alábbi 5-ből (ha INR ≤ 6.5):' },
-        { type: 'checkbox', label: 'Életkor < 10 vagy > 40 év', points: 1 },
-        { type: 'checkbox', label: 'Etiológia: Non-A/Non-B hepatitis, gyógyszer, halothan', points: 1 },
-        { type: 'checkbox', label: 'Icterus és Encephalopathia között > 7 nap telt el', points: 1 },
-        { type: 'checkbox', label: 'Szérum Bilirubin > 300 µmol/L', points: 1 },
-        { type: 'checkbox', label: 'INR > 3.5 (PT > 50s)', points: 1 }
-      ],
-      interpret: (score) => {
-        if (score >= 3) return { risk: 'Kritériumok teljesültek', action: 'Sürgős májtranszplantáció listázás indokolt! (Mortalitás >80% transzplantáció nélkül)', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
-        return { risk: 'Kritériumok nem teljesültek', action: 'Szoros monitorozás intenzív osztályon.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
-      }
+        title: "King's College Kritériumok (Nem-Paracetamol)",
+        description: 'Sürgősségi májtranszplantáció indikációja akut májelégtelenségben (nem paracetamol eredetű).',
+        items: [
+            { type: 'checkbox', label: 'INR > 6.5 (PT > 100s)', points: 3 },
+            { type: 'header', label: 'VAGY 3 az alábbi 5-ből (ha INR ≤ 6.5):' },
+            { type: 'checkbox', label: 'Életkor < 10 vagy > 40 év', points: 1 },
+            { type: 'checkbox', label: 'Etiológia: Non-A/Non-B hepatitis, gyógyszer, halothan', points: 1 },
+            { type: 'checkbox', label: 'Icterus és Encephalopathia között > 7 nap telt el', points: 1 },
+            { type: 'checkbox', label: 'Szérum Bilirubin > 300 µmol/L', points: 1 },
+            { type: 'checkbox', label: 'INR > 3.5 (PT > 50s)', points: 1 }
+        ],
+        interpret: (score) => {
+            if (score >= 3) return { risk: 'Kritériumok teljesültek', action: 'Sürgős májtranszplantáció listázás indokolt! (Mortalitás >80% transzplantáció nélkül)', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
+            return { risk: 'Kritériumok nem teljesültek', action: 'Szoros monitorozás intenzív osztályon.', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200' };
+        }
     }
-  };
+});
 
 // State
 let currentLang = localStorage.getItem('infectologia_lang') || 'hu';
@@ -550,69 +552,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
+    // Only attempt registration on supported, non-file origins (http/https or localhost)
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:' || location.hostname === 'localhost')) {
         navigator.serviceWorker.register('sw.js')
             .then(() => console.log('Service Worker Registered'))
             .catch(err => console.error('SW Registration failed', err));
+    } else {
+        console.warn('Skipping ServiceWorker registration due to unsupported origin:', location.protocol, location.hostname);
     }
 }
 
 async function initApp() {
-    // 1. Setup basic UI structure
-    const app = document.getElementById('app') || document.body;
-    
-    // Csak akkor hozzuk létre a keretet, ha még nincs (pl. statikus HTML esetén)
-    if (!document.getElementById('app-container')) {
-        app.innerHTML = `
-            <div id="app-container" class="bg-gray-50 min-h-screen font-sans">
-                <header class="sticky top-0 z-50 bg-white shadow-md p-4">
-                    <div class="max-w-4xl mx-auto">
-                        <div class="flex justify-between items-center mb-4">
-                            <h1 class="text-2xl font-bold text-blue-800 cursor-pointer flex items-center gap-2" onclick="renderHome()">
-                                <span>🦠</span> Infectologia
-                            </h1>
-                            <select id="lang-selector" class="p-2 border rounded bg-gray-50 text-gray-700 focus:ring-2 focus:ring-blue-500 outline-none">
-                                ${Object.entries(AVAILABLE_LANGUAGES).map(([code, name]) => 
-                                    `<option value="${code}" ${code === currentLang ? 'selected' : ''}>${name}</option>`
-                                ).join('')}
-                            </select>
-                        </div>
-                        <div class="relative">
-                            <input type="text" id="search-input" placeholder="${getSearchPlaceholder()}" 
-                                   class="w-full p-3 pl-10 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all">
-                            <span class="absolute left-3 top-3 text-gray-400">🔍</span>
-                        </div>
-                    </div>
-                </header>
-                <main id="main-content" class="p-4 max-w-4xl mx-auto pb-20"></main>
-                <div id="loading" class="fixed inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center z-50 transition-opacity duration-300">
-                    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
-                    <div class="text-gray-600 font-medium">Adatok betöltése...</div>
-                </div>
-                <!-- Score Modal -->
-                <div id="score-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true" onclick="if(event.target === this) closeScoreModal()">
-                    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden flex flex-col max-h-[90vh] transform scale-95 transition-transform duration-300" id="score-modal-panel">
-                        <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-                            <h3 id="score-modal-title" class="font-semibold text-slate-800">Score Kalkulátor</h3>
-                            <button onclick="closeScoreModal()" class="text-slate-400 hover:text-slate-600 transition-colors p-1 rounded-full hover:bg-slate-200">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                            </button>
-                        </div>
-                        <div id="score-modal-content" class="p-6 overflow-y-auto"></div>
-                        <div class="p-4 border-t border-slate-100 bg-slate-50 flex justify-end">
-                            <button onclick="closeScoreModal()" class="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors font-medium">Bezárás</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    // 2. Event Listeners
-    const langSelector = document.getElementById('lang-selector');
-    if (langSelector) {
-        langSelector.addEventListener('change', (e) => {
-            setLanguage(e.target.value);
+    // Use existing index.html DOM structure - no need to recreate layout
+    // 1. Setup event listeners for existing elements
+    const langButtons = document.querySelectorAll('button[onclick*="changeLanguage"]');
+    if (langButtons.length > 0) {
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const lang = e.currentTarget.getAttribute('onclick').match(/'([^']+)'/)[1];
+                setLanguage(lang);
+            });
         });
     }
 
@@ -623,16 +582,16 @@ async function initApp() {
         });
     }
 
-    // 3. Load Data
+    // 2. Load Data
     await loadData();
 }
 
 async function loadData() {
     showLoading(true);
-    
+
     // Reset diseases object to avoid mixing languages
     window.diseases = {};
-    
+
     // Load metadata first if needed (assuming it's loaded via script tag or we could load it here)
     // We assume metadata.js is loaded in index.html or we can load it:
     // await loadScript('metadata.js'); 
@@ -646,6 +605,7 @@ async function loadData() {
 
     try {
         await Promise.all(scriptPromises);
+        normalizeDiseases();
         renderHome();
     } catch (error) {
         console.error("Error loading data:", error);
@@ -683,25 +643,62 @@ function loadScript(src) {
     });
 }
 
+function normalizeDiseases() {
+    if (!window.diseases) return;
+    Object.entries(window.diseases).forEach(([catKey, category]) => {
+        // Prepend didactics if present
+        if (category.didactics) {
+            const didacticsId = `didactics-${catKey}`;
+            const exists = category.diseases && category.diseases.some(d => d.id === didacticsId);
+            if (!exists) {
+                const titleMap = {
+                    hu: 'Didaktika / Áttekintés',
+                    en: 'Didactics / Overview',
+                    de: 'Didaktik / Übersicht'
+                };
+                const didacticsEntry = {
+                    id: didacticsId,
+                    name: titleMap[currentLang] || 'Didaktika',
+                    didactics: category.didactics,
+                    pathogen: null
+                };
+                category.diseases = [didacticsEntry, ...(category.diseases || [])];
+            }
+        }
+
+        // Merge tables into diseases if present (e.g. Gastro, Hepatitis)
+        if (category.tables && Array.isArray(category.tables)) {
+            const tableEntries = category.tables.map((table, index) => ({
+                id: `table-${catKey}-${index}`,
+                name: table.title,
+                table: table,
+                pathogen: null
+            }));
+            category.diseases = [...tableEntries, ...(category.diseases || [])];
+            delete category.tables;
+        }
+    });
+}
+
+function changeLanguage(lang) {
+    setLanguage(lang);
+}
+
 function setLanguage(lang) {
     localStorage.setItem('infectologia_lang', lang);
     location.reload(); // Reload is the cleanest way to reset all scripts and global state
 }
 
-function renderHome() {
-    currentCategory = null;
-    const container = document.getElementById('main-content');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    const grid = document.createElement('div');
-    grid.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in';
+function renderCategoryNav() {
+    const nav = document.getElementById('category-nav');
+    if (!nav) return;
+
+    nav.innerHTML = '';
 
     const sortedEntries = Object.entries(window.diseases).sort((a, b) => {
         const indexA = CATEGORY_ORDER.indexOf(a[0]);
         const indexB = CATEGORY_ORDER.indexOf(b[0]);
-        
+
         if (indexA !== -1 && indexB !== -1) return indexA - indexB;
         if (indexA !== -1) return -1;
         if (indexB !== -1) return 1;
@@ -709,35 +706,268 @@ function renderHome() {
     });
 
     sortedEntries.forEach(([key, category]) => {
-        const card = document.createElement('div');
-        card.className = 'bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer border-l-4 transform hover:-translate-y-1';
-        card.style.borderLeftColor = category.color || '#3b82f6';
-        card.onclick = () => renderCategory(key);
-        
-        const diseaseCount = category.diseases ? category.diseases.length : 0;
-        
-        card.innerHTML = `
-            <div class="flex items-center space-x-4">
-                <div class="text-4xl bg-gray-50 p-3 rounded-full">${category.icon || '📁'}</div>
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800">${category.name}</h2>
-                    <p class="text-gray-500 text-sm flex items-center gap-1">
-                        <span>📄</span> ${diseaseCount} ${getLabel('entries')}
-                    </p>
+        const btn = document.createElement('button');
+        btn.className = 'w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 transition-colors text-slate-700 text-sm font-medium category-pill';
+        btn.textContent = category.name || key;
+        btn.style.borderLeft = `3px solid ${category.color || '#3b82f6'}`;
+        btn.onclick = () => {
+            currentCategory = key;
+            renderDiseaseList(key);
+            renderDiseaseDetail(key, null);
+        };
+        nav.appendChild(btn);
+    });
+}
+
+function renderDiseaseList(categoryKey) {
+    const category = window.diseases[categoryKey];
+    if (!category) return;
+
+    const listPanel = document.getElementById('disease-list-panel');
+    const listHeader = document.getElementById('disease-list-header-content');
+    const diseaseList = document.getElementById('disease-list');
+
+    if (!listHeader) return;
+    listHeader.innerHTML = `
+        <h2 id="category-title" class="font-semibold text-slate-800">${category.name || categoryKey}</h2>
+        <p id="disease-count" class="text-sm text-slate-500 mt-1">${(category.diseases || []).length} betegség</p>
+    `;
+
+    if (!diseaseList) return;
+    diseaseList.innerHTML = category.diseases.map(disease => `
+        <button onclick="renderDiseaseDetail('${categoryKey}', diseases['${categoryKey}'].diseases.find(d => d.id === '${disease.id}'))" 
+          class="w-full text-left px-3 py-2 rounded-lg hover:bg-white hover:shadow-sm transition-all text-slate-700 text-sm border border-transparent hover:border-slate-200">
+          <div class="flex items-center gap-2">
+            <span class="text-white rounded px-1.5 py-0.5 text-xs flex-shrink-0" style="background: ${category.color}">
+              ${disease.didactics ? '📖' : disease.table ? '📊' : '🦠'}
+            </span>
+            <span class="truncate">${disease.name || disease.id}</span>
+          </div>
+        </button>
+    `).join('');
+}
+
+function renderDiseaseDetail(categoryKey, disease) {
+    const category = window.diseases[categoryKey];
+    const detailPanel = document.getElementById('disease-detail');
+    const contentDiv = document.getElementById('disease-content');
+    const welcomeScreen = document.getElementById('welcome-screen');
+
+    if (!detailPanel || !contentDiv) return;
+
+    if (!disease) {
+        // Show category overview instead
+        welcomeScreen.classList.remove('hidden');
+        contentDiv.classList.add('hidden');
+        return;
+    }
+
+    welcomeScreen.classList.add('hidden');
+    contentDiv.classList.remove('hidden');
+
+    if (disease.didactics) {
+        const d = disease.didactics;
+        const labels = {
+            hu: {
+                overview: 'Áttekintés',
+                lower: 'Alsó húgyúti fertőzés',
+                upper: 'Felső húgyúti fertőzés',
+                diagnostics: 'Diagnosztika',
+                red_flags: 'Vörös zászlók',
+                special_populations: 'Különleges betegcsoportok',
+                teaching_tip: 'Tanítási tipp'
+            },
+            en: {
+                overview: 'Overview',
+                lower: 'Lower Urinary Tract Infection',
+                upper: 'Upper Urinary Tract Infection',
+                diagnostics: 'Diagnostics',
+                red_flags: 'Red Flags',
+                special_populations: 'Special Populations',
+                teaching_tip: 'Teaching Tip'
+            },
+            de: {
+                overview: 'Übersicht',
+                lower: 'Untere Harnwegsinfektion',
+                upper: 'Obere Harnwegsinfektion',
+                diagnostics: 'Diagnostik',
+                red_flags: 'Rote Flaggen',
+                special_populations: 'Spezielle Populationen',
+                teaching_tip: 'Lehrtipp'
+            }
+        };
+        const l = labels[currentLang] || labels.hu;
+
+        let html = `<div class="p-6">
+            <button onclick="currentCategory = null; document.getElementById('welcome-screen').classList.remove('hidden'); document.getElementById('disease-content').classList.add('hidden');" 
+                    class="mb-6 flex items-center text-emerald-600 hover:text-emerald-800 font-medium transition-colors">
+                <span class="mr-1">←</span> ${getLabel('back')}
+            </button>
+            
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-6 border-t-4" style="border-top-color: ${category.color}">
+                <h1 class="text-3xl font-bold text-slate-900">${disease.name}</h1>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Overview -->
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                  <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2">
+                    <span class="text-emerald-600">📖</span> ${l.overview}
+                  </h3>
+                  <p class="text-slate-700 leading-relaxed text-base">${Array.isArray(d.overview) ? d.overview.join(' ') : (d.overview || '')}</p>
                 </div>
+
+                <!-- Lower & Upper UTI Grid -->
+                <div class="grid gap-4 sm:grid-cols-2">
+                  ${d.lower ? `
+                    <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                      <h4 class="font-bold text-blue-900 mb-2 flex items-center gap-2">
+                        <span>⬇️</span> ${l.lower}
+                      </h4>
+                      <p class="text-slate-700 text-sm leading-relaxed">${Array.isArray(d.lower) ? d.lower.join(' ') : d.lower}</p>
+                    </div>
+                  ` : ''}
+                  ${d.upper ? `
+                    <div class="bg-red-50/50 p-5 rounded-xl border border-red-100 shadow-sm hover:shadow-md transition-shadow">
+                      <h4 class="font-bold text-red-900 mb-2 flex items-center gap-2">
+                        <span>⬆️</span> ${l.upper}
+                      </h4>
+                      <p class="text-slate-700 text-sm leading-relaxed">${Array.isArray(d.upper) ? d.upper.join(' ') : d.upper}</p>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Diagnostics & Red Flags -->
+                <div class="grid gap-4 sm:grid-cols-2">
+                  ${d.diagnostics ? `
+                    <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                      <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">🔬</span> ${l.diagnostics}
+                      </h4>
+                      <ul class="space-y-2 text-slate-700 text-sm">
+                        ${d.diagnostics.map(i => `<li class="flex items-start gap-2"><span class="text-indigo-400">•</span><span>${i}</span></li>`).join('')}
+                      </ul>
+                    </div>
+                  ` : ''}
+                  ${d.red_flags ? `
+                    <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                      <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <span class="text-rose-600">⚠️</span> ${l.red_flags}
+                      </h4>
+                      <ul class="space-y-2 text-slate-700 text-sm">
+                        ${d.red_flags.map(i => `<li class="flex items-start gap-2"><span class="text-rose-400">•</span><span>${i}</span></li>`).join('')}
+                      </ul>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Special Populations -->
+                ${d.special_populations ? `
+                  <div class="bg-amber-50/50 p-5 rounded-xl border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="font-bold text-amber-900 mb-2 flex items-center gap-2">
+                      <span>👥</span> ${l.special_populations}
+                    </h4>
+                    <p class="text-slate-700 text-sm leading-relaxed">${d.special_populations}</p>
+                  </div>
+                ` : ''}
+
+                <!-- Teaching Tip -->
+                ${d.teaching_tip ? `
+                  <div class="bg-emerald-50/50 p-5 rounded-xl border border-emerald-100 shadow-sm italic hover:shadow-md transition-shadow">
+                    <h4 class="font-bold text-emerald-900 not-italic mb-1 flex items-center gap-2">
+                      <span>💡</span> ${l.teaching_tip}
+                    </h4>
+                    <p class="text-slate-700 text-sm leading-relaxed">${Array.isArray(d.teaching_tip) ? d.teaching_tip.join(' ') : d.teaching_tip}</p>
+                  </div>
+                ` : ''}
+            </div>
+        </div>`;
+        contentDiv.innerHTML = html;
+        return;
+    }
+
+    // Generate disease detail HTML
+    let html = `<div class="p-6">`;
+
+    // Back button
+    html += `
+        <button onclick="currentCategory = null; document.getElementById('welcome-screen').classList.remove('hidden'); document.getElementById('disease-content').classList.add('hidden');" 
+                class="mb-6 flex items-center text-emerald-600 hover:text-emerald-800 font-medium transition-colors">
+            <span class="mr-1">←</span> ${getLabel('back')}
+        </button>
+    `;
+
+    // Title
+    html += `
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-6 border-t-4" style="border-top-color: ${category.color}">
+            <h1 class="text-3xl font-bold text-slate-900">${disease.name}</h1>
+        </div>
+    `;
+
+    // Category-level Didactics
+    if (category.didactics) {
+        const d = category.didactics;
+        html += `
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-6 border border-slate-100">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">Didaktika</h3>
+                <p class="text-slate-700 mb-3">${Array.isArray(d.overview) ? d.overview.join(' ') : (d.overview || '')}</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${d.lower ? `<div class="bg-slate-50 p-4 rounded"><h4 class="font-semibold text-slate-800 mb-2">Alsó húgyúti fertőzés</h4><p class="text-sm text-slate-600">${Array.isArray(d.lower) ? d.lower.join(' ') : d.lower}</p></div>` : ''}
+                    ${d.upper ? `<div class="bg-slate-50 p-4 rounded"><h4 class="font-semibold text-slate-800 mb-2">Felső húgyúti fertőzés</h4><p class="text-sm text-slate-600">${Array.isArray(d.upper) ? d.upper.join(' ') : d.upper}</p></div>` : ''}
+                </div>
+                ${d.diagnostics ? `<div class="mt-4"><strong class="text-slate-800">Diagnosztika:</strong><ul class="list-disc list-inside mt-2 text-sm text-slate-700">${d.diagnostics.map(i => `<li>${i}</li>`).join('')}</ul></div>` : ''}
+                ${d.red_flags ? `<div class="mt-3"><strong class="text-slate-800">Vörös zászlók:</strong><ul class="list-disc list-inside mt-2 text-sm text-slate-700">${d.red_flags.map(i => `<li>${i}</li>`).join('')}</ul></div>` : ''}
+                ${d.teaching_tip ? `<div class="mt-3 text-sm text-slate-700"><em><strong>Tanítási tipp:</strong> ${Array.isArray(d.teaching_tip) ? d.teaching_tip.join(' ') : d.teaching_tip}</em></div>` : ''}
             </div>
         `;
-        grid.appendChild(card);
-    });
+    }
 
-    container.appendChild(grid);
+    // Pathogen
+    if (disease.pathogen) {
+        const p = disease.pathogen;
+        html += `
+            <div class="bg-blue-50 p-4 rounded-xl shadow-sm border border-blue-100 mb-6">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-2xl">🦠</span>
+                    <strong class="text-blue-900">${p.type || 'Pathogen'}:</strong>
+                </div>
+                <p class="text-blue-900 font-medium">${p.name || ''}</p>
+                ${p.gram ? `<p class="text-sm text-blue-700 mt-1"><strong>Gram stain:</strong> ${p.gram}</p>` : ''}
+                ${p.shape ? `<p class="text-sm text-blue-700"><strong>Shape:</strong> ${p.shape}</p>` : ''}
+            </div>
+        `;
+    }
+
+    // Epidemiology
+    if (disease.epidemiology) {
+        const epi = disease.epidemiology;
+        html += `<div class="bg-white rounded-xl shadow-sm p-6 mb-6 border border-slate-100"><h3 class="text-lg font-bold text-slate-800 mb-4">🌍 Epidemiology</h3>`;
+        if (epi.incidence) html += `<p class="text-slate-700 mb-2"><strong>Incidence:</strong> ${epi.incidence}</p>`;
+        if (epi.risk_groups) html += `<p class="text-slate-700 mb-2"><strong>Risk Groups:</strong> ${epi.risk_groups.join(', ')}</p>`;
+        if (epi.transmission) html += `<p class="text-slate-700 mb-2"><strong>Transmission:</strong> ${epi.transmission}</p>`;
+        html += `</div>`;
+    }
+
+    html += `</div>`;
+    contentDiv.innerHTML = html;
+}
+
+function renderHome() {
+    // Show welcome screen
+    const welcome = document.getElementById('welcome-screen');
+    const content = document.getElementById('disease-content');
+    if (welcome) welcome.classList.remove('hidden');
+    if (content) content.classList.add('hidden');
+
+    // Populate category sidebar
+    renderCategoryNav();
 }
 
 function renderCategory(key) {
     currentCategory = key;
     const category = window.diseases[key];
     const container = document.getElementById('main-content');
-    
+
     let html = `
         <button onclick="renderHome()" class="mb-6 flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors">
             <span class="mr-1">←</span> ${getLabel('back')}
@@ -748,6 +978,24 @@ function renderCategory(key) {
             <h1 class="text-3xl font-bold text-gray-900">${category.name}</h1>
         </div>
     `;
+
+    // Didactics (category-level)
+    if (category.didactics) {
+        const d = category.didactics;
+        html += `
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-6 border border-gray-100">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Didaktika</h3>
+                <p class="text-gray-700 mb-3">${Array.isArray(d.overview) ? d.overview.join(' ') : (d.overview || '')}</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded"><h4 class="font-semibold">Alsó húgyúti fertőzés</h4><p class="text-sm text-gray-600">${Array.isArray(d.lower) ? d.lower.join(' ') : (d.lower || '')}</p></div>
+                    <div class="bg-gray-50 p-4 rounded"><h4 class="font-semibold">Felső húgyúti fertőzés</h4><p class="text-sm text-gray-600">${Array.isArray(d.upper) ? d.upper.join(' ') : (d.upper || '')}</p></div>
+                </div>
+                ${d.diagnostics ? `<div class="mt-4"><strong>Diagnosztika:</strong><ul class="list-disc list-inside mt-2">${d.diagnostics.map(i => `<li>${i}</li>`).join('')}</ul></div>` : ''}
+                ${d.red_flags ? `<div class="mt-3"><strong>Vörös zászlók:</strong><ul class="list-disc list-inside mt-2">${d.red_flags.map(i => `<li>${i}</li>`).join('')}</ul></div>` : ''}
+                ${d.teaching_tip ? `<div class="mt-3 text-sm text-gray-700"><em>${Array.isArray(d.teaching_tip) ? d.teaching_tip.join(' ') : d.teaching_tip}</em></div>` : ''}
+            </div>
+        `;
+    }
 
     // ** RENDER TABLES (Differential Diagnosis) **
     // Ez a rész kezeli a kért táblázatokat
@@ -831,6 +1079,19 @@ function renderCategory(key) {
 }
 
 function renderDiseaseDetails(d) {
+    // If the current category has didactics, render them first so they're visible on disease pages
+    let cat = (typeof currentCategory !== 'undefined' && window.diseases[currentCategory]) ? window.diseases[currentCategory] : null;
+    // If currentCategory is not set, try to find the category that contains this disease by id
+    if (!cat) {
+        for (const k in window.diseases) {
+            const c = window.diseases[k];
+            if (c && c.diseases && c.diseases.some(x => x.id === d.id)) {
+                cat = c;
+                break;
+            }
+        }
+    }
+    let didacticsHtml = '';
     // Ha az elem egy táblázat (pl. differenciáldiagnosztika)
     if (d.table) {
         return `
@@ -878,7 +1139,7 @@ function renderDiseaseDetails(d) {
     ` : '';
 
     // All sections combined
-    let allContent = '';
+    let allContent = didacticsHtml;
 
     // Epidemiology
     const epi = d.epidemiology;
@@ -981,14 +1242,14 @@ function renderDiseaseDetails(d) {
             }
             // Handle object structure (e.g. Thorax.js)
             if (!d.therapy.empirical.outpatient && !Array.isArray(d.therapy.empirical)) {
-                 Object.values(d.therapy.empirical).forEach(group => {
-                     if(group.drugs) {
+                Object.values(d.therapy.empirical).forEach(group => {
+                    if (group.drugs) {
                         empiricalHtml += `<div class="mb-4">
                             <div class="text-sm font-bold text-gray-700 mb-2">${group.title || 'Therapy'}</div>
                             <div class="bg-white rounded-lg border border-gray-200 p-1">${renderDrugList(group.drugs)}</div>
                         </div>`;
-                     }
-                 });
+                    }
+                });
             }
         }
 
@@ -1006,14 +1267,14 @@ function renderDiseaseDetails(d) {
     if (prog) {
         let scoresHtml = '';
         if (d.prognosis.prognostic_scores && d.prognosis.prognostic_scores.length && d.prognosis.prognostic_scores[0] !== 'Nincs' && d.prognosis.prognostic_scores[0] !== 'None' && d.prognosis.prognostic_scores[0] !== 'Keine') {
-             scoresHtml = d.prognosis.prognostic_scores.map(score => {
+            scoresHtml = d.prognosis.prognostic_scores.map(score => {
                 const key = Object.keys(window.scoreCalculators || {}).find(k => score.includes(k));
                 if (key) {
                     return `<button onclick="openScoreCalculator('${key}')" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors border border-blue-200 cursor-pointer">${score}</button>`;
                 }
                 return `<span>${score}</span>`;
-             }).join(', ');
-             scoresHtml = `<div class="flex gap-2 flex-wrap items-center"><strong>${getLabel('prog_scores')}:</strong> <div class="flex flex-wrap gap-2">${scoresHtml}</div></div>`;
+            }).join(', ');
+            scoresHtml = `<div class="flex gap-2 flex-wrap items-center"><strong>${getLabel('prog_scores')}:</strong> <div class="flex flex-wrap gap-2">${scoresHtml}</div></div>`;
         }
 
         const progContent = [
@@ -1115,7 +1376,7 @@ function toggleTable(id) {
     } else {
         content.classList.add('hidden');
         icon.style.transform = 'rotate(0deg)';
-}
+    }
 }
 
 function handleSearch(query) {
@@ -1124,14 +1385,14 @@ function handleSearch(query) {
         else renderHome();
         return;
     }
-    
+
     query = query.toLowerCase();
     const results = [];
-    
+
     Object.values(window.diseases).forEach(cat => {
         if (cat.diseases) {
             cat.diseases.forEach(d => {
-                if (d.name.toLowerCase().includes(query) || 
+                if (d.name.toLowerCase().includes(query) ||
                     (d.pathogen && d.pathogen.name.toLowerCase().includes(query))) {
                     results.push({ ...d, categoryColor: cat.color, categoryName: cat.name, type: 'disease' });
                 }
@@ -1142,12 +1403,12 @@ function handleSearch(query) {
             cat.tables.forEach((t, index) => {
                 const rowMatch = t.rows.some(row => row.some(cell => String(cell).toLowerCase().includes(query)));
                 if (t.title.toLowerCase().includes(query) || rowMatch) {
-                    results.push({ 
-                        ...t, 
+                    results.push({
+                        ...t,
                         id: `search-table-${index}-${Date.now()}`, // Egyedi ID a lenyitáshoz
-                        categoryColor: cat.color, 
-                        categoryName: cat.name, 
-                        type: 'table' 
+                        categoryColor: cat.color,
+                        categoryName: cat.name,
+                        type: 'table'
                     });
                 }
             });
@@ -1171,7 +1432,7 @@ function handleSearch(query) {
         </div>
         <div class="space-y-4">
     `;
-    
+
     results.forEach(item => {
         if (item.type === 'table') {
             html += `
@@ -1234,7 +1495,7 @@ function showLoading(show) {
         el.style.opacity = show ? '1' : '0';
         el.style.pointerEvents = show ? 'all' : 'none';
         setTimeout(() => {
-            if(!show) el.style.display = 'none';
+            if (!show) el.style.display = 'none';
             else el.style.display = 'flex';
         }, 300);
     }
@@ -1244,14 +1505,14 @@ function showLoading(show) {
 function getLabel(key) {
     const labels = {
         hu: {
-            entries: 'bejegyzés', back: 'Vissza', symptoms: 'Tünetek', therapy: 'Terápia', 
+            entries: 'bejegyzés', back: 'Vissza', symptoms: 'Tünetek', therapy: 'Terápia',
             epidemiology: 'Epidemiológia', incubation: 'Inkubáció', complications: 'Szövődmények', scores: 'Pontrendszerek', laboratory: 'Labor',
-            diagnostics: 'Diagnosztika', microbiology: 'Mikrobiológia', imaging: 'Képalkotó', targeted: 'Célzott', 
+            diagnostics: 'Diagnosztika', microbiology: 'Mikrobiológia', imaging: 'Képalkotó', targeted: 'Célzott',
             supportive: 'Szupportív', prevention: 'Megelőzés', search_results: 'Keresési találatok', no_results: 'Nincs találat',
             score: 'Pontszám', select_symptoms: 'Jelölje be a tüneteket...', prognosis: 'Prognózis', mortality: 'Halálozás', prog_scores: 'Prognosztikai score-ok', factors: 'Faktorok',
             pathomechanism: 'Patomechanizmus', virulence_factors: 'Virulencia faktorok', physical_exam: 'Fizikális vizsgálat',
-            incidence: 'Incidencia', risk_groups: 'Rizikócsoportok', seasonality: 'Szezonalitás', transmission: 'Terjedés', 
-            differential_diagnosis: 'Differenciáldiagnózis', gallery: 'Galéria', guidelines: 'Irányelvek', references: 'Források', 
+            incidence: 'Incidencia', risk_groups: 'Rizikócsoportok', seasonality: 'Szezonalitás', transmission: 'Terjedés',
+            differential_diagnosis: 'Differenciáldiagnózis', gallery: 'Galéria', guidelines: 'Irányelvek', references: 'Források',
             criteria: 'Kritériumok', onset: 'Kezdet', clinical: 'Klinikum',
             open_in_new_tab: 'Megnyitás új lapon'
         },
@@ -1261,9 +1522,9 @@ function getLabel(key) {
             diagnostics: 'Diagnostics', microbiology: 'Microbiology', imaging: 'Imaging', targeted: 'Targeted',
             supportive: 'Supportive', prevention: 'Prevention', search_results: 'Search Results', no_results: 'No results found',
             score: 'Score', select_symptoms: 'Select symptoms...', prognosis: 'Prognosis', mortality: 'Mortality', prog_scores: 'Prognostic Scores', factors: 'Factors',
-            pathomechanism: 'Pathomechanism', virulence_factors: 'Virulence Factors', physical_exam: 'Physical Exam', 
-            incidence: 'Incidence', risk_groups: 'Risk Groups', seasonality: 'Seasonality', transmission: 'Transmission', 
-            differential_diagnosis: 'Differential Diagnosis', gallery: 'Gallery', guidelines: 'Guidelines', references: 'References', 
+            pathomechanism: 'Pathomechanism', virulence_factors: 'Virulence Factors', physical_exam: 'Physical Exam',
+            incidence: 'Incidence', risk_groups: 'Risk Groups', seasonality: 'Seasonality', transmission: 'Transmission',
+            differential_diagnosis: 'Differential Diagnosis', gallery: 'Gallery', guidelines: 'Guidelines', references: 'References',
             criteria: 'Criteria', onset: 'Onset', clinical: 'Clinical',
             open_in_new_tab: 'Open in new tab'
         },
@@ -1273,9 +1534,9 @@ function getLabel(key) {
             diagnostics: 'Diagnostik', microbiology: 'Mikrobiologie', imaging: 'Bildgebung', targeted: 'Gezielt',
             supportive: 'Supportiv', prevention: 'Prävention', search_results: 'Suchergebnisse', no_results: 'Keine Ergebnisse',
             score: 'Punktzahl', select_symptoms: 'Symptome auswählen...', prognosis: 'Prognose', mortality: 'Mortalität', prog_scores: 'Prognostische Scores', factors: 'Faktoren',
-            pathomechanism: 'Pathomechanismus', virulence_factors: 'Virulenzfaktoren', physical_exam: 'Körperliche Untersuchung', 
-            incidence: 'Inzidenz', risk_groups: 'Risikogruppen', seasonality: 'Saisonalität', transmission: 'Übertragung', 
-            differential_diagnosis: 'Differentialdiagnose', gallery: 'Galerie', guidelines: 'Leitlinien', references: 'Quellen', 
+            pathomechanism: 'Pathomechanismus', virulence_factors: 'Virulenzfaktoren', physical_exam: 'Körperliche Untersuchung',
+            incidence: 'Inzidenz', risk_groups: 'Risikogruppen', seasonality: 'Saisonalität', transmission: 'Übertragung',
+            differential_diagnosis: 'Differentialdiagnose', gallery: 'Galerie', guidelines: 'Leitlinien', references: 'Quellen',
             criteria: 'Kriterien', onset: 'Beginn', clinical: 'Klinik',
             open_in_new_tab: 'In neuem Tab öffnen'
         }
@@ -1287,7 +1548,7 @@ function getSearchPlaceholder() {
     const p = { hu: 'Keresés betegség vagy kórokozó szerint...', en: 'Search disease or pathogen...', de: 'Suche nach Krankheit oder Erreger...' };
     return p[currentLang];
 }
-window.updateCalculator = function(id) {
+window.updateCalculator = function (id) {
     const container = document.getElementById(id);
     if (!container) return;
 
@@ -1310,38 +1571,38 @@ window.updateCalculator = function(id) {
     container.querySelector('.calc-score').textContent = score;
     container.querySelector('.calc-result').innerHTML = resultText;
 }
-window.openScoreCalculator = function(scoreName) {
+window.openScoreCalculator = function (scoreName) {
     const modal = document.getElementById('score-modal');
     const panel = document.getElementById('score-modal-panel');
     const title = document.getElementById('score-modal-title');
     const content = document.getElementById('score-modal-content');
-    
+
     const key = Object.keys(window.scoreCalculators || {}).find(k => scoreName.includes(k)) || scoreName;
     const calc = (window.scoreCalculators || {})[key];
-    
+
     if (!calc) {
-      alert(`A(z) ${scoreName} kalkulátor jelenleg nem elérhető ebben az alkalmazásban.`);
-      return;
+        alert(`A(z) ${scoreName} kalkulátor jelenleg nem elérhető ebben az alkalmazásban.`);
+        return;
     }
-    
+
     title.textContent = calc.title;
-    
+
     let html = `<p class="text-sm text-slate-500 mb-4 italic">${calc.description}</p>`;
     html += `<div class="space-y-2 mb-6">`;
-    
+
     calc.items.forEach(item => {
-      if (item.type === 'header') {
-          html += `<h4 class="font-semibold text-slate-700 mt-4 mb-2 text-sm uppercase tracking-wide border-b border-slate-100 pb-1">${item.label}</h4>`;
-      } else if (item.type === 'number') {
-          html += `
+        if (item.type === 'header') {
+            html += `<h4 class="font-semibold text-slate-700 mt-4 mb-2 text-sm uppercase tracking-wide border-b border-slate-100 pb-1">${item.label}</h4>`;
+        } else if (item.type === 'number') {
+            html += `
             <div class="flex items-center justify-between p-3 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
               <span class="text-slate-700 font-medium text-sm">${item.label}</span>
               <input type="number" class="w-20 px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:border-emerald-500 score-input" 
                 data-points="${item.points}" min="${item.min || 0}" max="${item.max || 999}" value="${item.value || ''}" placeholder="0">
             </div>
           `;
-      } else if (item.type === 'radio') {
-          html += `
+        } else if (item.type === 'radio') {
+            html += `
             <label class="flex items-start gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors select-none mb-1">
               <div class="flex items-center h-5">
                 <input type="radio" name="${item.name}" class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 score-input" data-points="${item.points}" ${item.checked ? 'checked' : ''}>
@@ -1349,8 +1610,8 @@ window.openScoreCalculator = function(scoreName) {
               <span class="text-slate-700 font-medium text-sm">${item.label}</span>
             </label>
           `;
-      } else {
-          html += `
+        } else {
+            html += `
             <label class="flex items-start gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors select-none">
               <div class="flex items-center h-5">
                 <input type="checkbox" class="w-5 h-5 text-emerald-600 rounded focus:ring-emerald-500 border-gray-300 score-input" data-points="${item.points}">
@@ -1358,9 +1619,9 @@ window.openScoreCalculator = function(scoreName) {
               <span class="text-slate-700 font-medium text-sm">${item.label}</span>
             </label>
           `;
-      }
+        }
     });
-    
+
     html += `</div>`;
     html += `
       <div id="score-result-container" class="bg-slate-100 rounded-xl p-4 text-center border border-slate-200 transition-colors duration-300">
@@ -1370,73 +1631,73 @@ window.openScoreCalculator = function(scoreName) {
         <div class="text-sm text-slate-600 mt-1" id="score-action">-</div>
       </div>
     `;
-    
+
     content.innerHTML = html;
-    
+
     const inputs = content.querySelectorAll('.score-input');
     inputs.forEach(input => {
-      input.addEventListener('input', () => calculateScore(calc));
+        input.addEventListener('input', () => calculateScore(calc));
     });
-    
+
     modal.classList.remove('hidden');
     setTimeout(() => {
-      modal.classList.remove('opacity-0');
-      panel.classList.remove('scale-95');
-      panel.classList.add('scale-100');
+        modal.classList.remove('opacity-0');
+        panel.classList.remove('scale-95');
+        panel.classList.add('scale-100');
     }, 10);
-    
+
     calculateScore(calc);
 };
 
-window.closeScoreModal = function() {
+window.closeScoreModal = function () {
     const modal = document.getElementById('score-modal');
     const panel = document.getElementById('score-modal-panel');
-    
+
     modal.classList.add('opacity-0');
     panel.classList.remove('scale-100');
     panel.classList.add('scale-95');
-    
+
     setTimeout(() => {
-      modal.classList.add('hidden');
+        modal.classList.add('hidden');
     }, 300);
 };
 
 function calculateScore(calc) {
     const container = document.getElementById('score-modal-content');
     let total = 0;
-    
+
     container.querySelectorAll('input[type="checkbox"]').forEach(input => {
-      if (input.checked) total += parseFloat(input.dataset.points || 0);
+        if (input.checked) total += parseFloat(input.dataset.points || 0);
     });
 
     container.querySelectorAll('input[type="radio"]:checked').forEach(input => {
-      total += parseFloat(input.dataset.points || 0);
+        total += parseFloat(input.dataset.points || 0);
     });
 
     container.querySelectorAll('input[type="number"]').forEach(input => {
-      const val = parseFloat(input.value) || 0;
-      const multiplier = parseFloat(input.dataset.points || 1);
-      total += val * multiplier;
+        const val = parseFloat(input.value) || 0;
+        const multiplier = parseFloat(input.dataset.points || 1);
+        total += val * multiplier;
     });
-    
+
     const resultContainer = document.getElementById('score-result-container');
     const resultEl = document.getElementById('score-result');
     const interpEl = document.getElementById('score-interpretation');
     const actionEl = document.getElementById('score-action');
-    
+
     let displayScore = total;
     if (calc.title.includes('APACHE II')) {
         displayScore = total + 15;
     }
-    
+
     resultEl.textContent = displayScore;
-    
+
     if (calc.interpret) {
-      const interpretation = calc.interpret(total);
-      interpEl.textContent = interpretation.risk;
-      interpEl.className = `font-bold text-lg ${interpretation.color}`;
-      actionEl.textContent = interpretation.action;
-      
-      resultContainer.className = `rounded-xl p-4 text-center border transition-colors duration-300 ${interpretation.bg} ${interpretation.border}`;
+        const interpretation = calc.interpret(total);
+        interpEl.textContent = interpretation.risk;
+        interpEl.className = `font-bold text-lg ${interpretation.color}`;
+        actionEl.textContent = interpretation.action;
+
+        resultContainer.className = `rounded-xl p-4 text-center border transition-colors duration-300 ${interpretation.bg} ${interpretation.border}`;
     }
 }

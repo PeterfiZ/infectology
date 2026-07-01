@@ -116,6 +116,179 @@ Object.assign(window.diseases, {
             }
           },
           {
+            id: 'fuo',
+            name: 'Ismeretlen eredetű láz (FUO)',
+            pathogen: { type: 'Szindróma', name: 'Infekció, gyulladás, malignitás, autoimmun/egyéb okok', gram: 'Változó', shape: '-' },
+            epidemiology: {
+              incidence: 'A lázok kb. 5-15%-a tartozik a FUO csoportba; a kiváltó okok közül a fertőzések, a daganatok és az autoimmun/gyulladásos betegségek a leggyakoribbak.',
+              risk_groups: ['Idősek', 'Immunszupprimáltak', 'Onkológiai betegek', 'Krónikus gyulladásos betegségekben szenvedők'],
+              seasonality: 'Nincs',
+              transmission: 'Nem fertőző'
+            },
+            pathomechanism: {
+              steps: [
+                'A FUO nem egyetlen kórokozó vagy mechanizmus miatt alakul ki, hanem különböző betegségek közös klinikai megnyilvánulása.',
+                'Az okok között gyakoriak a krónikus infekciók, a neoplasztikus folyamatok, az autoimmun/gyulladásos betegségek és bizonyos gyógyszerek vagy anyagcsere-betegségek.',
+                'A láz kialakulásához rendszerint a gyulladásos mediátorok (pl. IL-1, IL-6, TNF-α) és a hőszabályozás módosulása szükséges.',
+                'A diagnózis kulcsa a tartós láz háttér-okának, a klinikai tünetek és a vizsgálatok kombinációjával történő felderítése.'
+              ],
+              virulence_factors: ['Nincs egységes kórokozó-virulencia faktor; a kórfolyamat a kiváltó betegség mechanizmusától függ']
+            },
+            clinical: {
+              incubation: 'Nincs egységes inkubációs idő',
+              onset: 'Több hétig tartó, ismétlődő vagy állandó láz',
+              symptoms: [
+                { name: 'Láz', description: '>38,3°C, ismétlődően vagy legalább 3 héten át fennálló', severity: 'severe' },
+                { name: 'Éjszakai izzadás', description: 'Gyakori, különösen infekciók és malignitások esetén', severity: 'moderate' },
+                { name: 'Testsúlycsökkenés', description: 'Kísérő tünet lehet, különösen daganatok vagy krónikus betegségek esetén', severity: 'moderate' },
+                { name: 'Fáradtság', description: 'Kimerültség, gyengeség, csökkent teljesítőképesség', severity: 'moderate' },
+                { name: 'Lokális tünetek', description: 'Köhögés, hasfájás, nyirokcsomó-megnagyobbodás, ízületi panaszok, vizeletprobléma', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Ismételt lázmérés, lázprofil',
+                'Testsúly, állapot, perfúzió',
+                'Nyirokcsomók, máj, lép, ízületek, szív, tüdő vizsgálata',
+                'Bőrtünetek és fertőzésforrások keresése'
+              ],
+              complications: ['Késedelmes diagnózis', 'Súlyos alapbetegség kimaradhat', 'Fokozott morbiditás és mortalitás a kiváltó ok függvényében']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CBC, CRP, ESR', finding: 'Inflammációs jelek', interpretation: 'Induló szűrés' },
+                { test: 'Vérkémia, máj- és vesefunkció', finding: 'Szervi érintettség', interpretation: 'Alapvizsgálat' },
+                { test: 'PCT', finding: 'Bakteriális infekcióra utalhat', interpretation: 'Segít a fertőzés gyanújának finomításában' },
+                { test: 'Autoimmun markerek', finding: 'ANA, RF, anti-CCP, stb.', interpretation: 'Autoimmun/gyulladásos okok felderítése' }
+              ],
+              imaging: [
+                { modality: 'CT/PET-CT, UH, RTG', finding: 'Források, daganatok, abscessusok', significance: 'Fő vizsgálati eszköz a forrás felderítésére' }
+              ],
+              microbiology: [
+                { test: 'Hemokultúra, vizelet, köpet, széklet, minták a tünetek alapján', finding: 'Infektív források', significance: 'Fertőzéses okok bizonyítása' }
+              ],
+              scores: ['Nincs egységes FUO-score'],
+              calculators: [
+                {
+                  name: 'FUO definíció',
+                  items: [
+                    { label: 'Fever >38.3°C', points: 1 },
+                    { label: 'Legalább 3 hét', points: 1 },
+                    { label: 'A kezdeti vizsgálat után semmilyen diagnózis', points: 1 }
+                  ],
+                  interpretation: [
+                    { min: 0, max: 1, text: 'Nem teljes FUO definíció.' },
+                    { min: 2, max: 3, text: 'FUO gyanúja, részletes kivizsgálás indokolt.' }
+                  ]
+                }
+              ]
+            },
+            differential: [
+              { disease: 'Infekció', distinguishing: 'Tenyésztés, képalkotás, PCT, klinikai fókusz' },
+              { disease: 'Onkológiai betegség', distinguishing: 'Testsúlyvesztés, éjszakai izzadás, PET-CT, tumor-markerek' },
+              { disease: 'Autoimmun/gyulladásos betegség', distinguishing: 'CRP/ESR, ANA/RF, ízületi/egyéb szervi tünetek' },
+              { disease: 'Gyógyszerreakció / anyagcsere-betegség', distinguishing: 'Új gyógyszer, eosinophilia, metabolikus eltérések' }
+            ],
+            therapy: {
+              guidelines: ['A terápia a kiváltó ok alapján differenciált; a FUO nem önállóan kezelendő betegség.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Nincs rutinszerű empirikus antibiotikum', dose: '-', duration: '-', note: 'A diagnózis felállítása előtt csak szigorú indikáció esetén.' }
+                ],
+                inpatient: [
+                  { drug: 'Empirikus antimikróbás kezelés', dose: 'Indikáció szerint', duration: 'Rövid ideig', note: 'Csak súlyos fertőzés vagy klinikai gyanú esetén.' }
+                ],
+                icu: [
+                  { drug: 'Súlyos sepsis/shock kezelése', dose: 'Szerint az aktuális protokoll', duration: 'Azonnal', note: 'Ha a láz sepsishez kapcsolódik.' }
+                ]
+              },
+              targeted: 'A kiváltó ok alapján célzott kezelés: infekció esetén antimikróbás terápia, malignitásnál onkológiai kezelés, autoimmun betegség esetén immunszuppresszív terápia.',
+              supportive: ['Folyadékpótlás', 'Lázcsillapítás', 'Rendszeres monitorozás', 'Tüneti kezelés'],
+              prevention: ['A láz okának korai felderítése', 'Fertőzésforrások kezelése', 'Immunstatus és kockázati tényezők figyelemmel kísérése']
+            },
+            prognosis: {
+              mortality: 'Az eredmény a kiváltó októl függ; a késői diagnózis és a neoplazma/komplex infekciók rosszabb kimenetelűek lehetnek.',
+              prognostic_scores: ['Nincs egységes FUO-score'],
+              factors: 'Kiváltó betegség, immunstatus, életkor, a vizsgálatok korai megkezdése'
+            }
+          },
+          {
+            id: 'pyomyositis',
+            name: 'Pyomyositis',
+            pathogen: { type: 'Baktérium', name: '<i>Staphylococcus aureus</i> (főleg), <i>Streptococcus pyogenes</i>, Gram-negatívok', gram: 'Gram-pozitív/negatív', shape: 'coccus/bacillus' },
+            epidemiology: {
+              incidence: 'Ritkább a fejlett országokban, gyakoribb trópusi régiókban és immunszuppresszált betegeknél',
+              risk_groups: ['HIV/AIDS', 'Diabetes mellitus', 'Immunszuppresszió', 'IV droghasználók', 'Trauma, izomkárosodás', 'Újszülöttek/gyermekek'],
+              seasonality: 'Nincs',
+              transmission: 'Nem közvetlenül terjed; a bőrfertőzés/kolonizációból vagy véráramú szepszisből eredhet'
+            },
+            pathomechanism: {
+              steps: [
+                'A baktériumok a szöveti sérülés, a bőrfertőzés vagy a hematogén terjedés után bejutnak az izomba.',
+                'A lokális gyulladásos válasz és a baktériumok szaporodása izomfibrillák károsodását, tályogképződést és szöveti nekrózist okozhat.',
+                'A folyamat abscesszussá, majd szisztémás infekcióvá is progresszálhat.',
+                'A leggyakoribb kórokozó a Staphylococcus aureus, de streptococcusok és gram-negatívok is előfordulhatnak.'
+              ],
+              virulence_factors: ['S. aureus biofilm/adhezinek', 'Kapszula', 'Exotoxinok', 'Szöveti invázió']
+            },
+            clinical: {
+              incubation: 'Változó',
+              onset: 'Lassú vagy akut',
+              symptoms: [
+                { name: 'Izomfájdalom', description: 'Egyetlen ízülethez nem kötődő, mély izomfájdalom, duzzanat', severity: 'severe' },
+                { name: 'Láz', description: 'Közepes vagy magas láz', severity: 'moderate' },
+                { name: 'Duzzanat és érzékenység', description: 'A fertőzött izom tapinthatóan érzékeny és megduzzadt', severity: 'moderate' },
+                { name: 'Fáradtság', description: 'Általános rossz közérzet', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Fertőzött izom területén nyomásérzékenység, duzzanat',
+                'Láz, tachycardia',
+                'Ha abscessus alakul ki: jól behatárolható, fluctuatív tömzs',
+                'Ritkán a környező izomzat vagy bőr is érintett'
+              ],
+              complications: ['Izomabscessus', 'Szeptikus thromboembolia', 'Szepszis', 'Kismedencei/egyéb tályogok', 'Krónikus fertőzés']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Vérkép, CRP', finding: 'Gyulladásos jelek', interpretation: 'Alapvizsgálat' },
+                { test: 'Hemokultúra', finding: 'Pozitív lehet', interpretation: 'Bakteriémia felderítése' },
+                { test: 'Kreatinkináz', finding: 'Emelkedhet', interpretation: 'Izomérintettség' }
+              ],
+              imaging: [
+                { modality: 'UH / CT / MRI', finding: 'Izomnedvesség, tályog, gyulladás', significance: 'Legfontosabb képalkotó módszer' }
+              ],
+              microbiology: [
+                { test: 'Tenyésztés', finding: 'Szeptum/aspirátum, ha lehetséges', significance: 'Kórokozó és rezisztencia' }
+              ]
+            },
+            differential: [
+              { disease: 'Izomrablás / hematoma', distinguishing: 'Nem fertőző, nincs gyulladás' },
+              { disease: 'Cellulitis', distinguishing: 'Felszínesebb, kevésbé lokalizált' },
+              { disease: 'Osteomyelitis', distinguishing: 'Csontérintettség, pozitív csontképalkotás' },
+              { disease: 'DVT', distinguishing: 'Vénás trombózis, nincs abscessus' }
+            ],
+            therapy: {
+              guidelines: ['Súlyos vagy tályogos esetben gyors antibiotikus és sebészi kezelés szükséges.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Nincs', dose: '-', duration: '-', note: 'Súlyos vagy abscessusos esetben kórházi kezelés.' }
+                ],
+                inpatient: [
+                  { drug: 'Anti-staphylococcal IV therapy', dose: 'Nafcillin/Cefazolin vagy Vancomycin', duration: '7-14 nap', note: 'MRSA gyanú esetén vancomycin.' }
+                ],
+                icu: [
+                  { drug: 'Súlyos sepsis/sokk', dose: 'Szerint protokoll', duration: 'Azonnal', note: 'Intenzív ellátás és forráskontroll.' }
+                ]
+              },
+              targeted: 'Kultúra/aspiráció alapján célzott antibiotikum, abscessus esetén drenázs.',
+              supportive: ['Fájdalomcsillapítás', 'Folyadékpótlás', 'Monitorozás', 'Sebészi drén'],
+              prevention: ['Bőrfertőzések kezelése', 'Károsodott bőr védelme', 'Immunszuppresszió kezelése']
+            },
+            prognosis: {
+              mortality: 'Általában alacsony, de immunoszuppresszált vagy későn kezelt esetekben magasabb',
+              prognostic_scores: ['Nincs egységes score'],
+              factors: 'Kórokozó, immunstatus, késői diagnózis, abscessus jelenléte'
+            }
+          },
+          {
             id: 'toxic_shock',
             name: 'Toxikus shock szindróma (TSS)',
             pathogen: { type: 'Baktérium', name: '<i>Staphylococcus aureus, Streptococcus pyogenes</i>', gram: 'Gram-pozitív', shape: 'coccus' },
@@ -139,8 +312,8 @@ Object.assign(window.diseases, {
               onset: 'Hirtelen',
               symptoms: [
                 { name: 'Magas láz', description: '>38.9°C (hirtelen kezdet)', severity: 'severe' },
-                { name: 'Hypotonia', description: 'Szisztolés RR <90 Hgmm (felnőtt), orthostaticus szédülés', severity: 'severe' },
-                { name: 'Diffúz erythroderma', description: 'Napégés-szerű kiütés (Staph: >90%, Strep: ritkább)', severity: 'moderate' },
+                { name: 'Hypotonia', description: 'Szisztolés RR <90 Hgmm felnőttnél, orthostaticus szédülés', severity: 'severe' },
+                { name: 'Diffúz erythroderma', description: 'Napégés-szerű kiütés (Staph TSS-nél >90%, Strep TSS-nél ritkább)', severity: 'moderate' },
                 { name: 'Multiszisztémás tünetek', description: 'GI (hányás/hasmenés), Izomfájdalom (CK emelkedés), Nyálkahártya hyperaemia', severity: 'severe' },
                 { name: 'Hámlás', description: '1-2 héttel a kezdet után (tenyér/talp)', severity: 'mild' }
               ],

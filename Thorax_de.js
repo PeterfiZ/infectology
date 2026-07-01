@@ -182,6 +182,91 @@ Object.assign(window.diseases, {
             ]
           },
           {
+            id: 'mediastinitis',
+            name: 'Mediastinitis',
+            pathogen: { type: 'Bakterium', name: 'Polymikrobiell, oft <i>Staphylococcus aureus</i>, Streptokokken, gramnegative Erreger, Anaerobier', gram: 'Gemischt', shape: 'Variabel' },
+            epidemiology: {
+              incidence: 'Selten, aber schwere Komplikation',
+              risk_groups: ['Postoperative Patienten', 'Nach endoskopischen Eingriffen', 'Oropharyngeale Infektionen', 'Trauma', 'Odontogene Infektionen', 'Immunsuppression'],
+              seasonality: 'Keine',
+              transmission: 'Nicht direkt ansteckend, sondern von benachbarten Geweben, Operation oder Endoskopie ausgehend'
+            },
+            pathomechanism: {
+              steps: [
+                'Das Mediastinum kann von benachbarten Geweben aus infiziert werden (z.B. Rachen, Speiseröhre, Zahn, Thoraxwand), nach Endoskopie, Operation oder Trauma.',
+                'Die bakterielle Ausbreitung führt zu Entzündung, Gewebsnekrose und Abszedierung im Mediastinum.',
+                'Der Prozess kann zu plastischer Entzündung, Zelluntergang und systemischer Entzündungsreaktion führen, die zu Sepsis, Schock und Multiorganversagen führt.'
+              ],
+              virulence_factors: ['Biofilm', 'Toxine', 'Polymikrobielle Gemeinschaft', 'Gewebsnekrose']
+            },
+            clinical: {
+              incubation: 'Variabel, oft einige Tage bis Wochen',
+              onset: 'Akut oder subakut',
+              symptoms: [
+                { name: 'Brustschmerz', description: 'Hauptsymptom, oft schwer, intensiv, mit Schluckbeschwerden', severity: 'severe' },
+                { name: 'Fieber und Allgemeinbefinden', description: 'Entzündlicher Zustand mit Tachykardie und Fieber', severity: 'severe' },
+                { name: 'Schluckbeschwerden / Heiserkeit', description: 'Bei Beteiligung von Speiseröhre, Kehlkopf oder mediastinalem Raum', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Fieber, Tachykardie, Leukozytose',
+                'Schwellung im Hals oder supraklavikulär',
+                'Brustschmerz, Schluckbeschwerden',
+                'Bei schweren Fällen Hypotonie und Sepsissymptome'
+              ],
+              complications: ['Septischer Schock', 'Mediastinaler Abszess', 'Ösophagusperforation', 'Aorten- oder Großgefäßbeteiligung', 'Lungen- oder Pleura-Komplikationen', 'Tod']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blutbild, CRP, PCT', finding: 'Entzündung, oft hoher PCT', interpretation: 'Schwere Entzündung/Infektion' },
+                { test: 'Blutkultur', finding: 'Kann positiv sein', interpretation: 'Verdacht auf Sepsis oder hämatogene Ausbreitung' }
+              ],
+              imaging: [
+                { modality: 'CT Thorax/Hals', finding: 'Mediastinale Gewebeschwellung, Abszess, Gas, Flüssigkeit', significance: 'Wichtigste Bildgebung' },
+                { modality: 'Thorax-Röntgen', finding: 'Mediastinale Aufweitung, evtl. Pleuraerguss', significance: 'Erster Schritt, aber weniger spezifisch' }
+              ],
+              microbiology: [
+                { test: 'Chirurgische/bronchoskopische Proben', finding: 'Kultur und PCR', significance: 'Gezielte Therapie und Resistenzen' }
+              ]
+            },
+            differential: [
+              { disease: 'Pneumonie', distinguishing: 'Lungenparenchym-Fokus, weniger mediastinal' },
+              { disease: 'Aortendissektion / mediastinaler Blutung', distinguishing: 'Mit geeigneter Bildgebung abgrenzbar' },
+              { disease: 'Pleuritis / Empyem', distinguishing: 'Pleura- und Flüssigkeitsfokus, nicht primäre mediastinale Infektion' }
+            ],
+            therapy: {
+              empirical: {
+                inpatient: [
+                  { drug: 'Piperacillin/Tazobactam', dose: '4.5g i.v. 3x/Tag', duration: 'Stationär/i.v.', note: 'Breites Spektrum, häufig erste Wahl' },
+                  { drug: '+ Vancomycin', dose: '15-20 mg/kg i.v. 2x/Tag', duration: '', note: 'MRSA-Abdeckung' },
+                  { drug: '+ Clindamycin oder Metronidazol', dose: '600mg i.v. 3x/Tag', duration: '', note: 'Anaerob-Abdeckung' }
+                ],
+                icu: [
+                  { drug: 'Meropenem', dose: '1g i.v. 3x/Tag', duration: '', note: 'Schwerer, kritischer Zustand' },
+                  { drug: '+ Vancomycin', dose: '15-20 mg/kg i.v. 2x/Tag', duration: '', note: 'MRSA/G+-Abdeckung' }
+                ]
+              },
+              targeted: 'Anpassung nach Kultur und Empfindlichkeit; Quellkontrolle und chirurgische Drainage sind entscheidend.',
+              supportive: ['Dringende chirurgische Konsultation', 'i.v. Flüssigkeit', 'Vasopressoren bei schwerer Sepsis', 'Ernährung', 'Atmungstherapie'],
+              prevention: ['Antibiotikaprophylaxe vor Eingriffen', 'Hygienische chirurgische Technik', 'Behandlung von Zahn- und Racheninfektionen']
+            },
+            guidelines: {
+              diagnosis: [
+                'CT Thorax/Hals ist die wichtigste Untersuchung; klinische Verdachtslage und Bildgebung entscheiden gemeinsam.'
+              ],
+              treatment_indications: [
+                'Jeder verdächtige Mediastinitis-Fall erfordert dringende Krankenhausversorgung; chirurgische Debridement/Drainage ist oft nötig.'
+              ],
+              first_line: [
+                'Breitwirksame i.v. Antibiotika + chirurgische Quellkontrolle.'
+              ]
+            },
+            prognosis: {
+              mortality: 'Hoch, besonders wenn spät diagnostiziert oder mit Sepsis einhergehend',
+              prognostic_scores: ['Kein einheitlicher Score'],
+              factors: 'Späte Diagnose, Immunsuppression, Schwere der Grunderkrankung, Gefäßbeteiligung'
+            }
+          },
+          {
             id: 'tuberculosis',
             name: 'Lungentuberkulose',
             pathogen: { type: 'Mykobakterium', name: '<i>Mycobacterium tuberculosis</i>', gram: 'Säurefest (Ziehl-Neelsen+)', shape: 'Stäbchen' },
@@ -722,197 +807,7 @@ Object.assign(window.diseases, {
           }
         ]
       },
-      viral_respiratory: {
-        name: 'Virale Atemwegsinfektionen',
-        icon: window.diseaseMetadata.viral_respiratory.icon,
-        color: window.diseaseMetadata.viral_respiratory.color,
-        diseases: [
-          {
-            id: 'influenza',
-            name: 'Influenza',
-            pathogen: { type: 'Virus', name: '<i>Influenza A/B/C Virus</i>', gram: 'RNA-Virus, Orthomyxoviridae', shape: 'helikal' },
-            epidemiology: {
-              incidence: 'Saisonale Epidemie: 5-20% der Bevölkerung/Jahr, Pandemien: bis zu 50%',
-              risk_groups: ['Personen über 65 Jahre', 'Kinder unter 5 Jahren', 'Schwangere', 'Patienten mit chronischen Erkrankungen', 'Gesundheitspersonal', 'Immungeschwächte'],
-              seasonality: 'November-März (Nordhalbkugel)',
-              transmission: 'Tröpfcheninfektion, Kontakt (1-2 Meter), Fomiten'
-            },
-            pathomechanism: {
-              steps: [
-                'Das Virus bindet mit seinem Hämagglutinin (HA) an die respiratorischen Epithelzellen und dringt in sie ein.',
-                'Es repliziert sich in der Zelle und wird dann mit Hilfe der Neuraminidase (NA) freigesetzt, um neue Zellen zu infizieren.',
-                'Die Virusinfektion führt zur Zerstörung der respiratorischen Epithelzellen und zur Schädigung der Zilien, was die Reinigung der Atemwege beeinträchtigt.',
-                'Die starke Immunantwort des Körpers (Zytokinsturm) verursacht systemische Symptome wie Fieber und Muskelschmerzen.'
-              ],
-              virulence_factors: ['Hämagglutinin (H1-18)', 'Neuraminidase (N1-11)', 'NS1-Protein (IFN-Antagonist)', 'PB1-F2 (pro-apoptotisch)']
-            },
-            clinical: {
-              incubation: '1-4 Tage (durchschnittlich 2 Tage)',
-              onset: 'Plötzlich',
-              symptoms: [
-                { name: 'Plötzlicher Beginn', description: 'Beginnt mit hohem Fieber (>38°C), Schüttelfrost, starken Kopfschmerzen und Muskelschmerzen (Myalgie).', severity: 'severe' },
-                { name: 'Respiratorische Symptome', description: 'Ein trockener, quälender Husten und Halsschmerzen sind charakteristisch.', severity: 'moderate' },
-                { name: 'Allgemeine Symptome', description: 'Ausgeprägte Schwäche, Krankheitsgefühl (Prostration) und Appetitlosigkeit.', severity: 'moderate' }
-              ],
-              physical_exam: [
-                'Fieberhaft, krankes Aussehen',
-                'Konjunktivitis',
-                'Pharynxhyperämie',
-                'Reiner Auskultationsbefund (unkompliziert)',
-                'Tachykardie'
-              ],
-              complications: ['Primäre Influenza-Pneumonie', 'Sekundäre bakterielle Pneumonie', 'Myokarditis', 'Enzephalitis', 'Reye-Syndrom (Aspirin!)', 'Myositis']
-            },
-            diagnostics: {
-              laboratory: [
-                { test: 'Blutbild', finding: 'Leukozytose oder normal, Lymphopenie', interpretation: 'Typisch für Virusinfektion' },
-                { test: 'CRP', finding: 'Mäßig erhöht', interpretation: 'Niedriger als bei bakteriell' },
-                { test: 'PCT', finding: 'Normal (<0.25)', interpretation: 'Ausschluss einer bakteriellen Superinfektion' }
-              ],
-              imaging: [
-                { modality: 'Thorax-Röntgen', finding: 'Normales oder interstitielles Muster', significance: 'Ausschluss einer Pneumonie' },
-                { modality: 'CT', finding: 'Milchglas-Opazitäten', significance: 'Virale Pneumonie' }
-              ],
-              microbiology: [
-                { test: 'Schnell-Antigentest (RAT)', finding: 'Influenza A/B', significance: 'Schnell (15 Min), geringe Sensitivität (50-70%)' },
-                { test: 'RT-PCR', finding: 'Viraler RNA-Nachweis', significance: 'Goldstandard, Subtypisierung' },
-                { test: 'Viruskultur', finding: 'Isolierung', significance: 'Epidemiologisch/Surveillance' }
-              ]
-            },
-            differential: [
-              { disease: 'COVID-19', distinguishing: 'Geruchs-/Geschmacksverlust, PCR' },
-              { disease: 'RSV-Infektion', distinguishing: 'Kinder, Ältere, Bronchiolitis' },
-              { disease: 'Adenovirus-Infektion', distinguishing: 'Konjunktivitis, Pharyngitis, längere Fieberperiode' },
-              { disease: 'Bakterielle Pneumonie', distinguishing: 'Produktiver Auswurf, lokalisierte Befunde, hohes PCT' }
-            ],
-            therapy: {
-              empirical: {
-                outpatient: [
-                  { drug: 'Oseltamivir', dose: '2x75mg p.o.', duration: '5 Tage', note: 'Innerhalb von 48 Stunden nach Symptombeginn!' },
-                  { drug: 'Baloxavir', dose: '1x40-80mg p.o.', duration: 'Einzeldosis', note: '>80kg: 80mg' }
-                ],
-                inpatient: [
-                  { drug: 'Oseltamivir', dose: '2x75mg p.o./NG', duration: '5-10 Tage', note: 'Länger in schweren Fällen' },
-                  { drug: 'Peramivir', dose: '1x600mg i.v.', duration: 'Einmalig oder wiederholt', note: 'Wenn p.o. nicht toleriert' }
-                ],
-                icu: [
-                  { drug: 'Oseltamivir', dose: '2x150mg p.o./NG', duration: '10 Tage', note: 'Höhere Dosis kann erwogen werden' },
-                  { drug: '+ Empirische AB', dose: 'CAP-Abdeckung', duration: '', note: 'Bakterielle Superinfektion' }
-                ]
-              },
-              targeted: 'Neuraminidase-Hemmer (Oseltamivir, Zanamivir, Peramivir) oder Cap-abhängiger Endonuklease-Hemmer (Baloxavir)',
-              supportive: ['Fiebersenkung (Paracetamol!)', 'Flüssigkeitssubstitution', 'Sauerstoff', 'Beatmung bei ARDS'],
-              prevention: ['Jährliche Influenza-Impfung', 'Händehygiene', 'Patientenisolierung', 'Chemoprophylaxe (Oseltamivir 1x75mg)']
-            },
-            prognosis: {
-              mortality: 'Insgesamt 0.1%, >65 Jahre 1-2%, Pandemiestamm höher',
-              prognostic_scores: ['Keine spezifischen'],
-              factors: 'Alter, Komorbidität, Virussubtyp, Impfstatus'
-            },
-            gallery: [
-              {
-                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Influenza_A_virus_particle.jpg',
-                caption: 'Influenza-A-Viruspartikel (Elektronenmikroskopie).',
-                type: 'Mikroskopie'
-              }
-            ]
-          },
-          {
-            id: 'covid19',
-            name: 'COVID-19',
-            pathogen: { type: 'Virus', name: '<i>SARS-CoV-2</i>', gram: 'RNA-Virus, Coronaviridae', shape: 'sphärisch, Spike-Proteine' },
-            epidemiology: {
-              incidence: 'Pandemie ab 2020, wird endemisch',
-              risk_groups: ['Personen über 65 Jahre', 'Adipöse Patienten (BMI>30)', 'Diabetes', 'Herz-Kreislauf-Erkrankungen', 'Immungeschwächte', 'Chronische Lungenkrankheit'],
-              seasonality: 'Wintergipfel, aber ganzjährig',
-              transmission: 'Respiratorisch (Aerosol + Tröpfchen), Kontakt, fäkal-oral selten'
-            },
-            pathomechanism: {
-              steps: [
-                'Das Virus bindet mit seinem Spike (S)-Protein an den ACE2-Rezeptor auf der Zelloberfläche, der in vielen Organen (Lunge, Herz, Gefäße, Darm) vorkommt.',
-                'Nach dem Eintritt repliziert sich das Virus in der Zelle (virale Phase).',
-                'In schweren Fällen kann in der zweiten Krankheitswoche eine übermäßige Immunantwort, der sogenannte Zytokinsturm, auftreten.',
-                'Diese Hyperinflammation führt zu systemischer Endothelschädigung, Mikrothrombosen und in der Lunge zum akuten Atemnotsyndrom (ARDS), was die Grundlage des schweren Verlaufs ist.'
-              ],
-              virulence_factors: ['Spike-Protein', 'NSP1 (Host-Shutdown)', 'ORF8 (Immunmodulation)', 'Nukleokapsid']
-            },
-            clinical: {
-              incubation: '2-14 Tage (Median 5 Tage, Omikron 3 Tage)',
-              onset: 'Variabel',
-              symptoms: [
-                { name: 'Häufige Symptome', description: 'Fieber, trockener Husten, Müdigkeit und Muskelschmerzen (Myalgie).', severity: 'moderate' },
-                { name: 'Charakteristische Symptome', description: 'Der Verlust des Geruchs- und Geschmackssinns (Anosmie, Dysgeusie) kann ein frühes, spezifisches Zeichen sein.', severity: 'mild' },
-                { name: 'Schwere Symptome', description: 'Atemnot (Dyspnoe), Brustschmerzen und Hypoxämie (niedriger Blutsauerstoff), die zu ARDS führen können.', severity: 'severe' }
-              ],
-              physical_exam: [
-                'Fieber, Tachypnoe',
-                'SpO2 vermindert (stille Hypoxie!)',
-                'Bilaterale Rasselgeräusche',
-                'Tachykardie',
-                'Kein spezifisches physikalisches Zeichen'
-              ],
-              complications: ['ARDS', 'Lungenembolie', 'Myokarditis', 'Akutes Nierenversagen', 'Schlaganfall', 'MIS (Kinder)', 'Long COVID']
-            },
-            diagnostics: {
-              laboratory: [
-                { test: 'Blutbild', finding: 'Lymphopenie, normale/verminderte Thrombozyten', interpretation: 'Schweregrad-Marker' },
-                { test: 'D-Dimer', finding: 'Erhöht', interpretation: 'Thrombotisches Risiko, schlechte Prognose' },
-                { test: 'Ferritin', finding: 'Erhöht', interpretation: 'Marker für Zytokinsturm' },
-                { test: 'CRP/IL-6', finding: 'Erhöht', interpretation: 'Ausmaß der Entzündung' },
-                { test: 'LDH, Troponin', finding: 'Erhöht in schweren Fällen', interpretation: 'Gewebeschaden' }
-              ],
-              imaging: [
-                { modality: 'Thorax-Röntgen', finding: 'Bilaterale periphere Infiltrate', significance: 'Weniger empfindlich' },
-                { modality: 'Thorax-CT', finding: 'Milchglas-Opazitäten, Crazy Paving, Konsolidierung', significance: 'Charakteristisches Muster' }
-              ],
-              microbiology: [
-                { test: 'RT-PCR (Nasopharynx/Oropharynx)', finding: 'SARS-CoV-2 RNA', significance: 'Goldstandard, Ct-Wert' },
-                { test: 'Schnell-Antigentest', finding: 'Nukleokapsid-Protein', significance: 'Schnell, zeigt Infektiosität an' },
-                { test: 'Serologie', finding: 'Anti-S, Anti-N IgG/IgM', significance: 'Durchgemachte Infektion, Impfwirksamkeit' }
-              ]
-            },
-            differential: [
-              { disease: 'Influenza', distinguishing: 'Schnellerer Verlauf, Myalgie dominiert, PCR' },
-              { disease: 'Bakterielle Pneumonie', distinguishing: 'Hohes PCT, lobäres Infiltrat' },
-              { disease: 'Herzinsuffizienz', distinguishing: 'Kardiale Anamnese, BNP, beidseitig' },
-              { disease: 'Lungenembolie', distinguishing: 'D-Dimer, CTPA' }
-            ],
-            therapy: {
-              empirical: {
-                outpatient: [
-                  { drug: 'Paxlovid (Nirmatrelvir/Ritonavir)', dose: '2x300/100mg p.o.', duration: '5 Tage', note: 'Früh, Hochrisiko, Wechselwirkungen!' },
-                  { drug: 'Molnupiravir', dose: '2x800mg p.o.', duration: '5 Tage', note: 'Alternative, wenn Paxlovid kontraindiziert ist' }
-                ],
-                inpatient: [
-                  { drug: 'Remdesivir', dose: '200mg i.v. T1, dann 100mg/Tag', duration: '5 Tage (max 10)', note: 'Wenn O2 benötigt wird' },
-                  { drug: 'Dexamethason', dose: '6mg/Tag i.v./p.o.', duration: '10 Tage', note: 'Nur bei O2-Bedarf/Beatmung!' }
-                ],
-                icu: [
-                  { drug: 'Dexamethason', dose: '6-20mg/Tag', duration: '10 Tage', note: 'Zytokinsturm' },
-                  { drug: 'Tocilizumab', dose: '8mg/kg i.v. Einzeldosis', duration: '', note: 'IL-6-Inhibitor, rasche Verschlechterung' },
-                  { drug: 'LMWH', dose: 'Therapeutische Dosis', duration: '', note: 'Thromboseprophylaxe/-therapie' }
-                ]
-              },
-              targeted: 'Antiviral (Paxlovid, Remdesivir) früh; Immunmodulatorisch (Steroid, Tocilizumab) in hypoxischer Phase',
-              supportive: ['Sauerstoff (Bauchlage!)', 'HFNC/NIV', 'Invasive Beatmung', 'ECMO'],
-              prevention: ['mRNA-Impfstoffe (Pfizer, Moderna)', 'Händehygiene', 'Maskentragen', 'Isolierung']
-            },
-            prognosis: {
-              mortality: 'Omikron <1%, früher 2-5%, ITS 20-40%',
-              prognostic_scores: ['4C Mortality Score', 'NEWS2'],
-              factors: 'Alter, Komorbidität, Lymphopenie, D-Dimer, Ferritin, Impfstatus'
-            },
-            gallery: [
-              {
-                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/SARS-CoV-2_without_background.png',
-                caption: 'SARS-CoV-2-Virusmodell.',
-                type: 'Virologie'
-              }
-            ]
-          }
-        ]
-      },
-      cardiovascular: {
+       cardiovascular: {
         name: 'Kardiovaskuläre Infektionen',
         icon: window.diseaseMetadata.cardiovascular.icon,
         color: window.diseaseMetadata.cardiovascular.color,
@@ -1042,6 +937,89 @@ Object.assign(window.diseases, {
                 url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Endocarditis_ultrasound.JPG',
                 caption: 'Echokardiographisches Bild einer Endokarditis-Vegetation.',
                 type: 'Echokardiographie'
+              }
+            ]
+          },
+          {
+            id: 'cied',
+            name: 'CIED-Infektion (Schrittmacher/ICD/CRT)',
+            pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus, koagulase-negative Staphylokokken (z.B. S. epidermidis), Cutibacterium acnes</i>', gram: 'Gram-positiv', shape: 'Kokken/Stäbchen' },
+            epidemiology: {
+              incidence: '~1-10/1000 Implantationen/Jahr (institutionsabhängig)',
+              risk_groups: ['Implantierter Schrittmacher/ICD/CRT', 'Frühere Infektion', 'Diabetes', 'Immunsuppression', 'Hautinfektion, Katheter', 'Schlechte Gewebereaktion im Pocket'],
+              seasonality: 'Keine',
+              transmission: 'Hämatogen/fortgeleitete Ausbreitung, Kontamination bei Implantation oder später'
+            },
+            pathomechanism: {
+              steps: [
+                'Auf den Leitungsstrukturen und der subkutanen Tasche bildet sich ein Biofilm.',
+                'Die Bakterien können in das Gewebe einwandern und eine entzündliche Reaktion um die Leitungen auslösen.',
+                'Die Infektion kann sich von der Tasche zu den Leitungen, benachbartem Gewebe und gelegentlich zur Endokarditis ausbreiten.',
+                'Aufgrund des Biofilms sind Erreger gegen bakterizide Wirkstoffe und chirurgische Reinigung resistent.'
+              ],
+              virulence_factors: ['Biofilmbildung', 'Adhäsionsproteine', 'Toxine, Superantigene']
+            },
+            clinical: {
+              incubation: 'Tage bis Wochen',
+              onset: 'Akut oder subakut',
+              symptoms: [
+                { name: 'Pocket-Infektion', description: 'Rötung, Schwellung, Schmerz oder Abfluss im Schrittmacher-/ICD-Pocket.', severity: 'moderate' },
+                { name: 'Systemische Symptome', description: 'Fieber, Schüttelfrost, Müdigkeit, Gewichtsverlust oder septischer Zustand.', severity: 'severe' },
+                { name: 'Leiter-/endokardiale Symptome', description: 'Bei einer Infektion der Leitungen treten häufig Leitungsversagen, ein neues Geräusch oder eine Migration der Leitungen auf.', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Pocket-Rötung, Schwellung, Eiter',
+                'Fieber',
+                'Septischer Zustand',
+                'Neues Herzgeräusch oder Kreislaufinstabilität'
+              ],
+              complications: ['Septische Embolie', 'Endokarditis', 'Heilungsstörung, Leitungsfunktionsausfall', 'Sepsis']
+            },
+            diagnostics: {
+              criteria: [
+                { name: 'Klinischer Verdacht', items: ['Pocket-Infektion, Leiter- oder Generatorinfektion', 'Fieber, positive Kultur', 'Erhöhtes CRP/BSG', 'Septischer Zustand'] },
+                { name: 'Labor', items: ['Blutkultur (mindestens 2 Proben)', 'CRP/BSG', 'Blutbild'] },
+                { name: 'Bildgebung', items: ['Pocket-Ultraschall/CT/MRT', 'TTE/TEE bei Verdacht auf Endokarditis', 'PET/CT bei unklarer Ausdehnung'] }
+              ],
+              laboratory: [
+                { test: 'Blutkultur', finding: 'Positiv', interpretation: 'Erregeridentifikation ist grundlegend' },
+                { test: 'CRP/BSG', finding: 'Erhöht', interpretation: 'Entzündung/Infektion' },
+                { test: 'Blutbild', finding: 'Leukozytose', interpretation: 'Septischer Befund' }
+              ],
+              imaging: [
+                { modality: 'Pocket-Ultraschall / CT', finding: 'Abszess, Flüssigkeit, Gewebeentzündung', significance: 'Nachweis lokaler Infektion' },
+                { modality: 'TTE/TEE', finding: 'Vegetation, Leiteranbindung, Abszess', significance: 'Abklärung endokardialer Ausbreitung' }
+              ],
+              microbiology: [
+                { test: 'Punktion / Kultur des entfernten Devices', finding: 'Erreger isolierbar', significance: 'Basis für Therapie und Reimplantation' }
+              ]
+            },
+            differential: [
+              { disease: 'Hautinfektion / postoperative Entzündung', distinguishing: 'Keine Eiterung, kein Erreger, schnellere Heilung' },
+              { disease: 'Endokarditis', distinguishing: 'Kardiale Symptome/Vegetation, positive Echokardiographie' }
+            ],
+            therapy: {
+              guidelines: ['EHRA 2024 CIED-Infektionsleitlinien', 'ESC 2023 Leitlinie zur infektiösen Endokarditis'],
+              empirical: {
+                title: 'Empirische Therapie',
+                drugs: [
+                  { drug: 'Vancomycin + Gentamicin + Rifampicin', dose: '30-60mg/kg + 3mg/kg + 900-1200mg i.v./p.o.', duration: 'Induktionsbehandlung; finale Therapie nach Kultur', note: 'Bei verdächtiger Device-Infektion ist wegen des Biofilms eine Kombination erforderlich.' }
+                ]
+              },
+              targeted: 'Je nach Erreger kann die Therapie antistaphylokokkär, gegen Gramnegative oder gegen Cutibacterium ausgerichtet sein. Eine vollständige Entfernung des Geräts und der Wiederaufbau des Pockets sind oft notwendig.',
+              supportive: ['Behandlung des septischen Zustands', 'Planung zur Entfernung der Leitungen/Reimplantation', 'Antibiotikaprophylaxe vor Eingriffen, falls erforderlich'],
+              prevention: ['Mundhygiene, Behandlung von Hautinfektionen', 'Asepsis bei Implantationsverfahren', 'Korrektur von Risikofaktoren']
+            },
+            prognosis: {
+              mortality: 'Bei schweren Fällen höher, besonders bei Sepsis/Endokarditis',
+              prognostic_scores: ['Keine spezifischen'],
+              factors: 'S. aureus, späte Infektion, Diabetes, Immunsuppression, Leitungsversagen'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pacemaker_implantation.jpg',
+                caption: 'Schrittmacherimplantation und Leitungen.',
+                type: 'Bildgebung'
               }
             ]
           },
@@ -1307,6 +1285,161 @@ Object.assign(window.diseases, {
             ]
           },
           {
+            id: 'laryngitis',
+            name: 'Laryngitis',
+            pathogen: { type: 'Virus/Bakterium', name: '<i>Rhinovirus, Parainfluenza, Adenovirus</i>; bakterielle Fälle <i>Streptococcus pyogenes, Streptococcus pneumoniae, Haemophilus influenzae</i>', gram: 'Virus/Bakterium', shape: 'variabel' },
+            epidemiology: {
+              incidence: 'Häufig, besonders in der kalten Jahreszeit',
+              risk_groups: ['Kinder', 'Sänger', 'Raucher', 'Immungeschwächte'],
+              seasonality: 'Herbst-Winter',
+              transmission: 'Tröpfcheninfektion, Kontakt'
+            },
+            pathomechanism: {
+              steps: [
+                'Viren oder Bakterien lösen eine Entzündung der Schleimhaut des Kehlkopfs aus.',
+                'Die Entzündung verursacht Ödeme, die zu Stimmstörungen führen.',
+                'Bei schweren Fällen kann das Ödem des subglottischen Bereichs zu einer Atemwegsverengung und Stridor führen.'
+              ],
+              virulence_factors: ['Lokale Entzündung', 'Schädigung der Schleimhautbarriere', 'Toxine bei Bakterien']
+            },
+            clinical: {
+              incubation: '1-3 Tage',
+              onset: 'Schleichend',
+              symptoms: [
+                { name: 'Stimmstörung', description: 'Heiserkeit, veränderte Stimme oder vollständiger Stimmverlust.', severity: 'moderate' },
+                { name: 'Hals- und Hustenbeschwerden', description: 'Halsschmerzen, trockener Husten und obere Atemwegssymptome.', severity: 'moderate' },
+                { name: 'Atemwegsymptome', description: 'Im schweren Fall Stridor und Atemnot.', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Heiserkeit',
+                'Hyperämie der Kehlkopfschleimhaut',
+                'Stridor bei schwerem Verlauf',
+                'Fieber kann vorhanden sein'
+              ],
+              complications: ['Chronische Laryngitis', 'Atemwegsverengung', 'Sekundäre bakterielle Infektion']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Rachenkultur', finding: 'Bei Bakterien', interpretation: 'Für bakterielle Ätiologie' }
+              ],
+              imaging: [
+                { modality: 'Nicht erforderlich', finding: '-', interpretation: 'Klinische Diagnose' }
+              ],
+              microbiology: [
+                { test: 'PCR / Kultur', finding: 'Ätiologie', significance: 'Wenn Therapieanpassung nötig ist' }
+              ]
+            },
+            differential: [
+              { disease: 'Epiglottitis', distinguishing: 'Akuter Atemnotzustand, erhebliche Schluckbeschwerden' },
+              { disease: 'Allergie der Atemwege', distinguishing: 'Pruritus, Urtikaria, allergische Anamnese' },
+              { disease: 'Stimmbelastung', distinguishing: 'Keine Infektion, normale Temperatur' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Symptomatisch', dose: '-', duration: '3-7 Tage', note: 'Ruhe, Stimmpause, feuchte Luft' },
+                  { drug: 'Antibiotikum', dose: 'Amoxicillin/Clavulansäure', duration: '5-7 Tage', note: 'Bei Verdacht auf Bakterien' }
+                ],
+                inpatient: [
+                  { drug: 'i.v. Antibiotikum', dose: 'Ampicillin/Sulbactam oder Ceftriaxon', duration: '3-5 Tage', note: 'Schwerer Verlauf oder Atemwegssymptome' }
+                ],
+                icu: [
+                  { drug: 'Atemwegssicherung', dose: '-', duration: '-', note: 'Bei Stridor/Obstruktion' }
+                ]
+              },
+              targeted: 'Bei bakterieller Ätiologie gezielte Antibiotikatherapie nach Kultur',
+              supportive: ['Ruhe', 'Stimmpause', 'Flüssigkeitszufuhr', 'Sauerstoff bei Bedarf'],
+              prevention: ['Händehygiene', 'Rauchen aufgeben', 'Behandlung von Infektionen']
+            },
+            prognosis: {
+              mortality: 'Sehr niedrig',
+              prognostic_scores: ['Keine'],
+              factors: 'Alter, Rauchen, wiederkehrende Infektionen'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Larynx.jpg',
+                caption: 'Entzündung der Kehlkopfschleimhaut.',
+                type: 'Anatomie'
+              }
+            ]
+          },
+          {
+            id: 'epiglottitis',
+            name: 'Epiglottitis',
+            pathogen: { type: 'Bakterium', name: '<i>Haemophilus influenzae</i> Typ b (am häufigsten), <i>Streptococcus pyogenes, Streptococcus pneumoniae</i>', gram: 'Gram-negativ/positiv', shape: 'Stab/Kokken' },
+            epidemiology: {
+              incidence: 'Selten, aber lebensbedrohlich',
+              risk_groups: ['Kinder', 'Nicht geimpfte', 'Immungeschwächte'],
+              seasonality: 'Ganzjährig',
+              transmission: 'Tröpfcheninfektion'
+            },
+            pathomechanism: {
+              steps: [
+                'Der Erreger infiziert die Rachenschleimhaut und löst schnell eine schwere Entzündung der Epiglottis aus.',
+                'Das Ödem kann zum schnellen Verschluss der oberen Atemwege führen.',
+                'Der Patient benötigt aufgrund von Dyspnoe, Stridor und Schluckbeschwerden sofortige Versorgung.'
+              ],
+              virulence_factors: ['Kapsel', 'Adhäsine', 'Toxine']
+            },
+            clinical: {
+              incubation: 'Mehrere Stunden bis 1 Tag',
+              onset: 'Plötzlich',
+              symptoms: [
+                { name: 'Akuter Atemnotzustand', description: 'Plötzliche Atemnot, Stridor, Schluckbeschwerden und Speichelfluss.', severity: 'severe' },
+                { name: 'Fieber und Allgemeinsymptome', description: 'Fieber, Schüttelfrost und allgemeines Krankheitsgefühl.', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Tripod-Haltung',
+                'Stridor',
+                'Schluckbeschwerden',
+                'Tachypnoe'
+              ],
+              complications: ['Atemwegsobstruktion', 'Sepsis', 'Atemversagen']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blutkultur', finding: 'Positiv möglich', interpretation: 'Schwere bakterielle Infektion' }
+              ],
+              imaging: [
+                { modality: 'Kehlkopfspiegelung / seitliche Hals-Röntgenaufnahme', finding: 'Schwellung der Epiglottis', significance: 'Diagnose' }
+              ],
+              microbiology: [
+                { test: 'Rachen / Blutkultur', finding: 'Erreger', significance: 'Therapieanpassung' }
+              ]
+            },
+            differential: [
+              { disease: 'Laryngitis', distinguishing: 'Weniger schwer, kein signifikanter Atemwegsverschluss' },
+              { disease: 'Peritonsillarabszess', distinguishing: 'Schmerzhafter Hals, verschobene Uvula, Rachenulzera' },
+              { disease: 'Anaphylaxie', distinguishing: 'Urtikaria, Angioödem, Bronchobstruktion' }
+            ],
+            therapy: {
+              empirical: {
+                inpatient: [
+                  { drug: 'Cefalosporin 3. Generation + Vancomycin', dose: 'i.v.', duration: '7-10 Tage', note: 'Notfallhafte Krankenhausbehandlung' }
+                ],
+                icu: [
+                  { drug: 'Atemwegssicherung', dose: '-', duration: '-', note: 'Bei schwerer Obstruktion' }
+                ]
+              },
+              targeted: 'Gezielte Antibiotikatherapie nach Kultur',
+              supportive: ['Notfallmäßige Atemwegsicherung', 'i.v. Antibiotika', 'Sauerstoff'],
+              prevention: ['Hib-Impfung', 'Händehygiene']
+            },
+            prognosis: {
+              mortality: 'Niedrig bei angemessener Behandlung',
+              prognostic_scores: ['Keine'],
+              factors: 'Späte Behandlung, Kindesalter, Immundefekt'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Epiglottis.jpg',
+                caption: 'Akute Entzündung der Epiglottis.',
+                type: 'Anatomie'
+              }
+            ]
+          },
+          {
             id: 'rsv_infection',
             name: 'RSV-Infektion (Respiratorisches Synzytial-Virus)',
             pathogen: { type: 'Virus', name: '<i>Humanes Respiratorisches Synzytial-Virus</i> (HRSV)', gram: 'RNA-Virus, Pneumoviridae', shape: 'helikal' },
@@ -1386,6 +1519,189 @@ Object.assign(window.diseases, {
               }
             ]
           },
+                   {
+            id: 'influenza',
+            name: 'Influenza',
+            pathogen: { type: 'Virus', name: '<i>Influenza A/B/C Virus</i>', gram: 'RNA-Virus, Orthomyxoviridae', shape: 'helikal' },
+            epidemiology: {
+              incidence: 'Saisonale Epidemie: 5-20% der Bevölkerung/Jahr, Pandemien: bis zu 50%',
+              risk_groups: ['Personen über 65 Jahre', 'Kinder unter 5 Jahren', 'Schwangere', 'Patienten mit chronischen Erkrankungen', 'Gesundheitspersonal', 'Immungeschwächte'],
+              seasonality: 'November-März (Nordhalbkugel)',
+              transmission: 'Tröpfcheninfektion, Kontakt (1-2 Meter), Fomiten'
+            },
+            pathomechanism: {
+              steps: [
+                'Das Virus bindet mit seinem Hämagglutinin (HA) an die respiratorischen Epithelzellen und dringt in sie ein.',
+                'Es repliziert sich in der Zelle und wird dann mit Hilfe der Neuraminidase (NA) freigesetzt, um neue Zellen zu infizieren.',
+                'Die Virusinfektion führt zur Zerstörung der respiratorischen Epithelzellen und zur Schädigung der Zilien, was die Reinigung der Atemwege beeinträchtigt.',
+                'Die starke Immunantwort des Körpers (Zytokinsturm) verursacht systemische Symptome wie Fieber und Muskelschmerzen.'
+              ],
+              virulence_factors: ['Hämagglutinin (H1-18)', 'Neuraminidase (N1-11)', 'NS1-Protein (IFN-Antagonist)', 'PB1-F2 (pro-apoptotisch)']
+            },
+            clinical: {
+              incubation: '1-4 Tage (durchschnittlich 2 Tage)',
+              onset: 'Plötzlich',
+              symptoms: [
+                { name: 'Plötzlicher Beginn', description: 'Beginnt mit hohem Fieber (>38°C), Schüttelfrost, starken Kopfschmerzen und Muskelschmerzen (Myalgie).', severity: 'severe' },
+                { name: 'Respiratorische Symptome', description: 'Ein trockener, quälender Husten und Halsschmerzen sind charakteristisch.', severity: 'moderate' },
+                { name: 'Allgemeine Symptome', description: 'Ausgeprägte Schwäche, Krankheitsgefühl (Prostration) und Appetitlosigkeit.', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Fieberhaft, krankes Aussehen',
+                'Konjunktivitis',
+                'Pharynxhyperämie',
+                'Reiner Auskultationsbefund (unkompliziert)',
+                'Tachykardie'
+              ],
+              complications: ['Primäre Influenza-Pneumonie', 'Sekundäre bakterielle Pneumonie', 'Myokarditis', 'Enzephalitis', 'Reye-Syndrom (Aspirin!)', 'Myositis']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blutbild', finding: 'Leukozytose oder normal, Lymphopenie', interpretation: 'Typisch für Virusinfektion' },
+                { test: 'CRP', finding: 'Mäßig erhöht', interpretation: 'Niedriger als bei bakteriell' },
+                { test: 'PCT', finding: 'Normal (<0.25)', interpretation: 'Ausschluss einer bakteriellen Superinfektion' }
+              ],
+              imaging: [
+                { modality: 'Thorax-Röntgen', finding: 'Normales oder interstitielles Muster', significance: 'Ausschluss einer Pneumonie' },
+                { modality: 'CT', finding: 'Milchglas-Opazitäten', significance: 'Virale Pneumonie' }
+              ],
+              microbiology: [
+                { test: 'Schnell-Antigentest (RAT)', finding: 'Influenza A/B', significance: 'Schnell (15 Min), geringe Sensitivität (50-70%)' },
+                { test: 'RT-PCR', finding: 'Viraler RNA-Nachweis', significance: 'Goldstandard, Subtypisierung' },
+                { test: 'Viruskultur', finding: 'Isolierung', significance: 'Epidemiologisch/Surveillance' }
+              ]
+            },
+            differential: [
+              { disease: 'COVID-19', distinguishing: 'Geruchs-/Geschmacksverlust, PCR' },
+              { disease: 'RSV-Infektion', distinguishing: 'Kinder, Ältere, Bronchiolitis' },
+              { disease: 'Adenovirus-Infektion', distinguishing: 'Konjunktivitis, Pharyngitis, längere Fieberperiode' },
+              { disease: 'Bakterielle Pneumonie', distinguishing: 'Produktiver Auswurf, lokalisierte Befunde, hohes PCT' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Oseltamivir', dose: '2x75mg p.o.', duration: '5 Tage', note: 'Innerhalb von 48 Stunden nach Symptombeginn!' },
+                  { drug: 'Baloxavir', dose: '1x40-80mg p.o.', duration: 'Einzeldosis', note: '>80kg: 80mg' }
+                ],
+                inpatient: [
+                  { drug: 'Oseltamivir', dose: '2x75mg p.o./NG', duration: '5-10 Tage', note: 'Länger in schweren Fällen' },
+                  { drug: 'Peramivir', dose: '1x600mg i.v.', duration: 'Einmalig oder wiederholt', note: 'Wenn p.o. nicht toleriert' }
+                ],
+                icu: [
+                  { drug: 'Oseltamivir', dose: '2x150mg p.o./NG', duration: '10 Tage', note: 'Höhere Dosis kann erwogen werden' },
+                  { drug: '+ Empirische AB', dose: 'CAP-Abdeckung', duration: '', note: 'Bakterielle Superinfektion' }
+                ]
+              },
+              targeted: 'Neuraminidase-Hemmer (Oseltamivir, Zanamivir, Peramivir) oder Cap-abhängiger Endonuklease-Hemmer (Baloxavir)',
+              supportive: ['Fiebersenkung (Paracetamol!)', 'Flüssigkeitssubstitution', 'Sauerstoff', 'Beatmung bei ARDS'],
+              prevention: ['Jährliche Influenza-Impfung', 'Händehygiene', 'Patientenisolierung', 'Chemoprophylaxe (Oseltamivir 1x75mg)']
+            },
+            prognosis: {
+              mortality: 'Insgesamt 0.1%, >65 Jahre 1-2%, Pandemiestamm höher',
+              prognostic_scores: ['Keine spezifischen'],
+              factors: 'Alter, Komorbidität, Virussubtyp, Impfstatus'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Influenza_A_virus_particle.jpg',
+                caption: 'Influenza-A-Viruspartikel (Elektronenmikroskopie).',
+                type: 'Mikroskopie'
+              }
+            ]
+          },
+          {
+            id: 'covid19',
+            name: 'COVID-19',
+            pathogen: { type: 'Virus', name: '<i>SARS-CoV-2</i>', gram: 'RNA-Virus, Coronaviridae', shape: 'sphärisch, Spike-Proteine' },
+            epidemiology: {
+              incidence: 'Pandemie ab 2020, wird endemisch',
+              risk_groups: ['Personen über 65 Jahre', 'Adipöse Patienten (BMI>30)', 'Diabetes', 'Herz-Kreislauf-Erkrankungen', 'Immungeschwächte', 'Chronische Lungenkrankheit'],
+              seasonality: 'Wintergipfel, aber ganzjährig',
+              transmission: 'Respiratorisch (Aerosol + Tröpfchen), Kontakt, fäkal-oral selten'
+            },
+            pathomechanism: {
+              steps: [
+                'Das Virus bindet mit seinem Spike (S)-Protein an den ACE2-Rezeptor auf der Zelloberfläche, der in vielen Organen (Lunge, Herz, Gefäße, Darm) vorkommt.',
+                'Nach dem Eintritt repliziert sich das Virus in der Zelle (virale Phase).',
+                'In schweren Fällen kann in der zweiten Krankheitswoche eine übermäßige Immunantwort, der sogenannte Zytokinsturm, auftreten.',
+                'Diese Hyperinflammation führt zu systemischer Endothelschädigung, Mikrothrombosen und in der Lunge zum akuten Atemnotsyndrom (ARDS), was die Grundlage des schweren Verlaufs ist.'
+              ],
+              virulence_factors: ['Spike-Protein', 'NSP1 (Host-Shutdown)', 'ORF8 (Immunmodulation)', 'Nukleokapsid']
+            },
+            clinical: {
+              incubation: '2-14 Tage (Median 5 Tage, Omikron 3 Tage)',
+              onset: 'Variabel',
+              symptoms: [
+                { name: 'Häufige Symptome', description: 'Fieber, trockener Husten, Müdigkeit und Muskelschmerzen (Myalgie).', severity: 'moderate' },
+                { name: 'Charakteristische Symptome', description: 'Der Verlust des Geruchs- und Geschmackssinns (Anosmie, Dysgeusie) kann ein frühes, spezifisches Zeichen sein.', severity: 'mild' },
+                { name: 'Schwere Symptome', description: 'Atemnot (Dyspnoe), Brustschmerzen und Hypoxämie (niedriger Blutsauerstoff), die zu ARDS führen können.', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Fieber, Tachypnoe',
+                'SpO2 vermindert (stille Hypoxie!)',
+                'Bilaterale Rasselgeräusche',
+                'Tachykardie',
+                'Kein spezifisches physikalisches Zeichen'
+              ],
+              complications: ['ARDS', 'Lungenembolie', 'Myokarditis', 'Akutes Nierenversagen', 'Schlaganfall', 'MIS (Kinder)', 'Long COVID']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blutbild', finding: 'Lymphopenie, normale/verminderte Thrombozyten', interpretation: 'Schweregrad-Marker' },
+                { test: 'D-Dimer', finding: 'Erhöht', interpretation: 'Thrombotisches Risiko, schlechte Prognose' },
+                { test: 'Ferritin', finding: 'Erhöht', interpretation: 'Marker für Zytokinsturm' },
+                { test: 'CRP/IL-6', finding: 'Erhöht', interpretation: 'Ausmaß der Entzündung' },
+                { test: 'LDH, Troponin', finding: 'Erhöht in schweren Fällen', interpretation: 'Gewebeschaden' }
+              ],
+              imaging: [
+                { modality: 'Thorax-Röntgen', finding: 'Bilaterale periphere Infiltrate', significance: 'Weniger empfindlich' },
+                { modality: 'Thorax-CT', finding: 'Milchglas-Opazitäten, Crazy Paving, Konsolidierung', significance: 'Charakteristisches Muster' }
+              ],
+              microbiology: [
+                { test: 'RT-PCR (Nasopharynx/Oropharynx)', finding: 'SARS-CoV-2 RNA', significance: 'Goldstandard, Ct-Wert' },
+                { test: 'Schnell-Antigentest', finding: 'Nukleokapsid-Protein', significance: 'Schnell, zeigt Infektiosität an' },
+                { test: 'Serologie', finding: 'Anti-S, Anti-N IgG/IgM', significance: 'Durchgemachte Infektion, Impfwirksamkeit' }
+              ]
+            },
+            differential: [
+              { disease: 'Influenza', distinguishing: 'Schnellerer Verlauf, Myalgie dominiert, PCR' },
+              { disease: 'Bakterielle Pneumonie', distinguishing: 'Hohes PCT, lobäres Infiltrat' },
+              { disease: 'Herzinsuffizienz', distinguishing: 'Kardiale Anamnese, BNP, beidseitig' },
+              { disease: 'Lungenembolie', distinguishing: 'D-Dimer, CTPA' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Paxlovid (Nirmatrelvir/Ritonavir)', dose: '2x300/100mg p.o.', duration: '5 Tage', note: 'Früh, Hochrisiko, Wechselwirkungen!' },
+                  { drug: 'Molnupiravir', dose: '2x800mg p.o.', duration: '5 Tage', note: 'Alternative, wenn Paxlovid kontraindiziert ist' }
+                ],
+                inpatient: [
+                  { drug: 'Remdesivir', dose: '200mg i.v. T1, dann 100mg/Tag', duration: '5 Tage (max 10)', note: 'Wenn O2 benötigt wird' },
+                  { drug: 'Dexamethason', dose: '6mg/Tag i.v./p.o.', duration: '10 Tage', note: 'Nur bei O2-Bedarf/Beatmung!' }
+                ],
+                icu: [
+                  { drug: 'Dexamethason', dose: '6-20mg/Tag', duration: '10 Tage', note: 'Zytokinsturm' },
+                  { drug: 'Tocilizumab', dose: '8mg/kg i.v. Einzeldosis', duration: '', note: 'IL-6-Inhibitor, rasche Verschlechterung' },
+                  { drug: 'LMWH', dose: 'Therapeutische Dosis', duration: '', note: 'Thromboseprophylaxe/-therapie' }
+                ]
+              },
+              targeted: 'Antiviral (Paxlovid, Remdesivir) früh; Immunmodulatorisch (Steroid, Tocilizumab) in hypoxischer Phase',
+              supportive: ['Sauerstoff (Bauchlage!)', 'HFNC/NIV', 'Invasive Beatmung', 'ECMO'],
+              prevention: ['mRNA-Impfstoffe (Pfizer, Moderna)', 'Händehygiene', 'Maskentragen', 'Isolierung']
+            },
+            prognosis: {
+              mortality: 'Omikron <1%, früher 2-5%, ITS 20-40%',
+              prognostic_scores: ['4C Mortality Score', 'NEWS2'],
+              factors: 'Alter, Komorbidität, Lymphopenie, D-Dimer, Ferritin, Impfstatus'
+            },
+            gallery: [
+              {
+                url: 'https://commons.wikimedia.org/wiki/Special:FilePath/SARS-CoV-2_without_background.png',
+                caption: 'SARS-CoV-2-Virusmodell.',
+                type: 'Virologie'
+              }
+            ]
+      },
           {
             id: 'tonsillitis',
             name: 'Tonsillitis (Mandelentzündung)',

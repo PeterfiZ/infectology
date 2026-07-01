@@ -1,4 +1,5 @@
-window.scoreCalculators = {
+window.scoreCalculators = window.scoreCalculators || {};
+Object.assign(window.scoreCalculators, {
     'CURB-65': {
       title: 'CURB-65 Score (Pneumonia)',
       description: 'Közösségben szerzett tüdőgyulladás súlyosságának és a betegfelvétel szükségességének megítélésére.',
@@ -488,4 +489,4 @@ window.scoreCalculators = {
             return { risk: 'Magas kockázat (>20%)', action: 'Empirikus antifungális terápia megfontolandó.', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
         }
     }
-};
+  });

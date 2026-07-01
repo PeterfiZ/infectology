@@ -1,6 +1,11 @@
 // d:\OneDrive - Pécsi Tudományegyetem\A folyó ügyek\a gyorsan elintézendő\a leadandó, határidős dolgok\Cikkek, előadások\programok\Infectologia\metadata.js
 
 window.diseaseMetadata = {
+  intraabdominal: {
+    icon: '🩺',
+    color: '#16a34a'
+  },
+
   bacterial_respiratory: {
     icon: '🩺',
     color: '#dc2626'

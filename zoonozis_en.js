@@ -110,16 +110,16 @@ Object.assign(window.diseases, {
           {
             id: 'hantavirus',
             name: 'Hantavirus Infection',
-            pathogen: { type: 'Virus', name: '<i>Hantavirus</i> (multiple serotypes)', gram: 'Negative-sense RNA virus, Bunyaviridae', shape: 'spherical' },
+            pathogen: { type: 'Virus', name: '<i>Hantavirus</i> (HFRS: Hantaan, Puumala, Dobrava, Seoul; HPS: Sin Nombre, <b style="color: #ef4444">ANDES</b>, Bayou)', gram: 'Negative-sense RNA virus, Bunyaviridae', shape: 'spherical' },
             epidemiology: {
               incidence: 'Europe: HFRS 10,000+ cases/year; USA: HPS <50 cases/year',
               risk_groups: ['Agricultural workers', 'Foresters', 'Soldiers', 'Campers/hikers', 'Occupations with rodent contact', 'Cleaning poorly ventilated buildings'],
               seasonality: 'Spring-autumn (rodent population peak)',
-              transmission: 'Aerosol (rodent feces/urine/saliva). NOT person-to-person!'
+              transmission: 'Aerosol (rodent feces/urine/saliva). Generally NOT person-to-person (except for the Andes virus)!'
             },
             pathomechanism: {
               steps: [
-                'Infection occurs through inhalation of aerosolized dust contaminated with dried urine, feces, or saliva of rodents (e.g., bank vole). Person-to-person transmission does not occur.',
+                'Infection occurs through inhalation of aerosolized dust contaminated with dried urine, feces, or saliva of rodents (e.g., bank vole). Person-to-person transmission generally does not occur (except for the Andes virus).',
                 'The virus enters the bloodstream via the lungs and specifically infects endothelial cells lining the blood vessels, without causing direct cell death.',
                 'The main damage is caused by the body\'s excessive immune response. Activated T-cells and cytokines (TNF-alpha) loosen the junctions between endothelial cells, leading to capillary leak.',
                 'HFRS (Hemorrhagic Fever with Renal Syndrome): The capillary leak primarily occurs in the kidneys, leading to acute renal failure, proteinuria, and hemorrhages.',
@@ -131,9 +131,8 @@ Object.assign(window.diseases, {
               incubation: '1-8 weeks (average 2-4 weeks)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Prodromal Phase (3-5 days)', description: 'Sudden onset of high fever, chills, severe headache, and muscle pain (especially back and thighs). Facial flushing and conjunctival injection are common.', severity: 'severe' },
-                { name: 'HFRS (Renal Involvement)', description: 'The febrile phase is followed by hypotension, then oliguria/anuria. Severe flank pain, massive proteinuria, and thrombocytopenia are characteristic. Polyuria occurs during the recovery phase.', severity: 'severe' },
-                { name: 'HPS (Pulmonary Involvement)', description: 'After the prodromal phase, a rapidly progressing cough and shortness of breath develop, leading to severe, non-cardiogenic pulmonary edema and cardiogenic shock within hours. High mortality rate.', severity: 'severe' }
+                { name: 'Renal form (Old World - HFRS)', description: '<b>Etiology:</b> Hantaan, Puumala, Dobrava-Belgrade, Seoul viruses.<br><b>Stages:</b> 1. Febrile (fever, facial flush, conjunctivitis), 2. Hypotensive (shock), 3. Oliguric (acute renal failure, proteinuria, hemorrhages), 4. Diuretic (polyuria), 5. Convalescent.', severity: 'severe' },
+                { name: 'Pulmonary form (New World - HPS)', description: '<b>Etiology:</b> Sin Nombre, <b style="color: #ef4444">ANDES</b> (person-to-person transmission!), Bayou, Black Creek Canal viruses.<br><b>Stages:</b> 1. Prodromal (fever, myalgia, headache), 2. Cardiopulmonary (sudden non-cardiogenic pulmonary edema, hypoxia, shock), 3. Diuretic, 4. Convalescent.', severity: 'severe' }
               ],
               physical_exam: [
                 'High fever',
@@ -177,8 +176,8 @@ Object.assign(window.diseases, {
                   { drug: 'NO specific antiviral', dose: 'Supportive care', duration: '', note: 'Home observation in mild cases' }
                 ],
                 inpatient: [
-                  { drug: 'Ribavirin', dose: '33 mg/kg IV loading, then 16 mg/kg every 6 hours', duration: 'for 4 days, then 8 mg/kg every 8 hours for 3 days', note: 'Effective in HFRS, early phase (<5 days)' },
-                  { drug: 'Fluid replacement', dose: 'Cautious! Due to capillary leak', duration: '', note: 'Monitoring' }
+                  { drug: 'Ribavirin', dose: '33 mg/kg IV loading, then 16 mg/kg q6h', duration: '4 days, then 8 mg/kg q8h for 3 days', note: 'Effective in HFRS, early phase (<5 days)' },
+                  { drug: 'Fluid therapy', dose: 'HFRS: maintain MAP; HPS: restrictive!', duration: '', note: 'In HPS, aggressive fluid resuscitation can be fatal by worsening pulmonary edema.' }
                 ],
                 icu: [
                   { drug: 'Dialysis', dose: 'Renal failure', duration: '', note: 'HFRS' },
@@ -187,7 +186,7 @@ Object.assign(window.diseases, {
                 ]
               },
               targeted: 'Ribavirin in HFRS early phase; efficacy not proven in HPS',
-              supportive: ['Cautious fluid therapy (capillary leak!)', 'Dialysis (renal failure)', 'Ventilation/ECMO (HPS)', 'Inotropic support', 'Transfusion (thrombocytopenia)'],
+              supportive: ['Cautious fluid management (Restricted in HPS!)', 'Dialysis (renal failure)', 'Ventilation/ECMO (HPS)', 'Inotropic support', 'Transfusion (thrombocytopenia)'],
               prevention: ['Rodent control', 'Protective mask in dusty places', 'Ventilation of buildings before cleaning', 'Gloves', 'NO vaccine (experimental)']
             },
             prognosis: {
@@ -199,7 +198,7 @@ Object.assign(window.diseases, {
           {
             id: 'lyme',
             name: 'Lyme Disease (Borreliosis)',
-            pathogen: { type: 'Spirochaete', name: '<i>Borrelia burgdorferi sensu lato</i>', gram: 'Gram-negative', shape: 'spiral' },
+            pathogen: { type: 'Spirochaete', name: '<i>Borrelia burgdorferi sensu lato</i> (B. afzelii, B. garinii, B. burgdorferi ss.)', gram: 'Gram-negative', shape: 'spiral' },
             epidemiology: {
               incidence: 'USA: 476,000 cases/year; Europe: 232,000 cases/year. Common and endemic in Hungary.',
               risk_groups: ['Visitors to wooded areas', 'Hikers, campers', 'Foresters, hunters', 'Gardeners', 'Children'],
@@ -220,9 +219,9 @@ Object.assign(window.diseases, {
               incubation: 'EM: 3-30 days (average 7-14 days)',
               onset: 'Staged',
               symptoms: [
-                { name: 'Early Localized Stage (Erythema Migrans)', description: 'A painless, slowly expanding (>5 cm) rash at the site of the tick bite, often target-like (but can be uniform). This is the most common symptom and allows for a clinical diagnosis. It may be accompanied by general flu-like symptoms (fever, headache, myalgia).', severity: 'moderate' },
-                { name: 'Early Disseminated Stage (Organs)', description: 'Occurs weeks to months after bacterial spread. Nervous system: Bannwarth syndrome (nocturnal radicular pain, facial palsy, meningitis). Heart: Lyme carditis (AV block, arrhythmia). Skin: Lymphocytoma (bluish-red nodule).', severity: 'severe' },
-                { name: 'Late Stage (Chronic)', description: 'Months to years later. Lyme arthritis: intermittent swelling and pain of large joints (especially the knee). Skin: Acrodermatitis chronica atrophicans (ACA) - livid discoloration and atrophy of the extensor surfaces of the limbs.', severity: 'moderate' }
+                { name: 'Early Localized Stage (Erythema Migrans)', description: 'A painless, slowly expanding (>5 cm) rash at the bite site. Most common symptom. General flu-like symptoms may occur.', severity: 'moderate' },
+                { name: 'Early Disseminated Stage (Organs)', description: 'Occurs weeks to months after spread. <b>Nervous system:</b> Bannwarth syndrome (nocturnal radicular pain, facial palsy, meningitis – typically <i>B. garinii</i>). <b>Heart:</b> Lyme carditis (AV block). <b>Skin:</b> Borrelial lymphocytoma.', severity: 'severe' },
+                { name: 'Late Stage (Chronic)', description: 'Months to years later. <b>Lyme arthritis:</b> intermittent swelling of large joints (typically <i>B. burgdorferi ss.</i>). <b>Skin:</b> Acrodermatitis chronica atrophicans (ACA - skin atrophy – typically <i>B. afzelii</i>).', severity: 'moderate' }
               ],
               physical_exam: [
                 'Erythema migrans: >5 cm in diameter, expanding erythema',
@@ -296,10 +295,12 @@ Object.assign(window.diseases, {
               incubation: '3-5 days (1-14 days)',
               onset: 'Sudden',
               symptoms: [
-                { name: 'Ulceroglandular Form (75-85%)', description: 'The most common form. A painful ulcer with a black eschar develops at the portal of entry (e.g., bite site), accompanied by painful swelling of regional lymph nodes (bubo).', severity: 'moderate' },
-                { name: 'Glandular Form (5-10%)', description: 'Similar to the ulceroglandular form, but the primary skin ulcer is absent; only painful lymph node swelling is present.', severity: 'moderate' },
-                { name: 'Typhoidal Form (5-15%)', description: 'A severe, systemic illness with high fever, chills, and headache, but without a primary site of infection (ulcer, lymph node). Often associated with pneumonia.', severity: 'severe' },
-                { name: 'Other Forms', description: 'Oculoglandular (conjunctivitis and lymph node swelling if it enters the eye), Oropharyngeal (tonsillitis if ingested), Pulmonary (atypical pneumonia if inhaled).', severity: 'moderate' }
+                { name: 'Ulceroglandular form (75-85%)', description: 'The most common form. At the entry site (tick/fly bite, animal contact), a painful papule develops alongside sudden fever, quickly ulcerating with a black center (eschar). Regional lymph nodes are extremely painful and swollen; the overlying skin is warm and red. Without treatment, nodes often suppurate (become fluctuant) and may drain spontaneously after weeks.', severity: 'moderate' },
+                { name: 'Glandular form (5-10%)', description: 'Primary ulcer is absent, but characterized by painful, inflammatory regional lymphadenopathy and high fever. Lymph nodes are also prone to suppuration, with overlying erythema.', severity: 'moderate' },
+                { name: 'Oculoglandular form', description: 'Entry via the conjunctiva. Severe unilateral conjunctivitis with yellowish granulomas or ulcers, accompanied by painful preauricular and submandibular lymphadenopathy.', severity: 'moderate' },
+                { name: 'Oropharyngeal form', description: 'Via contaminated meat or water. Severe, often unilateral, ulcerative-exudative tonsillitis or pharyngitis with pseudomembranes, accompanied by massive cervical lymphadenopathy.', severity: 'moderate' },
+                { name: 'Pulmonary form', description: 'Via inhalation or systemic spread. Atypical pneumonia with dry cough and dyspnea. Hilar lymphadenopathy and pleural effusions are common.', severity: 'severe' },
+                { name: 'Typhoidal form (5-15%)', description: 'The most severe systemic form. Characterized by high fever, chills, abdominal pain, altered mental status, and weight loss, without localized ulcer or lymphadenopathy. Often leads to ARDS or septic shock.', severity: 'severe' }
               ],
               physical_exam: [
                 'Ulceroglandular (75%): skin ulcer (black eschar) + tender lymph node',
@@ -703,7 +704,10 @@ Object.assign(window.diseases, {
                 symptoms: [
                   { name: 'Undulant Fever', description: 'Wavelike fever pattern (low in morning, high in afternoon) with profuse, moldy-smelling sweat.', severity: 'moderate' },
                   { name: 'Musculoskeletal', description: 'Joint pain (arthralgia), back pain (sacroiliitis), myalgia.', severity: 'moderate' },
-                  { name: 'Constitutional', description: 'Fatigue, headache, depression, weight loss.', severity: 'mild' }
+                { name: 'Constitutional', description: 'Fatigue, headache, depression, weight loss.', severity: 'mild' },
+                { name: 'Osteoarticular form', description: 'The most common complication. <b>Spondylodiscitis</b>: vertebral involvement, severe back pain, restricted mobility. Sacroiliitis is also frequent.', severity: 'severe' },
+                { name: 'Endocarditis', description: 'The leading cause of mortality (<2%). Most commonly affects the aortic valve, leading to rapid valve destruction and embolization.', severity: 'severe' },
+                { name: 'Urogenital involvement', description: '<b>Epididymo-orchitis</b>: painful testicular and epididymal swelling, usually unilateral.', severity: 'moderate' }
                 ],
                 physical_exam: ['Hepatomegaly', 'Splenomegaly', 'Lymphadenopathy', 'Spinal tenderness'],
                 complications: ['Osteomyelitis (vertebral)', 'Endocarditis', 'Neurobrucellosis', 'Epididymo-orchitis']
@@ -723,7 +727,7 @@ Object.assign(window.diseases, {
               ],
               therapy: {
                 empirical: { outpatient: [{ drug: 'Doxycycline + Rifampicin', dose: '100mg BID + 600-900mg QD PO', duration: '6 weeks', note: 'Standard therapy' }] },
-                targeted: 'Doxycycline + Rifampicin (6 weeks). Alternative: Doxycycline + Streptomycin (2-3 weeks). Neurobrucellosis/Endocarditis: Doxy + Rif + Ceftriaxone/Cotrimoxazole (months).',
+                targeted: 'Doxycycline + Rifampicin (6 weeks). Alternative: Doxycycline + Streptomycin (2-3 weeks). <b>Neurobrucellosis:</b> Ceftriaxone + Doxycycline + Rifampicin (3-6 months). <b>Endocarditis:</b> Doxycycline + Rifampicin + Gentamicin (min. 6-12 weeks) + surgical consultation.',
                 supportive: ['Symptomatic treatment'],
                 prevention: ['Pasteurization of milk', 'Protective gear', 'Animal vaccination']
               },

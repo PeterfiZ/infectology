@@ -110,16 +110,16 @@ Object.assign(window.diseases, {
           {
             id: 'hantavirus',
             name: 'Hantavirus-Infektion',
-            pathogen: { type: 'Virus', name: '<i>Hantavirus</i> (mehrere Serotypen)', gram: 'Negativ-Strang-RNA-Virus, Bunyaviridae', shape: 'sphärisch' },
+            pathogen: { type: 'Virus', name: '<i>Hantavirus</i> (HFRS: Hantaan, Puumala, Dobrava, Seoul; HPS: Sin Nombre, <b style="color: #ef4444">ANDES</b>, Bayou)', gram: 'Negativ-Strang-RNA-Virus, Bunyaviridae', shape: 'sphärisch' },
             epidemiology: {
               incidence: 'Europa: HFRS 10.000+ Fälle/Jahr; USA: HPS <50 Fälle/Jahr',
               risk_groups: ['Landarbeiter', 'Förster', 'Soldaten', 'Camper/Wanderer', 'Berufe mit Nagetierkontakt', 'Reinigung schlecht belüfteter Gebäude'],
               seasonality: 'Frühling-Herbst (Nagetierpopulationsspitze)',
-              transmission: 'Aerosol (Nagetierkot/-urin/-speichel). NICHT von Mensch zu Mensch!'
+              transmission: 'Aerosol (Nagetierkot/-urin/-speichel). In der Regel NICHT von Mensch zu Mensch (außer beim Andes-Virus)!'
             },
             pathomechanism: {
               steps: [
-                'Die Infektion erfolgt durch Inhalation von Aerosol, das mit getrocknetem Urin, Kot oder Speichel von Nagetieren (z.B. Rötelmaus) kontaminiert ist. Eine Übertragung von Mensch zu Mensch findet nicht statt.',
+                'Die Infektion erfolgt durch Inhalation von Aerosol, das mit getrocknetem Urin, Kot oder Speichel von Nagetieren (z.B. Rötelmaus) kontaminiert ist. Eine Übertragung von Mensch zu Mensch findet in der Regel nicht statt (außer beim Andes-Virus).',
                 'Das Virus gelangt über die Lunge in den Blutkreislauf und infiziert gezielt die Endothelzellen, die die Innenfläche der Blutgefäße auskleiden, ohne direkten Zelltod zu verursachen.',
                 'Der Hauptschaden wird durch die übermäßige Immunantwort des Körpers verursacht. Aktivierte T-Zellen und Zytokine (TNF-alpha) lockern die Verbindungen zwischen den Endothelzellen, was zu einem Kapillarleck (Capillary Leak) führt.',
                 'HFRS (Hämorrhagisches Fieber mit renalem Syndrom): Das Kapillarleck tritt hauptsächlich in der Niere auf, was zu akutem Nierenversagen, Proteinurie und Blutungen führt.',
@@ -131,9 +131,8 @@ Object.assign(window.diseases, {
               incubation: '1-8 Wochen (durchschnittlich 2-4 Wochen)',
               onset: 'Plötzlich',
               symptoms: [
-                { name: 'Prodromalphase (3-5 Tage)', description: 'Plötzlich einsetzendes, hohes Fieber, Schüttelfrost, starke Kopfschmerzen und Muskelschmerzen (v.a. Rücken und Oberschenkel). Häufig sind Gesichtsrötung (Facial Flush) und konjunktivale Injektion.', severity: 'severe' },
-                { name: 'HFRS (Nierenbeteiligung)', description: 'Auf die Fieberphase folgen Hypotonie und dann Oligurie/Anurie. Charakteristisch sind starke Flankenschmerzen, massive Proteinurie und Thrombozytopenie. In der Erholungsphase tritt Polyurie auf.', severity: 'severe' },
-                { name: 'HPS (Lungenbeteiligung)', description: 'Nach der Prodromalphase entwickeln sich schnell fortschreitender Husten und Atemnot, die innerhalb von Stunden in ein schweres, nicht-kardiogenes Lungenödem und einen kardiogenen Schock münden. Hohe Mortalität.', severity: 'severe' }
+                { name: 'Renale Form (Alte Welt - HFRS)', description: '<b>Ätiologie:</b> Hantaan-, Puumala-, Dobrava-Belgrad-, Seoul-Viren.<br><b>Stadien:</b> 1. Febril (Fieber, Facial Flush, Konjunktivitis), 2. Hypotensiv (Schock), 3. Oligurisch (akutes Nierenversagen, Proteinurie, Blutungen), 4. Diuretisch (Polyurie), 5. Rekonvaleszent.', severity: 'severe' },
+                { name: 'Pulmonale Form (Neue Welt - HPS)', description: '<b>Ätiologie:</b> Sin Nombre, <b style="color: #ef4444">ANDES</b> (Mensch-zu-Mensch-Übertragung!), Bayou, Black Creek Canal Viren.<br><b>Stadien:</b> 1. Prodromal (Fieber, Myalgie, Kopfschmerzen), 2. Kardiopulmonal (plötzliches nicht-kardiogenes Lungenödem, Hypoxie, Schock), 3. Diuretisch, 4. Rekonvaleszent.', severity: 'severe' }
               ],
               physical_exam: [
                 'Hohes Fieber',
@@ -177,8 +176,8 @@ Object.assign(window.diseases, {
                   { drug: 'KEIN spezifisches Virostatikum', dose: 'Supportive Therapie', duration: '', note: 'Häusliche Beobachtung in leichten Fällen' }
                 ],
                 inpatient: [
-                  { drug: 'Ribavirin', dose: '33 mg/kg i.v. Ladedosis, dann 16 mg/kg alle 6 Stunden', duration: 'für 4 Tage, dann 8 mg/kg alle 8 Stunden für 3 Tage', note: 'Wirksam bei HFRS, in der Frühphase (<5 Tage)' },
-                  { drug: 'Flüssigkeitsersatz', dose: 'Vorsichtig! Wegen Kapillarleck', duration: '', note: 'Überwachung' }
+                  { drug: 'Ribavirin', dose: '33 mg/kg i.v. Ladedosis, dann 16 mg/kg alle 6h', duration: '4 Tage, dann 8 mg/kg alle 8h für 3 Tage', note: 'Wirksam bei HFRS, in der Frühphase (<5 Tage)' },
+                  { drug: 'Flüssigkeitssubstitution', dose: 'HFRS: MAP halten; HPS: restriktiv!', duration: '', note: 'Bei HPS kann eine aggressive Flüssigkeitszufuhr durch Verschlechterung des Lungenödems tödlich sein.' }
                 ],
                 icu: [
                   { drug: 'Dialyse', dose: 'Nierenversagen', duration: '', note: 'HFRS' },
@@ -187,7 +186,7 @@ Object.assign(window.diseases, {
                 ]
               },
               targeted: 'Ribavirin bei HFRS in der Frühphase; Wirksamkeit bei HPS nicht belegt',
-              supportive: ['Vorsichtige Flüssigkeitstherapie (Kapillarleck!)', 'Dialyse (Nierenversagen)', 'Beatmung/ECMO (HPS)', 'Inotrope Unterstützung', 'Transfusion (Thrombozytopenie)'],
+              supportive: ['Vorsichtige Flüssigkeitstherapie (In HPS restriktiv!)', 'Dialyse (Nierenversagen)', 'Beatmung/ECMO (HPS)', 'Inotrope Unterstützung', 'Transfusion (Thrombozytopenie)'],
               prevention: ['Nagetierbekämpfung', 'Schutzmaske an staubigen Orten', 'Lüften von Gebäuden vor der Reinigung', 'Handschuhe tragen', 'KEIN Impfstoff (experimentell)']
             },
             prognosis: {
@@ -199,7 +198,7 @@ Object.assign(window.diseases, {
           {
             id: 'lyme',
             name: 'Lyme-Borreliose',
-            pathogen: { type: 'Spirochäte', name: '<i>Borrelia burgdorferi sensu lato</i>', gram: 'Gram-negativ', shape: 'spiralig' },
+            pathogen: { type: 'Spirochäte', name: '<i>Borrelia burgdorferi sensu lato</i> (B. afzelii, B. garinii, B. burgdorferi ss.)', gram: 'Gram-negativ', shape: 'spiralig' },
             epidemiology: {
               incidence: 'USA: 476.000 Fälle/Jahr; Europa: 232.000 Fälle/Jahr. In Ungarn häufig und endemisch.',
               risk_groups: ['Besucher von Waldgebieten', 'Wanderer, Camper', 'Förster, Jäger', 'Gärtner', 'Kinder'],
@@ -220,9 +219,9 @@ Object.assign(window.diseases, {
               incubation: 'EM: 3-30 Tage (Durchschnitt 7-14 Tage)',
               onset: 'Stadienhaft',
               symptoms: [
-                { name: 'Frühstadium lokalisiert (Erythema migrans)', description: 'An der Stichstelle entstehende, schmerzlose, langsam wachsende (>5 cm), oft zielscheibenförmige (kann aber auch homogen sein) Hautrötung. Dies ist das häufigste Symptom und ermöglicht eine klinische Diagnose. Allgemeine grippeähnliche Symptome (Fieber, Kopfschmerzen, Muskelschmerzen) können begleitend auftreten.', severity: 'moderate' },
-                { name: 'Frühstadium disseminiert (Organe)', description: 'Tritt Wochen bis Monate nach der Streuung der Bakterien auf. Nervensystem: Bannwarth-Syndrom (nächtliche radikuläre Schmerzen, Fazialisparese, Meningitis). Herz: Lyme-Karditis (AV-Block, Rhythmusstörungen). Haut: Lymphozytom (bläulich-roter Knoten).', severity: 'severe' },
-                { name: 'Spätstadium (Chronisch)', description: 'Monate bis Jahre später. Lyme-Arthritis: intermittierende Schwellung und Schmerzen großer Gelenke (v.a. Knie). Haut: Acrodermatitis chronica atrophicans (ACA) - livide Verfärbung und Atrophie der Streckseiten der Extremitäten.', severity: 'moderate' }
+                { name: 'Frühstadium lokalisiert (Erythema migrans)', description: '<b>Erythema migrans:</b> Schmerzlose, sich langsam ausbreitende (>5 cm), oft zielscheibenförmige Hautrötung an der Einstichstelle. Besteht meist 1-4 Wochen und heilt ohne Behandlung spontan ab.', severity: 'moderate' },
+                { name: 'Frühstadium disseminiert (Organe)', description: 'Wochen bis Monate nach Streuung. <b>Neuroborreliose:</b> Bannwarth-Syndrom (heftige radikuläre Schmerzen, periphere Lähmungen - z.B. Fazialisparese, Meningitis). <b>Karditis:</b> AV-Block (Grad I-III). <b>Haut:</b> Borrelien-Lymphozytom (bläulich-roter Knoten am Ohrläppchen). Diese Symptome dauern meist Wochen bis Monate an.', severity: 'severe' },
+                { name: 'Spätstadium (Chronisch)', description: 'Monate bis Jahre später. <b>Lyme-Arthritis:</b> intermittierende Schwellung großer Gelenke (v.a. Knie), Episoden dauern Wochen und können über Jahre wiederkehren. <b>Haut:</b> Acrodermatitis chronica atrophicans (ACA) - initiale livide Verfärbung, gefolgt von jahrelang anhaltender, pergamentartiger Hautatrophie.', severity: 'moderate' }
               ],
               physical_exam: [
                 'Erythema migrans: >5 cm Durchmesser, ausbreitendes Erythem',
@@ -703,7 +702,10 @@ Object.assign(window.diseases, {
                 symptoms: [
                   { name: 'Undulierendes Fieber', description: 'Wellenförmiger Fieberverlauf (morgens niedrig, nachmittags hoch) mit profusem, muffig riechendem Schweiß.', severity: 'moderate' },
                   { name: 'Muskuloskelettal', description: 'Gelenkschmerzen (Arthralgie), Rückenschmerzen (Sakroiliitis), Muskelschmerzen.', severity: 'moderate' },
-                  { name: 'Allgemeinsymptome', description: 'Müdigkeit, Kopfschmerzen, Depression, Gewichtsverlust.', severity: 'mild' }
+                  { name: 'Allgemeinsymptome', description: 'Müdigkeit, Kopfschmerzen, Depression, Gewichtsverlust.', severity: 'mild' },
+                  { name: 'Osteoartikuläre Form', description: 'Die häufigste Komplikation. <b>Spondylodiszitis</b>: Wirbelbeteiligung, heftige Rückenschmerzen, Bewegungseinschränkung. Sakroiliitis ist ebenfalls häufig.', severity: 'severe' },
+                  { name: 'Endokarditis', description: 'Die Haupttodesursache (<2%). Betrifft am häufigsten die Aortenklappe, führt zu rascher Klappendestruktion und Embolisation.', severity: 'severe' },
+                  { name: 'Urogenitale Beteiligung', description: '<b>Epididymoorchitis</b>: schmerzhafte Hoden- und Nebenhodenschwellung, meist einseitig.', severity: 'moderate' }
                 ],
                 physical_exam: ['Hepatomegalie', 'Splenomegalie', 'Lymphadenopathie', 'Klopfschmerz der Wirbelsäule'],
                 complications: ['Osteomyelitis (Wirbel)', 'Endokarditis', 'Neurobrucellose', 'Epididymoorchitis']
@@ -723,7 +725,7 @@ Object.assign(window.diseases, {
               ],
               therapy: {
                 empirical: { outpatient: [{ drug: 'Doxycyclin + Rifampicin', dose: '100mg 2x/Tag + 600-900mg 1x/Tag p.o.', duration: '6 Wochen', note: 'Standardtherapie' }] },
-                targeted: 'Doxycyclin + Rifampicin (6 Wochen). Alternative: Doxycyclin + Streptomycin (2-3 Wochen). Neurobrucellose/Endokarditis: Doxy + Rif + Ceftriaxon/Cotrimoxazol (monatelang).',
+                targeted: 'Doxycyclin + Rifampicin (6 Wochen). Alternative: Doxycyclin + Streptomycin (2-3 Wochen). <b>Neurobrucellose:</b> Ceftriaxon + Doxycyclin + Rifampicin (3-6 Monate). <b>Endokarditis:</b> Doxycyclin + Rifampicin + Gentamicin (mind. 6-12 Wochen) + chirurgisches Konsil.',
                 supportive: ['Symptomatische Behandlung'],
                 prevention: ['Pasteurisierung von Milch', 'Schutzausrüstung', 'Tierimpfung']
               },

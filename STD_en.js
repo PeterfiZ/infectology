@@ -27,10 +27,10 @@ Object.assign(window.diseases, {
               incubation: 'Primary: 9-90 days (average 21 days)',
               onset: 'Phase-dependent',
               symptoms: [
-                { name: 'Primary: Chancre', description: 'A painless, indurated ulcer with a clean base at the site of inoculation (genitals, mouth, anus) approx. 3 weeks post-infection. Accompanied by painless regional lymphadenopathy. It heals spontaneously, but the bacteria remain.', severity: 'moderate' },
-                { name: 'Secondary: Rash & Lesions', description: 'Sign of hematogenous spread (6-8 weeks later). Generalized, non-pruritic, copper-colored rash typically involving palms and soles. Infectious, weeping papules (condyloma lata) may appear in skin folds.', severity: 'moderate' },
-                { name: 'Secondary: Systemic Symptoms', description: 'Fever, malaise, generalized lymphadenopathy ("micropolyadenopathy"), patchy "moth-eaten" alopecia, and mucous patches.', severity: 'mild' },
-                { name: 'Tertiary: Late Complications', description: 'Develops years later. Gumma (destructive granulomas in skin/bone/liver), cardiovascular syphilis (aortitis, aneurysm), and neurosyphilis (tabes dorsalis, general paresis/dementia).', severity: 'severe' }
+                { name: 'Primary: Chancre', description: 'Painless, indurated ulcer with a clean base (ulcus durum) at the portal of entry. Characterized by "indolent" (painless), cartilaginous regional lymphadenopathy.', severity: 'moderate' },
+                { name: 'Secondary: Dissemination', description: '6-8 weeks after chancre. Generalized non-pruritic copper-colored macules (palms/soles involved!), weeping flat warts (condyloma lata), opal-white mucosal patches, and "moth-eaten" alopecia.', severity: 'moderate' },
+                { name: 'Secondary: Systemic Signs', description: 'Fever, sore throat, generalized lymphadenopathy ("micropolyadenopathy"); hepatitis or periostitis may also occur.', severity: 'mild' },
+                { name: 'Tertiary: Destruction', description: 'Years later: Gumma (destructive granulomas in skin, bone), aortitis (aneurysm), and Neurosyphilis (tabes dorsalis - ataxia, lightning pains; progressive paralysis - dementia).', severity: 'severe' }
               ],
               physical_exam: [
                 'Primary: painless genital/extragenital ulcer + inguinal lymphadenopathy',
@@ -251,8 +251,8 @@ Object.assign(window.diseases, {
               incubation: '2-7 days',
               onset: 'Acute',
               symptoms: [
-                { name: 'Men', description: 'Urethritis: profuse, yellow-green purulent discharge, dysuria. (90% symptomatic)', severity: 'moderate' },
-                { name: 'Women', description: 'Cervicitis: often asymptomatic or mild (50%). Vaginal discharge, dysuria, lower abdominal pain.', severity: 'mild' },
+                { name: 'Men', description: 'Acute urethritis: sudden, profuse, yellow-green, "creamy" purulent discharge and excruciating dysuria. Frequent testicular tension and pain.', severity: 'moderate' },
+                { name: 'Women', description: 'Often asymptomatic cervicitis (50%). Purulent vaginal discharge, dysuria, painful Bartholin\'s gland inflammation. May ascend to cause PID.', severity: 'moderate' },
                 { name: 'Extragenital', description: 'Pharyngitis (often asymptomatic), Proctitis (pain, discharge), Conjunctivitis (neonates).', severity: 'moderate' }
               ],
               physical_exam: ['Purulent urethral/cervical discharge', 'Bartholin gland abscess', 'Fever (in DGI)'],
@@ -304,8 +304,8 @@ Object.assign(window.diseases, {
               onset: 'Slow/Asymptomatic',
               symptoms: [
                 { name: 'Asymptomatic ("Silent")', description: '70-80% of women and 50% of men are asymptomatic, facilitating spread and late complications.', severity: 'mild' },
-                { name: 'Women', description: 'Cervicitis: mucopurulent discharge, contact bleeding, dysuria. Lower abdominal pain (may indicate PID).', severity: 'moderate' },
-                { name: 'Men', description: 'Urethritis: dysuria, watery/glassy discharge (less purulent than gonorrhea).', severity: 'moderate' }
+                { name: 'Women', description: 'Mucopurulent cervicitis: mucoid-purulent discharge, contact bleeding (e.g., post-coital), dysuria. Complications: PID, Fitz-Hugh-Curtis syndrome (perihepatitis).', severity: 'moderate' },
+                { name: 'Men', description: 'Urethritis: mild dysuria, "morning drop" (scant, glassy discharge). Less dramatic than clap, leading to delayed medical consultation.', severity: 'moderate' }
               ],
               physical_exam: ['Mucopurulent cervicitis', 'Adnexal tenderness (PID)', 'Urethral discharge'],
               complications: ['Pelvic Inflammatory Disease (PID)', 'Infertility (tubal factor)', 'Ectopic pregnancy', 'Fitz-Hugh-Curtis syndrome (perihepatitis)', 'Reactive arthritis (Reiter\'s syndrome)', 'Neonatal conjunctivitis/pneumonia']
@@ -353,8 +353,8 @@ Object.assign(window.diseases, {
               incubation: '2-12 days',
               onset: 'Sudden (primary) or prodrome (recurrent)',
               symptoms: [
-                { name: 'Primary Infection', description: 'Severe symptoms: extensive, painful vesicles and ulcers on genitals. Often accompanied by fever, malaise, painful inguinal lymphadenopathy, and dysuria. Healing: 2-4 weeks.', severity: 'severe' },
-                { name: 'Recurrent Infection', description: 'Milder course. Often preceded by prodromal symptoms (burning, tingling). Fewer lesions, no systemic symptoms. Healing: 5-10 days.', severity: 'mild' }
+                { name: 'Primary Infection', description: 'Severe symptoms: painful grouped vesicles on an erythematous base, progressing to ulcers. Accompanied by fever, malaise, excruciating dysuria (risk of retention), and tender groin nodes.', severity: 'severe' },
+                { name: 'Recurrent Infection', description: 'Milder course. After prodromal tingling or burning, a few vesicles appear. No systemic symptoms. Healing: 5-10 days.', severity: 'mild' }
               ],
               physical_exam: ['Grouped vesicles/ulcers', 'Inguinal lymphadenopathy (primary)', 'Cervicitis/Proctitis'],
               complications: ['Aseptic meningitis', 'Urinary retention (autonomic dysfunction)', 'Neonatal herpes (in pregnancy!)', 'Increased risk of HIV transmission']
@@ -403,8 +403,8 @@ Object.assign(window.diseases, {
               incubation: '4-28 days',
               onset: 'Gradual',
               symptoms: [
-                { name: 'Women', description: 'Profuse, frothy, yellow-green, foul-smelling discharge. Vulvovaginal itching, dysuria, dyspareunia. "Strawberry cervix" (colpitis macularis) on examination.', severity: 'moderate' },
-                { name: 'Men', description: 'Often asymptomatic. Can cause urethritis (discharge, dysuria), prostatitis.', severity: 'mild' }
+                { name: 'Women', description: 'Profuse, frothy, yellowish-green, malodorous ("rotten fish") discharge. Intense vulvar itching, dysuria. "Strawberry cervix" (petechiae) on examination. pH > 4.5.', severity: 'moderate' },
+                { name: 'Men', description: 'Often asymptomatic carriers. Can cause mild urethritis (glassy morning discharge) or chronic prostatitis.', severity: 'mild' }
               ],
               physical_exam: ['Frothy discharge', 'Strawberry cervix (punctate hemorrhages)', 'pH > 4.5'],
               complications: ['Preterm delivery', 'Low birth weight', 'Increased risk of HIV transmission', 'PID']

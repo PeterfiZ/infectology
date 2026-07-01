@@ -307,6 +307,384 @@ Object.assign(window.diseases, {
               prognostic_scores: ['Keine'],
               factors: 'Späte Behandlung, Komorbiditäten'
             }
+          },
+          {
+            id: 'impetigo',
+            name: 'Impetigo',
+            pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus</i> und/oder <i>Streptococcus pyogenes</i>', gram: 'Gram-positiv', shape: 'Kokken' },
+            epidemiology: {
+              incidence: 'Häufig, besonders bei Kindern',
+              risk_groups: ['Kinder', 'Gemeinschaftssettings', 'Hautverletzungen', 'Nahe Kontakt'],
+              seasonality: 'Keine',
+              transmission: 'Kontakt, direkt oder indirekt'
+            },
+            pathomechanism: {
+              steps: [
+                'Erreger dringen über Hautläsionen oder die oberflächliche Haut ein.',
+                'Die Bakterien vermehren sich lokal und breiten sich oberflächlich aus.',
+                'Entzündung und Toxine führen zu typischen Blasen und goldgelben, „honigfarbenen“ Krusten.'
+              ],
+              virulence_factors: ['Exfoliative Toxine', 'M-Protein', 'Koagulase', 'Panton-Valentine-Leukocidin (S. aureus)']
+            },
+            clinical: {
+              incubation: '1-3 Tage',
+              onset: 'Akut',
+              symptoms: [
+                { name: 'Scharf begrenzte, entzündete Plaques', description: 'Blasen, die platzen und von goldgelben, „honigfarbenen“ Krusten bedeckt sind', severity: 'moderate' },
+                { name: 'Juckreiz', description: 'Geringe Schmerzen oder Juckreiz in der Umgebung', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Rötliche, oberflächliche, entzündete Hautstelle',
+                'Blasen und Krustenbildung',
+                'Gelegentlich Lymphknotenschwellung'
+              ],
+              complications: ['Ausgedehnte lokale Infektion', 'Glomerulonephritis (Streptokokken)', 'Rezidiv']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Klinische Diagnose', finding: 'Ausreichend', interpretation: 'Typische Erscheinung' }
+              ],
+              microbiology: [
+                { test: 'Wundabstrich/Kultur', finding: 'Erregeridentifikation', significance: 'Bei Unsicherheit oder schweren Fällen' }
+              ]
+            },
+            differential: [
+              { disease: 'Herpes simplex', distinguishing: 'Bläschen, schmerzhafter, keine honigfarbenen Krusten' },
+              { disease: 'Kontaktdermatitis', distinguishing: 'Juckreiz, keine Blasenbildung' },
+              { disease: 'Erysipel', distinguishing: 'Tiefer, scharfe Grenzen' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Topisches Mupirocin', dose: '2x täglich', duration: '5-7 Tage', note: 'Lokale, nicht ausgedehnte Form' },
+                  { drug: 'Retapamulin', dose: '2x täglich', duration: '5 Tage', note: 'Alternative' }
+                ],
+                inpatient: [
+                  { drug: 'Cephalexin', dose: '4x500 mg p.o.', duration: '7-10 Tage', note: 'Ausgedehnte Infektion' },
+                  { drug: 'Amoxicillin/Clavulansäure', dose: '3x875/125 mg p.o.', duration: '7-10 Tage', note: 'Alternative' }
+                ]
+              },
+              targeted: 'Gezielte Therapie entsprechend S. aureus/GAS; bei ausgedehnten Fällen systemische Antibiotika.',
+              supportive: ['Hautreinigung', 'Hygiene und Kontaktprävention', 'Trennung betroffener Personen'],
+              prevention: ['Hygieneregeln', 'Behandlung von Hautverletzungen', 'Reduktion von Gemeinschaftskontakt']
+            },
+            guidelines: {
+              diagnosis: [
+                'Klinische Diagnose: Typische honigfarbenen Krusten und oberflächliche Blasen sind charakteristisch.'
+              ],
+              treatment_indications: [
+                'Lokale Behandlung bei kleinen, nicht ausgedehnten Fällen; systemische Therapie bei ausgedehnter oder wiederkehrender Infektion.'
+              ],
+              first_line: [
+                'Topisches Mupirocin oder Retapamulin; bei ausgedehnten Fällen Cephalexin oder Amoxicillin/Clavulansäure.'
+              ]
+            },
+            prognosis: {
+              mortality: 'Niedrig',
+              prognostic_scores: ['Keine'],
+              factors: 'Ausgedehnte Erkrankung, Immunsuppression, Rezidiv'
+            }
+          },
+          {
+            id: 'folliculitis',
+            name: 'Follikulitis',
+            pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus</i> (am häufigsten)', gram: 'Gram-positiv', shape: 'Kokken' },
+            epidemiology: {
+              incidence: 'Häufig, besonders in warmen, schwitzigen Umgebungen',
+              risk_groups: ['Schweißige Arbeit', 'Eng anliegende Kleidung', 'Hautverletzungen', 'Diabetes', 'Immunsuppression'],
+              seasonality: 'Keine',
+              transmission: 'Direkter Kontakt oder Auto-Inokulation'
+            },
+            pathomechanism: {
+              steps: [
+                'In der Haarfollikelregion dringt der Erreger ein und verursacht eine lokale Entzündung.',
+                'Die Entzündung führt zu Papeln und Pusteln rund um den Haarfollikel.',
+                'Schwerere Formen können zu tieferen Infektionen führen (Furunkel, Karbunkel).'
+              ],
+              virulence_factors: ['Koagulase', 'Exotoxine', 'Biofilm']
+            },
+            clinical: {
+              incubation: '1-3 Tage',
+              onset: 'Akut',
+              symptoms: [
+                { name: 'Papeln/Pusteln', description: 'Kleinräumige, schmerzhafte oder juckende Papeln/Pusteln am Haarfollikel', severity: 'mild' },
+                { name: 'Rötung und Schmerz', description: 'Entzündliche Reaktion rund um die Haut', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Papeln/Pusteln rund um den Haarfollikel',
+                'Schmerz oder Juckreiz',
+                'Bei schweren Fällen kann sich ein Abszess entwickeln'
+              ],
+              complications: ['Furunkel', 'Karbunkel', 'Abszedierende Follikulitis', 'Ausgedehnte lokale Infektion']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Klinische Diagnose', finding: 'Ausreichend', interpretation: 'Typische Erscheinung' }
+              ],
+              microbiology: [
+                { test: 'Eiter oder Gewebeprobe', finding: 'Erregeridentifikation', significance: 'Bei schweren oder refraktären Fällen' }
+              ]
+            },
+            differential: [
+              { disease: 'Impetigo', distinguishing: 'Viel mehr oberflächliche Blasen und Krusten' },
+              { disease: 'Herpes simplex', distinguishing: 'Bläschen, starke Schmerzen' },
+              { disease: 'Erysipel', distinguishing: 'Oberflächliche Entzündung, kein Haarfollikel- Fokus' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Topisches Mupirocin', dose: '2x täglich', duration: '5-7 Tage', note: 'Leichte Infektion' },
+                  { drug: 'Clindamycin', dose: '2x täglich', duration: '5-7 Tage', note: 'Topisch' }
+                ],
+                inpatient: [
+                  { drug: 'Cephalexin', dose: '4x500 mg p.o.', duration: '7-10 Tage', note: 'Schwerer oder ausgedehnter Verlauf' }
+                ]
+              },
+              targeted: 'Bei S. aureus gezielte antistaphylokokkale Therapie; bei Refraktärität Kultur.',
+              supportive: ['Irritierende Stoffe vermeiden', 'Haut reinigen', 'Eng anliegende Kleidung vermeiden'],
+              prevention: ['Hygiene', 'Kontaminierte Gegenstände vermeiden', 'Umgebung und Kleidung reinigen']
+            },
+            guidelines: {
+              diagnosis: [
+                'Nach dem klinischen Erscheinungsbild.'
+              ],
+              treatment_indications: [
+                'Topische Therapie bei leichteren Formen; systemische Therapie bei ausgedehnten oder rezidivierenden Fällen.'
+              ],
+              first_line: [
+                'Topisches Mupirocin oder Clindamycin; bei Bedarf Cephalexin.'
+              ]
+            },
+            prognosis: {
+              mortality: 'Niedrig',
+              prognostic_scores: ['Keine'],
+              factors: 'Schwerere Formen, Diabetes, Immunsuppression'
+            }
+          },
+          {
+            id: 'diabetic_foot',
+            name: 'Diabetischer Fuß (Infektion/Ulkus)',
+            pathogen: { type: 'Polymikrobiell', name: 'Staphylococcus aureus, Streptococcus spp., gramnegative Erreger, Anaerobier', gram: 'Gemischt', shape: 'Variabel' },
+            epidemiology: {
+              incidence: 'Häufige Ursache für Krankenhausaufnahmen und Amputationen bei Diabetikern',
+              risk_groups: ['Diabetes mellitus', 'Neuropathie', 'Periphere arterielle Verschlusskrankheit', 'Frühere Ulzera/Verletzungen', 'Fußdeformitäten', 'Immunsuppression'],
+              seasonality: 'Keine',
+              transmission: 'Nicht ansteckend, aber über Hautverletzungen, Deformitäten und Entzündung entstehend'
+            },
+            pathomechanism: {
+              steps: [
+                'Durch Neuropathie sinken Schutzreflexe und Sensibilität, sodass kleine Verletzungen unbemerkt bleiben können.',
+                'Periphere arterielle Verschlusskrankheit und hoher Glukoselevel verschlechtern Wundheilung und Immunfunktion.',
+                'Nach Haut- und Gewebeschädigung besiedeln Bakterien die Gewebe oft als polymikrobielle Infektion.',
+                'Der Prozess kann zu Abszess, Osteomyelitis und Amputation fortschreiten.'
+              ],
+              virulence_factors: ['Biofilmbildung', 'Adhäsine', 'Toxine', 'Polymikrobielle Gemeinschaft']
+            },
+            clinical: {
+              incubation: 'Variabel',
+              onset: 'Langsam oder akut',
+              symptoms: [
+                { name: 'Fußschmerz oder Sensibilitätsverlust', description: 'Bei Neuropathie kann Schmerz fehlen oder die Sensibilität reduziert sein', severity: 'severe' },
+                { name: 'Schwellung und Rötung', description: 'Zeichen einer Infektion, besonders wenn die Haut verletzt ist', severity: 'moderate' },
+                { name: 'Sekretion/geruch', description: 'Eitrige Absonderung oder unangenehmer Geruch', severity: 'moderate' },
+                { name: 'Fieber', description: 'Bei schwerer Infektion möglich', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Verletzung/Ulkus, Wundsekretion, Schwellung',
+                'Fußpulse, ABI',
+                'Schutzsensibilität und Neuropathie beurteilen',
+                'Probe-to-bone-Test bei Verdacht auf Osteomyelitis'
+              ],
+              complications: ['Osteomyelitis', 'Septischer Schock', 'Amputation', 'Chronische Wunden', 'Tod']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blutbild, CRP, Kreatinin', finding: 'Entzündung, Organbeteiligung', interpretation: 'Basisbewertung' },
+                { test: 'Blutkultur', finding: 'Bei schweren Fällen positiv', interpretation: 'Bei Sepsisverdacht' }
+              ],
+              imaging: [
+                { modality: 'US / CT / MRT', finding: 'Abszess, Knochenbeteiligung, Gefäßerkrankung', significance: 'Tiefe Infektion oder Osteomyelitis' }
+              ],
+              microbiology: [
+                { test: 'Wundabstrich/Biopsie', finding: 'Erregeridentifikation', significance: 'Gezielte Antibiotikatherapie' }
+              ],
+              scores: ['IDSA/PEDIS-Schweregradeinteilung']
+            },
+            differential: [
+              { disease: 'Zellulitis', distinguishing: 'Keine offene Wunde oder tiefere Strukturen' },
+              { disease: 'Osteomyelitis', distinguishing: 'Knochenbeteiligung, Bildgebung/Biopsie' },
+              { disease: 'Periphere arterielle Verschlusskrankheit', distinguishing: 'Pulslosigkeit, ABI, keine Infektion' }
+            ],
+            therapy: {
+              guidelines: ['IWGDF 2023: Off-Loading, chirurgisches Débridement, gute Durchblutung, Glukosekontrolle und gezielte Antibiotika.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Amoxicillin/Clavulansäure', dose: 'p.o.', duration: '7-14 Tage', note: 'Leichte Infektion' }
+                ],
+                inpatient: [
+                  { drug: 'Amoxicillin/Clavulansäure', dose: 'i.v./p.o.', duration: '7-14 Tage', note: 'Mittelschwere Infektion' },
+                  { drug: 'Piperacillin/Tazobactam', dose: 'i.v.', duration: '7-14 Tage', note: 'Schwere oder ischämische Infektion' },
+                  { drug: '+ Vancomycin', dose: 'i.v.', duration: '', note: 'Bei MRSA-Verdacht' }
+                ],
+                icu: [
+                  { drug: 'Meropenem/Vancomycin', dose: 'i.v.', duration: '', note: 'Schwere Sepsis, kritischer Zustand' }
+                ]
+              },
+              targeted: 'Basierend auf Kultur, bei Abszess/Nekrose chirurgisches Débridement und möglichst Quellkontrolle.',
+              supportive: ['Belastungsentlastung (Off-Loading)', 'Gefäßbewertung und Revaskularisation', 'Glukosekontrolle', 'Wundversorgung, Verbände', 'Physiotherapie'],
+              prevention: ['Fußpflege', 'Passende Schuhe, tägliche Kontrolle', 'Diabeteskontrolle', 'Frühe Behandlung von Wunden']
+            },
+            prognosis: {
+              mortality: 'Höher, wenn Osteomyelitis oder Sepsis entstehen',
+              prognostic_scores: ['PEDIS/IDSA'],
+              factors: 'Ischämie, Neuropathie, späte Behandlung, frühere Amputation'
+            }
+          },
+          {
+            id: 'chronic_ulcer',
+            name: 'Chronischer Ulkus (venös/arteriell)',
+            pathogen: { type: 'Indirekt', name: 'Kolonisation, sekundäre Infektion', gram: 'Variabel', shape: '-' },
+            epidemiology: {
+              incidence: 'Chronische Fuß- und Unterschenkelulzera sind häufige Folgen von Durchblutungsstörungen',
+              risk_groups: ['Ältere', 'Venöse Insuffizienz', 'Periphere arterielle Verschlusskrankheit', 'Diabetes', 'Mobilitätsbeschränkte', 'Adipositas'],
+              seasonality: 'Keine',
+              transmission: 'Nicht ansteckend, aber sekundäre Infektionen können auftreten'
+            },
+            pathomechanism: {
+              steps: [
+                'Chronisches Ödem, venöse Hypertonie oder verengte Arterien führen zu reduzierter Gewebeoxygenierung und schlechter Heilung.',
+                'Durchblutungsstörung, chronische Entzündung und lokales Trauma verlangsamen die Wundregeneration.',
+                'Kolonisation der Wundfläche und sekundäre Infektion erschweren die Heilung.',
+                'Der Prozess bleibt bestehen, wenn die Ursache nicht behandelt wird.'
+              ],
+              virulence_factors: ['Kolonisierende Mikroorganismen', 'Biofilm', 'Chronische Entzündung']
+            },
+            clinical: {
+              incubation: 'Monate',
+              onset: 'Langsam',
+              symptoms: [
+                { name: 'Unterschenkelulcus', description: 'Offene, schlecht heilende, oft sekretierende und schmerzhafte Wunde', severity: 'moderate' },
+                { name: 'Schmerz', description: 'Variabel: bei venösen Ulzera meist geringer, bei arteriellen stärker', severity: 'moderate' },
+                { name: 'Ödem', description: 'Häufig bei venösen Ulzera', severity: 'moderate' },
+                { name: 'Farb- und Gewebsveränderungen', description: 'Pigmentierung, Hautatrophie, Nekrose', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Größe, Tiefe und Gewebestatus des Ulkus',
+                'Venöse/arterielle Zeichen: Ödem, Pigmentierung, Pulse, ABI',
+                'Infektionszeichen: Rötung, Eiter, fauliger Geruch',
+                'Zustand von Fuß und Unterschenkel'
+              ],
+              complications: ['Chronische Infektion', 'Wachsendes Wundareal', 'Osteomyelitis', 'Amputation', 'Verschlechterung der Lebensqualität']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CRP, Blutbild', finding: 'Bei Infektion erhöht', interpretation: 'Entzündung und Infektionskontrolle' }
+              ],
+              imaging: [
+                { modality: 'ABI, Doppler-US, CT-Angiographie', finding: 'Durchblutungsstörung', significance: 'Beurteilung von Arterien/Venen' }
+              ],
+              microbiology: [
+                { test: 'Wundsekret', finding: 'Kolonisation/Infektion', significance: 'Antibiotikaentscheidung' }
+              ]
+            },
+            differential: [
+              { disease: 'Diabetischer Fuß', distinguishing: 'Neuropathie und Diabetes vorhanden' },
+              { disease: 'Dekubitus', distinguishing: 'Druck- und Scherkräfte dominieren' },
+              { disease: 'Vaskuläres Ulkus', distinguishing: 'Arterielle/venöse Durchblutungsstörung' }
+            ],
+            therapy: {
+              guidelines: ['EWMA/ICG-Leitlinien: Kompression, Belastungsentlastung, Wundmanagement, Infektionsbehandlung und Behandlung der Ursache.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Keine Routine-Antibiotikatherapie ohne Infektion', dose: '-', duration: '-', note: 'Nur bei Infektion' }
+                ],
+                inpatient: [
+                  { drug: 'Amoxicillin/Clavulansäure', dose: 'p.o./i.v.', duration: '7-14 Tage', note: 'Lokalisierte Infektion' },
+                  { drug: 'Piperacillin/Tazobactam', dose: 'i.v.', duration: '', note: 'Schwere Infektion' }
+                ]
+              },
+              targeted: 'Ursachenspezifisch: Kompression, Perfusionsverbesserung, Wundmanagement, Débridement, bei Bedarf chirurgische Intervention.',
+              supportive: ['Kompressionsbehandlung', 'Chirurgisches oder enzymatisches Débridement', 'Feuchtigkeitsmanagement', 'Flüssigkeits- und Ernährungsunterstützung'],
+              prevention: ['Bewegung, Kompression, Fußpflege', 'Durchblutungsverbesserung', 'Frühe Infektionsbehandlung']
+            },
+            prognosis: {
+              mortality: 'Nicht direkt hoch, aber erhebliche Morbidität durch chronischen Verlauf und Komorbiditäten',
+              prognostic_scores: ['Kein einheitlicher Score'],
+              factors: 'Perfusion, Komorbiditäten, Infektion, Belastung und Compliance'
+            }
+          },
+          {
+            id: 'decubitus',
+            name: 'Dekubitus (Druckgeschwür)',
+            pathogen: { type: 'Sekundär', name: 'Kolonisation, polymikrobielle Infektion', gram: 'Variabel', shape: '-' },
+            epidemiology: {
+              incidence: 'Häufig bei immobilen, schwerkranken Patienten und längerem Krankenhausaufenthalt',
+              risk_groups: ['Mobilitätsbeeinträchtigte', 'Ältere', 'Schwerkranke', 'Inkontinenz', 'Unterernährte', 'Neurologische Patienten'],
+              seasonality: 'Keine',
+              transmission: 'Nicht ansteckend, aber sekundäre Infektion möglich'
+            },
+            pathomechanism: {
+              steps: [
+                'Druck und Scherkräfte reduzieren die kapilläre Perfusion in Haut und Weichteilen.',
+                'Wiederholte Ischämie und Reperfusion schädigen Gewebe und verzögern die Heilung.',
+                'Feuchtigkeit, Hautreizung und Ernährungszustand verschlechtern die Reparatur.',
+                'Kolonisation der Wunde und Infektion können in tiefere Gewebe ausbreiten.'
+              ],
+              virulence_factors: ['Bakterielle Kolonisation', 'Biofilm', 'Schwere lokale Ischämie']
+            },
+            clinical: {
+              incubation: 'Entwickelt sich über Zeit',
+              onset: 'Langsam',
+              symptoms: [
+                { name: 'Rötung und Schmerz', description: 'Nicht verblassende Rötung, empfindliches Gebiet', severity: 'moderate' },
+                { name: 'Ulkus', description: 'Schädigung von Haut oder Weichteilen, kann je nach Stadium tiefer werden', severity: 'moderate' },
+                { name: 'Gewebetiefe', description: 'Kann von Haut bis Knochen reichen', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Staging: I–IV bzw. Deep Tissue Injury',
+                'Lokalisation nach Druck- und Scherkräften',
+                'Wundsekret, Gewebenekrose, Infektionszeichen',
+                'Allgemeinzustand und Ernährungsstatus beurteilen'
+              ],
+              complications: ['Septischer Schock', 'Osteomyelitis', 'Schwierige Heilung', 'Amputation', 'Tod']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blutbild, CRP', finding: 'Bei Infektion erhöht', interpretation: 'Schwere Infektion/Entzündung' }
+              ],
+              imaging: [
+                { modality: 'US/CT/MRT', finding: 'Tiefe Gewebebeteiligung', significance: 'Tiefer Dekubitus oder Osteomyelitis' }
+              ],
+              microbiology: [
+                { test: 'Wundsekret', finding: 'Kolonisation/Infektion', significance: 'Antibiotikaentscheidung' }
+              ],
+              scores: ['NPIAP/EPUAP-Staging']
+            },
+            differential: [
+              { disease: 'Venös/arterielles Ulkus', distinguishing: 'Druck- und Mobilitätsfaktoren dominieren' },
+              { disease: 'Diabetischer Fuß', distinguishing: 'Neuropathie und Diabetes vorhanden' },
+              { disease: 'Infektiöse Hautläsion', distinguishing: 'Keine druckbedingte Entstehung' }
+            ],
+            therapy: {
+              guidelines: ['NPIAP/EPUAP/PPPIA-Leitlinien: Druckreduktion, regelmäßige Umlagerung, Ernährung, Feuchtigkeitskontrolle, Débridement und Infektionsbehandlung.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Keine Routine-Antibiotika ohne Infektion', dose: '-', duration: '-', note: 'Nur bei Infektion' }
+                ],
+                inpatient: [
+                  { drug: 'Amoxicillin/Clavulansäure', dose: 'p.o./i.v.', duration: '7-10 Tage', note: 'Lokalisierte, nicht tiefe Infektion' },
+                  { drug: 'Piperacillin/Tazobactam', dose: 'i.v.', duration: '', note: 'Tiefe oder schwere Infektion' }
+                ]
+              },
+              targeted: 'Je nach Stadium und Infektion: Druckreduktion, Débridement, Verband, Ernährung, bei Bedarf chirurgischer Verschluss.',
+              supportive: ['Regelmäßige Umlagerung (2-4 Stunden)', 'Druckverteilende Oberflächen', 'Hygiene und Hautpflege', 'Ernährungsunterstützung', 'Chirurgisches oder enzymatisches Débridement'],
+              prevention: ['Mobilisation, Positionierung, Matratzen und Kissen', 'Inkontinenzmanagement', 'Ernährung']
+            },
+            prognosis: {
+              mortality: 'Höher bei tiefer Ausbreitung und Infektion',
+              prognostic_scores: ['NPIAP-Stadium'],
+              factors: 'Mobilität, Ernährung, systemische Erkrankung, Infektion und chirurgische Behandlung'
+            }
           }
         ]
       },

@@ -307,6 +307,384 @@ Object.assign(window.diseases, {
               prognostic_scores: ['Nincs'],
               factors: 'Késői kezelés, komorbiditások'
             }
+          },
+          {
+            id: 'impetigo',
+            name: 'Impetigo',
+            pathogen: { type: 'Baktérium', name: '<i>Staphylococcus aureus</i> és/vagy <i>Streptococcus pyogenes</i>', gram: 'Gram-pozitív', shape: 'coccus' },
+            epidemiology: {
+              incidence: 'Gyakori, főként gyermekeknél',
+              risk_groups: ['Gyermekek', 'Közösségi környezet', 'Bőrsérülések', 'Közeli kontakt'],
+              seasonality: 'Nincs',
+              transmission: 'Kontakt, direkt vagy indirekt'
+            },
+            pathomechanism: {
+              steps: [
+                'A kórokozók a bőr sérülésén vagy a felszíni bőrön behatolnak.',
+                'A baktériumok lokálisan szaporodnak, és felületesen terjednek.',
+                'A gyulladás és a toxinok miatt tipikus hólyagok és aranysárga, „mézes” kéreg alakul ki.'
+              ],
+              virulence_factors: ['Exfoliatív toxinok', 'M protein', 'Koaguláz', 'Panton-Valentine leukocidin (S. aureus)']
+            },
+            clinical: {
+              incubation: '1-3 nap',
+              onset: 'Akut',
+              symptoms: [
+                { name: 'Pépes, gyulladt plakk', description: 'Hólyagok, amelyek felpattannak, és aranysárga, „mézes” kéreggel fedettek', severity: 'moderate' },
+                { name: 'Viszketés', description: 'Kis fájdalom vagy viszketés a környéken', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Piros, felületes, gyulladt bőrfolt',
+                'Hólyagok és kéregképződés',
+                'Ritkán nyirokcsomó-duzzanat'
+              ],
+              complications: ['Kiterjedt helyi fertőzés', 'Glomerulonephritis (streptococcus)', 'Recidíva']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Klinikai diagnózis', finding: 'Elégséges', interpretation: 'Tipikus megjelenés' }
+              ],
+              microbiology: [
+                { test: 'Sebváladék/tenyésztés', finding: 'Kórokozó azonosítás', significance: 'Kétséges vagy súlyos esetben' }
+              ]
+            },
+            differential: [
+              { disease: 'Herpes simplex', distinguishing: 'Vesiculák, fájdalmasabb, nincs mézes kéreg' },
+              { disease: 'Kontakt dermatitis', distinguishing: 'Viszketés, nincs hólyagképződés' },
+              { disease: 'Erysipelas', distinguishing: 'Mélyebb, éles határok' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Topikus mupirocin', dose: '2x/nap', duration: '5-7 nap', note: 'Helyi, nem terjedt forma' },
+                  { drug: 'Retapamulin', dose: '2x/nap', duration: '5 nap', note: 'Alternatíva' }
+                ],
+                inpatient: [
+                  { drug: 'Cephalexin', dose: '4x500 mg PO', duration: '7-10 nap', note: 'Kiterjedt fertőzés' },
+                  { drug: 'Amoxicillin/Clavulanate', dose: '3x875/125 mg PO', duration: '7-10 nap', note: 'Alternatíva' }
+                ]
+              },
+              targeted: 'S. aureus/GAS szerinti célzott terápia; terjedt esetben szisztémás antibiotikum.',
+              supportive: ['Bőrtisztítás', 'Higiéné és kontaktmegelőzés', 'Fertőzött személyek elkülönítése'],
+              prevention: ['Higiénés szabályok', 'Sérülések kezelése', 'Közösségi kontakt csökkentése']
+            },
+            guidelines: {
+              diagnosis: [
+                'Klinikai diagnózis: a tipikus mézes kéreg és a felületes hólyagok jellemzőek.'
+              ],
+              treatment_indications: [
+                'Helyi kezelés kisebb, nem terjedt esetekben; kiterjedt vagy ismétlődő fertőzés esetén szisztémás terápia.'
+              ],
+              first_line: [
+                'Topikus mupirocin vagy retapamulin; kiterjedt esetben cephalexin vagy amoxicillin/clavulanate.'
+              ]
+            },
+            prognosis: {
+              mortality: 'Alacsony',
+              prognostic_scores: ['Nincs'],
+              factors: 'Kiterjedt betegség, immunszuppresszió, ismétlődés'
+            }
+          },
+          {
+            id: 'folliculitis',
+            name: 'Folliculitis',
+            pathogen: { type: 'Baktérium', name: '<i>Staphylococcus aureus</i> (leggyakoribb)', gram: 'Gram-pozitív', shape: 'coccus' },
+            epidemiology: {
+              incidence: 'Gyakori, különösen meleg, izzadó környezetben',
+              risk_groups: ['Izzadással járó munka', 'Szorító ruházat', 'Bőrsérülések', 'Diabetes', 'Immunszuppresszió'],
+              seasonality: 'Nincs',
+              transmission: 'Közvetlen kontakt vagy auto-inokuláció'
+            },
+            pathomechanism: {
+              steps: [
+                'A hajtüsző környékén a kórokozó behatol és lokális gyulladást okoz.',
+                'A gyulladás pápulákhoz és pustulákhoz vezet a hajtüsző körül.',
+                'A súlyosabb formák mélyebb fertőzést eredményezhetnek (furunculus, carbunculus).'
+              ],
+              virulence_factors: ['Koaguláz', 'Exotoxinok', 'Biofilm']
+            },
+            clinical: {
+              incubation: '1-3 nap',
+              onset: 'Akut',
+              symptoms: [
+                { name: 'Pápulák/pustulák', description: 'Körülírt, fájdalmas vagy viszkető pápulák/pustulák a hajtüszőnél', severity: 'mild' },
+                { name: 'Bőrpír és érzékenység', description: 'A bőr körül gyulladásos reakció', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Pápulák/pustulák a hajtüsző körül',
+                'Fájdalom vagy viszketés',
+                'Súlyos esetben abscesszus is kialakulhat'
+              ],
+              complications: ['Furunculus', 'Carbunculus', 'Folliculitis abscedens', 'Kiterjedt helyi fertőzés']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Klinikai diagnózis', finding: 'Elégséges', interpretation: 'Jellemző megjelenés' }
+              ],
+              microbiology: [
+                { test: 'Pus vagy szövetmintavétel', finding: 'Kórokozó azonosítás', significance: 'Súlyos vagy refrakter esetekben' }
+              ]
+            },
+            differential: [
+              { disease: 'Impetigo', distinguishing: 'Sokkal több felszíni hólyag és kéreg' },
+              { disease: 'Herpes simplex', distinguishing: 'Vesikula, erős fájdalom' },
+              { disease: 'Erysipelas', distinguishing: 'Felszínes gyulladás, nincs hajtüsző lokalizáció' }
+            ],
+            therapy: {
+              empirical: {
+                outpatient: [
+                  { drug: 'Topikus mupirocin', dose: '2x/nap', duration: '5-7 nap', note: 'Kisfokú fertőzés' },
+                  { drug: 'Clindamycin', dose: '2x/nap', duration: '5-7 nap', note: 'Topikusan' }
+                ],
+                inpatient: [
+                  { drug: 'Cephalexin', dose: '4x500 mg PO', duration: '7-10 nap', note: 'Súlyosabb vagy kiterjedt' }
+                ]
+              },
+              targeted: 'S. aureus esetén célzott antistaphylococcal terápia; refrakter esetben kultúra.',
+              supportive: ['Kerülni az irritáló anyagokat', 'Bőr tisztítása', 'Szoros ruházat kerülése'],
+              prevention: ['Higiéné', 'Szennyezett tárgyak kerülése', 'Környezet és ruházat tisztítása']
+            },
+            guidelines: {
+              diagnosis: [
+                'Klinikai megjelenés alapján.'
+              ],
+              treatment_indications: [
+                'Topikális terápia a kisebb formákban; szisztémás terápia kiterjedt vagy visszatérő esetekben.'
+              ],
+              first_line: [
+                'Topikus mupirocin vagy clindamycin; szükség esetén cephalexin.'
+              ]
+            },
+            prognosis: {
+              mortality: 'Alacsony',
+              prognostic_scores: ['Nincs'],
+              factors: 'Súlyosabb formák, diabetes, immunszuppresszió'
+            }
+          },
+          {
+            id: 'diabetic_foot',
+            name: 'Diabeteses láb (infekció/ulkus)',
+            pathogen: { type: 'Polimikrobiális', name: 'Staphylococcus aureus, Streptococcus spp., Gram-negatívok, anaerobok', gram: 'Vegyes', shape: 'Változó' },
+            epidemiology: {
+              incidence: 'Gyakori ok a kórházi felvételeknek és az amputációknak a diabéteszes betegeknél',
+              risk_groups: ['Diabetes mellitus', 'Neuropátia', 'Perifériás artériás betegség', 'Korábbi lábférgesség/ulkus', 'Lábdeformitás', 'Immunszuppresszió'],
+              seasonality: 'Nincs',
+              transmission: 'Nem fertőző, de a bőr sérülése, a lábdeformitás és a gyulladás útján alakul ki'
+            },
+            pathomechanism: {
+              steps: [
+                'A neuropátia miatt a védekező reflexek és az érzékelés csökken, így a kisebb sérülések észrevétlenek maradhatnak.',
+                'A perifériás artériás betegség és a magas glükózszint a gyógyulást és az immunválaszt rontja.',
+                'A bőr és a lágyrészek sérülése után baktériumok kolonizálják és megtelepednek a szövetekben, gyakran polimikrobiális fertőzésként.',
+                'A folyamat előrehaladhat abscessushoz, osteomyelitishez és amputációhoz.'
+              ],
+              virulence_factors: ['Biofilm képzés', 'Adhezinek', 'Toxinok', 'Kórokozói polimikrobiális közösség']
+            },
+            clinical: {
+              incubation: 'Változó',
+              onset: 'Lassú vagy akut',
+              symptoms: [
+                { name: 'Lábfájdalom vagy érzészavar', description: 'Neuropátia miatt fájdalom hiánya vagy csökkent érzékelés', severity: 'severe' },
+                { name: 'Lábduzzanat és bőrpír', description: 'Fertőzés jele, különösen ha a bőr sérült', severity: 'moderate' },
+                { name: 'Váladékozás/odors', description: 'Gennyes szekréció vagy kellemetlen szag', severity: 'moderate' },
+                { name: 'Láz', description: 'Súlyosabb fertőzésnél lehet', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Sérülés/ulkus, sebváladék, duzzanat',
+                'Lábszintű pulzusok, ABI vizsgálat',
+                'Védőérzékelés és neuropátia értékelése',
+                'Probe-to-bone teszt, ha osteomyelitis gyanúja van'
+              ],
+              complications: ['Osteomyelitis', 'Szeptikus shock', 'Amputáció', 'Krónikus sebek', 'Halál']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Vérkép, CRP, kreatinin', finding: 'Gyulladás, szervi érintettség', interpretation: 'Alapértékelés' },
+                { test: 'Hemokultúra', finding: 'Súlyos esetben pozitív lehet', interpretation: 'Szepszis gyanú esetén' }
+              ],
+              imaging: [
+                { modality: 'UH / CT / MRI', finding: 'Tályog, csontérintettség, érbetegség', significance: 'Mély fertőzés vagy osteomyelitis gyanúja' }
+              ],
+              microbiology: [
+                { test: 'Sebváladék/biopszia', finding: 'Kórokozó azonosítás', significance: 'Célzott antibiotikum' }
+              ],
+              scores: ['IDSA/PEDIS súlyossági osztályozás']
+            },
+            differential: [
+              { disease: 'Cellulitis', distinguishing: 'Nincs nyílt sebfelszín vagy mélyebb struktúra' },
+              { disease: 'Osteomyelitis', distinguishing: 'Csontérintettség, képalkotó/biopszia' },
+              { disease: 'Perifériás artériás betegség', distinguishing: 'Pulsus hiánya, ABI; nem fertőzés' }
+            ],
+            therapy: {
+              guidelines: ['IWGDF 2023: off-loading, sebészi debridement, jó vérkeringés, glucose control és célzott antibiotikum.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Amoxicillin/clavulanate', dose: 'PO', duration: '7-14 nap', note: 'Könnyű fertőzés' }
+                ],
+                inpatient: [
+                  { drug: 'Amoxicillin/clavulanate', dose: 'IV/PO', duration: '7-14 nap', note: 'Közepes fertőzés' },
+                  { drug: 'Piperacillin/tazobactam', dose: 'IV', duration: '7-14 nap', note: 'Súlyos vagy ischaemiás fertőzés' },
+                  { drug: '+ Vancomycin', dose: 'IV', duration: '', note: 'MRSA gyanú esetén' }
+                ],
+                icu: [
+                  { drug: 'Meropenem/Vancomycin', dose: 'IV', duration: '', note: 'Súlyos sepsis, kritikus állapot' }
+                ]
+              },
+              targeted: 'Tenyésztés alapján, abscessus/nekrotikus szövet esetén sebészi debridement és lehetőleg forráskontroll.',
+              supportive: ['Terheléscsökkentés (off-loading)', 'Vérkeringés értékelése és revaszkularizáció', 'Glükózszabályozás', 'Sebkezelés, kötés', 'Fizioterápia'],
+              prevention: ['Lábápolás', 'Megfelelő cipő, napi szemle', 'Diabetes kontroll', 'Korai sebek kezelése']
+            },
+            prognosis: {
+              mortality: 'Magasabb, ha osteomyelitis vagy sepsis alakul ki',
+              prognostic_scores: ['PEDIS/IDSA'],
+              factors: 'Ischaemia, neuropátia, késői kezelés, amputáció előzménye'
+            }
+          },
+          {
+            id: 'chronic_ulcer',
+            name: 'Krónikus ulcus (vénás/arteriális)',
+            pathogen: { type: 'Közvetett', name: 'Kolonizáció, másodlagos infekció', gram: 'Változó', shape: '-' },
+            epidemiology: {
+              incidence: 'A krónikus láb- és lábszárfekélyek gyakori okai a lokális vérellátási zavaroknak',
+              risk_groups: ['Idősek', 'Vénás insufficiensia', 'Perifériás artériás betegség', 'Diabetes', 'Mozgáskorlátozott betegek', 'Elhízás'],
+              seasonality: 'Nincs',
+              transmission: 'Nem fertőző, de másodlagos infekciók kialakulhatnak'
+            },
+            pathomechanism: {
+              steps: [
+                'A krónikus ödéma, a vénás hipertónia vagy a szűkült artériák a szöveti oxigenizáció és a gyógyulás csökkenéséhez vezetnek.',
+                'A keringési zavar, a chronikus gyulladás és a helyi trauma lassítja a sebfelület regenerációját.',
+                'A sebfelszín kolonizációja és a másodlagos fertőzés megnehezíti a gyógyulást.',
+                'A folyamat hosszan fennmarad, ha a kiváltó okot nem kezelik.'
+              ],
+              virulence_factors: ['Kolonizáló mikroorganizmusok', 'Biofilm', 'Kronikus gyulladás']
+            },
+            clinical: {
+              incubation: 'Hónapokig fennálló',
+              onset: 'Lassú',
+              symptoms: [
+                { name: 'Lábszárfekély', description: 'Nyitott, lassan gyógyuló, gyakran váladékos és fájdalmas sebe', severity: 'moderate' },
+                { name: 'Fájdalom', description: 'Változó: vénás ulcusnál kevésbé, artériásnál súlyosabb', severity: 'moderate' },
+                { name: 'Ödéma', description: 'Vénás eredetű fekélyeknél gyakori', severity: 'moderate' },
+                { name: 'Szín- és szövetváltozás', description: 'Pigmentáció, bőratrófia, nekrózis', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Fekély mérete, mélysége, szöveti státusza',
+                'Vénás/arteriás jelek: ödéma, pigmentáció, pulzus, ABI',
+                'Fertőzés jelei: erythema, purulencia, ízelt szag',
+                'Láb és lábszár állapota'
+              ],
+              complications: ['Krónikus fertőzés', 'Bővülő sebfelszín', 'Osteomyelitis', 'Amputáció', 'Minőségromlás']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CRP, vérkép', finding: 'Infekció esetén emelkedett', interpretation: 'Gyulladás és fertőzés monitorozása' }
+              ],
+              imaging: [
+                { modality: 'ABI, Doppler UH, CT angiográfia', finding: 'Véráramlási zavar', significance: 'Arteria/venák értékelése' }
+              ],
+              microbiology: [
+                { test: 'Sebváladék', finding: 'Kolonizáció/fertőzés', significance: 'Antibiotikum döntés' }
+              ]
+            },
+            differential: [
+              { disease: 'Diabeteses láb infekció', distinguishing: 'Neuropátia és diabétesz jelenléte' },
+              { disease: 'Decubitus', distinguishing: 'Nyomás és elmozdulási terhelés típusa' },
+              { disease: 'Vaszkuláris fekély', distinguishing: 'Artériás/venás keringési eltérés' }
+            ],
+            therapy: {
+              guidelines: ['EWMA/ICG irányelvek: kompresszió, terheléscsökkentés, sebkezelés, fertőzéskezelés, a kiváltó ok megszüntetése.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Nincs rutin antibiotikum kolonizáció nélkül', dose: '-', duration: '-', note: 'Csak fertőzés esetén' }
+                ],
+                inpatient: [
+                  { drug: 'Amoxicillin/clavulanate', dose: 'PO/IV', duration: '7-14 nap', note: 'Lokalizált infekció' },
+                  { drug: 'Piperacillin/tazobactam', dose: 'IV', duration: '', note: 'Súlyos fertőzés' }
+                ]
+              },
+              targeted: 'Kiváltó ok alapján: kompresszió, perfúziójavítás, sebfelszín-kezelés, debridement, szükség esetén sebészi beavatkozás.',
+              supportive: ['Kompressziós kezelés', 'Sebészeti vagy enzimes debridement', 'Nedvesség egyensúly, kötésanyag', 'Folyadék- és táplálkozási támogatás'],
+              prevention: ['Mozgás, kompresszió, lábápolás', 'Vérkeringés javítása', 'Korai fertőzéskezelés']
+            },
+            prognosis: {
+              mortality: 'Nem közvetlenül magas, de a krónikus természet és a társbetegségek miatt jelentős morbiditás',
+              prognostic_scores: ['Nincs egységes score'],
+              factors: 'Perfúzió, komorbiditások, fertőzés, terhelés és compliance'
+            }
+          },
+          {
+            id: 'decubitus',
+            name: 'Decubitus (nyomásfekély)',
+            pathogen: { type: 'Másodlagos', name: 'Kolonizáció, polymikrobiális fertőzés', gram: 'Változó', shape: '-' },
+            epidemiology: {
+              incidence: 'Gyakori immobilizált, súlyos betegeknél és hosszú kórházi tartózkodás esetén',
+              risk_groups: ['Mobilitási korlátozottak', 'Idősek', 'Súlyos betegségben lévők', 'Inkontinencia', 'Alultápláltak', 'Neurológiai betegek'],
+              seasonality: 'Nincs',
+              transmission: 'Nem fertőző, de a fertőzés másodlagosan jelentkezhet'
+            },
+            pathomechanism: {
+              steps: [
+                'A nyomás és a nyíróerő csökkenti a kapilláris perfúziót a bőrnél és a lágyrészeknél.',
+                'Az ismétlődő ischaemia és reperfúzió károsítja a szöveteket és lassítja a gyógyulást.',
+                'A nedvesség, a bőr irritációja és a tápláltsági állapot tovább rontja a reparációt.',
+                'A sebfelszín kolonizációja és a fertőzés előrehaladhat a mélyebb szövetek felé.'
+              ],
+              virulence_factors: ['Bakteriális kolonizáció', 'Biofilm', 'Súlyos lokalizált ischaemia']
+            },
+            clinical: {
+              incubation: 'Idővel alakul ki',
+              onset: 'Lassú',
+              symptoms: [
+                { name: 'Bőrpír és fájdalom', description: 'Nem elhalványuló bőrpír, a terület fájdalmas', severity: 'moderate' },
+                { name: 'Fekély', description: 'A bőr vagy a lágyrészek sérülése, stádiumok szerint mélyülhet', severity: 'moderate' },
+                { name: 'Sérülés mélysége', description: 'Bőrtől a csontig terjedhet', severity: 'severe' }
+              ],
+              physical_exam: [
+                'Stádiumozás: I–IV, illetve deep tissue injury',
+                'Terhelés és nyíróerő alapján lokalizáció',
+                'Sebváladék, szöveti nekrózis, fertőzés jelei',
+                'Általános állapot és tápláltság felmérése'
+              ],
+              complications: ['Szeptikus shock', 'Osteomyelitis', 'Nehéz gyógyulás', 'Amputáció', 'Halál']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Vérkép, CRP', finding: 'Infekció esetén emelkedett', interpretation: 'Súlyos fertőzés/gyulladás' }
+              ],
+              imaging: [
+                { modality: 'UH/CT/MRI', finding: 'Mélyebb szöveti érintettség', significance: 'Mély fekély vagy osteomyelitis gyanúja' }
+              ],
+              microbiology: [
+                { test: 'Sebváladék', finding: 'Kolonizáció/fertőzés', significance: 'Antibiotikum terapiás döntés' }
+              ],
+              scores: ['NPIAP/EPUAP stádiumozás']
+            },
+            differential: [
+              { disease: 'Vénás/arteriás fekély', distinguishing: 'Nyomás és mobilitási faktorok dominálnak' },
+              { disease: 'Diabeteses láb', distinguishing: 'Neuropátia és diabétesz jelenléte' },
+              { disease: 'Fertőzéses bőrelváltozás', distinguishing: 'Nincs nyomási eredet' }
+            ],
+            therapy: {
+              guidelines: ['NPIAP/EPUAP/PPPIA irányelvek: nyomáscsökkentés, rendszeres elfordítás, táplálkozás, nedvesség kontroll, debridement és fertőzéskezelés.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Nincs rutin antibiotikum kolonizáció nélkül', dose: '-', duration: '-', note: 'Csak fertőzés esetén' }
+                ],
+                inpatient: [
+                  { drug: 'Amoxicillin/clavulanate', dose: 'PO/IV', duration: '7-10 nap', note: 'Lokalizált, nem mély infekció' },
+                  { drug: 'Piperacillin/tazobactam', dose: 'IV', duration: '', note: 'Mély vagy súlyos fertőzés' }
+                ]
+              },
+              targeted: 'Stádium és fertőzés alapján: nyomáscsökkentés, debridement, kötés, táplálkozási támogatás, szükség esetén sebészi zárás.',
+              supportive: ['Rendszeres elfordítás (2-4 óránként)', 'Nyomáscsökkentő felületek', 'Higiénia és bőrápolás', 'Tápláltsági állapot javítása', 'Sebészi vagy enzimes debridement'],
+              prevention: ['Mobilizáció, pozicionálás, matracok és párnák', 'Inkontinencia kezelése', 'Nutritional support']
+            },
+            prognosis: {
+              mortality: 'Magasabb, ha mélyen terjed és fertőzött',
+              prognostic_scores: ['NPIAP stádium'],
+              factors: 'Mobilitás, tápláltság, szisztémás betegség, fertőzés és sebészi kezelés'
+            }
           }
         ]
       },

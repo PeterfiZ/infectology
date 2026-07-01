@@ -27,10 +27,10 @@ Object.assign(window.diseases, {
               incubation: 'Primär: 9-90 Tage (Durchschnitt 21 Tage)',
               onset: 'Phasenabhängig',
               symptoms: [
-                { name: 'Primär: Ulcus durum', description: 'Ein schmerzloses, verhärtetes Geschwür mit sauberem Grund an der Eintrittspforte (Genitalien, Mund, Anus) ca. 3 Wochen nach Infektion. Begleitet von schmerzloser regionaler Lymphadenopathie. Es heilt spontan ab, aber die Bakterien verbleiben im Körper.', severity: 'moderate' },
-                { name: 'Sekundär: Hautsymptome', description: 'Zeichen der hämatogenen Streuung (6-8 Wochen später). Generalisierter, nicht juckender, kupferfarbener Ausschlag (Handflächen/Fußsohlen!), Condylomata lata (infektiöse nässende Papeln in Falten).', severity: 'moderate' },
-                { name: 'Sekundär: Allgemeinsymptome', description: 'Fieber, Unwohlsein, generalisierte Lymphknotenschwellung ("Mikropolyadenopathie"), fleckiger Haarausfall ("Mottenfraß") und Schleimhautflecken.', severity: 'mild' },
-                { name: 'Tertiär: Spätkomplikationen', description: 'Entwickelt sich Jahre später. Gumma (destruktive Granulome in Haut/Knochen/Leber), kardiovaskuläre Syphilis (Aortitis, Aneurysma) und Neurosyphilis (Tabes dorsalis, progressive Paralyse/Demenz).', severity: 'severe' }
+                { name: 'Primär: Ulcus durum', description: 'Schmerzloses, hartes Geschwür mit sauberem Grund (Lues-Schanker) an der Eintrittspforte. Begleitet von "indolenter" (schmerzloser), knorpelharter Lymphknotenschwellung.', severity: 'moderate' },
+                { name: 'Sekundär: Dissemination', description: '6-8 Wochen nach Schanker. Kupferfarbene Makeln (auch Handflächen/Fußsohlen!), nässende flache Papeln (Condylomata lata), porzellanweiße Schleimhautflecken (Plaque opalina) und "Mottenfraß"-Alopezie.', severity: 'moderate' },
+                { name: 'Sekundär: Systemische Zeichen', description: 'Fieber, Halsschmerzen, generalisierte Lymphknotenschwellung ("Mikropolyadenopathie"); auch Hepatitis oder Periostitis möglich.', severity: 'mild' },
+                { name: 'Tertiär: Destruktion', description: 'Jahre später: Gummen (zerstörende Granulome), Aortitis (Aneurysma) und Neurosyphilis (Tabes dorsalis - Ataxie, Blitzschmerzen; progressive Paralyse - Demenz).', severity: 'severe' }
               ],
               physical_exam: [
                 'Primär: schmerzloses genitales/extragenitales Geschwür + inguinale Lymphadenopathie',
@@ -251,8 +251,8 @@ Object.assign(window.diseases, {
               incubation: '2-7 Tage',
               onset: 'Akut',
               symptoms: [
-                { name: 'Männer', description: 'Urethritis: reichlicher, gelb-grüner eitriger Ausfluss, Dysurie. (90% symptomatisch)', severity: 'moderate' },
-                { name: 'Frauen', description: 'Zervizitis: oft asymptomatisch oder mild (50%). Vaginaler Ausfluss, Dysurie, Unterbauchschmerzen.', severity: 'mild' },
+                { name: 'Männer', description: 'Akute Urethritis: plötzlicher, reichlicher, gelb-grüner, rahmiger eitriger Ausfluss ("Bon-bon") und quälende Dysurie. Häufig Hodenspannungsschmerz.', severity: 'moderate' },
+                { name: 'Frauen', description: 'Oft asymptomatische Zervizitis (50%). Eitriger Ausfluss, Dysurie, schmerzhafte Bartholinitis. Kann zu aufsteigender Beckenentzündung (PID) führen.', severity: 'moderate' },
                 { name: 'Extragenital', description: 'Pharyngitis (oft asymptomatisch), Proktitis (Schmerzen, Ausfluss), Konjunktivitis (Neugeborene).', severity: 'moderate' }
               ],
               physical_exam: ['Eitriger urethraler/zervikaler Ausfluss', 'Bartholin-Abszess', 'Fieber (bei DGI)'],
@@ -304,8 +304,8 @@ Object.assign(window.diseases, {
               onset: 'Langsam/Asymptomatisch',
               symptoms: [
                 { name: 'Asymptomatisch ("Still")', description: '70-80% der Frauen und 50% der Männer sind asymptomatisch, was die Ausbreitung und Spätkomplikationen begünstigt.', severity: 'mild' },
-                { name: 'Frauen', description: 'Zervizitis: mukopurulenter Ausfluss, Kontaktblutung, Dysurie. Unterbauchschmerzen (kann auf PID hinweisen).', severity: 'moderate' },
-                { name: 'Männer', description: 'Urethritis: Brennen beim Wasserlassen, wässriger/glasiger Ausfluss (weniger eitrig als bei Gonorrhoe).', severity: 'moderate' }
+                { name: 'Frauen', description: 'Mukopurulente Zervizitis: schleimig-eitriger Ausfluss, Kontaktblutungen (z. B. nach Sex), Dysurie. Komplikation: PID, Fitz-Hugh-Curtis-Syndrom (Perihepatitis).', severity: 'moderate' },
+                { name: 'Männer', description: 'Urethritis: leichtes Brennen, morgendlicher "Lusttropfen" (dünner, gläserner Ausfluss). Weniger dramatisch als Tripper, daher oft späte Diagnose.', severity: 'moderate' }
               ],
               physical_exam: ['Mukopurulente Zervizitis', 'Adnex-Druckschmerz (PID)', 'Urethraler Ausfluss'],
               complications: ['Beckenentzündung (PID)', 'Unfruchtbarkeit (tubar)', 'Eileiterschwangerschaft', 'Fitz-Hugh-Curtis-Syndrom (Perihepatitis)', 'Reaktive Arthritis (Reiter-Syndrom)', 'Neugeborenen-Konjunktivitis/Pneumonie']
@@ -353,8 +353,8 @@ Object.assign(window.diseases, {
               incubation: '2-12 Tage',
               onset: 'Plötzlich (primär) oder Prodrom (rezidivierend)',
               symptoms: [
-                { name: 'Primärinfektion', description: 'Schwere Symptome: ausgedehnte, schmerzhafte Bläschen und Geschwüre an den Genitalien. Oft begleitet von Fieber, Unwohlsein, schmerzhafter inguinaler Lymphadenopathie und Dysurie. Heilung: 2-4 Wochen.', severity: 'severe' },
-                { name: 'Rezidivierende Infektion', description: 'Milder Verlauf. Oft gehen Prodromalsymptome (Brennen, Kribbeln) voraus. Weniger Läsionen, keine systemischen Symptome. Heilung: 5-10 Tage.', severity: 'mild' }
+                { name: 'Primärinfektion', description: 'Schwere Symptome: schmerzhafte gruppierte Bläschen auf erythematösem Grund, später Ulzera. Begleitet von Fieber, quälender Dysurie (Harnverhalt möglich) und schmerzhaften Leistenlymphknoten.', severity: 'severe' },
+                { name: 'Rezidivierende Infektion', description: 'Milder Verlauf. Nach prodromalem Kribbeln oder Brennen erscheinen wenige Bläschen. Keine Systemstörungen. Heilung: 5-10 Tage.', severity: 'mild' }
               ],
               physical_exam: ['Gruppierte Vesikel/Ulzera', 'Inguinale Lymphadenopathie (primär)', 'Zervizitis/Proktitis'],
               complications: ['Aseptische Meningitis', 'Harnverhalt (autonome Dysfunktion)', 'Neonataler Herpes (in der Schwangerschaft!)', 'Erhöhtes Risiko für HIV-Übertragung']
@@ -403,8 +403,8 @@ Object.assign(window.diseases, {
               incubation: '4-28 Tage',
               onset: 'Schleichend',
               symptoms: [
-                { name: 'Frauen', description: 'Reichlicher, schaumiger, gelb-grüner, übelriechender Ausfluss. Vulvovaginaler Juckreiz, Dysurie, Dyspareunie. "Erdbeer-Zervix" (Colpitis macularis) bei Untersuchung.', severity: 'moderate' },
-                { name: 'Männer', description: 'Oft asymptomatisch. Kann Urethritis (Ausfluss, Dysurie), Prostatitis verursachen.', severity: 'mild' }
+                { name: 'Frauen', description: 'Reichlicher, schaumiger, gelb-grüner, fischig riechender Ausfluss. Intensiver Juckreiz, Dysurie. Bei Untersuchung "Erdbeer-Zervix" (punktförmige Blutungen). pH > 4.5.', severity: 'moderate' },
+                { name: 'Männer', description: 'Oft asymptomatische Träger. Kann leichte Urethritis (gläserner Ausfluss) oder chronische Prostatitis verursachen.', severity: 'mild' }
               ],
               physical_exam: ['Schaumiger Ausfluss', 'Erdbeer-Zervix (punktförmige Blutungen)', 'pH > 4.5'],
               complications: ['Frühgeburt', 'Niedriges Geburtsgewicht', 'Erhöhtes Risiko für HIV-Übertragung', 'PID']

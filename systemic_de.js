@@ -117,6 +117,179 @@ Object.assign(window.diseases, {
             }
           },
           {
+            id: 'fuo',
+            name: 'Fieber unklarer Genese (FUO)',
+            pathogen: { type: 'Syndrom', name: 'Infektion, Entzündung, Malignität, Autoimmun-/andere Ursachen', gram: 'Variabel', shape: '-' },
+            epidemiology: {
+              incidence: 'Etwa 5-15% aller Fieberfälle fallen in die FUO-Gruppe; Häufige Ursachen sind Infektionen, Tumoren und autoimmun/entzündliche Erkrankungen.',
+              risk_groups: ['Ältere', 'Immungeschwächte', 'Onkologische Patienten', 'Patienten mit chronisch entzündlichen Erkrankungen'],
+              seasonality: 'Keine',
+              transmission: 'Nicht ansteckend'
+            },
+            pathomechanism: {
+              steps: [
+                'FUO entsteht nicht durch einen einzelnen Erreger oder einen einzigen Mechanismus, sondern ist die gemeinsame klinische Manifestation verschiedener Erkrankungen.',
+                'Zu den Ursachen zählen chronische Infektionen, neoplastische Prozesse, autoimmun/entzündliche Erkrankungen sowie bestimmte Medikamente oder Stoffwechselerkrankungen.',
+                'Für die Fieberentstehung sind meist inflammatorische Mediatoren (z. B. IL-1, IL-6, TNF-α) und eine veränderte Thermoregulation relevant.',
+                'Die Diagnose beruht auf der Identifizierung der zugrunde liegenden Ursache durch Kombination aus Klinik und gezielten Untersuchungen.'
+              ],
+              virulence_factors: ['Es gibt keinen einheitlichen Virulenzfaktor; der Mechanismus hängt von der zugrunde liegenden Erkrankung ab']
+            },
+            clinical: {
+              incubation: 'Keine einheitliche Inkubationszeit',
+              onset: 'Mehrwöchiges, wiederkehrendes oder anhaltendes Fieber',
+              symptoms: [
+                { name: 'Fieber', description: '>38,3°C, wiederkehrend oder mindestens 3 Wochen anhaltend', severity: 'severe' },
+                { name: 'Nachtschweiß', description: 'Häufig, besonders bei Infektionen und Malignomen', severity: 'moderate' },
+                { name: 'Gewichtsverlust', description: 'Kann begleitend auftreten, besonders bei Tumoren oder chronischen Erkrankungen', severity: 'moderate' },
+                { name: 'Müdigkeit', description: 'Erschöpfung, Schwäche, reduzierte Leistungsfähigkeit', severity: 'moderate' },
+                { name: 'Lokale Symptome', description: 'Husten, Bauchschmerzen, Lymphknotenschwellung, Gelenkbeschwerden, Harnwegsymptome', severity: 'moderate' }
+              ],
+              physical_exam: [
+                'Wiederholte Fiebermessung und Fieberprofil',
+                'Gewicht, Allgemeinzustand, Perfusion',
+                'Untersuchung von Lymphknoten, Leber, Milz, Gelenken, Herz und Lunge',
+                'Suche nach Hautbefunden und Infektionsquellen'
+              ],
+              complications: ['Späte Diagnose', 'Schwere Grunderkrankung kann übersehen werden', 'Erhöhte Morbidität und Mortalität je nach Ursache']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'CBC, CRP, ESR', finding: 'Entzündungszeichen', interpretation: 'Erste Abklärung' },
+                { test: 'Blutchemie, Leber- und Nierenfunktion', finding: 'Organbeteiligung', interpretation: 'Basisuntersuchung' },
+                { test: 'PCT', finding: 'Kann auf bakterielle Infektion hinweisen', interpretation: 'Hilft bei der Feineinstellung des Infektionsverdachts' },
+                { test: 'Autoimmunmarker', finding: 'ANA, RF, anti-CCP usw.', interpretation: 'Suche nach autoimmun/entzündlichen Ursachen' }
+              ],
+              imaging: [
+                { modality: 'CT/PET-CT, US, Röntgen', finding: 'Quellen, Tumoren, Abszesse', significance: 'Wichtige Methode zur Quellensuche' }
+              ],
+              microbiology: [
+                { test: 'Blutkultur, Urin, Sputum, Stuhl, Proben je nach Symptomen', finding: 'Infektive Quellen', significance: 'Nachweis infektiöser Ursachen' }
+              ],
+              scores: ['Es gibt keinen einheitlichen FUO-Score'],
+              calculators: [
+                {
+                  name: 'FUO-Definition',
+                  items: [
+                    { label: 'Fieber >38,3°C', points: 1 },
+                    { label: 'Mindestens 3 Wochen', points: 1 },
+                    { label: 'Nach der initialen Abklärung keine Diagnose', points: 1 }
+                  ],
+                  interpretation: [
+                    { min: 0, max: 1, text: 'Keine vollständige FUO-Definition.' },
+                    { min: 2, max: 3, text: 'Verdacht auf FUO, detaillierte Abklärung indiziert.' }
+                  ]
+                }
+              ]
+            },
+            differential: [
+              { disease: 'Infektion', distinguishing: 'Kultur, Bildgebung, PCT, klinischer Fokus' },
+              { disease: 'Onkologische Erkrankung', distinguishing: 'Gewichtsverlust, Nachtschweiß, PET-CT, Tumormarker' },
+              { disease: 'Autoimmun/entzündliche Erkrankung', distinguishing: 'CRP/ESR, ANA/RF, Gelenk-/Organbefunde' },
+              { disease: 'Medikamentenreaktion / Stoffwechselerkrankung', distinguishing: 'Neues Medikament, Eosinophilie, metabolische Auffälligkeiten' }
+            ],
+            therapy: {
+              guidelines: ['Die Therapie ist ursachenspezifisch; FUO ist nicht als eigenständige Erkrankung zu behandeln.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Keine Routine-Empirie mit Antibiotika', dose: '-', duration: '-', note: 'Nur bei klarer Indikation vor der Diagnosestellung.' }
+                ],
+                inpatient: [
+                  { drug: 'Empirische antimikrobielle Therapie', dose: 'Je nach Indikation', duration: 'Kurzzeitig', note: 'Nur bei schwerer Infektion oder klinischem Verdacht.' }
+                ],
+                icu: [
+                  { drug: 'Behandlung von schwerer Sepsis/Schock', dose: 'Nach aktuellem Protokoll', duration: 'Sofort', note: 'Wenn das Fieber mit Sepsis assoziiert ist.' }
+                ]
+              },
+              targeted: 'Ursachengerechte Therapie: bei Infektion antimikrobielle Behandlung, bei Malignität onkologische Behandlung, bei Autoimmunerkrankungen immunsuppressive Therapie.',
+              supportive: ['Flüssigkeit', 'Fiebersenkung', 'Regelmäßige Überwachung', 'Symptomatische Behandlung'],
+              prevention: ['Frühe Abklärung der Ursache', 'Behandlung von Infektionsquellen', 'Beobachtung von Immunstatus und Risikofaktoren']
+            },
+            prognosis: {
+              mortality: 'Das Ergebnis hängt von der Ursache ab; späte Diagnose und komplexe Infektionen oder Malignome können schlechtere Ergebnisse haben.',
+              prognostic_scores: ['Es gibt keinen einheitlichen FUO-Score'],
+              factors: 'Ursache, Immunsystemstatus, Alter, frühzeitiger Beginn der Abklärung'
+            }
+          },
+          {
+            id: 'pyomyositis',
+            name: 'Pyomyositis',
+            pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus</i> (meist), <i>Streptococcus pyogenes</i>, Gram-negative Erreger', gram: 'Gram-positiv/negativ', shape: 'Kokken/Bazillen' },
+            epidemiology: {
+              incidence: 'In Industrieländern seltener, aber häufiger in tropischen Regionen und bei Immungeschwächten',
+              risk_groups: ['HIV/AIDS', 'Diabetes mellitus', 'Immunsuppression', 'IV-Drogengebrauch', 'Trauma, Muskelverletzung', 'Neugeborene/Kinder'],
+              seasonality: 'Keine',
+              transmission: 'Nicht direkt übertragbar; entsteht meist aus Hautinfektion/Kolonisation oder hämatogener Ausbreitung'
+            },
+            pathomechanism: {
+              steps: [
+                'Bakterien gelangen nach Gewebeschädigung, Hautinfektion oder hämatogener Ausbreitung in den Muskel.',
+                'Die lokale Entzündungsreaktion und das Bakterienwachstum führen zu Muskelfaserzerstörung, Abszessbildung und Gewebsnekrose.',
+                'Der Prozess kann zu einem Abszess und später zu einer systemischen Infektion fortschreiten.',
+                'Am häufigsten ist Staphylococcus aureus, aber auch Streptokokken und Gram-negative Erreger kommen vor.'
+              ],
+              virulence_factors: ['S. aureus Biofilm/Adhäsine', 'Kapsel', 'Exotoxine', 'Gewebeinvasion']
+            },
+            clinical: {
+              incubation: 'Variabel',
+              onset: 'Langsam oder akut',
+              symptoms: [
+                { name: 'Muskelschmerzen', description: 'Tiefe Muskelschmerzen ohne Gelenkbeteiligung, Schwellung', severity: 'severe' },
+                { name: 'Fieber', description: 'Mittelgradiges bis hohes Fieber', severity: 'moderate' },
+                { name: 'Schwellung und Druckschmerz', description: 'Der betroffene Muskel ist tastbar schmerzhaft und geschwollen', severity: 'moderate' },
+                { name: 'Müdigkeit', description: 'Allgemeinbefinden gestört', severity: 'mild' }
+              ],
+              physical_exam: [
+                'Druckschmerz und Schwellung im betroffenen Muskel',
+                'Fieber, Tachykardie',
+                'Bei Abszessbildung: gut abgrenzbarer, fluktuierender Tastbefund',
+                'Gelegentlich sind auch umliegende Muskulatur oder Haut betroffen'
+              ],
+              complications: ['Muskelabszess', 'Septische Thromboembolie', 'Sepsis', 'Becken-/andere Abszesse', 'Chronische Infektion']
+            },
+            diagnostics: {
+              laboratory: [
+                { test: 'Blutbild, CRP', finding: 'Entzündungszeichen', interpretation: 'Basisuntersuchung' },
+                { test: 'Blutkultur', finding: 'Kann positiv sein', interpretation: 'Erfassung von Bakteriämie' },
+                { test: 'CK', finding: 'Erhöht', interpretation: 'Muskelbeteiligung' }
+              ],
+              imaging: [
+                { modality: 'US / CT / MRT', finding: 'Muskelödem, Abszess, Entzündung', significance: 'Wichtigste Bildgebung' }
+              ],
+              microbiology: [
+                { test: 'Kultur', finding: 'Drainage/Aspirat, wenn möglich', significance: 'Erreger und Resistenz' }
+              ]
+            },
+            differential: [
+              { disease: 'Muskelzerrung / Hämatom', distinguishing: 'Nicht infektiös, keine Entzündung' },
+              { disease: 'Cellulitis', distinguishing: 'Oberflächlicher und weniger lokalisiert' },
+              { disease: 'Osteomyelitis', distinguishing: 'Knochenbeteiligung, positive Knochenbildgebung' },
+              { disease: 'TVT', distinguishing: 'Venenthrombose, kein Abszess' }
+            ],
+            therapy: {
+              guidelines: ['Bei schwerer oder abszedierter Erkrankung ist eine schnelle antibiotische und chirurgische Behandlung erforderlich.'],
+              empirical: {
+                outpatient: [
+                  { drug: 'Keine', dose: '-', duration: '-', note: 'Bei schwerer oder abszedierter Erkrankung Krankenhausbehandlung.' }
+                ],
+                inpatient: [
+                  { drug: 'Anti-staphylokokken IV-Therapie', dose: 'Nafcillin/Cefazolin oder Vancomycin', duration: '7-14 Tage', note: 'Bei MRSA-Verdacht Vancomycin.' }
+                ],
+                icu: [
+                  { drug: 'Schwere Sepsis/Schock', dose: 'Nach Protokoll', duration: 'Sofort', note: 'Intensivversorgung und Fokussanierung.' }
+                ]
+              },
+              targeted: 'Kultur-/Aspirationsbasierte gezielte Antibiotika, bei Abszess Drainage.',
+              supportive: ['Schmerztherapie', 'Flüssigkeit', 'Überwachung', 'Chirurgische Drainage'],
+              prevention: ['Behandlung von Hautinfektionen', 'Schutz von Hautläsionen', 'Behandlung von Immunsuppression']
+            },
+            prognosis: {
+              mortality: 'Meist niedrig, aber bei immungeschwächten oder spät behandelten Fällen höher',
+              prognostic_scores: ['Es gibt keinen einheitlichen Score'],
+              factors: 'Erreger, Immunsystemstatus, späte Diagnose, Vorliegen eines Abszesses'
+            }
+          },
+          {
             id: 'toxic_shock',
             name: 'Toxisches Schocksyndrom (TSS)',
             pathogen: { type: 'Bakterium', name: '<i>Staphylococcus aureus, Streptococcus pyogenes</i>', gram: 'Gram-positiv', shape: 'Kokken' },
@@ -140,8 +313,8 @@ Object.assign(window.diseases, {
               onset: 'Plötzlich',
               symptoms: [
                 { name: 'Hohes Fieber', description: '>38.9°C (plötzlicher Beginn)', severity: 'severe' },
-                { name: 'Hypotonie', description: 'Systolischer RR <90 mmHg (Erwachsene), orthostatischer Schwindel', severity: 'severe' },
-                { name: 'Diffuse Erythrodermie', description: 'Sonnenbrandähnlicher Ausschlag (Staph: >90%, Strep: seltener)', severity: 'moderate' },
+                { name: 'Hypotonie', description: 'Systolischer RR <90 mmHg bei Erwachsenen, orthostatischer Schwindel', severity: 'severe' },
+                { name: 'Diffuse Erythrodermie', description: 'Sonnenbrandähnlicher Ausschlag (Staph TSS >90%, Strep TSS seltener)', severity: 'moderate' },
                 { name: 'Multisystemische Symptome', description: 'GI (Erbrechen/Durchfall), Muskelschmerzen (CK-Erhöhung), Schleimhauthyperämie', severity: 'severe' },
                 { name: 'Desquamation', description: '1-2 Wochen nach Beginn (Handflächen/Fußsohlen)', severity: 'mild' }
               ],

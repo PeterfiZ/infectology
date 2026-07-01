@@ -1,4 +1,5 @@
-window.scoreCalculators = {
+window.scoreCalculators = window.scoreCalculators || {};
+Object.assign(window.scoreCalculators, {
     'CURB-65': {
       title: 'CURB-65 Score (Pneumonie)',
       description: 'Zur Beurteilung des Schweregrads einer ambulant erworbenen Pneumonie und der Notwendigkeit einer Krankenhausaufnahme.',
@@ -488,4 +489,4 @@ window.scoreCalculators = {
             return { risk: 'Hohes Risiko (>20%)', action: 'Empirische antimykotische Therapie erwägen.', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
         }
     }
-};
+});
